@@ -1,0 +1,16 @@
+{
+  "timestamp": "2025-06-24T16:34:26.232Z",
+  "totalCharacters": 45,
+  "statistics": {
+    "marvel-direct": 25,
+    "marvel-search": 0,
+    "tmdb": 2,
+    "existing-valid": 1,
+    "placeholder": 17,
+    "updated": 0
+  },
+  "configuration": {
+    "marvelApiConfigured": true,
+    "tmdbApiConfigured": true
+  }
+}

@@ -1,0 +1,475 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// === TABLAS DE CONTENIDO === //
+
+// Personajes de Marvel/Spider-Verse
+model Character {
+  id                  String    @id @default(cuid())
+  marvelId            Int       @unique // ID original de Marvel API
+  name                String
+  realName            String?
+  alias               String[]
+  description         String    @db.Text
+  longDescription     String?   @db.Text
+  image               String
+  thumbnailPath       String?   // Path original de Marvel API
+  thumbnailExtension  String?   // Extension original de Marvel API
+  powers              String[]
+  abilities           String[]
+  affiliation         String[]  // Spider-Verse, Avengers, etc.
+  firstAppearance     String?
+  creators            String[]
+  universe            String    @default("Marvel-616") // Marvel-616, Ultimate, etc.
+  category            String    // spider-verse, spider-villains, marvel-universe
+  rating              Float     @default(0)
+  comicsCount         Int       @default(0)
+  seriesCount         Int       @default(0)
+  slug                String    @unique
+  seoTitle            String
+  seoDescription      String
+  keywords            String[]
+  urls                Json?     // URLs oficiales de Marvel
+  relatedCharacters   String[]  // IDs de personajes relacionados
+  backstory           String?   @db.Text
+  personalityTraits   String[]
+  characterImages     Json?     // Array de objetos {url, title, description, type}
+  conceptArt          Json?     // Arte conceptual
+  isActive            Boolean   @default(true)
+  isFeatured          Boolean   @default(false)
+  views               Int       @default(0)
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  @@index([marvelId])
+  @@index([category, rating])
+  @@index([slug])
+  @@index([isActive, isFeatured])
+  @@index([views])
+  @@map("characters")
+}
+
+// Películas de Spider-Man
+model Movie {
+  id                  String    @id @default(cuid())
+  title               String
+  originalTitle       String?
+  subtitle            String?
+  year                Int
+  releaseDate         String?
+  duration            String?
+  director            String?
+  platform            String?
+  rating              Float
+  image               String
+  description         String
+  longDescription     String    @db.Text
+  slug                String    @unique
+  seoTitle            String
+  seoDescription      String
+  keywords            String[]
+  actors              String[]
+  genre               String[]
+  boxOffice           String?
+  budget              String?
+  studio              String?
+  sceneImages         Json?     // Array de objetos {url, title, description}
+  castWithPhotos      Json?     // Array de objetos {name, character, photo, bio}
+  trailerUrl          String?
+  backdropImages      String[]  // Array de URLs de imágenes de fondo
+  isActive            Boolean   @default(true)
+  views               Int       @default(0)
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  @@index([year, rating])
+  @@index([slug])
+  @@index([isActive, views])
+  @@map("movies")
+}
+
+// Cómics de Spider-Man
+model Comic {
+  id                  String    @id @default(cuid())
+  title               String
+  subtitle            String?
+  year                String
+  writer              String
+  artist              String
+  publisher           String
+  pages               Int?
+  price               String
+  rating              Float
+  importance          String
+  image               String
+  description         String
+  longDescription     String    @db.Text
+  slug                String    @unique
+  seoTitle            String
+  seoDescription      String
+  keywords            String[]
+  characters          String[]
+  storylines          String[]
+  firstAppearances    String[]
+  coverVariants       Json?     // Array de objetos {url, title, description, artist}
+  artistPhotos        Json?     // Array de objetos {name, photo, bio, role}
+  pagePreview         Json?     // Array de objetos {url, pageNumber, description}
+  conceptArt          Json?     // Array de objetos {url, title, description, artist}
+  backdropImages      String[]  // Array de URLs de imágenes de fondo
+  isActive            Boolean   @default(true)
+  views               Int       @default(0)
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  @@index([year, rating])
+  @@index([slug])
+  @@index([writer, artist])
+  @@index([isActive, views])
+  @@map("comics")
+}
+
+// Videojuegos de Spider-Man
+model Game {
+  id                  String    @id @default(cuid())
+  igdbId              Int?      @unique // ID único de IGDB
+  title               String
+  subtitle            String?
+  year                Int
+  releaseDate         String?   // Fecha exacta de lanzamiento (ISO string)
+  platform            String[]  // Plataformas donde está disponible
+  developer           String
+  publisher           String?
+  genre               String[]  // Géneros como array
+  gameModes           String[]  // Modos de juego (Single-player, Multiplayer, etc.)
+  rating              Float     // Rating de IGDB (0-10)
+  ratingCount         Int       @default(0) // Número de valoraciones
+  metacritic          Int?      // Puntuación de Metacritic
+  importance          Float?    // Importancia del juego (0-10)
+  
+  // Contenido y descripción
+  image               String
+  description         String    // Summary de IGDB
+  storyline           String?   @db.Text // Historia detallada de IGDB
+  longDescription     String    @db.Text // Descripción expandida generada
+  
+  // URLs y enlaces
+  slug                String    @unique
+  playUrl             String?   // URL para gameplay o trailer
+  websites            Json?     // Array de objetos {category, url} - sitios oficiales
+  
+  // Contenido multimedia
+  screenshotImages    Json?     // Array de capturas de pantalla
+  characterImages     Json?     // Array de personajes
+  gameplayVideos      Json?     // Array de videos de gameplay
+  conceptArt          Json?     // Array de arte conceptual
+  
+  // Clasificaciones por edad
+  ageRatings          Json?     // Array de objetos {category, rating} - ESRB, PEGI, etc.
+  esrbRating          String?   // Clasificación ESRB específica
+  pegiRating          String?   // Clasificación PEGI específica
+  
+  // Información detallada de desarrollo
+  involvedCompanies   Json?     // Array de objetos {company, developer, publisher}
+  gameEngines         String[]  // Motores de juego utilizados
+  playerPerspectives  String[]  // Perspectivas del jugador (First-person, Third-person, etc.)
+  themes              String[]  // Temas del juego
+  
+  // Relaciones con otros juegos
+  similarGames        String[]  // IDs de juegos similares
+  expansions          String[]  // IDs de expansiones
+  collection          String?   // Colección a la que pertenece
+  franchises          String[]  // Franquicias
+  
+  // Información de estado
+  status              String?   // Estado del juego (released, alpha, beta, etc.)
+  category            String?   // Categoría (main_game, dlc, expansion, etc.)
+  
+  // Multijugador
+  multiplayerModes    Json?     // Array de objetos con información de multijugador
+  
+  // SEO y metadata
+  seoTitle            String
+  seoDescription      String
+  keywords            String[]
+  
+  // Control y analytics
+  isActive            Boolean   @default(true)
+  isFeatured          Boolean   @default(false)
+  views               Int       @default(0)
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  @@index([igdbId])
+  @@index([year, rating])
+  @@index([slug])
+  @@index([developer])
+  @@index([isActive, views])
+  @@index([isFeatured, rating])
+  @@index([category, status])
+  @@map("games")
+}
+
+// Series de Spider-Man
+model Series {
+  id                  String    @id @default(cuid())
+  tmdbId              Int?      @unique // ID de TMDB para series
+  title               String
+  originalTitle       String?   // Título original de TMDB
+  subtitle            String?
+  year                String
+  endYear             String?
+  seasons             Int?
+  episodes            Int?
+  network             String?
+  rating              Float
+  image               String
+  logo                String?   // URL del logo de la serie
+  description         String
+  longDescription     String    @db.Text
+  slug                String    @unique
+  seoTitle            String
+  seoDescription      String
+  keywords            String[]
+  cast                String[]
+  creators            String[]
+  genre               String[]
+  // Campos adicionales de TMDB
+  firstAirDate        String?   // Fecha de estreno original
+  lastAirDate         String?   // Fecha del último episodio
+  status              String?   // Estado de la serie (Ended, Returning, etc.)
+  type                String?   // Tipo de serie (Scripted, Animation, etc.)
+  originalLanguage    String?   // Idioma original
+  productionCompanies Json?     // Compañías productoras
+  countries           String[]  // Países de origen
+  imdbId              String?   // ID de IMDB desde TMDB
+  homepage            String?   // Página oficial
+  tagline             String?   // Eslogan de la serie
+  // Campos de imágenes y multimedia
+  posterPath          String?   // Poster original de TMDB
+  backdropPath        String?   // Backdrop original de TMDB
+  episodeImages       Json?     // Array de objetos {url, title, description, episode}
+  castPhotos          Json?     // Array de objetos {name, character, photo, bio}
+  behindScenes        Json?     // Array de objetos {url, title, description, season}
+  conceptArt          Json?     // Array de objetos {url, title, description, artist}
+  backdropImages      String[]  // Array de URLs de imágenes de fondo
+  trailerUrl          String?   // URL del trailer principal
+  // Campos de monetización
+  amazonLink          String?   // Link de afiliado de Amazon
+  digitalLinks        Json?     // Array de links digitales {platform, url, price}
+  // Campos de sistema
+  isActive            Boolean   @default(true)
+  views               Int       @default(0)
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  @@index([tmdbId])
+  @@index([year, rating])
+  @@index([slug])
+  @@index([network])
+  @@index([isActive, views])
+  @@map("series")
+}
+
+// Artículos de blog
+model BlogPost {
+  id                  String    @id @default(cuid())
+  title               String
+  subtitle            String?
+  excerpt             String
+  content             String    @db.Text
+  publishDate         DateTime
+  category            String
+  author              String
+  readTime            String
+  image               String?
+  slug                String    @unique
+  seoTitle            String
+  seoDescription      String
+  keywords            String[]
+  tags                String[]
+  isPublished         Boolean   @default(true)
+  views               Int       @default(0)
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  @@index([publishDate, category])
+  @@index([slug])
+  @@index([isPublished, publishDate])
+  @@map("blog_posts")
+}
+
+// Productos para la tienda
+model Product {
+  id                  String    @id @default(cuid())
+  title               String
+  description         String
+  price               String
+  originalPrice       String?
+  discount            String?
+  rating              Float
+  reviews             String
+  image               String
+  category            String
+  slug                String    @unique
+  seoTitle            String
+  seoDescription      String
+  keywords            String[]
+  features            String[]
+  specifications      Json?
+  inStock             Boolean   @default(true)
+  isFeatured          Boolean   @default(false)
+  views               Int       @default(0)
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  @@index([category, rating])
+  @@index([slug])
+  @@index([inStock, isFeatured])
+  @@map("products")
+}
+
+// === TABLAS DE CACHE Y ANALYTICS === //
+
+// Cache para Marvel API
+model MarvelCache {
+  id          String   @id
+  type        String   // character, comic, series, event
+  data        Json
+  expiresAt   DateTime
+  views       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([type, expiresAt])
+  @@map("marvel_cache")
+}
+
+// Cache para APIs externas (TMDB, IGDB)
+model ExternalApiCache {
+  id          String   @id
+  apiSource   String   // tmdb, igdb, amazon
+  type        String   // movie, game, product
+  externalId  String
+  data        Json
+  expiresAt   DateTime
+  views       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([apiSource, type, externalId])
+  @@index([expiresAt])
+  @@map("external_api_cache")
+}
+
+// Analytics de contenido para optimizar monetización
+model ContentAnalytics {
+  id                String    @id @default(cuid())
+  pageUrl           String    @unique
+  title             String?
+  contentType       String    // character, comic, movie, game, product
+  contentId         String?
+  views             Int       @default(0)
+  uniqueViews       Int       @default(0)
+  avgTimeOnPage     Float?    // en segundos
+  bounceRate        Float?    // porcentaje
+  adClicks          Int       @default(0)
+  affiliateClicks   Int       @default(0)
+  affiliateRevenue  Float     @default(0)
+  lastViewAt        DateTime?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  @@index([contentType, views])
+  @@index([pageUrl])
+  @@map("content_analytics")
+}
+
+// Tracking de productos afiliados
+model AffiliateProduct {
+  id              String   @id @default(cuid())
+  asin            String?  // Amazon ASIN
+  externalId      String   // ID del producto en la plataforma
+  platform        String   // amazon, ebay, etc
+  title           String
+  description     String?
+  price           Float?
+  originalPrice   Float?
+  discount        Int?     // porcentaje
+  imageUrl        String?
+  affiliateUrl    String
+  category        String   // comic, movie, game, merchandise
+  tags            String[] // spider-man, marvel, etc
+  isActive        Boolean  @default(true)
+  clicks          Int      @default(0)
+  conversions     Int      @default(0)
+  revenue         Float    @default(0)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([platform, category])
+  @@index([isActive, category])
+  @@map("affiliate_products")
+}
+
+// Favoritos de usuarios (para engagement)
+model UserFavorite {
+  id          String   @id @default(cuid())
+  userId      String   // Session ID o user ID
+  contentType String   // character, comic, movie, game
+  contentId   String   // ID del contenido
+  title       String   // Para mostrar en lista de favoritos
+  imageUrl    String?  // Para UI
+  createdAt   DateTime @default(now())
+
+  @@unique([userId, contentType, contentId])
+  @@index([userId])
+  @@map("user_favorites")
+}
+
+// Seguimiento de búsquedas (para contenido popular)
+model SearchQuery {
+  id        String   @id @default(cuid())
+  query     String
+  results   Int      @default(0)
+  userId    String?  // opcional
+  createdAt DateTime @default(now())
+
+  @@index([query])
+  @@index([createdAt])
+  @@map("search_queries")
+}
+
+// Configuración de ads y monetización
+model MonetizationConfig {
+  id                String   @id @default(cuid())
+  key               String   @unique // adsense_client_id, amazon_tag, etc
+  value             String
+  isActive          Boolean  @default(true)
+  description       String?
+  updatedAt         DateTime @updatedAt
+
+  @@map("monetization_config")
+}
+
+// Log de errores de APIs para debugging
+model ApiErrorLog {
+  id          String   @id @default(cuid())
+  apiSource   String   // marvel, tmdb, igdb
+  endpoint    String
+  errorCode   String?
+  errorMessage String
+  requestData Json?
+  createdAt   DateTime @default(now())
+
+  @@index([apiSource, createdAt])
+  @@map("api_error_logs")
+}

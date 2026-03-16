@@ -1,0 +1,72 @@
+{
+  "startTime": "2025-06-24T10:47:12.359Z",
+  "initialStatus": {
+    "total": 0,
+    "byCategory": {},
+    "imageStatus": {
+      "real": 0,
+      "placeholder": 0,
+      "broken": 0,
+      "unknown": 0
+    },
+    "apiStatus": {
+      "marvel": {
+        "configured": true,
+        "missing": []
+      },
+      "tmdb": {
+        "configured": true,
+        "missing": []
+      }
+    }
+  },
+  "steps": [
+    {
+      "step": "setup",
+      "success": true,
+      "details": "2 APIs configuradas",
+      "timestamp": "2025-06-24T10:47:12.360Z"
+    },
+    {
+      "step": "fetch",
+      "success": true,
+      "details": "Búsqueda de imágenes completada",
+      "timestamp": "2025-06-24T10:47:12.854Z"
+    },
+    {
+      "step": "validation",
+      "success": true,
+      "details": "Validación de imágenes completada",
+      "timestamp": "2025-06-24T10:47:13.333Z"
+    },
+    {
+      "step": "optimization",
+      "success": true,
+      "details": "Optimización completada",
+      "timestamp": "2025-06-24T10:47:13.828Z"
+    }
+  ],
+  "errors": [],
+  "finalStatus": {
+    "total": 0,
+    "byCategory": {},
+    "imageStatus": {
+      "real": 0,
+      "placeholder": 0,
+      "broken": 0,
+      "unknown": 0
+    },
+    "apiStatus": {
+      "marvel": {
+        "configured": true,
+        "missing": []
+      },
+      "tmdb": {
+        "configured": true,
+        "missing": []
+      }
+    }
+  },
+  "endTime": "2025-06-24T10:47:14.056Z",
+  "duration": 1697
+}

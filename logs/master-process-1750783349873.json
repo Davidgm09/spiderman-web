@@ -1,0 +1,80 @@
+{
+  "startTime": "2025-06-24T16:31:53.333Z",
+  "initialStatus": {
+    "total": 45,
+    "byCategory": {
+      "spider-verse": 15,
+      "spider-villains": 15,
+      "marvel-universe": 15
+    },
+    "imageStatus": {
+      "real": 28,
+      "placeholder": 17,
+      "broken": 0,
+      "unknown": 0
+    },
+    "apiStatus": {
+      "marvel": {
+        "configured": true,
+        "missing": []
+      },
+      "tmdb": {
+        "configured": true,
+        "missing": []
+      }
+    }
+  },
+  "steps": [
+    {
+      "step": "setup",
+      "success": true,
+      "details": "2 APIs configuradas",
+      "timestamp": "2025-06-24T16:31:53.333Z"
+    },
+    {
+      "step": "fetch",
+      "success": true,
+      "details": "Búsqueda de imágenes completada",
+      "timestamp": "2025-06-24T16:34:26.239Z"
+    },
+    {
+      "step": "validation",
+      "success": true,
+      "details": "Validación de imágenes completada",
+      "timestamp": "2025-06-24T16:41:53.530Z"
+    },
+    {
+      "step": "optimization",
+      "success": true,
+      "details": "Optimización completada",
+      "timestamp": "2025-06-24T16:42:28.682Z"
+    }
+  ],
+  "errors": [],
+  "finalStatus": {
+    "total": 45,
+    "byCategory": {
+      "spider-verse": 15,
+      "spider-villains": 15,
+      "marvel-universe": 15
+    },
+    "imageStatus": {
+      "real": 28,
+      "placeholder": 17,
+      "broken": 0,
+      "unknown": 0
+    },
+    "apiStatus": {
+      "marvel": {
+        "configured": true,
+        "missing": []
+      },
+      "tmdb": {
+        "configured": true,
+        "missing": []
+      }
+    }
+  },
+  "endTime": "2025-06-24T16:42:29.873Z",
+  "duration": 636540
+}

@@ -1,0 +1,132 @@
+{
+  "timestamp": "2025-06-24T16:41:53.521Z",
+  "summary": {
+    "total": 45,
+    "valid": 28,
+    "invalid": 17,
+    "fixed": 0,
+    "placeholders": 17,
+    "successRate": "62.22%"
+  },
+  "errors": [
+    {
+      "character": "Kaine Parker (Scarlet Spider)",
+      "originalUrl": "/images/marvel-placeholder.svg",
+      "reason": "local-placeholder",
+      "category": "spider-verse"
+    },
+    {
+      "character": "Madame Web (Cassandra Webb)",
+      "originalUrl": "/images/marvel-placeholder.svg",
+      "reason": "local-placeholder",
+      "category": "spider-verse"
+    },
+    {
+      "character": "Silk (Cindy Moon)",
+      "originalUrl": "/images/marvel-placeholder.svg",
+      "reason": "local-placeholder",
+      "category": "spider-verse"
+    },
+    {
+      "character": "Spider-Gwen (Gwen Stacy)",
+      "originalUrl": "/images/marvel-placeholder.svg",
+      "reason": "local-placeholder",
+      "category": "spider-verse"
+    },
+    {
+      "character": "Spider-Ham (Peter Porker)",
+      "originalUrl": "/images/marvel-placeholder.svg",
+      "reason": "local-placeholder",
+      "category": "spider-verse"
+    },
+    {
+      "character": "Spider-Man (Miles Morales)",
+      "originalUrl": "/images/marvel-placeholder.svg",
+      "reason": "local-placeholder",
+      "category": "spider-verse"
+    },
+    {
+      "character": "Spider-Man India (Pavitr Prabhakar)",
+      "originalUrl": "/images/marvel-placeholder.svg",
+      "reason": "local-placeholder",
+      "category": "spider-verse"
+    },
+    {
+      "character": "Spider-Man Noir (Peter Parker)",
+      "originalUrl": "/images/marvel-placeholder.svg",
+      "reason": "local-placeholder",
+      "category": "spider-verse"
+    },
+    {
+      "character": "Spider-UK (Billy Braddock)",
+      "originalUrl": "/images/marvel-placeholder.svg",
+      "reason": "local-placeholder",
+      "category": "spider-verse"
+    },
+    {
+      "character": "Spider-Woman (Julia Carpenter)",
+      "originalUrl": "/images/marvel-placeholder.svg",
+      "reason": "local-placeholder",
+      "category": "spider-verse"
+    },
+    {
+      "character": "Spider-Woman (Mattie Franklin)",
+      "originalUrl": "/images/marvel-placeholder.svg",
+      "reason": "local-placeholder",
+      "category": "spider-verse"
+    },
+    {
+      "character": "Green Goblin (Norman Osborn)",
+      "originalUrl": "/images/marvel-placeholder.svg",
+      "reason": "local-placeholder",
+      "category": "spider-villains"
+    },
+    {
+      "character": "Hobgoblin (Roderick Kingsley)",
+      "originalUrl": "/images/marvel-placeholder.svg",
+      "reason": "local-placeholder",
+      "category": "spider-villains"
+    },
+    {
+      "character": "Sandman (William Baker)",
+      "originalUrl": "/images/marvel-placeholder.svg",
+      "reason": "local-placeholder",
+      "category": "spider-villains"
+    },
+    {
+      "character": "Scorpion (Mac Gargan)",
+      "originalUrl": "/images/marvel-placeholder.svg",
+      "reason": "local-placeholder",
+      "category": "spider-villains"
+    },
+    {
+      "character": "Venom (Eddie Brock)",
+      "originalUrl": "/images/marvel-placeholder.svg",
+      "reason": "local-placeholder",
+      "category": "spider-villains"
+    },
+    {
+      "character": "Vulture (Adrian Toomes)",
+      "originalUrl": "/images/marvel-placeholder.svg",
+      "reason": "local-placeholder",
+      "category": "spider-villains"
+    }
+  ],
+  "recommendations": [
+    {
+      "type": "missing-images",
+      "priority": "high",
+      "message": "17 personajes necesitan imágenes reales. Considere configurar APIs adicionales o buscar imágenes manualmente."
+    },
+    {
+      "type": "broken-images",
+      "priority": "medium",
+      "message": "Algunas imágenes no pudieron ser reparadas automáticamente. Revise el reporte de errores."
+    },
+    {
+      "type": "image-quality",
+      "priority": "medium",
+      "message": "La calidad general de las imágenes es baja. Considere implementar un CDN o sistema de respaldo."
+    }
+  ]
+}
