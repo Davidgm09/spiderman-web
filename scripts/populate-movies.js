@@ -23,18 +23,18 @@ const KNOWN_MOVIE_IDS = [
   557,     // Spider-Man (2002) - Sam Raimi
   558,     // Spider-Man 2 (2004) - Sam Raimi
   559,     // Spider-Man 3 (2007) - Sam Raimi
-  45325,   // The Amazing Spider-Man (2012)
+  1930,    // The Amazing Spider-Man (2012)
   102382,  // The Amazing Spider-Man 2 (2014)
   315635,  // Spider-Man: Homecoming (2017)
-  429617,  // Spider-Man: Into the Spider-Verse (2018)
-  429701,  // Spider-Man: Far From Home (2019)
-  632727,  // Spider-Man: No Way Home (2021)
-  848326,  // Spider-Man: Across the Spider-Verse (2023)
-  580489,  // Venom (2018)
-  775996,  // Venom: Let There Be Carnage (2021)
-  775941,  // Morbius (2022)
-  1121080, // Kraven the Hunter (2024)
-  822119,  // Madame Web (2024)
+  324857,  // Spider-Man: Into the Spider-Verse (2018)
+  429617,  // Spider-Man: Far From Home (2019)
+  634649,  // Spider-Man: No Way Home (2021)
+  569094,  // Spider-Man: Across the Spider-Verse (2023)
+  335983,  // Venom (2018)
+  580489,  // Venom: Let There Be Carnage (2021)
+  526896,  // Morbius (2022)
+  539972,  // Kraven the Hunter (2024)
+  634492,  // Madame Web (2024)
 ];
 
 const delay = (ms) => new Promise((r) => setTimeout(r, ms));

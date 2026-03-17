@@ -16,6 +16,13 @@ export const metadata = {
   keywords: ["Spider-Man películas", "Tobey Maguire", "Andrew Garfield", "Tom Holland", "Spider-Verse", "Marvel", "Sony"],
 }
 
+// Palabras clave para clasificar por título (títulos en español de TMDB)
+const MILES_KEYWORDS = ['nuevo universo', 'cruzando el multiverso', 'beyond the spider-verse', 'into the spider-verse', 'across the spider-verse'];
+const AMAZING_KEYWORDS = ['amazing spider-man'];
+const MCU_KEYWORDS = ['homecoming', 'lejos de casa', 'no way home'];
+const RELATED_KEYWORDS = ['venom', 'morbius', 'kraven', 'madame web'];
+const RAIMI_YEARS = new Set([2002, 2004, 2007]);
+
 // Función para organizar películas por universo
 function organizeMoviesByUniverse(movies: any[]) {
   const universes = {
@@ -37,19 +44,19 @@ function organizeMoviesByUniverse(movies: any[]) {
       title: "Marvel Cinematic Universe (Tom Holland)",
       description: "Spider-Man se une al universo cinematográfico de Marvel",
       color: "purple",
-      years: "2016-2024",
+      years: "2017-2021",
       movies: [] as any[]
     },
-    spiderverse: {
-      title: "Spider-Verse (Animación)",
-      description: "La revolución animada que cambió el cine de superhéroes",
+    miles: {
+      title: "Miles Morales — Spider-Verse Animado",
+      description: "La trilogía animada de Miles Morales que revolucionó el cine de superhéroes",
       color: "green",
-      years: "2018-2024",
+      years: "2018-presente",
       movies: [] as any[]
     },
     related: {
-      title: "Universo Relacionado",
-      description: "Venom, Morbius y otros personajes del Spider-Verse",
+      title: "Universo Relacionado (Sony)",
+      description: "Venom, Morbius, Kraven y Madame Web en el universo de Sony",
       color: "orange",
       years: "2018-2024",
       movies: [] as any[]
@@ -57,26 +64,15 @@ function organizeMoviesByUniverse(movies: any[]) {
   };
 
   movies.forEach(movie => {
-    const title = movie.title.toLowerCase();
-    const year = movie.year;
-    
-    if (title.includes('into the spider-verse') || title.includes('across the spider-verse') || title.includes('beyond the spider-verse') || title.includes('spider-verse')) {
-      universes.spiderverse.movies.push(movie);
-    } else if (title.includes('amazing spider-man')) {
-      universes.amazing.movies.push(movie);
-    } else if (title.includes('homecoming') || title.includes('far from home') || title.includes('no way home')) {
-      universes.mcu.movies.push(movie);
-    } else if (title.includes('venom') || title.includes('morbius') || title.includes('kraven') || title.includes('madame web')) {
-      universes.related.movies.push(movie);
-    } else if (year >= 2002 && year <= 2007 && title.includes('spider-man')) {
-      universes.raimi.movies.push(movie);
-    } else {
-      // Si no encaja en ninguna categoría específica, añadir al MCU por defecto
-      universes.mcu.movies.push(movie);
-    }
+    const t = movie.title.toLowerCase();
+    if (MILES_KEYWORDS.some(k => t.includes(k)))        universes.miles.movies.push(movie);
+    else if (RELATED_KEYWORDS.some(k => t.includes(k))) universes.related.movies.push(movie);
+    else if (MCU_KEYWORDS.some(k => t.includes(k)))     universes.mcu.movies.push(movie);
+    else if (AMAZING_KEYWORDS.some(k => t.includes(k))) universes.amazing.movies.push(movie);
+    else if (RAIMI_YEARS.has(movie.year))                universes.raimi.movies.push(movie);
+    else                                                 universes.mcu.movies.push(movie);
   });
 
-  // Ordenar películas por año dentro de cada universo
   Object.values(universes).forEach(universe => {
     universe.movies.sort((a, b) => a.year - b.year);
   });

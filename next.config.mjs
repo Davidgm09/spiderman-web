@@ -34,6 +34,7 @@ const nextConfig = {
       'dummyimage.com',
       'img.rawpixel.com',
       'www.mobygames.com',
+      'comicvine.gamespot.com',
     ],
   },
   async redirects() {

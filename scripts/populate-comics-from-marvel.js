@@ -14,7 +14,7 @@
 const { PrismaClient } = require('@prisma/client');
 const https = require('https');
 const crypto = require('crypto');
-require('dotenv').config({ path: '.env.local' });
+require('dotenv').config({ path: '.env' });
 
 const prisma = new PrismaClient();
 

@@ -1,10 +1,27 @@
 const { PrismaClient } = require('@prisma/client');
-const axios = require('axios');
+const https = require('https');
+require('dotenv').config({ path: '.env' });
 
 const prisma = new PrismaClient();
 
 const TMDB_API_KEY = process.env.TMDB_API_KEY;
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
+
+function tmdbGet(path, params = {}) {
+  const url = new URL(`${TMDB_BASE_URL}${path}`);
+  url.searchParams.set('api_key', TMDB_API_KEY);
+  Object.entries(params).forEach(([k, v]) => url.searchParams.set(k, String(v)));
+  return new Promise((resolve, reject) => {
+    https.get(url.toString(), (res) => {
+      let raw = '';
+      res.on('data', (chunk) => (raw += chunk));
+      res.on('end', () => {
+        try { resolve(JSON.parse(raw)); }
+        catch (e) { reject(new Error(`JSON parse error for ${path}`)); }
+      });
+    }).on('error', reject);
+  });
+}
 
 // Spider-Man series search terms
 const SPIDER_MAN_SERIES_KEYWORDS = [
@@ -17,16 +34,18 @@ const SPIDER_MAN_SERIES_KEYWORDS = [
   'spider-man new animated series'
 ];
 
-// Known Spider-Man series from TMDB (backup list)
+// Known Spider-Man series from TMDB (IDs verificados)
 const KNOWN_SPIDER_SERIES_IDS = [
-  1427,   // Spider-Man (1967-1970)
-  2703,   // Spider-Man and His Amazing Friends (1981-1983)
-  2704,   // Spider-Man: The Animated Series (1994-1998)
-  2705,   // Spider-Man: The New Animated Series (2003)
-  40358,  // The Spectacular Spider-Man (2008-2009)
-  52315,  // Ultimate Spider-Man (2012-2017)
-  71728,  // Spider-Man (2017-2020)
-  119171, // Spidey and His Amazing Friends (2021-present)
+  1482,   // Spider-Man (1967-1970)
+  1269,   // Spider-Man and His Amazing Friends (1981-1983)
+  888,    // Spider-Man: The Animated Series (1994-1998)
+  1664,   // Spider-Man: The New Animated Series (2003)
+  3854,   // The Spectacular Spider-Man (2008-2009)
+  34391,  // Ultimate Spider-Man (2012-2017)
+  72705,  // Marvel's Spider-Man (2017-2020)
+  127635, // Spidey and His Amazing Friends (2021-present)
+  138503, // Tu amigo y vecino Spider-Man (2025)
+  220102, // Spider-Noir (2026)
 ];
 
 // Helper function to delay execution
@@ -111,15 +130,10 @@ async function fetchSeriesDetails(seriesId) {
   try {
     console.log(`🔍 Fetching details for series ID: ${seriesId}`);
     
-    const response = await axios.get(`${TMDB_BASE_URL}/tv/${seriesId}`, {
-      params: {
-        api_key: TMDB_API_KEY,
-        language: 'es-ES',
-        append_to_response: 'videos,external_ids,credits'
-      }
+    const series = await tmdbGet(`/tv/${seriesId}`, {
+      language: 'es-ES',
+      append_to_response: 'videos,external_ids,credits'
     });
-
-    const series = response.data;
     
     // Find trailer
     const trailer = series.videos?.results?.find(
@@ -156,16 +170,13 @@ async function searchSpiderManSeries() {
     try {
       console.log(`🔍 Searching with keyword: "${keyword}"`);
       
-      const response = await axios.get(`${TMDB_BASE_URL}/search/tv`, {
-        params: {
-          api_key: TMDB_API_KEY,
-          query: keyword,
-          language: 'es-ES',
-          include_adult: false
-        }
+      const response = await tmdbGet('/search/tv', {
+        query: keyword,
+        language: 'es-ES',
+        include_adult: false
       });
 
-      response.data.results.forEach(series => {
+      response.results.forEach(series => {
         const name = series.name.toLowerCase();
         const overview = series.overview?.toLowerCase() || '';
         

@@ -33,13 +33,14 @@ function isValidImage(imageUrl: string): boolean {
   
   // Aceptar imágenes de dominios válidos
   const validDomains = [
-    'i.annihil.us',           // Marvel API
-    'cdn.marvel.com',         // Marvel CDN
-    'm.media-amazon.com',     // Amazon images
-    'image.tmdb.org',         // TMDB
-    'via.placeholder.com'     // Placeholder service
+    'i.annihil.us',              // Marvel CDN
+    'cdn.marvel.com',            // Marvel CDN
+    'm.media-amazon.com',        // Amazon
+    'image.tmdb.org',            // TMDB
+    'comicvine.gamespot.com',    // Comic Vine
+    'via.placeholder.com'
   ];
-  
+
   return validDomains.some(domain => imageUrl.includes(domain));
 }
 

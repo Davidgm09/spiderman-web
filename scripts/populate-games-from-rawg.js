@@ -11,7 +11,7 @@
 
 const { PrismaClient } = require('@prisma/client');
 const https = require('https');
-require('dotenv').config({ path: '.env.local' });
+require('dotenv').config({ path: '.env' });
 
 const prisma = new PrismaClient();
 const RAWG_KEY = process.env.RAWG_API_KEY;
@@ -60,22 +60,50 @@ function isSpiderManGame(game) {
   );
 }
 
+// IDs verificados en RAWG para juegos oficiales de Spider-Man
+const KNOWN_GAME_IDS = [
+  58134,   // Marvel's Spider-Man (2018) - PS4
+  663742,  // Marvel's Spider-Man Remastered (2022) - PC/PS5
+  452634,  // Marvel's Spider-Man: Miles Morales (2020)
+  662316,  // Marvel's Spider-Man 2 (2023)
+  989789,  // Marvel's Spider-Man 2 PC Port (2025)
+  249966,  // Spider-Man (2000) - PS1
+  36795,   // Ultimate Spider-Man (2005)
+  57794,   // Spider-Man 2: Enter Electro (2001)
+  24687,   // Spider-Man: Web of Shadows (2008)
+  57183,   // Spider-Man and Venom: Maximum Carnage (1994)
+  53553,   // Spider-Man: Mysterio's Menace (GBA)
+];
+
 async function searchSpiderManGames() {
-  const queries = ['spider-man', 'spiderman', 'miles morales spider'];
   const allGames = new Map();
 
+  // Primero cargamos los IDs conocidos
+  console.log('  📋 Cargando juegos por ID conocido...');
+  for (const id of KNOWN_GAME_IDS) {
+    try {
+      const game = await rawgGet(`/games/${id}`);
+      if (game && game.id) allGames.set(game.id, game);
+      await delay(300);
+    } catch (err) {
+      console.error(`  ❌ Error con ID ${id}:`, err.message);
+    }
+  }
+
+  // Búsqueda adicional para capturar juegos recientes
+  const queries = ['spider-man marvel', 'miles morales spider'];
   for (const query of queries) {
     try {
       console.log(`  🔍 Buscando: "${query}"`);
       const data = await rawgGet('/games', {
         search: query,
         search_precise: true,
-        page_size: 40,
-        ordering: '-released',
+        page_size: 20,
+        ordering: '-rating',
       });
-
       for (const game of data.results || []) {
-        if (isSpiderManGame(game) && !allGames.has(game.id)) {
+        const hasRating = (game.rating || 0) >= 3.5 && (game.ratings_count || 0) >= 20;
+        if (isSpiderManGame(game) && hasRating && !allGames.has(game.id)) {
           allGames.set(game.id, game);
         }
       }
