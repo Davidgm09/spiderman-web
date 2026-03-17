@@ -5,10 +5,11 @@ import { notFound } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Star, Play, ShoppingCart, Calendar, Clock, User, Tv, Heart, ArrowLeft, Award, ExternalLink, Camera, Mail, CheckCircle } from "lucide-react"
+import { Play, ShoppingCart, Calendar, Clock, User, Tv, ArrowLeft, Award, Camera, Mail, CheckCircle } from "lucide-react"
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { AmazonProduct } from "@/components/affiliate/AmazonProduct"
 import { movieService } from "@/lib/database"
+import { renderStars, generateAmazonUrl } from "@/lib/content-helpers"
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -24,26 +25,12 @@ async function getMovieBySlug(slug: string) {
   }
 }
 
-// Función para formatear fecha
-function formatDate(year: number): string {
-  return year.toString();
-}
-
-// Función para formatear duración
 function formatRuntime(duration?: string): string {
   return duration || 'Duración no disponible';
 }
 
-// Función para formatear recaudación
 function formatRevenue(boxOffice?: string): string {
   return boxOffice || 'No disponible';
-}
-
-// Función para generar URL de Amazon para una película
-function generateAmazonMovieUrl(title: string, year: number): string {
-  const amazonTag = process.env.NEXT_PUBLIC_AMAZON_AFFILIATE_TAG || 'spiderweb-20';
-  const searchQuery = encodeURIComponent(`${title} ${year} 4K blu-ray`);
-  return `https://www.amazon.com/s?k=${searchQuery}&tag=${amazonTag}`;
 }
 
 // Función para obtener películas relacionadas
@@ -102,25 +89,6 @@ export default async function MoviePage({ params }: Props) {
   // Obtener películas relacionadas
   const relatedMovies = await getRelatedMovies(slug);
 
-  // Función para renderizar estrellas
-  const renderStars = (rating: number) => {
-    const fullStars = Math.floor(rating / 2)
-    const hasHalfStar = rating % 2 >= 1
-    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0)
-
-    return (
-      <div className="flex items-center">
-        {[...Array(fullStars)].map((_, i) => (
-          <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
-        ))}
-        {hasHalfStar && <Star className="w-4 h-4 text-yellow-400 fill-current opacity-50" />}
-        {[...Array(emptyStars)].map((_, i) => (
-          <Star key={i} className="w-4 h-4 text-gray-400" />
-        ))}
-        <span className="ml-2 text-white font-semibold">{rating}/10</span>
-      </div>
-    )
-  }
 
   // Usar datos reales de la base de datos o fallback
   const sceneGallery = Array.isArray(movie.sceneImages) 
@@ -231,7 +199,7 @@ export default async function MoviePage({ params }: Props) {
                 className="bg-gradient-to-r from-red-600 to-blue-600 hover:from-red-700 hover:to-blue-700 text-white px-8 py-4 text-lg"
                 asChild
               >
-                <a href={generateAmazonMovieUrl(movie.title, movie.year)} target="_blank" rel="noopener noreferrer">
+                <a href={generateAmazonUrl(`${movie.title} ${movie.year} 4K blu-ray`)} target="_blank" rel="noopener noreferrer">
                   <Play className="mr-2 h-5 w-5" />
                   Ver en {movie.platform}
                 </a>
@@ -243,7 +211,7 @@ export default async function MoviePage({ params }: Props) {
               className="border-orange-600 text-orange-400 hover:bg-orange-600 hover:text-white px-8 py-4 text-lg"
               asChild
             >
-              <a href={generateAmazonMovieUrl(movie.title, movie.year)} target="_blank" rel="noopener noreferrer">
+              <a href={generateAmazonUrl(`${movie.title} ${movie.year} 4K blu-ray`)} target="_blank" rel="noopener noreferrer">
                 <ShoppingCart className="mr-2 h-5 w-5" />
                 Comprar en Amazon
               </a>

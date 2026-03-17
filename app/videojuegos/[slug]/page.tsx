@@ -5,30 +5,12 @@ import { notFound } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Star, Gamepad2, ShoppingCart, Calendar, Monitor, User, Heart, ExternalLink, ArrowLeft, Award, Camera, Users, BookOpen, Palette, Play, Mail, CheckCircle } from "lucide-react"
+import { Gamepad2, ShoppingCart, Calendar, Monitor, User, ArrowLeft, Award, Camera, Users, BookOpen, Play, Mail, CheckCircle } from "lucide-react"
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { AmazonProduct } from "@/components/affiliate/AmazonProduct"
 import { gameService } from "@/lib/database"
+import { renderStars, generateAmazonUrl, convertToEmbedUrl } from "@/lib/content-helpers"
 
-// Función para convertir URL de YouTube a embed
-function convertToEmbedUrl(url: string): string {
-  if (!url) return '';
-  
-  try {
-    if (url.includes('youtube.com/watch?v=')) {
-      return url.replace('youtube.com/watch?v=', 'youtube.com/embed/');
-    } else if (url.includes('youtu.be/')) {
-      const videoId = url.split('youtu.be/')[1]?.split('?')[0];
-      return `https://www.youtube.com/embed/${videoId}`;
-    } else if (url.includes('youtube.com/embed/')) {
-      return url; // Ya está en formato embed
-    }
-    return url;
-  } catch (error) {
-    console.error('Error converting YouTube URL:', error);
-    return url;
-  }
-}
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -44,12 +26,6 @@ async function getGameBySlug(slug: string) {
   }
 }
 
-// Función para generar URL de Amazon para un videojuego
-function generateAmazonGameUrl(title: string, platform: string[]): string {
-  const amazonTag = process.env.NEXT_PUBLIC_AMAZON_AFFILIATE_TAG || 'spiderweb-20';
-  const searchQuery = encodeURIComponent(`${title} ${platform[0]} game`);
-  return `https://www.amazon.com/s?k=${searchQuery}&tag=${amazonTag}`;
-}
 
 // Función para obtener videojuegos relacionados
 async function getRelatedGames(currentSlug: string, limit: number = 4) {
@@ -107,24 +83,6 @@ export default async function GamePage({ params }: Props) {
   // Obtener videojuegos relacionados
   const relatedGames = await getRelatedGames(slug);
 
-  const renderStars = (rating: number) => {
-    const fullStars = Math.floor(rating / 2)
-    const hasHalfStar = rating % 2 >= 1
-    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0)
-
-    return (
-      <div className="flex items-center">
-        {[...Array(fullStars)].map((_, i) => (
-          <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
-        ))}
-        {hasHalfStar && <Star className="w-4 h-4 text-yellow-400 fill-current opacity-50" />}
-        {[...Array(emptyStars)].map((_, i) => (
-          <Star key={i} className="w-4 h-4 text-gray-400" />
-        ))}
-        <span className="ml-2 text-white font-semibold">{rating}/10</span>
-      </div>
-    )
-  }
 
   return (
     <div className="pt-16">
@@ -212,7 +170,7 @@ export default async function GamePage({ params }: Props) {
               className="border-orange-600 text-orange-400 hover:bg-orange-600 hover:text-white px-8 py-4 text-lg"
               asChild
             >
-              <a href={generateAmazonGameUrl(game.title, Array.isArray(game.platform) ? game.platform : [game.platform])} target="_blank" rel="noopener noreferrer">
+              <a href={generateAmazonUrl(`${game.title} ${Array.isArray(game.platform) ? game.platform[0] : game.platform} game`)} target="_blank" rel="noopener noreferrer">
                 <ShoppingCart className="mr-2 h-5 w-5" />
                 Comprar Ahora
               </a>

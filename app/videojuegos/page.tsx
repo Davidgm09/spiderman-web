@@ -8,6 +8,7 @@ import Link from "next/link"
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { SpiderManGame, AmazonProduct } from "@/components/affiliate/AmazonProduct"
 import { gameService } from "@/lib/database"
+import { generateAmazonUrl } from "@/lib/content-helpers"
 
 export const metadata: Metadata = {
   title: "Videojuegos de Spider-Man - Colección Completa | Spider-World",
@@ -83,12 +84,6 @@ function formatPlatforms(platforms: string[] | string): string {
 }
 
 // Función para generar URL de Amazon para un juego
-function generateAmazonGameUrl(gameName: string, platforms?: string[] | string): string {
-  const amazonTag = process.env.NEXT_PUBLIC_AMAZON_AFFILIATE_TAG || 'spiderweb-20';
-  const platformStr = Array.isArray(platforms) ? platforms[0] : platforms || 'PS5';
-  const query = encodeURIComponent(`${gameName} ${platformStr} videojuego`);
-  return `https://www.amazon.com/s?k=${query}&tag=${amazonTag}`;
-}
 
 export default async function VideojuegosPage() {
   // Obtener videojuegos de la base de datos
@@ -285,7 +280,7 @@ export default async function VideojuegosPage() {
                           className="border-orange-600 text-orange-400 hover:bg-orange-600 hover:text-white"
                         >
                           <a 
-                            href={generateAmazonGameUrl(game.title, game.platform)}
+                            href={generateAmazonUrl(`${game.title} ${Array.isArray(game.platform) ? game.platform[0] : game.platform || 'PS5'} videojuego`)}
                             target="_blank"
                             rel="noopener noreferrer"
                           >

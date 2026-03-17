@@ -5,11 +5,12 @@ import { notFound } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Star, Play, ShoppingCart, Calendar, Tv, Users, Clock, Heart, ExternalLink, ArrowLeft, Award, Camera, Palette, BookOpen, Eye } from "lucide-react"
+import { Play, ShoppingCart, Calendar, Tv, Users, Clock, ArrowLeft, Award, Camera, BookOpen, Eye } from "lucide-react"
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { AmazonProduct } from "@/components/affiliate/AmazonProduct"
-import { seriesService, comicService } from "@/lib/database"
+import { seriesService } from "@/lib/database"
 import { Series } from "@prisma/client"
+import { renderStars, generateAmazonUrl } from "@/lib/content-helpers"
 
 type SeriesWithLogo = Series & { logo?: string | null };
 
@@ -67,12 +68,6 @@ async function getSeriesGalleryImages(tmdbId: string) {
   }
 }
 
-// Función para generar URL de Amazon para una serie
-function generateAmazonSeriesUrl(title: string): string {
-  const amazonTag = process.env.NEXT_PUBLIC_AMAZON_AFFILIATE_TAG || 'spiderweb-20';
-  const searchQuery = encodeURIComponent(`${title} DVD series Spider-Man`);
-  return `https://www.amazon.com/s?k=${searchQuery}&tag=${amazonTag}`;
-}
 
 // Función para obtener series relacionadas
 async function getRelatedSeries(currentSlug: string, limit: number = 4) {
@@ -136,24 +131,6 @@ export default async function SeriesPage({ params }: Props) {
   // Obtener imágenes de galería desde TMDB si hay tmdbId
   const galleryImages = series.tmdbId ? await getSeriesGalleryImages(series.tmdbId.toString()) : null;
 
-  const renderStars = (rating: number) => {
-    const fullStars = Math.floor(rating / 2)
-    const hasHalfStar = rating % 2 >= 1
-    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0)
-
-    return (
-      <div className="flex items-center">
-        {[...Array(fullStars)].map((_, i) => (
-          <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
-        ))}
-        {hasHalfStar && <Star className="w-4 h-4 text-yellow-400 fill-current opacity-50" />}
-        {[...Array(emptyStars)].map((_, i) => (
-          <Star key={i} className="w-4 h-4 text-gray-400" />
-        ))}
-        <span className="ml-2 text-white font-semibold">{rating}/10</span>
-      </div>
-    )
-  }
 
   return (
     <div className="pt-16">
@@ -243,7 +220,7 @@ export default async function SeriesPage({ params }: Props) {
               className="border-orange-600 text-orange-400 hover:bg-orange-600 hover:text-white px-8 py-4 text-lg"
               asChild
             >
-              <a href={generateAmazonSeriesUrl(series.title)} target="_blank" rel="noopener noreferrer">
+              <a href={generateAmazonUrl(`${series.title} DVD series Spider-Man`)} target="_blank" rel="noopener noreferrer">
               <ShoppingCart className="mr-2 h-5 w-5" />
               Comprar DVD
               </a>

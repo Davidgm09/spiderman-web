@@ -7,6 +7,7 @@ import Link from "next/link"
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { SpiderManComic, AmazonProduct } from "@/components/affiliate/AmazonProduct"
 import { comicService } from "@/lib/database"
+import { generateAmazonUrl } from "@/lib/content-helpers"
 
 export const metadata = {
   title: "Cómics de Spider-Man - Colección Completa | Spider-World",
@@ -16,11 +17,6 @@ export const metadata = {
 }
 
 // Función para generar URL de Amazon para un cómic
-function generateAmazonComicUrl(title: string): string {
-  const amazonTag = process.env.NEXT_PUBLIC_AMAZON_AFFILIATE_TAG || 'spiderweb-20';
-  const searchQuery = encodeURIComponent(`${title} comic marvel`);
-  return `https://www.amazon.com/s?k=${searchQuery}&tag=${amazonTag}`;
-}
 
 // Función para verificar si una imagen es válida
 function isValidImage(imageUrl: string): boolean {
@@ -346,7 +342,7 @@ export default async function ComicsPage() {
                           className="border-orange-600 text-orange-400 hover:bg-orange-600 hover:text-white"
                         >
                           <a 
-                            href={generateAmazonComicUrl(comic.title)}
+                            href={generateAmazonUrl(`${comic.title} comic marvel`)}
                             target="_blank"
                             rel="noopener noreferrer"
                           >

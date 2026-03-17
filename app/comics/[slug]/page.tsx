@@ -5,10 +5,11 @@ import { notFound } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Star, BookOpen, ShoppingCart, Calendar, User, Building, Heart, ExternalLink, ArrowLeft, Users, Clock, Award, Zap, History, BookmarkPlus, Eye, TrendingUp, Camera, Palette } from "lucide-react"
+import { BookOpen, ShoppingCart, Calendar, User, Building, ArrowLeft, Users, Award, Zap, History, Eye, Camera, Palette } from "lucide-react"
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { AmazonProduct } from "@/components/affiliate/AmazonProduct"
 import { comicService } from "@/lib/database"
+import { renderStars, generateAmazonUrl } from "@/lib/content-helpers"
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -26,12 +27,6 @@ async function getComicBySlug(slug: string) {
   }
 }
 
-// Función para generar URL de Amazon para un cómic
-function generateAmazonComicUrl(title: string): string {
-  const amazonTag = process.env.NEXT_PUBLIC_AMAZON_AFFILIATE_TAG || 'spiderweb-20';
-  const searchQuery = encodeURIComponent(`${title} comic marvel`);
-  return `https://www.amazon.com/s?k=${searchQuery}&tag=${amazonTag}`;
-}
 
 // Función para obtener cómics relacionados
 async function getRelatedComics(currentSlug: string, limit: number = 4) {
@@ -45,24 +40,6 @@ async function getRelatedComics(currentSlug: string, limit: number = 4) {
 }
 
 // Función para renderizar estrellas
-const renderStars = (rating: number) => {
-  const fullStars = Math.floor(rating)
-  const hasHalfStar = rating % 1 >= 0.5
-  const emptyStars = 10 - fullStars - (hasHalfStar ? 1 : 0)
-
-  return (
-    <div className="flex items-center">
-      {[...Array(fullStars)].map((_, i) => (
-        <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
-      ))}
-      {hasHalfStar && <Star className="w-4 h-4 text-yellow-400 fill-current opacity-50" />}
-      {[...Array(emptyStars)].map((_, i) => (
-        <Star key={i} className="w-4 h-4 text-gray-400" />
-      ))}
-      <span className="ml-2 text-white font-semibold">{rating}/10</span>
-    </div>
-  )
-}
 
 // Función para obtener color de importancia
 const getImportanceColor = (importance: string) => {
@@ -235,7 +212,7 @@ export default async function ComicPage({ params }: Props) {
               className="border-2 border-orange-500 text-orange-400 hover:bg-orange-500 hover:text-white px-10 py-4 text-lg font-bold shadow-xl transform hover:scale-105 transition-all duration-300"
               asChild
             >
-              <a href={generateAmazonComicUrl(comic.title)} target="_blank" rel="noopener noreferrer">
+              <a href={generateAmazonUrl(`${comic.title} comic marvel`)} target="_blank" rel="noopener noreferrer">
                 <ShoppingCart className="mr-2 h-5 w-5" />
                 Comprar en Amazon
               </a>

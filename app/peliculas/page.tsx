@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { SpiderManMovie, AmazonProduct } from "@/components/affiliate/AmazonProduct"
 import { movieService } from "@/lib/database"
+import { generateAmazonUrl } from "@/lib/content-helpers"
 
 export const metadata = {
   title: "Películas de Spider-Man - Todas las Sagas | Spider-World",
@@ -80,27 +81,6 @@ function organizeMoviesByUniverse(movies: any[]) {
   return universes;
 }
 
-// Función para formatear fecha
-function formatDate(year: number): string {
-  return year.toString();
-}
-
-// Función para formatear duración
-function formatRuntime(duration?: string): string {
-  return duration || 'Duración no disponible';
-}
-
-// Función para formatear recaudación
-function formatRevenue(boxOffice?: string): string {
-  return boxOffice || 'No disponible';
-}
-
-// Función para generar URL de Amazon para una película
-function generateAmazonMovieUrl(title: string, year: string): string {
-  const amazonTag = process.env.NEXT_PUBLIC_AMAZON_AFFILIATE_TAG || 'spiderweb-20';
-  const query = encodeURIComponent(`${title} ${year} película blu-ray`);
-  return `https://www.amazon.com/s?k=${query}&tag=${amazonTag}`;
-}
 
 export default async function PeliculasPage() {
   // Obtener películas de la base de datos
@@ -255,7 +235,7 @@ export default async function PeliculasPage() {
                           className="border-orange-600 text-orange-400 hover:bg-orange-600 hover:text-white"
                         >
                           <a 
-                            href={generateAmazonMovieUrl(movie.title, movie.year.toString())}
+                            href={generateAmazonUrl(`${movie.title} ${movie.year} película blu-ray`)}
                             target="_blank"
                             rel="noopener noreferrer"
                           >
