@@ -8,39 +8,25 @@ import { Badge } from "@/components/ui/badge"
 import { Calendar, Clock, User, Eye, ArrowLeft, BookOpen, Share2, Tag } from "lucide-react"
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { blogService } from "@/lib/database"
+import { BlogPost } from "@prisma/client"
 
 type Props = {
   params: Promise<{ slug: string }>
 }
 
-// Función para obtener artículo por slug desde la base de datos
-async function getBlogPostBySlug(slug: string) {
+async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
   try {
-    console.log(`📝 Fetching blog post ${slug} from database...`);
-    const posts = await blogService.getAll();
-    const post = posts.find((p: any) => p.slug === slug);
-    
-    if (post) {
-      console.log(`✅ Found blog post ${slug} in database`);
-      return post;
-    }
-    
-    console.warn(`Blog post ${slug} not found in database`);
-    return null;
+    return await blogService.getBySlug(slug);
   } catch (error) {
     console.error('Error fetching blog post:', error);
     return null;
   }
 }
 
-// Función para obtener artículos relacionados
-async function getRelatedBlogPosts(currentSlug: string, limit: number = 3) {
+async function getRelatedBlogPosts(currentSlug: string, limit: number = 3): Promise<BlogPost[]> {
   try {
-    const posts = await blogService.getAll();
-    return posts
-      .filter((post: any) => post.slug !== currentSlug)
-      .sort((a: any, b: any) => new Date(b.publishDate || b.createdAt).getTime() - new Date(a.publishDate || a.createdAt).getTime())
-      .slice(0, limit);
+    const posts = await blogService.getRecent(limit + 1);
+    return posts.filter((post) => post.slug !== currentSlug).slice(0, limit);
   } catch (error) {
     console.error('Error fetching related blog posts:', error);
     return [];
@@ -58,8 +44,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
   }
 
-  const description = post.description 
-    ? post.description.substring(0, 155) + '...'
+  const description = post.excerpt 
+    ? post.excerpt.substring(0, 155) + '...'
     : `Lee ${post.title}, artículo especializado sobre Spider-Man con análisis profundo y contenido exclusivo.`;
 
   return {
@@ -69,16 +55,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: `${post.title} | Spider-World Blog`,
       description,
-      images: [post.image],
+      images: post.image ? [post.image] : [],
       type: "article",
-      publishedTime: post.publishDate || post.createdAt,
-      authors: [post.author || 'Spider-World'],
+      publishedTime: post.publishDate.toISOString(),
+      authors: [post.author],
     },
     twitter: {
       card: "summary_large_image",
       title: `${post.title} | Spider-World Blog`,
       description,
-      images: [post.image],
+      images: post.image ? [post.image] : [],
     },
   }
 }
@@ -101,7 +87,7 @@ export default async function BlogPostPage({ params }: Props) {
         <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-orange-900/30 to-black/80"></div>
         <div className="absolute inset-0">
           <Image
-            src={post.image}
+            src={post.image ?? '/placeholder.jpg'}
             alt={`${post.title} - Blog Spider-World`}
             fill
             className="object-cover opacity-40"
@@ -132,9 +118,9 @@ export default async function BlogPostPage({ params }: Props) {
             </p>
           )}
           
-          {post.description && (
+          {post.excerpt && (
             <p className="text-lg text-gray-400 max-w-3xl mx-auto mb-8">
-              {post.description.length > 200 ? post.description.substring(0, 200) + '...' : post.description}
+              {post.excerpt.length > 200 ? post.excerpt.substring(0, 200) + '...' : post.excerpt}
             </p>
           )}
 
@@ -259,11 +245,11 @@ export default async function BlogPostPage({ params }: Props) {
               </div>
 
               {/* Content */}
-              {post.description && (
+              {post.excerpt && (
                 <div className="mt-8 bg-gray-900/50 border border-orange-600/20 rounded-lg p-8">
                   <h3 className="text-2xl font-bold text-white mb-6">Resumen</h3>
                   <p className="text-gray-300 text-lg leading-relaxed">
-                    {post.description}
+                    {post.excerpt}
                   </p>
                 </div>
               )}
@@ -283,18 +269,11 @@ export default async function BlogPostPage({ params }: Props) {
                 <div className="mt-8 bg-gray-900/50 border border-orange-600/20 rounded-lg p-8">
                   <h3 className="text-2xl font-bold text-white mb-6">Etiquetas</h3>
                   <div className="flex flex-wrap gap-2">
-                    {Array.isArray(post.tags) 
-                      ? post.tags.map((tag: any, index: any) => (
-                          <Badge key={index} className="bg-orange-600 text-white">
-                            {tag}
-                          </Badge>
-                        ))
-                      : post.tags.split(',').map((tag: string, index: number) => (
-                          <Badge key={index} className="bg-orange-600 text-white">
-                            {tag.trim()}
-                          </Badge>
-                        ))
-                    }
+                    {post.tags.map((tag, index) => (
+                      <Badge key={index} className="bg-orange-600 text-white">
+                        {tag}
+                      </Badge>
+                    ))}
                   </div>
                 </div>
               )}
@@ -306,7 +285,7 @@ export default async function BlogPostPage({ params }: Props) {
                 {/* Article Image */}
                 <div className="bg-gray-900/30 rounded-lg p-6 border border-orange-600/20">
                   <Image
-                    src={post.image}
+                    src={post.image ?? '/placeholder.jpg'}
                     alt={`${post.title} - Imagen del artículo`}
                     width={300}
                     height={200}
@@ -324,12 +303,12 @@ export default async function BlogPostPage({ params }: Props) {
                       📚 Artículos Relacionados
                     </h3>
                     <div className="space-y-4">
-                      {relatedPosts.map((relatedPost: any) => (
+                      {relatedPosts.map((relatedPost) => (
                         <Card key={relatedPost.id} className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all">
                           <CardContent className="p-4">
                             <Link href={`/blog/${relatedPost.slug}`} className="block">
                               <Image
-                                src={relatedPost.image}
+                                src={relatedPost.image ?? '/placeholder.jpg'}
                                 alt={relatedPost.title}
                                 width={300}
                                 height={150}
@@ -339,7 +318,7 @@ export default async function BlogPostPage({ params }: Props) {
                                 {relatedPost.title}
                               </h4>
                               <p className="text-gray-400 text-sm line-clamp-2">
-                                {relatedPost.description}
+                                {relatedPost.excerpt}
                               </p>
                               <div className="flex items-center mt-2 text-xs text-gray-500">
                                 <Calendar className="w-3 h-3 mr-1" />

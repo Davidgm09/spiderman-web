@@ -50,10 +50,10 @@ function organizeSeriesByEra(series: Series[]) {
   };
 
   series.forEach(serie => {
-    const year = serie.year;
+    const year = parseInt(serie.year, 10) || 0;
     const title = serie.title.toLowerCase();
-    
-    if (title.includes('live') || title.includes('freshman') || title.includes('noir') || year < 1980 && year > 1970) {
+
+    if (title.includes('live') || title.includes('freshman') || title.includes('noir') || (year < 1980 && year > 1970)) {
       eras.liveaction.series.push(serie);
     } else if (year >= 1967 && year <= 1999) {
       eras.classic.series.push(serie);
@@ -66,17 +66,12 @@ function organizeSeriesByEra(series: Series[]) {
 
   // Ordenar series por año dentro de cada era
   Object.values(eras).forEach(era => {
-    era.series.sort((a, b) => a.year - b.year);
+    era.series.sort((a, b) => parseInt(a.year, 10) - parseInt(b.year, 10));
   });
 
   return eras;
 }
 
-// Función para formatear duración
-function formatDuration(duration: string): string {
-  if (!duration) return 'N/A';
-  return duration;
-}
 
 
 export default async function SeriesPage() {

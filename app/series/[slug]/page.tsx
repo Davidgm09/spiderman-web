@@ -29,16 +29,7 @@ type Props = {
 // Función para obtener serie por slug desde la base de datos
 async function getSeriesBySlug(slug: string): Promise<Series | null> {
   try {
-    console.log(`📺 Fetching series ${slug} from database...`);
-    const series = await seriesService.getBySlug(slug);
-    
-    if (series) {
-      console.log(`✅ Found series ${slug} in database`);
-      return series;
-    }
-    
-    console.warn(`Series ${slug} not found in database`);
-    return null;
+    return await seriesService.getBySlug(slug);
   } catch (error) {
     console.error('Error fetching series:', error);
     return null;
@@ -48,18 +39,11 @@ async function getSeriesBySlug(slug: string): Promise<Series | null> {
 // Función para obtener imágenes de galería desde TMDB
 async function getSeriesGalleryImages(tmdbId: string) {
   try {
-    console.log(`🖼️ Fetching gallery images for TMDB ID: ${tmdbId}`);
     const response = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/external/series/${tmdbId}/images`, {
       next: { revalidate: 43200 } // 12 hours cache
     });
-    
-    if (!response.ok) {
-      console.warn(`Failed to fetch gallery images: ${response.status}`);
-      return null;
-    }
-    
+    if (!response.ok) return null;
     const data = await response.json();
-    console.log(`✅ Found ${data.result?.gallery?.length || 0} gallery images`);
     return data.result?.gallery || null;
   } catch (error) {
     console.error('Error fetching gallery images:', error);
