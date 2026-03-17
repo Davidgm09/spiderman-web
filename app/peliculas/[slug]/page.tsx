@@ -17,17 +17,7 @@ type Props = {
 // Función para obtener película por slug desde la base de datos
 async function getMovieBySlug(slug: string) {
   try {
-    console.log(`🎬 Fetching movie ${slug} from database...`);
-    const movies = await movieService.getAll();
-    const movie = movies.find((m: any) => m.slug === slug);
-    
-    if (movie) {
-      console.log(`✅ Found movie ${slug} in database`);
-      return movie;
-    }
-    
-    console.warn(`Movie ${slug} not found in database`);
-    return null;
+    return await movieService.getBySlug(slug);
   } catch (error) {
     console.error('Error fetching movie:', error);
     return null;
@@ -59,11 +49,8 @@ function generateAmazonMovieUrl(title: string, year: number): string {
 // Función para obtener películas relacionadas
 async function getRelatedMovies(currentSlug: string, limit: number = 4) {
   try {
-    const movies = await movieService.getAll();
-    return movies
-      .filter((movie: any) => movie.slug !== currentSlug)
-      .sort((a: any, b: any) => (b.rating || 0) - (a.rating || 0))
-      .slice(0, limit);
+    const movies = await movieService.getFeatured(limit + 1);
+    return movies.filter((movie: any) => movie.slug !== currentSlug).slice(0, limit);
   } catch (error) {
     console.error('Error fetching related movies:', error);
     return [];

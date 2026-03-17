@@ -1,8 +1,6 @@
 'use client';
 
 import { useEffect } from 'react';
-import { AnalyticsManager } from '@/lib/database';
-import { usePathname } from 'next/navigation';
 
 declare global {
   interface Window {
@@ -25,7 +23,6 @@ export function GoogleAd({
   className = '',
   style = {}
 }: GoogleAdProps) {
-  const pathname = usePathname();
   const clientId = process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT_ID;
 
   useEffect(() => {
@@ -37,15 +34,6 @@ export function GoogleAd({
       }
     }
   }, [clientId]);
-
-  // Track ad clicks (this would need to be implemented with AdSense callbacks)
-  const handleAdClick = async () => {
-    try {
-      await AnalyticsManager.trackAdClick(pathname);
-    } catch (error) {
-      console.error('Failed to track ad click:', error);
-    }
-  };
 
   if (!clientId) {
     // Show placeholder in development
@@ -71,7 +59,6 @@ export function GoogleAd({
         data-ad-slot={adSlot}
         data-ad-format={adFormat}
         data-full-width-responsive={fullWidthResponsive}
-        onClick={handleAdClick}
       />
     </div>
   );

@@ -6,8 +6,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { ExternalLink, ShoppingCart, Star, Truck } from 'lucide-react';
 import Image from 'next/image';
-import { AnalyticsManager } from '@/lib/database';
-import { usePathname } from 'next/navigation';
 
 interface AmazonProductProps {
   title: string;
@@ -42,7 +40,6 @@ export function AmazonProduct({
   searchQuery,
   className = ''
 }: AmazonProductProps) {
-  const pathname = usePathname();
   const [isClicked, setIsClicked] = useState(false);
   const amazonTag = process.env.NEXT_PUBLIC_AMAZON_AFFILIATE_TAG || 'spiderweb-20';
 
@@ -54,17 +51,8 @@ export function AmazonProduct({
   };
 
   // Track affiliate click
-  const handleAffiliateClick = async () => {
+  const handleAffiliateClick = () => {
     setIsClicked(true);
-    
-    try {
-      await AnalyticsManager.trackAffiliateClick(pathname);
-      console.log('📊 Affiliate click tracked');
-    } catch (error) {
-      console.error('Failed to track affiliate click:', error);
-    }
-
-    // Reset click state after animation
     setTimeout(() => setIsClicked(false), 1000);
   };
 

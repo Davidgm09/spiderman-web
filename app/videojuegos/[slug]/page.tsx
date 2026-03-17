@@ -9,7 +9,6 @@ import { Star, Gamepad2, ShoppingCart, Calendar, Monitor, User, Heart, ExternalL
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { AmazonProduct } from "@/components/affiliate/AmazonProduct"
 import { gameService } from "@/lib/database"
-import { Game } from "@prisma/client"
 
 // Función para convertir URL de YouTube a embed
 function convertToEmbedUrl(url: string): string {
@@ -38,17 +37,7 @@ type Props = {
 // Función para obtener videojuego por slug desde la base de datos
 async function getGameBySlug(slug: string) {
   try {
-    console.log(`🎮 Fetching game ${slug} from database...`);
-    const games = await gameService.getAll();
-    const game = games.find((g: any) => g.slug === slug);
-    
-    if (game) {
-      console.log(`✅ Found game ${slug} in database`);
-      return game;
-    }
-    
-    console.warn(`Game ${slug} not found in database`);
-    return null;
+    return await gameService.getBySlug(slug);
   } catch (error) {
     console.error('Error fetching game:', error);
     return null;
@@ -65,11 +54,8 @@ function generateAmazonGameUrl(title: string, platform: string[]): string {
 // Función para obtener videojuegos relacionados
 async function getRelatedGames(currentSlug: string, limit: number = 4) {
   try {
-    const games = await gameService.getAll();
-    return games
-      .filter((game: any) => game.slug !== currentSlug)
-      .sort((a: any, b: any) => (b.rating || 0) - (a.rating || 0))
-      .slice(0, limit);
+    const games = await gameService.getFeatured(limit + 1);
+    return games.filter((game: any) => game.slug !== currentSlug).slice(0, limit);
   } catch (error) {
     console.error('Error fetching related games:', error);
     return [];

@@ -17,19 +17,9 @@ type Props = {
 // Función para obtener cómic por slug desde la base de datos
 async function getComicBySlug(slug: string) {
   try {
-    console.log(`📚 Fetching comic ${slug} from database...`);
-    const comics = await comicService.getAll();
-    const comic = comics.find(c => c.slug === slug);
-    
-    if (comic) {
-      console.log(`✅ Found comic ${slug} in database`);
-      // Incrementar vistas
-      await comicService.incrementViews(slug);
-      return comic;
-    }
-    
-    console.warn(`Comic ${slug} not found in database`);
-    return null;
+    const comic = await comicService.getBySlug(slug);
+    if (comic) await comicService.incrementViews(slug).catch(console.error);
+    return comic;
   } catch (error) {
     console.error('Error fetching comic:', error);
     return null;
@@ -46,11 +36,8 @@ function generateAmazonComicUrl(title: string): string {
 // Función para obtener cómics relacionados
 async function getRelatedComics(currentSlug: string, limit: number = 4) {
   try {
-    const comics = await comicService.getAll();
-    return comics
-      .filter(comic => comic.slug !== currentSlug)
-      .sort((a, b) => (b.rating || 0) - (a.rating || 0))
-      .slice(0, limit);
+    const comics = await comicService.getFeatured(limit + 1);
+    return comics.filter(comic => comic.slug !== currentSlug).slice(0, limit);
   } catch (error) {
     console.error('Error fetching related comics:', error);
     return [];
