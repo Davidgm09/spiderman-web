@@ -41,9 +41,9 @@ export function CharacterCard({
 }: CharacterCardProps) {
   
   const sizeClasses = {
-    small: 'h-32',
-    medium: 'h-40',
-    large: 'h-48'
+    small: 'h-44',
+    medium: 'h-52',
+    large: 'h-60'
   };
 
   const getCategoryColor = (category: string) => {
@@ -83,7 +83,7 @@ export function CharacterCard({
                 alt={`${character.name} - Personaje Marvel`}
                 width={200}
                 height={300}
-                className={`w-full ${sizeClasses[size]} object-cover group-hover:scale-110 transition-transform duration-300`}
+                className={`w-full ${sizeClasses[size]} object-cover object-top group-hover:scale-110 transition-transform duration-300`}
                 priority={false}
                 quality={85}
                 onError={(e) => {
