@@ -3,8 +3,6 @@
  * Searches for official game trailers using YouTube Data API v3
  */
 
-import fetch from 'node-fetch';
-
 interface YouTubeVideo {
   id: string;
   title: string;

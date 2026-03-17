@@ -311,8 +311,8 @@ export async function GET(request: NextRequest) {
       });
     } else {
       // Fetch series list
-      const series = await fetchSpiderManSeries(page);
-      
+      const series = (await fetchSpiderManSeries(page)) as unknown[];
+
       return NextResponse.json({
         results: series,
         count: series.length,

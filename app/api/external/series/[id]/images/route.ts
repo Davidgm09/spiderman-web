@@ -45,7 +45,7 @@ async function fetchSeriesImages(seriesId: string): Promise<SeriesImages | null>
   const cached = await CacheManager.getExternalCache('tmdb', 'tv-images', seriesId);
   if (cached) {
     console.log(`📺 Using cached series images for ${seriesId}`);
-    return cached;
+    return cached as unknown as SeriesImages;
   }
 
   try {
@@ -114,10 +114,10 @@ async function fetchSeriesImages(seriesId: string): Promise<SeriesImages | null>
     }
 
     // Create gallery mixing backdrops and stills
-    const gallery = [];
+    const gallery: SeriesImages['gallery'] = [];
     
     // Add best backdrops as scene images
-    backdrops.slice(0, 4).forEach((backdrop, index) => {
+    backdrops.slice(0, 4).forEach((backdrop: SeriesImages['backdrops'][number]) => {
       gallery.push({
         url: backdrop.full_url,
         title: `Escena icónica de ${series.name}`,
@@ -127,7 +127,7 @@ async function fetchSeriesImages(seriesId: string): Promise<SeriesImages | null>
     });
 
     // Add stills as episode scenes
-    stills.slice(0, 4).forEach((still, index) => {
+    stills.slice(0, 4).forEach((still: SeriesImages['stills'][number]) => {
       gallery.push({
         url: still.full_url,
         title: still.season_number ? 
@@ -183,8 +183,9 @@ export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  let seriesId = '';
   try {
-    const { id: seriesId } = await params;
+    ({ id: seriesId } = await params);
 
     // Validate API key
     if (!TMDB_API_KEY) {

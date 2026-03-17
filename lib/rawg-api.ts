@@ -382,4 +382,4 @@ export function transformRawgGameToDbFormat(rawgGame: RawgGameData): any {
 }
 
 // Export game data for external use
-export { RawgGameData };
+export type { RawgGameData };

@@ -8,6 +8,7 @@ import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { SpiderManComic, AmazonProduct } from "@/components/affiliate/AmazonProduct"
 import type { Metadata } from "next"
 import { comicService } from "@/lib/database"
+import { colorClasses } from "@/lib/theme"
 import { generateAmazonUrl } from "@/lib/content-helpers"
 import { Comic } from "@prisma/client"
 
@@ -218,13 +219,6 @@ export default async function ComicsPage() {
         {Object.entries(comicsByEra).map(([key, era]) => {
           if (era.comics.length === 0) return null;
           
-          const colorClasses = {
-            red: "from-red-600/20 to-red-800/20 border-red-600/30",
-            blue: "from-blue-600/20 to-blue-800/20 border-blue-600/30", 
-            green: "from-green-600/20 to-green-800/20 border-green-600/30",
-            purple: "from-purple-600/20 to-purple-800/20 border-purple-600/30"
-          };
-
           return (
             <section key={key} className="mb-16">
               <div className={`bg-gradient-to-r ${colorClasses[era.color as keyof typeof colorClasses]} border rounded-lg p-6 mb-8`}>
@@ -277,7 +271,7 @@ export default async function ComicsPage() {
                         </Badge>
                         
                         {/* Importance Badge */}
-                        {comic.importance >= 9 && (
+                        {Number(comic.importance) >= 9 && (
                           <Badge className="absolute bottom-2 left-2 bg-red-600">
                             <Award className="w-3 h-3 mr-1" />
                             Esencial

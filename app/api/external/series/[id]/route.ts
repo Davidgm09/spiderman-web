@@ -78,7 +78,7 @@ async function fetchCompleteSeriesDetails(seriesId: string): Promise<SeriesDetai
   const cached = await CacheManager.getExternalCache('tmdb', 'tv-complete', seriesId);
   if (cached) {
     console.log(`📺 Using cached complete series details for ${seriesId}`);
-    return cached;
+    return cached as unknown as SeriesDetails;
   }
 
   try {
@@ -222,8 +222,9 @@ export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  let seriesId = '';
   try {
-    const { id: seriesId } = await params;
+    ({ id: seriesId } = await params);
 
     // Validate API key
     if (!TMDB_API_KEY) {

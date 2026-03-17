@@ -306,8 +306,8 @@ export async function GET(request: NextRequest) {
       });
     } else {
       // Fetch movies list
-      const movies = await fetchSpiderManMovies(page);
-      
+      const movies = (await fetchSpiderManMovies(page)) as unknown[];
+
       return NextResponse.json({
         results: movies,
         count: movies.length,

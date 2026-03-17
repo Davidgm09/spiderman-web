@@ -414,7 +414,7 @@ export default async function HomePage() {
               title={product.title}
               description={product.description}
               price={product.price}
-              originalPrice={product.originalPrice}
+              originalPrice={product.originalPrice ?? undefined}
               rating={product.rating}
               reviews={parseInt(product.reviews)}
               imageUrl={product.image}

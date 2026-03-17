@@ -50,8 +50,8 @@ export async function GET(request: NextRequest) {
       });
     } else {
       // Fetch games list
-      const games = await fetchSpiderManGames();
-      
+      const games = (await fetchSpiderManGames()) as unknown[];
+
       return NextResponse.json({
         results: games,
         count: games.length,
