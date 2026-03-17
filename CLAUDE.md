@@ -4,158 +4,99 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Development Commands
 
-**Build and Development:**
 ```bash
-# Development server
-npm run dev
-
-# Production build
-npm run build
-
-# Start production server
-npm start
-
-# Lint code
-npm run lint
+npm run dev        # Development server
+npm run build      # Production build
+npm run lint       # Lint code
+npx prisma db push       # Push schema changes to DB
+npx prisma generate      # Regenerate Prisma client after schema changes
+npx prisma studio        # Visual DB browser
 ```
 
-**Database Management:**
-```bash
-# Database schema operations
-npx prisma db push
-npx prisma generate
-npx prisma studio
+## Content Population Scripts
 
-# Run database setup/migrations
-node setup-database.js
-node create-tables.js
-node execute-schema.js
+All scripts read from `.env` (not `.env.local`). Run them with `node scripts/<name>.js`.
+
+| Script | Source API | Notes |
+|--------|-----------|-------|
+| `scripts/populate-all-45-characters.js` | Comic Vine | 45 Spider-Man universe characters |
+| `scripts/populate-movies.js` | TMDB | Uses `KNOWN_MOVIE_IDS` list |
+| `scripts/populate-series-from-tmdb.js` | TMDB | Uses `KNOWN_SPIDER_SERIES_IDS` list |
+| `scripts/populate-games-from-rawg.js [--clean]` | RAWG | Uses `KNOWN_GAME_IDS` + rating filter |
+| `scripts/populate-comics-from-comicvine.js [--clean]` | Comic Vine | Fetches volumes → issues |
+
+**Marvel API is permanently down** (has been for ~1 year). Use Comic Vine instead for character/comic data.
+
+## Environment Variables (`.env`)
+
+```
+DATABASE_URL=               # Supabase PostgreSQL connection string
+MARVEL_PUBLIC_KEY=          # Unused (API down)
+TMDB_API_KEY=
+TMDB_ACCESS_TOKEN=
+RAWG_API_KEY=
+COMICVINE_API_KEY=
+YOUTUBE_API_KEY=
+GOOGLE_ADSENSE_CLIENT_ID=
+AMAZON_AFFILIATE_TAG=
+NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT_ID=
+NEXT_PUBLIC_AMAZON_AFFILIATE_TAG=
+NEXT_PUBLIC_SITE_URL=
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
 ```
 
-**Content Population Scripts:**
-```bash
-# Master setup and content population
-node complete-setup.js
-node populate-all-content.js
-node clean-and-repopulate-final.js
+## Architecture
 
-# TMDB integration for series
-node populate-series-from-tmdb.js
-node clean-and-populate-series.js
+**Stack:** Next.js 15 App Router · TypeScript · Prisma ORM · PostgreSQL (Supabase) · Tailwind CSS + Radix UI
 
-# RAWG integration for games (replaces IGDB)
-node scripts/populate-games-from-rawg.js
-node scripts/populate-games-from-rawg.js --clean
+### Data Flow
 
-# Image management system
-node scripts/master-image-manager.js
-node scripts/fetch-real-images.js
-node scripts/image-validation-system.js
+1. Content is populated once via scripts into PostgreSQL
+2. Pages fetch from DB at request time via service functions in `lib/database.ts`
+3. No client-side API calls for content — everything is server components
+
+### Key Files
+
+- `lib/database.ts` — All Prisma service functions (`characterService`, `movieService`, `comicService`, etc.)
+- `lib/rawg-api.ts` — RAWG API client for games
+- `prisma/schema.prisma` — Single source of truth for all models
+
+### Content Models
+
+| Model | Category field values |
+|-------|----------------------|
+| `Character` | `spider-verse` · `spider-villains` · `marvel-universe` |
+| `Movie` | organized by `universe` field on the page |
+| `Comic` | `importance` field: `Alta` · `Buena` · `Media` |
+| `Game`, `Series` | no sub-categories |
+
+### Dynamic Routes
+
+All follow `/app/[content-type]/[slug]/page.tsx`. **Important for Next.js 15:** `params` is a `Promise` and must be awaited:
+
+```ts
+interface PageProps { params: Promise<{ slug: string }> }
+export default async function Page({ params }: PageProps) {
+  const { slug } = await params;
 ```
 
-**Testing and Validation:**
-```bash
-# Connection and API testing
-node test-supabase-connection.js
-node test-marvel-api.js
-node test-database-direct.js
-node debug-database.js
+### Image Sources
 
-# TMDB series integration testing
-node test-series-tmdb-integration.js
-node test-series-api-simple.js
+All external image domains are whitelisted in `next.config.mjs`. Working sources:
+- `comicvine.gamespot.com` — character portraits and comic covers
+- `image.tmdb.org` — movie/series posters and backdrops
+- `media.rawg.io` — game screenshots
+- `cdn.marvel.com` — some character images (pattern: `content/2x/<slug>.png`)
+- `i.annihil.us` — Marvel CDN (most URLs are now 404)
 
-# RAWG games integration testing
-node test-rawg-api-integration.js
+Character images are stored directly in the DB. To fix a broken image: find the character in Prisma Studio or via a quick node script, then update the `image` field.
 
-# Image system testing
-node test-image-system-simulation.js
-```
+### Monetization
 
-**Environment Setup:**
-```bash
-# Install dependencies
-npm install
+- `components/ads/GoogleAdsense.tsx` — `<InContentAd />` and `<SidebarAd />` components
+- `components/affiliate/AmazonProduct.tsx` — builds Amazon search URLs with affiliate tag from `NEXT_PUBLIC_AMAZON_AFFILIATE_TAG`
 
-# Environment variables required in .env.local:
-# DATABASE_URL=postgresql://...
-# MARVEL_API_KEY=...
-# MARVEL_API_PRIVATE_KEY=...
-# TMDB_API_KEY=...
-# RAWG_API_KEY=...
-# NEXT_PUBLIC_SUPABASE_URL=...
-# NEXT_PUBLIC_SUPABASE_ANON_KEY=...
-```
+### No Test Framework
 
-## Architecture Overview
-
-**Tech Stack:**
-- **Framework:** Next.js 15 with App Router
-- **Database:** PostgreSQL via Prisma ORM
-- **External APIs:** Marvel API, TMDB API, RAWG API, Supabase
-- **Styling:** Tailwind CSS + Radix UI components
-- **Language:** TypeScript
-
-**Core Architecture Patterns:**
-
-1. **Database-First Content Management:** All content (characters, movies, comics, games, series) is stored in PostgreSQL and served via Prisma services in `lib/database.ts`
-
-2. **External API Integration:** Marvel API provides official character/comic data, RAWG API provides game data with intelligent caching via `lib/marvel-api.ts` and `lib/rawg-api.ts`
-
-3. **Multi-Content Type System:** Characters are categorized as 'spider-verse', 'spider-villains', or 'marvel-universe' with comprehensive metadata
-
-4. **Image Management Pipeline:** Sophisticated system for fetching, validating, and optimizing images from multiple sources (Marvel API, TMDB, fallbacks)
-
-5. **SEO-Optimized Structure:** Each content type has dedicated slug-based pages with comprehensive metadata
-
-**Database Schema Design (Prisma):**
-- **Primary Content:** Character, Movie, Comic, Game, Series, BlogPost, Product models
-- **Caching:** MarvelCache, ExternalApiCache for API response optimization  
-- **Analytics:** ContentAnalytics, SearchQuery, UserFavorite for engagement tracking
-- **Monetization:** AffiliateProduct, MonetizationConfig for revenue optimization
-
-**Key Service Layers:**
-- `lib/database.ts`: Core Prisma services for all content types
-- `lib/marvel-api.ts`: Marvel API integration with intelligent caching
-- `lib/tmdb-api.ts`: TMDB API for movies and series data
-- `lib/cache-manager.ts`: API response caching with expiration
-- `lib/analytics.ts`: Page view and conversion tracking
-- `lib/error-logger.ts`: API error logging and debugging
-
-**File Structure Conventions:**
-- `/app/[content-type]/[slug]/page.tsx` - Dynamic content pages
-- `/components/[feature]/` - Feature-specific React components  
-- `/lib/` - Core services (database, APIs, utilities)
-- `/scripts/` - Data population and maintenance scripts
-- `/data/` - Static content definitions
-
-**API Architecture:**
-- `/api/marvel/` - Marvel API proxy endpoints with caching
-- `/api/external/` - TMDB and other external API integrations
-- Next.js API routes handle authentication, rate limiting, and response formatting
-
-**Content Management Workflow:**
-1. Data fetched from Marvel API and cached in database
-2. Images validated and optimized via master image management system
-3. Content served via Prisma services with intelligent caching
-4. Analytics tracked for performance optimization
-
-**Key Configuration:**
-- Marvel API keys required in `.env` for character/comic data
-- Supabase DATABASE_URL for PostgreSQL connection
-- Image domains configured in `next.config.mjs` for external images
-- Comprehensive redirects for SEO URL management
-
-**Monetization Architecture:**
-- **Google AdSense:** Display advertising with strategic component placement
-- **Amazon Affiliates:** Product recommendations with conversion tracking via `AffiliateProduct` model
-- **Analytics Tracking:** Revenue optimization via `ContentAnalytics` and `MonetizationConfig`
-
-**Important Development Notes:**
-- No formal testing framework configured (uses utility scripts for validation)
-- Image management requires external API keys (Marvel, TMDB) for optimal results
-- Database population scripts should be run in sequence for proper setup
-- Content is heavily SEO-optimized with extensive metadata and structured data
-- All external APIs have intelligent caching to prevent rate limiting
-- Component library uses Radix UI with comprehensive design system in `/components/ui/`
-- Dynamic routes follow pattern: `/[content-type]/[slug]` for all content pages
+Validation is done via standalone node scripts in `/scripts/` and root-level `test-*.js` files.
