@@ -8,6 +8,7 @@ import { Star, Calendar, Clock, Play, BookOpen, Gamepad2, Monitor, ShoppingBag, 
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { AmazonProduct } from "@/components/affiliate/AmazonProduct"
 import { movieService, comicService, gameService, seriesService, blogService, productService } from "@/lib/database"
+import { Movie, Comic, Game, Series, BlogPost, Product } from "@prisma/client"
 
 export const metadata = {
   title: "Spider-World - El Universo Completo de Spider-Man",
@@ -174,7 +175,7 @@ export default async function HomePage() {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {featuredContent.movies.map((movie: any) => (
+          {featuredContent.movies.map((movie: Movie) => (
             <Card key={movie.id} className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all group">
               <CardHeader className="p-0">
                 <div className="relative">
@@ -224,7 +225,7 @@ export default async function HomePage() {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {featuredContent.comics.map((comic: any) => (
+          {featuredContent.comics.map((comic: Comic) => (
             <Card key={comic.id} className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all group">
               <CardHeader className="p-0">
                 <div className="relative">
@@ -272,7 +273,7 @@ export default async function HomePage() {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {featuredContent.games.map((game: any) => (
+          {featuredContent.games.map((game: Game) => (
             <Card key={game.id} className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all group">
               <CardHeader className="p-0">
                 <div className="relative">
@@ -317,7 +318,7 @@ export default async function HomePage() {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {featuredContent.series.map((serie: any) => (
+          {featuredContent.series.map((serie: Series) => (
             <Card key={serie.id} className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all group">
               <CardHeader className="p-0">
                 <div className="relative">
@@ -362,7 +363,7 @@ export default async function HomePage() {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {featuredContent.blogPosts.map((post: any) => (
+          {featuredContent.blogPosts.map((post: BlogPost) => (
             <Card key={post.id} className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all group">
               <CardHeader className="p-0">
                 <div className="relative">
@@ -407,7 +408,7 @@ export default async function HomePage() {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {featuredContent.products.map((product: any) => (
+          {featuredContent.products.map((product: Product) => (
             <AmazonProduct
               key={product.id}
               title={product.title}

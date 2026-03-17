@@ -55,11 +55,8 @@ async function getSeriesGalleryImages(tmdbId: string) {
 // Función para obtener series relacionadas
 async function getRelatedSeries(currentSlug: string, limit: number = 4) {
   try {
-    const allSeries = await seriesService.getAll();
-    return allSeries
-      .filter((serie: Series) => serie.slug !== currentSlug)
-      .sort((a: Series, b: Series) => (b.rating || 0) - (a.rating || 0))
-      .slice(0, limit);
+    const series = await seriesService.getFeatured(limit + 1);
+    return series.filter((serie) => serie.slug !== currentSlug).slice(0, limit);
   } catch (error) {
     console.error('Error fetching related series:', error);
     return [];

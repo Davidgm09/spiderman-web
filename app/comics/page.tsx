@@ -6,11 +6,12 @@ import Image from "next/image"
 import Link from "next/link"
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { SpiderManComic, AmazonProduct } from "@/components/affiliate/AmazonProduct"
+import type { Metadata } from "next"
 import { comicService } from "@/lib/database"
 import { generateAmazonUrl } from "@/lib/content-helpers"
 import { Comic } from "@prisma/client"
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Cómics de Spider-Man - Colección Completa | Spider-World",
   description:
     "Descubre los mejores cómics de Spider-Man: desde Amazing Spider-Man hasta Ultimate Spider-Man. Análisis, ratings y enlaces de compra.",
