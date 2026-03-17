@@ -82,6 +82,14 @@ function organizeMoviesByUniverse(movies: any[]) {
 }
 
 
+function formatRuntime(duration?: string): string {
+  return duration || 'Duración no disponible';
+}
+
+function formatRevenue(boxOffice?: string): string {
+  return boxOffice || 'No disponible';
+}
+
 export default async function PeliculasPage() {
   // Obtener películas de la base de datos
   const movies = await movieService.getAll();
