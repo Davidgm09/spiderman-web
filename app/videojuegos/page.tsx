@@ -9,6 +9,7 @@ import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { SpiderManGame, AmazonProduct } from "@/components/affiliate/AmazonProduct"
 import { gameService } from "@/lib/database"
 import { generateAmazonUrl } from "@/lib/content-helpers"
+import { Game } from "@prisma/client"
 
 export const metadata: Metadata = {
   title: "Videojuegos de Spider-Man - Colección Completa | Spider-World",
@@ -18,35 +19,35 @@ export const metadata: Metadata = {
 }
 
 // Función para organizar juegos por era
-function organizeGamesByEra(games: any[]) {
+function organizeGamesByEra(games: Game[]) {
   const eras = {
     classic: {
       title: "Era Clásica (1982-1999)",
       description: "Los primeros juegos de Spider-Man en arcade y consolas retro",
       color: "red",
       years: "1982-1999",
-      games: [] as any[]
+      games: [] as Game[]
     },
     modern_early: {
       title: "Era Moderna Temprana (2000-2009)",
       description: "Transición al 3D y las primeras aventuras de mundo abierto",
       color: "blue",
       years: "2000-2009",
-      games: [] as any[]
+      games: [] as Game[]
     },
     golden_age: {
       title: "Era Dorada (2010-2017)",
       description: "Los juegos más ambiciosos antes de la llegada de Insomniac",
       color: "purple",
       years: "2010-2017",
-      games: [] as any[]
+      games: [] as Game[]
     },
     insomniac: {
       title: "Era Insomniac (2018-Presente)",
       description: "La nueva generación que redefinió los juegos de Spider-Man",
       color: "green",
       years: "2018-2024",
-      games: [] as any[]
+      games: [] as Game[]
     }
   };
 
@@ -199,7 +200,7 @@ export default async function VideojuegosPage() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {era.games.map((game: any) => (
+                {era.games.map((game: Game) => (
                   <Card key={game.id} className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all group">
                     <CardHeader className="p-0">
                       <div className="relative">

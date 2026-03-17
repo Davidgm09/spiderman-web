@@ -12,7 +12,6 @@ import { seriesService } from "@/lib/database"
 import { Series } from "@prisma/client"
 import { renderStars, generateAmazonUrl } from "@/lib/content-helpers"
 
-type SeriesWithLogo = Series & { logo?: string | null };
 
 type SceneImage = {
   url: string;
@@ -28,14 +27,14 @@ type Props = {
 }
 
 // Función para obtener serie por slug desde la base de datos
-async function getSeriesBySlug(slug: string): Promise<SeriesWithLogo | null> {
+async function getSeriesBySlug(slug: string): Promise<Series | null> {
   try {
     console.log(`📺 Fetching series ${slug} from database...`);
     const series = await seriesService.getBySlug(slug);
     
     if (series) {
       console.log(`✅ Found series ${slug} in database`);
-      return series as SeriesWithLogo;
+      return series;
     }
     
     console.warn(`Series ${slug} not found in database`);

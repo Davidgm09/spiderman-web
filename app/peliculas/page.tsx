@@ -9,6 +9,7 @@ import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { SpiderManMovie, AmazonProduct } from "@/components/affiliate/AmazonProduct"
 import { movieService } from "@/lib/database"
 import { generateAmazonUrl } from "@/lib/content-helpers"
+import { Movie } from "@prisma/client"
 
 export const metadata = {
   title: "Películas de Spider-Man - Todas las Sagas | Spider-World",
@@ -25,42 +26,42 @@ const RELATED_KEYWORDS = ['venom', 'morbius', 'kraven', 'madame web'];
 const RAIMI_YEARS = new Set([2002, 2004, 2007]);
 
 // Función para organizar películas por universo
-function organizeMoviesByUniverse(movies: any[]) {
+function organizeMoviesByUniverse(movies: Movie[]) {
   const universes = {
     raimi: {
       title: "Trilogía de Sam Raimi (Tobey Maguire)",
       description: "La saga original que definió el cine de superhéroes moderno",
       color: "red",
       years: "2002-2007",
-      movies: [] as any[]
+      movies: [] as Movie[]
     },
     amazing: {
       title: "The Amazing Spider-Man (Andrew Garfield)",
       description: "Una nueva visión moderna y emotiva del héroe arácnido",
       color: "blue",
       years: "2012-2014",
-      movies: [] as any[]
+      movies: [] as Movie[]
     },
     mcu: {
       title: "Marvel Cinematic Universe (Tom Holland)",
       description: "Spider-Man se une al universo cinematográfico de Marvel",
       color: "purple",
       years: "2017-2021",
-      movies: [] as any[]
+      movies: [] as Movie[]
     },
     miles: {
       title: "Miles Morales — Spider-Verse Animado",
       description: "La trilogía animada de Miles Morales que revolucionó el cine de superhéroes",
       color: "green",
       years: "2018-presente",
-      movies: [] as any[]
+      movies: [] as Movie[]
     },
     related: {
       title: "Universo Relacionado (Sony)",
       description: "Venom, Morbius, Kraven y Madame Web en el universo de Sony",
       color: "orange",
       years: "2018-2024",
-      movies: [] as any[]
+      movies: [] as Movie[]
     }
   };
 
@@ -161,7 +162,7 @@ export default async function PeliculasPage() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {universe.movies.map((movie: any) => (
+                {universe.movies.map((movie: Movie) => (
                   <Card key={movie.id} className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all group">
                     <CardHeader className="p-0">
                       <div className="relative">

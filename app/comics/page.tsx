@@ -8,6 +8,7 @@ import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { SpiderManComic, AmazonProduct } from "@/components/affiliate/AmazonProduct"
 import { comicService } from "@/lib/database"
 import { generateAmazonUrl } from "@/lib/content-helpers"
+import { Comic } from "@prisma/client"
 
 export const metadata = {
   title: "Cómics de Spider-Man - Colección Completa | Spider-World",
@@ -41,7 +42,7 @@ function isValidImage(imageUrl: string): boolean {
 }
 
 // Función para organizar cómics por eras cronológicas
-function organizeComicsByEra(comics: any[]) {
+function organizeComicsByEra(comics: Comic[]) {
   // Filtrar solo comics con imágenes válidas
   const comicsWithValidImages = comics.filter(comic => isValidImage(comic.image));
   
@@ -52,7 +53,7 @@ function organizeComicsByEra(comics: any[]) {
       color: "blue",
       icon: "🕷️",
       yearRange: "1962-1970",
-      comics: [] as any[]
+      comics: [] as Comic[]
     },
     bronce: {
       title: "Era de Bronce (1970-1985)",
@@ -60,7 +61,7 @@ function organizeComicsByEra(comics: any[]) {
       color: "green", 
       icon: "⚡",
       yearRange: "1970-1985",
-      comics: [] as any[]
+      comics: [] as Comic[]
     },
     moderna: {
       title: "Era Moderna (1985-2000)",
@@ -68,7 +69,7 @@ function organizeComicsByEra(comics: any[]) {
       color: "red",
       icon: "🖤",
       yearRange: "1985-2000",
-      comics: [] as any[]
+      comics: [] as Comic[]
     },
     contemporanea: {
       title: "Era Contemporánea (2000+)",
@@ -76,7 +77,7 @@ function organizeComicsByEra(comics: any[]) {
       color: "purple",
       icon: "🌌",
       yearRange: "2000+",
-      comics: [] as any[]
+      comics: [] as Comic[]
     }
   };
 
@@ -251,7 +252,7 @@ export default async function ComicsPage() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {era.comics.map((comic: any) => (
+                {era.comics.map((comic: Comic) => (
                   <Card key={comic.id} className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all group">
                     <CardHeader className="p-0">
                       <div className="relative">
@@ -399,7 +400,7 @@ export default async function ComicsPage() {
             <div>
               <div className="text-3xl font-bold text-green-500 mb-2">
                 {Object.values(comicsByEra).reduce((total, era) => 
-                  total + era.comics.filter((c: any) => c.importance === 'Esencial').length, 0
+                  total + era.comics.filter((c) => c.importance === 'Esencial').length, 0
                 )}
               </div>
               <div className="text-gray-400">Cómics Esenciales</div>

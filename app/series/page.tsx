@@ -7,6 +7,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { seriesService } from "@/lib/database"
+import { Series } from "@prisma/client"
 
 export const metadata: Metadata = {
   title: "Series de Spider-Man - Animadas y Live-Action | Spider-World",
@@ -16,35 +17,35 @@ export const metadata: Metadata = {
 }
 
 // Función para organizar series por era
-function organizeSeriesByEra(series: any[]) {
+function organizeSeriesByEra(series: Series[]) {
   const eras = {
     classic: {
       title: "Series Animadas Clásicas (1967-1999)",
       description: "Las primeras series animadas que definieron a Spider-Man en TV",
       color: "red",
       years: "1967-1999",
-      series: [] as any[]
+      series: [] as Series[]
     },
     modern: {
       title: "Era Moderna Animada (2000-2015)",
       description: "Series con animación mejorada y narrativas más maduras",
       color: "blue", 
       years: "2000-2015",
-      series: [] as any[]
+      series: [] as Series[]
     },
     current: {
       title: "Era Actual (2015-Presente)",
       description: "Las series más recientes con animación de vanguardia",
       color: "purple",
       years: "2015-2024",
-      series: [] as any[]
+      series: [] as Series[]
     },
     liveaction: {
       title: "Live-Action y Especiales",
       description: "Series y especiales con actores reales",
       color: "green",
       years: "1977-2024",
-      series: [] as any[]
+      series: [] as Series[]
     }
   };
 
@@ -77,13 +78,6 @@ function formatDuration(duration: string): string {
   return duration;
 }
 
-// Función para formatear plataforma
-function formatPlatform(platform: string | string[]): string {
-  if (Array.isArray(platform)) {
-    return platform.join(', ');
-  }
-  return platform || 'Múltiples plataformas';
-}
 
 export default async function SeriesPage() {
   // Obtener series de la base de datos
@@ -199,7 +193,7 @@ export default async function SeriesPage() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {era.series.map((serie: any) => (
+                {era.series.map((serie: Series) => (
                   <Card key={serie.id} className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all group">
                     <CardHeader className="p-0">
                       <div className="relative">
@@ -269,7 +263,7 @@ export default async function SeriesPage() {
                         
                         <div className="flex items-center text-sm text-gray-400">
                           <Play className="w-4 h-4 mr-2" />
-                          <span>Plataforma: {formatPlatform(serie.platform)}</span>
+                          <span>Red/Plataforma: {serie.network ?? 'N/A'}</span>
                         </div>
                       </div>
                       
@@ -282,15 +276,15 @@ export default async function SeriesPage() {
                           </Link>
                         </Button>
                         
-                        {serie.watchUrl && (
-                          <Button 
-                            asChild 
-                            size="sm" 
+                        {serie.homepage && (
+                          <Button
+                            asChild
+                            size="sm"
                             variant="outline"
                             className="border-green-600 text-green-400 hover:bg-green-600 hover:text-white"
                           >
-                            <a 
-                              href={serie.watchUrl}
+                            <a
+                              href={serie.homepage}
                               target="_blank"
                               rel="noopener noreferrer"
                             >
@@ -337,7 +331,7 @@ export default async function SeriesPage() {
             </div>
             <div>
               <div className="text-3xl font-bold text-green-500 mb-2">
-                {allSeries.reduce((total: number, serie: any) => total + (serie.episodes || 0), 0)}
+                {allSeries.reduce((total: number, serie) => total + (serie.episodes ?? 0), 0)}
               </div>
               <div className="text-gray-400">Episodios Totales</div>
             </div>
