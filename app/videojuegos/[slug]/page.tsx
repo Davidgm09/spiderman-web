@@ -10,6 +10,7 @@ import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { AmazonProduct } from "@/components/affiliate/AmazonProduct"
 import { gameService } from "@/lib/database"
 import { renderStars, generateAmazonUrl, convertToEmbedUrl } from "@/lib/content-helpers"
+import type { GalleryImage, ConceptArtItem, CharacterImage } from "@/lib/json-types"
 
 
 type Props = {
@@ -31,7 +32,7 @@ async function getGameBySlug(slug: string) {
 async function getRelatedGames(currentSlug: string, limit: number = 4) {
   try {
     const games = await gameService.getFeatured(limit + 1);
-    return games.filter((game: any) => game.slug !== currentSlug).slice(0, limit);
+    return games.filter((game) => game.slug !== currentSlug).slice(0, limit);
   } catch (error) {
     console.error('Error fetching related games:', error);
     return [];
@@ -331,7 +332,7 @@ export default async function GamePage({ params }: Props) {
                     Galería de Capturas
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {game.screenshotImages.map((screenshot: any, index: number) => (
+                    {(game.screenshotImages as unknown as GalleryImage[]).map((screenshot, index) => (
                       <div key={index} className="group cursor-pointer">
                         <div className="relative overflow-hidden rounded-lg">
                           <Image
@@ -363,7 +364,7 @@ export default async function GamePage({ params }: Props) {
                     Personajes Principales
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {game.characterImages.slice(0, 6).map((character: any, index: number) => (
+                    {(game.characterImages as unknown as CharacterImage[]).slice(0, 6).map((character, index) => (
                       <div key={index} className="bg-gray-800/50 rounded-lg p-6 text-center group hover:bg-gray-800/70 transition-colors">
                         <div className="relative mb-4">
                           <Image
@@ -396,7 +397,7 @@ export default async function GamePage({ params }: Props) {
                     Arte Conceptual
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {game.conceptArt.map((art: any, index: number) => (
+                    {(game.conceptArt as unknown as ConceptArtItem[]).map((art, index) => (
                       <div key={index} className="group cursor-pointer">
                         <div className="relative overflow-hidden rounded-lg">
                           <Image
@@ -503,7 +504,7 @@ export default async function GamePage({ params }: Props) {
           <div className="container mx-auto px-4">
             <h2 className="text-4xl font-bold text-white mb-12 text-center">Videojuegos Relacionados</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {relatedGames.map((relatedGame: any) => (
+              {relatedGames.map((relatedGame) => (
                 <Card key={relatedGame.id} className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all group">
                   <CardHeader className="p-0">
                     <div className="relative">

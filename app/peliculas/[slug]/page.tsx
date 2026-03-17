@@ -10,6 +10,7 @@ import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { AmazonProduct } from "@/components/affiliate/AmazonProduct"
 import { movieService } from "@/lib/database"
 import { renderStars, generateAmazonUrl } from "@/lib/content-helpers"
+import type { GalleryImage, CastMember } from "@/lib/json-types"
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -37,7 +38,7 @@ function formatRevenue(boxOffice?: string): string {
 async function getRelatedMovies(currentSlug: string, limit: number = 4) {
   try {
     const movies = await movieService.getFeatured(limit + 1);
-    return movies.filter((movie: any) => movie.slug !== currentSlug).slice(0, limit);
+    return movies.filter((movie) => movie.slug !== currentSlug).slice(0, limit);
   } catch (error) {
     console.error('Error fetching related movies:', error);
     return [];
@@ -91,10 +92,10 @@ export default async function MoviePage({ params }: Props) {
 
 
   // Usar datos reales de la base de datos o fallback
-  const sceneGallery = Array.isArray(movie.sceneImages) 
-    ? movie.sceneImages 
+  const sceneGallery: GalleryImage[] = Array.isArray(movie.sceneImages)
+    ? movie.sceneImages as unknown as GalleryImage[]
     : movie.sceneImages && typeof movie.sceneImages === 'string'
-    ? JSON.parse(movie.sceneImages)
+    ? JSON.parse(movie.sceneImages) as GalleryImage[]
     : [
         {
           url: movie.image,
@@ -114,10 +115,10 @@ export default async function MoviePage({ params }: Props) {
       ];
 
   // Usar datos reales del reparto o fallback
-  const castData = Array.isArray(movie.castWithPhotos)
-    ? movie.castWithPhotos
+  const castData: CastMember[] = Array.isArray(movie.castWithPhotos)
+    ? movie.castWithPhotos as unknown as CastMember[]
     : movie.castWithPhotos && typeof movie.castWithPhotos === 'string'
-    ? JSON.parse(movie.castWithPhotos)
+    ? JSON.parse(movie.castWithPhotos) as CastMember[]
     : movie.actors?.map((actor: string) => ({
         name: actor,
         character: "Personaje",
@@ -371,7 +372,7 @@ export default async function MoviePage({ params }: Props) {
                   Galería de Escenas
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {Array.isArray(sceneGallery) && sceneGallery.map((scene: any, index: number) => (
+                  {Array.isArray(sceneGallery) && sceneGallery.map((scene, index) => (
                     <div key={index} className="group cursor-pointer">
                       <div className="relative overflow-hidden rounded-lg">
                         <Image
@@ -402,7 +403,7 @@ export default async function MoviePage({ params }: Props) {
                     Reparto Principal
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {castData.slice(0, 6).map((actor: any, index: number) => (
+                    {castData.slice(0, 6).map((actor, index) => (
                       <div key={index} className="bg-gray-800/50 rounded-lg p-6 text-center group hover:bg-gray-800/70 transition-colors">
                         <div className="relative mb-4">
                           <Image
@@ -520,7 +521,7 @@ export default async function MoviePage({ params }: Props) {
           <div className="container mx-auto px-4">
             <h2 className="text-4xl font-bold text-white mb-12 text-center">Películas Relacionadas</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {relatedMovies.map((relatedMovie: any) => (
+              {relatedMovies.map((relatedMovie) => (
                 <Card key={relatedMovie.id} className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all group">
                   <CardHeader className="p-0">
                     <div className="relative">

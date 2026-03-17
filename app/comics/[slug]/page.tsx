@@ -10,6 +10,7 @@ import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { AmazonProduct } from "@/components/affiliate/AmazonProduct"
 import { comicService } from "@/lib/database"
 import { renderStars, generateAmazonUrl } from "@/lib/content-helpers"
+import type { ConceptArtItem, CoverVariant, ArtistPhoto, PagePreview } from "@/lib/json-types"
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -436,7 +437,7 @@ export default async function ComicPage({ params }: Props) {
                     Portadas Variantes
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {comic.coverVariants.map((cover: any, index: number) => (
+                    {(comic.coverVariants as unknown as CoverVariant[]).map((cover, index) => (
                       <div key={index} className="group cursor-pointer">
                         <div className="relative overflow-hidden rounded-lg bg-gray-800">
                           <Image
@@ -471,11 +472,11 @@ export default async function ComicPage({ params }: Props) {
                     Equipo Creativo
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {comic.artistPhotos.map((artist: any, index: number) => (
+                    {(comic.artistPhotos as unknown as ArtistPhoto[]).map((artist, index) => (
                       <div key={index} className="bg-gray-800/50 rounded-lg p-6 text-center group hover:bg-gray-800/70 transition-colors">
                         <div className="relative mb-4">
                           <Image
-                            src={artist.photo}
+                            src={artist.photo || 'https://via.placeholder.com/300x300/333/fff?text=No+Image'}
                             alt={artist.name}
                             width={120}
                             height={120}
@@ -503,7 +504,7 @@ export default async function ComicPage({ params }: Props) {
                     Vista Previa de Páginas
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {comic.pagePreview.map((page: any, index: number) => (
+                    {(comic.pagePreview as unknown as PagePreview[]).map((page, index) => (
                       <div key={index} className="group cursor-pointer">
                         <div className="relative overflow-hidden rounded-lg bg-gray-800">
                           <Image
@@ -540,7 +541,7 @@ export default async function ComicPage({ params }: Props) {
                     Arte Conceptual
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {comic.conceptArt.map((concept: any, index: number) => (
+                    {(comic.conceptArt as unknown as ConceptArtItem[]).map((concept, index) => (
                       <div key={index} className="group cursor-pointer">
                         <div className="relative overflow-hidden rounded-lg bg-gray-800">
                           <Image

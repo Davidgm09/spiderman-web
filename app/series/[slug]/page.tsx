@@ -11,6 +11,7 @@ import { AmazonProduct } from "@/components/affiliate/AmazonProduct"
 import { seriesService } from "@/lib/database"
 import { Series } from "@prisma/client"
 import { renderStars, generateAmazonUrl } from "@/lib/content-helpers"
+import type { GalleryImage, ConceptArtItem, CastMember, EpisodeImage, BehindScene } from "@/lib/json-types"
 
 
 type SceneImage = {
@@ -310,7 +311,7 @@ export default async function SeriesPage({ params }: Props) {
                   <h3 className="text-2xl font-bold text-white mb-6">Géneros</h3>
                   <div className="flex flex-wrap gap-2">
                     {Array.isArray(series.genre) 
-                      ? series.genre.map((g: any, index: any) => (
+                      ? series.genre.map((g: string, index: number) => (
                           <Badge key={index} className="bg-purple-600 text-white">
                             {g}
                           </Badge>
@@ -446,7 +447,7 @@ export default async function SeriesPage({ params }: Props) {
                     // Use TMDB gallery images if available, otherwise fallback to default structure
                     const imagesToDisplay: SceneImage[] = [
                       // Use the gallery images from API directly (they already have complete URLs)
-                      ...(galleryImages || []).map((img: any, index: number) => ({
+                      ...(galleryImages as unknown as SceneImage[] || []).map((img, index) => ({
                         url: img.url, // API already provides complete URLs
                         title: img.title || `Escena ${index + 1}`,
                         description: img.description || "Una imagen de la serie",
@@ -526,7 +527,7 @@ export default async function SeriesPage({ params }: Props) {
                     Episodios Destacados
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {series.episodeImages.map((episode: any, index: number) => (
+                    {(series.episodeImages as unknown as EpisodeImage[]).map((episode, index) => (
                       <div key={index} className="group cursor-pointer">
                         <div className="relative overflow-hidden rounded-lg bg-gray-800">
                           <Image
@@ -563,7 +564,7 @@ export default async function SeriesPage({ params }: Props) {
                     Reparto y Voces
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {series.castPhotos.map((actor: any, index: number) => (
+                    {(series.castPhotos as unknown as CastMember[]).map((actor, index) => (
                       <div key={index} className="bg-gray-800/50 rounded-lg p-6 text-center group hover:bg-gray-800/70 transition-colors">
                         <div className="relative mb-4">
                           <Image
@@ -595,7 +596,7 @@ export default async function SeriesPage({ params }: Props) {
                     Detrás de Cámaras
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {series.behindScenes.map((behind: any, index: number) => (
+                    {(series.behindScenes as unknown as BehindScene[]).map((behind, index) => (
                       <div key={index} className="group cursor-pointer">
                         <div className="relative overflow-hidden rounded-lg bg-gray-800">
                           <Image
@@ -632,7 +633,7 @@ export default async function SeriesPage({ params }: Props) {
                     Arte Conceptual
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {series.conceptArt.map((concept: any, index: number) => (
+                    {(series.conceptArt as unknown as ConceptArtItem[]).map((concept, index) => (
                       <div key={index} className="group cursor-pointer">
                         <div className="relative overflow-hidden rounded-lg bg-gray-800">
                           <Image
@@ -717,7 +718,7 @@ export default async function SeriesPage({ params }: Props) {
           <div className="container mx-auto px-4">
             <h2 className="text-4xl font-bold text-white mb-12 text-center">Series Relacionadas</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {relatedSeries.map((relatedSerie: any) => (
+              {relatedSeries.map((relatedSerie) => (
                 <Card key={relatedSerie.id} className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all group">
                   <CardHeader className="p-0">
                     <div className="relative">
