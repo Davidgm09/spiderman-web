@@ -19,6 +19,7 @@ All scripts read from `.env` (not `.env.local`). Run them with `node scripts/<na
 
 | Script | Source API | Notes |
 |--------|-----------|-------|
+| `scripts/populate-all-content.js` | Multiple | Seeds all content at once (movies, games, series, comics) |
 | `scripts/populate-all-45-characters.js` | Comic Vine | 45 Spider-Man universe characters |
 | `scripts/populate-movies.js` | TMDB | Uses `KNOWN_MOVIE_IDS` list |
 | `scripts/populate-series-from-tmdb.js` | TMDB | Uses `KNOWN_SPIDER_SERIES_IDS` list |
@@ -58,8 +59,11 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
 
 ### Key Files
 
-- `lib/database.ts` — All Prisma service functions (`characterService`, `movieService`, `comicService`, etc.)
+- `lib/database.ts` — All Prisma service functions (`characterService`, `movieService`, `comicService`, `blogService`, `productService`, etc.)
+- `lib/content-helpers.tsx` — Shared helpers used across all detail pages: `renderStars()` (0–10 scale to 5-star UI), `generateAmazonUrl()`, `convertToEmbedUrl()`
 - `lib/rawg-api.ts` — RAWG API client for games
+- `lib/supabase.ts` — Supabase Storage client for image uploads (used by `app/admin/upload/`)
+- `types/content.ts` — TypeScript interfaces for all content types (`MovieContent`, `GameContent`, etc.)
 - `prisma/schema.prisma` — Single source of truth for all models
 
 ### Content Models
@@ -71,9 +75,22 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
 | `Comic` | `importance` field: `Alta` · `Buena` · `Media` |
 | `Game`, `Series` | no sub-categories |
 
-### Dynamic Routes
+### Routes
 
-All follow `/app/[content-type]/[slug]/page.tsx`. **Important for Next.js 15:** `params` is a `Promise` and must be awaited:
+The site is in Spanish. URL segments map to:
+
+| URL | Content |
+|-----|---------|
+| `/personajes` | Characters |
+| `/peliculas` | Movies |
+| `/series` | TV Series |
+| `/comics` | Comics |
+| `/videojuegos` | Games |
+| `/blog` | Blog posts |
+| `/tienda` | Store (Amazon affiliate) |
+| `/admin/upload` | Admin image upload tool |
+
+All dynamic routes follow `/app/[content-type]/[slug]/page.tsx`. **Important for Next.js 15:** `params` is a `Promise` and must be awaited:
 
 ```ts
 interface PageProps { params: Promise<{ slug: string }> }

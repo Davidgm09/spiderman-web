@@ -5,8 +5,10 @@ import { Star, ShoppingCart, Heart, Truck, Shield, RotateCcw, Filter } from "luc
 import Image from "next/image"
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { productService } from "@/lib/database"
+import type { Metadata } from "next"
+import { Product } from "@prisma/client"
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Tienda Spider-Man - Figuras, Camisetas, Funkos y Más | Spider-World",
   description:
     "Los mejores productos oficiales de Spider-Man con descuentos exclusivos. Figuras, camisetas, funkos, mochilas y más. Envío rápido y garantía Amazon.",
@@ -14,7 +16,7 @@ export const metadata = {
 }
 
 // Función para obtener categorías con conteo
-function getCategoriesWithCount(products: any[]) {
+function getCategoriesWithCount(products: Product[]) {
   const categoryCounts: { [key: string]: number } = {};
   
   products.forEach(product => {
@@ -56,7 +58,7 @@ function formatFeatures(features: string | string[]): string[] {
 }
 
 // Función para generar URL de Amazon
-function generateAmazonUrl(product: any): string {
+function generateAmazonUrl(product: Product): string {
   const amazonTag = process.env.NEXT_PUBLIC_AMAZON_AFFILIATE_TAG || 'spiderweb-20';
   const query = encodeURIComponent(`${product.title} Spider-Man`);
   return `https://www.amazon.com/s?k=${query}&tag=${amazonTag}`;
@@ -70,8 +72,8 @@ export default async function TiendaPage() {
   const featuredProducts = allProducts.slice(0, 12);
   
   // Obtener los más vendidos (productos con más reviews)
-  const bestSellers = allProducts
-    .sort((a: any, b: any) => (b.reviews || 0) - (a.reviews || 0))
+  const bestSellers = [...allProducts]
+    .sort((a, b) => parseInt(b.reviews || '0') - parseInt(a.reviews || '0'))
     .slice(0, 6);
   
   // Obtener categorías con conteo
@@ -152,10 +154,10 @@ export default async function TiendaPage() {
       <section className="py-12 px-4 max-w-7xl mx-auto">
         <h2 className="text-2xl font-bold text-center text-white mb-8">🔥 Más Vendidos Esta Semana</h2>
         <div className="flex flex-wrap justify-center gap-4">
-          {bestSellers.map((item: any) => (
+          {bestSellers.map((item) => (
             <div key={item.id} className="bg-gray-800/50 px-4 py-2 rounded-full border border-red-600/20">
               <span className="text-white font-medium">{item.title}</span>
-              <span className="text-red-400 text-sm ml-2">• {(item.reviews || 0).toLocaleString()}+ vendidos</span>
+              <span className="text-red-400 text-sm ml-2">• {parseInt(item.reviews || '0').toLocaleString()}+ vendidos</span>
             </div>
           ))}
         </div>
@@ -179,7 +181,7 @@ export default async function TiendaPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {featuredProducts.map((product: any) => (
+          {featuredProducts.map((product) => (
             <Card
               key={product.id}
               className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all group relative overflow-hidden"
@@ -221,7 +223,7 @@ export default async function TiendaPage() {
                       />
                     ))}
                   </div>
-                  <span className="text-sm text-gray-400 ml-2">({(product.reviews || 0).toLocaleString()})</span>
+                  <span className="text-sm text-gray-400 ml-2">({parseInt(product.reviews || '0').toLocaleString()})</span>
                 </div>
 
                 <div className="flex items-center justify-between mb-4">
@@ -301,13 +303,13 @@ export default async function TiendaPage() {
             </div>
             <div>
               <div className="text-3xl font-bold text-purple-500 mb-2">
-                {Math.round(allProducts.reduce((total: number, product: any) => total + (product.rating || 0), 0) / allProducts.length * 10) / 10 || 0}
+                {Math.round(allProducts.reduce((total, product) => total + (product.rating || 0), 0) / allProducts.length * 10) / 10 || 0}
               </div>
               <div className="text-gray-400">Rating Promedio</div>
             </div>
             <div>
               <div className="text-3xl font-bold text-green-500 mb-2">
-                {allProducts.reduce((total: number, product: any) => total + (product.reviews || 0), 0).toLocaleString()}
+                {allProducts.reduce((total, product) => total + parseInt(product.reviews || '0'), 0).toLocaleString()}
               </div>
               <div className="text-gray-400">Reviews Totales</div>
             </div>

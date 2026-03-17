@@ -6,8 +6,10 @@ import Image from "next/image"
 import Link from "next/link"
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { blogService } from "@/lib/database"
+import type { Metadata } from "next"
+import { BlogPost } from "@prisma/client"
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Blog Spider-Man - Análisis, Noticias y Contenido Exclusivo | Spider-World",
   description:
     "Las últimas noticias, análisis profundos y contenido exclusivo del Spider-Verse. Artículos especializados para fans verdaderos de Spider-Man.",
@@ -25,7 +27,7 @@ function formatDate(dateString: string): string {
 }
 
 // Función para obtener categorías con conteo
-function getCategoriesWithCount(posts: any[]) {
+function getCategoriesWithCount(posts: BlogPost[]) {
   const categoryCounts: { [key: string]: number } = {};
   
   posts.forEach(post => {
@@ -194,7 +196,7 @@ export default async function BlogPage() {
             <h2 className="text-3xl font-bold text-white mb-8">Últimos Artículos</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {recentPosts.map((post: any) => (
+              {recentPosts.map((post) => (
                 <Card
                   key={post.id}
                   className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all group"
@@ -326,13 +328,13 @@ export default async function BlogPage() {
             </div>
             <div>
               <div className="text-3xl font-bold text-purple-500 mb-2">
-                {allPosts.reduce((total: number, post: any) => total + (post.views || 0), 0)}
+                {allPosts.reduce((total, post) => total + (post.views || 0), 0)}
               </div>
               <div className="text-gray-400">Visualizaciones Totales</div>
             </div>
             <div>
               <div className="text-3xl font-bold text-green-500 mb-2">
-                {Math.round(allPosts.reduce((total: number, post: any) => {
+                {Math.round(allPosts.reduce((total, post) => {
                   const readTime = parseInt(post.readTime?.replace(' min', '') || '0');
                   return total + readTime;
                 }, 0) / allPosts.length) || 0}
