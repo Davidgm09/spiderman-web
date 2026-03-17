@@ -11,13 +11,12 @@ import { InContentAd, SidebarAd } from '@/components/ads/GoogleAdsense';
 import { AmazonProduct } from '@/components/affiliate/AmazonProduct';
 
 interface PageProps {
-  params: {
-    slug: string;
-  };
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const character = await characterService.getBySlug(params.slug);
+  const { slug } = await params;
+  const character = await characterService.getBySlug(slug);
   
   if (!character) {
     return {
@@ -40,14 +39,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function CharacterDetailPage({ params }: PageProps) {
-  const character = await characterService.getBySlug(params.slug);
-  
+  const { slug } = await params;
+  const character = await characterService.getBySlug(slug);
+
   if (!character) {
     notFound();
   }
 
   // Incrementar views
-  await characterService.incrementViews(params.slug).catch(console.error);
+  await characterService.incrementViews(slug).catch(console.error);
 
   // Obtener personajes relacionados de la misma categoría
   const relatedCharacters = await characterService.getByCategory(character.category, 6);

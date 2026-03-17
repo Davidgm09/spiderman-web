@@ -35,6 +35,8 @@ const nextConfig = {
       'img.rawpixel.com',
       'www.mobygames.com',
       'comicvine.gamespot.com',
+      'cdn.marvel.com',
+      'static.wikia.nocookie.net',
     ],
   },
   async redirects() {
