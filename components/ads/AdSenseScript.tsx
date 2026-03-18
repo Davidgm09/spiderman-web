@@ -1,13 +1,25 @@
-'use client';
+'use client'
 
-import Script from 'next/script';
+import Script from 'next/script'
+import { useState, useEffect } from 'react'
 
 export function AdSenseScript() {
-  const clientId = process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT_ID;
+  const [consented, setConsented] = useState(false)
 
-  if (!clientId) {
-    return null;
-  }
+  useEffect(() => {
+    // Comprobar consentimiento ya guardado
+    if (localStorage.getItem('cookie-consent') === 'accepted') {
+      setConsented(true)
+    }
+
+    // Escuchar si el usuario acepta desde el banner
+    function onAccept() { setConsented(true) }
+    window.addEventListener('cookie-consent-accepted', onAccept)
+    return () => window.removeEventListener('cookie-consent-accepted', onAccept)
+  }, [])
+
+  const clientId = process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT_ID
+  if (!consented || !clientId || clientId === 'ca-pub-xxxxxxxxx') return null
 
   return (
     <Script
@@ -15,12 +27,6 @@ export function AdSenseScript() {
       src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${clientId}`}
       crossOrigin="anonymous"
       strategy="afterInteractive"
-      onLoad={() => {
-        console.log('✅ Google AdSense script loaded');
-      }}
-      onError={(error) => {
-        console.error('❌ Google AdSense script failed to load:', error);
-      }}
     />
-  );
+  )
 }
