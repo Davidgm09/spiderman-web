@@ -58,31 +58,39 @@ function getColorForCategory(category: string): string {
   return colorMap[category] || 'gray';
 }
 
-export default async function BlogPage() {
+interface BlogPageProps {
+  searchParams: Promise<{ category?: string; tag?: string }>
+}
+
+export default async function BlogPage({ searchParams }: BlogPageProps) {
+  const { category: activeCategory, tag: activeTag } = await searchParams;
+
   // Obtener posts del blog de la base de datos
   const allPosts = await blogService.getAll();
-  
-  // Obtener el post destacado (el más reciente o con más views)
-  const featuredPost = allPosts.length > 0 ? allPosts[0] : null;
-  
-  // Obtener posts recientes (excluyendo el destacado)
-  const recentPosts = allPosts.slice(1, 7);
-  
-  // Obtener categorías con conteo
+
+  // Obtener categorías con conteo (siempre sobre todos los posts)
   const categories = getCategoriesWithCount(allPosts);
-  
-  const popularTags = [
-    "Spider-Man MCU",
-    "Tom Holland", 
-    "Tobey Maguire",
-    "Andrew Garfield",
-    "Miles Morales",
-    "Venom",
-    "Green Goblin",
-    "Spider-Verse",
-    "PS5",
-    "Marvel"
-  ];
+
+  // Extraer tags únicos de todos los posts, ordenados por frecuencia
+  const tagCounts: Record<string, number> = {};
+  allPosts.forEach(p => p.tags.forEach(t => { tagCounts[t] = (tagCounts[t] || 0) + 1; }));
+  const popularTags = Object.entries(tagCounts)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 12)
+    .map(([tag]) => tag);
+
+  // Filtrar posts por categoría o tag
+  const filteredPosts = allPosts.filter(p => {
+    if (activeCategory && p.category !== activeCategory) return false;
+    if (activeTag && !p.tags.includes(activeTag)) return false;
+    return true;
+  });
+
+  // Artículo destacado solo sin filtros activos
+  const featuredPost = !activeCategory && !activeTag && filteredPosts.length > 0 ? filteredPosts[0] : null;
+
+  // Posts de la grid (excluye el destacado si está visible)
+  const recentPosts = featuredPost ? filteredPosts.slice(1) : filteredPosts;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-950 via-gray-900 to-blue-950">
@@ -113,14 +121,27 @@ export default async function BlogPage() {
       {/* Categories */}
       <section className="py-8 px-4 max-w-7xl mx-auto">
         <div className="flex flex-wrap justify-center gap-4">
-          {categories.map((category, index) => (
+          <Link href="/blog">
             <Button
-              key={index}
               variant="outline"
-              className="border-gray-600 text-gray-300 hover:bg-gray-600 hover:text-white"
+              className={!activeCategory
+                ? "border-red-600 bg-red-600 text-white"
+                : "border-gray-600 text-gray-300 hover:bg-gray-600 hover:text-white"}
             >
-              {category.name} ({category.count})
+              Todos ({allPosts.length})
             </Button>
+          </Link>
+          {categories.map((category, index) => (
+            <Link key={index} href={`/blog?category=${encodeURIComponent(category.name)}`}>
+              <Button
+                variant="outline"
+                className={activeCategory === category.name
+                  ? "border-red-600 bg-red-600 text-white"
+                  : "border-gray-600 text-gray-300 hover:bg-gray-600 hover:text-white"}
+              >
+                {category.name} ({category.count})
+              </Button>
+            </Link>
           ))}
         </div>
       </section>
@@ -130,18 +151,18 @@ export default async function BlogPage() {
         <section className="py-12 px-4 max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold text-white mb-8 text-center">Artículo Destacado</h2>
 
-          <Card className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all">
-            <div className="md:flex">
-              <div className="md:w-1/2">
+          <Card className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all overflow-hidden">
+            <div className="md:flex md:items-stretch">
+              <div className="md:w-2/5 md:max-h-[420px] overflow-hidden">
                 <Image
                   src={featuredPost.image || "/placeholder.svg?height=400&width=600"}
                   alt={featuredPost.title}
                   width={600}
-                  height={400}
+                  height={420}
                   className="w-full h-64 md:h-full object-cover rounded-t-lg md:rounded-l-lg md:rounded-t-none"
                 />
               </div>
-              <div className="md:w-1/2 p-8">
+              <div className="md:w-3/5 p-8 flex flex-col justify-center">
                 <Badge className="mb-4 bg-red-600">{featuredPost.category}</Badge>
                 <CardTitle className="text-white mb-4 text-2xl leading-tight hover:text-red-400 transition-colors">
                   <Link href={`/blog/${featuredPost.slug}`}>{featuredPost.title}</Link>
@@ -193,7 +214,9 @@ export default async function BlogPage() {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-3">
-            <h2 className="text-3xl font-bold text-white mb-8">Últimos Artículos</h2>
+            <h2 className="text-3xl font-bold text-white mb-8">
+              {activeCategory ? `Categoría: ${activeCategory}` : activeTag ? `Tag: ${activeTag}` : 'Últimos Artículos'}
+            </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {recentPosts.map((post) => (
@@ -202,13 +225,13 @@ export default async function BlogPage() {
                   className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all group"
                 >
                   <CardHeader className="p-0">
-                    <div className="relative">
+                    <div className="relative h-48 overflow-hidden rounded-t-lg bg-gray-700">
                       <Image
                         src={post.image || "/placeholder.svg?height=250&width=400"}
                         alt={post.title}
-                        width={400}
-                        height={250}
-                        className="w-full h-48 object-cover rounded-t-lg group-hover:scale-105 transition-transform duration-300"
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        sizes="(max-width: 768px) 100vw, 50vw"
                       />
                       <Badge className="absolute top-2 right-2 bg-red-600">
                         {post.category}
@@ -250,13 +273,11 @@ export default async function BlogPage() {
               ))}
             </div>
 
-            {/* Load More */}
-            <div className="text-center mt-12">
-              <Button variant="outline" className="border-red-600 text-red-400 hover:bg-red-600 hover:text-white">
-                Cargar Más Artículos
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </div>
+            {recentPosts.length === 0 && (
+              <div className="text-center py-16 text-gray-400">
+                No hay artículos en esta categoría todavía.
+              </div>
+            )}
           </div>
 
           {/* Sidebar */}
@@ -273,13 +294,16 @@ export default async function BlogPage() {
                 <CardContent>
                   <div className="flex flex-wrap gap-2">
                     {popularTags.map((tag, index) => (
-                      <Badge
-                        key={index}
-                        variant="outline"
-                        className="border-gray-600 text-gray-300 hover:bg-gray-600 hover:text-white cursor-pointer"
-                      >
-                        {tag}
-                      </Badge>
+                      <Link key={index} href={activeTag === tag ? '/blog' : `/blog?tag=${encodeURIComponent(tag)}`}>
+                        <Badge
+                          variant="outline"
+                          className={activeTag === tag
+                            ? "border-red-500 bg-red-600 text-white cursor-pointer"
+                            : "border-gray-600 text-gray-300 hover:border-red-500 hover:text-red-400 cursor-pointer transition-colors"}
+                        >
+                          {tag}
+                        </Badge>
+                      </Link>
                     ))}
                   </div>
                 </CardContent>
@@ -293,12 +317,14 @@ export default async function BlogPage() {
                 <CardContent>
                   <div className="space-y-2">
                     {categories.map((category, index) => (
-                      <div key={index} className="flex items-center justify-between">
-                        <span className="text-gray-300">{category.name}</span>
-                        <Badge className="bg-gray-600 text-white">
+                      <Link key={index} href={`/blog?category=${encodeURIComponent(category.name)}`} className="flex items-center justify-between p-2 rounded hover:bg-gray-700 transition-colors">
+                        <span className={activeCategory === category.name ? "text-red-400 font-medium" : "text-gray-300"}>
+                          {category.name}
+                        </span>
+                        <Badge className={activeCategory === category.name ? "bg-red-600 text-white" : "bg-gray-600 text-white"}>
                           {category.count}
                         </Badge>
-                      </div>
+                      </Link>
                     ))}
                   </div>
                 </CardContent>

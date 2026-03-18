@@ -120,8 +120,27 @@ function SimpleHero() {
 export default async function HomePage() {
   const featuredContent = await getFeaturedContent()
 
+  const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://spider-world.es'
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Spider-World',
+    url: BASE_URL,
+    description: 'La guía definitiva de Spider-Man: películas, cómics, videojuegos, series y más.',
+    inLanguage: 'es',
+    publisher: {
+      '@type': 'Organization',
+      name: 'Spider-World',
+      url: BASE_URL,
+    },
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-950 via-gray-900 to-blue-950">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero Section */}
      {/* Hero Section */}
      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">

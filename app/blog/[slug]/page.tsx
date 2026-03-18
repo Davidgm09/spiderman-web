@@ -3,57 +3,36 @@ import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Calendar, Clock, User, Eye, ArrowLeft, BookOpen, Share2, Tag } from "lucide-react"
-import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
+import { Calendar, Clock, User, Eye, ArrowLeft, Tag } from "lucide-react"
+import { SidebarAd } from "@/components/ads/GoogleAdsense"
 import { blogService } from "@/lib/database"
 import { BlogPost } from "@prisma/client"
+import { ViewTracker } from "@/components/blog/ViewTracker"
+import { ShareButtons } from "@/components/blog/ShareButtons"
 
 type Props = {
   params: Promise<{ slug: string }>
 }
 
-async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
-  try {
-    return await blogService.getBySlug(slug);
-  } catch (error) {
-    console.error('Error fetching blog post:', error);
-    return null;
-  }
-}
-
-async function getRelatedBlogPosts(currentSlug: string, limit: number = 3): Promise<BlogPost[]> {
-  try {
-    const posts = await blogService.getRecent(limit + 1);
-    return posts.filter((post) => post.slug !== currentSlug).slice(0, limit);
-  } catch (error) {
-    console.error('Error fetching related blog posts:', error);
-    return [];
-  }
+function formatDate(date: Date | string) {
+  return new Date(date).toLocaleDateString('es-ES', {
+    year: 'numeric', month: 'long', day: 'numeric'
+  });
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const post = await getBlogPostBySlug(slug)
+  const post = await blogService.getBySlug(slug)
+  if (!post) return { title: "Artículo no encontrado | Spider-World" }
 
-  if (!post) {
-    return {
-      title: "Artículo no encontrado | Spider-World",
-      description: "El artículo que buscas no está disponible.",
-    }
-  }
-
-  const description = post.excerpt 
-    ? post.excerpt.substring(0, 155) + '...'
-    : `Lee ${post.title}, artículo especializado sobre Spider-Man con análisis profundo y contenido exclusivo.`;
-
+  const description = post.seoDescription || post.excerpt.substring(0, 155)
   return {
-    title: `${post.title} | Spider-World Blog`,
+    title: post.seoTitle || `${post.title} | Spider-World Blog`,
     description,
-    keywords: ['Spider-Man', 'blog', 'análisis', post.title, 'Marvel', 'artículo'],
+    keywords: post.keywords,
     openGraph: {
-      title: `${post.title} | Spider-World Blog`,
+      title: post.title,
       description,
       images: post.image ? [post.image] : [],
       type: "article",
@@ -62,7 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: `${post.title} | Spider-World Blog`,
+      title: post.title,
       description,
       images: post.image ? [post.image] : [],
     },
@@ -71,271 +50,200 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params
-  const post = await getBlogPostBySlug(slug)
+  const post = await blogService.getBySlug(slug)
+  if (!post) notFound()
 
-  if (!post) {
-    notFound()
+  const relatedPosts = await blogService.getByCategory(post.category, slug, 3)
+
+  const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://spider-world.es'
+  const postUrl = `${BASE_URL}/blog/${post.slug}`
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.seoDescription || post.excerpt,
+    image: post.image || undefined,
+    url: postUrl,
+    datePublished: post.publishDate.toISOString(),
+    dateModified: post.publishDate.toISOString(),
+    author: {
+      '@type': 'Person',
+      name: post.author,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Spider-World',
+      url: BASE_URL,
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': postUrl,
+    },
+    keywords: post.keywords.join(', '),
+    articleSection: post.category,
+    inLanguage: 'es',
   }
 
-  // Obtener artículos relacionados
-  const relatedPosts = await getRelatedBlogPosts(slug);
-
   return (
-    <div className="pt-16">
-      {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-orange-900/30 to-black/80"></div>
-        <div className="absolute inset-0">
+    <div className="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-red-950">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <ViewTracker slug={post.slug} />
+
+      {/* Hero */}
+      <section className="relative h-[55vh] min-h-[400px] flex items-end overflow-hidden">
+        {post.image && (
           <Image
-            src={post.image ?? '/placeholder.jpg'}
-            alt={`${post.title} - Blog Spider-World`}
+            src={post.image}
+            alt={post.title}
             fill
-            className="object-cover opacity-40"
+            className="object-cover"
             priority
           />
-        </div>
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/60 to-transparent" />
 
-        <div className="relative z-10 text-center px-4 max-w-6xl mx-auto">
-          <div className="mb-6 flex items-center justify-center gap-4">
-            <Link href="/blog">
-              <Button variant="outline" size="sm" className="border-orange-600 text-orange-400 hover:bg-orange-600 hover:text-white">
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Volver al Blog
-              </Button>
-            </Link>
-            <Badge className="bg-orange-600 text-white px-6 py-3 text-lg font-semibold">
-              {post.category || 'Artículo'}
-            </Badge>
-          </div>
-          
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-red-500 via-blue-500 to-red-500 bg-clip-text text-transparent">
+        <div className="relative z-10 w-full px-4 pb-10 max-w-5xl mx-auto">
+          <Link href="/blog">
+            <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white mb-4 -ml-2">
+              <ArrowLeft className="w-4 h-4 mr-1" />
+              Blog
+            </Button>
+          </Link>
+          <Badge className="mb-3 bg-red-600 text-white">{post.category}</Badge>
+          <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight mb-4">
             {post.title}
           </h1>
-          
           {post.subtitle && (
-            <p className="text-xl md:text-2xl mb-8 text-gray-300 max-w-4xl mx-auto leading-relaxed italic">
-              "{post.subtitle}"
-            </p>
+            <p className="text-lg text-gray-300 italic mb-4">{post.subtitle}</p>
           )}
-          
-          {post.excerpt && (
-            <p className="text-lg text-gray-400 max-w-3xl mx-auto mb-8">
-              {post.excerpt.length > 200 ? post.excerpt.substring(0, 200) + '...' : post.excerpt}
-            </p>
-          )}
-
-          <div className="flex flex-wrap justify-center gap-6 mb-8 text-gray-300">
-            <div className="flex items-center">
-              <Calendar className="w-5 h-5 mr-2 text-orange-500" />
-              <span>{new Date(post.publishDate || post.createdAt).toLocaleDateString('es-ES', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-              })}</span>
-            </div>
-            {post.author && (
-              <div className="flex items-center">
-                <User className="w-5 h-5 mr-2 text-purple-500" />
-                <span>{post.author}</span>
-              </div>
-            )}
-            {post.readTime && (
-              <div className="flex items-center">
-                <Clock className="w-5 h-5 mr-2 text-blue-500" />
-                <span>{post.readTime}</span>
-              </div>
-            )}
-            {post.views && (
-              <div className="flex items-center">
-                <Eye className="w-5 h-5 mr-2 text-green-500" />
-                <span>{post.views}</span>
-              </div>
-            )}
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white px-8 py-4 text-lg"
-            >
-              <BookOpen className="mr-2 h-5 w-5" />
-              Leer Artículo
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-blue-600 text-blue-400 hover:bg-blue-600 hover:text-white px-8 py-4 text-lg"
-            >
-              <Share2 className="mr-2 h-5 w-5" />
-              Compartir
-            </Button>
+          <div className="flex flex-wrap gap-4 text-sm text-gray-400">
+            <span className="flex items-center gap-1">
+              <User className="w-4 h-4" /> {post.author}
+            </span>
+            <span className="flex items-center gap-1">
+              <Calendar className="w-4 h-4" /> {formatDate(post.publishDate)}
+            </span>
+            <span className="flex items-center gap-1">
+              <Clock className="w-4 h-4" /> {post.readTime}
+            </span>
+            <span className="flex items-center gap-1">
+              <Eye className="w-4 h-4" /> {post.views} vistas
+            </span>
           </div>
         </div>
       </section>
 
-      {/* Ad */}
-      <InContentAd />
+      {/* Content + Sidebar */}
+      <section className="max-w-6xl mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
 
-      {/* Article Content */}
-      <section className="py-20 bg-gradient-to-b from-black to-orange-950/10">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-            {/* Main Content */}
-            <div className="lg:col-span-3">
-              <div className="bg-gray-900/50 border border-orange-600/20 rounded-lg p-8">
-                <h2 className="text-2xl font-bold text-white mb-6">Información del Artículo</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-4">
-                    <div className="flex items-center space-x-3">
-                      <BookOpen className="w-5 h-5 text-orange-500" />
-                      <div>
-                        <span className="text-gray-400 text-sm">Título</span>
-                        <div className="text-white font-semibold">{post.title}</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <Calendar className="w-5 h-5 text-orange-500" />
-                      <div>
-                        <span className="text-gray-400 text-sm">Fecha de publicación</span>
-                        <div className="text-white font-semibold">
-                          {new Date(post.publishDate || post.createdAt).toLocaleDateString('es-ES')}
-                        </div>
-                      </div>
-                    </div>
-                    {post.author && (
-                      <div className="flex items-center space-x-3">
-                        <User className="w-5 h-5 text-orange-500" />
-                        <div>
-                          <span className="text-gray-400 text-sm">Autor</span>
-                          <div className="text-white font-semibold">{post.author}</div>
-                        </div>
-                      </div>
-                    )}
-                    {post.category && (
-                      <div className="flex items-center space-x-3">
-                        <Tag className="w-5 h-5 text-orange-500" />
-                        <div>
-                          <span className="text-gray-400 text-sm">Categoría</span>
-                          <div className="text-white font-semibold">{post.category}</div>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                  <div className="space-y-4">
-                    {post.readTime && (
-                      <div className="flex items-center space-x-3">
-                        <Clock className="w-5 h-5 text-blue-500" />
-                        <div>
-                          <span className="text-gray-400 text-sm">Tiempo de lectura</span>
-                          <div className="text-white font-semibold">{post.readTime}</div>
-                        </div>
-                      </div>
-                    )}
-                    {post.views && (
-                      <div className="flex items-center space-x-3">
-                        <Eye className="w-5 h-5 text-green-500" />
-                        <div>
-                          <span className="text-gray-400 text-sm">Visualizaciones</span>
-                          <div className="text-white font-semibold">{post.views}</div>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
+          {/* Artículo */}
+          <article className="lg:col-span-2">
+            {/* Excerpt destacado */}
+            <p className="text-lg text-gray-300 leading-relaxed border-l-4 border-red-600 pl-4 mb-10 italic">
+              {post.excerpt}
+            </p>
 
-              {/* Content */}
-              {post.excerpt && (
-                <div className="mt-8 bg-gray-900/50 border border-orange-600/20 rounded-lg p-8">
-                  <h3 className="text-2xl font-bold text-white mb-6">Resumen</h3>
-                  <p className="text-gray-300 text-lg leading-relaxed">
-                    {post.excerpt}
-                  </p>
-                </div>
-              )}
+            {/* Contenido HTML */}
+            <div
+              className="blog-content"
+              dangerouslySetInnerHTML={{ __html: post.content }}
+            />
 
-              {/* Article Content */}
-              {post.content && (
-                <div className="mt-8 bg-gray-900/50 border border-orange-600/20 rounded-lg p-8">
-                  <h3 className="text-2xl font-bold text-white mb-6">Contenido</h3>
-                  <div className="blog-content text-gray-300 leading-relaxed">
-                    <div dangerouslySetInnerHTML={{ __html: post.content }} />
-                  </div>
-                </div>
-              )}
-
-              {/* Tags */}
-              {post.tags && (
-                <div className="mt-8 bg-gray-900/50 border border-orange-600/20 rounded-lg p-8">
-                  <h3 className="text-2xl font-bold text-white mb-6">Etiquetas</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {post.tags.map((tag, index) => (
-                      <Badge key={index} className="bg-orange-600 text-white">
+            {/* Tags */}
+            {post.tags.length > 0 && (
+              <div className="mt-10 pt-6 border-t border-gray-800">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <Tag className="w-4 h-4 text-gray-500" />
+                  {post.tags.map((tag) => (
+                    <Link key={tag} href={`/blog?tag=${encodeURIComponent(tag)}`}>
+                      <Badge variant="outline" className="border-gray-600 text-gray-400 hover:border-red-500 hover:text-red-400 transition-colors cursor-pointer">
                         {tag}
                       </Badge>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Compartir */}
+            <div className="mt-10 pt-6 border-t border-gray-800">
+              <ShareButtons url={postUrl} title={post.title} />
+            </div>
+
+            {/* Nav inferior */}
+            <div className="mt-6">
+              <Link href="/blog">
+                <Button variant="outline" className="border-gray-700 text-gray-300 hover:bg-gray-800">
+                  <ArrowLeft className="w-4 h-4 mr-2" />
+                  Volver al blog
+                </Button>
+              </Link>
+            </div>
+          </article>
+
+          {/* Sidebar */}
+          <aside className="lg:col-span-1">
+            <div className="sticky top-24 space-y-8">
+
+              {/* Artículos relacionados */}
+              {relatedPosts.length > 0 && (
+                <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-5">
+                  <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">
+                    Más en {post.category}
+                  </h3>
+                  <div className="space-y-4">
+                    {relatedPosts.map((related: BlogPost) => (
+                      <Link key={related.id} href={`/blog/${related.slug}`} className="flex gap-3 group">
+                        {related.image && (
+                          <div className="w-20 h-16 flex-shrink-0 overflow-hidden rounded-lg">
+                            <Image
+                              src={related.image}
+                              alt={related.title}
+                              width={80}
+                              height={64}
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            />
+                          </div>
+                        )}
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm text-gray-200 font-medium line-clamp-2 group-hover:text-red-400 transition-colors">
+                            {related.title}
+                          </p>
+                          <p className="text-xs text-gray-500 mt-1">{related.readTime}</p>
+                        </div>
+                      </Link>
                     ))}
                   </div>
                 </div>
               )}
-            </div>
 
-            {/* Sidebar */}
-            <div className="lg:col-span-1">
-              <div className="sticky top-24 space-y-8">
-                {/* Article Image */}
-                <div className="bg-gray-900/30 rounded-lg p-6 border border-orange-600/20">
-                  <Image
-                    src={post.image ?? '/placeholder.jpg'}
-                    alt={`${post.title} - Imagen del artículo`}
-                    width={300}
-                    height={200}
-                    className="w-full rounded-lg"
-                  />
-                </div>
-                
-                {/* Ad */}
-                <SidebarAd />
-                
-                {/* Related Posts */}
-                {relatedPosts.length > 0 && (
-                  <div className="bg-gray-900/30 rounded-lg p-6 border border-orange-600/20">
-                    <h3 className="text-xl font-semibold text-white mb-4">
-                      📚 Artículos Relacionados
-                    </h3>
-                    <div className="space-y-4">
-                      {relatedPosts.map((relatedPost) => (
-                        <Card key={relatedPost.id} className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all">
-                          <CardContent className="p-4">
-                            <Link href={`/blog/${relatedPost.slug}`} className="block">
-                              <Image
-                                src={relatedPost.image ?? '/placeholder.jpg'}
-                                alt={relatedPost.title}
-                                width={300}
-                                height={150}
-                                className="w-full h-32 object-cover rounded-lg mb-3"
-                              />
-                              <h4 className="text-white font-semibold mb-2 line-clamp-2 hover:text-orange-400 transition-colors">
-                                {relatedPost.title}
-                              </h4>
-                              <p className="text-gray-400 text-sm line-clamp-2">
-                                {relatedPost.excerpt}
-                              </p>
-                              <div className="flex items-center mt-2 text-xs text-gray-500">
-                                <Calendar className="w-3 h-3 mr-1" />
-                                {new Date(relatedPost.publishDate || relatedPost.createdAt).toLocaleDateString('es-ES')}
-                              </div>
-                            </Link>
-                          </CardContent>
-                        </Card>
-                      ))}
-                    </div>
+              {/* Keywords SEO */}
+              {post.keywords.length > 0 && (
+                <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-5">
+                  <h3 className="text-white font-semibold mb-3 text-sm uppercase tracking-wider">
+                    Temas
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {post.keywords.slice(0, 8).map((kw) => (
+                      <span key={kw} className="text-xs text-gray-400 bg-gray-900/60 border border-gray-700 rounded px-2 py-1">
+                        {kw}
+                      </span>
+                    ))}
                   </div>
-                )}
-              </div>
+                </div>
+              )}
+
+              <SidebarAd />
             </div>
-          </div>
+          </aside>
+
         </div>
       </section>
     </div>
   )
-} 
+}

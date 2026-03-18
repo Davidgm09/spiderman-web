@@ -84,9 +84,30 @@ export default async function GamePage({ params }: Props) {
   // Obtener videojuegos relacionados
   const relatedGames = await getRelatedGames(slug);
 
+  const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://spider-world.es'
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'VideoGame',
+    name: game.title,
+    description: game.seoDescription || game.description,
+    image: game.image || undefined,
+    url: `${BASE_URL}/videojuegos/${game.slug}`,
+    datePublished: game.year?.toString(),
+    aggregateRating: game.rating ? {
+      '@type': 'AggregateRating',
+      ratingValue: game.rating,
+      bestRating: 10,
+      worstRating: 0,
+    } : undefined,
+    inLanguage: 'es',
+  }
 
   return (
     <div className="pt-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero Section */}
       <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-red-900/30 to-black/80"></div>

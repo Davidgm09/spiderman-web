@@ -374,6 +374,15 @@ export const blogService = {
     });
   },
 
+  // Obtener posts de la misma categoría (excluyendo el actual)
+  async getByCategory(category: string, excludeSlug: string, limit: number = 3) {
+    return await prisma.blogPost.findMany({
+      where: { isPublished: true, category, slug: { not: excludeSlug } },
+      orderBy: { publishDate: 'desc' },
+      take: limit
+    });
+  },
+
   // Incrementar vistas
   async incrementViews(slug: string) {
     return await prisma.blogPost.update({

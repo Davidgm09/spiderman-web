@@ -105,28 +105,18 @@ export function Footer() {
             <h4 className="text-white font-semibold mb-4">Legal</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="#" className="text-gray-400 hover:text-red-500 transition-colors">
+                <Link href="/privacidad" className="text-gray-400 hover:text-red-500 transition-colors">
                   Política de Privacidad
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-gray-400 hover:text-red-500 transition-colors">
-                  Términos de Uso
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-400 hover:text-red-500 transition-colors">
+                <Link href="/cookies" className="text-gray-400 hover:text-red-500 transition-colors">
                   Política de Cookies
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-gray-400 hover:text-red-500 transition-colors">
+                <Link href="/contacto" className="text-gray-400 hover:text-red-500 transition-colors">
                   Contacto
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-400 hover:text-red-500 transition-colors">
-                  Divulgación de Afiliados
                 </Link>
               </li>
             </ul>
@@ -153,7 +143,7 @@ export function Footer() {
         {/* Copyright */}
         <div className="border-t border-red-600/20 pt-8 text-center">
           <p className="text-gray-400 text-sm">
-            © 2024 Spider-World. Todos los derechos reservados. Spider-Man y todos los personajes relacionados son
+            © 2025 Spider-World. Todos los derechos reservados. Spider-Man y todos los personajes relacionados son
             marcas registradas de Marvel Entertainment. Este sitio contiene enlaces de afiliado de Amazon.
           </p>
         </div>

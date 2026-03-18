@@ -108,13 +108,34 @@ export default async function SeriesPage({ params }: Props) {
 
   // Obtener series relacionadas
   const relatedSeries = await getRelatedSeries(slug);
-  
+
   // Obtener imágenes de galería desde TMDB si hay tmdbId
   const galleryImages = series.tmdbId ? await getSeriesGalleryImages(series.tmdbId.toString()) : null;
 
+  const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://spider-world.es'
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'TVSeries',
+    name: series.title,
+    description: series.seoDescription || series.description,
+    image: series.image || undefined,
+    url: `${BASE_URL}/series/${series.slug}`,
+    startDate: series.year?.toString(),
+    aggregateRating: series.rating ? {
+      '@type': 'AggregateRating',
+      ratingValue: series.rating,
+      bestRating: 10,
+      worstRating: 0,
+    } : undefined,
+    inLanguage: 'es',
+  }
 
   return (
     <div className="pt-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero Section */}
       <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-green-900/30 to-black/80"></div>

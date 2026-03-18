@@ -25,6 +25,7 @@ All scripts read from `.env` (not `.env.local`). Run them with `node scripts/<na
 | `scripts/populate-series-from-tmdb.js` | TMDB | Uses `KNOWN_SPIDER_SERIES_IDS` list |
 | `scripts/populate-games-from-rawg.js [--clean]` | RAWG | Uses `KNOWN_GAME_IDS` + rating filter |
 | `scripts/populate-comics-from-comicvine.js [--clean]` | Comic Vine | Fetches volumes → issues |
+| `scripts/populate-blog.js [--clean]` | Static | 12 hand-written articles (2 per category) |
 
 **Marvel API is permanently down** (has been for ~1 year). Use Comic Vine instead for character/comic data.
 

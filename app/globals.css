@@ -246,9 +246,17 @@ body {
 }
 
 .blog-content img {
-  @apply my-4 rounded-lg shadow-lg;
+  @apply rounded-lg shadow-lg;
   max-width: 100%;
   height: auto;
+}
+
+.blog-content figure {
+  @apply my-8;
+}
+
+.blog-content figcaption {
+  @apply text-sm text-gray-500 italic text-center mt-2 px-4;
 }
 
 /* Espaciado más moderado entre secciones */

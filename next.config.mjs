@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    unoptimized: true,
     remotePatterns: [
       { protocol: 'https', hostname: 'image.tmdb.org' },
       { protocol: 'https', hostname: 'i.annihil.us' },
@@ -22,6 +21,8 @@ const nextConfig = {
       { protocol: 'https', hostname: 'comicvine.gamespot.com' },
       { protocol: 'https', hostname: 'cdn.marvel.com' },
       { protocol: 'https', hostname: 'static.wikia.nocookie.net' },
+      { protocol: 'https', hostname: 'vignette.wikia.nocookie.net' },
+      { protocol: 'https', hostname: 'vignette3.wikia.nocookie.net' },
     ],
   },
   async redirects() {

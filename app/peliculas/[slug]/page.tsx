@@ -90,6 +90,24 @@ export default async function MoviePage({ params }: Props) {
   // Obtener películas relacionadas
   const relatedMovies = await getRelatedMovies(slug);
 
+  const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://spider-world.es'
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Movie',
+    name: movie.title,
+    description: movie.seoDescription || movie.description,
+    image: movie.image || undefined,
+    url: `${BASE_URL}/peliculas/${movie.slug}`,
+    datePublished: movie.year?.toString(),
+    director: movie.director ? { '@type': 'Person', name: movie.director } : undefined,
+    aggregateRating: movie.rating ? {
+      '@type': 'AggregateRating',
+      ratingValue: movie.rating,
+      bestRating: 10,
+      worstRating: 0,
+    } : undefined,
+    inLanguage: 'es',
+  }
 
   // Usar datos reales de la base de datos o fallback
   const sceneGallery: GalleryImage[] = Array.isArray(movie.sceneImages)
@@ -128,6 +146,10 @@ export default async function MoviePage({ params }: Props) {
 
   return (
     <div className="pt-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero Section */}
       <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-red-900/30 to-black/80"></div>
