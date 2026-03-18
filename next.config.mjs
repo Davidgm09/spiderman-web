@@ -24,6 +24,7 @@ const nextConfig = {
       { protocol: 'https', hostname: 'vignette.wikia.nocookie.net' },
       { protocol: 'https', hostname: 'vignette3.wikia.nocookie.net' },
       { protocol: 'https', hostname: 'posterspy.com' },
+      { protocol: 'https', hostname: 'almanaquerevista.com' },
     ],
   },
   async redirects() {
