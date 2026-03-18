@@ -140,11 +140,17 @@ export function Footer() {
           </div>
         </div>
 
+        {/* Disclaimer */}
+        <div className="border-t border-red-600/20 pt-8 mb-4">
+          <p className="text-gray-500 text-xs leading-relaxed text-center">
+            <strong className="text-gray-400">Aviso legal:</strong> Spider-Man y todos los personajes, nombres e imágenes relacionados son marcas registradas y propiedad de Marvel Entertainment, LLC y/o sus filiales. Sony Pictures Entertainment posee los derechos cinematográficos de Spider-Man. Este sitio es un proyecto independiente de fans sin ninguna afiliación, patrocinio ni respaldo oficial de Marvel, Disney o Sony. Las imágenes de películas y series se utilizan con fines informativos y de crítica bajo el derecho de cita. Este sitio contiene enlaces de afiliado de Amazon: si realizas una compra a través de ellos, podríamos recibir una pequeña comisión sin coste adicional para ti.
+          </p>
+        </div>
+
         {/* Copyright */}
-        <div className="border-t border-red-600/20 pt-8 text-center">
-          <p className="text-gray-400 text-sm">
-            © 2025 Spider-World. Todos los derechos reservados. Spider-Man y todos los personajes relacionados son
-            marcas registradas de Marvel Entertainment. Este sitio contiene enlaces de afiliado de Amazon.
+        <div className="text-center">
+          <p className="text-gray-500 text-xs">
+            © 2025 Spider-World — Sitio de fans independiente. Todos los derechos de los personajes pertenecen a sus respectivos propietarios.
           </p>
         </div>
       </div>
