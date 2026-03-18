@@ -611,6 +611,75 @@ const BLOG_POSTS = [
 <p>La espera es frustrante, pero el historial de Sony Animation con esta saga sugiere que el resultado valdrá la pena. Cuando llegue Beyond, lo sabremos.</p>
     `.trim(),
   },
+  // ─── NOTICIAS ────────────────────────────────────────────────────────────────
+  {
+    title: 'Spider-Man: Brand New Day — Primer tráiler oficial de la nueva película de Tom Holland',
+    subtitle: 'Cuatro años después de No Way Home, Peter Parker regresa completamente solo',
+    excerpt:
+      'Marvel y Sony han publicado el primer tráiler oficial de Spider-Man: Brand New Day, la cuarta entrega en solitario de Tom Holland que llega el 31 de julio de 2026. Esto es todo lo que hemos visto.',
+    category: 'Noticias',
+    author: 'Redacción Spider-Web',
+    readTime: '5 min',
+    publishDate: new Date('2026-03-18'),
+    slug: 'spider-man-brand-new-day-trailer-oficial',
+    image: 'https://image.tmdb.org/t/p/w1280/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg',
+    seoTitle: 'Spider-Man: Brand New Day — Primer tráiler oficial analizado',
+    seoDescription:
+      'Analizamos el primer tráiler oficial de Spider-Man: Brand New Day con Tom Holland. Fecha de estreno, reparto, argumento y todo lo que revela el vídeo.',
+    keywords: ['Spider-Man Brand New Day', 'Tom Holland', 'tráiler', 'Spider-Man 4', 'MCU 2026', 'Brand New Day película'],
+    tags: ['Brand New Day', 'Tom Holland', 'tráiler', 'noticias', 'MCU', '2026'],
+    content: `
+<p>El 18 de marzo de 2026, Tom Holland subió literalmente al Empire State Building para presentar en vivo el primer tráiler oficial de <em>Spider-Man: Brand New Day</em>. Después de meses de rumores, filtraciones y especulaciones, ya tenemos las primeras imágenes reales de la cuarta aventura en solitario del Spider-Man del MCU. Y lo que hemos visto promete.</p>
+
+<h2>El tráiler oficial</h2>
+<p>Antes de entrar en el análisis, aquí tienes el tráiler completo para que lo veas por ti mismo:</p>
+
+<figure>
+  <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:0.75rem;">
+    <iframe
+      src="https://www.youtube.com/embed/8TZMtslA3UY"
+      title="Spider-Man: Brand New Day — Tráiler Oficial"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+      style="position:absolute;top:0;left:0;width:100%;height:100%;"
+    ></iframe>
+  </div>
+  <figcaption>Tráiler oficial de Spider-Man: Brand New Day — estreno el 31 de julio de 2026.</figcaption>
+</figure>
+
+<h2>Un Peter Parker completamente solo</h2>
+<p>La premisa es tan sencilla como devastadora: han pasado cuatro años desde los eventos de <em>No Way Home</em>. Peter Parker sigue siendo Spider-Man, pero absolutamente nadie recuerda quién es. No Ned, no MJ, no la Tía May. El hechizo del Doctor Strange funcionó perfectamente, y Peter ha pagado el precio máximo: una identidad secreta tan secreta que ya no tiene ninguna vida detrás de la máscara.</p>
+
+<p>El tráiler abre con imágenes de un Peter solitario en su apartamento, con el traje tendido como si fuera ropa cualquiera. No hay risas, no hay amigos. Solo el peso de haber tomado la decisión correcta.</p>
+
+<figure>
+  <img src="https://image.tmdb.org/t/p/w1280/zD5v1E4joAzFvmAEytt7fM3ivyT.jpg" alt="Tom Holland como Spider-Man en Brand New Day" />
+  <figcaption>Tom Holland regresa como Peter Parker en una película que lo muestra en su momento más aislado: cuatro años después de borrar su existencia de la memoria de todos.</figcaption>
+</figure>
+
+<h2>El reparto que llega a Brand New Day</h2>
+<p>El tráiler confirma varios fichajes que se venían rumoreando desde hace meses:</p>
+
+<ul>
+  <li><strong>Jon Bernthal como Frank Castle / Punisher</strong> — su aparición breve pero contundente es uno de los momentos más celebrados del tráiler. Punisher y Spider-Man en el mismo fotograma es algo que los fans llevaban años pidiendo.</li>
+  <li><strong>Mark Ruffalo como Bruce Banner / Hulk</strong> — parece que Peter no está tan solo como pensábamos. Hulk aparece en lo que parece una secuencia de acción épica.</li>
+  <li><strong>Michael Mando como Escorpión</strong> — el villano que ya apareció brevemente en Homecoming finalmente tiene su momento.</li>
+  <li><strong>Sadie Sink</strong> — la actriz de Stranger Things aparece en el tráiler sin revelar su personaje, lo que ha generado todo tipo de teorías entre los fans.</li>
+</ul>
+
+<h2>La amenaza central</h2>
+<p>El tráiler es deliberadamente críptico sobre el villano principal, pero deja claro que Peter se enfrenta a algo diferente a todo lo anterior: un patrón de crímenes que apunta a una amenaza sistémica, no a un supervillano individual. Hay imágenes de una Nueva York en caos y una secuencia que sugiere que algo le está pasando al propio Peter a nivel físico, una "evolución" que él mismo no comprende y que parece asustarlo.</p>
+
+<h2>Destin Daniel Cretton en la dirección</h2>
+<p>La película está dirigida por Destin Daniel Cretton, que ya demostró con <em>Shang-Chi</em> que sabe equilibrar la acción de superhéroes con la emoción humana. Con el guion de Chris McKenna y Erik Sommers —los mismos que escribieron <em>Homecoming</em>, <em>Far From Home</em> y <em>No Way Home</em>— hay razones para el optimismo.</p>
+
+<h2>Fecha de estreno: 31 de julio de 2026</h2>
+<p>Marvel y Sony han confirmado el estreno para el <strong>31 de julio de 2026</strong>. Eso nos da poco más de cuatro meses para especular, teorizar y ver el tráiler otras cincuenta veces. Bienvenidos al ritual Spider-Man.</p>
+
+<p>¿Qué es lo que más te ha llamado la atención del tráiler? La aparición de Punisher, la soledad de Peter, o el misterio de Sadie Sink. Hay mucho de lo que hablar antes de julio.</p>
+    `.trim(),
+  },
 ];
 
 async function main() {
