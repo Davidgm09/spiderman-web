@@ -5,49 +5,30 @@ import { notFound } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { RelatedCard } from "@/components/RelatedCard"
 import { Play, ShoppingCart, Calendar, Clock, User, Tv, ArrowLeft, Award, Camera, Mail, CheckCircle, Star } from "lucide-react"
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { AmazonProduct } from "@/components/affiliate/AmazonProduct"
 import { movieService } from "@/lib/database"
-import { renderStars, generateAmazonUrl } from "@/lib/content-helpers"
+import { SITE_URL } from "@/lib/config"
+import { generateAmazonUrl, parseJson } from "@/lib/content-helpers"
+import { Breadcrumb } from "@/components/breadcrumb"
 import type { GalleryImage, CastMember } from "@/lib/json-types"
+
+export const revalidate = 3600
+
+export async function generateStaticParams() {
+  const movies = await movieService.getAll()
+  return movies.map((m) => ({ slug: m.slug }))
+}
 
 type Props = {
   params: Promise<{ slug: string }>
 }
 
-// Función para obtener película por slug desde la base de datos
-async function getMovieBySlug(slug: string) {
-  try {
-    return await movieService.getBySlug(slug);
-  } catch (error) {
-    console.error('Error fetching movie:', error);
-    return null;
-  }
-}
-
-function formatRuntime(duration?: string): string {
-  return duration || 'Duración no disponible';
-}
-
-function formatRevenue(boxOffice?: string): string {
-  return boxOffice || 'No disponible';
-}
-
-// Función para obtener películas relacionadas
-async function getRelatedMovies(currentSlug: string, limit: number = 4) {
-  try {
-    const movies = await movieService.getFeatured(limit + 1);
-    return movies.filter((movie) => movie.slug !== currentSlug).slice(0, limit);
-  } catch (error) {
-    console.error('Error fetching related movies:', error);
-    return [];
-  }
-}
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const movie = await getMovieBySlug(slug)
+  const movie = await movieService.getBySlug(slug).catch(() => null)
   
   if (!movie) {
     return {
@@ -60,15 +41,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ? movie.description.substring(0, 155) + '...'
     : `Descubre ${movie.title}, película de Spider-Man con análisis completo, reparto y dónde verla.`;
 
+  const url = `${SITE_URL}/peliculas/${movie.slug}`;
+
   return {
     title: `${movie.title} (${movie.year}) - Análisis Completo | Spider-World`,
     description,
     keywords: ['Spider-Man', 'película', movie.title, movie.year.toString(), 'análisis', 'reparto'],
+    alternates: { canonical: url },
     openGraph: {
       title: `${movie.title} (${movie.year}) - Análisis Completo | Spider-World`,
       description,
       images: [movie.image],
       type: "article",
+      url,
     },
     twitter: {
       card: "summary_large_image",
@@ -81,66 +66,58 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function MoviePage({ params }: Props) {
   const { slug } = await params
-  const movie = await getMovieBySlug(slug)
+  const movie = await movieService.getBySlug(slug).catch(() => null)
 
   if (!movie) {
     notFound()
   }
 
   // Obtener películas relacionadas
-  const relatedMovies = await getRelatedMovies(slug);
+  const relatedMovies = await movieService.getFeatured(4, slug).catch(() => []);
 
-  const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://spider-world.es'
+  const BASE_URL = SITE_URL
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Movie',
     name: movie.title,
     description: movie.seoDescription || movie.description,
-    image: movie.image || undefined,
+    image: movie.image ? {
+      '@type': 'ImageObject',
+      url: movie.image,
+      width: 300,
+      height: 450,
+    } : undefined,
     url: `${BASE_URL}/peliculas/${movie.slug}`,
-    datePublished: movie.year?.toString(),
+    datePublished: movie.releaseDate || movie.year?.toString(),
     director: movie.director ? { '@type': 'Person', name: movie.director } : undefined,
+    actor: movie.actors?.slice(0, 3).map((name: string) => ({ '@type': 'Person', name })),
+    genre: movie.genre,
     aggregateRating: movie.rating ? {
       '@type': 'AggregateRating',
       ratingValue: movie.rating,
       bestRating: 10,
       worstRating: 0,
+      ratingCount: Math.max(movie.views || 0, 50),
     } : undefined,
     inLanguage: 'es',
   }
 
   // Usar datos reales de la base de datos o fallback
-  const sceneGallery: GalleryImage[] = Array.isArray(movie.sceneImages)
-    ? movie.sceneImages as unknown as GalleryImage[]
-    : movie.sceneImages && typeof movie.sceneImages === 'string'
-    ? JSON.parse(movie.sceneImages) as GalleryImage[]
+  const sceneGallery: GalleryImage[] = parseJson<GalleryImage>(movie.sceneImages).length > 0
+    ? parseJson<GalleryImage>(movie.sceneImages)
     : [
-        {
-          url: movie.image,
-          title: `Escena icónica de ${movie.title}`,
-          description: "Una de las escenas más memorables de la película"
-        },
-        {
-          url: movie.image,
-          title: `Momento épico de ${movie.title}`,
-          description: "Acción y emoción en su máxima expresión"
-        },
-        {
-          url: movie.image,  
-          title: `Gran final de ${movie.title}`,
-          description: "El clímax que todos esperábamos"
-        }
+        { url: movie.image, title: `Escena icónica de ${movie.title}`, description: "Una de las escenas más memorables de la película" },
+        { url: movie.image, title: `Momento épico de ${movie.title}`, description: "Acción y emoción en su máxima expresión" },
+        { url: movie.image, title: `Gran final de ${movie.title}`, description: "El clímax que todos esperábamos" },
       ];
 
   // Usar datos reales del reparto o fallback
-  const castData: CastMember[] = Array.isArray(movie.castWithPhotos)
-    ? movie.castWithPhotos as unknown as CastMember[]
-    : movie.castWithPhotos && typeof movie.castWithPhotos === 'string'
-    ? JSON.parse(movie.castWithPhotos) as CastMember[]
+  const castData: CastMember[] = parseJson<CastMember>(movie.castWithPhotos).length > 0
+    ? parseJson<CastMember>(movie.castWithPhotos)
     : movie.actors?.map((actor: string) => ({
         name: actor,
         character: "Personaje",
-        photo: `https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=400&fit=crop&crop=face`,
+        photo: '/placeholder-user.jpg',
         bio: `Actor en ${movie.title}`
       })) || [];
 
@@ -158,12 +135,14 @@ export default async function MoviePage({ params }: Props) {
             src={movie.image}
             alt={`${movie.title} (${movie.year}) - Película de Spider-Man`}
             fill
+            sizes="100vw"
             className="object-cover opacity-40"
             priority
           />
         </div>
 
         <div className="relative z-10 text-center px-4 max-w-6xl mx-auto">
+          <Breadcrumb items={[{ label: "Películas", href: "/peliculas" }, { label: movie.title }]} />
           <div className="mb-6 flex items-center justify-center gap-4">
             <Link href="/peliculas">
               <Button variant="outline" size="sm" className="border-red-600 text-red-400 hover:bg-red-600 hover:text-white">
@@ -429,7 +408,7 @@ export default async function MoviePage({ params }: Props) {
                       <div key={index} className="bg-gray-800/50 rounded-lg p-6 text-center group hover:bg-gray-800/70 transition-colors">
                         <div className="relative mb-4">
                           <Image
-                            src={actor.image || actor.photo || 'https://via.placeholder.com/300x450/333/fff?text=No+Image'}
+                            src={actor.image || actor.photo || '/placeholder-user.jpg'}
                             alt={actor.name}
                             width={120}
                             height={120}
@@ -543,40 +522,8 @@ export default async function MoviePage({ params }: Props) {
           <div className="container mx-auto px-4">
             <h2 className="text-4xl font-bold text-white mb-12 text-center">Películas Relacionadas</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {relatedMovies.map((relatedMovie) => (
-                <Card key={relatedMovie.id} className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all group">
-                  <CardHeader className="p-0">
-                    <div className="relative">
-                      <Image
-                        src={relatedMovie.image}
-                        alt={`${relatedMovie.title} (${relatedMovie.year})`}
-                        width={300}
-                        height={450}
-                        className="w-full h-64 object-cover rounded-t-lg group-hover:scale-105 transition-transform duration-300"
-                      />
-                      <Badge className="absolute top-2 right-2 bg-yellow-600">
-                        <Star className="w-3 h-3 mr-1" />
-                        {relatedMovie.rating}
-                      </Badge>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="p-4">
-                    <CardTitle className="text-white mb-2 line-clamp-2">
-                      <Link href={`/peliculas/${relatedMovie.slug}`} className="hover:text-red-400 transition-colors">
-                        {relatedMovie.title} ({relatedMovie.year})
-                      </Link>
-                    </CardTitle>
-                    <p className="text-gray-400 text-sm mb-3 line-clamp-2">
-                      {relatedMovie.description}
-                    </p>
-                    <Button asChild size="sm" className="w-full">
-                      <Link href={`/peliculas/${relatedMovie.slug}`}>
-                        <Play className="w-4 h-4 mr-1" />
-                        Ver Análisis
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
+              {relatedMovies.map((item) => (
+                <RelatedCard key={item.id} item={item} basePath="peliculas" icon={Play} />
               ))}
             </div>
           </div>

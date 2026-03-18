@@ -1,14 +1,23 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { characterService } from '@/lib/database';
+import { SITE_URL } from '@/lib/config';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowLeft, Star, Users, BookOpen, Monitor, Eye, Calendar, Zap, Shield, Heart } from 'lucide-react';
+import { Breadcrumb } from '@/components/breadcrumb';
 import { InContentAd, SidebarAd } from '@/components/ads/GoogleAdsense';
 import { AmazonProduct } from '@/components/affiliate/AmazonProduct';
+
+export const revalidate = 3600
+
+export async function generateStaticParams() {
+  const characters = await characterService.getAll()
+  return characters.map((c) => ({ slug: c.slug }))
+}
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -25,16 +34,26 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
+  const url = `${SITE_URL}/personajes/${character.slug}`;
+
   return {
     title: character.seoTitle,
     description: character.seoDescription,
     keywords: character.keywords,
+    alternates: { canonical: url },
     openGraph: {
       title: character.seoTitle,
       description: character.seoDescription,
       images: [character.image],
       type: 'article',
-    }
+      url,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: character.seoTitle,
+      description: character.seoDescription,
+      images: [character.image],
+    },
   };
 }
 
@@ -53,13 +72,26 @@ export default async function CharacterDetailPage({ params }: PageProps) {
   const relatedCharacters = await characterService.getByCategory(character.category, 6);
   const filteredRelated = relatedCharacters.filter(c => c.id !== character.id).slice(0, 4);
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: character.name,
+    description: character.seoDescription,
+    image: character.image,
+    url: `${SITE_URL}/personajes/${character.slug}`,
+    ...(character.firstAppearance && { sameAs: [] }),
+  };
+
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     <div className="min-h-screen bg-black text-white pt-16">
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-br from-red-900/30 via-black to-blue-900/30">
         <div className="absolute inset-0 bg-[url('/images/spider-web-pattern.svg')] opacity-10"></div>
         
         <div className="container mx-auto px-4 relative z-10">
+          <Breadcrumb items={[{ label: "Personajes", href: "/personajes" }, { label: character.name }]} />
           <div className="flex items-center gap-4 mb-8">
             <Link href="/personajes">
               <Button variant="outline" size="sm" className="border-red-600 text-red-400 hover:bg-red-600 hover:text-white">
@@ -362,5 +394,6 @@ export default async function CharacterDetailPage({ params }: PageProps) {
         </div>
       </div>
     </div>
+    </>
   );
 }

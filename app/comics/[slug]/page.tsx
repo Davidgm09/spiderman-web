@@ -9,35 +9,20 @@ import { BookOpen, ShoppingCart, Calendar, User, Building, ArrowLeft, Users, Awa
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { AmazonProduct } from "@/components/affiliate/AmazonProduct"
 import { comicService } from "@/lib/database"
-import { renderStars, generateAmazonUrl } from "@/lib/content-helpers"
+import { SITE_URL } from "@/lib/config"
+import { renderStars, generateAmazonUrl, parseJson } from "@/lib/content-helpers"
+import { Breadcrumb } from "@/components/breadcrumb"
 import type { ConceptArtItem, CoverVariant, ArtistPhoto, PagePreview } from "@/lib/json-types"
+
+export const revalidate = 3600
+
+export async function generateStaticParams() {
+  const comics = await comicService.getAll()
+  return comics.map((c) => ({ slug: c.slug }))
+}
 
 type Props = {
   params: Promise<{ slug: string }>
-}
-
-// Función para obtener cómic por slug desde la base de datos
-async function getComicBySlug(slug: string) {
-  try {
-    const comic = await comicService.getBySlug(slug);
-    if (comic) await comicService.incrementViews(slug).catch(console.error);
-    return comic;
-  } catch (error) {
-    console.error('Error fetching comic:', error);
-    return null;
-  }
-}
-
-
-// Función para obtener cómics relacionados
-async function getRelatedComics(currentSlug: string, limit: number = 4) {
-  try {
-    const comics = await comicService.getFeatured(limit + 1);
-    return comics.filter(comic => comic.slug !== currentSlug).slice(0, limit);
-  } catch (error) {
-    console.error('Error fetching related comics:', error);
-    return [];
-  }
 }
 
 // Función para renderizar estrellas
@@ -56,8 +41,8 @@ const getImportanceColor = (importance: string) => {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const comic = await getComicBySlug(slug)
-  
+  const comic = await comicService.getBySlug(slug).catch(() => null)
+
   if (!comic) {
     return {
       title: "Cómic no encontrado | Spider-World",
@@ -65,23 +50,28 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
   }
 
-  const description = comic.description 
+  const description = comic.description
     ? comic.description.substring(0, 155) + '...'
     : `Descubre ${comic.title}, cómic de Spider-Man con análisis completo, escritores y dónde comprarlo.`;
 
+  const url = `${SITE_URL}/comics/${comic.slug}`;
+  const title = `${comic.title} (${comic.year}) - Análisis Completo | Spider-World`;
+
   return {
-    title: `${comic.title} (${comic.year}) - Análisis Completo | Spider-World`,
+    title,
     description,
     keywords: ['Spider-Man', 'Marvel Comics', 'cómic', comic.title, comic.year, 'análisis'],
+    alternates: { canonical: url },
     openGraph: {
-      title: `${comic.title} (${comic.year}) - Análisis Completo | Spider-World`,
+      title,
       description,
       images: [comic.image],
       type: "article",
+      url,
     },
     twitter: {
       card: "summary_large_image",
-      title: `${comic.title} (${comic.year}) - Análisis Completo | Spider-World`,
+      title,
       description,
       images: [comic.image],
     },
@@ -90,14 +80,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ComicPage({ params }: Props) {
   const { slug } = await params
-  const comic = await getComicBySlug(slug)
-  
+  const comic = await comicService.getBySlug(slug).catch(() => null)
+
   if (!comic) {
     notFound()
   }
 
+  comicService.incrementViews(slug).catch(console.error)
+
   // Obtener cómics relacionados
-  const relatedComics = await getRelatedComics(slug);
+  const relatedComics = await comicService.getFeatured(4, slug).catch(() => []);
 
   return (
     <div className="pt-16">
@@ -113,6 +105,7 @@ export default async function ComicPage({ params }: Props) {
             src={comic.image}
             alt={`${comic.title} - Portada del cómic`}
             fill
+            sizes="100vw"
             className="object-cover opacity-30 blur-sm"
             priority
           />
@@ -120,6 +113,7 @@ export default async function ComicPage({ params }: Props) {
 
         {/* Contenido principal */}
         <div className="relative z-10 text-center px-4 max-w-7xl mx-auto">
+          <Breadcrumb items={[{ label: "Cómics", href: "/comics" }, { label: comic.title }]} />
           {/* Navegación y badges */}
           <div className="mb-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/comics">
@@ -437,7 +431,7 @@ export default async function ComicPage({ params }: Props) {
                     Portadas Variantes
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {(comic.coverVariants as unknown as CoverVariant[]).map((cover, index) => (
+                    {parseJson<CoverVariant>(comic.coverVariants).map((cover, index) => (
                       <div key={index} className="group cursor-pointer">
                         <div className="relative overflow-hidden rounded-lg bg-gray-800">
                           <Image
@@ -472,11 +466,11 @@ export default async function ComicPage({ params }: Props) {
                     Equipo Creativo
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {(comic.artistPhotos as unknown as ArtistPhoto[]).map((artist, index) => (
+                    {parseJson<ArtistPhoto>(comic.artistPhotos).map((artist, index) => (
                       <div key={index} className="bg-gray-800/50 rounded-lg p-6 text-center group hover:bg-gray-800/70 transition-colors">
                         <div className="relative mb-4">
                           <Image
-                            src={artist.photo || 'https://via.placeholder.com/300x300/333/fff?text=No+Image'}
+                            src={artist.photo || '/placeholder-user.jpg'}
                             alt={artist.name}
                             width={120}
                             height={120}
@@ -504,7 +498,7 @@ export default async function ComicPage({ params }: Props) {
                     Vista Previa de Páginas
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {(comic.pagePreview as unknown as PagePreview[]).map((page, index) => (
+                    {parseJson<PagePreview>(comic.pagePreview).map((page, index) => (
                       <div key={index} className="group cursor-pointer">
                         <div className="relative overflow-hidden rounded-lg bg-gray-800">
                           <Image
@@ -541,7 +535,7 @@ export default async function ComicPage({ params }: Props) {
                     Arte Conceptual
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {(comic.conceptArt as unknown as ConceptArtItem[]).map((concept, index) => (
+                    {parseJson<ConceptArtItem>(comic.conceptArt).map((concept, index) => (
                       <div key={index} className="group cursor-pointer">
                         <div className="relative overflow-hidden rounded-lg bg-gray-800">
                           <Image

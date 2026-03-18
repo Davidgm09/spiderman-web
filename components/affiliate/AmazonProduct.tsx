@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { AMAZON_TAG } from '@/lib/config';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -41,13 +42,13 @@ export function AmazonProduct({
   className = ''
 }: AmazonProductProps) {
   const [isClicked, setIsClicked] = useState(false);
-  const amazonTag = process.env.NEXT_PUBLIC_AMAZON_AFFILIATE_TAG || 'spiderweb-20';
+  const amazonTag = AMAZON_TAG;
 
   // Generate Amazon affiliate link
   const generateAmazonLink = () => {
     const query = searchQuery || title;
     const encodedQuery = encodeURIComponent(query);
-    return `https://www.amazon.com/s?k=${encodedQuery}&tag=${amazonTag}&linkCode=ll2&linkId=affiliate-link`;
+    return `https://www.amazon.es/s?k=${encodedQuery}&tag=${amazonTag}`;
   };
 
   // Track affiliate click

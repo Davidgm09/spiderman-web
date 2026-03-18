@@ -10,7 +10,9 @@ import {
   blogService,
 } from '@/lib/database'
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://spider-world.es'
+import { SITE_URL } from '@/lib/config'
+
+const BASE_URL = SITE_URL
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Rutas estáticas
@@ -23,16 +25,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE_URL}/videojuegos`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
     { url: `${BASE_URL}/blog`, lastModified: new Date(), changeFrequency: 'daily', priority: 0.9 },
     { url: `${BASE_URL}/tienda`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 },
+    { url: `${BASE_URL}/sobre-nosotros`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.4 },
+    { url: `${BASE_URL}/aviso-legal`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
+    { url: `${BASE_URL}/privacidad`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
+    { url: `${BASE_URL}/cookies`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
   ]
 
   // Rutas dinámicas
   const [characters, movies, series, comics, games, blogPosts] = await Promise.all([
-    characterService.getAll(),
-    movieService.getAll(),
-    seriesService.getAll(),
-    comicService.getAll(),
-    gameService.getAll(),
-    blogService.getAll(),
+    characterService.getAllSlugs(),
+    movieService.getAllSlugs(),
+    seriesService.getAllSlugs(),
+    comicService.getAllSlugs(),
+    gameService.getAllSlugs(),
+    blogService.getAllSlugs(),
   ])
 
   const characterRoutes: MetadataRoute.Sitemap = characters.map((c) => ({

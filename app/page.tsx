@@ -1,13 +1,13 @@
-import { Suspense } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Star, Calendar, Clock, Play, BookOpen, Gamepad2, Monitor, ShoppingBag, ShoppingCart, Users, TrendingUp, Award } from "lucide-react"
+import { Star, Calendar, Play, BookOpen, Gamepad2, Monitor, ShoppingBag, ShoppingCart, TrendingUp } from "lucide-react"
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { AmazonProduct } from "@/components/affiliate/AmazonProduct"
 import { movieService, comicService, gameService, seriesService, blogService, productService } from "@/lib/database"
+import { SITE_URL } from "@/lib/config"
 import { Movie, Comic, Game, Series, BlogPost, Product } from "@prisma/client"
 
 export const metadata = {
@@ -120,26 +120,52 @@ function SimpleHero() {
 export default async function HomePage() {
   const featuredContent = await getFeaturedContent()
 
-  const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://spider-world.es'
-  const jsonLd = {
+  const BASE_URL = SITE_URL
+
+  const websiteJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'Spider-World',
     url: BASE_URL,
     description: 'La guía definitiva de Spider-Man: películas, cómics, videojuegos, series y más.',
     inLanguage: 'es',
-    publisher: {
-      '@type': 'Organization',
-      name: 'Spider-World',
-      url: BASE_URL,
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${BASE_URL}/buscar?q={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
     },
+  }
+
+  const organizationJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Spider-World',
+    url: BASE_URL,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${BASE_URL}/placeholder-logo.png`,
+      width: 200,
+      height: 60,
+    },
+    description: 'Spider-World es la guía definitiva del universo Spider-Man en español: análisis de películas, cómics, videojuegos, series y personajes.',
+    inLanguage: 'es',
+    foundingDate: '2024',
+    areaServed: { '@type': 'Country', name: 'Spain' },
+    knowsAbout: ['Spider-Man', 'Marvel Comics', 'Cómics', 'Películas de superhéroes', 'Videojuegos Marvel'],
   }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-950 via-gray-900 to-blue-950">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
       />
       {/* Hero Section */}
      {/* Hero Section */}
@@ -203,6 +229,7 @@ export default async function HomePage() {
                     alt={`${movie.title} - Película de Spider-Man`}
                     width={300}
                     height={450}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     className="w-full h-64 object-cover rounded-t-lg group-hover:scale-105 transition-transform duration-300"
                   />
                   <Badge className="absolute top-2 right-2 bg-yellow-600">
@@ -253,6 +280,7 @@ export default async function HomePage() {
                     alt={`${comic.title} - Cómic de Spider-Man`}
                     width={300}
                     height={400}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     className="w-full h-64 object-cover rounded-t-lg group-hover:scale-105 transition-transform duration-300"
                   />
                   <Badge className="absolute top-2 right-2 bg-yellow-600">
@@ -301,6 +329,7 @@ export default async function HomePage() {
                     alt={`${game.title} - Videojuego de Spider-Man`}
                     width={300}
                     height={400}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     className="w-full h-64 object-cover rounded-t-lg group-hover:scale-105 transition-transform duration-300"
                   />
                   <Badge className="absolute top-2 right-2 bg-yellow-600">
@@ -346,6 +375,7 @@ export default async function HomePage() {
                     alt={`${serie.title} - Serie de Spider-Man`}
                     width={300}
                     height={400}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     className="w-full h-64 object-cover rounded-t-lg group-hover:scale-105 transition-transform duration-300"
                   />
                   <Badge className="absolute top-2 right-2 bg-yellow-600">
@@ -391,6 +421,7 @@ export default async function HomePage() {
                     alt={`${post.title} - Blog Spider-World`}
                     width={400}
                     height={300}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     className="w-full h-48 object-cover rounded-t-lg group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>

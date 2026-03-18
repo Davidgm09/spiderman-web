@@ -24,6 +24,13 @@ export const characterService = {
     });
   },
 
+  async getAllSlugs() {
+    return await prisma.character.findMany({
+      where: { isActive: true },
+      select: { slug: true, updatedAt: true },
+    });
+  },
+
   // Obtener personaje por slug
   async getBySlug(slug: string) {
     return await prisma.character.findUnique({
@@ -209,6 +216,13 @@ export const movieService = {
     });
   },
 
+  async getAllSlugs() {
+    return await prisma.movie.findMany({
+      where: { isActive: true },
+      select: { slug: true, updatedAt: true },
+    });
+  },
+
   // Obtener película por slug
   async getBySlug(slug: string) {
     return await prisma.movie.findUnique({
@@ -217,9 +231,9 @@ export const movieService = {
   },
 
   // Obtener películas destacadas
-  async getFeatured(limit: number = 4) {
+  async getFeatured(limit: number = 4, excludeSlug?: string) {
     return await prisma.movie.findMany({
-      where: { isActive: true },
+      where: { isActive: true, ...(excludeSlug && { slug: { not: excludeSlug } }) },
       orderBy: [
         { rating: 'desc' },
         { views: 'desc' }
@@ -247,6 +261,13 @@ export const gameService = {
     });
   },
 
+  async getAllSlugs() {
+    return await prisma.game.findMany({
+      where: { isActive: true },
+      select: { slug: true, updatedAt: true },
+    });
+  },
+
   // Obtener videojuego por slug
   async getBySlug(slug: string) {
     return await prisma.game.findUnique({
@@ -255,9 +276,9 @@ export const gameService = {
   },
 
   // Obtener videojuegos destacados
-  async getFeatured(limit: number = 4) {
+  async getFeatured(limit: number = 4, excludeSlug?: string) {
     return await prisma.game.findMany({
-      where: { isActive: true },
+      where: { isActive: true, ...(excludeSlug && { slug: { not: excludeSlug } }) },
       orderBy: [{ rating: 'desc' }, { views: 'desc' }],
       take: limit,
     });
@@ -282,6 +303,13 @@ export const comicService = {
     });
   },
 
+  async getAllSlugs() {
+    return await prisma.comic.findMany({
+      where: { isActive: true },
+      select: { slug: true, updatedAt: true },
+    });
+  },
+
   // Obtener cómic por slug
   async getBySlug(slug: string) {
     return await prisma.comic.findUnique({
@@ -290,9 +318,9 @@ export const comicService = {
   },
 
   // Obtener cómics destacados
-  async getFeatured(limit: number = 4) {
+  async getFeatured(limit: number = 4, excludeSlug?: string) {
     return await prisma.comic.findMany({
-      where: { isActive: true },
+      where: { isActive: true, ...(excludeSlug && { slug: { not: excludeSlug } }) },
       orderBy: [{ rating: 'desc' }, { views: 'desc' }],
       take: limit,
     });
@@ -320,6 +348,13 @@ export const seriesService = {
     });
   },
 
+  async getAllSlugs() {
+    return await prisma.series.findMany({
+      where: { isActive: true },
+      select: { slug: true, updatedAt: true },
+    });
+  },
+
   // Obtener serie por slug
   async getBySlug(slug: string) {
     return await prisma.series.findUnique({
@@ -328,9 +363,9 @@ export const seriesService = {
   },
 
   // Obtener series destacadas
-  async getFeatured(limit: number = 4) {
+  async getFeatured(limit: number = 4, excludeSlug?: string) {
     return await prisma.series.findMany({
-      where: { isActive: true },
+      where: { isActive: true, ...(excludeSlug && { slug: { not: excludeSlug } }) },
       orderBy: [
         { rating: 'desc' },
         { views: 'desc' }
@@ -351,6 +386,14 @@ export const seriesService = {
 // Funciones para Blog Posts
 export const blogService = {
   // Obtener todos los posts
+  async getAllSlugs() {
+    return await prisma.blogPost.findMany({
+      where: { isPublished: true },
+      select: { slug: true, publishDate: true },
+      orderBy: { publishDate: 'desc' },
+    });
+  },
+
   async getAll() {
     return await prisma.blogPost.findMany({
       where: { isPublished: true },
@@ -552,170 +595,6 @@ export class CacheManager {
         where: { expiresAt: { lt: now } }
       })
     ])
-  }
-}
-
-// Analytics functions para monetización
-export class AnalyticsManager {
-  // Track page view
-  static async trackPageView(
-    pageUrl: string,
-    contentType: string,
-    contentId?: string,
-    title?: string
-  ) {
-    return await prisma.contentAnalytics.upsert({
-      where: { pageUrl },
-      update: {
-        views: { increment: 1 },
-        lastViewAt: new Date(),
-        title,
-        contentType,
-        contentId
-      },
-      create: {
-        pageUrl,
-        title,
-        contentType,
-        contentId,
-        views: 1,
-        uniqueViews: 1,
-        lastViewAt: new Date()
-      }
-    })
-  }
-
-  // Track ad click
-  static async trackAdClick(pageUrl: string) {
-    return await prisma.contentAnalytics.update({
-      where: { pageUrl },
-      data: { adClicks: { increment: 1 } }
-    })
-  }
-
-  // Track affiliate click
-  static async trackAffiliateClick(pageUrl: string, revenue: number = 0) {
-    return await prisma.contentAnalytics.update({
-      where: { pageUrl },
-      data: { 
-        affiliateClicks: { increment: 1 },
-        affiliateRevenue: { increment: revenue }
-      }
-    })
-  }
-
-  // Get analytics for optimization
-  static async getTopPerformingContent(limit: number = 10) {
-    return await prisma.contentAnalytics.findMany({
-      orderBy: [
-        { views: 'desc' },
-        { affiliateClicks: 'desc' }
-      ],
-      take: limit
-    })
-  }
-
-  // Get revenue analytics
-  static async getRevenueAnalytics(days: number = 30) {
-    const since = new Date(Date.now() - days * 24 * 60 * 60 * 1000)
-    
-    return await prisma.contentAnalytics.aggregate({
-      where: { lastViewAt: { gte: since } },
-      _sum: {
-        views: true,
-        adClicks: true,
-        affiliateClicks: true,
-        affiliateRevenue: true
-      }
-    })
-  }
-}
-
-// Favorites system para engagement
-export class FavoritesManager {
-  // Add to favorites
-  static async addFavorite(
-    userId: string,
-    contentType: string,
-    contentId: string,
-    title: string,
-    imageUrl?: string
-  ) {
-    return await prisma.userFavorite.create({
-      data: {
-        userId,
-        contentType,
-        contentId,
-        title,
-        imageUrl
-      }
-    })
-  }
-
-  // Remove from favorites
-  static async removeFavorite(userId: string, contentType: string, contentId: string) {
-    return await prisma.userFavorite.delete({
-      where: {
-        userId_contentType_contentId: {
-          userId,
-          contentType,
-          contentId
-        }
-      }
-    })
-  }
-
-  // Get user favorites
-  static async getUserFavorites(userId: string, contentType?: string) {
-    return await prisma.userFavorite.findMany({
-      where: {
-        userId,
-        ...(contentType && { contentType })
-      },
-      orderBy: { createdAt: 'desc' }
-    })
-  }
-
-  // Check if favorited
-  static async isFavorited(userId: string, contentType: string, contentId: string) {
-    const favorite = await prisma.userFavorite.findUnique({
-      where: {
-        userId_contentType_contentId: {
-          userId,
-          contentType,
-          contentId
-        }
-      }
-    })
-    return !!favorite
-  }
-}
-
-// Search tracking para content optimization
-export class SearchManager {
-  // Track search query
-  static async trackSearch(query: string, results: number, userId?: string) {
-    return await prisma.searchQuery.create({
-      data: {
-        query: query.toLowerCase().trim(),
-        results,
-        userId
-      }
-    })
-  }
-
-  // Get popular searches
-  static async getPopularSearches(days: number = 30, limit: number = 10) {
-    const since = new Date(Date.now() - days * 24 * 60 * 60 * 1000)
-    
-    return await prisma.searchQuery.groupBy({
-      by: ['query'],
-      where: { createdAt: { gte: since } },
-      _count: { query: true },
-      _sum: { results: true },
-      orderBy: { _count: { query: 'desc' } },
-      take: limit
-    })
   }
 }
 

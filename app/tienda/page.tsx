@@ -5,6 +5,7 @@ import { Star, ShoppingCart, Heart, Truck, Shield, RotateCcw, Filter } from "luc
 import Image from "next/image"
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { productService } from "@/lib/database"
+import { AMAZON_TAG } from "@/lib/config"
 import type { Metadata } from "next"
 import { Product } from "@prisma/client"
 
@@ -59,9 +60,8 @@ function formatFeatures(features: string | string[]): string[] {
 
 // Función para generar URL de Amazon
 function generateAmazonUrl(product: Product): string {
-  const amazonTag = process.env.NEXT_PUBLIC_AMAZON_AFFILIATE_TAG || 'spiderweb-20';
   const query = encodeURIComponent(`${product.title} Spider-Man`);
-  return `https://www.amazon.com/s?k=${query}&tag=${amazonTag}`;
+  return `https://www.amazon.es/s?k=${query}&tag=${AMAZON_TAG}`;
 }
 
 export default async function TiendaPage() {
@@ -104,6 +104,15 @@ export default async function TiendaPage() {
           </div>
         </div>
       </section>
+
+      {/* Aviso de afiliado */}
+      <div className="max-w-7xl mx-auto px-4 mb-2">
+        <p className="text-xs text-gray-500 text-center bg-gray-900/50 border border-gray-700/30 rounded-lg py-2 px-4">
+          <strong className="text-gray-400">Aviso:</strong> Spider-World participa en el Programa de Afiliados de Amazon EU.
+          Si compras a través de nuestros enlaces, podríamos recibir una pequeña comisión sin coste adicional para ti.{" "}
+          <a href="/aviso-legal" className="text-red-400 hover:text-red-300 underline">Más información</a>.
+        </p>
+      </div>
 
       {/* Benefits */}
       <section className="py-12 px-4 max-w-7xl mx-auto">

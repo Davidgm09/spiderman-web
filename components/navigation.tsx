@@ -1,14 +1,26 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { Button } from "@/components/ui/button"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Search } from "lucide-react"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 
 export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(false)
+  const searchRef = useRef<HTMLInputElement>(null)
   const pathname = usePathname()
+  const router = useRouter()
+
+  function handleSearchSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    const q = searchRef.current?.value.trim()
+    if (q && q.length >= 2) {
+      router.push(`/buscar?q=${encodeURIComponent(q)}`)
+      setSearchOpen(false)
+    }
+  }
 
   const navItems = [
     { href: "/", label: "Inicio" },
@@ -54,11 +66,44 @@ export function Navigation() {
             ))}
           </div>
 
+          {/* Search button (desktop) */}
+          <button
+            onClick={() => { setSearchOpen(!searchOpen); setTimeout(() => searchRef.current?.focus(), 50) }}
+            className="hidden lg:flex items-center justify-center w-9 h-9 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 transition-colors"
+            aria-label="Buscar"
+          >
+            <Search className="w-5 h-5" />
+          </button>
+
           {/* Mobile Menu Button */}
-          <Button className="lg:hidden bg-red-600 hover:bg-red-700" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </Button>
+          <div className="flex lg:hidden items-center gap-2">
+            <button
+              onClick={() => { setSearchOpen(!searchOpen); setTimeout(() => searchRef.current?.focus(), 50) }}
+              className="flex items-center justify-center w-9 h-9 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 transition-colors"
+              aria-label="Buscar"
+            >
+              <Search className="w-5 h-5" />
+            </button>
+            <Button className="bg-red-600 hover:bg-red-700" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </Button>
+          </div>
         </div>
+
+        {/* Search bar dropdown */}
+        {searchOpen && (
+          <div className="border-t border-red-600/20 py-3">
+            <form onSubmit={handleSearchSubmit} className="relative">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+              <input
+                ref={searchRef}
+                type="search"
+                placeholder="Busca películas, personajes, cómics..."
+                className="w-full bg-gray-900 border border-gray-700 focus:border-red-500 rounded-lg pl-9 pr-4 py-2 text-white placeholder-gray-500 outline-none text-sm transition-colors"
+              />
+            </form>
+          </div>
+        )}
 
         {/* Mobile Navigation */}
         {isMenuOpen && (

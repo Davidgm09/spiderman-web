@@ -1,5 +1,4 @@
 import Link from "next/link"
-import { Facebook, Twitter, Instagram, Youtube } from "lucide-react"
 
 export function Footer() {
   return (
@@ -20,20 +19,6 @@ export function Footer() {
               Tu portal definitivo al Spider-Verse. Análisis, noticias, productos y todo sobre Peter Parker, Miles
               Morales y el multiverso arácnido.
             </p>
-            <div className="flex space-x-4">
-              <Link href="#" className="text-gray-400 hover:text-red-500 transition-colors">
-                <Facebook className="w-5 h-5" />
-              </Link>
-              <Link href="#" className="text-gray-400 hover:text-red-500 transition-colors">
-                <Twitter className="w-5 h-5" />
-              </Link>
-              <Link href="#" className="text-gray-400 hover:text-red-500 transition-colors">
-                <Instagram className="w-5 h-5" />
-              </Link>
-              <Link href="#" className="text-gray-400 hover:text-red-500 transition-colors">
-                <Youtube className="w-5 h-5" />
-              </Link>
-            </div>
           </div>
 
           {/* Content Links */}
@@ -117,6 +102,16 @@ export function Footer() {
               <li>
                 <Link href="/contacto" className="text-gray-400 hover:text-red-500 transition-colors">
                   Contacto
+                </Link>
+              </li>
+              <li>
+                <Link href="/aviso-legal" className="text-gray-400 hover:text-red-500 transition-colors">
+                  Aviso Legal
+                </Link>
+              </li>
+              <li>
+                <Link href="/sobre-nosotros" className="text-gray-400 hover:text-red-500 transition-colors">
+                  Sobre Nosotros
                 </Link>
               </li>
             </ul>

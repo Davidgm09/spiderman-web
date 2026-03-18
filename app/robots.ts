@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next'
+import { SITE_URL } from '@/lib/config'
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://spider-world.es'
+const BASE_URL = SITE_URL
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -8,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/admin/', '/api/'],
+        disallow: ['/admin/', '/api/', '/buscar'],
       },
     ],
     sitemap: `${BASE_URL}/sitemap.xml`,

@@ -5,11 +5,20 @@ import { notFound } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Calendar, Clock, User, Eye, ArrowLeft, Tag } from "lucide-react"
+import { Breadcrumb } from "@/components/breadcrumb"
 import { SidebarAd } from "@/components/ads/GoogleAdsense"
 import { blogService } from "@/lib/database"
+import { SITE_URL } from "@/lib/config"
 import { BlogPost } from "@prisma/client"
 import { ViewTracker } from "@/components/blog/ViewTracker"
 import { ShareButtons } from "@/components/blog/ShareButtons"
+
+export const revalidate = 3600
+
+export async function generateStaticParams() {
+  const posts = await blogService.getAll()
+  return posts.map((p) => ({ slug: p.slug }))
+}
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -27,15 +36,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) return { title: "Artículo no encontrado | Spider-World" }
 
   const description = post.seoDescription || post.excerpt.substring(0, 155)
+  const url = `${SITE_URL}/blog/${post.slug}`;
+
   return {
     title: post.seoTitle || `${post.title} | Spider-World Blog`,
     description,
     keywords: post.keywords,
+    alternates: { canonical: url },
     openGraph: {
       title: post.title,
       description,
       images: post.image ? [post.image] : [],
       type: "article",
+      url,
       publishedTime: post.publishDate.toISOString(),
       authors: [post.author],
     },
@@ -55,18 +68,25 @@ export default async function BlogPostPage({ params }: Props) {
 
   const relatedPosts = await blogService.getByCategory(post.category, slug, 3)
 
-  const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://spider-world.es'
+  const BASE_URL = SITE_URL
   const postUrl = `${BASE_URL}/blog/${post.slug}`
+
+  const wordCount = post.content.replace(/<[^>]*>/g, '').split(/\s+/).filter(Boolean).length
 
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     headline: post.title,
     description: post.seoDescription || post.excerpt,
-    image: post.image || undefined,
+    image: post.image ? {
+      '@type': 'ImageObject',
+      url: post.image,
+      width: 1200,
+      height: 630,
+    } : undefined,
     url: postUrl,
     datePublished: post.publishDate.toISOString(),
-    dateModified: post.publishDate.toISOString(),
+    dateModified: post.updatedAt.toISOString(),
     author: {
       '@type': 'Person',
       name: post.author,
@@ -75,6 +95,12 @@ export default async function BlogPostPage({ params }: Props) {
       '@type': 'Organization',
       name: 'Spider-World',
       url: BASE_URL,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${BASE_URL}/placeholder-logo.png`,
+        width: 200,
+        height: 60,
+      },
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
@@ -83,6 +109,7 @@ export default async function BlogPostPage({ params }: Props) {
     keywords: post.keywords.join(', '),
     articleSection: post.category,
     inLanguage: 'es',
+    wordCount,
   }
 
   return (
@@ -100,6 +127,7 @@ export default async function BlogPostPage({ params }: Props) {
             src={post.image}
             alt={post.title}
             fill
+            sizes="100vw"
             className="object-cover"
             priority
           />
@@ -107,6 +135,7 @@ export default async function BlogPostPage({ params }: Props) {
         <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/60 to-transparent" />
 
         <div className="relative z-10 w-full px-4 pb-10 max-w-5xl mx-auto">
+          <Breadcrumb items={[{ label: "Blog", href: "/blog" }, { label: post.category, href: `/blog?categoria=${post.category}` }, { label: post.title }]} />
           <Link href="/blog">
             <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white mb-4 -ml-2">
               <ArrowLeft className="w-4 h-4 mr-1" />

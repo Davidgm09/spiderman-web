@@ -6,6 +6,7 @@ import { ArrowLeft, Users, Star, Zap, Shield, Image, Clock, Skull, Calendar, Sho
 import Link from 'next/link';
 import { InContentAd, SidebarAd } from '@/components/ads/GoogleAdsense';
 import { AmazonProduct } from '@/components/affiliate/AmazonProduct';
+import { AMAZON_TAG } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: 'Personajes de Spider-Man y Marvel | Spider-World',
@@ -277,7 +278,7 @@ export default async function PersonajesPage() {
                 asChild
               >
                 <a 
-                  href={`https://www.amazon.com/s?k=Spider-Man+Marvel+characters+figures&tag=${process.env.NEXT_PUBLIC_AMAZON_AFFILIATE_TAG || 'spiderweb-20'}`}
+                  href={`https://www.amazon.es/s?k=Spider-Man+Marvel+characters+figures&tag=${AMAZON_TAG}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >

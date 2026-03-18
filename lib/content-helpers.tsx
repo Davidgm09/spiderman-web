@@ -1,4 +1,5 @@
 import { Star } from 'lucide-react';
+import { AMAZON_TAG } from '@/lib/config';
 
 /**
  * Renders a 5-star rating row (input scale 0–10).
@@ -24,12 +25,27 @@ export function renderStars(rating: number) {
 }
 
 /**
+ * Safely parses a Prisma Json field into a typed array.
+ * Handles: null/undefined → [], already-parsed arrays, and JSON strings.
+ * Never throws — returns [] on any error.
+ */
+export function parseJson<T>(value: unknown): T[] {
+  if (value == null) return [];
+  if (Array.isArray(value)) return value as T[];
+  if (typeof value === 'string') {
+    try { return JSON.parse(value) as T[]; } catch { return []; }
+  }
+  return [];
+}
+
+/**
  * Builds an Amazon affiliate search URL.
+ * Uses amazon.es as the default store for the Spanish market.
+ * To switch to OneLink in the future, replace the base URL with your OneLink URL.
  * Pass the full search query (title + relevant keywords).
  */
 export function generateAmazonUrl(searchQuery: string): string {
-  const tag = process.env.NEXT_PUBLIC_AMAZON_AFFILIATE_TAG || 'spiderweb-20';
-  return `https://www.amazon.com/s?k=${encodeURIComponent(searchQuery)}&tag=${tag}`;
+  return `https://www.amazon.es/s?k=${encodeURIComponent(searchQuery)}&tag=${AMAZON_TAG}`;
 }
 
 /**

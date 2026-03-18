@@ -5,43 +5,31 @@ import { notFound } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Gamepad2, ShoppingCart, Calendar, Monitor, User, ArrowLeft, Award, Camera, Users, BookOpen, Play, Mail, CheckCircle, Star, Palette } from "lucide-react"
+import { Gamepad2, ShoppingCart, Calendar, Monitor, User, ArrowLeft, Award, Camera, Users, Play, Mail, CheckCircle, Star, Palette } from "lucide-react"
+import { RelatedCard } from "@/components/RelatedCard"
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { AmazonProduct } from "@/components/affiliate/AmazonProduct"
 import { gameService } from "@/lib/database"
-import { renderStars, generateAmazonUrl, convertToEmbedUrl } from "@/lib/content-helpers"
+import { SITE_URL } from "@/lib/config"
+import { renderStars, generateAmazonUrl, convertToEmbedUrl, parseJson } from "@/lib/content-helpers"
+import { Breadcrumb } from "@/components/breadcrumb"
 import type { GalleryImage, ConceptArtItem, CharacterImage } from "@/lib/json-types"
 
+
+export const revalidate = 3600
+
+export async function generateStaticParams() {
+  const games = await gameService.getAll()
+  return games.map((g) => ({ slug: g.slug }))
+}
 
 type Props = {
   params: Promise<{ slug: string }>
 }
 
-// Función para obtener videojuego por slug desde la base de datos
-async function getGameBySlug(slug: string) {
-  try {
-    return await gameService.getBySlug(slug);
-  } catch (error) {
-    console.error('Error fetching game:', error);
-    return null;
-  }
-}
-
-
-// Función para obtener videojuegos relacionados
-async function getRelatedGames(currentSlug: string, limit: number = 4) {
-  try {
-    const games = await gameService.getFeatured(limit + 1);
-    return games.filter((game) => game.slug !== currentSlug).slice(0, limit);
-  } catch (error) {
-    console.error('Error fetching related games:', error);
-    return [];
-  }
-}
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const game = await getGameBySlug(slug)
+  const game = await gameService.getBySlug(slug).catch(() => null)
   
   if (!game) {
     return {
@@ -54,15 +42,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ? game.description.substring(0, 155) + '...'
     : `Descubre ${game.title}, videojuego de Spider-Man con análisis completo, gameplay y dónde comprarlo.`;
 
+  const url = `${SITE_URL}/videojuegos/${game.slug}`;
+
   return {
     title: `${game.title} (${game.year}) - Análisis Completo | Spider-World`,
     description,
     keywords: ['Spider-Man', 'videojuego', game.title, game.year.toString(), 'análisis', 'gameplay'],
+    alternates: { canonical: url },
     openGraph: {
       title: `${game.title} (${game.year}) - Análisis Completo | Spider-World`,
       description,
       images: [game.image],
       type: "article",
+      url,
     },
     twitter: {
       card: "summary_large_image",
@@ -75,29 +67,38 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function GamePage({ params }: Props) {
   const { slug } = await params
-  const game = await getGameBySlug(slug)
+  const game = await gameService.getBySlug(slug).catch(() => null)
 
   if (!game) {
     notFound()
   }
 
   // Obtener videojuegos relacionados
-  const relatedGames = await getRelatedGames(slug);
+  const relatedGames = await gameService.getFeatured(4, slug).catch(() => []);
 
-  const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://spider-world.es'
+  const BASE_URL = SITE_URL
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'VideoGame',
     name: game.title,
     description: game.seoDescription || game.description,
-    image: game.image || undefined,
+    image: game.image ? {
+      '@type': 'ImageObject',
+      url: game.image,
+      width: 300,
+      height: 450,
+    } : undefined,
     url: `${BASE_URL}/videojuegos/${game.slug}`,
     datePublished: game.year?.toString(),
+    genre: game.genre,
+    gamePlatform: game.platform,
+    author: { '@type': 'Organization', name: game.developer },
     aggregateRating: game.rating ? {
       '@type': 'AggregateRating',
       ratingValue: game.rating,
       bestRating: 10,
       worstRating: 0,
+      ratingCount: Math.max(game.views || 0, 50),
     } : undefined,
     inLanguage: 'es',
   }
@@ -116,12 +117,14 @@ export default async function GamePage({ params }: Props) {
             src={game.image}
             alt={`${game.title} - Videojuego de Spider-Man`}
             fill
+            sizes="100vw"
             className="object-cover opacity-40"
             priority
           />
         </div>
 
         <div className="relative z-10 text-center px-4 max-w-6xl mx-auto">
+          <Breadcrumb items={[{ label: "Videojuegos", href: "/videojuegos" }, { label: game.title }]} />
           <div className="mb-6 flex items-center justify-center gap-4">
             <Link href="/videojuegos">
               <Button variant="outline" size="sm" className="border-green-600 text-green-400 hover:bg-green-600 hover:text-white">
@@ -353,7 +356,7 @@ export default async function GamePage({ params }: Props) {
                     Galería de Capturas
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {(game.screenshotImages as unknown as GalleryImage[]).map((screenshot, index) => (
+                    {parseJson<GalleryImage>(game.screenshotImages).map((screenshot, index) => (
                       <div key={index} className="group cursor-pointer">
                         <div className="relative overflow-hidden rounded-lg">
                           <Image
@@ -385,11 +388,11 @@ export default async function GamePage({ params }: Props) {
                     Personajes Principales
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {(game.characterImages as unknown as CharacterImage[]).slice(0, 6).map((character, index) => (
+                    {parseJson<CharacterImage>(game.characterImages).slice(0, 6).map((character, index) => (
                       <div key={index} className="bg-gray-800/50 rounded-lg p-6 text-center group hover:bg-gray-800/70 transition-colors">
                         <div className="relative mb-4">
                           <Image
-                            src={character.image || 'https://via.placeholder.com/300x450/333/fff?text=No+Image'}
+                            src={character.image || '/placeholder-user.jpg'}
                             alt={character.name}
                             width={120}
                             height={120}
@@ -418,7 +421,7 @@ export default async function GamePage({ params }: Props) {
                     Arte Conceptual
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {(game.conceptArt as unknown as ConceptArtItem[]).map((art, index) => (
+                    {parseJson<ConceptArtItem>(game.conceptArt).map((art, index) => (
                       <div key={index} className="group cursor-pointer">
                         <div className="relative overflow-hidden rounded-lg">
                           <Image
@@ -525,40 +528,8 @@ export default async function GamePage({ params }: Props) {
           <div className="container mx-auto px-4">
             <h2 className="text-4xl font-bold text-white mb-12 text-center">Videojuegos Relacionados</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {relatedGames.map((relatedGame) => (
-                <Card key={relatedGame.id} className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all group">
-                  <CardHeader className="p-0">
-                    <div className="relative">
-                      <Image
-                        src={relatedGame.image}
-                        alt={`${relatedGame.title} (${relatedGame.year})`}
-                        width={300}
-                        height={450}
-                        className="w-full h-64 object-cover rounded-t-lg group-hover:scale-105 transition-transform duration-300"
-                      />
-                      <Badge className="absolute top-2 right-2 bg-yellow-600">
-                        <Star className="w-3 h-3 mr-1" />
-                        {relatedGame.rating}
-                      </Badge>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="p-4">
-                    <CardTitle className="text-white mb-2 line-clamp-2">
-                      <Link href={`/videojuegos/${relatedGame.slug}`} className="hover:text-green-400 transition-colors">
-                        {relatedGame.title} ({relatedGame.year})
-                      </Link>
-                    </CardTitle>
-                    <p className="text-gray-400 text-sm mb-3 line-clamp-2">
-                      {relatedGame.description}
-                    </p>
-                    <Button asChild size="sm" className="w-full">
-                      <Link href={`/videojuegos/${relatedGame.slug}`}>
-                        <Gamepad2 className="w-4 h-4 mr-1" />
-                        Ver Análisis
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
+              {relatedGames.map((item) => (
+                <RelatedCard key={item.id} item={item} basePath="videojuegos" icon={Gamepad2} />
               ))}
             </div>
           </div>

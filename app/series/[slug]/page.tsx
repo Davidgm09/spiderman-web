@@ -5,14 +5,23 @@ import { notFound } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Play, ShoppingCart, Calendar, Tv, Users, Clock, ArrowLeft, Award, Camera, BookOpen, Eye, Star, Palette } from "lucide-react"
+import { Play, ShoppingCart, Calendar, Tv, Users, Clock, ArrowLeft, Award, Camera, Eye, Star, Palette } from "lucide-react"
+import { RelatedCard } from "@/components/RelatedCard"
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { AmazonProduct } from "@/components/affiliate/AmazonProduct"
 import { seriesService } from "@/lib/database"
-import { Series } from "@prisma/client"
-import { renderStars, generateAmazonUrl } from "@/lib/content-helpers"
-import type { GalleryImage, ConceptArtItem, CastMember, EpisodeImage, BehindScene } from "@/lib/json-types"
+import { SITE_URL } from "@/lib/config"
+import { Breadcrumb } from "@/components/breadcrumb"
+import { renderStars, generateAmazonUrl, parseJson } from "@/lib/content-helpers"
+import type { ConceptArtItem, CastMember, EpisodeImage, BehindScene } from "@/lib/json-types"
 
+
+export const revalidate = 3600
+
+export async function generateStaticParams() {
+  const series = await seriesService.getAll()
+  return series.map((s) => ({ slug: s.slug }))
+}
 
 type SceneImage = {
   url: string;
@@ -27,15 +36,6 @@ type Props = {
   params: Promise<{ slug: string }>
 }
 
-// Función para obtener serie por slug desde la base de datos
-async function getSeriesBySlug(slug: string): Promise<Series | null> {
-  try {
-    return await seriesService.getBySlug(slug);
-  } catch (error) {
-    console.error('Error fetching series:', error);
-    return null;
-  }
-}
 
 // Función para obtener imágenes de galería desde TMDB
 async function getSeriesGalleryImages(tmdbId: string) {
@@ -53,20 +53,9 @@ async function getSeriesGalleryImages(tmdbId: string) {
 }
 
 
-// Función para obtener series relacionadas
-async function getRelatedSeries(currentSlug: string, limit: number = 4) {
-  try {
-    const series = await seriesService.getFeatured(limit + 1);
-    return series.filter((serie) => serie.slug !== currentSlug).slice(0, limit);
-  } catch (error) {
-    console.error('Error fetching related series:', error);
-    return [];
-  }
-}
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const series = await getSeriesBySlug(slug)
+  const series = await seriesService.getBySlug(slug).catch(() => null)
   
   if (!series) {
     return {
@@ -79,15 +68,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ? series.description.substring(0, 155) + '...'
     : `Descubre ${series.title}, serie de Spider-Man con análisis completo, episodios y dónde verla.`;
 
+  const url = `${SITE_URL}/series/${series.slug}`;
+
   return {
     title: `${series.title} (${series.year}) - Análisis Completo | Spider-World`,
     description,
     keywords: ['Spider-Man', 'serie animada', series.title, series.year.toString(), 'análisis', 'episodios'],
+    alternates: { canonical: url },
     openGraph: {
       title: `${series.title} (${series.year}) - Análisis Completo | Spider-World`,
       description,
       images: [series.image],
       type: "article",
+      url,
     },
     twitter: {
       card: "summary_large_image",
@@ -100,32 +93,42 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function SeriesPage({ params }: Props) {
   const { slug } = await params
-  const series = await getSeriesBySlug(slug)
+  const series = await seriesService.getBySlug(slug).catch(() => null)
 
   if (!series) {
     notFound()
   }
 
   // Obtener series relacionadas
-  const relatedSeries = await getRelatedSeries(slug);
+  const relatedSeries = await seriesService.getFeatured(4, slug).catch(() => []);
 
   // Obtener imágenes de galería desde TMDB si hay tmdbId
   const galleryImages = series.tmdbId ? await getSeriesGalleryImages(series.tmdbId.toString()) : null;
 
-  const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://spider-world.es'
+  const BASE_URL = SITE_URL
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'TVSeries',
     name: series.title,
     description: series.seoDescription || series.description,
-    image: series.image || undefined,
+    image: series.image ? {
+      '@type': 'ImageObject',
+      url: series.image,
+      width: 300,
+      height: 450,
+    } : undefined,
     url: `${BASE_URL}/series/${series.slug}`,
-    startDate: series.year?.toString(),
+    startDate: series.firstAirDate || series.year?.toString(),
+    endDate: series.lastAirDate || series.endYear || undefined,
+    numberOfSeasons: series.seasons || undefined,
+    numberOfEpisodes: series.episodes || undefined,
+    genre: series.genre,
     aggregateRating: series.rating ? {
       '@type': 'AggregateRating',
       ratingValue: series.rating,
       bestRating: 10,
       worstRating: 0,
+      ratingCount: Math.max(series.views || 0, 50),
     } : undefined,
     inLanguage: 'es',
   }
@@ -144,12 +147,14 @@ export default async function SeriesPage({ params }: Props) {
             src={series.image}
             alt={`${series.title} - Serie de Spider-Man`}
             fill
+            sizes="100vw"
             className="object-cover opacity-40"
             priority
           />
         </div>
 
         <div className="relative z-10 text-center px-4 max-w-6xl mx-auto">
+          <Breadcrumb items={[{ label: "Series", href: "/series" }, { label: series.title }]} />
           <div className="mb-6 flex items-center justify-center gap-4">
             <Link href="/series">
               <Button variant="outline" size="sm" className="border-purple-600 text-purple-400 hover:bg-purple-600 hover:text-white">
@@ -468,7 +473,7 @@ export default async function SeriesPage({ params }: Props) {
                     // Use TMDB gallery images if available, otherwise fallback to default structure
                     const imagesToDisplay: SceneImage[] = [
                       // Use the gallery images from API directly (they already have complete URLs)
-                      ...(galleryImages as unknown as SceneImage[] || []).map((img, index) => ({
+                      ...parseJson<SceneImage>(galleryImages).map((img, index) => ({
                         url: img.url, // API already provides complete URLs
                         title: img.title || `Escena ${index + 1}`,
                         description: img.description || "Una imagen de la serie",
@@ -548,7 +553,7 @@ export default async function SeriesPage({ params }: Props) {
                     Episodios Destacados
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {(series.episodeImages as unknown as EpisodeImage[]).map((episode, index) => (
+                    {parseJson<EpisodeImage>(series.episodeImages).map((episode, index) => (
                       <div key={index} className="group cursor-pointer">
                         <div className="relative overflow-hidden rounded-lg bg-gray-800">
                           <Image
@@ -585,11 +590,11 @@ export default async function SeriesPage({ params }: Props) {
                     Reparto y Voces
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {(series.castPhotos as unknown as CastMember[]).map((actor, index) => (
+                    {parseJson<CastMember>(series.castPhotos).map((actor, index) => (
                       <div key={index} className="bg-gray-800/50 rounded-lg p-6 text-center group hover:bg-gray-800/70 transition-colors">
                         <div className="relative mb-4">
                           <Image
-                            src={actor.image || actor.photo || 'https://via.placeholder.com/300x450/333/fff?text=No+Image'}
+                            src={actor.image || actor.photo || '/placeholder-user.jpg'}
                             alt={actor.name}
                             width={120}
                             height={120}
@@ -617,7 +622,7 @@ export default async function SeriesPage({ params }: Props) {
                     Detrás de Cámaras
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {(series.behindScenes as unknown as BehindScene[]).map((behind, index) => (
+                    {parseJson<BehindScene>(series.behindScenes).map((behind, index) => (
                       <div key={index} className="group cursor-pointer">
                         <div className="relative overflow-hidden rounded-lg bg-gray-800">
                           <Image
@@ -654,7 +659,7 @@ export default async function SeriesPage({ params }: Props) {
                     Arte Conceptual
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {(series.conceptArt as unknown as ConceptArtItem[]).map((concept, index) => (
+                    {parseJson<ConceptArtItem>(series.conceptArt).map((concept, index) => (
                       <div key={index} className="group cursor-pointer">
                         <div className="relative overflow-hidden rounded-lg bg-gray-800">
                           <Image
@@ -739,40 +744,8 @@ export default async function SeriesPage({ params }: Props) {
           <div className="container mx-auto px-4">
             <h2 className="text-4xl font-bold text-white mb-12 text-center">Series Relacionadas</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {relatedSeries.map((relatedSerie) => (
-                <Card key={relatedSerie.id} className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all group">
-                  <CardHeader className="p-0">
-                    <div className="relative">
-                      <Image
-                        src={relatedSerie.image}
-                        alt={`${relatedSerie.title} (${relatedSerie.year})`}
-                        width={300}
-                        height={450}
-                        className="w-full h-64 object-cover rounded-t-lg group-hover:scale-105 transition-transform duration-300"
-                      />
-                      <Badge className="absolute top-2 right-2 bg-yellow-600">
-                        <Star className="w-3 h-3 mr-1" />
-                        {relatedSerie.rating}
-                      </Badge>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="p-4">
-                    <CardTitle className="text-white mb-2 line-clamp-2">
-                      <Link href={`/series/${relatedSerie.slug}`} className="hover:text-purple-400 transition-colors">
-                        {relatedSerie.title} ({relatedSerie.year})
-                      </Link>
-                    </CardTitle>
-                    <p className="text-gray-400 text-sm mb-3 line-clamp-2">
-                      {relatedSerie.description}
-                    </p>
-                    <Button asChild size="sm" className="w-full">
-                      <Link href={`/series/${relatedSerie.slug}`}>
-                        <Play className="w-4 h-4 mr-1" />
-                        Ver Análisis
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
+              {relatedSeries.map((item) => (
+                <RelatedCard key={item.id} item={item} basePath="series" icon={Play} />
               ))}
             </div>
           </div>

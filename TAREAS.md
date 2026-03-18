@@ -29,8 +29,9 @@
 ## 🟢 Mejoras opcionales
 
 - [ ] **Panel de administración** para crear/editar artículos del blog desde el navegador (sin tocar código)
-- [ ] **Buscador** en el sitio (películas, personajes, artículos)
-- [ ] **Breadcrumbs** en páginas de detalle (mejora SEO)
+
+
+
 - [ ] **Google Search Console**: dar de alta el sitio y enviar el sitemap tras publicar
   - URL del sitemap: `https://tu-dominio.es/sitemap.xml`
 
