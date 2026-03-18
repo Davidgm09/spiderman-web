@@ -622,7 +622,7 @@ const BLOG_POSTS = [
     readTime: '5 min',
     publishDate: new Date('2026-03-18'),
     slug: 'spider-man-brand-new-day-trailer-oficial',
-    image: 'https://image.tmdb.org/t/p/w1280/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg',
+    image: 'https://posterspy.com/wp-content/uploads/2025/04/SPIDER-MAN-BRAND-NEW-DAY.jpg',
     seoTitle: 'Spider-Man: Brand New Day — Primer tráiler oficial analizado',
     seoDescription:
       'Analizamos el primer tráiler oficial de Spider-Man: Brand New Day con Tom Holland. Fecha de estreno, reparto, argumento y todo lo que revela el vídeo.',

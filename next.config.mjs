@@ -23,6 +23,7 @@ const nextConfig = {
       { protocol: 'https', hostname: 'static.wikia.nocookie.net' },
       { protocol: 'https', hostname: 'vignette.wikia.nocookie.net' },
       { protocol: 'https', hostname: 'vignette3.wikia.nocookie.net' },
+      { protocol: 'https', hostname: 'posterspy.com' },
     ],
   },
   async redirects() {
