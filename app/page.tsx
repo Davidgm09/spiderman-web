@@ -220,7 +220,7 @@ export default async function HomePage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white/40 text-white hover:bg-white/10 px-8 py-4 text-lg"
+                className="bg-white text-black border-white hover:bg-gray-200 transition-colors duration-200 px-8 py-4 text-lg"
               >
                 <Play className="mr-2 h-5 w-5" />
                 Ver Películas
@@ -495,7 +495,7 @@ export default async function HomePage() {
                   sizes="(max-width: 1024px) 100vw, 33vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-purple-950/90 via-black/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                 <div className="absolute bottom-0 p-6">
                   <Badge className="mb-3 bg-purple-700 border-purple-500">
                     <Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" />

@@ -15,6 +15,7 @@ const PETER_DATA = {
   ],
   cta: "¿Quieres saber más sobre mi historia? Explora los cómics y películas.",
   buttonText: "Revelar identidad secreta",
+  accent: "red" as const,
 }
 
 const SPIDER_DATA = {
@@ -29,6 +30,7 @@ const SPIDER_DATA = {
   ],
   cta: "Explora todo el universo Ultimate y más en Spider-World.",
   buttonText: "Volver a mi identidad",
+  accent: "blue" as const,
 }
 
 interface Props {
@@ -36,111 +38,130 @@ interface Props {
 }
 
 export function PeterParkerIntro({ counts }: Props) {
-  const [isSpiderMan, setIsSpiderMan] = useState(false)
-  const data = isSpiderMan ? SPIDER_DATA : PETER_DATA
+  const [side, setSide] = useState<"peter" | "spider">("peter")
+  const [angle, setAngle] = useState(0)
+  const [duration, setDuration] = useState(300)
+  const [busy, setBusy] = useState(false)
+
+  const data = side === "peter" ? PETER_DATA : SPIDER_DATA
+  const isBlue = data.accent === "blue"
+
+  function handleFlip() {
+    if (busy) return
+    setBusy(true)
+
+    // Fase 1: rotar hasta 90° (de canto)
+    setDuration(300)
+    setAngle(90)
+
+    setTimeout(() => {
+      // Fase 2: swap instantáneo desde -90°
+      setDuration(0)
+      setSide(prev => prev === "peter" ? "spider" : "peter")
+      setAngle(-90)
+
+      // Fase 3: volver a 0° con el nuevo contenido
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        setDuration(300)
+        setAngle(0)
+        setTimeout(() => setBusy(false), 300)
+      }))
+    }, 300)
+  }
 
   return (
     <section className="pt-32 pb-20 px-4 max-w-7xl mx-auto">
-      <div className={`
-        grid grid-cols-1 lg:grid-cols-2 gap-12 items-center
-        rounded-3xl p-8 md:p-12
-        bg-gray-900/60 backdrop-blur-sm
-        border transition-colors duration-700
-        ${isSpiderMan ? "border-blue-500/40" : "border-red-500/40"}
-        shadow-2xl
-      `}>
-        {/* Imagen con botón */}
-        <div className="relative group">
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-red-900/30">
+      <div style={{ perspective: "1200px" }}>
+        <div
+          style={{
+            transform: `rotateY(${angle}deg)`,
+            transition: `transform ${duration}ms ${duration === 300 && angle === 0 ? "ease-out" : "ease-in"}`,
+          }}
+        >
+          <div className={`
+            grid grid-cols-1 lg:grid-cols-2 gap-12 items-center
+            rounded-3xl p-8 md:p-12
+            bg-gray-900/60 backdrop-blur-sm
+            border transition-colors duration-300
+            ${isBlue ? "border-blue-500/40" : "border-red-500/40"}
+            shadow-2xl
+          `}>
             {/* Imagen */}
-            <div className="relative aspect-[3/4] w-full max-w-sm mx-auto">
-              <Image
-                src={data.image}
-                alt={data.alt}
-                fill
-                className="object-cover transition-all duration-700"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-              {/* Overlay degradado inferior */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+            <div className="relative group">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-red-900/30">
+                <div className="relative aspect-[3/4] w-full max-w-sm mx-auto rounded-3xl overflow-hidden">
+                  <Image
+                    src={data.image}
+                    alt={data.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                </div>
+
+                <button
+                  onClick={handleFlip}
+                  className={`
+                    absolute bottom-4 left-1/2 -translate-x-1/2
+                    px-5 py-2.5 rounded-full text-sm font-semibold
+                    backdrop-blur-sm border transition-all duration-300
+                    ${isBlue
+                      ? "bg-blue-600/80 border-blue-400/50 text-white hover:bg-blue-500/90"
+                      : "bg-red-600/80 border-red-400/50 text-white hover:bg-red-500/90"
+                    }
+                    shadow-lg hover:scale-105 active:scale-95
+                  `}
+                >
+                  {data.buttonText}
+                </button>
+              </div>
+
+              <div className={`absolute -inset-1 rounded-3xl blur-xl opacity-20 -z-10 transition-colors duration-300 ${
+                isBlue ? "bg-blue-600" : "bg-red-600"
+              }`} />
             </div>
 
-            {/* Botón sobre la imagen */}
-            <button
-              onClick={() => setIsSpiderMan((prev) => !prev)}
-              className={`
-                absolute bottom-4 left-1/2 -translate-x-1/2
-                px-5 py-2.5 rounded-full text-sm font-semibold
-                backdrop-blur-sm border transition-all duration-300
-                ${isSpiderMan
-                  ? "bg-blue-600/80 border-blue-400/50 text-white hover:bg-blue-500/90"
-                  : "bg-red-600/80 border-red-400/50 text-white hover:bg-red-500/90"
-                }
-                shadow-lg hover:scale-105 active:scale-95
-              `}
-            >
-              {data.buttonText}
-            </button>
-          </div>
+            {/* Texto */}
+            <div>
+              <span className={`inline-block text-sm font-semibold tracking-widest uppercase mb-3 ${
+                isBlue ? "text-blue-400" : "text-red-400"
+              }`}>
+                {data.tag}
+              </span>
 
-          {/* Glow decorativo */}
-          <div
-            className={`absolute -inset-1 rounded-2xl blur-xl opacity-20 -z-10 transition-colors duration-700 ${
-              isSpiderMan ? "bg-blue-600" : "bg-red-600"
-            }`}
-          />
-        </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
+                {data.title}
+              </h2>
 
-        {/* Texto */}
-        <div
-          key={isSpiderMan ? "spider" : "peter"}
-          className="animate-fadeIn"
-        >
-          <span
-            className={`inline-block text-sm font-semibold tracking-widest uppercase mb-3 transition-colors duration-500 ${
-              isSpiderMan ? "text-blue-400" : "text-red-400"
-            }`}
-          >
-            {data.tag}
-          </span>
-
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
-            {data.title}
-          </h2>
-
-          <div className="space-y-4">
-            {data.paragraphs.map((p, i) => (
-              <p key={i} className="text-gray-300 leading-relaxed text-lg">
-                {p}
-              </p>
-            ))}
-          </div>
-
-          <p
-            className={`mt-6 text-sm italic transition-colors duration-500 ${
-              isSpiderMan ? "text-blue-300" : "text-red-300"
-            }`}
-          >
-            {data.cta}
-          </p>
-
-          {/* Stats discretos */}
-          <div className={`mt-8 pt-6 border-t flex flex-wrap gap-6 transition-colors duration-700 ${
-            isSpiderMan ? "border-blue-500/20" : "border-red-500/20"
-          }`}>
-            {[
-              { value: counts.movies, label: "Películas" },
-              { value: counts.comics, label: "Cómics" },
-              { value: counts.games, label: "Videojuegos" },
-              { value: counts.series, label: "Series" },
-            ].map(({ value, label }) => (
-              <div key={label} className="text-center">
-                <div className={`text-xl font-bold transition-colors duration-500 ${
-                  isSpiderMan ? "text-blue-400" : "text-red-400"
-                }`}>{value}+</div>
-                <div className="text-xs text-gray-500 uppercase tracking-wide">{label}</div>
+              <div className="space-y-4">
+                {data.paragraphs.map((p, i) => (
+                  <p key={i} className="text-gray-300 leading-relaxed text-lg">{p}</p>
+                ))}
               </div>
-            ))}
+
+              <p className={`mt-6 text-sm italic ${isBlue ? "text-blue-300" : "text-red-300"}`}>
+                {data.cta}
+              </p>
+
+              <div className={`mt-8 pt-6 border-t flex flex-wrap gap-6 ${
+                isBlue ? "border-blue-500/20" : "border-red-500/20"
+              }`}>
+                {[
+                  { value: counts.movies, label: "Películas" },
+                  { value: counts.comics, label: "Cómics" },
+                  { value: counts.games, label: "Videojuegos" },
+                  { value: counts.series, label: "Series" },
+                ].map(({ value, label }) => (
+                  <div key={label} className="text-center">
+                    <div className={`text-xl font-bold ${isBlue ? "text-blue-400" : "text-red-400"}`}>
+                      {value}+
+                    </div>
+                    <div className="text-xs text-gray-500 uppercase tracking-wide">{label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
