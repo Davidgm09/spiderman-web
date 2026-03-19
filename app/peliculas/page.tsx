@@ -1,15 +1,12 @@
 import Image from "next/image"
 import Link from "next/link"
-import { Calendar, Play, ShoppingCart, Star, Clock, Award, ExternalLink } from "lucide-react"
+import { Play, Star, Clock, Award } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
-import { SpiderManMovie, AmazonProduct } from "@/components/affiliate/AmazonProduct"
+import { InContentAd } from "@/components/ads/GoogleAdsense"
+import { CountdownTimer } from "@/components/movies/CountdownTimer"
 import { movieService } from "@/lib/database"
-import { colorClasses } from "@/lib/theme"
-import { generateAmazonUrl } from "@/lib/content-helpers"
 import { Movie } from "@prisma/client"
 
 export const metadata = {
@@ -19,289 +16,218 @@ export const metadata = {
   keywords: ["Spider-Man películas", "Tobey Maguire", "Andrew Garfield", "Tom Holland", "Spider-Verse", "Marvel", "Sony"],
 }
 
-// Palabras clave para clasificar por título (títulos en español de TMDB)
-const MILES_KEYWORDS = ['nuevo universo', 'cruzando el multiverso', 'beyond the spider-verse', 'into the spider-verse', 'across the spider-verse'];
-const AMAZING_KEYWORDS = ['amazing spider-man'];
-const MCU_KEYWORDS = ['homecoming', 'lejos de casa', 'no way home'];
-const RELATED_KEYWORDS = ['venom', 'morbius', 'kraven', 'madame web'];
-const RAIMI_YEARS = new Set([2002, 2004, 2007]);
+const MILES_KEYWORDS = ['nuevo universo', 'cruzando el multiverso', 'beyond the spider-verse', 'into the spider-verse', 'across the spider-verse']
+const AMAZING_KEYWORDS = ['amazing spider-man']
+const MCU_KEYWORDS = ['homecoming', 'lejos de casa', 'no way home']
+const RELATED_KEYWORDS = ['venom', 'morbius', 'kraven', 'madame web']
+const RAIMI_YEARS = new Set([2002, 2004, 2007])
 
-// Función para organizar películas por universo
+const UNIVERSE_CONFIG = {
+  raimi:   { title: "Trilogía Sam Raimi",              subtitle: "Tobey Maguire · 2002–2007", accent: "from-red-600",    border: "border-red-500/40",    glow: "shadow-red-900/40" },
+  amazing: { title: "The Amazing Spider-Man",           subtitle: "Andrew Garfield · 2012–2014", accent: "from-blue-600",  border: "border-blue-500/40",   glow: "shadow-blue-900/40" },
+  mcu:     { title: "Marvel Cinematic Universe",        subtitle: "Tom Holland · 2017–presente", accent: "from-purple-600",border: "border-purple-500/40", glow: "shadow-purple-900/40" },
+  miles:   { title: "Spider-Verse Animado",             subtitle: "Miles Morales · 2018–presente", accent: "from-green-600", border: "border-green-500/40",  glow: "shadow-green-900/40" },
+  related: { title: "Universo Sony",                    subtitle: "Venom · Morbius · Kraven · 2018–2024", accent: "from-orange-600",border: "border-orange-500/40",glow: "shadow-orange-900/40" },
+}
+
 function organizeMoviesByUniverse(movies: Movie[]) {
-  const universes = {
-    raimi: {
-      title: "Trilogía de Sam Raimi (Tobey Maguire)",
-      description: "La saga original que definió el cine de superhéroes moderno",
-      color: "red",
-      years: "2002-2007",
-      movies: [] as Movie[]
-    },
-    amazing: {
-      title: "The Amazing Spider-Man (Andrew Garfield)",
-      description: "Una nueva visión moderna y emotiva del héroe arácnido",
-      color: "blue",
-      years: "2012-2014",
-      movies: [] as Movie[]
-    },
-    mcu: {
-      title: "Marvel Cinematic Universe (Tom Holland)",
-      description: "Spider-Man se une al universo cinematográfico de Marvel",
-      color: "purple",
-      years: "2017-2021",
-      movies: [] as Movie[]
-    },
-    miles: {
-      title: "Miles Morales — Spider-Verse Animado",
-      description: "La trilogía animada de Miles Morales que revolucionó el cine de superhéroes",
-      color: "green",
-      years: "2018-presente",
-      movies: [] as Movie[]
-    },
-    related: {
-      title: "Universo Relacionado (Sony)",
-      description: "Venom, Morbius, Kraven y Madame Web en el universo de Sony",
-      color: "orange",
-      years: "2018-2024",
-      movies: [] as Movie[]
-    }
-  };
+  const universes = Object.fromEntries(
+    Object.entries(UNIVERSE_CONFIG).map(([key, cfg]) => [key, { ...cfg, movies: [] as Movie[] }])
+  ) as Record<string, typeof UNIVERSE_CONFIG[keyof typeof UNIVERSE_CONFIG] & { movies: Movie[] }>
 
   movies.forEach(movie => {
-    const t = movie.title.toLowerCase();
-    if (MILES_KEYWORDS.some(k => t.includes(k)))        universes.miles.movies.push(movie);
-    else if (RELATED_KEYWORDS.some(k => t.includes(k))) universes.related.movies.push(movie);
-    else if (MCU_KEYWORDS.some(k => t.includes(k)))     universes.mcu.movies.push(movie);
-    else if (AMAZING_KEYWORDS.some(k => t.includes(k))) universes.amazing.movies.push(movie);
-    else if (RAIMI_YEARS.has(movie.year))                universes.raimi.movies.push(movie);
-    else                                                 universes.mcu.movies.push(movie);
-  });
+    const t = movie.title.toLowerCase()
+    if (MILES_KEYWORDS.some(k => t.includes(k)))        universes.miles.movies.push(movie)
+    else if (RELATED_KEYWORDS.some(k => t.includes(k))) universes.related.movies.push(movie)
+    else if (MCU_KEYWORDS.some(k => t.includes(k)))     universes.mcu.movies.push(movie)
+    else if (AMAZING_KEYWORDS.some(k => t.includes(k))) universes.amazing.movies.push(movie)
+    else if (RAIMI_YEARS.has(movie.year))                universes.raimi.movies.push(movie)
+    else                                                 universes.mcu.movies.push(movie)
+  })
 
-  Object.values(universes).forEach(universe => {
-    universe.movies.sort((a, b) => a.year - b.year);
-  });
-
-  return universes;
-}
-
-
-function formatRuntime(duration?: string): string {
-  return duration || 'Duración no disponible';
-}
-
-function formatRevenue(boxOffice?: string): string {
-  return boxOffice || 'No disponible';
+  Object.values(universes).forEach(u => u.movies.sort((a, b) => a.year - b.year))
+  return universes
 }
 
 export default async function PeliculasPage() {
-  // Obtener películas de la base de datos
-  const movies = await movieService.getAll();
-  
-  // Organizar por universos
-  const universes = organizeMoviesByUniverse(movies);
+  const movies = await movieService.getAll()
+  const universes = organizeMoviesByUniverse(movies)
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-950 via-gray-900 to-blue-950">
-      {/* Header */}
-      <section className="relative py-20 px-4 text-center">
-        <div className="absolute inset-0 bg-gradient-to-r from-red-600/20 to-blue-600/20" />
+      {/* Header con mosaico de pósters */}
+      <section className="relative py-32 px-4 text-center overflow-hidden">
+        {/* Mosaico de pósters como fondo */}
+        <div className="absolute inset-0 grid grid-cols-5 md:grid-cols-8 gap-1 opacity-50 scale-110">
+          {[...movies, ...movies].slice(0, 16).map((movie, i) => (
+            <div key={i} className="relative h-full min-h-[300px]">
+              <Image
+                src={movie.image}
+                alt=""
+                fill
+                sizes="200px"
+                className="object-cover"
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-t from-red-950 via-gray-900/80 to-gray-900/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-transparent to-red-950" />
+
+        {/* Contenido */}
         <div className="relative z-10 max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent">
-            Películas de Spider-Man
+          <p className="text-red-400 text-sm font-semibold tracking-widest uppercase mb-4">Spider-World · Cine</p>
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white leading-tight">
+            Películas de<br />
+            <span className="bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent">Spider-Man</span>
           </h1>
-          <p className="text-xl text-gray-300 mb-8">
-            Todas las películas del trepamuros: desde Sam Raimi hasta el Spider-Verse
+          <p className="text-lg text-gray-300 max-w-xl mx-auto mb-8">
+            Desde Sam Raimi hasta el Spider-Verse. Todas las sagas, todos los universos.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Badge className="bg-red-600 text-white px-4 py-2">
-              {movies.length} Películas
-            </Badge>
-            <Badge className="bg-blue-600 text-white px-4 py-2">
-              Múltiples Universos
-            </Badge>
-            <Badge className="bg-green-600 text-white px-4 py-2">
-              Análisis Completos
-            </Badge>
+          <div className="flex flex-wrap justify-center gap-3 mb-10">
+            <Badge className="bg-white/10 text-white border-white/20 px-4 py-1.5 text-sm">{movies.length} películas</Badge>
+            <Badge className="bg-white/10 text-white border-white/20 px-4 py-1.5 text-sm">{Object.values(universes).filter(u => u.movies.length > 0).length} universos</Badge>
+            <Badge className="bg-white/10 text-white border-white/20 px-4 py-1.5 text-sm">3 Spider-Man actores</Badge>
+          </div>
+
+          {/* Filtros por universo integrados en el hero */}
+          <div className="flex justify-center gap-2 flex-wrap">
+            {Object.entries(universes).filter(([, u]) => u.movies.length > 0).map(([key, universe]) => (
+              <a
+                key={key}
+                href={`#universo-${key}`}
+                className={`px-4 py-1.5 rounded-full text-sm font-medium border transition-all duration-200 bg-gradient-to-r ${universe.accent} to-transparent ${universe.border} text-white hover:scale-105`}
+              >
+                {universe.title}
+              </a>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Ad Space */}
-      <div className="max-w-7xl mx-auto px-4 py-8">
+      {/* Banner Brand New Day */}
+      <div className="max-w-7xl mx-auto px-4 pt-4">
+        <div className="relative rounded-3xl overflow-hidden h-auto min-h-[360px] md:min-h-[380px] shadow-2xl shadow-red-900/40 mb-8">
+          <Image
+            src="/images/spiderman-brand-new-day-v0-31e6vv2f5rhf1.webp"
+            alt="Spider-Man: Brand New Day"
+            fill
+            sizes="100vw"
+            className="object-cover object-[center_65%]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent" />
+          <div className="absolute inset-0 flex flex-col justify-center px-8 md:px-12 max-w-2xl">
+            <Badge className="bg-red-600 w-fit mb-4 text-xs tracking-widest uppercase">Próximamente</Badge>
+            <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-2">
+              Spider-Man:<br />Brand New Day
+            </h2>
+            <p className="text-gray-300 text-sm mb-2">
+              Tom Holland regresa como Peter Parker en una nueva aventura donde nadie recuerda quién es.
+            </p>
+            <p className="text-red-400 text-xs font-semibold uppercase tracking-widest mb-1">Cuenta atrás para el estreno · 31 Jul 2026</p>
+            <CountdownTimer />
+            <Link
+              href="/blog/spider-man-brand-new-day-trailer-oficial"
+              className="mt-5 w-fit inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-red-600 hover:bg-red-500 border border-red-400/40 text-white text-sm font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-red-900/40"
+            >
+              <Play className="w-4 h-4 fill-white" />
+              Ver análisis del tráiler
+            </Link>
+          </div>
+        </div>
+      </div>
+
+
+      <div className="max-w-7xl mx-auto px-4 py-4">
         <InContentAd />
       </div>
 
-      {/* Movies by Universe */}
-      <div className="max-w-7xl mx-auto px-4 py-12">
+      {/* Universos */}
+      <div className="max-w-7xl mx-auto px-4 pb-20 space-y-20">
         {Object.entries(universes).map(([key, universe]) => {
-          if (universe.movies.length === 0) return null;
-          
+          if (universe.movies.length === 0) return null
+
           return (
-            <section key={key} className="mb-16">
-              <div className={`bg-gradient-to-r ${colorClasses[universe.color as keyof typeof colorClasses]} border rounded-lg p-6 mb-8`}>
-                <div className="flex items-center justify-between mb-4">
-                  <div>
-                    <h2 className="text-3xl font-bold text-white mb-2">
-                      {universe.title}
-                    </h2>
-                    <p className="text-gray-300 mb-2">{universe.description}</p>
-                    <Badge className="bg-gray-700 text-gray-300">
-                      {universe.years}
-                    </Badge>
-                  </div>
-                  <Badge className="bg-white/10 text-white text-lg px-4 py-2">
-                    {universe.movies.length} película{universe.movies.length !== 1 ? 's' : ''}
-                  </Badge>
+            <section key={key} id={`universo-${key}`} className="scroll-mt-32">
+              {/* Cabecera del universo */}
+              <div className="flex items-end gap-4 mb-8 pb-4 border-b border-white/10">
+                <div className={`w-1 h-12 rounded-full bg-gradient-to-b ${universe.accent} to-transparent`} />
+                <div>
+                  <h2 className="text-2xl md:text-3xl font-bold text-white">{universe.title}</h2>
+                  <p className="text-gray-500 text-sm mt-1">{universe.subtitle}</p>
                 </div>
+                <Badge className="ml-auto bg-white/5 border-white/10 text-gray-400 text-sm">
+                  {universe.movies.length} película{universe.movies.length !== 1 ? 's' : ''}
+                </Badge>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {/* Grid de pósters */}
+              <div className={`grid gap-4 ${universe.movies.length <= 3 ? 'grid-cols-2 md:grid-cols-3 max-w-2xl' : universe.movies.length === 4 ? 'grid-cols-2 md:grid-cols-4' : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'}`}>
                 {universe.movies.map((movie: Movie) => (
-                  <Card key={movie.id} className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all group">
-                    <CardHeader className="p-0">
-                      <div className="relative">
+                  <Link key={movie.id} href={`/peliculas/${movie.slug}`} className="group">
+                    <div className={`relative rounded-2xl overflow-hidden shadow-xl ${universe.glow} shadow-lg`}>
+                      {/* Póster */}
+                      <div className="relative aspect-[2/3]">
                         <Image
                           src={movie.image}
                           alt={`${movie.title} - Película de Spider-Man`}
-                          width={400}
-                          height={600}
-                          className="w-full h-80 object-cover rounded-t-lg group-hover:scale-105 transition-transform duration-300"
+                          fill
+                          sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
                         />
-                        
-                        {/* Rating Badge */}
-                        <Badge className="absolute top-2 right-2 bg-yellow-600">
-                          <Star className="w-3 h-3 mr-1" />
-                          {movie.rating}
-                        </Badge>
-                        
-                        {/* Year Badge */}
-                        <Badge className="absolute top-2 left-2 bg-black/70 text-white">
-                          {movie.year}
-                        </Badge>
+                        {/* Gradiente permanente inferior */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+
+                        {/* Título siempre visible, se oculta en hover */}
+                        <div className="absolute bottom-0 left-0 right-0 p-3 group-hover:opacity-0 transition-opacity duration-300">
+                          <h3 className="text-white text-base font-bold line-clamp-2 leading-tight text-center drop-shadow-lg" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}>
+                            {movie.title}
+                          </h3>
+                        </div>
+
+                        {/* Info extra en hover */}
+                        <div className="absolute inset-0 p-4 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          {movie.director && (
+                            <div className="flex items-center gap-1 text-gray-300 text-xs mb-1">
+                              <Award className="w-3 h-3" />
+                              {movie.director}
+                            </div>
+                          )}
+                          {movie.duration && (
+                            <div className="flex items-center gap-1 text-gray-300 text-xs mb-2">
+                              <Clock className="w-3 h-3" />
+                              {movie.duration}
+                            </div>
+                          )}
+                          <Button size="sm" className="w-full bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white border-0 text-xs mt-1">
+                            <Play className="w-3 h-3 mr-1" />
+                            Ver análisis
+                          </Button>
+                        </div>
+
+                        {/* Rating siempre visible */}
+                        <div className="absolute top-2 right-2 flex items-center gap-1 bg-black/70 backdrop-blur-sm rounded-full px-2 py-1">
+                          <Star className="w-3 h-3 text-yellow-400 fill-yellow-400" />
+                          <span className="text-white text-xs font-semibold">{movie.rating}</span>
+                        </div>
+
+                        {/* Año siempre visible */}
+                        <div className="absolute top-2 left-2 bg-black/70 backdrop-blur-sm rounded-full px-2 py-1">
+                          <span className="text-gray-300 text-xs">{movie.year}</span>
+                        </div>
                       </div>
-                    </CardHeader>
-                    
-                    <CardContent className="p-4">
-                      <CardTitle className="text-white mb-2 line-clamp-2">
-                        <Link href={`/peliculas/${movie.slug}`} className="hover:text-red-400 transition-colors">
-                          {movie.title}
-                        </Link>
-                      </CardTitle>
-                      
-                      {movie.subtitle && (
-                        <CardDescription className="text-gray-400 text-sm mb-2">
-                          {movie.subtitle}
-                        </CardDescription>
-                      )}
-                      
-                      <p className="text-gray-400 text-sm mb-3 line-clamp-2">
-                        {movie.description}
-                      </p>
-                      
-                      {/* Movie Details */}
-                      <div className="space-y-2 mb-4">
-                        {movie.director && (
-                          <div className="flex items-center text-sm text-gray-400">
-                            <Award className="w-4 h-4 mr-2" />
-                            <span>Director: {movie.director}</span>
-                          </div>
-                        )}
-                        
-                        {movie.duration && (
-                          <div className="flex items-center text-sm text-gray-400">
-                            <Clock className="w-4 h-4 mr-2" />
-                            <span>{formatRuntime(movie.duration)}</span>
-                          </div>
-                        )}
-                        
-                        {movie.boxOffice && (
-                          <div className="flex items-center text-sm text-gray-400">
-                            <ExternalLink className="w-4 h-4 mr-2" />
-                            <span>Recaudación: {formatRevenue(movie.boxOffice)}</span>
-                          </div>
-                        )}
-                      </div>
-                      
-                      {/* Action Buttons */}
-                      <div className="flex gap-2">
-                        <Button asChild size="sm" className="flex-1">
-                          <Link href={`/peliculas/${movie.slug}`}>
-                            <Play className="w-4 h-4 mr-1" />
-                            Ver Análisis
-                          </Link>
-                        </Button>
-                        
-                        <Button 
-                          asChild 
-                          size="sm" 
-                          variant="outline"
-                          className="border-orange-600 text-orange-400 hover:bg-orange-600 hover:text-white"
-                        >
-                          <a 
-                            href={generateAmazonUrl(`${movie.title} ${movie.year} película blu-ray`)}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <ShoppingCart className="w-4 h-4 mr-1" />
-                            Comprar
-                          </a>
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
+
+                    </div>
+                  </Link>
                 ))}
               </div>
             </section>
-          );
+          )
         })}
       </div>
 
-      {/* Featured Products */}
-      <section className="py-16 px-4 max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold text-white mb-8 text-center">
-          Productos Relacionados con Spider-Man
-        </h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <SpiderManMovie title="Spider-Man" year="2002" />
-          <SpiderManMovie title="Spider-Man Into the Spider-Verse" year="2018" />
-          <SpiderManMovie title="Spider-Man No Way Home" year="2021" />
-          <SpiderManMovie title="Spider-Man Across the Spider-Verse" year="2023" />
-        </div>
-      </section>
-
-      {/* Sidebar Ad */}
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <SidebarAd />
-      </div>
-
-      {/* Stats Section */}
-      <section className="py-16 px-4 max-w-7xl mx-auto">
-        <div className="bg-gray-800/50 rounded-lg p-8 text-center">
-          <h3 className="text-2xl font-bold text-white mb-6">
-            Estadísticas del Spider-Verse Cinematográfico
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div>
-              <div className="text-3xl font-bold text-red-500 mb-2">{movies.length}</div>
-              <div className="text-gray-400">Películas Totales</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-blue-500 mb-2">
-                {Object.values(universes).filter(u => u.movies.length > 0).length}
-              </div>
-              <div className="text-gray-400">Universos</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-green-500 mb-2">3</div>
-              <div className="text-gray-400">Spider-Man Actores</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-purple-500 mb-2">20+</div>
-              <div className="text-gray-400">Años de Historia</div>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   )
 }
