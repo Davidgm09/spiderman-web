@@ -153,18 +153,15 @@ export const characterService = {
       image: marvelCharacter.thumbnail ? 
         `${marvelCharacter.thumbnail.path}/detail.${marvelCharacter.thumbnail.extension}`.replace('http://', 'https://') :
         '/images/marvel-placeholder.svg',
-      thumbnailPath: marvelCharacter.thumbnail?.path,
-      thumbnailExtension: marvelCharacter.thumbnail?.extension,
       comicsCount: marvelCharacter.comics?.available || 0,
       seriesCount: marvelCharacter.series?.available || 0,
       category,
       slug,
       seoTitle: `${marvelCharacter.name} - Personaje Marvel | Spider-World`,
-      seoDescription: marvelCharacter.description ? 
+      seoDescription: marvelCharacter.description ?
         marvelCharacter.description.substring(0, 155) + '...' :
         `Descubre todo sobre ${marvelCharacter.name}, sus poderes, historia y apariciones en cómics y películas Marvel.`,
       keywords: [marvelCharacter.name, 'Marvel', 'Spider-Man', category, 'cómics', 'superhéroe'],
-      urls: marvelCharacter.urls || null,
       rating: Math.random() * 2 + 3, // Rating entre 3 y 5
       isFeatured: ['Spider-Man', 'Spider-Gwen', 'Miles Morales', 'Spider-Woman', 'Spider-Man 2099'].includes(marvelCharacter.name)
     };
@@ -315,6 +312,48 @@ export const comicService = {
     return await prisma.comic.findUnique({
       where: { slug },
     });
+  },
+
+  // Obtener cómics relacionados: mismo escritor o misma importancia
+  async getRelated(comic: { slug: string; writer: string; importance: string }, limit: number = 4) {
+    // Primero intentar por mismo escritor
+    const byWriter = await prisma.comic.findMany({
+      where: {
+        isActive: true,
+        slug: { not: comic.slug },
+        writer: comic.writer,
+      },
+      orderBy: [{ rating: 'desc' }],
+      take: limit,
+    })
+    if (byWriter.length >= limit) return byWriter
+
+    // Completar con misma importancia si faltan
+    const existing = byWriter.map(c => c.slug)
+    const byImportance = await prisma.comic.findMany({
+      where: {
+        isActive: true,
+        slug: { notIn: [comic.slug, ...existing] },
+        importance: comic.importance,
+      },
+      orderBy: [{ rating: 'desc' }],
+      take: limit - byWriter.length,
+    })
+    return [...byWriter, ...byImportance]
+  },
+
+  // Obtener cómics de la misma colección (mismo storyline)
+  async getByStoryline(storyline: string, excludeSlug: string, limit: number = 12) {
+    return await prisma.comic.findMany({
+      where: {
+        isActive: true,
+        slug: { not: excludeSlug },
+        storylines: { has: storyline },
+      },
+      select: { slug: true, title: true, image: true, year: true, rating: true },
+      orderBy: [{ year: 'asc' }],
+      take: limit,
+    })
   },
 
   // Obtener cómics destacados
