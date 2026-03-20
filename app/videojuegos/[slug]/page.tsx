@@ -2,19 +2,15 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Play, ShoppingCart, User, Monitor, ArrowLeft, Award, Star } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
-import { Gamepad2, ShoppingCart, Calendar, Monitor, User, ArrowLeft, Award, Camera, Users, Play, Mail, CheckCircle, Star, Palette } from "lucide-react"
-import { RelatedCard } from "@/components/RelatedCard"
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
-import { AmazonProduct } from "@/components/affiliate/AmazonProduct"
 import { gameService } from "@/lib/database"
 import { SITE_URL } from "@/lib/config"
-import { renderStars, generateAmazonUrl, convertToEmbedUrl, parseJson } from "@/lib/content-helpers"
+import { generateAmazonUrl, convertToEmbedUrl, parseJson } from "@/lib/content-helpers"
 import { Breadcrumb } from "@/components/breadcrumb"
 import type { GalleryImage, ConceptArtItem, CharacterImage } from "@/lib/json-types"
-
+import { gameAnalysis } from "@/lib/editorial-analysis"
 
 export const revalidate = 3600
 
@@ -30,7 +26,7 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const game = await gameService.getBySlug(slug).catch(() => null)
-  
+
   if (!game) {
     return {
       title: "Videojuego no encontrado | Spider-World",
@@ -38,11 +34,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
   }
 
-  const description = game.description 
+  const description = game.description
     ? game.description.substring(0, 155) + '...'
-    : `Descubre ${game.title}, videojuego de Spider-Man con análisis completo, gameplay y dónde comprarlo.`;
+    : `Descubre ${game.title}, videojuego de Spider-Man con análisis completo, gameplay y dónde comprarlo.`
 
-  const url = `${SITE_URL}/videojuegos/${game.slug}`;
+  const url = `${SITE_URL}/videojuegos/${game.slug}`
 
   return {
     title: `${game.title} (${game.year}) - Análisis Completo | Spider-World`,
@@ -69,26 +65,23 @@ export default async function GamePage({ params }: Props) {
   const { slug } = await params
   const game = await gameService.getBySlug(slug).catch(() => null)
 
-  if (!game) {
-    notFound()
-  }
+  if (!game) notFound()
 
-  // Obtener videojuegos relacionados
-  const relatedGames = await gameService.getFeatured(4, slug).catch(() => []);
+  const relatedGames = await gameService.getFeatured(4, slug).catch(() => [])
 
-  const BASE_URL = SITE_URL
+  const platformStr = Array.isArray(game.platform) ? game.platform.join(', ') : game.platform ?? ''
+  const platformFirst = Array.isArray(game.platform) ? game.platform[0] : game.platform ?? 'PS5'
+
+  const screenshotImages = parseJson<GalleryImage>(game.screenshotImages)
+  const characterImages = parseJson<CharacterImage>(game.characterImages)
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'VideoGame',
     name: game.title,
     description: game.seoDescription || game.description,
-    image: game.image ? {
-      '@type': 'ImageObject',
-      url: game.image,
-      width: 300,
-      height: 450,
-    } : undefined,
-    url: `${BASE_URL}/videojuegos/${game.slug}`,
+    image: game.image ? { '@type': 'ImageObject', url: game.image, width: 300, height: 450 } : undefined,
+    url: `${SITE_URL}/videojuegos/${game.slug}`,
     datePublished: game.year?.toString(),
     genre: game.genre,
     gamePlatform: game.platform,
@@ -104,211 +97,180 @@ export default async function GamePage({ params }: Props) {
   }
 
   return (
-    <div className="pt-16">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-red-900/30 to-black/80"></div>
+    <div className="pt-16 bg-gradient-to-b from-black via-gray-950 to-black" style={{ backgroundImage: 'radial-gradient(ellipse 80% 50% at 10% 50%, rgba(0,80,220,0.12) 0%, transparent 70%), radial-gradient(ellipse 70% 40% at 90% 70%, rgba(0,80,220,0.18) 0%, transparent 70%)' }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+
+      {/* Hero */}
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
-          <Image
-            src={game.image}
-            alt={`${game.title} - Videojuego de Spider-Man`}
-            fill
-            sizes="100vw"
-            className="object-cover opacity-40"
-            priority
-          />
+          <Image src={game.image} alt="" fill sizes="100vw" className="object-cover scale-110 blur-sm opacity-30" priority />
         </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60" />
 
-        <div className="relative z-10 text-center px-4 max-w-6xl mx-auto">
-          <Breadcrumb items={[{ label: "Videojuegos", href: "/videojuegos" }, { label: game.title }]} />
-          <div className="mb-6 flex items-center justify-center gap-4">
-            <Link href="/videojuegos">
-              <Button variant="outline" size="sm" className="border-green-600 text-green-400 hover:bg-green-600 hover:text-white">
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Volver a Videojuegos
-              </Button>
-            </Link>
-            <Badge className="bg-green-600 text-white px-6 py-3 text-lg font-semibold">
-              {(game.importance ?? 0) >= 9 ? 'Juego Esencial' : 'Videojuego Spider-Man'}
-            </Badge>
-          </div>
-          
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-red-500 via-blue-500 to-red-500 bg-clip-text text-transparent">
-            {game.title}
-          </h1>
-          
-          {game.subtitle && (
-            <p className="text-xl md:text-2xl mb-8 text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              {game.subtitle}
-            </p>
-          )}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10 py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-12 items-center">
 
-          <div className="flex flex-wrap justify-center gap-6 mb-8 text-gray-300">
-            <div className="flex items-center">
-              <Calendar className="w-5 h-5 mr-2 text-green-500" />
-              <span>{game.year}</span>
-            </div>
-            <div className="flex items-center">
-              <Monitor className="w-5 h-5 mr-2 text-blue-500" />
-              <span>{Array.isArray(game.platform) ? game.platform.join(", ") : game.platform}</span>
-            </div>
-            {game.developer && (
-              <div className="flex items-center">
-                <User className="w-5 h-5 mr-2 text-purple-500" />
-                <span>{game.developer}</span>
+            {/* Columna izquierda */}
+            <div>
+              <Breadcrumb items={[{ label: "Videojuegos", href: "/videojuegos" }, { label: game.title }]} />
+
+              <div className="flex items-center gap-3 mt-6 mb-4">
+                <Badge className="bg-blue-600 text-white text-xs tracking-widest uppercase px-3 py-1">
+                  {game.rating >= 9 ? 'Juego Esencial' : 'Spider-Man Game'}
+                </Badge>
+                <span className="text-gray-500 text-sm">{game.year}</span>
+                {platformFirst && <span className="text-gray-500 text-sm">· {platformFirst}</span>}
               </div>
-            )}
-            <div className="flex items-center">
-              <Star className="w-5 h-5 mr-2 text-yellow-500" />
-              <span>{game.rating}/10</span>
-            </div>
-          </div>
 
-          {game.description && (
-            <p className="text-lg text-gray-400 max-w-3xl mx-auto mb-8">
-              {game.description.length > 200 ? game.description.substring(0, 200) + '...' : game.description}
-            </p>
-          )}
+              <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 leading-tight">
+                {game.title}
+              </h1>
 
-          <div className="mb-8">{renderStars(game.rating)}</div>
+              {game.subtitle && (
+                <p className="text-lg text-gray-400 italic mb-4">"{game.subtitle}"</p>
+              )}
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            {game.playUrl && (
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white px-8 py-4 text-lg"
-                asChild
-              >
-                <a href={game.playUrl} target="_blank" rel="noopener noreferrer">
-                  <Play className="mr-2 h-5 w-5" />
-                  Ver Tráiler
+              {/* Rating */}
+              <div className="flex items-center gap-2 mb-6">
+                {[1,2,3,4,5].map(i => (
+                  <Star
+                    key={i}
+                    className={`w-5 h-5 ${i <= Math.round(game.rating / 2) ? 'text-yellow-400 fill-yellow-400' : 'text-gray-600'}`}
+                  />
+                ))}
+                <span className="text-yellow-400 font-bold ml-1">{game.rating}</span>
+                <span className="text-gray-500 text-sm">/10</span>
+              </div>
+
+              {game.description && (
+                <p className="text-gray-300 text-lg leading-relaxed mb-8 max-w-2xl">
+                  {(() => {
+                    const firstDot = game.description.indexOf('. ')
+                    return firstDot > 0 && firstDot < 300
+                      ? game.description.substring(0, firstDot + 1)
+                      : game.description.length > 250
+                        ? game.description.substring(0, 250) + '…'
+                        : game.description
+                  })()}
+                </p>
+              )}
+
+              {/* Meta chips */}
+              <div className="flex flex-wrap gap-3 mb-8">
+                {game.developer && (
+                  <div className="flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 text-sm text-gray-300">
+                    <User className="w-3.5 h-3.5 text-gray-400" />
+                    {game.developer}
+                  </div>
+                )}
+                {platformStr && (
+                  <div className="flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 text-sm text-gray-300">
+                    <Monitor className="w-3.5 h-3.5 text-gray-400" />
+                    {platformStr}
+                  </div>
+                )}
+                {game.genre && (
+                  <div className="flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 text-sm text-gray-300">
+                    <Award className="w-3.5 h-3.5 text-gray-400" />
+                    {game.genre}
+                  </div>
+                )}
+              </div>
+
+              {/* Botones */}
+              <div className="flex flex-wrap gap-3">
+                {game.playUrl && (
+                  <a
+                    href="#trailer"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-full transition-all duration-200 hover:scale-105 shadow-lg shadow-blue-900/40"
+                  >
+                    <Play className="w-4 h-4 fill-white" />
+                    Ver tráiler
+                  </a>
+                )}
+                <a
+                  href={generateAmazonUrl(`${game.title} ${platformFirst} videojuego`)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white font-semibold rounded-full transition-all duration-200 hover:scale-105"
+                >
+                  <ShoppingCart className="w-4 h-4" />
+                  Comprar en Amazon
                 </a>
-              </Button>
-            )}
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-orange-600 text-orange-400 hover:bg-orange-600 hover:text-white px-8 py-4 text-lg"
-              asChild
-            >
-              <a href={generateAmazonUrl(`${game.title} ${Array.isArray(game.platform) ? game.platform[0] : game.platform} game`)} target="_blank" rel="noopener noreferrer">
-                <ShoppingCart className="mr-2 h-5 w-5" />
-                Comprar Ahora
-              </a>
-            </Button>
+                <Link href="/videojuegos" className="inline-flex items-center gap-2 px-5 py-3 bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300 font-medium rounded-full transition-colors">
+                  <ArrowLeft className="w-4 h-4" />
+                  Volver
+                </Link>
+              </div>
+            </div>
+
+            {/* Columna derecha: portada */}
+            <div className="hidden lg:block">
+              <div className="relative">
+                <div className="absolute -inset-4 bg-blue-600/10 blur-2xl rounded-3xl" />
+                <Image
+                  src={game.image}
+                  alt={`${game.title} - Portada oficial`}
+                  width={320}
+                  height={480}
+                  className="relative rounded-2xl shadow-2xl w-full object-cover"
+                />
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* Ad */}
       <InContentAd />
 
-      {/* Game Info */}
-      <section className="py-20 bg-gradient-to-b from-black to-green-950/10">
+      {/* Info */}
+      <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-            {/* Main Content */}
+
+            {/* Contenido principal */}
             <div className="lg:col-span-3">
-              <div className="bg-gray-900/50 border border-green-600/20 rounded-lg p-8">
-                <h2 className="text-2xl font-bold text-white mb-6">Información del Videojuego</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-4">
-                    <div className="flex items-center space-x-3">
-                      <Gamepad2 className="w-5 h-5 text-green-500" />
-                      <div>
-                        <span className="text-gray-400 text-sm">Título</span>
-                        <div className="text-white font-semibold">{game.title}</div>
-                      </div>
+
+              {/* Stats */}
+              <div className="flex flex-wrap gap-6 mb-10 pb-10 border-b border-white/10">
+                {[
+                  { label: "Año", value: game.year },
+                  game.developer ? { label: "Desarrollador", value: game.developer } : null,
+                  game.publisher ? { label: "Publisher", value: game.publisher } : null,
+                  game.rating ? { label: "Puntuación", value: `${game.rating}/10` } : null,
+                  game.genre ? { label: "Género", value: game.genre } : null,
+                ].filter(Boolean).map((item, i, arr) => (
+                  <div key={item!.label} className="flex items-center gap-6">
+                    <div>
+                      <div className="text-2xl font-bold text-white">{item!.value}</div>
+                      <div className="text-xs text-gray-500 uppercase tracking-widest mt-0.5">{item!.label}</div>
                     </div>
-                    <div className="flex items-center space-x-3">
-                      <Calendar className="w-5 h-5 text-green-500" />
-                      <div>
-                        <span className="text-gray-400 text-sm">Año de lanzamiento</span>
-                        <div className="text-white font-semibold">{game.year}</div>
-                      </div>
-                    </div>
-                    {game.developer && (
-                      <div className="flex items-center space-x-3">
-                        <User className="w-5 h-5 text-green-500" />
-                        <div>
-                          <span className="text-gray-400 text-sm">Desarrollador</span>
-                          <div className="text-white font-semibold">{game.developer}</div>
-                        </div>
-                      </div>
-                    )}
-                    {game.publisher && (
-                      <div className="flex items-center space-x-3">
-                        <User className="w-5 h-5 text-green-500" />
-                        <div>
-                          <span className="text-gray-400 text-sm">Distribuidor</span>
-                          <div className="text-white font-semibold">{game.publisher}</div>
-                        </div>
-                      </div>
-                    )}
+                    {i < arr.length - 1 && <div className="w-px h-10 bg-white/10" />}
                   </div>
-                  <div className="space-y-4">
-                    <div className="flex items-center space-x-3">
-                      <Monitor className="w-5 h-5 text-blue-500" />
-                      <div>
-                        <span className="text-gray-400 text-sm">Plataformas</span>
-                        <div className="text-white font-semibold">
-                          {Array.isArray(game.platform) ? game.platform.join(", ") : game.platform}
-                        </div>
-                      </div>
-                    </div>
-                    {game.genre && (
-                      <div className="flex items-center space-x-3">
-                        <Gamepad2 className="w-5 h-5 text-purple-500" />
-                        <div>
-                          <span className="text-gray-400 text-sm">Género</span>
-                          <div className="text-white font-semibold">
-                            {game.genre || 'No especificado'}
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                    <div className="flex items-center space-x-3">
-                      <Star className="w-5 h-5 text-yellow-500" />
-                      <div>
-                        <span className="text-gray-400 text-sm">Calificación</span>
-                        <div className="text-white font-semibold">{game.rating}/10</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <Award className="w-5 h-5 text-red-500" />
-                      <div>
-                        <span className="text-gray-400 text-sm">Importancia</span>
-                        <div className="text-white font-semibold">
-                          {(game.importance ?? 0) >= 9 ? 'Esencial' : (game.importance ?? 0) >= 7 ? 'Muy Importante' : 'Importante'}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                ))}
               </div>
 
               {/* Sinopsis */}
               {game.description && (
-                <div className="mt-8 bg-gray-900/50 border border-green-600/20 rounded-lg p-8">
-                  <h3 className="text-2xl font-bold text-white mb-6">Sinopsis</h3>
-                  <p className="text-gray-300 text-lg leading-relaxed">
-                    {game.description}
-                  </p>
+                <div className="mb-10">
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className="w-1 h-7 rounded-full bg-gradient-to-b from-blue-500 to-blue-800" />
+                    <h3 className="text-2xl font-bold text-white">Sinopsis</h3>
+                  </div>
+                  <p className="text-gray-300 text-lg leading-relaxed">{game.description}</p>
                 </div>
               )}
 
-              {/* Tráiler del Juego */}
+              {/* Trailer */}
               {game.playUrl && (
-                <div className="mt-8 bg-gray-900/50 border border-green-600/20 rounded-lg p-8">
-                  <h3 className="text-3xl font-bold text-white mb-6 flex items-center">
-                    <Play className="w-8 h-8 mr-3 text-green-500" />
-                    Tráiler Oficial
-                  </h3>
-                  <div className="relative aspect-video rounded-lg overflow-hidden bg-black">
+                <div id="trailer" className="mt-10 scroll-mt-24 bg-gray-900/50 border border-white/10 rounded-2xl p-6">
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className="w-1 h-7 rounded-full bg-gradient-to-b from-blue-500 to-blue-800" />
+                    <h3 className="text-2xl font-bold text-white">Tráiler Oficial</h3>
+                  </div>
+                  <div className="relative aspect-video rounded-xl overflow-hidden shadow-2xl shadow-black/60">
                     <iframe
                       src={convertToEmbedUrl(game.playUrl)}
                       title={`Tráiler de ${game.title}`}
@@ -318,61 +280,58 @@ export default async function GamePage({ params }: Props) {
                       allowFullScreen
                     />
                   </div>
-                  <p className="text-gray-400 text-sm mt-3 text-center">
-                    Tráiler oficial de {game.title} ({game.year})
-                  </p>
                 </div>
               )}
 
-              {/* Análisis Completo */}
-              {game.longDescription && (
-                <div className="mt-8 bg-gray-900/50 border border-green-600/20 rounded-lg p-8">
-                  <h3 className="text-3xl font-bold text-white mb-6 flex items-center">
-                    <Award className="w-8 h-8 mr-3 text-green-500" />
-                    Análisis Editorial
-                  </h3>
-                  <div 
-                    className="text-gray-300 text-lg leading-relaxed max-w-none
-                      [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:text-white [&>h2]:mb-4 [&>h2]:mt-6
-                      [&>h3]:text-xl [&>h3]:font-semibold [&>h3]:text-green-400 [&>h3]:mb-3 [&>h3]:mt-5
-                      [&>p]:mb-4 [&>p]:text-gray-300 [&>p]:leading-relaxed
-                      [&>p:first-of-type]:text-xl [&>p:first-of-type]:text-gray-200 [&>p:first-of-type]:font-medium
-                      [&>strong]:text-white [&>strong]:font-semibold
-                      [&>em]:text-gray-200 [&>em]:italic
-                      [&>ul]:list-disc [&>ul]:ml-6 [&>ul]:mb-4
-                      [&>li]:mb-2 [&>li]:text-gray-300
-                      [&>blockquote]:border-l-4 [&>blockquote]:border-green-500 [&>blockquote]:pl-4 [&>blockquote]:italic [&>blockquote]:text-gray-200 [&>blockquote]:bg-gray-800/30 [&>blockquote]:py-2 [&>blockquote]:rounded-r
-                    "
-                    dangerouslySetInnerHTML={{ __html: game.longDescription }}
-                  />
+              {/* Análisis Editorial */}
+              <div className="mt-10 bg-gradient-to-br from-gray-900/80 to-blue-950/20 border border-blue-500/30 rounded-xl p-8 backdrop-blur-sm">
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="w-1 h-7 rounded-full bg-gradient-to-b from-blue-500 to-blue-800" />
+                  <h3 className="text-2xl font-bold text-white">Análisis Editorial</h3>
+                  <Award className="w-5 h-5 text-blue-400 ml-auto" />
                 </div>
-              )}
-
-              {/* Galería de Capturas */}
-              {game.screenshotImages && Array.isArray(game.screenshotImages) && game.screenshotImages.length > 0 && (
-                <div className="mt-8 bg-gray-900/50 border border-green-600/20 rounded-lg p-8">
-                  <h3 className="text-3xl font-bold text-white mb-6 flex items-center">
-                    <Camera className="w-8 h-8 mr-3 text-blue-500" />
-                    Galería de Capturas
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {parseJson<GalleryImage>(game.screenshotImages).map((screenshot, index) => (
-                      <div key={index} className="group cursor-pointer">
-                        <div className="relative overflow-hidden rounded-lg">
-                          <Image
-                            src={screenshot.url}
-                            alt={screenshot.title}
-                            width={400}
-                            height={225}
-                            className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
-                          />
-                          <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <Camera className="w-12 h-12 text-white" />
+                {(() => {
+                  const data = gameAnalysis[game.slug] ?? {
+                    propuesta: `${game.title} ofrece una experiencia de juego centrada en el universo de Spider-Man, desarrollada por ${game.developer} con las herramientas y tecnología disponibles en ${game.year}.`,
+                    recepcion: `El juego encontró su público entre los fans del trepamuros y contribuyó al catálogo de adaptaciones del personaje en el mundo de los videojuegos.`,
+                    legado: `Como parte de la historia de Spider-Man en videojuegos, ${game.title} ocupa su lugar en la evolución de un personaje que lleva décadas siendo uno de los más adaptados al medio interactivo.`,
+                  }
+                  return (
+                    <div className="space-y-8">
+                      {[
+                        { num: "01", title: "Propuesta Jugable",         text: data.propuesta, color: "text-blue-500" },
+                        { num: "02", title: "Recepción y Repercusión",   text: data.recepcion, color: "text-blue-500" },
+                        { num: "03", title: "Legado en el Spider-Verse", text: data.legado,    color: "text-purple-500" },
+                      ].map(({ num, title, text, color }) => (
+                        <div key={num} className="flex gap-6 items-start">
+                          <span className={`text-5xl font-black leading-none ${color} opacity-25 select-none shrink-0 w-14 text-right`}>{num}</span>
+                          <div>
+                            <h4 className={`text-lg font-bold ${color} mb-2`}>{title}</h4>
+                            <p className="text-gray-300 leading-relaxed">{text}</p>
                           </div>
                         </div>
-                        <div className="mt-3">
-                          <h4 className="text-white font-semibold">{screenshot.title}</h4>
-                          <p className="text-gray-400 text-sm">{screenshot.description}</p>
+                      ))}
+                    </div>
+                  )
+                })()}
+              </div>
+
+              {/* Galería de capturas */}
+              {screenshotImages.length > 0 && (
+                <div className="mt-10">
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className="w-1 h-7 rounded-full bg-gradient-to-b from-blue-500 to-blue-800" />
+                    <h3 className="text-2xl font-bold text-white">Galería de Capturas</h3>
+                  </div>
+                  <div className="grid grid-cols-3 gap-2">
+                    {screenshotImages.map((shot, i) => (
+                      <div key={i} className={`group relative overflow-hidden rounded-xl ${i === 0 ? 'col-span-2 row-span-2' : ''}`}>
+                        <div className="relative w-full aspect-video">
+                          <Image src={shot.url} alt={shot.title} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                          <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                            <p className="text-white text-xs font-medium line-clamp-1">{shot.title}</p>
+                          </div>
                         </div>
                       </div>
                     ))}
@@ -380,31 +339,29 @@ export default async function GamePage({ params }: Props) {
                 </div>
               )}
 
-              {/* Personajes Principales */}
-              {game.characterImages && Array.isArray(game.characterImages) && game.characterImages.length > 0 && (
-                <div className="mt-8 bg-gray-900/50 border border-green-600/20 rounded-lg p-8">
-                  <h3 className="text-3xl font-bold text-white mb-6 flex items-center">
-                    <Users className="w-8 h-8 mr-3 text-purple-500" />
-                    Personajes Principales
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {parseJson<CharacterImage>(game.characterImages).slice(0, 6).map((character, index) => (
-                      <div key={index} className="bg-gray-800/50 rounded-lg p-6 text-center group hover:bg-gray-800/70 transition-colors">
-                        <div className="relative mb-4">
+              {/* Personajes */}
+              {characterImages.length > 0 && (
+                <div className="mt-10">
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className="w-1 h-7 rounded-full bg-gradient-to-b from-blue-500 to-blue-800" />
+                    <h3 className="text-2xl font-bold text-white">Personajes Principales</h3>
+                  </div>
+                  <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
+                    {characterImages.slice(0, 12).map((char, i) => (
+                      <div key={i} className="group bg-gray-900/60 border border-white/5 rounded-2xl overflow-hidden hover:border-white/20 transition-colors">
+                        <div className="relative aspect-[3/4]">
                           <Image
-                            src={character.image || '/placeholder-user.jpg'}
-                            alt={character.name}
-                            width={120}
-                            height={120}
-                            className="w-20 h-20 rounded-full mx-auto object-cover border-2 border-green-500/30 group-hover:border-green-500 transition-colors"
+                            src={char.image || '/placeholder-user.jpg'}
+                            alt={char.name}
+                            fill
+                            sizes="(max-width: 768px) 50vw, 16vw"
+                            className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                           />
-                        </div>
-                        <div>
-                          <h4 className="text-white font-semibold text-lg mb-1">{character.name}</h4>
-                          <p className="text-green-400 text-sm mb-2">{character.role || 'Personaje'}</p>
-                          {character.description && (
-                            <p className="text-gray-400 text-xs leading-relaxed">{character.description}</p>
-                          )}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+                          <div className="absolute bottom-0 left-0 right-0 p-3">
+                            <p className="text-white font-semibold text-xs leading-tight">{char.name}</p>
+                            <p className="text-blue-400 text-xs mt-0.5">{char.role || 'Personaje'}</p>
+                          </div>
                         </div>
                       </div>
                     ))}
@@ -412,165 +369,107 @@ export default async function GamePage({ params }: Props) {
                 </div>
               )}
 
-
-              {/* Arte Conceptual */}
+              {/* Arte conceptual */}
               {game.conceptArt && Array.isArray(game.conceptArt) && game.conceptArt.length > 0 && (
-                <div className="mt-8 bg-gray-900/50 border border-green-600/20 rounded-lg p-8">
-                  <h3 className="text-3xl font-bold text-white mb-6 flex items-center">
-                    <Palette className="w-8 h-8 mr-3 text-green-400" />
-                    Arte Conceptual
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {parseJson<ConceptArtItem>(game.conceptArt).map((art, index) => (
-                      <div key={index} className="group cursor-pointer">
-                        <div className="relative overflow-hidden rounded-lg">
-                          <Image
-                            src={art.url}
-                            alt={art.title}
-                            width={400}
-                            height={225}
-                            className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
-                          />
-                          <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <Palette className="w-12 h-12 text-white" />
+                <div className="mt-10">
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className="w-1 h-7 rounded-full bg-gradient-to-b from-blue-500 to-blue-800" />
+                    <h3 className="text-2xl font-bold text-white">Arte Conceptual</h3>
+                  </div>
+                  <div className="grid grid-cols-3 gap-2">
+                    {parseJson<ConceptArtItem>(game.conceptArt).map((art, i) => (
+                      <div key={i} className={`group relative overflow-hidden rounded-xl ${i === 0 ? 'col-span-2 row-span-2' : ''}`}>
+                        <div className="relative w-full aspect-video">
+                          <Image src={art.url} alt={art.title} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                          <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                            <p className="text-white text-xs font-medium line-clamp-1">{art.title}</p>
                           </div>
-                        </div>
-                        <div className="mt-3">
-                          <h4 className="text-white font-semibold">{art.title}</h4>
-                          <p className="text-gray-400 text-sm">{art.description}</p>
                         </div>
                       </div>
                     ))}
                   </div>
                 </div>
               )}
+
             </div>
 
             {/* Sidebar */}
             <div className="lg:col-span-1">
-              <div className="sticky top-24 space-y-8">
-                {/* Game Cover */}
-                <div className="bg-gray-900/30 rounded-lg p-6 border border-green-600/20">
-                  <Image
-                    src={game.image}
-                    alt={`${game.title} (${game.year}) - Portada`}
-                    width={300}
-                    height={450}
-                    className="w-full rounded-lg"
-                  />
-                  <div className="mt-4 text-center">{renderStars(game.rating)}</div>
-                </div>
-                
-                {/* Ad */}
+              <div className="sticky top-24 space-y-6">
                 <SidebarAd />
-                
-                {/* Newsletter */}
-                <div className="bg-gradient-to-r from-green-900/20 to-blue-900/20 border border-green-600/30 rounded-lg p-6">
-                  <div className="text-center">
-                    <Mail className="w-8 h-8 text-green-500 mx-auto mb-3" />
-                    <h3 className="text-lg font-bold text-white mb-3">
-                      ¿Te gustó este análisis?
-                    </h3>
-                    <p className="text-gray-300 mb-4 text-sm">
-                      Recibe análisis exclusivos de videojuegos Spider-Man.
-                    </p>
-                    <div className="space-y-3">
-                      <input
-                        type="email"
-                        placeholder="tu@email.com"
-                        className="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded text-white placeholder-gray-400 focus:outline-none focus:border-green-500 text-sm"
-                      />
-                      <Button className="w-full bg-green-600 hover:bg-green-700 text-sm">
-                        <CheckCircle className="w-4 h-4 mr-1" />
-                        Suscribirse
-                      </Button>
-                    </div>
-                  </div>
-                </div>
 
-                {/* Productos Recomendados */}
-                <div className="bg-gray-900/30 rounded-lg p-6 border border-green-600/20">
-                  <h3 className="text-xl font-semibold text-white mb-4">
-                    🎮 Productos del Juego
-                  </h3>
-                  <div className="space-y-4">
-                    <AmazonProduct
-                      title={`${game.title} - ${Array.isArray(game.platform) ? game.platform[0] : game.platform}`}
-                      description="Versión física del videojuego"
-                      price="$49.99"
-                      originalPrice="$59.99"
-                      discount={17}
-                      category="Videojuego"
-                      tags={['Spider-Man', 'Gaming', Array.isArray(game.platform) ? game.platform[0] : game.platform]}
-                      searchQuery={`${game.title} ${Array.isArray(game.platform) ? game.platform[0] : game.platform} game`}
-                      className="max-w-none"
-                    />
-                    <AmazonProduct
-                      title={`${game.title} Collector's Edition`}
-                      description="Edición de coleccionista con extras"
-                      price="$149.99"
-                      category="Videojuego"
-                      tags={['Spider-Man', 'Collector', 'Gaming']}
-                      searchQuery={`${game.title} collector edition`}
-                      className="max-w-none"
-                    />
-                  </div>
+                <div className="bg-gray-900/60 border border-white/10 rounded-2xl p-5 space-y-3">
+                  <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-widest mb-4">Comprar en Amazon</h3>
+                  {[
+                    { label: `${game.title} — ${platformFirst}`,     query: `${game.title} ${platformFirst} game`,          icon: "🎮" },
+                    { label: `Edición Coleccionista`,                 query: `${game.title} collector edition`,              icon: "🏆" },
+                    { label: `Funko Pop Spider-Man`,                  query: `funko pop spider-man gaming`,                  icon: "🕷️" },
+                  ].map(({ label, query, icon }) => (
+                    <a
+                      key={label}
+                      href={generateAmazonUrl(query)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 w-full px-4 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/20 transition-all duration-200 group"
+                    >
+                      <span className="text-lg">{icon}</span>
+                      <span className="text-sm text-gray-300 group-hover:text-white transition-colors flex-1">{label}</span>
+                      <ShoppingCart className="w-4 h-4 text-gray-500 group-hover:text-orange-400 transition-colors shrink-0" />
+                    </a>
+                  ))}
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </section>
 
-      {/* Related Games */}
+      {/* Juegos relacionados */}
       {relatedGames.length > 0 && (
-        <section className="py-20 bg-gradient-to-b from-green-950/10 to-red-950/10">
-          <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold text-white mb-12 text-center">Videojuegos Relacionados</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <section className="py-20 bg-gradient-to-b from-blue-950/10 to-black">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-1 h-7 rounded-full bg-gradient-to-b from-blue-500 to-blue-800" />
+              <h2 className="text-2xl font-bold text-white">Más videojuegos de Spider-Man</h2>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {relatedGames.map((item) => (
-                <RelatedCard key={item.id} item={item} basePath="videojuegos" icon={Gamepad2} />
+                <Link key={item.id} href={`/videojuegos/${item.slug}`} className="group">
+                  <div className="relative rounded-2xl overflow-hidden shadow-xl shadow-black/40">
+                    <div className="relative aspect-[3/4]">
+                      <Image src={item.image} alt={item.title} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+                      <div className="absolute bottom-0 left-0 right-0 p-3 group-hover:opacity-0 transition-opacity duration-300">
+                        <h3 className="text-white text-sm font-bold line-clamp-2 text-center leading-tight" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}>
+                          {item.title}
+                        </h3>
+                      </div>
+                      <div className="absolute inset-0 p-4 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="w-full flex items-center justify-center gap-1 bg-white/20 backdrop-blur-sm text-white text-xs font-medium py-2 rounded-lg">
+                          <Play className="w-3 h-3" />
+                          Ver análisis
+                        </div>
+                      </div>
+                      {item.rating && (
+                        <div className="absolute top-2 right-2 flex items-center gap-1 bg-black/70 backdrop-blur-sm rounded-full px-2 py-1">
+                          <Star className="w-3 h-3 text-yellow-400 fill-yellow-400" />
+                          <span className="text-white text-xs font-semibold">{item.rating}</span>
+                        </div>
+                      )}
+                      <div className="absolute top-2 left-2 bg-black/70 backdrop-blur-sm rounded-full px-2 py-1">
+                        <span className="text-gray-300 text-xs">{item.year}</span>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
               ))}
             </div>
           </div>
         </section>
       )}
 
-      {/* SEO Footer Content */}
-      <section className="py-16 bg-gray-900/30 border-t border-gray-800">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
-            <div>
-              <h3 className="text-xl font-bold text-white mb-4">🎮 Análisis Completo</h3>
-              <p className="text-gray-400">
-                Análisis profundo de {game.title} con crítica especializada, 
-                gameplay detallado y contexto dentro del universo Spider-Man.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-xl font-bold text-white mb-4">🕷️ Spider-Verse Gaming</h3>
-              <p className="text-gray-400">
-                Descubre cómo {game.title} se conecta con otros videojuegos del Spider-Verse 
-                y su evolución en la historia del gaming.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-xl font-bold text-white mb-4">🛒 Gaming Store</h3>
-              <p className="text-gray-400">
-                Encuentra {game.title}, DLCs, ediciones especiales y merchandise 
-                en nuestras tiendas afiliadas al mejor precio.
-              </p>
-            </div>
-          </div>
-          
-          <div className="mt-12 pt-8 border-t border-gray-800 text-center">
-            <p className="text-gray-500 text-sm">
-              {game.title} ({game.year}) | Análisis y review completo en Spider-World | 
-              La web definitiva sobre videojuegos Spider-Man | Gaming, análisis, tráilers y más
-            </p>
-          </div>
-        </div>
-      </section>
     </div>
   )
-} 
+}

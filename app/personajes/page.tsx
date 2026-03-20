@@ -1,304 +1,214 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
 import { characterService } from '@/lib/database';
 import { CharacterGrid } from '@/components/characters/CharacterCard';
-import { Button } from '@/components/ui/button';
-import { ArrowLeft, Users, Star, Zap, Shield, Image, Clock, Skull, Calendar, ShoppingCart } from 'lucide-react';
-import Link from 'next/link';
-import { InContentAd, SidebarAd } from '@/components/ads/GoogleAdsense';
-import { AmazonProduct } from '@/components/affiliate/AmazonProduct';
-import { AMAZON_TAG } from '@/lib/config';
+import { CharacterFilter } from '@/components/characters/CharacterFilter';
+import { InContentAd } from '@/components/ads/GoogleAdsense';
+import { Zap, Skull, Shield, Star, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Personajes de Spider-Man y Marvel | Spider-World',
-  description: 'Descubre todos los personajes de Spider-Man y Marvel con información completa, imágenes oficiales y productos. Spider-Verse, villanos, héroes y más.',
-  keywords: ['Spider-Man personajes', 'Marvel characters', 'Spider-Verse', 'Spider-Gwen', 'Miles Morales', 'personajes Marvel', 'base de datos personajes'],
+  description: 'Descubre todos los personajes de Spider-Man y Marvel con información completa, imágenes oficiales y más. Spider-Verse, villanos, héroes y más.',
+  keywords: ['Spider-Man personajes', 'Marvel characters', 'Spider-Verse', 'Spider-Gwen', 'Miles Morales', 'personajes Marvel'],
   openGraph: {
     title: 'Personajes de Spider-Man y Marvel | Spider-World',
-    description: 'Explora todos los personajes del Spider-Verse y Marvel con información completa y productos oficiales',
+    description: 'Explora todos los personajes del Spider-Verse y Marvel con información completa',
     type: 'website',
-  }
+  },
 };
 
-// Función para obtener grupos de personajes desde la base de datos
 async function getCharacterGroups() {
   try {
-    const [spiderVerse, spiderVillains, marvelUniverse] = await Promise.all([
-      characterService.getSpiderVerse(15),
-      characterService.getSpiderVillains(15), 
-      characterService.getMarvelUniverse(15)
+    const [spiderVerse, spiderVillains, marvelUniverse, featured] = await Promise.all([
+      characterService.getSpiderVerse(20),
+      characterService.getSpiderVillains(20),
+      characterService.getMarvelUniverse(20),
+      characterService.getBySlug('spider-man-peter-parker-alt').catch(() => null),
     ]);
-
     return {
       spiderVerse: spiderVerse || [],
       spiderVillains: spiderVillains || [],
-      marvelUniverse: marvelUniverse || []
+      marvelUniverse: marvelUniverse || [],
+      featured: featured || null,
     };
-  } catch (error) {
-    console.error('Error fetching characters from database:', error);
-    return {
-      spiderVerse: [],
-      spiderVillains: [],
-      marvelUniverse: []
-    };
+  } catch {
+    return { spiderVerse: [], spiderVillains: [], marvelUniverse: [], featured: null };
   }
 }
 
 export default async function PersonajesPage() {
-  const { spiderVerse, spiderVillains, marvelUniverse } = await getCharacterGroups();
+  const { spiderVerse, spiderVillains, marvelUniverse, featured } = await getCharacterGroups();
+  const total = spiderVerse.length + spiderVillains.length + marvelUniverse.length;
 
   return (
-    <div className="min-h-screen bg-black text-white pt-16">
-      {/* Header */}
-      <section className="relative py-20 bg-gradient-to-br from-red-900/30 via-black to-blue-900/30">
-        <div className="absolute inset-0 bg-[url('/images/spider-web-pattern.svg')] opacity-10"></div>
-        
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="flex items-center gap-4 mb-8">
-            <Link href="/">
-              <Button variant="outline" size="sm" className="border-red-600 text-red-400 hover:bg-red-600 hover:text-white">
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Volver al Inicio
-              </Button>
-            </Link>
-          </div>
+    <div
+      className="pt-16 bg-gradient-to-b from-black via-gray-950 to-black"
+      style={{
+        backgroundImage:
+          'radial-gradient(ellipse 80% 50% at 10% 30%, rgba(180,0,0,0.10) 0%, transparent 70%), radial-gradient(ellipse 70% 40% at 90% 70%, rgba(0,40,180,0.12) 0%, transparent 70%)',
+      }}
+    >
+      {/* Hero */}
+      <section className="relative min-h-[60vh] flex items-center overflow-hidden">
+        <div className="absolute inset-0">
+          <Image src="/images/image1.png" alt="" fill sizes="100vw" className="object-cover object-[center_45%] opacity-70" />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-black/50" />
 
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-red-500 via-blue-500 to-red-500 bg-clip-text text-transparent">
-              Personajes de Spider-Man
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-8">
-              Todos los personajes del Spider-Verse y Marvel Universe con información completa y organizada. 
-              Descubre héroes, villanos y encuentra sus productos oficiales.
-            </p>
-            
-            <div className="flex flex-wrap justify-center gap-4 text-sm">
-              <div className="flex items-center gap-2 bg-red-900/20 px-4 py-2 rounded-full">
-                <Calendar className="w-4 h-4 text-red-400" />
-                <span>Base de datos actualizada</span>
-              </div>
-              <div className="flex items-center gap-2 bg-blue-900/20 px-4 py-2 rounded-full">
-                <Star className="w-4 h-4 text-blue-400" />
-                <span>Imágenes Oficiales de Alta Calidad</span>
-              </div>
-              <div className="flex items-center gap-2 bg-purple-900/20 px-4 py-2 rounded-full">
-                <Users className="w-4 h-4 text-purple-400" />
-                <span>{spiderVerse.length + spiderVillains.length + marvelUniverse.length}+ personajes</span>
-              </div>
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10 py-24 text-center">
+          <p className="text-xs tracking-[0.3em] uppercase text-red-400 font-semibold mb-4"
+            style={{ textShadow: '0 2px 8px rgba(0,0,0,0.8)' }}>
+            Spider-World · Base de datos
+          </p>
+          <h1 className="text-6xl md:text-8xl font-black text-white mb-6 leading-tight"
+            style={{ textShadow: '0 4px 24px rgba(0,0,0,0.9)' }}>
+            Personajes
+          </h1>
+          <p className="text-white/80 text-lg max-w-2xl mx-auto mb-10"
+            style={{ textShadow: '0 2px 12px rgba(0,0,0,0.9)' }}>
+            Héroes, villanos y aliados del universo Spider-Man. Más de {total} personajes con información completa.
+          </p>
+
+          <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex items-center gap-2 bg-black/50 backdrop-blur-sm border border-red-500/40 px-5 py-3 rounded-full">
+              <Zap className="w-5 h-5 text-red-400" />
+              <span className="text-white font-semibold">{spiderVerse.length}</span>
+              <span className="text-gray-300 text-sm">Spider-Verse</span>
+            </div>
+            <div className="flex items-center gap-2 bg-black/50 backdrop-blur-sm border border-orange-500/40 px-5 py-3 rounded-full">
+              <Skull className="w-5 h-5 text-orange-400" />
+              <span className="text-white font-semibold">{spiderVillains.length}</span>
+              <span className="text-gray-300 text-sm">Villanos</span>
+            </div>
+            <div className="flex items-center gap-2 bg-black/50 backdrop-blur-sm border border-blue-500/40 px-5 py-3 rounded-full">
+              <Shield className="w-5 h-5 text-blue-400" />
+              <span className="text-white font-semibold">{marvelUniverse.length}</span>
+              <span className="text-gray-300 text-sm">Marvel Universe</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Ad */}
       <InContentAd />
 
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          {/* Main Content */}
-          <div className="lg:col-span-3">
-            {/* Spider-Verse Section */}
-            <section className="py-16">
-              <div className="text-center mb-12">
-                <div className="flex items-center justify-center gap-3 mb-4">
-                  <Zap className="w-8 h-8 text-red-500" />
-                  <h2 className="text-4xl font-bold bg-gradient-to-r from-red-500 to-pink-500 bg-clip-text text-transparent">
-                    Spider-Verse
-                  </h2>
-                  <Zap className="w-8 h-8 text-red-500" />
-                </div>
-                <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-                  Los arácnidos más poderosos del multiverso Marvel. Desde el clásico Spider-Man hasta los nuevos héroes del Spider-Verse.
-                </p>
-              </div>
-          
-              <CharacterGrid 
-                characters={spiderVerse}
-                title=""
-                maxItems={15}
-              />
-            </section>
+      <div className="max-w-7xl mx-auto px-6 md:px-10 pb-24 space-y-20">
 
-            {/* Spider-Villains Section */}
-            <section className="py-16 border-t border-gray-800">
-              <div className="text-center mb-12">
-                <div className="flex items-center justify-center gap-3 mb-4">
-                  <Skull className="w-8 h-8 text-red-600" />
-                  <h2 className="text-4xl font-bold bg-gradient-to-r from-red-600 to-orange-500 bg-clip-text text-transparent">
-                    Villanos de Spider-Man
-                  </h2>
-                  <Skull className="w-8 h-8 text-red-600" />
-                </div>
-                <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-                  Los enemigos más peligrosos y icónicos del Arácnido. Desde el Green Goblin hasta Venom.
-                </p>
-              </div>
-          
-              <CharacterGrid 
-                characters={spiderVillains}
-                title=""
-                maxItems={15}
-              />
-            </section>
-
-            {/* Marvel Universe Section */}
-            <section className="py-16 border-t border-gray-800">
-              <div className="text-center mb-12">
-                <div className="flex items-center justify-center gap-3 mb-4">
-                  <Shield className="w-8 h-8 text-blue-500" />
-                  <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
-                    Marvel Universe
-                  </h2>
-                  <Shield className="w-8 h-8 text-blue-500" />
-                </div>
-                <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-                  Los héroes más icónicos del universo Marvel. Desde los Vengadores hasta los defensores de la Tierra.
-                </p>
-              </div>
-          
-              <CharacterGrid 
-                characters={marvelUniverse}
-                title=""
-                maxItems={15}
-              />
-            </section>
-          </div>
-
-          {/* Sidebar */}
-          <div className="lg:col-span-1">
-            <div className="sticky top-24 space-y-8">
-              {/* Ad */}
-              <SidebarAd />
-              
-              {/* Productos Recomendados */}
-              <div className="bg-gray-900/30 rounded-lg p-6 border border-red-600/20">
-                <h3 className="text-xl font-semibold text-white mb-4">
-                  🦸‍♂️ Productos de Personajes
-                </h3>
-                <div className="space-y-4">
-                  <AmazonProduct
-                    title="Spider-Man Action Figure Collection"
-                    description="Figuras oficiales de acción de Spider-Man y villanos"
-                    price="$34.99"
-                    originalPrice="$49.99"
-                    discount={30}
-                    category="Figura"
-                    tags={['Spider-Man', 'Action Figure', 'Marvel']}
-                    searchQuery="Spider-Man action figures Marvel official"
-                    className="max-w-none"
-                  />
-                  <AmazonProduct
-                    title="Marvel Character Encyclopedia"
-                    description="Guía completa de todos los personajes Marvel"
-                    price="$24.99"
-                    category="Libro"
-                    tags={['Marvel', 'Encyclopedia', 'Characters']}
-                    searchQuery="Marvel character encyclopedia book"
-                    className="max-w-none"
-                  />
-                  <AmazonProduct
-                    title="Spider-Verse Poster Collection"
-                    description="Pósters oficiales de personajes del Spider-Verse"
-                    price="$19.99"
-                    originalPrice="$29.99"
-                    discount={33}
-                    category="Póster"
-                    tags={['Spider-Verse', 'Poster', 'Wall Art']}
-                    searchQuery="Spider-Verse character posters official"
-                    className="max-w-none"
-                  />
-                </div>
-              </div>
-
-              {/* Character Stats Section */}
-              <div className="bg-gray-900/30 rounded-lg p-6 border border-red-600/20">
-                <h3 className="text-xl font-semibold text-white mb-4">
-                  📊 Estadísticas de Personajes
-                </h3>
-                <div className="space-y-3 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Spider-Verse:</span>
-                    <span className="text-white font-semibold">{spiderVerse.length}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Villanos:</span>
-                    <span className="text-white font-semibold">{spiderVillains.length}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Marvel Universe:</span>
-                    <span className="text-white font-semibold">{marvelUniverse.length}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Total personajes:</span>
-                    <span className="text-white font-semibold">{spiderVerse.length + spiderVillains.length + marvelUniverse.length}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Character Guide */}
-              <div className="bg-gray-900/30 rounded-lg p-6 border border-red-600/20">
-                <h3 className="text-xl font-semibold text-white mb-4">
-                  🕷️ Guía de Personajes
-                </h3>
-                <div className="space-y-2 text-sm">
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-400">Spider-Man (Peter)</span>
-                    <span className="text-red-400">Clásico</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-400">Miles Morales</span>
-                    <span className="text-blue-400">Ultimate</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-400">Spider-Gwen</span>
-                    <span className="text-purple-400">Spider-Verse</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-400">Green Goblin</span>
-                    <span className="text-green-400">Arch-Enemy</span>
-                  </div>
-                </div>
-              </div>
+        {/* Personaje destacado */}
+        {featured && (
+          <section>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-1 h-7 rounded-full bg-gradient-to-b from-red-500 to-red-800" />
+              <h2 className="text-2xl font-bold text-white">Personaje Destacado</h2>
             </div>
-          </div>
-        </div>
+            <Link href={`/personajes/${featured.slug}`} className="group block">
+              <div className="relative rounded-2xl overflow-hidden border border-white/10 hover:border-red-500/40 transition-colors duration-300">
+                {/* Fondo */}
+                <div className="absolute inset-0">
+                  <Image src={featured.image} alt="" fill sizes="100vw" className="object-cover object-top scale-110 blur-sm opacity-30 transition-transform duration-700 group-hover:scale-105" />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
 
-        {/* Final CTA */}
-        <section className="py-16 bg-gradient-to-r from-red-600/20 to-blue-600/20">
-          <div className="container mx-auto px-4 text-center">
-            <h3 className="text-3xl font-bold text-white mb-4">
-              ¿Listo para conocer más sobre tus personajes favoritos?
-            </h3>
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              Encuentra figuras de acción, cómics y productos oficiales de todos los personajes Marvel.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700"
-                asChild
-              >
-                <a 
-                  href={`https://www.amazon.es/s?k=Spider-Man+Marvel+characters+figures&tag=${AMAZON_TAG}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <ShoppingCart className="mr-2 h-5 w-5" />
-                  Ver Productos de Personajes
-                </a>
-              </Button>
-              <Link href="/comics">
-                <Button 
-                  size="lg" 
-                  variant="outline" 
-                  className="border-red-600 text-red-400 hover:bg-red-600 hover:text-white"
-                >
-                  Explorar Cómics
-                </Button>
-              </Link>
-            </div>
+                <div className="relative z-10 grid grid-cols-1 md:grid-cols-[1fr_220px] gap-8 items-center p-8 md:p-10">
+                  {/* Info */}
+                  <div>
+                    <span className="text-xs font-semibold tracking-widest uppercase text-red-400 mb-3 block">El Original · Spider-Verse</span>
+                    <h3 className="text-4xl md:text-5xl font-black text-white mb-2">{featured.name}</h3>
+                    {featured.realName && (
+                      <p className="text-gray-400 italic mb-4">"{featured.realName}"</p>
+                    )}
+                    <div className="flex items-center gap-2 mb-5">
+                      {[1,2,3,4,5].map(i => (
+                        <Star key={i} className={`w-4 h-4 ${i <= Math.round(featured.rating) ? 'text-yellow-400 fill-yellow-400' : 'text-gray-600'}`} />
+                      ))}
+                      <span className="text-yellow-400 font-bold ml-1">{featured.rating.toFixed(1)}</span>
+                      <span className="text-gray-500 text-sm">/5</span>
+                    </div>
+                    <p className="text-gray-300 text-base leading-relaxed max-w-xl mb-6">{featured.description}</p>
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {featured.powers.slice(0, 4).map(p => (
+                        <span key={p} className="text-xs bg-red-500/10 border border-red-500/20 text-red-300 rounded-full px-3 py-1">{p}</span>
+                      ))}
+                    </div>
+                    <span className="inline-flex items-center gap-2 text-sm font-semibold text-white bg-red-600 hover:bg-red-500 transition-colors px-5 py-2.5 rounded-full">
+                      Ver perfil completo
+                      <ArrowRight className="w-4 h-4" />
+                    </span>
+                  </div>
+
+                  {/* Imagen */}
+                  <div className="hidden md:block">
+                    <div className="relative">
+                      <div className="absolute -inset-4 bg-red-600/15 blur-2xl rounded-3xl" />
+                      <Image
+                        src={featured.image}
+                        alt={featured.name}
+                        width={220}
+                        height={330}
+                        className="relative rounded-xl shadow-2xl w-full object-cover object-top"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </section>
+        )}
+
+
+        {/* Buscador y filtros */}
+        <section>
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-1 h-7 rounded-full bg-gradient-to-b from-gray-500 to-gray-800" />
+            <h2 className="text-2xl font-bold text-white">Buscar personajes</h2>
           </div>
+          <CharacterFilter
+            spiderVerse={spiderVerse}
+            spiderVillains={spiderVillains}
+            marvelUniverse={marvelUniverse}
+          />
         </section>
+
+        {/* Spider-Verse */}
+        {spiderVerse.length > 0 && (
+          <section>
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-1 h-7 rounded-full bg-gradient-to-b from-red-500 to-red-800" />
+              <Zap className="w-5 h-5 text-red-400" />
+              <h2 className="text-2xl font-bold text-white">Spider-Verse</h2>
+              <span className="text-gray-600 text-sm ml-1">— {spiderVerse.length} personajes</span>
+            </div>
+            <CharacterGrid characters={spiderVerse} maxItems={20} />
+          </section>
+        )}
+
+        {/* Villanos */}
+        {spiderVillains.length > 0 && (
+          <section>
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-1 h-7 rounded-full bg-gradient-to-b from-orange-500 to-red-800" />
+              <Skull className="w-5 h-5 text-orange-400" />
+              <h2 className="text-2xl font-bold text-white">Villanos de Spider-Man</h2>
+              <span className="text-gray-600 text-sm ml-1">— {spiderVillains.length} personajes</span>
+            </div>
+            <CharacterGrid characters={spiderVillains} maxItems={20} />
+          </section>
+        )}
+
+        {/* Marvel Universe */}
+        {marvelUniverse.length > 0 && (
+          <section>
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-1 h-7 rounded-full bg-gradient-to-b from-blue-500 to-blue-800" />
+              <Shield className="w-5 h-5 text-blue-400" />
+              <h2 className="text-2xl font-bold text-white">Marvel Universe</h2>
+              <span className="text-gray-600 text-sm ml-1">— {marvelUniverse.length} personajes</span>
+            </div>
+            <CharacterGrid characters={marvelUniverse} maxItems={20} />
+          </section>
+        )}
+
       </div>
     </div>
   );
-} 
+}

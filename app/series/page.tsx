@@ -1,332 +1,267 @@
-import type { Metadata } from "next"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Star, Play, Calendar, Tv, Clock, Users, ExternalLink } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
+import { Play, Tv, Star } from "lucide-react"
+import type { Metadata } from "next"
+
+import { Badge } from "@/components/ui/badge"
+import { InContentAd } from "@/components/ads/GoogleAdsense"
 import { seriesService } from "@/lib/database"
-import { colorClasses } from "@/lib/theme"
 import { Series } from "@prisma/client"
 
 export const metadata: Metadata = {
   title: "Series de Spider-Man - Animadas y Live-Action | Spider-World",
   description:
     "Todas las series de Spider-Man desde 1967 hasta hoy. Series animadas clásicas, live-action y dónde verlas. Guía completa con fechas de estreno y análisis.",
-  keywords: ["Spider-Man series", "series animadas Spider-Man", "The Spectacular Spider-Man", "Spider-Man 1994", "series Marvel"]
+  keywords: ["Spider-Man series", "series animadas Spider-Man", "The Spectacular Spider-Man", "Spider-Man 1994", "series Marvel"],
 }
 
-// Función para organizar series por era
+const ERA_CONFIG = {
+  clasica:    { title: "Series Clásicas",      subtitle: "1967–1999 · Los primeros años en televisión", accent: "from-blue-600",   border: "border-blue-500/40",   glow: "shadow-blue-900/40" },
+  moderna:    { title: "Era Moderna",           subtitle: "2000–2015 · Animación madura y narrativas más complejas", accent: "from-red-600",    border: "border-red-500/40",    glow: "shadow-red-900/40" },
+  actual:     { title: "Era Actual",            subtitle: "2016–Presente · Las series más recientes",  accent: "from-purple-600", border: "border-purple-500/40", glow: "shadow-purple-900/40" },
+  liveaction: { title: "Live-Action y Especiales", subtitle: "Series y especiales con actores reales", accent: "from-green-600",  border: "border-green-500/40",  glow: "shadow-green-900/40" },
+}
+
 function organizeSeriesByEra(series: Series[]) {
-  const eras = {
-    classic: {
-      title: "Series Animadas Clásicas (1967-1999)",
-      description: "Las primeras series animadas que definieron a Spider-Man en TV",
-      color: "red",
-      years: "1967-1999",
-      series: [] as Series[]
-    },
-    modern: {
-      title: "Era Moderna Animada (2000-2015)",
-      description: "Series con animación mejorada y narrativas más maduras",
-      color: "blue", 
-      years: "2000-2015",
-      series: [] as Series[]
-    },
-    current: {
-      title: "Era Actual (2015-Presente)",
-      description: "Las series más recientes con animación de vanguardia",
-      color: "purple",
-      years: "2015-2024",
-      series: [] as Series[]
-    },
-    liveaction: {
-      title: "Live-Action y Especiales",
-      description: "Series y especiales con actores reales",
-      color: "green",
-      years: "1977-2024",
-      series: [] as Series[]
-    }
-  };
+  const eras = Object.fromEntries(
+    Object.entries(ERA_CONFIG).map(([key, cfg]) => [key, { ...cfg, series: [] as Series[] }])
+  ) as Record<string, typeof ERA_CONFIG[keyof typeof ERA_CONFIG] & { series: Series[] }>
 
   series.forEach(serie => {
-    const year = parseInt(serie.year, 10) || 0;
-    const title = serie.title.toLowerCase();
+    const year = parseInt(serie.year, 10) || 0
+    const title = serie.title.toLowerCase()
 
-    if (title.includes('live') || title.includes('freshman') || title.includes('noir') || (year < 1980 && year > 1970)) {
-      eras.liveaction.series.push(serie);
+    if (title.includes('live') || title.includes('freshman') || title.includes('noir') || (year >= 1977 && year <= 1979)) {
+      eras.liveaction.series.push(serie)
     } else if (year >= 1967 && year <= 1999) {
-      eras.classic.series.push(serie);
+      eras.clasica.series.push(serie)
     } else if (year >= 2000 && year <= 2015) {
-      eras.modern.series.push(serie);
+      eras.moderna.series.push(serie)
     } else {
-      eras.current.series.push(serie);
+      eras.actual.series.push(serie)
     }
-  });
+  })
 
-  // Ordenar series por año dentro de cada era
   Object.values(eras).forEach(era => {
-    era.series.sort((a, b) => parseInt(a.year, 10) - parseInt(b.year, 10));
-  });
+    era.series.sort((a, b) => parseInt(a.year, 10) - parseInt(b.year, 10))
+  })
 
-  return eras;
+  return eras
 }
 
-
-
 export default async function SeriesPage() {
-  // Obtener series de la base de datos
-  const allSeries = await seriesService.getAll();
-  
-  // Organizar por eras
-  const seriesByEra = organizeSeriesByEra(allSeries);
+  const allSeries = await seriesService.getAll()
+  const eras = organizeSeriesByEra(allSeries)
+  const featuredSerie = allSeries.find(s => s.slug === 'the-spectacular-spider-man-2008')
+    ?? allSeries.find(s => s.rating >= 8)
+    ?? allSeries[0]
+  const featuredNew = allSeries.find(s => s.slug === 'tu-amigo-y-vecino-spider-man')
 
-  const viewingGuides = [
-    {
-      title: "Para Nuevos Fans",
-      description: "Las mejores series para empezar",
-      icon: "🎬",
-      series: ["The Spectacular Spider-Man", "Spider-Man (1994)", "Ultimate Spider-Man"]
-    },
-    {
-      title: "Orden Cronológico",
-      description: "Ver por orden de lanzamiento",
-      icon: "📅", 
-      series: ["Spider-Man (1967)", "Amazing Friends", "Spider-Man (1994)"]
-    },
-    {
-      title: "Solo lo Mejor",
-      description: "Las series más aclamadas",
-      icon: "⭐",
-      series: ["The Spectacular Spider-Man", "Spider-Man (1994)", "Amazing Friends"]
-    }
-  ];
+  const totalSeries = allSeries.length
+  const totalEras = Object.values(eras).filter(e => e.series.length > 0).length
+  const totalEpisodes = allSeries.reduce((t, s) => t + (s.episodes ?? 0), 0)
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-950 via-gray-900 to-blue-950">
-      {/* Header */}
-      <section className="relative py-20 px-4 text-center">
-        <div className="absolute inset-0 bg-gradient-to-r from-red-600/20 to-blue-600/20" />
+
+      {/* Hero con mosaico de posters */}
+      <section className="relative py-32 px-4 text-center overflow-hidden">
+        <div className="absolute inset-0 grid grid-cols-5 md:grid-cols-8 gap-1 opacity-35 scale-110">
+          {[...allSeries, ...allSeries].slice(0, 16).map((serie, i) => (
+            <div key={i} className="relative h-full min-h-[300px]">
+              <Image src={serie.image} alt="" fill sizes="200px" className="object-cover" />
+            </div>
+          ))}
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-red-950 via-gray-900/80 to-gray-900/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-transparent to-red-950" />
+
         <div className="relative z-10 max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent">
-            Series de Spider-Man
+          <p className="text-red-400 text-sm font-semibold tracking-widest uppercase mb-4">Spider-World · Series</p>
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white leading-tight">
+            Series de<br />
+            <span className="bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent">Spider-Man</span>
           </h1>
-          <p className="text-xl text-gray-300 mb-8">
-            Desde las series animadas clásicas hasta las producciones más recientes
+          <p className="text-lg text-gray-300 max-w-xl mx-auto mb-8">
+            Desde las primeras series animadas de 1967 hasta las producciones más recientes. Más de cinco décadas en pantalla.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Badge className="bg-red-600 text-white px-4 py-2">
-              {allSeries.length} Series
-            </Badge>
-            <Badge className="bg-blue-600 text-white px-4 py-2">
-              50+ Años de Historia
-            </Badge>
-            <Badge className="bg-purple-600 text-white px-4 py-2">
-              Animadas y Live-Action
-            </Badge>
+          <div className="flex flex-wrap justify-center gap-3 mb-10">
+            <Badge className="bg-white/10 text-white border-white/20 px-4 py-1.5 text-sm">{totalSeries} series</Badge>
+            <Badge className="bg-white/10 text-white border-white/20 px-4 py-1.5 text-sm">{totalEras} eras</Badge>
+            <Badge className="bg-white/10 text-white border-white/20 px-4 py-1.5 text-sm">{totalEpisodes}+ episodios</Badge>
+          </div>
+
+          {/* Filtros de era */}
+          <div className="flex justify-center gap-2 flex-wrap">
+            {Object.entries(eras).filter(([, e]) => e.series.length > 0).map(([key, era]) => (
+              <a
+                key={key}
+                href={`#era-${key}`}
+                className={`px-4 py-1.5 rounded-full text-sm font-medium border transition-all duration-200 bg-gradient-to-r ${era.accent} to-transparent ${era.border} text-white hover:scale-105`}
+              >
+                {era.title}
+              </a>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Viewing Guides */}
-      <section className="py-12 px-4 max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold text-white mb-8 text-center">Guías de Visualización</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {viewingGuides.map((guide, index) => (
-            <Card key={index} className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all">
-              <CardContent className="p-6">
-                <div className="text-3xl mb-3">{guide.icon}</div>
-                <h3 className="text-xl font-bold text-white mb-2">{guide.title}</h3>
-                <p className="text-gray-400 mb-4">{guide.description}</p>
-                <ul className="space-y-1">
-                  {guide.series.map((serie, i) => (
-                    <li key={i} className="text-sm text-red-400">
-                      • {serie}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          ))}
+      {/* Banner serie destacada */}
+      {featuredSerie && (
+        <div className="max-w-7xl mx-auto px-4 pt-12 mb-8">
+          <Link href={`/series/${featuredSerie.slug}`}>
+            <div className="group relative rounded-3xl overflow-hidden bg-gradient-to-r from-gray-950 to-red-950/40 border border-red-500/20 shadow-2xl shadow-black/60 hover:border-red-400/40 transition-all duration-300">
+              <div className="absolute right-8 top-1/2 -translate-y-1/2 text-[140px] md:text-[220px] font-black text-white/10 select-none leading-none">
+                {featuredSerie.year}
+              </div>
+              <div className="relative flex items-center gap-8 md:gap-12 px-8 md:px-12 py-8">
+                <div className="relative shrink-0">
+                  <Image
+                    src={featuredSerie.image}
+                    alt={featuredSerie.title}
+                    width={140}
+                    height={210}
+                    className="relative rounded-2xl shadow-2xl shadow-black/60 group-hover:scale-105 transition-transform duration-500 w-28 md:w-40"
+                  />
+                </div>
+                <div className="flex-1">
+                  <Badge className="bg-red-600 text-white w-fit mb-4 text-xs tracking-widest uppercase">Serie Destacada</Badge>
+                  <h2 className="text-3xl md:text-5xl font-black text-white leading-tight mb-3">{featuredSerie.title}</h2>
+                  <p className="text-gray-400 text-sm md:text-base line-clamp-2 max-w-lg mb-4">
+                    {featuredSerie.description?.substring(0, 180)}
+                  </p>
+                  <p className="text-red-400 text-sm font-semibold uppercase tracking-widest">
+                    {featuredSerie.year}
+                    {featuredSerie.seasons ? ` · ${featuredSerie.seasons} temporada${featuredSerie.seasons !== 1 ? 's' : ''}` : ''}
+                    {featuredSerie.episodes ? ` · ${featuredSerie.episodes} episodios` : ''}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Link>
         </div>
-      </section>
+      )}
 
-      {/* Ad Space */}
-      <div className="max-w-7xl mx-auto px-4 py-8">
+      {/* Banner serie nueva */}
+      {featuredNew && (
+        <div className="max-w-7xl mx-auto px-4 mb-8">
+          <Link href={`/series/${featuredNew.slug}`}>
+            <div className="group relative rounded-3xl overflow-hidden bg-gradient-to-l from-gray-950 to-blue-950/40 border border-blue-500/20 shadow-2xl shadow-black/60 hover:border-blue-400/40 transition-all duration-300">
+              <div className="absolute right-8 top-1/2 -translate-y-1/2 text-[140px] md:text-[220px] font-black text-white/10 select-none leading-none">
+                {featuredNew.year}
+              </div>
+              <div className="relative flex items-center gap-8 md:gap-12 px-8 md:px-12 py-8">
+                <div className="relative shrink-0">
+                  <Image
+                    src={featuredNew.image}
+                    alt={featuredNew.title}
+                    width={140}
+                    height={210}
+                    className="relative rounded-2xl shadow-2xl shadow-black/60 group-hover:scale-105 transition-transform duration-500 w-28 md:w-40"
+                  />
+                </div>
+                <div className="flex-1">
+                  <Badge className="bg-blue-600 text-white w-fit mb-4 text-xs tracking-widest uppercase">Estreno 2025</Badge>
+                  <h2 className="text-3xl md:text-5xl font-black text-white leading-tight mb-3">{featuredNew.title}</h2>
+                  <p className="text-gray-400 text-sm md:text-base line-clamp-2 max-w-lg mb-4">
+                    {featuredNew.description?.substring(0, 180)}
+                  </p>
+                  <p className="text-blue-400 text-sm font-semibold uppercase tracking-widest">
+                    {featuredNew.year}
+                    {featuredNew.seasons ? ` · ${featuredNew.seasons} temporada${featuredNew.seasons !== 1 ? 's' : ''}` : ''}
+                    {featuredNew.episodes ? ` · ${featuredNew.episodes} episodios` : ''}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Link>
+        </div>
+      )}
+
+      <div className="max-w-7xl mx-auto px-4 py-4">
         <InContentAd />
       </div>
 
-      {/* Series by Era */}
-      <div className="max-w-7xl mx-auto px-4 py-12">
-        {Object.entries(seriesByEra).map(([key, era]) => {
-          if (era.series.length === 0) return null;
-          
+      {/* Eras */}
+      <div className="max-w-7xl mx-auto px-4 pb-20 space-y-20">
+        {Object.entries(eras).map(([key, era]) => {
+          if (era.series.length === 0) return null
           return (
-            <section key={key} className="mb-16">
-              <div className={`bg-gradient-to-r ${colorClasses[era.color as keyof typeof colorClasses]} border rounded-lg p-6 mb-8`}>
-                <div className="flex items-center justify-between mb-4">
-                  <div>
-                    <h2 className="text-3xl font-bold text-white mb-2">
-                      {era.title}
-                    </h2>
-                    <p className="text-gray-300 mb-2">{era.description}</p>
-                    <Badge className="bg-gray-700 text-gray-300">
-                      {era.years}
-                    </Badge>
-                  </div>
-                  <Badge className="bg-white/10 text-white text-lg px-4 py-2">
-                    {era.series.length} serie{era.series.length !== 1 ? 's' : ''}
-                  </Badge>
+            <section key={key} id={`era-${key}`} className="scroll-mt-24">
+              {/* Cabecera de era */}
+              <div className="flex items-end gap-4 mb-8 pb-4 border-b border-white/10">
+                <div className={`w-1 h-12 rounded-full bg-gradient-to-b ${era.accent} to-transparent`} />
+                <div>
+                  <h2 className="text-2xl md:text-3xl font-bold text-white">{era.title}</h2>
+                  <p className="text-gray-500 text-sm mt-1">{era.subtitle}</p>
                 </div>
+                <Badge className="ml-auto bg-white/5 border-white/10 text-gray-400 text-sm">
+                  {era.series.length} serie{era.series.length !== 1 ? 's' : ''}
+                </Badge>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {/* Grid de posters */}
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
                 {era.series.map((serie: Series) => (
-                  <Card key={serie.id} className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all group">
-                    <CardHeader className="p-0">
-                      <div className="relative">
+                  <Link key={serie.id} href={`/series/${serie.slug}`} className="group">
+                    <div className={`relative rounded-2xl overflow-hidden shadow-xl ${era.glow} shadow-lg`}>
+                      <div className="relative aspect-[2/3]">
                         <Image
                           src={serie.image}
                           alt={`${serie.title} - Serie de Spider-Man`}
-                          width={400}
-                          height={500}
-                          className="w-full h-80 object-cover rounded-t-lg group-hover:scale-105 transition-transform duration-300"
+                          fill
+                          sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
                         />
-                        
-                        {/* Rating Badge */}
-                        <Badge className="absolute top-2 right-2 bg-yellow-600">
-                          <Star className="w-3 h-3 mr-1" />
-                          {serie.rating}
-                        </Badge>
-                        
-                        {/* Year Badge */}
-                        <Badge className="absolute top-2 left-2 bg-black/70 text-white">
-                          {serie.year}
-                        </Badge>
-                        
-                        {/* Status Badge */}
-                        <Badge className={`absolute bottom-2 right-2 ${
-                          serie.status === 'En emisión' ? 'bg-green-600' :
-                          serie.status === 'Finalizada' ? 'bg-gray-600' :
-                          'bg-blue-600'
-                        }`}>
-                          {serie.status}
-                        </Badge>
-                      </div>
-                    </CardHeader>
-                    
-                    <CardContent className="p-4">
-                      <CardTitle className="text-white mb-2 line-clamp-2">
-                        <Link href={`/series/${serie.slug}`} className="hover:text-red-400 transition-colors">
-                          {serie.title}
-                        </Link>
-                      </CardTitle>
-                      
-                      {serie.subtitle && (
-                        <CardDescription className="text-gray-400 text-sm mb-2">
-                          {serie.subtitle}
-                        </CardDescription>
-                      )}
-                      
-                      <p className="text-gray-400 text-sm mb-3 line-clamp-2">
-                        {serie.description}
-                      </p>
-                      
-                      {/* Series Details */}
-                      <div className="space-y-2 mb-4">
-                        <div className="flex items-center text-sm text-gray-400">
-                          <Calendar className="w-4 h-4 mr-2" />
-                          <span>Año: {serie.year}</span>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+
+                        {/* Título siempre visible */}
+                        <div className="absolute bottom-0 left-0 right-0 p-3 group-hover:opacity-0 transition-opacity duration-300">
+                          <h3 className="text-white text-xs font-bold line-clamp-2 leading-tight text-center drop-shadow-lg" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}>
+                            {serie.title}
+                          </h3>
                         </div>
-                        
-                        <div className="flex items-center text-sm text-gray-400">
-                          <Tv className="w-4 h-4 mr-2" />
-                          <span>Temporadas: {serie.seasons}</span>
+
+                        {/* Info en hover */}
+                        <div className="absolute inset-0 p-3 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          {serie.seasons && (
+                            <p className="text-gray-300 text-xs text-center mb-1">{serie.seasons} temp. · {serie.episodes} ep.</p>
+                          )}
+                          <div className="w-full flex items-center justify-center gap-1 bg-white/20 backdrop-blur-sm text-white text-xs font-medium py-2 rounded-lg">
+                            <Play className="w-3 h-3" />
+                            Ver detalles
+                          </div>
                         </div>
-                        
-                        <div className="flex items-center text-sm text-gray-400">
-                          <Clock className="w-4 h-4 mr-2" />
-                          <span>Episodios: {serie.episodes}</span>
+
+                        {/* Año arriba */}
+                        <div className="absolute top-2 left-2 bg-black/70 backdrop-blur-sm rounded-full px-2 py-1">
+                          <span className="text-gray-300 text-xs">{serie.year}</span>
                         </div>
-                        
-                        <div className="flex items-center text-sm text-gray-400">
-                          <Play className="w-4 h-4 mr-2" />
-                          <span>Red/Plataforma: {serie.network ?? 'N/A'}</span>
-                        </div>
-                      </div>
-                      
-                      {/* Action Buttons */}
-                      <div className="flex gap-2">
-                        <Button asChild size="sm" className="flex-1">
-                          <Link href={`/series/${serie.slug}`}>
-                            <Tv className="w-4 h-4 mr-1" />
-                            Ver Detalles
-                          </Link>
-                        </Button>
-                        
-                        {serie.homepage && (
-                          <Button
-                            asChild
-                            size="sm"
-                            variant="outline"
-                            className="border-green-600 text-green-400 hover:bg-green-600 hover:text-white"
-                          >
-                            <a
-                              href={serie.homepage}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <Play className="w-4 h-4 mr-1" />
-                              Ver
-                            </a>
-                          </Button>
+
+                        {/* Badge rating */}
+                        {serie.rating && serie.rating >= 8 && (
+                          <div className="absolute top-2 right-2 bg-yellow-600/90 backdrop-blur-sm rounded-full px-2 py-1 flex items-center gap-1">
+                            <Star className="w-3 h-3 text-white fill-white" />
+                            <span className="text-white text-xs font-semibold">{serie.rating}</span>
+                          </div>
+                        )}
+
+                        {/* Badge estado */}
+                        {serie.status === 'En emisión' && (
+                          <div className="absolute bottom-2 right-2">
+                            <Tv className="w-4 h-4 text-green-400 drop-shadow-lg" />
+                          </div>
                         )}
                       </div>
-                    </CardContent>
-                  </Card>
+                    </div>
+                  </Link>
                 ))}
               </div>
             </section>
-          );
+          )
         })}
       </div>
 
-      {/* Sidebar Ad */}
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <SidebarAd />
-      </div>
-
-      {/* Stats Section */}
-      <section className="py-16 px-4 max-w-7xl mx-auto">
-        <div className="bg-gray-800/50 rounded-lg p-8 text-center">
-          <h3 className="text-2xl font-bold text-white mb-6">
-            Estadísticas Series Spider-Man
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div>
-              <div className="text-3xl font-bold text-red-500 mb-2">{allSeries.length}</div>
-              <div className="text-gray-400">Series Totales</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-blue-500 mb-2">
-                {Object.values(seriesByEra).filter(e => e.series.length > 0).length}
-              </div>
-              <div className="text-gray-400">Eras Cubiertas</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-purple-500 mb-2">50+</div>
-              <div className="text-gray-400">Años de Historia</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-green-500 mb-2">
-                {allSeries.reduce((total: number, serie) => total + (serie.episodes ?? 0), 0)}
-              </div>
-              <div className="text-gray-400">Episodios Totales</div>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   )
 }

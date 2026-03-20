@@ -2,19 +2,16 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Play, ShoppingCart, Users, Tv, ArrowLeft, Award, Star, Clock } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
-import { Play, ShoppingCart, Calendar, Tv, Users, Clock, ArrowLeft, Award, Camera, Eye, Star, Palette } from "lucide-react"
-import { RelatedCard } from "@/components/RelatedCard"
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
-import { AmazonProduct } from "@/components/affiliate/AmazonProduct"
 import { seriesService } from "@/lib/database"
 import { SITE_URL } from "@/lib/config"
+import { generateAmazonUrl, parseJson } from "@/lib/content-helpers"
+import type { CastMember, EpisodeImage } from "@/lib/json-types"
+import { SeriesGallery } from "@/components/series/SeriesGallery"
+import { seriesAnalysis } from "@/lib/editorial-analysis"
 import { Breadcrumb } from "@/components/breadcrumb"
-import { renderStars, generateAmazonUrl, parseJson } from "@/lib/content-helpers"
-import type { ConceptArtItem, CastMember, EpisodeImage, BehindScene } from "@/lib/json-types"
-
 
 export const revalidate = 3600
 
@@ -23,40 +20,14 @@ export async function generateStaticParams() {
   return series.map((s) => ({ slug: s.slug }))
 }
 
-type SceneImage = {
-  url: string;
-  title: string;
-  description: string;
-  type: 'still' | 'backdrop';
-  season?: number;
-  episode?: number;
-};
-
 type Props = {
   params: Promise<{ slug: string }>
 }
 
-
-// Función para obtener imágenes de galería desde TMDB
-async function getSeriesGalleryImages(tmdbId: string) {
-  try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/external/series/${tmdbId}/images`, {
-      next: { revalidate: 43200 } // 12 hours cache
-    });
-    if (!response.ok) return null;
-    const data = await response.json();
-    return data.result?.gallery || null;
-  } catch (error) {
-    console.error('Error fetching gallery images:', error);
-    return null;
-  }
-}
-
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const series = await seriesService.getBySlug(slug).catch(() => null)
-  
+
   if (!series) {
     return {
       title: "Serie no encontrada | Spider-World",
@@ -64,11 +35,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
   }
 
-  const description = series.description 
+  const description = series.description
     ? series.description.substring(0, 155) + '...'
-    : `Descubre ${series.title}, serie de Spider-Man con análisis completo, episodios y dónde verla.`;
+    : `Descubre ${series.title}, serie de Spider-Man con análisis completo, episodios y dónde verla.`
 
-  const url = `${SITE_URL}/series/${series.slug}`;
+  const url = `${SITE_URL}/series/${series.slug}`
 
   return {
     title: `${series.title} (${series.year}) - Análisis Completo | Spider-World`,
@@ -91,35 +62,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function SeriesPage({ params }: Props) {
+export default async function SeriesDetailPage({ params }: Props) {
   const { slug } = await params
   const series = await seriesService.getBySlug(slug).catch(() => null)
 
-  if (!series) {
-    notFound()
-  }
+  if (!series) notFound()
 
-  // Obtener series relacionadas
-  const relatedSeries = await seriesService.getFeatured(4, slug).catch(() => []);
+  const relatedSeries = await seriesService.getFeatured(4, slug).catch(() => [])
 
-  // Obtener imágenes de galería desde TMDB si hay tmdbId
-  const galleryImages = series.tmdbId ? await getSeriesGalleryImages(series.tmdbId.toString()) : null;
+  const castData: CastMember[] = parseJson<CastMember>(series.castPhotos)
 
-  const BASE_URL = SITE_URL
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'TVSeries',
     name: series.title,
     description: series.seoDescription || series.description,
-    image: series.image ? {
-      '@type': 'ImageObject',
-      url: series.image,
-      width: 300,
-      height: 450,
-    } : undefined,
-    url: `${BASE_URL}/series/${series.slug}`,
+    image: series.image ? { '@type': 'ImageObject', url: series.image, width: 300, height: 450 } : undefined,
+    url: `${SITE_URL}/series/${series.slug}`,
     startDate: series.firstAirDate || series.year?.toString(),
-    endDate: series.lastAirDate || series.endYear || undefined,
     numberOfSeasons: series.seasons || undefined,
     numberOfEpisodes: series.episodes || undefined,
     genre: series.genre,
@@ -134,228 +94,184 @@ export default async function SeriesPage({ params }: Props) {
   }
 
   return (
-    <div className="pt-16">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-green-900/30 to-black/80"></div>
+    <div className="pt-16 bg-gradient-to-b from-black via-gray-950 to-black" style={{ backgroundImage: 'radial-gradient(ellipse 80% 50% at 10% 50%, rgba(180,0,0,0.15) 0%, transparent 70%), radial-gradient(ellipse 70% 40% at 90% 70%, rgba(80,0,180,0.18) 0%, transparent 70%)' }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+
+      {/* Hero */}
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
-          <Image
-            src={series.image}
-            alt={`${series.title} - Serie de Spider-Man`}
-            fill
-            sizes="100vw"
-            className="object-cover opacity-40"
-            priority
-          />
+          <Image src={series.image} alt="" fill sizes="100vw" className="object-cover scale-110 blur-sm opacity-30" priority />
         </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60" />
 
-        <div className="relative z-10 text-center px-4 max-w-6xl mx-auto">
-          <Breadcrumb items={[{ label: "Series", href: "/series" }, { label: series.title }]} />
-          <div className="mb-6 flex items-center justify-center gap-4">
-            <Link href="/series">
-              <Button variant="outline" size="sm" className="border-purple-600 text-purple-400 hover:bg-purple-600 hover:text-white">
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Volver a Series
-              </Button>
-            </Link>
-            <Badge className="bg-purple-600 text-white px-6 py-3 text-lg font-semibold">
-              Serie Spider-Man
-            </Badge>
-          </div>
-          
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-red-500 via-green-500 to-blue-500 bg-clip-text text-transparent">
-            {series.title}
-          </h1>
-          
-          {series.subtitle && (
-          <p className="text-xl md:text-2xl mb-8 text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            {series.subtitle}
-          </p>
-          )}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10 py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-12 items-center">
 
-          <div className="flex flex-wrap justify-center gap-6 mb-8 text-gray-300">
-            <div className="flex items-center">
-              <Calendar className="w-5 h-5 mr-2 text-purple-500" />
-              <span>{series.year}</span>
-            </div>
-            {series.seasons && (
-            <div className="flex items-center">
-              <Tv className="w-5 h-5 mr-2 text-blue-500" />
-              <span>{series.seasons} temporadas</span>
-            </div>
-            )}
-            {series.episodes && (
-            <div className="flex items-center">
-                <Clock className="w-5 h-5 mr-2 text-green-500" />
-              <span>{series.episodes} episodios</span>
-            </div>
-            )}
-            <div className="flex items-center">
-              <Star className="w-5 h-5 mr-2 text-yellow-500" />
-              <span>{series.rating}/10</span>
-            </div>
-          </div>
+            {/* Columna izquierda */}
+            <div>
+              <Breadcrumb items={[{ label: "Series", href: "/series" }, { label: series.title }]} />
 
-          {series.description && (
-          <p className="text-lg text-gray-400 max-w-3xl mx-auto mb-8">
-              {series.description.length > 200 ? series.description.substring(0, 200) + '...' : series.description}
-          </p>
-          )}
+              <div className="flex items-center gap-3 mt-6 mb-4">
+                <Badge className="bg-red-600 text-white text-xs tracking-widest uppercase px-3 py-1">
+                  {series.rating >= 8 ? 'Serie Esencial' : 'Serie Spider-Man'}
+                </Badge>
+                <span className="text-gray-500 text-sm">{series.year}</span>
+                {series.status && (
+                  <span className={`text-sm font-medium ${series.status === 'En emisión' ? 'text-green-400' : 'text-gray-500'}`}>
+                    · {series.status}
+                  </span>
+                )}
+              </div>
 
-          <div className="mb-8">{renderStars(series.rating)}</div>
+              <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 leading-tight">
+                {series.title}
+              </h1>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            {series.trailerUrl && (
-            <Button
-              size="lg"
-                className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-4 text-lg"
-                asChild
-            >
-                <a href={series.trailerUrl} target="_blank" rel="noopener noreferrer">
-              <Play className="mr-2 h-5 w-5" />
-                  Ver Serie
+              {series.subtitle && (
+                <p className="text-lg text-gray-400 italic mb-4">"{series.subtitle}"</p>
+              )}
+
+              {/* Rating estrellas */}
+              <div className="flex items-center gap-2 mb-6">
+                {[1,2,3,4,5].map(i => (
+                  <Star
+                    key={i}
+                    className={`w-5 h-5 ${i <= Math.round(series.rating / 2) ? 'text-yellow-400 fill-yellow-400' : 'text-gray-600'}`}
+                  />
+                ))}
+                <span className="text-yellow-400 font-bold ml-1">{series.rating}</span>
+                <span className="text-gray-500 text-sm">/10</span>
+              </div>
+
+              {series.description && (
+                <p className="text-gray-300 text-lg leading-relaxed mb-8 max-w-2xl">
+                  {(() => {
+                    const firstDot = series.description.indexOf('. ')
+                    return firstDot > 0 && firstDot < 300
+                      ? series.description.substring(0, firstDot + 1)
+                      : series.description.length > 250
+                        ? series.description.substring(0, 250) + '…'
+                        : series.description
+                  })()}
+                </p>
+              )}
+
+              {/* Meta chips */}
+              <div className="flex flex-wrap gap-3 mb-8">
+                {series.creators && series.creators.length > 0 && (
+                  <div className="flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 text-sm text-gray-300">
+                    <Users className="w-3.5 h-3.5 text-gray-400" />
+                    {series.creators[0]}
+                  </div>
+                )}
+                {series.network && (
+                  <div className="flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 text-sm text-gray-300">
+                    <Tv className="w-3.5 h-3.5 text-gray-400" />
+                    {series.network}
+                  </div>
+                )}
+                {series.episodes && (
+                  <div className="flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 text-sm text-gray-300">
+                    <Clock className="w-3.5 h-3.5 text-gray-400" />
+                    {series.episodes} episodios
+                  </div>
+                )}
+              </div>
+
+              {/* Botones */}
+              <div className="flex flex-wrap gap-3">
+                {series.trailerUrl && (
+                  <a
+                    href="#trailer"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-red-600 hover:bg-red-500 text-white font-semibold rounded-full transition-all duration-200 hover:scale-105 shadow-lg shadow-red-900/40"
+                  >
+                    <Play className="w-4 h-4 fill-white" />
+                    Ver tráiler
+                  </a>
+                )}
+                <a
+                  href={generateAmazonUrl(`${series.title} DVD Spider-Man`)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white font-semibold rounded-full transition-all duration-200 hover:scale-105"
+                >
+                  <ShoppingCart className="w-4 h-4" />
+                  Comprar en Amazon
                 </a>
-            </Button>
-            )}
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-orange-600 text-orange-400 hover:bg-orange-600 hover:text-white px-8 py-4 text-lg"
-              asChild
-            >
-              <a href={generateAmazonUrl(`${series.title} DVD series Spider-Man`)} target="_blank" rel="noopener noreferrer">
-              <ShoppingCart className="mr-2 h-5 w-5" />
-              Comprar DVD
-              </a>
-            </Button>
+                <Link href="/series" className="inline-flex items-center gap-2 px-5 py-3 bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300 font-medium rounded-full transition-colors">
+                  <ArrowLeft className="w-4 h-4" />
+                  Volver
+                </Link>
+              </div>
+            </div>
+
+            {/* Columna derecha: poster */}
+            <div className="hidden lg:block">
+              <div className="relative">
+                <div className="absolute -inset-4 bg-red-600/15 blur-2xl rounded-3xl" />
+                <Image
+                  src={series.image}
+                  alt={`${series.title} - Poster oficial`}
+                  width={320}
+                  height={480}
+                  className="relative rounded-2xl shadow-2xl w-full object-cover"
+                />
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* Ad */}
       <InContentAd />
 
-      {/* Series Info */}
-      <section className="py-20 bg-gradient-to-b from-black to-purple-950/10">
+      {/* Info */}
+      <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-            {/* Main Content */}
+
+            {/* Contenido principal */}
             <div className="lg:col-span-3">
-              <div className="bg-gray-900/50 border border-purple-600/20 rounded-lg p-8">
-            <h2 className="text-2xl font-bold text-white mb-6">Información de la Serie</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-4">
-                <div className="flex items-center space-x-3">
-                      <Tv className="w-5 h-5 text-purple-500" />
-                  <div>
-                    <span className="text-gray-400 text-sm">Título</span>
-                    <div className="text-white font-semibold">{series.title}</div>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-3">
-                      <Calendar className="w-5 h-5 text-purple-500" />
-                  <div>
-                        <span className="text-gray-400 text-sm">Año de estreno</span>
-                        <div className="text-white font-semibold">{series.year}</div>
-                      </div>
+
+              {/* Stats */}
+              <div className="flex flex-wrap gap-6 mb-10 pb-10 border-b border-white/10">
+                {[
+                  { label: "Año", value: series.year },
+                  series.seasons ? { label: "Temporadas", value: series.seasons } : null,
+                  series.episodes ? { label: "Episodios", value: series.episodes } : null,
+                  series.rating ? { label: "Puntuación", value: `${series.rating}/10` } : null,
+                  series.network ? { label: "Canal", value: series.network } : null,
+                ].filter(Boolean).map((item, i, arr) => (
+                  <div key={item!.label} className="flex items-center gap-6">
+                    <div>
+                      <div className="text-2xl font-bold text-white">{item!.value}</div>
+                      <div className="text-xs text-gray-500 uppercase tracking-widest mt-0.5">{item!.label}</div>
                     </div>
-                    {series.creators && series.creators.length > 0 && (
-                <div className="flex items-center space-x-3">
-                        <Users className="w-5 h-5 text-purple-500" />
-                  <div>
-                    <span className="text-gray-400 text-sm">Creador</span>
-                    <div className="text-white font-semibold">{series.creators.join(', ')}</div>
+                    {i < arr.length - 1 && <div className="w-px h-10 bg-white/10" />}
                   </div>
-                </div>
-                    )}
-                    {series.seasons && (
-                <div className="flex items-center space-x-3">
-                        <Tv className="w-5 h-5 text-purple-500" />
-                  <div>
-                    <span className="text-gray-400 text-sm">Temporadas</span>
-                    <div className="text-white font-semibold">{series.seasons}</div>
-                  </div>
-                </div>
-                    )}
-              </div>
-              <div className="space-y-4">
-                    {series.episodes && (
-                <div className="flex items-center space-x-3">
-                  <Clock className="w-5 h-5 text-green-500" />
-                  <div>
-                    <span className="text-gray-400 text-sm">Episodios</span>
-                    <div className="text-white font-semibold">{series.episodes}</div>
-                        </div>
-                      </div>
-                    )}
-                    {series.network && (
-                      <div className="flex items-center space-x-3">
-                        <Play className="w-5 h-5 text-blue-500" />
-                        <div>
-                          <span className="text-gray-400 text-sm">Canal/Plataforma</span>
-                          <div className="text-white font-semibold">{series.network}</div>
-                        </div>
-                      </div>
-                    )}
-                    <div className="flex items-center space-x-3">
-                      <Star className="w-5 h-5 text-yellow-500" />
-                      <div>
-                        <span className="text-gray-400 text-sm">Calificación</span>
-                        <div className="text-white font-semibold">{series.rating}/10</div>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-3">
-                      <Award className="w-5 h-5 text-red-500" />
-                  <div>
-                        <span className="text-gray-400 text-sm">Importancia</span>
-                        <div className="text-white font-semibold">
-                          {series.rating >= 9 ? 'Esencial' : series.rating >= 7 ? 'Muy Importante' : 'Importante'}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                ))}
               </div>
 
-              {/* Description */}
+              {/* Sinopsis */}
               {series.description && (
-                <div className="mt-8 bg-gray-900/50 border border-purple-600/20 rounded-lg p-8">
-                  <h3 className="text-2xl font-bold text-white mb-6">Sinopsis</h3>
-                  <p className="text-gray-300 text-lg leading-relaxed">
-                    {series.description}
-                  </p>
-                </div>
-              )}
-
-              {/* Genre */}
-              {series.genre && (
-                <div className="mt-8 bg-gray-900/50 border border-purple-600/20 rounded-lg p-8">
-                  <h3 className="text-2xl font-bold text-white mb-6">Géneros</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {Array.isArray(series.genre) 
-                      ? series.genre.map((g: string, index: number) => (
-                          <Badge key={index} className="bg-purple-600 text-white">
-                            {g}
-                          </Badge>
-                        ))
-                      : <Badge className="bg-purple-600 text-white">{series.genre}</Badge>
-                    }
+                <div className="mb-10">
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className="w-1 h-7 rounded-full bg-gradient-to-b from-red-500 to-red-800" />
+                    <h3 className="text-2xl font-bold text-white">Sinopsis</h3>
                   </div>
+                  <p className="text-gray-300 text-lg leading-relaxed">{series.description}</p>
                 </div>
               )}
 
-              {/* Tráiler */}
+              {/* Trailer */}
               {series.trailerUrl && (
-                <div className="mt-8 bg-gray-900/50 border border-purple-600/20 rounded-lg p-8">
-                  <h3 className="text-3xl font-bold text-white mb-6 flex items-center">
-                    <Play className="w-8 h-8 mr-3 text-green-500" />
-                    Tráiler Oficial
-                  </h3>
-                  <div className="relative aspect-video rounded-lg overflow-hidden bg-black">
+                <div id="trailer" className="mt-10 scroll-mt-24 bg-gray-900/50 border border-white/10 rounded-2xl p-6">
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className="w-1 h-7 rounded-full bg-gradient-to-b from-red-500 to-red-800" />
+                    <h3 className="text-2xl font-bold text-white">Tráiler Oficial</h3>
+                  </div>
+                  <div className="relative aspect-video rounded-xl overflow-hidden shadow-2xl shadow-black/60">
                     <iframe
                       src={series.trailerUrl.replace('watch?v=', 'embed/')}
                       title={`Tráiler de ${series.title}`}
@@ -365,216 +281,71 @@ export default async function SeriesPage({ params }: Props) {
                       allowFullScreen
                     />
                   </div>
-                  <p className="text-gray-400 text-sm mt-3 text-center">
-                    Tráiler oficial de {series.title} ({series.year})
-                  </p>
                 </div>
               )}
 
               {/* Análisis Editorial */}
-              {series.longDescription && (
-                <div className="mt-8 bg-gray-900/50 border border-purple-600/20 rounded-lg p-8">
-                  <h3 className="text-3xl font-bold text-white mb-6 flex items-center">
-                    <Award className="w-8 h-8 mr-3 text-purple-500" />
-                    Análisis Editorial
-                  </h3>
-                  {(() => {
-                    // Detectar si longDescription es simplemente una copia de description
-                    const isBasicContent = series.longDescription.includes(`<h2>${series.title}</h2><p>${series.description}</p>`) || 
-                                          series.longDescription.replace(/<[^>]*>/g, '').trim() === series.description?.trim();
-                    
-                    if (isBasicContent) {
-                      // Generar análisis editorial enriquecido
-                      return (
-                        <div className="text-gray-300 text-lg leading-relaxed space-y-6">
-                          <p className="text-xl text-gray-200 font-medium mb-6">
-                            {series.title} representa un capítulo significativo en la evolución de Spider-Man en el medio televisivo, 
-                            ofreciendo una perspectiva única del universo arácnido que merece un análisis detallado.
-                          </p>
-                          
-                          <div className="space-y-6">
-                            <div>
-                              <h3 className="text-xl font-semibold text-purple-400 mb-3">Impacto Narrativo</h3>
-                              <p className="text-gray-300 leading-relaxed">
-                                {parseInt(series.year) < 2000 
-                                  ? "Esta serie estableció las bases narrativas que definirían las adaptaciones posteriores de Spider-Man, introduciendo elementos que se convertirían en estándares del género."
-                                  : parseInt(series.year) < 2010
-                                  ? "Aprovechando la evolución de la animación digital, esta serie logró expandir el universo Spider-Man con técnicas visuales más sofisticadas y narrativas complejas."
-                                  : "Como parte de la nueva generación de series animadas, esta producción incorpora elementos modernos tanto en su narrativa como en su estilo visual, adaptándose a las expectativas contemporáneas."
-                                }
-                              </p>
-                            </div>
-                            
-                            <div>
-                              <h3 className="text-xl font-semibold text-purple-400 mb-3">Desarrollo de Personajes</h3>
-                              <p className="text-gray-300 leading-relaxed">
-                                La serie destaca por su {(series.seasons && series.seasons > 1) ? 'desarrollo progresivo' : 'enfoque concentrado'} en la evolución de Peter Parker, 
-                                {(series.episodes && series.episodes > 20) 
-                                  ? ' permitiendo una exploración profunda de sus relaciones y conflictos internos a lo largo de múltiples episodios.'
-                                  : ' condensando eficientemente los elementos esenciales del personaje en un formato más compacto.'
-                                }
-                              </p>
-                            </div>
-                            
-                            <div>
-                              <h3 className="text-xl font-semibold text-purple-400 mb-3">Legado y Relevancia</h3>
-                              <p className="text-gray-300 leading-relaxed">
-                                {series.rating >= 8.0 
-                                  ? "Con una calificación sobresaliente, esta serie ha demostrado su capacidad para resonar tanto con fanáticos de larga data como con nuevas audiencias, estableciéndose como una referencia en el género."
-                                  : series.rating >= 7.0
-                                  ? "A pesar de su recepción mixta inicial, la serie ha encontrado su lugar en el canon de Spider-Man, contribuyendo elementos únicos al mito del trepamuros."
-                                  : "Aunque no alcanzó el reconocimiento universal, esta serie ofrece perspectivas interesantes sobre el universo Spider-Man que merecen ser consideradas por los entusiastas del personaje."
-                                }
-                              </p>
-                            </div>
-                            
-                            <div>
-                              <h3 className="text-xl font-semibold text-purple-400 mb-3">Contexto Histórico</h3>
-                              <p className="text-gray-300 leading-relaxed">
-                                Lanzada en {series.year}, esta serie {series.network ? `a través de ${series.network}` : 'en su plataforma correspondiente'} 
-                                representa un momento específico en la evolución de las adaptaciones de Spider-Man, 
-                                {(series.creators && series.creators.length > 0) ? ` bajo la visión creativa de ${series.creators.join(', ')},` : ''} contribuyendo al rico tapiz de interpretaciones del icónico superhéroe.
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    } else {
-                      // Usar longDescription original si es contenido rico
-                      return (
-                        <div 
-                          className="text-gray-300 text-lg leading-relaxed max-w-none
-                            [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:text-white [&>h2]:mb-4 [&>h2]:mt-6
-                            [&>h3]:text-xl [&>h3]:font-semibold [&>h3]:text-purple-400 [&>h3]:mb-3 [&>h3]:mt-5
-                            [&>p]:mb-4 [&>p]:text-gray-300 [&>p]:leading-relaxed
-                            [&>p:first-of-type]:text-xl [&>p:first-of-type]:text-gray-200 [&>p:first-of-type]:font-medium
-                            [&>strong]:text-white [&>strong]:font-semibold
-                            [&>em]:text-gray-200 [&>em]:italic
-                            [&>ul]:list-disc [&>ul]:ml-6 [&>ul]:mb-4
-                            [&>li]:mb-2 [&>li]:text-gray-300
-                            [&>blockquote]:border-l-4 [&>blockquote]:border-purple-500 [&>blockquote]:pl-4 [&>blockquote]:italic [&>blockquote]:text-gray-200 [&>blockquote]:bg-gray-800/30 [&>blockquote]:py-2 [&>blockquote]:rounded-r
-                          "
-                          dangerouslySetInnerHTML={{ __html: series.longDescription }}
-                        />
-                      );
-                    }
-                  })()}
+              <div className="mt-10 bg-gradient-to-br from-gray-900/80 to-red-950/20 border border-red-500/30 rounded-xl p-8 backdrop-blur-sm">
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="w-1 h-7 rounded-full bg-gradient-to-b from-red-500 to-red-800" />
+                  <h3 className="text-2xl font-bold text-white">Análisis Editorial</h3>
+                  <Award className="w-5 h-5 text-red-400 ml-auto" />
                 </div>
-              )}
-
-              {/* Galería de Escenas */}
-              <div className="mt-8 bg-gray-900/50 border border-purple-600/20 rounded-lg p-8">
-                <h3 className="text-3xl font-bold text-white mb-6 flex items-center">
-                  <Camera className="w-8 h-8 mr-3 text-blue-500" />
-                  Galería de Escenas
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {(() => {
-                    // Use TMDB gallery images if available, otherwise fallback to default structure
-                    const imagesToDisplay: SceneImage[] = [
-                      // Use the gallery images from API directly (they already have complete URLs)
-                      ...parseJson<SceneImage>(galleryImages).map((img, index) => ({
-                        url: img.url, // API already provides complete URLs
-                        title: img.title || `Escena ${index + 1}`,
-                        description: img.description || "Una imagen de la serie",
-                        type: img.type as 'still' | 'backdrop' || 'backdrop',
-                        season: img.season,
-                        episode: img.episode
-                      })),
-                      // Add series logo if available
-                      ...(series.logo ? [{
-                        url: series.logo,
-                        title: "Logo Oficial de la Serie",
-                        description: "El logo icónico de la serie animada",
-                        type: 'backdrop' as const
-                      }] : []),
-                      // Add main series image as fallback
-                      ...((!galleryImages || galleryImages.length === 0) ? [{
-                        url: series.image,
-                        title: `Imagen principal de ${series.title}`,
-                        description: "La imagen oficial de la serie",
-                        type: 'backdrop' as const
-                      }] : [])
-                    ];
-
-                    return imagesToDisplay.map((scene: SceneImage, index: number) => (
-                      <div key={index} className="group cursor-pointer">
-                        <div className="relative overflow-hidden rounded-lg">
-                          <Image
-                            src={scene.url}
-                            alt={scene.title}
-                            width={400}
-                            height={225}
-                            className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
-                          />
-                          <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <Play className="w-12 h-12 text-white" />
+                {(() => {
+                  const data = seriesAnalysis[series.slug] ?? {
+                    contexto: `${series.title} se inscribe en la larga tradición de adaptaciones televisivas del universo de Spider-Man, aportando su propia visión del personaje para una nueva generación de espectadores.`,
+                    recepcion: `La serie encontró su público entre los fans del trepamuros y generó debate sobre la dirección creativa de las adaptaciones animadas del universo arácnido.`,
+                    legado: `Como parte del catálogo animado de Spider-Man, ${series.title} ocupa su lugar en la historia de un personaje que lleva décadas siendo uno de los más adaptados de la cultura popular.`,
+                  }
+                  return (
+                    <div className="space-y-8">
+                      {[
+                        { num: "01", title: "Contexto y Propuesta",       text: data.contexto,   color: "text-red-500" },
+                        { num: "02", title: "Recepción y Repercusión",     text: data.recepcion,  color: "text-blue-500" },
+                        { num: "03", title: "Legado en el Spider-Verse",   text: data.legado,     color: "text-purple-500" },
+                      ].map(({ num, title, text, color }) => (
+                        <div key={num} className="flex gap-6 items-start">
+                          <span className={`text-5xl font-black leading-none ${color} opacity-25 select-none shrink-0 w-14 text-right`}>{num}</span>
+                          <div>
+                            <h4 className={`text-lg font-bold ${color} mb-2`}>{title}</h4>
+                            <p className="text-gray-300 leading-relaxed">{text}</p>
                           </div>
-                          <div className="absolute top-2 left-2">
-                            <Badge className="bg-purple-600/90 text-white text-xs">
-                              {scene.season && scene.episode 
-                                ? `S${scene.season}E${scene.episode}`
-                                : scene.type === 'still' 
-                                  ? `S${Math.floor(index / 2) + 1}E${(index % 2) + 1}`
-                                  : `Escena ${index + 1}`
-                              }
-                            </Badge>
-                          </div>
-                          {scene.type === 'still' && (
-                            <div className="absolute top-2 right-2">
-                              <Badge className="bg-blue-600/90 text-white text-xs">
-                                Episodio
-                              </Badge>
-                            </div>
-                          )}
                         </div>
-                        <div className="mt-3">
-                          <h4 className="text-white font-semibold">{scene.title}</h4>
-                          <p className="text-gray-400 text-sm">{scene.description}</p>
-                        </div>
-                      </div>
-                    ));
-                  })()}
-                </div>
-                {galleryImages && galleryImages.length > 0 && (
-                  <div className="mt-4 text-center">
-                    <p className="text-gray-400 text-sm">
-                      ✨ Imágenes oficiales obtenidas desde TMDB - {galleryImages.length} escenas disponibles
-                    </p>
-                  </div>
-                )}
+                      ))}
+                    </div>
+                  )
+                })()}
               </div>
 
-              {/* Galería de Episodios */}
+              {/* Galería de escenas (TMDB) */}
+              <div className="mt-10">
+                <SeriesGallery
+                  tmdbId={series.tmdbId ?? null}
+                  seriesImage={series.image}
+                  seriesTitle={series.title}
+                  logoImage={series.logo ?? null}
+                />
+              </div>
+
+              {/* Episodios destacados */}
               {series.episodeImages && Array.isArray(series.episodeImages) && series.episodeImages.length > 0 && (
-                <div className="mt-8 bg-gradient-to-br from-gray-900/80 to-red-950/20 border border-red-500/30 rounded-xl p-8 backdrop-blur-sm">
-                  <h3 className="text-3xl font-bold text-white mb-6 flex items-center">
-                    <Camera className="w-8 h-8 mr-3 text-red-400" />
-                    Episodios Destacados
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {parseJson<EpisodeImage>(series.episodeImages).map((episode, index) => (
-                      <div key={index} className="group cursor-pointer">
-                        <div className="relative overflow-hidden rounded-lg bg-gray-800">
-                          <Image
-                            src={episode.url}
-                            alt={episode.title}
-                            width={300}
-                            height={200}
-                            className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
-                          />
-                          <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <Play className="w-12 h-12 text-white" />
-                          </div>
+                <div className="mt-10">
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className="w-1 h-7 rounded-full bg-gradient-to-b from-red-500 to-red-800" />
+                    <h3 className="text-2xl font-bold text-white">Episodios Destacados</h3>
+                  </div>
+                  <div className="grid grid-cols-3 gap-2">
+                    {parseJson<EpisodeImage>(series.episodeImages).map((ep, i) => (
+                      <div key={i} className={`group relative overflow-hidden rounded-xl ${i === 0 ? 'col-span-2 row-span-2' : ''}`}>
+                        <div className="relative w-full aspect-video">
+                          <Image src={ep.url} alt={ep.title} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                           <div className="absolute top-2 left-2">
-                            <Badge className="bg-red-600/90 text-white text-xs">
-                              {episode.episode}
-                            </Badge>
+                            <Badge className="bg-red-600/90 text-white text-xs">{ep.episode}</Badge>
                           </div>
-                        </div>
-                        <div className="mt-3">
-                          <h4 className="text-white font-semibold">{episode.title}</h4>
-                          <p className="text-gray-400 text-sm">{episode.description}</p>
+                          <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                            <p className="text-white text-xs font-medium line-clamp-1">{ep.title}</p>
+                          </div>
                         </div>
                       </div>
                     ))}
@@ -582,31 +353,29 @@ export default async function SeriesPage({ params }: Props) {
                 </div>
               )}
 
-              {/* Fotos del Reparto */}
-              {series.castPhotos && Array.isArray(series.castPhotos) && series.castPhotos.length > 0 && (
-                <div className="mt-8 bg-gradient-to-br from-gray-900/80 to-purple-950/20 border border-purple-500/30 rounded-xl p-8 backdrop-blur-sm">
-                  <h3 className="text-3xl font-bold text-white mb-6 flex items-center">
-                    <Users className="w-8 h-8 mr-3 text-purple-400" />
-                    Reparto y Voces
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {parseJson<CastMember>(series.castPhotos).map((actor, index) => (
-                      <div key={index} className="bg-gray-800/50 rounded-lg p-6 text-center group hover:bg-gray-800/70 transition-colors">
-                        <div className="relative mb-4">
+              {/* Reparto y Voces */}
+              {castData.length > 0 && (
+                <div className="mt-10">
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className="w-1 h-7 rounded-full bg-gradient-to-b from-red-500 to-red-800" />
+                    <h3 className="text-2xl font-bold text-white">Reparto y Voces</h3>
+                  </div>
+                  <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
+                    {castData.slice(0, 12).map((actor, i) => (
+                      <div key={i} className="group bg-gray-900/60 border border-white/5 rounded-2xl overflow-hidden hover:border-white/20 transition-colors">
+                        <div className="relative aspect-[3/4]">
                           <Image
                             src={actor.image || actor.photo || '/placeholder-user.jpg'}
                             alt={actor.name}
-                            width={120}
-                            height={120}
-                            className="w-20 h-20 rounded-full mx-auto object-cover border-2 border-purple-500/30 group-hover:border-purple-500 transition-colors"
+                            fill
+                            sizes="(max-width: 768px) 50vw, 16vw"
+                            className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                           />
-                        </div>
-                  <div>
-                          <h4 className="text-white font-semibold text-lg mb-1">{actor.name}</h4>
-                          <p className="text-purple-400 text-sm mb-2">{actor.character}</p>
-                          {actor.bio && (
-                            <p className="text-gray-400 text-xs leading-relaxed">{actor.bio}</p>
-                          )}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+                          <div className="absolute bottom-0 left-0 right-0 p-3">
+                            <p className="text-white font-semibold text-xs leading-tight">{actor.name}</p>
+                            <p className="text-red-400 text-xs mt-0.5">{actor.character}</p>
+                          </div>
                         </div>
                       </div>
                     ))}
@@ -614,143 +383,84 @@ export default async function SeriesPage({ params }: Props) {
                 </div>
               )}
 
-              {/* Detrás de Cámaras */}
-              {series.behindScenes && Array.isArray(series.behindScenes) && series.behindScenes.length > 0 && (
-                <div className="mt-8 bg-gradient-to-br from-gray-900/80 to-blue-950/20 border border-blue-500/30 rounded-xl p-8 backdrop-blur-sm">
-                  <h3 className="text-3xl font-bold text-white mb-6 flex items-center">
-                    <Eye className="w-8 h-8 mr-3 text-blue-400" />
-                    Detrás de Cámaras
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {parseJson<BehindScene>(series.behindScenes).map((behind, index) => (
-                      <div key={index} className="group cursor-pointer">
-                        <div className="relative overflow-hidden rounded-lg bg-gray-800">
-                          <Image
-                            src={behind.url}
-                            alt={behind.title}
-                            width={300}
-                            height={200}
-                            className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
-                          />
-                          <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <Eye className="w-12 h-12 text-white" />
-                          </div>
-                          <div className="absolute top-2 left-2">
-                            <Badge className="bg-blue-600/90 text-white text-xs">
-                              {behind.season}
-                            </Badge>
-                          </div>
-                        </div>
-                        <div className="mt-3">
-                          <h4 className="text-white font-semibold">{behind.title}</h4>
-                          <p className="text-gray-400 text-sm">{behind.description}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Arte Conceptual */}
-              {series.conceptArt && Array.isArray(series.conceptArt) && series.conceptArt.length > 0 && (
-                <div className="mt-8 bg-gradient-to-br from-gray-900/80 to-green-950/20 border border-green-500/30 rounded-xl p-8 backdrop-blur-sm">
-                  <h3 className="text-3xl font-bold text-white mb-6 flex items-center">
-                    <Palette className="w-8 h-8 mr-3 text-green-400" />
-                    Arte Conceptual
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {parseJson<ConceptArtItem>(series.conceptArt).map((concept, index) => (
-                      <div key={index} className="group cursor-pointer">
-                        <div className="relative overflow-hidden rounded-lg bg-gray-800">
-                          <Image
-                            src={concept.url}
-                            alt={concept.title}
-                            width={300}
-                            height={300}
-                            className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
-                          />
-                          <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <Palette className="w-12 h-12 text-white" />
-                          </div>
-                        </div>
-                        <div className="mt-3">
-                          <h4 className="text-white font-semibold">{concept.title}</h4>
-                          <p className="text-gray-400 text-sm">{concept.description}</p>
-                          {concept.artist && (
-                            <p className="text-green-400 text-xs mt-1">Artista: {concept.artist}</p>
-                          )}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
             </div>
 
             {/* Sidebar */}
             <div className="lg:col-span-1">
-              <div className="sticky top-24 space-y-8">
-                {/* Series Poster */}
-                <div className="bg-gray-900/30 rounded-lg p-6 border border-purple-600/20">
-                  <Image
-                    src={series.image}
-                    alt={`${series.title} (${series.year}) - Poster`}
-                    width={300}
-                    height={450}
-                    className="w-full rounded-lg"
-                  />
-                </div>
-                
-                {/* Ad */}
+              <div className="sticky top-24 space-y-6">
                 <SidebarAd />
-                
-                {/* Productos Recomendados */}
-                <div className="bg-gray-900/30 rounded-lg p-6 border border-purple-600/20">
-                  <h3 className="text-xl font-semibold text-white mb-4">
-                    📺 Productos de la Serie
-                  </h3>
-                  <div className="space-y-4">
-                    <AmazonProduct
-                      title={`${series.title} DVD Colección`}
-                      description="Temporadas completas en DVD"
-                      price="$29.99"
-                      originalPrice="$39.99"
-                      discount={25}
-                      category="Serie"
-                      tags={['Spider-Man', 'DVD', 'Serie']}
-                      searchQuery={`${series.title} complete series DVD`}
-                      className="max-w-none"
-                    />
-                    <AmazonProduct
-                      title={`${series.title} Blu-ray`}
-                      description="Edición remasterizada en Blu-ray"
-                      price="$49.99"
-                      category="Serie"
-                      tags={['Spider-Man', 'Blu-ray', 'Serie']}
-                      searchQuery={`${series.title} blu-ray complete`}
-                      className="max-w-none"
-                    />
-                  </div>
+
+                <div className="bg-gray-900/60 border border-white/10 rounded-2xl p-5 space-y-3">
+                  <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-widest mb-4">Comprar en Amazon</h3>
+                  {[
+                    { label: `${series.title} — DVD`,          query: `${series.title} complete series DVD`,     icon: "📺" },
+                    { label: `${series.title} — Blu-ray`,      query: `${series.title} blu-ray complete`,        icon: "🎬" },
+                    { label: `Funko Pop Spider-Man`,           query: `funko pop spider-man animated`,           icon: "🕷️" },
+                  ].map(({ label, query, icon }) => (
+                    <a
+                      key={label}
+                      href={generateAmazonUrl(query)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 w-full px-4 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/20 transition-all duration-200 group"
+                    >
+                      <span className="text-lg">{icon}</span>
+                      <span className="text-sm text-gray-300 group-hover:text-white transition-colors flex-1">{label}</span>
+                      <ShoppingCart className="w-4 h-4 text-gray-500 group-hover:text-orange-400 transition-colors shrink-0" />
+                    </a>
+                  ))}
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </section>
 
-      {/* Related Series */}
+      {/* Series relacionadas */}
       {relatedSeries.length > 0 && (
-        <section className="py-20 bg-gradient-to-b from-purple-950/10 to-red-950/10">
-          <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold text-white mb-12 text-center">Series Relacionadas</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <section className="py-20 bg-gradient-to-b from-red-950/10 to-black">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-1 h-7 rounded-full bg-gradient-to-b from-red-500 to-red-800" />
+              <h2 className="text-2xl font-bold text-white">Más series de Spider-Man</h2>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {relatedSeries.map((item) => (
-                <RelatedCard key={item.id} item={item} basePath="series" icon={Play} />
+                <Link key={item.id} href={`/series/${item.slug}`} className="group">
+                  <div className="relative rounded-2xl overflow-hidden shadow-xl shadow-black/40">
+                    <div className="relative aspect-[2/3]">
+                      <Image src={item.image} alt={item.title} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+                      <div className="absolute bottom-0 left-0 right-0 p-3 group-hover:opacity-0 transition-opacity duration-300">
+                        <h3 className="text-white text-sm font-bold line-clamp-2 text-center leading-tight" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}>
+                          {item.title}
+                        </h3>
+                      </div>
+                      <div className="absolute inset-0 p-4 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="w-full flex items-center justify-center gap-1 bg-white/20 backdrop-blur-sm text-white text-xs font-medium py-2 rounded-lg">
+                          <Play className="w-3 h-3" />
+                          Ver detalles
+                        </div>
+                      </div>
+                      {item.rating && (
+                        <div className="absolute top-2 right-2 flex items-center gap-1 bg-black/70 backdrop-blur-sm rounded-full px-2 py-1">
+                          <Star className="w-3 h-3 text-yellow-400 fill-yellow-400" />
+                          <span className="text-white text-xs font-semibold">{item.rating}</span>
+                        </div>
+                      )}
+                      <div className="absolute top-2 left-2 bg-black/70 backdrop-blur-sm rounded-full px-2 py-1">
+                        <span className="text-gray-300 text-xs">{item.year}</span>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
               ))}
             </div>
           </div>
         </section>
       )}
+
     </div>
   )
-} 
+}
