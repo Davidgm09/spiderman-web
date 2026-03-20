@@ -3,17 +3,14 @@ import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { RelatedCard } from "@/components/RelatedCard"
-import { Play, ShoppingCart, Calendar, Clock, User, Tv, ArrowLeft, Award, Camera, Mail, CheckCircle, Star } from "lucide-react"
+import { Play, ShoppingCart, User, Tv, ArrowLeft, Award, Star } from "lucide-react"
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
-import { AmazonProduct } from "@/components/affiliate/AmazonProduct"
 import { movieService } from "@/lib/database"
 import { SITE_URL } from "@/lib/config"
 import { generateAmazonUrl, parseJson } from "@/lib/content-helpers"
-import { Breadcrumb } from "@/components/breadcrumb"
 import type { GalleryImage, CastMember } from "@/lib/json-types"
+import { movieAnalysis } from "@/lib/editorial-analysis"
 
 export const revalidate = 3600
 
@@ -122,102 +119,138 @@ export default async function MoviePage({ params }: Props) {
       })) || [];
 
   return (
-    <div className="pt-16">
+    <div className="pt-16 bg-gradient-to-b from-black via-gray-950 to-black" style={{ backgroundImage: 'radial-gradient(ellipse 80% 50% at 10% 50%, rgba(180,0,0,0.18) 0%, transparent 70%), radial-gradient(ellipse 70% 40% at 90% 70%, rgba(0,80,220,0.22) 0%, transparent 70%)' }}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-red-900/30 to-black/80"></div>
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+        {/* Fondo: póster desenfocado */}
         <div className="absolute inset-0">
           <Image
             src={movie.image}
-            alt={`${movie.title} (${movie.year}) - Película de Spider-Man`}
+            alt=""
             fill
             sizes="100vw"
-            className="object-cover opacity-40"
+            className="object-cover scale-110 blur-sm opacity-30"
             priority
           />
         </div>
+        {/* Gradientes de profundidad */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60" />
 
-        <div className="relative z-10 text-center px-4 max-w-6xl mx-auto">
-          <Breadcrumb items={[{ label: "Películas", href: "/peliculas" }, { label: movie.title }]} />
-          <div className="mb-6 flex items-center justify-center gap-4">
-            <Link href="/peliculas">
-              <Button variant="outline" size="sm" className="border-red-600 text-red-400 hover:bg-red-600 hover:text-white">
-                <ArrowLeft className="w-4 h-4 mr-2" />
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10 py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-12 items-center">
+
+            {/* Columna izquierda: info */}
+            <div>
+              <Link href="/peliculas" className="inline-flex items-center gap-2 text-gray-400 hover:text-white text-sm mb-8 transition-colors">
+                <ArrowLeft className="w-4 h-4" />
                 Volver a Películas
-              </Button>
-            </Link>
-            <Badge className="bg-red-600 text-white px-6 py-3 text-lg font-semibold">
-              {movie.rating >= 8 ? 'Película Esencial' : 'Película Spider-Man'}
-            </Badge>
-          </div>
-          
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-red-500 via-blue-500 to-red-500 bg-clip-text text-transparent">
-            {movie.title} ({movie.year})
-          </h1>
-          
-          {movie.subtitle && (
-            <p className="text-xl md:text-2xl mb-8 text-gray-300 max-w-4xl mx-auto leading-relaxed italic">
-              "{movie.subtitle}"
-            </p>
-          )}
-          
-          {movie.description && (
-            <p className="text-lg text-gray-400 max-w-3xl mx-auto mb-8">
-              {movie.description.length > 200 ? movie.description.substring(0, 200) + '...' : movie.description}
-            </p>
-          )}
+              </Link>
 
-          <div className="flex flex-wrap justify-center gap-6 mb-8 text-gray-300">
-            <div className="flex items-center">
-              <Calendar className="w-5 h-5 mr-2 text-red-500" />
-              <span>{movie.year}</span>
-            </div>
-            {movie.duration && (
-              <div className="flex items-center">
-                <Clock className="w-5 h-5 mr-2 text-blue-500" />
-                <span>{movie.duration}</span>
+              <div className="flex items-center gap-3 mb-4">
+                <Badge className="bg-red-600 text-white text-xs tracking-widest uppercase px-3 py-1">
+                  {movie.rating >= 8 ? 'Película Esencial' : 'Spider-Man'}
+                </Badge>
+                <span className="text-gray-500 text-sm">{movie.year}</span>
+                {movie.duration && <span className="text-gray-500 text-sm">· {movie.duration}</span>}
               </div>
-            )}
-            {movie.director && (
-              <div className="flex items-center">
-                <User className="w-5 h-5 mr-2 text-purple-500" />
-                <span>{movie.director}</span>
-              </div>
-            )}
-            <div className="flex items-center">
-              <Star className="w-5 h-5 mr-2 text-yellow-500" />
-              <span>{movie.rating}/10</span>
-            </div>
-          </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            {movie.platform && (
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-red-600 to-blue-600 hover:from-red-700 hover:to-blue-700 text-white px-8 py-4 text-lg"
-                asChild
-              >
-                <a href={generateAmazonUrl(`${movie.title} ${movie.year} 4K blu-ray`)} target="_blank" rel="noopener noreferrer">
-                  <Play className="mr-2 h-5 w-5" />
-                  Ver en {movie.platform}
+              <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 leading-tight">
+                {movie.title}
+              </h1>
+
+              {movie.subtitle && (
+                <p className="text-lg text-gray-400 italic mb-4">"{movie.subtitle}"</p>
+              )}
+
+              {/* Rating */}
+              <div className="flex items-center gap-2 mb-6">
+                {[1,2,3,4,5].map(i => (
+                  <Star
+                    key={i}
+                    className={`w-5 h-5 ${i <= Math.round(movie.rating / 2) ? 'text-yellow-400 fill-yellow-400' : 'text-gray-600'}`}
+                  />
+                ))}
+                <span className="text-yellow-400 font-bold ml-1">{movie.rating}</span>
+                <span className="text-gray-500 text-sm">/10</span>
+              </div>
+
+              {movie.description && (
+                <p className="text-gray-300 text-lg leading-relaxed mb-8 max-w-2xl">
+                  {(() => {
+                    const firstDot = movie.description.indexOf('. ')
+                    return firstDot > 0 && firstDot < 300
+                      ? movie.description.substring(0, firstDot + 1)
+                      : movie.description.length > 250
+                        ? movie.description.substring(0, 250) + '…'
+                        : movie.description
+                  })()}
+                </p>
+              )}
+
+              {/* Meta chips */}
+              <div className="flex flex-wrap gap-3 mb-8">
+                {movie.director && (
+                  <div className="flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 text-sm text-gray-300">
+                    <User className="w-3.5 h-3.5 text-gray-400" />
+                    {movie.director}
+                  </div>
+                )}
+                {movie.genre && (
+                  <div className="flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 text-sm text-gray-300">
+                    <Tv className="w-3.5 h-3.5 text-gray-400" />
+                    {Array.isArray(movie.genre) ? movie.genre[0] : movie.genre}
+                  </div>
+                )}
+                {movie.boxOffice && (
+                  <div className="flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 text-sm text-gray-300">
+                    <Award className="w-3.5 h-3.5 text-gray-400" />
+                    {movie.boxOffice}
+                  </div>
+                )}
+              </div>
+
+              {/* Botones */}
+              <div className="flex flex-wrap gap-3">
+                {movie.trailerUrl && (
+                  <a
+                    href="#trailer"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-red-600 hover:bg-red-500 text-white font-semibold rounded-full transition-all duration-200 hover:scale-105 shadow-lg shadow-red-900/40"
+                  >
+                    <Play className="w-4 h-4 fill-white" />
+                    Ver tráiler
+                  </a>
+                )}
+                <a
+                  href={generateAmazonUrl(`${movie.title} ${movie.year} 4K blu-ray`)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white font-semibold rounded-full transition-all duration-200 hover:scale-105"
+                >
+                  <ShoppingCart className="w-4 h-4" />
+                  Comprar en Amazon
                 </a>
-              </Button>
-            )}
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-orange-600 text-orange-400 hover:bg-orange-600 hover:text-white px-8 py-4 text-lg"
-              asChild
-            >
-              <a href={generateAmazonUrl(`${movie.title} ${movie.year} 4K blu-ray`)} target="_blank" rel="noopener noreferrer">
-                <ShoppingCart className="mr-2 h-5 w-5" />
-                Comprar en Amazon
-              </a>
-            </Button>
+              </div>
+            </div>
+
+            {/* Columna derecha: póster */}
+            <div className="hidden lg:block">
+              <div className="relative">
+                <div className="absolute -inset-4 bg-red-600/20 blur-2xl rounded-3xl" />
+                <Image
+                  src={movie.image}
+                  alt={`${movie.title} - Póster oficial`}
+                  width={320}
+                  height={480}
+                  className="relative rounded-2xl shadow-2xl w-full object-cover"
+                />
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -226,93 +259,37 @@ export default async function MoviePage({ params }: Props) {
       <InContentAd />
 
       {/* Movie Info */}
-      <section className="py-20 bg-gradient-to-b from-black to-red-950/10">
+      <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
             {/* Main Content */}
             <div className="lg:col-span-3">
-              <div className="bg-gray-900/50 border border-red-600/20 rounded-lg p-8">
-                <h2 className="text-2xl font-bold text-white mb-6">Información de la Película</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-4">
-                    <div className="flex items-center space-x-3">
-                      <Play className="w-5 h-5 text-red-500" />
-                      <div>
-                        <span className="text-gray-400 text-sm">Título</span>
-                        <div className="text-white font-semibold">{movie.title}</div>
-                      </div>
+              {/* Ficha técnica — stats grandes */}
+              <div className="flex flex-wrap gap-6 mb-10 pb-10 border-b border-white/10">
+                {[
+                  { label: "Año", value: movie.year },
+                  movie.duration ? { label: "Duración", value: movie.duration } : null,
+                  movie.rating ? { label: "Puntuación", value: `${movie.rating}/10` } : null,
+                  movie.boxOffice ? { label: "Recaudación", value: movie.boxOffice } : null,
+                  movie.platform ? { label: "Plataforma", value: movie.platform } : null,
+                ].filter(Boolean).map((item, i, arr) => (
+                  <div key={item!.label} className="flex items-center gap-6">
+                    <div>
+                      <div className="text-2xl font-bold text-white">{item!.value}</div>
+                      <div className="text-xs text-gray-500 uppercase tracking-widest mt-0.5">{item!.label}</div>
                     </div>
-                    <div className="flex items-center space-x-3">
-                      <Calendar className="w-5 h-5 text-red-500" />
-                      <div>
-                        <span className="text-gray-400 text-sm">Año de estreno</span>
-                        <div className="text-white font-semibold">{movie.year}</div>
-                      </div>
-                    </div>
-                    {movie.duration && (
-                      <div className="flex items-center space-x-3">
-                        <Clock className="w-5 h-5 text-red-500" />
-                        <div>
-                          <span className="text-gray-400 text-sm">Duración</span>
-                          <div className="text-white font-semibold">{movie.duration}</div>
-                        </div>
-                      </div>
-                    )}
-                    {movie.director && (
-                      <div className="flex items-center space-x-3">
-                        <User className="w-5 h-5 text-red-500" />
-                        <div>
-                          <span className="text-gray-400 text-sm">Director</span>
-                          <div className="text-white font-semibold">{movie.director}</div>
-                        </div>
-                      </div>
-                    )}
+                    {i < arr.length - 1 && <div className="w-px h-10 bg-white/10" />}
                   </div>
-                  <div className="space-y-4">
-                    <div className="flex items-center space-x-3">
-                      <Star className="w-5 h-5 text-yellow-500" />
-                      <div>
-                        <span className="text-gray-400 text-sm">Calificación</span>
-                        <div className="text-white font-semibold">{movie.rating}/10</div>
-                      </div>
-                    </div>
-                    {movie.genre && (
-                      <div className="flex items-center space-x-3">
-                        <Tv className="w-5 h-5 text-purple-500" />
-                        <div>
-                          <span className="text-gray-400 text-sm">Género</span>
-                          <div className="text-white font-semibold">
-                            {Array.isArray(movie.genre) ? movie.genre.join(', ') : movie.genre}
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                    {movie.boxOffice && (
-                      <div className="flex items-center space-x-3">
-                        <Award className="w-5 h-5 text-green-500" />
-                        <div>
-                          <span className="text-gray-400 text-sm">Recaudación</span>
-                          <div className="text-white font-semibold">{movie.boxOffice}</div>
-                        </div>
-                      </div>
-                    )}
-                    {movie.platform && (
-                      <div className="flex items-center space-x-3">
-                        <Tv className="w-5 h-5 text-blue-500" />
-                        <div>
-                          <span className="text-gray-400 text-sm">Plataforma</span>
-                          <div className="text-white font-semibold">{movie.platform}</div>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </div>
+                ))}
               </div>
 
               {/* Sinopsis */}
               {movie.description && (
-                <div className="mt-8 bg-gray-900/50 border border-red-600/20 rounded-lg p-8">
-                  <h3 className="text-2xl font-bold text-white mb-6">Sinopsis</h3>
+                <div className="mb-10">
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className="w-1 h-7 rounded-full bg-gradient-to-b from-red-500 to-red-800" />
+                    <h3 className="text-2xl font-bold text-white">Sinopsis</h3>
+                  </div>
                   <p className="text-gray-300 text-lg leading-relaxed">
                     {movie.description}
                   </p>
@@ -321,12 +298,12 @@ export default async function MoviePage({ params }: Props) {
 
               {/* Trailer */}
               {movie.trailerUrl && (
-                <div className="mt-8 bg-gray-900/50 border border-red-600/20 rounded-lg p-8">
-                  <h3 className="text-3xl font-bold text-white mb-6 flex items-center">
-                    <Play className="w-8 h-8 mr-3 text-green-500" />
-                    Tráiler Oficial
-                  </h3>
-                  <div className="relative aspect-video rounded-lg overflow-hidden bg-black">
+                <div id="trailer" className="mt-10 scroll-mt-24 bg-gray-900/50 border border-white/10 rounded-2xl p-6">
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className="w-1 h-7 rounded-full bg-gradient-to-b from-red-500 to-red-800" />
+                    <h3 className="text-2xl font-bold text-white">Tráiler Oficial</h3>
+                  </div>
+                  <div className="relative aspect-video rounded-xl overflow-hidden shadow-2xl shadow-black/60">
                     <iframe
                       src={movie.trailerUrl.replace('watch?v=', 'embed/')}
                       title={`Tráiler de ${movie.title}`}
@@ -336,91 +313,69 @@ export default async function MoviePage({ params }: Props) {
                       allowFullScreen
                     />
                   </div>
-                  <p className="text-gray-400 text-sm mt-3 text-center">
-                    Tráiler oficial de {movie.title} ({movie.year})
-                  </p>
                 </div>
               )}
 
               {/* Análisis Editorial */}
-              {movie.longDescription && (
-                <div className="mt-8 bg-gray-900/50 border border-red-600/20 rounded-lg p-8">
-                  <h3 className="text-3xl font-bold text-white mb-6 flex items-center">
-                    <Award className="w-8 h-8 mr-3 text-red-500" />
-                    Análisis Editorial
-                  </h3>
-                  <div 
-                    className="text-gray-300 text-lg leading-relaxed max-w-none
-                      [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:text-white [&>h2]:mb-4 [&>h2]:mt-6
-                      [&>h3]:text-xl [&>h3]:font-semibold [&>h3]:text-red-400 [&>h3]:mb-3 [&>h3]:mt-5
-                      [&>p]:mb-4 [&>p]:text-gray-300 [&>p]:leading-relaxed
-                      [&>p:first-of-type]:text-xl [&>p:first-of-type]:text-gray-200 [&>p:first-of-type]:font-medium
-                      [&>strong]:text-white [&>strong]:font-semibold
-                      [&>em]:text-gray-200 [&>em]:italic
-                      [&>ul]:list-disc [&>ul]:ml-6 [&>ul]:mb-4
-                      [&>li]:mb-2 [&>li]:text-gray-300
-                      [&>blockquote]:border-l-4 [&>blockquote]:border-red-500 [&>blockquote]:pl-4 [&>blockquote]:italic [&>blockquote]:text-gray-200 [&>blockquote]:bg-gray-800/30 [&>blockquote]:py-2 [&>blockquote]:rounded-r
-                    "
-                    dangerouslySetInnerHTML={{ __html: movie.longDescription }}
-                  />
+              <div className="mt-10 bg-gradient-to-br from-gray-900/80 to-red-950/20 border border-red-500/30 rounded-xl p-8 backdrop-blur-sm">
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="w-1 h-7 rounded-full bg-gradient-to-b from-red-500 to-red-800" />
+                  <h3 className="text-2xl font-bold text-white">Análisis Editorial</h3>
                 </div>
-              )}
+                {(() => {
+                  const data = movieAnalysis[movie.slug] ?? {
+                    contexto: `${movie.title} se inscribe en la larga tradición de adaptaciones cinematográficas del universo de Spider-Man, aportando su propia visión del personaje y su mundo.`,
+                    recepcion: `La película encontró su público entre los fans del trepamuros y generó debate sobre la dirección creativa de las adaptaciones del universo arácnido en el cine.`,
+                    legado: `Como parte del catálogo de Spider-Man en el cine, ${movie.title} ocupa su lugar en la historia de un personaje que lleva décadas siendo uno de los más queridos y adaptados de la cultura popular.`,
+                  }
 
-              {/* Galería de Escenas */}
-              <div className="mt-8 bg-gray-900/50 border border-red-600/20 rounded-lg p-8">
-                <h3 className="text-3xl font-bold text-white mb-6 flex items-center">
-                  <Camera className="w-8 h-8 mr-3 text-blue-500" />
-                  Galería de Escenas
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {Array.isArray(sceneGallery) && sceneGallery.map((scene, index) => (
-                    <div key={index} className="group cursor-pointer">
-                      <div className="relative overflow-hidden rounded-lg">
-                        <Image
-                          src={scene.url}
-                          alt={scene.title}
-                          width={400}
-                          height={225}
-                          className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
-                        />
-                        <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                          <Play className="w-12 h-12 text-white" />
+                  return (
+                    <div className="space-y-8">
+                      {[
+                        { num: "01", title: "Contexto Cinematográfico", text: data.contexto, color: "text-red-500" },
+                        { num: "02", title: "Recepción y Repercusión",  text: data.recepcion, color: "text-blue-500" },
+                        { num: "03", title: "Legado en el Spider-Verse", text: data.legado,   color: "text-purple-500" },
+                      ].map(({ num, title, text, color }) => (
+                        <div key={num} className="flex gap-6 items-start">
+                          <span className={`text-5xl font-black leading-none ${color} opacity-25 select-none shrink-0 w-14 text-right`}>
+                            {num}
+                          </span>
+                          <div>
+                            <h4 className={`text-lg font-bold ${color} mb-2`}>{title}</h4>
+                            <p className="text-gray-300 leading-relaxed">{text}</p>
+                          </div>
                         </div>
-                      </div>
-                      <div className="mt-3">
-                        <h4 className="text-white font-semibold">{scene.title}</h4>
-                        <p className="text-gray-400 text-sm">{scene.description}</p>
-                      </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
+                  )
+                })()}
               </div>
 
-              {/* Reparto Principal */}
-              {Array.isArray(castData) && castData.length > 0 && (
-                <div className="mt-8 bg-gray-900/50 border border-red-600/20 rounded-lg p-8">
-                  <h3 className="text-3xl font-bold text-white mb-6 flex items-center">
-                    <User className="w-8 h-8 mr-3 text-purple-500" />
-                    Reparto Principal
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {castData.slice(0, 6).map((actor, index) => (
-                      <div key={index} className="bg-gray-800/50 rounded-lg p-6 text-center group hover:bg-gray-800/70 transition-colors">
-                        <div className="relative mb-4">
+              {/* Galería de Escenas */}
+              {Array.isArray(sceneGallery) && sceneGallery.length > 0 && (
+                <div className="mt-10">
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className="w-1 h-7 rounded-full bg-gradient-to-b from-red-500 to-red-800" />
+                    <h3 className="text-2xl font-bold text-white">Galería de Escenas</h3>
+                  </div>
+                  <div className="grid grid-cols-3 gap-2">
+                    {sceneGallery.map((scene, index) => (
+                      <div
+                        key={index}
+                        className={`group relative overflow-hidden rounded-xl ${index === 0 ? 'col-span-2 row-span-2' : ''}`}
+                      >
+                        <div className={`relative w-full ${index === 0 ? 'aspect-video' : 'aspect-video'}`}>
                           <Image
-                            src={actor.image || actor.photo || '/placeholder-user.jpg'}
-                            alt={actor.name}
-                            width={120}
-                            height={120}
-                            className="w-20 h-20 rounded-full mx-auto object-cover border-2 border-red-500/30 group-hover:border-red-500 transition-colors"
+                            src={scene.url}
+                            alt={scene.title}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            className="object-cover transition-transform duration-500 group-hover:scale-105"
                           />
-                        </div>
-                        <div>
-                          <h4 className="text-white font-semibold text-lg mb-1">{actor.name}</h4>
-                          <p className="text-red-400 text-sm mb-2">{actor.character}</p>
-                          {actor.bio && (
-                            <p className="text-gray-400 text-xs leading-relaxed">{actor.bio}</p>
-                          )}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                          <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                            <p className="text-white text-xs font-medium line-clamp-1">{scene.title}</p>
+                          </div>
                         </div>
                       </div>
                     ))}
@@ -428,87 +383,64 @@ export default async function MoviePage({ params }: Props) {
                 </div>
               )}
 
-              {/* Newsletter */}
-              <div className="mt-8 bg-gradient-to-r from-red-900/20 to-blue-900/20 border border-red-600/30 rounded-lg p-8">
-                <div className="text-center">
-                  <Mail className="w-12 h-12 text-red-500 mx-auto mb-4" />
-                  <h3 className="text-2xl font-bold text-white mb-4">
-                    ¿Te gustó este análisis?
-                  </h3>
-                  <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-                    Suscríbete a nuestro newsletter y recibe análisis exclusivos, noticias del Spider-Verse y contenido premium directamente en tu email.
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                    <input
-                      type="email"
-                      placeholder="tu@email.com"
-                      className="flex-1 px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-red-500"
-                    />
-                    <Button className="bg-red-600 hover:bg-red-700 px-8">
-                      <CheckCircle className="w-4 h-4 mr-2" />
-                      Suscribirse
-                    </Button>
+              {/* Reparto Principal */}
+              {Array.isArray(castData) && castData.length > 0 && (
+                <div className="mt-10">
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className="w-1 h-7 rounded-full bg-gradient-to-b from-red-500 to-red-800" />
+                    <h3 className="text-2xl font-bold text-white">Reparto Principal</h3>
                   </div>
-                  <p className="text-gray-500 text-sm mt-3">
-                    Sin spam. Solo contenido de calidad sobre Spider-Man.
-                  </p>
+                  <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
+                    {castData.slice(0, 12).map((actor, index) => (
+                      <div key={index} className="group bg-gray-900/60 border border-white/5 rounded-2xl overflow-hidden hover:border-white/20 transition-colors">
+                        <div className="relative aspect-[3/4]">
+                          <Image
+                            src={actor.image || actor.photo || '/placeholder-user.jpg'}
+                            alt={actor.name}
+                            fill
+                            sizes="(max-width: 768px) 50vw, 25vw"
+                            className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+                          <div className="absolute bottom-0 left-0 right-0 p-3">
+                            <p className="text-white font-semibold text-sm leading-tight">{actor.name}</p>
+                            <p className="text-red-400 text-xs mt-0.5">{actor.character}</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
+
             </div>
 
             {/* Sidebar */}
             <div className="lg:col-span-1">
-              <div className="sticky top-24 space-y-8">
-                {/* Movie Poster */}
-                <div className="bg-gray-900/30 rounded-lg p-6 border border-red-600/20">
-                  <Image
-                    src={movie.image}
-                    alt={`${movie.title} (${movie.year}) - Póster`}
-                    width={300}
-                    height={450}
-                    className="w-full rounded-lg"
-                  />
-                </div>
-                
+              <div className="sticky top-24 space-y-6">
                 {/* Ad */}
                 <SidebarAd />
-                
-                {/* Productos Recomendados */}
-                <div className="bg-gray-900/30 rounded-lg p-6 border border-red-600/20">
-                  <h3 className="text-xl font-semibold text-white mb-4">
-                    🎥 Productos de la Película
-                  </h3>
-                  <div className="space-y-4">
-                    <AmazonProduct
-                      title={`${movie.title} 4K Blu-ray`}
-                      description="Edición de coleccionista en 4K Ultra HD"
-                      price="$29.99"
-                      originalPrice="$39.99"
-                      discount={25}
-                      category="Blu-ray"
-                      tags={['Spider-Man', '4K', 'Película']}
-                      searchQuery={`${movie.title} ${movie.year} 4K blu-ray`}
-                      className="max-w-none"
-                    />
-                    <AmazonProduct
-                      title={`${movie.title} Poster`}
-                      description="Póster oficial de la película"
-                      price="$14.99"
-                      category="Póster"
-                      tags={['Spider-Man', 'Poster', 'Wall Art']}
-                      searchQuery={`${movie.title} movie poster official`}
-                      className="max-w-none"
-                    />
-                    <AmazonProduct
-                      title="Spider-Man Funko Pop"
-                      description="Figura coleccionable de Spider-Man"
-                      price="$12.99"
-                      category="Figura"
-                      tags={['Spider-Man', 'Funko', 'Coleccionable']}
-                      searchQuery="Spider-Man Funko Pop figure"
-                      className="max-w-none"
-                    />
-                  </div>
+
+                {/* Comprar en Amazon */}
+                <div className="bg-gray-900/60 border border-white/10 rounded-2xl p-5 space-y-3">
+                  <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-widest mb-4">Comprar en Amazon</h3>
+                  {[
+                    { label: `${movie.title} — Blu-ray 4K`, query: `${movie.title} ${movie.year} 4K blu-ray`, icon: "🎬" },
+                    { label: `Póster oficial`, query: `${movie.title} poster oficial`, icon: "🖼️" },
+                    { label: `Funko Pop Spider-Man`, query: `funko pop spider-man`, icon: "🕷️" },
+                  ].map(({ label, query, icon }) => (
+                    <a
+                      key={label}
+                      href={generateAmazonUrl(query)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 w-full px-4 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/20 transition-all duration-200 group"
+                    >
+                      <span className="text-lg">{icon}</span>
+                      <span className="text-sm text-gray-300 group-hover:text-white transition-colors flex-1">{label}</span>
+                      <ShoppingCart className="w-4 h-4 text-gray-500 group-hover:text-orange-400 transition-colors shrink-0" />
+                    </a>
+                  ))}
                 </div>
               </div>
             </div>
@@ -518,53 +450,57 @@ export default async function MoviePage({ params }: Props) {
 
       {/* Related Movies */}
       {relatedMovies.length > 0 && (
-        <section className="py-20 bg-gradient-to-b from-red-950/10 to-blue-950/10">
-          <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold text-white mb-12 text-center">Películas Relacionadas</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <section className="py-20 bg-gradient-to-b from-red-950/10 to-black">
+          <div className="max-w-7xl mx-auto px-4">
+            <h2 className="text-2xl font-bold text-white mb-8">Más películas de Spider-Man</h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {relatedMovies.map((item) => (
-                <RelatedCard key={item.id} item={item} basePath="peliculas" icon={Play} />
+                <Link key={item.id} href={`/peliculas/${item.slug}`} className="group">
+                  <div className="relative rounded-2xl overflow-hidden shadow-xl shadow-black/40">
+                    <div className="relative aspect-[2/3]">
+                      <Image
+                        src={item.image}
+                        alt={item.title}
+                        fill
+                        sizes="(max-width: 768px) 50vw, 25vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+
+                      {/* Título siempre visible */}
+                      <div className="absolute bottom-0 left-0 right-0 p-3 group-hover:opacity-0 transition-opacity duration-300">
+                        <h3 className="text-white text-sm font-bold line-clamp-2 text-center leading-tight" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}>
+                          {item.title}
+                        </h3>
+                      </div>
+
+                      {/* Info en hover */}
+                      <div className="absolute inset-0 p-4 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <Button size="sm" className="w-full bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white border-0 text-xs">
+                          <Play className="w-3 h-3 mr-1" />
+                          Ver análisis
+                        </Button>
+                      </div>
+
+                      {/* Rating */}
+                      <div className="absolute top-2 right-2 flex items-center gap-1 bg-black/70 backdrop-blur-sm rounded-full px-2 py-1">
+                        <Star className="w-3 h-3 text-yellow-400 fill-yellow-400" />
+                        <span className="text-white text-xs font-semibold">{item.rating}</span>
+                      </div>
+
+                      {/* Año */}
+                      <div className="absolute top-2 left-2 bg-black/70 backdrop-blur-sm rounded-full px-2 py-1">
+                        <span className="text-gray-300 text-xs">{item.year}</span>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
               ))}
             </div>
           </div>
         </section>
       )}
 
-      {/* SEO Footer Content */}
-      <section className="py-16 bg-gray-900/30 border-t border-gray-800">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
-            <div>
-              <h3 className="text-xl font-bold text-white mb-4">🎬 Análisis Completo</h3>
-              <p className="text-gray-400">
-                Análisis profundo de {movie.title} con crítica especializada, 
-                datos técnicos y contexto dentro del universo Spider-Man.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-xl font-bold text-white mb-4">🕷️ Spider-Verse</h3>
-              <p className="text-gray-400">
-                Descubre cómo {movie.title} se conecta con el resto del Spider-Verse 
-                y su importancia en la cronología del trepamuros.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-xl font-bold text-white mb-4">🛒 Productos Oficiales</h3>
-              <p className="text-gray-400">
-                Encuentra merchandise oficial, ediciones especiales y productos 
-                coleccionables de {movie.title} en nuestra tienda afiliada.
-              </p>
-            </div>
-          </div>
-          
-          <div className="mt-12 pt-8 border-t border-gray-800 text-center">
-            <p className="text-gray-500 text-sm">
-              {movie.title} ({movie.year}) | Análisis y reseña completa en Spider-World | 
-              La web definitiva sobre el universo Spider-Man | Películas, cómics, series y más
-            </p>
-          </div>
-        </div>
-      </section>
     </div>
   )
 } 
