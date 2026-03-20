@@ -108,7 +108,7 @@ export default async function PeliculasPage() {
       </section>
 
       {/* Banner Brand New Day */}
-      <div className="max-w-7xl mx-auto px-4 pt-4">
+      <div className="max-w-7xl mx-auto px-4 pt-12">
         <div className="relative rounded-3xl overflow-hidden h-auto min-h-[360px] md:min-h-[380px] shadow-2xl shadow-red-900/40 mb-8">
           <Image
             src="/images/spiderman-brand-new-day-v0-31e6vv2f5rhf1.webp"

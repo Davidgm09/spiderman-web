@@ -5,7 +5,7 @@ import { notFound } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { BookOpen, ShoppingCart, Calendar, User, Building, ArrowLeft, Users, Award, Zap, History, Eye, Camera, Palette, Star, BookmarkPlus, TrendingUp } from "lucide-react"
+import { BookOpen, ShoppingCart, Calendar, User, Building, ArrowLeft, Users, Award, Zap, History, Eye, Camera, Palette, Star, TrendingUp } from "lucide-react"
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { AmazonProduct } from "@/components/affiliate/AmazonProduct"
 import { comicService } from "@/lib/database"
@@ -13,6 +13,9 @@ import { SITE_URL } from "@/lib/config"
 import { renderStars, generateAmazonUrl, parseJson } from "@/lib/content-helpers"
 import { Breadcrumb } from "@/components/breadcrumb"
 import type { ConceptArtItem, CoverVariant, ArtistPhoto, PagePreview } from "@/lib/json-types"
+import { ComicTagSection } from "@/components/comics/ComicTagSection"
+import { ComicEditorialAnalysis } from "@/components/comics/ComicEditorialAnalysis"
+import { ComicSameCollection } from "@/components/comics/ComicSameCollection"
 
 export const revalidate = 3600
 
@@ -89,7 +92,13 @@ export default async function ComicPage({ params }: Props) {
   comicService.incrementViews(slug).catch(console.error)
 
   // Obtener cómics relacionados
-  const relatedComics = await comicService.getFeatured(4, slug).catch(() => []);
+  const relatedComics = await comicService.getRelated({ slug, writer: comic.writer ?? '', importance: comic.importance ?? '' }).catch(() => [])
+
+  // Obtener otros números de la misma colección
+  const storyline = comic.storylines?.[0]
+  const sameCollection = storyline
+    ? await comicService.getByStoryline(storyline, slug, 12).catch(() => [])
+    : []
 
   return (
     <div className="pt-16">
@@ -333,94 +342,40 @@ export default async function ComicPage({ params }: Props) {
                 </div>
               </div>
 
-              {/* Personajes Principales */}
-              {comic.characters && comic.characters.length > 0 && (
-                <div className="bg-gradient-to-br from-gray-900/80 to-red-950/20 border border-red-500/30 rounded-xl p-8 backdrop-blur-sm">
-                  <h3 className="text-3xl font-bold text-white mb-6 flex items-center">
-                    <Users className="w-8 h-8 mr-3 text-red-400" />
-                    Personajes Principales
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {comic.characters.map((character, index) => (
-                      <div key={index} className="bg-black/40 rounded-lg p-4 border border-red-500/20 hover:border-red-500/40 transition-all duration-300">
-                        <div className="flex items-center">
-                          <div className="p-2 bg-red-500/20 rounded-full mr-3">
-                            <Zap className="w-4 h-4 text-red-400" />
-                          </div>
-                          <span className="text-white font-semibold">{character}</span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
+              <ComicTagSection
+                title="Personajes Principales"
+                Icon={Zap}
+                items={comic.characters ?? []}
+                colors={{ gradient: 'to-red-950/20', border: 'border-red-500/30', iconBg: 'bg-red-500/20', iconText: 'text-red-400', pillBorder: 'border-red-500/20 hover:border-red-500/40' }}
+              />
 
-              {/* Storylines */}
-              {comic.storylines && comic.storylines.length > 0 && (
-                <div className="bg-gradient-to-br from-gray-900/80 to-purple-950/20 border border-purple-500/30 rounded-xl p-8 backdrop-blur-sm">
-                  <h3 className="text-3xl font-bold text-white mb-6 flex items-center">
-                    <History className="w-8 h-8 mr-3 text-purple-400" />
-                    Arcos Narrativos
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {comic.storylines.map((storyline, index) => (
-                      <div key={index} className="bg-black/40 rounded-lg p-4 border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300">
-                        <div className="flex items-center">
-                          <div className="p-2 bg-purple-500/20 rounded-full mr-3">
-                            <BookmarkPlus className="w-4 h-4 text-purple-400" />
-                          </div>
-                          <span className="text-white font-semibold">{storyline}</span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
+              <ComicTagSection
+                title="Arcos Narrativos"
+                Icon={History}
+                items={comic.storylines ?? []}
+                colors={{ gradient: 'to-purple-950/20', border: 'border-purple-500/30', iconBg: 'bg-purple-500/20', iconText: 'text-purple-400', pillBorder: 'border-purple-500/20 hover:border-purple-500/40' }}
+              />
 
-              {/* Primeras Apariciones */}
-              {comic.firstAppearances && comic.firstAppearances.length > 0 && (
-                <div className="bg-gradient-to-br from-gray-900/80 to-green-950/20 border border-green-500/30 rounded-xl p-8 backdrop-blur-sm">
-                  <h3 className="text-3xl font-bold text-white mb-6 flex items-center">
-                    <TrendingUp className="w-8 h-8 mr-3 text-green-400" />
-                    Primeras Apariciones
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {comic.firstAppearances.map((appearance, index) => (
-                      <div key={index} className="bg-black/40 rounded-lg p-4 border border-green-500/20 hover:border-green-500/40 transition-all duration-300">
-                        <div className="flex items-center">
-                          <div className="p-2 bg-green-500/20 rounded-full mr-3">
-                            <Star className="w-4 h-4 text-green-400" />
-                          </div>
-                          <span className="text-white font-semibold">{appearance}</span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
+              <ComicTagSection
+                title="Primeras Apariciones"
+                Icon={TrendingUp}
+                items={comic.firstAppearances ?? []}
+                colors={{ gradient: 'to-green-950/20', border: 'border-green-500/30', iconBg: 'bg-green-500/20', iconText: 'text-green-400', pillBorder: 'border-green-500/20 hover:border-green-500/40' }}
+              />
 
-              {/* Análisis Completo */}
-              {comic.longDescription && (
-                <div className="bg-gradient-to-br from-gray-900/80 to-blue-950/20 border border-blue-500/30 rounded-xl p-8 backdrop-blur-sm">
-                  <h3 className="text-3xl font-bold text-white mb-8 flex items-center">
-                    <BookOpen className="w-8 h-8 mr-3 text-blue-400" />
-                    Análisis Completo
-                  </h3>
-                  <div 
-                    className="text-gray-300 text-lg leading-relaxed max-w-none
-                      [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:text-white [&>h2]:mb-4 [&>h2]:mt-6
-                      [&>h3]:text-xl [&>h3]:font-semibold [&>h3]:text-blue-400 [&>h3]:mb-3 [&>h3]:mt-5
-                      [&>p]:mb-4 [&>p]:text-gray-300 [&>p]:leading-relaxed
-                      [&>p:first-of-type]:text-xl [&>p:first-of-type]:text-gray-200 [&>p:first-of-type]:font-medium
-                      [&>strong]:text-white [&>strong]:font-semibold
-                      [&>em]:text-gray-200 [&>em]:italic
-                      [&>ul]:list-disc [&>ul]:ml-6 [&>ul]:mb-4
-                      [&>li]:mb-2 [&>li]:text-gray-300
-                      [&>blockquote]:border-l-4 [&>blockquote]:border-blue-500 [&>blockquote]:pl-4 [&>blockquote]:italic [&>blockquote]:text-gray-200 [&>blockquote]:bg-gray-800/30 [&>blockquote]:py-2 [&>blockquote]:rounded-r
-                    "
-                    dangerouslySetInnerHTML={{ __html: comic.longDescription }}
-                  />
-                </div>
+              <ComicEditorialAnalysis
+                title={comic.title}
+                year={comic.year}
+                writer={comic.writer}
+                artist={comic.artist}
+                importance={comic.importance}
+                rating={comic.rating}
+                characters={comic.characters}
+                longDescription={comic.longDescription}
+              />
+
+              {storyline && (
+                <ComicSameCollection storyline={storyline} comics={sameCollection} />
               )}
 
               {/* Galería de Portadas Variantes */}
@@ -616,8 +571,8 @@ export default async function ComicPage({ params }: Props) {
                     <AmazonProduct
                       title={`${comic.title} TPB`}
                       description="Edición en tapa blanda"
-                      price="$19.99"
-                      originalPrice="$24.99"
+                      price="19,99€"
+                      originalPrice="24,99€"
                       discount={20}
                       category="Cómic"
                       tags={['Spider-Man', 'Marvel', 'Cómic']}
@@ -627,7 +582,7 @@ export default async function ComicPage({ params }: Props) {
                     <AmazonProduct
                       title={`${comic.title} Hardcover`}
                       description="Edición de lujo en tapa dura"
-                      price="$39.99"
+                      price="39,99€"
                       category="Cómic"
                       tags={['Spider-Man', 'Marvel', 'Hardcover']}
                       searchQuery={`${comic.title} hardcover omnibus`}
@@ -643,49 +598,30 @@ export default async function ComicPage({ params }: Props) {
 
       {/* Cómics Relacionados Mejorados */}
       {relatedComics.length > 0 && (
-        <section className="py-20 bg-gradient-to-b from-gray-950 to-black">
-          <div className="container mx-auto px-4">
-            <h2 className="text-5xl font-bold text-white mb-16 text-center bg-gradient-to-r from-blue-400 to-red-400 bg-clip-text text-transparent">
-              Cómics Relacionados
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <section className="py-16 border-t border-gray-800">
+          <div className="container mx-auto px-4 max-w-5xl">
+            <h2 className="text-2xl font-bold text-white mb-8">Cómics Relacionados</h2>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-5">
               {relatedComics.map((relatedComic) => (
-                <Card key={relatedComic.id} className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 border-gray-600/50 hover:border-blue-500/50 transition-all duration-300 group transform hover:scale-105">
-                  <CardHeader className="p-0">
-                    <div className="relative overflow-hidden rounded-t-lg">
-                      <Image
-                        src={relatedComic.image}
-                        alt={`${relatedComic.title} (${relatedComic.year})`}
-                        width={300}
-                        height={450}
-                        className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                      <div className="absolute top-3 right-3 flex gap-2">
-                        <Badge className="bg-yellow-600/90 text-white shadow-lg">
-                          <Star className="w-3 h-3 mr-1 fill-current" />
-                          {relatedComic.rating}
-                        </Badge>
-                      </div>
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="p-6">
-                    <CardTitle className="text-white mb-3 line-clamp-2 group-hover:text-blue-400 transition-colors">
-                      <Link href={`/comics/${relatedComic.slug}`}>
-                        {relatedComic.title} ({relatedComic.year})
-                      </Link>
-                    </CardTitle>
-                    <p className="text-gray-400 text-sm mb-4 line-clamp-3">
-                      {relatedComic.description}
-                    </p>
-                    <Button asChild size="sm" className="w-full bg-gradient-to-r from-blue-600 to-red-600 hover:from-blue-700 hover:to-red-700">
-                      <Link href={`/comics/${relatedComic.slug}`}>
-                        <BookOpen className="w-4 h-4 mr-1" />
-                        Ver Análisis
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
+                <Link key={relatedComic.id} href={`/comics/${relatedComic.slug}`} className="group">
+                  <div className="relative aspect-[2/3] rounded-xl overflow-hidden mb-3 shadow-lg group-hover:shadow-blue-500/20 group-hover:-translate-y-1 transition-all duration-200">
+                    <Image
+                      src={relatedComic.image}
+                      alt={relatedComic.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <p className="text-white text-xs font-semibold line-clamp-2 leading-snug group-hover:text-blue-400 transition-colors">
+                    {relatedComic.title}
+                  </p>
+                  <div className="flex items-center justify-between mt-1.5">
+                    <span className="text-gray-500 text-xs">{relatedComic.year}</span>
+                    <span className="flex items-center gap-1 text-yellow-400 text-xs font-bold">
+                      <Star className="w-3 h-3 fill-yellow-400" />{relatedComic.rating}
+                    </span>
+                  </div>
+                </Link>
               ))}
             </div>
           </div>

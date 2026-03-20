@@ -1,14 +1,11 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { BookOpen, ShoppingCart, Star, Calendar, Users, Award, DollarSign } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
-import { SpiderManComic, AmazonProduct } from "@/components/affiliate/AmazonProduct"
+import { BookOpen, Star, ShoppingCart } from "lucide-react"
 import type { Metadata } from "next"
+
+import { Badge } from "@/components/ui/badge"
+import { InContentAd } from "@/components/ads/GoogleAdsense"
 import { comicService } from "@/lib/database"
-import { colorClasses } from "@/lib/theme"
 import { generateAmazonUrl } from "@/lib/content-helpers"
 import { Comic } from "@prisma/client"
 
@@ -19,394 +16,331 @@ export const metadata: Metadata = {
   keywords: ["Spider-Man cómics", "Marvel Comics", "Amazing Spider-Man", "Ultimate Spider-Man", "Stan Lee", "Steve Ditko"],
 }
 
-// Función para generar URL de Amazon para un cómic
-
-// Función para verificar si una imagen es válida
-function isValidImage(imageUrl: string): boolean {
-  if (!imageUrl) return false;
-  
-  // Excluir placeholders locales
-  if (imageUrl.includes('placeholder.svg') || imageUrl.includes('marvel-placeholder')) {
-    return false;
-  }
-  
-  // Aceptar imágenes de dominios válidos
-  const validDomains = [
-    'i.annihil.us',              // Marvel CDN
-    'cdn.marvel.com',            // Marvel CDN
-    'm.media-amazon.com',        // Amazon
-    'image.tmdb.org',            // TMDB
-    'comicvine.gamespot.com',    // Comic Vine
-    'via.placeholder.com'
-  ];
-
-  return validDomains.some(domain => imageUrl.includes(domain));
+const ERA_CONFIG = {
+  clasica:       { title: "Era Clásica",       subtitle: "1962–1970 · Los orígenes",                    accent: "from-blue-600",   border: "border-blue-500/40",   glow: "shadow-blue-900/40" },
+  bronce:        { title: "Era de Bronce",      subtitle: "1970–1985 · Maduración del personaje",        accent: "from-green-600",  border: "border-green-500/40",  glow: "shadow-green-900/40" },
+  moderna:       { title: "Era Moderna",        subtitle: "1985–2000 · Venom, Carnage y más",            accent: "from-red-600",    border: "border-red-500/40",    glow: "shadow-red-900/40" },
+  contemporanea: { title: "Era Contemporánea",  subtitle: "2000+ · Ultimate, Spider-Verse y más allá",   accent: "from-purple-600", border: "border-purple-500/40", glow: "shadow-purple-900/40" },
 }
 
-// Función para organizar cómics por eras cronológicas
+const ESSENTIAL_READS = [
+  {
+    slug: 'giant-size-spider-man-1-1974',
+    title: 'Giant-Size Spider-Man #1',
+    year: '1974',
+    label: 'Formato Especial',
+    accent: 'from-yellow-600 to-orange-600',
+    border: 'border-yellow-500/30',
+    description: 'Los especiales de gran formato de los 70. Spider-Man junto a Dracula en una aventura irrepetible.',
+    amazonQuery: 'Giant Size Spider-Man Marvel omnibus 1970s',
+  },
+  {
+    slug: 'the-amazing-spider-man-100-1971',
+    title: 'The Amazing Spider-Man #100',
+    year: '1971',
+    label: 'Número Especial',
+    accent: 'from-blue-600 to-indigo-600',
+    border: 'border-blue-500/30',
+    description: 'El número 100. Peter Parker decide en una encrucijada vital si seguir siendo Spider-Man.',
+    amazonQuery: 'Amazing Spider-Man Night Gwen Stacy Died Marvel omnibus',
+  },
+  {
+    slug: 'spider-gwen-1-2015',
+    title: 'Spider-Gwen #1',
+    year: '2015',
+    label: 'Debut Icónico',
+    accent: 'from-green-700 to-emerald-600',
+    border: 'border-green-500/30',
+    description: 'Gwen Stacy como Spider-Woman en su universo propio. El debut que conquistó a toda una generación.',
+    amazonQuery: 'Spider-Gwen Vol 1 Marvel Comics omnibus',
+  },
+  {
+    slug: 'ultimate-spider-man-1-2000',
+    title: 'Ultimate Spider-Man #1',
+    year: '2000',
+    label: 'Nueva Era',
+    accent: 'from-red-600 to-rose-600',
+    border: 'border-red-500/30',
+    description: 'Brian Michael Bendis reinventa a Peter Parker para el siglo XXI. Perfecta para nuevos lectores.',
+    amazonQuery: 'Ultimate Spider-Man Omnibus Bendis Bagley Marvel',
+  },
+  {
+    slug: 'edge-of-spider-verse-2-2014',
+    title: 'Spider-Verse',
+    year: '2014',
+    label: 'El Multiverso',
+    accent: 'from-purple-600 to-violet-600',
+    border: 'border-purple-500/30',
+    description: 'Todos los Spider-Man del multiverso unidos. El evento que inspiró las películas de animación.',
+    amazonQuery: 'Spider-Verse Marvel Comics omnibus',
+  },
+  {
+    slug: 'spectacular-spider-man-1-2003',
+    title: 'Spectacular Spider-Man (2003)',
+    year: '2003',
+    label: 'Imprescindible',
+    accent: 'from-cyan-600 to-sky-600',
+    border: 'border-cyan-500/30',
+    description: 'Paul Jenkins lleva la vida personal de Peter Parker a primer plano. Emotivo y humano.',
+    amazonQuery: 'Spectacular Spider-Man Jenkins Marvel comics',
+  },
+]
+
+function isSpecialIssue(title: string) {
+  const t = title.toLowerCase()
+  if (t.includes('annual'))                        return { label: 'Anual',         color: 'bg-blue-600' }
+  if (t.includes('#1') && !t.includes('#10') && !t.includes('#11') && !t.includes('#12') && !t.includes('#13') && !t.includes('#14') && !t.includes('#15') && !t.includes('#16') && !t.includes('#17') && !t.includes('#18') && !t.includes('#19'))
+                                                   return { label: 'Nº 1',          color: 'bg-green-600' }
+  if (t.includes('amazing fantasy'))               return { label: 'Origen',        color: 'bg-yellow-600' }
+  if (t.includes('omnibus') || t.includes('epic') || t.includes('masterwork') || t.includes('hardcover'))
+                                                   return { label: 'Colección',     color: 'bg-purple-600' }
+  return null
+}
+
+function isValidImage(url: string) {
+  if (!url) return false
+  if (url.includes('placeholder')) return false
+  return ['comicvine.gamespot.com', 'i.annihil.us', 'cdn.marvel.com', 'm.media-amazon.com', 'image.tmdb.org'].some(d => url.includes(d))
+}
+
 function organizeComicsByEra(comics: Comic[]) {
-  // Filtrar solo comics con imágenes válidas
-  const comicsWithValidImages = comics.filter(comic => isValidImage(comic.image));
-  
-  const eras = {
-    clasica: {
-      title: "Era Clásica (1962-1970)",
-      description: "Los orígenes de Spider-Man y las bases del mythos arácnido",
-      color: "blue",
-      icon: "🕷️",
-      yearRange: "1962-1970",
-      comics: [] as Comic[]
-    },
-    bronce: {
-      title: "Era de Bronce (1970-1985)",
-      description: "Maduración del personaje y eventos que cambiaron todo",
-      color: "green", 
-      icon: "⚡",
-      yearRange: "1970-1985",
-      comics: [] as Comic[]
-    },
-    moderna: {
-      title: "Era Moderna (1985-2000)",
-      description: "Venom, Carnage y las historias más oscuras de Spider-Man",
-      color: "red",
-      icon: "🖤",
-      yearRange: "1985-2000",
-      comics: [] as Comic[]
-    },
-    contemporanea: {
-      title: "Era Contemporánea (2000+)",
-      description: "Ultimate Spider-Man, multiverso y nuevas generaciones",
-      color: "purple",
-      icon: "🌌",
-      yearRange: "2000+",
-      comics: [] as Comic[]
-    }
-  };
+  const eras = Object.fromEntries(
+    Object.entries(ERA_CONFIG).map(([key, cfg]) => [key, { ...cfg, comics: [] as Comic[] }])
+  ) as Record<string, typeof ERA_CONFIG[keyof typeof ERA_CONFIG] & { comics: Comic[] }>
 
-  comicsWithValidImages.forEach(comic => {
-    const year = parseInt(comic.year) || 2024;
-    
-    if (year >= 1962 && year <= 1970) {
-      eras.clasica.comics.push(comic);
-    } else if (year >= 1970 && year <= 1985) {
-      eras.bronce.comics.push(comic);
-    } else if (year >= 1985 && year <= 2000) {
-      eras.moderna.comics.push(comic);
-    } else if (year >= 2000) {
-      eras.contemporanea.comics.push(comic);
-    }
-  });
+  comics.filter(c => isValidImage(c.image)).forEach(comic => {
+    const year = parseInt(comic.year) || 2024
+    if (year <= 1970)      eras.clasica.comics.push(comic)
+    else if (year <= 1985) eras.bronce.comics.push(comic)
+    else if (year <= 2000) eras.moderna.comics.push(comic)
+    else                   eras.contemporanea.comics.push(comic)
+  })
 
-  // Ordenar por año dentro de cada era
-  Object.values(eras).forEach(era => {
-    era.comics.sort((a, b) => parseInt(a.year) - parseInt(b.year));
-  });
-
-  return eras;
+  Object.values(eras).forEach(e => e.comics.sort((a, b) => parseInt(a.year) - parseInt(b.year)))
+  return eras
 }
 
 export default async function ComicsPage() {
-  // Obtener cómics de la base de datos
-  const allComics = await comicService.getAll();
-  
-  // Organizar por eras cronológicas (solo comics con imágenes válidas)
-  const comicsByEra = organizeComicsByEra(allComics);
-  
-  // Calcular totales dinámicos
-  const totalValidComics = Object.values(comicsByEra).reduce((total, era) => total + era.comics.length, 0);
-  const totalEras = Object.values(comicsByEra).filter(era => era.comics.length > 0).length;
+  const allComics = await comicService.getAll()
+  const eras = organizeComicsByEra(allComics)
+  const featuredComic = allComics.find(c => c.slug === 'the-amazing-spider-man-1-1963')
 
-  const readingGuides = [
-    {
-      title: "Empezar desde el Origen",
-      description: "Comienza con la Era Clásica (1962-1970)",
-      icon: "🕷️",
-      comics: ["Amazing Fantasy #15", "Amazing Spider-Man #1", "Amazing Spider-Man #33", "Amazing Spider-Man #50"]
-    },
-    {
-      title: "Historias Oscuras",
-      description: "Era de Bronce y Moderna (1970-2000)",
-      icon: "🖤",
-      comics: ["Muerte de Gwen Stacy", "Kraven's Last Hunt", "Venom", "Carnage"]
-    },
-    {
-      title: "Nuevas Generaciones",
-      description: "Era Contemporánea (2000+)",
-      icon: "🌟",
-      comics: ["Ultimate Spider-Man", "Spider-Verse", "Miles Morales", "Spider-Gwen"]
-    }
-  ];
+  const totalComics = Object.values(eras).reduce((t, e) => t + e.comics.length, 0)
+  const totalEras   = Object.values(eras).filter(e => e.comics.length > 0).length
+  const coverComics = allComics.filter(c => isValidImage(c.image))
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-950 via-gray-900 to-red-950">
-      {/* Header */}
-      <section className="relative py-20 px-4 text-center">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-red-600/20" />
+
+      {/* Hero con mosaico de portadas */}
+      <section className="relative py-32 px-4 text-center overflow-hidden">
+        <div className="absolute inset-0 grid grid-cols-5 md:grid-cols-8 gap-1 opacity-40 scale-110">
+          {[...coverComics, ...coverComics].slice(0, 16).map((comic, i) => (
+            <div key={i} className="relative h-full min-h-[300px]">
+              <Image src={comic.image} alt="" fill sizes="200px" className="object-cover" />
+            </div>
+          ))}
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-blue-950 via-gray-900/80 to-gray-900/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-transparent to-blue-950" />
+
         <div className="relative z-10 max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-red-500 bg-clip-text text-transparent">
-            Cómics de Spider-Man
+          <p className="text-blue-400 text-sm font-semibold tracking-widest uppercase mb-4">Spider-World · Cómics</p>
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white leading-tight">
+            Cómics de<br />
+            <span className="bg-gradient-to-r from-blue-500 to-red-500 bg-clip-text text-transparent">Spider-Man</span>
           </h1>
-          <p className="text-xl text-gray-300 mb-8">
-            {totalValidComics} cómics con imágenes de alta calidad organizados en {totalEras} eras cronológicas.
+          <p className="text-lg text-gray-300 max-w-xl mx-auto mb-8">
+            Desde Amazing Fantasy #15 hasta el Spider-Verse. Seis décadas de historias arácnidas.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Badge className="bg-blue-600 text-white px-4 py-2">
-              {totalValidComics} Cómics con Imágenes
-            </Badge>
-            <Badge className="bg-red-600 text-white px-4 py-2">
-              {totalEras} Eras Históricas
-            </Badge>
-            <Badge className="bg-green-600 text-white px-4 py-2">
-              1962-2024
-            </Badge>
-            <Badge className="bg-purple-600 text-white px-4 py-2">
-              Imágenes Únicas
-            </Badge>
+          <div className="flex flex-wrap justify-center gap-3 mb-10">
+            <Badge className="bg-white/10 text-white border-white/20 px-4 py-1.5 text-sm">{totalComics} cómics</Badge>
+            <Badge className="bg-white/10 text-white border-white/20 px-4 py-1.5 text-sm">{totalEras} eras</Badge>
+            <Badge className="bg-white/10 text-white border-white/20 px-4 py-1.5 text-sm">1962 – hoy</Badge>
+          </div>
+
+          {/* Filtros de era */}
+          <div className="flex justify-center gap-2 flex-wrap">
+            {Object.entries(eras).filter(([, e]) => e.comics.length > 0).map(([key, era]) => (
+              <a
+                key={key}
+                href={`#era-${key}`}
+                className={`px-4 py-1.5 rounded-full text-sm font-medium border transition-all duration-200 bg-gradient-to-r ${era.accent} to-transparent ${era.border} text-white hover:scale-105`}
+              >
+                {era.title}
+              </a>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Reading Guides */}
-      <section className="py-12 px-4 max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold text-white mb-8 text-center">Guías de Lectura</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {readingGuides.map((guide, index) => (
-            <Card key={index} className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all">
-              <CardContent className="p-6">
-                <div className="text-3xl mb-3">{guide.icon}</div>
-                <h3 className="text-xl font-bold text-white mb-2">{guide.title}</h3>
-                <p className="text-gray-400 mb-4">{guide.description}</p>
-                <ul className="space-y-1">
-                  {guide.comics.map((comic, i) => (
-                    <li key={i} className="text-sm text-blue-400">
-                      • {comic}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          ))}
+      {/* Banner cómic destacado */}
+      {featuredComic && (
+        <div className="max-w-7xl mx-auto px-4 pt-12 mb-8">
+          <Link href={`/comics/${featuredComic.slug}`}>
+            <div className="group relative rounded-3xl overflow-hidden bg-gray-950 border border-white/10 shadow-2xl shadow-black/60 hover:border-white/20 transition-all duration-300">
+              {/* Número año decorativo */}
+              <div className="absolute right-8 top-1/2 -translate-y-1/2 text-[140px] md:text-[220px] font-black text-white/15 select-none leading-none">
+                {featuredComic.year}
+              </div>
+              <div className="relative flex items-center gap-8 md:gap-12 px-8 md:px-12 py-8">
+                {/* Portada */}
+                <div className="relative shrink-0">
+                  <Image
+                    src={featuredComic.image}
+                    alt={featuredComic.title}
+                    width={140}
+                    height={210}
+                    className="relative rounded-2xl shadow-2xl shadow-black/60 group-hover:scale-105 transition-transform duration-500 w-28 md:w-40"
+                  />
+                </div>
+                {/* Texto */}
+                <div className="flex-1">
+                  <Badge className="bg-blue-600 text-white w-fit mb-4 text-xs tracking-widest uppercase">Cómic Esencial</Badge>
+                  <h2 className="text-3xl md:text-5xl font-black text-white leading-tight mb-3">{featuredComic.title}</h2>
+                  <p className="text-gray-400 text-sm md:text-base line-clamp-2 max-w-lg mb-4">
+                    {featuredComic.description?.replace('Descripción general', '').trim()}
+                  </p>
+                  <p className="text-blue-400 text-sm font-semibold uppercase tracking-widest">{featuredComic.year} · Stan Lee & Steve Ditko</p>
+                </div>
+              </div>
+            </div>
+          </Link>
         </div>
-      </section>
+      )}
 
-      {/* Era Overview */}
-      <section className="py-12 px-4 max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold text-white mb-8 text-center">Las 4 Eras de Spider-Man</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {Object.entries(comicsByEra).map(([key, era]) => (
-            <Card key={key} className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all text-center">
-              <CardContent className="p-6">
-                <div className="text-4xl mb-3">{era.icon}</div>
-                <h3 className="text-lg font-bold text-white mb-2">{era.title}</h3>
-                <p className="text-sm text-gray-400 mb-3">{era.yearRange}</p>
-                <Badge className="mb-3 bg-blue-600">
-                  {era.comics.length} cómics
-                </Badge>
-                <p className="text-sm text-gray-400">{era.description}</p>
-              </CardContent>
-            </Card>
-          ))}
+      {/* Lecturas Esenciales */}
+      <div className="max-w-7xl mx-auto px-4 pt-4 mb-4">
+        <div className="flex items-end gap-4 mb-6">
+          <div className="w-1 h-10 rounded-full bg-gradient-to-b from-yellow-500 to-orange-600" />
+          <div>
+            <h2 className="text-2xl font-bold text-white">Lecturas Esenciales</h2>
+            <p className="text-gray-500 text-sm mt-0.5">Los cómics imprescindibles de Spider-Man</p>
+          </div>
         </div>
-      </section>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {ESSENTIAL_READS.map((pick) => {
+            const comic = allComics.find(c => c.slug === pick.slug)
+            return (
+              <div key={pick.slug} className={`group relative rounded-2xl border ${pick.border} bg-gray-950 overflow-hidden flex gap-5 p-5 hover:border-white/20 transition-all duration-200`}>
+                {/* Portada */}
+                {comic?.image && isValidImage(comic.image) ? (
+                  <Link href={`/comics/${pick.slug}`} className="shrink-0">
+                    <div className="relative w-28 h-[168px] rounded-xl overflow-hidden shadow-xl">
+                      <Image src={comic.image} alt={pick.title} fill sizes="112px" className="object-cover group-hover:scale-105 transition-transform duration-300" />
+                    </div>
+                  </Link>
+                ) : (
+                  <div className={`shrink-0 w-28 h-[168px] rounded-xl bg-gradient-to-br ${pick.accent} flex items-center justify-center shadow-xl`}>
+                    <BookOpen className="w-10 h-10 text-white/60" />
+                  </div>
+                )}
+                {/* Info */}
+                <div className="flex-1 min-w-0 flex flex-col justify-between">
+                  <div>
+                    <Badge className={`bg-gradient-to-r ${pick.accent} text-white text-xs px-2.5 py-1 mb-3 w-fit`}>{pick.label}</Badge>
+                    <h3 className="text-white font-bold text-base leading-snug mb-2">{pick.title}</h3>
+                    <p className="text-gray-400 text-sm leading-relaxed line-clamp-3">{pick.description}</p>
+                  </div>
+                  <div className="flex items-center gap-3 mt-4">
+                    {comic && (
+                      <Link href={`/comics/${pick.slug}`} className="text-xs text-gray-400 hover:text-white transition-colors flex items-center gap-1">
+                        <BookOpen className="w-3.5 h-3.5" /> Ver análisis
+                      </Link>
+                    )}
+                    <a
+                      href={generateAmazonUrl(pick.amazonQuery)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`ml-auto flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-xl bg-gradient-to-r ${pick.accent} text-white hover:opacity-90 transition-opacity`}
+                    >
+                      <ShoppingCart className="w-4 h-4" /> Comprar
+                    </a>
+                  </div>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </div>
 
-      {/* Ad Space */}
-      <div className="max-w-7xl mx-auto px-4 py-8">
+      <div className="max-w-7xl mx-auto px-4 py-4">
         <InContentAd />
       </div>
 
-      {/* Comics by Era */}
-      <div className="max-w-7xl mx-auto px-4 py-12">
-        {Object.entries(comicsByEra).map(([key, era]) => {
-          if (era.comics.length === 0) return null;
-          
+      {/* Eras */}
+      <div className="max-w-7xl mx-auto px-4 pb-20 space-y-20">
+        {Object.entries(eras).map(([key, era]) => {
+          if (era.comics.length === 0) return null
           return (
-            <section key={key} className="mb-16">
-              <div className={`bg-gradient-to-r ${colorClasses[era.color as keyof typeof colorClasses]} border rounded-lg p-6 mb-8`}>
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-4">
-                    <div className="text-4xl">{era.icon}</div>
-                    <div>
-                      <h2 className="text-3xl font-bold text-white mb-2">
-                        {era.title}
-                      </h2>
-                      <p className="text-gray-300 mb-2">{era.description}</p>
-                      <div className="flex items-center gap-2">
-                        <Badge className="bg-white/20 text-white">
-                          📅 {era.yearRange}
-                        </Badge>
-                        <Badge className="bg-white/20 text-white">
-                          📚 {era.comics.length} cómics
-                        </Badge>
-                      </div>
-                    </div>
-                  </div>
-                  <Badge className="bg-white/10 text-white text-lg px-4 py-2">
-                    {era.comics.length}/15
-                  </Badge>
+            <section key={key} id={`era-${key}`} className="scroll-mt-24">
+              {/* Cabecera de era */}
+              <div className="flex items-end gap-4 mb-8 pb-4 border-b border-white/10">
+                <div className={`w-1 h-12 rounded-full bg-gradient-to-b ${era.accent} to-transparent`} />
+                <div>
+                  <h2 className="text-2xl md:text-3xl font-bold text-white">{era.title}</h2>
+                  <p className="text-gray-500 text-sm mt-1">{era.subtitle}</p>
                 </div>
+                <Badge className="ml-auto bg-white/5 border-white/10 text-gray-400 text-sm">
+                  {era.comics.length} cómic{era.comics.length !== 1 ? 's' : ''}
+                </Badge>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {/* Grid de portadas */}
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
                 {era.comics.map((comic: Comic) => (
-                  <Card key={comic.id} className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all group">
-                    <CardHeader className="p-0">
-                      <div className="relative">
+                  <Link key={comic.id} href={`/comics/${comic.slug}`} className="group">
+                    <div className={`relative rounded-2xl overflow-hidden shadow-xl ${era.glow} shadow-lg`}>
+                      <div className="relative aspect-[2/3]">
                         <Image
                           src={comic.image}
                           alt={`${comic.title} - Cómic de Spider-Man`}
-                          width={300}
-                          height={450}
-                          className="w-full h-80 object-cover rounded-t-lg group-hover:scale-105 transition-transform duration-300"
+                          fill
+                          sizes="(max-width: 768px) 50vw, (max-width: 1024px) 25vw, 16vw"
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
                         />
-                        
-                        {/* Rating Badge */}
-                        <Badge className="absolute top-2 right-2 bg-yellow-600">
-                          <Star className="w-3 h-3 mr-1" />
-                          {comic.rating}
-                        </Badge>
-                        
-                        {/* Price Badge */}
-                        <Badge className="absolute top-2 left-2 bg-green-600">
-                          {comic.price}
-                        </Badge>
-                        
-                        {/* Importance Badge */}
-                        {Number(comic.importance) >= 9 && (
-                          <Badge className="absolute bottom-2 left-2 bg-red-600">
-                            <Award className="w-3 h-3 mr-1" />
-                            Esencial
-                          </Badge>
-                        )}
-                      </div>
-                    </CardHeader>
-                    
-                    <CardContent className="p-4">
-                      <CardTitle className="text-white mb-2 line-clamp-2">
-                        <Link href={`/comics/${comic.slug}`} className="hover:text-blue-400 transition-colors">
-                          {comic.title}
-                        </Link>
-                      </CardTitle>
-                      
-                      {comic.subtitle && (
-                        <CardDescription className="text-gray-400 text-sm mb-2">
-                          {comic.subtitle}
-                        </CardDescription>
-                      )}
-                      
-                      <p className="text-gray-400 text-sm mb-3 line-clamp-2">
-                        {comic.description}
-                      </p>
-                      
-                      {/* Comic Details */}
-                      <div className="space-y-2 mb-4">
-                        <div className="flex items-center text-sm text-gray-400">
-                          <Users className="w-4 h-4 mr-2" />
-                          <span>Guión: {comic.writer}</span>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+
+                        {/* Título + año siempre visibles */}
+                        <div className="absolute bottom-0 left-0 right-0 p-3 group-hover:opacity-0 transition-opacity duration-300">
+                          <h3 className="text-white text-xs font-bold line-clamp-2 leading-tight text-center drop-shadow-lg" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}>
+                            {comic.title}
+                          </h3>
                         </div>
-                        
-                        <div className="flex items-center text-sm text-gray-400">
-                          <BookOpen className="w-4 h-4 mr-2" />
-                          <span>Arte: {comic.artist}</span>
+
+                        {/* Info en hover */}
+                        <div className="absolute inset-0 p-3 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          {comic.writer && (
+                            <p className="text-gray-300 text-xs text-center mb-2 line-clamp-1">{comic.writer}</p>
+                          )}
+                          <div className="w-full flex items-center justify-center gap-1 bg-white/20 backdrop-blur-sm text-white text-xs font-medium py-2 rounded-lg">
+                            <BookOpen className="w-3 h-3" />
+                            Ver análisis
+                          </div>
                         </div>
-                        
-                        <div className="flex items-center text-sm text-gray-400">
-                          <Calendar className="w-4 h-4 mr-2" />
-                          <span>{comic.year}</span>
+
+                        {/* Año arriba */}
+                        <div className="absolute top-2 left-2 bg-black/70 backdrop-blur-sm rounded-full px-2 py-1">
+                          <span className="text-gray-300 text-xs">{comic.year}</span>
                         </div>
-                        
-                        {comic.publisher && (
-                          <div className="flex items-center text-sm text-gray-400">
-                            <Award className="w-4 h-4 mr-2" />
-                            <span>{comic.publisher}</span>
+
+                        {/* Badge número especial */}
+                        {isSpecialIssue(comic.title) && (
+                          <div className={`absolute top-2 right-2 ${isSpecialIssue(comic.title)!.color} backdrop-blur-sm rounded-full px-2 py-1 flex items-center gap-1`}>
+                            <Star className="w-3 h-3 text-white fill-white" />
+                            <span className="text-white text-xs font-semibold">{isSpecialIssue(comic.title)!.label}</span>
                           </div>
                         )}
                       </div>
-                      
-                      {/* Action Buttons */}
-                      <div className="flex gap-2">
-                        <Button asChild size="sm" className="flex-1">
-                          <Link href={`/comics/${comic.slug}`}>
-                            <BookOpen className="w-4 h-4 mr-1" />
-                            Ver Análisis
-                          </Link>
-                        </Button>
-                        
-                        <Button 
-                          asChild 
-                          size="sm" 
-                          variant="outline"
-                          className="border-orange-600 text-orange-400 hover:bg-orange-600 hover:text-white"
-                        >
-                          <a 
-                            href={generateAmazonUrl(`${comic.title} comic marvel`)}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <ShoppingCart className="w-4 h-4 mr-1" />
-                            Comprar
-                          </a>
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
+                    </div>
+                  </Link>
                 ))}
               </div>
             </section>
-          );
+          )
         })}
       </div>
 
-      {/* Featured Products */}
-      <section className="py-16 px-4 max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold text-white mb-8 text-center">
-          Cómics Recomendados
-        </h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <SpiderManComic title="Amazing Spider-Man Omnibus Vol. 1" />
-          <SpiderManComic title="Ultimate Spider-Man Collection" />
-          <SpiderManComic title="Spider-Verse Complete Story" />
-          <SpiderManComic title="Spider-Man: Blue Complete Series" />
-        </div>
-      </section>
-
-      {/* Sidebar Ad */}
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <SidebarAd />
-      </div>
-
-      {/* Stats Section */}
-      <section className="py-16 px-4 max-w-7xl mx-auto">
-        <div className="bg-gray-800/50 rounded-lg p-8 text-center">
-          <h3 className="text-2xl font-bold text-white mb-6">
-            Estadísticas de la Colección
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div>
-              <div className="text-3xl font-bold text-blue-500 mb-2">{totalValidComics}</div>
-              <div className="text-gray-400">Cómics con Imágenes</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-red-500 mb-2">
-                {totalEras}
-              </div>
-              <div className="text-gray-400">Eras Históricas</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-green-500 mb-2">
-                {Object.values(comicsByEra).reduce((total, era) => 
-                  total + era.comics.filter((c) => c.importance === 'Esencial').length, 0
-                )}
-              </div>
-              <div className="text-gray-400">Cómics Esenciales</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-purple-500 mb-2">100%</div>
-              <div className="text-gray-400">Imágenes Únicas</div>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   )
 }
