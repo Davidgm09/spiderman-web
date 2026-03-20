@@ -126,7 +126,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
               variant="outline"
               className={!activeCategory
                 ? "border-red-600 bg-red-600 text-white"
-                : "border-gray-600 text-gray-300 hover:bg-gray-600 hover:text-white"}
+                : "border-gray-700 bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white"}
             >
               Todos ({allPosts.length})
             </Button>
@@ -137,7 +137,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                 variant="outline"
                 className={activeCategory === category.name
                   ? "border-red-600 bg-red-600 text-white"
-                  : "border-gray-600 text-gray-300 hover:bg-gray-600 hover:text-white"}
+                  : "border-gray-700 bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white"}
               >
                 {category.name} ({category.count})
               </Button>

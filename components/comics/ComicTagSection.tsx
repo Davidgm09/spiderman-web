@@ -5,11 +5,11 @@ interface ComicTagSectionProps {
   Icon: LucideIcon
   items: string[]
   colors: {
-    gradient: string   // e.g. "to-red-950/20"
-    border: string     // e.g. "border-red-500/30"
-    iconBg: string     // e.g. "bg-red-500/20"
-    iconText: string   // e.g. "text-red-400"
-    pillBorder: string // e.g. "border-red-500/20 hover:border-red-500/40"
+    gradient: string
+    border: string
+    iconBg: string
+    iconText: string
+    pillBorder: string
   }
 }
 
@@ -17,24 +17,22 @@ export function ComicTagSection({ title, Icon, items, colors }: ComicTagSectionP
   if (!items || items.length === 0) return null
 
   return (
-    <div className={`bg-gradient-to-br from-gray-900/80 ${colors.gradient} border ${colors.border} rounded-xl p-8 backdrop-blur-sm`}>
-      <h3 className="text-3xl font-bold text-white mb-6 flex items-center">
-        <Icon className={`w-8 h-8 mr-3 ${colors.iconText}`} />
-        {title}
-      </h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div className="pb-6 border-b border-white/5">
+      <div className="flex items-center gap-2 mb-4">
+        <div className={`p-1.5 ${colors.iconBg} rounded-lg`}>
+          <Icon className={`w-4 h-4 ${colors.iconText}`} />
+        </div>
+        <h3 className="text-white font-bold text-base">{title}</h3>
+        <span className={`ml-auto text-xs ${colors.iconText} font-semibold`}>{items.length}</span>
+      </div>
+      <div className="flex flex-wrap gap-2">
         {items.map((item, index) => (
-          <div
+          <span
             key={index}
-            className={`bg-black/40 rounded-lg p-4 border ${colors.pillBorder} transition-all duration-300`}
+            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm border ${colors.pillBorder} bg-white/5 text-gray-300 hover:text-white transition-colors`}
           >
-            <div className="flex items-center">
-              <div className={`p-2 ${colors.iconBg} rounded-full mr-3`}>
-                <Icon className={`w-4 h-4 ${colors.iconText}`} />
-              </div>
-              <span className="text-white font-semibold">{item}</span>
-            </div>
-          </div>
+            {item}
+          </span>
         ))}
       </div>
     </div>

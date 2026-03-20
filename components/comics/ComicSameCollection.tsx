@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { BookOpen } from 'lucide-react'
 
 interface ComicItem {
   slug: string
@@ -18,12 +17,12 @@ export function ComicSameCollection({ storyline, comics }: ComicSameCollectionPr
   if (!comics || comics.length === 0) return null
 
   return (
-    <div className="mt-8 bg-gray-900/50 border border-blue-600/20 rounded-xl p-8">
-      <h3 className="text-2xl font-bold text-white mb-2 flex items-center gap-3">
-        <BookOpen className="w-6 h-6 text-blue-400" />
-        Más de <span className="text-blue-400">{storyline}</span>
-      </h3>
-      <p className="text-gray-500 text-sm mb-6">Otros números de esta colección ordenados cronológicamente</p>
+    <div className="mt-8">
+      <div className="flex items-center gap-3 mb-5">
+        <div className="w-1 h-7 rounded-full bg-gradient-to-b from-blue-500 to-blue-800" />
+        <h3 className="text-white font-bold text-lg">Más de <span className="text-blue-400">{storyline}</span></h3>
+        <span className="ml-auto text-xs text-blue-400 font-semibold">{comics.length}</span>
+      </div>
       <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3">
         {comics.map((c) => (
           <Link key={c.slug} href={`/comics/${c.slug}`} className="group">

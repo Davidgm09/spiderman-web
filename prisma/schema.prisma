@@ -22,8 +22,6 @@ model Character {
   description         String    @db.Text
   longDescription     String?   @db.Text
   image               String
-  thumbnailPath       String?   // Path original de Marvel API
-  thumbnailExtension  String?   // Extension original de Marvel API
   powers              String[]
   abilities           String[]
   affiliation         String[]  // Spider-Verse, Avengers, etc.
@@ -38,12 +36,6 @@ model Character {
   seoTitle            String
   seoDescription      String
   keywords            String[]
-  urls                Json?     // URLs oficiales de Marvel
-  relatedCharacters   String[]  // IDs de personajes relacionados
-  backstory           String?   @db.Text
-  personalityTraits   String[]
-  characterImages     Json?     // Array de objetos {url, title, description, type}
-  conceptArt          Json?     // Arte conceptual
   isActive            Boolean   @default(true)
   isFeatured          Boolean   @default(false)
   views               Int       @default(0)

@@ -2,20 +2,19 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { BookOpen, ShoppingCart, Calendar, User, Building, ArrowLeft, Users, Award, Zap, History, Eye, Camera, Palette, Star, TrendingUp } from "lucide-react"
+import { BookOpen, ShoppingCart, Calendar, User, ArrowLeft, Users, History, Eye, Camera, Palette, TrendingUp, Star, Building, Award } from "lucide-react"
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
-import { AmazonProduct } from "@/components/affiliate/AmazonProduct"
 import { comicService } from "@/lib/database"
 import { SITE_URL } from "@/lib/config"
-import { renderStars, generateAmazonUrl, parseJson } from "@/lib/content-helpers"
+import { generateAmazonUrl, parseJson } from "@/lib/content-helpers"
 import { Breadcrumb } from "@/components/breadcrumb"
 import type { ConceptArtItem, CoverVariant, ArtistPhoto, PagePreview } from "@/lib/json-types"
 import { ComicTagSection } from "@/components/comics/ComicTagSection"
 import { ComicEditorialAnalysis } from "@/components/comics/ComicEditorialAnalysis"
 import { ComicSameCollection } from "@/components/comics/ComicSameCollection"
+import { ComicCharacters } from "@/components/comics/ComicCharacters"
+import { characterService } from "@/lib/database"
 
 export const revalidate = 3600
 
@@ -31,8 +30,8 @@ type Props = {
 // Función para renderizar estrellas
 
 // Función para obtener color de importancia
-const getImportanceColor = (importance: string) => {
-  switch (importance.toLowerCase()) {
+const getImportanceColor = (_importance: string) => {
+  switch (_importance.toLowerCase()) {
     case 'origen': return 'bg-gradient-to-r from-red-600 to-orange-600'
     case 'esencial': return 'bg-gradient-to-r from-purple-600 to-pink-600'
     case 'primera serie': return 'bg-gradient-to-r from-blue-600 to-cyan-600'
@@ -100,132 +99,107 @@ export default async function ComicPage({ params }: Props) {
     ? await comicService.getByStoryline(storyline, slug, 12).catch(() => [])
     : []
 
+  const allCharacters = await characterService.getAll().catch(() => [])
+
   return (
     <div className="pt-16">
-      {/* Hero Section Mejorado */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-        {/* Fondo con múltiples capas */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-blue-950/40 to-red-950/40"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/60"></div>
-        
-        {/* Imagen de fondo con efecto parallax */}
+      {/* Hero */}
+      <section className="relative min-h-[75vh] flex items-center overflow-hidden">
+        {/* Fondo: portada muy difuminada */}
         <div className="absolute inset-0 scale-110">
-          <Image
-            src={comic.image}
-            alt={`${comic.title} - Portada del cómic`}
-            fill
-            sizes="100vw"
-            className="object-cover opacity-30 blur-sm"
-            priority
-          />
+          <Image src={comic.image} alt="" fill sizes="100vw" className="object-cover opacity-20 blur-md" priority />
         </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-950 via-gray-950/90 to-gray-950/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-gray-950/60" />
 
-        {/* Contenido principal */}
-        <div className="relative z-10 text-center px-4 max-w-7xl mx-auto">
-          <Breadcrumb items={[{ label: "Cómics", href: "/comics" }, { label: comic.title }]} />
-          {/* Navegación y badges */}
-          <div className="mb-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/comics">
-              <Button variant="outline" size="sm" className="border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white transition-all duration-300">
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Volver a Cómics
-              </Button>
-            </Link>
-            
-            <div className="flex flex-wrap gap-2 justify-center">
-              <Badge className={`${getImportanceColor(comic.importance)} text-white px-4 py-2 text-sm font-bold shadow-lg`}>
-                <Award className="w-4 h-4 mr-1" />
-                {comic.importance}
-              </Badge>
-              
-              {comic.views > 0 && (
-                <Badge className="bg-gray-700/80 text-gray-300 px-3 py-2 text-sm">
-                  <Eye className="w-4 h-4 mr-1" />
-                  {comic.views.toLocaleString()} vistas
-              </Badge>
-            )}
-              
-              <Badge className="bg-yellow-600/80 text-white px-3 py-2 text-sm">
-                <Star className="w-4 h-4 mr-1 fill-current" />
-                {comic.rating}/10
-              </Badge>
-            </div>
-          </div>
-          
-          {/* Título principal */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 bg-gradient-to-r from-red-400 via-blue-400 to-red-400 bg-clip-text text-transparent leading-tight">
-            {comic.title}
-          </h1>
-          
-          {/* Subtítulo */}
-          {comic.subtitle && (
-            <p className="text-2xl md:text-3xl mb-8 text-blue-300 max-w-4xl mx-auto leading-relaxed font-light italic">
-              "{comic.subtitle}"
-            </p>
-          )}
-          
-          {/* Descripción breve */}
-          {comic.description && (
-            <p className="text-lg text-gray-300 max-w-4xl mx-auto mb-10 leading-relaxed">
-              {comic.description.length > 250 ? comic.description.substring(0, 250) + '...' : comic.description}
-            </p>
-          )}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 w-full">
+          <div className="flex flex-col lg:flex-row items-center gap-12">
 
-          {/* Información clave en formato visual */}
-          <div className="flex flex-wrap justify-center gap-8 mb-10 text-gray-300">
-            <div className="flex items-center bg-black/40 rounded-full px-4 py-2 backdrop-blur-sm">
-              <Calendar className="w-5 h-5 mr-2 text-blue-400" />
-              <span className="font-semibold">{comic.year}</span>
-            </div>
-            {comic.writer && (
-              <div className="flex items-center bg-black/40 rounded-full px-4 py-2 backdrop-blur-sm">
-                <User className="w-5 h-5 mr-2 text-purple-400" />
-                <span className="font-semibold">{comic.writer}</span>
-              </div>
-            )}
-            {comic.artist && (
-              <div className="flex items-center bg-black/40 rounded-full px-4 py-2 backdrop-blur-sm">
-                <Users className="w-5 h-5 mr-2 text-green-400" />
-                <span className="font-semibold">{comic.artist}</span>
-              </div>
-            )}
-            {comic.pages && (
-              <div className="flex items-center bg-black/40 rounded-full px-4 py-2 backdrop-blur-sm">
-                <BookOpen className="w-5 h-5 mr-2 text-orange-400" />
-                <span className="font-semibold">{comic.pages} páginas</span>
-              </div>
-            )}
-          </div>
+            {/* Columna izquierda: info */}
+            <div className="flex-1 max-w-2xl">
+              <Breadcrumb items={[{ label: "Cómics", href: "/comics" }, { label: comic.title }]} />
 
-          {/* Botones de acción mejorados */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button
-                size="lg"
-              className="bg-gradient-to-r from-blue-600 to-red-600 hover:from-blue-700 hover:to-red-700 text-white px-10 py-4 text-lg font-bold shadow-2xl transform hover:scale-105 transition-all duration-300"
-                asChild
-              >
-              <a href="#analisis">
-                  <BookOpen className="mr-2 h-5 w-5" />
-                Leer Análisis Completo
+              <div className="flex flex-wrap items-center gap-2 mt-4 mb-5">
+                <span className="text-xs font-bold tracking-widest uppercase text-blue-400">Marvel Comics · {comic.year}</span>
+              </div>
+
+              <h1 className="text-4xl md:text-6xl font-black text-white leading-tight mb-4">
+                {comic.title}
+              </h1>
+
+              {comic.subtitle && (
+                <p className="text-lg text-blue-300 italic mb-4">"{comic.subtitle}"</p>
+              )}
+
+              {comic.description && (
+                <p className="text-gray-300 text-base leading-relaxed mb-6 max-w-xl">
+                  {(() => { const dot = comic.description.indexOf('. '); return dot > 0 ? comic.description.substring(0, dot + 1) : comic.description.substring(0, 200) + '…' })()}
+                </p>
+              )}
+
+              {/* Meta chips */}
+              <div className="flex flex-wrap gap-3 mb-8">
+                <div className="flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 text-sm text-gray-300">
+                  <Calendar className="w-3.5 h-3.5 text-blue-400" /> {comic.year}
+                </div>
+                {comic.writer && (
+                  <div className="flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 text-sm text-gray-300">
+                    <User className="w-3.5 h-3.5 text-purple-400" /> {comic.writer}
+                  </div>
+                )}
+                {comic.artist && (
+                  <div className="flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 text-sm text-gray-300">
+                    <Users className="w-3.5 h-3.5 text-green-400" /> {comic.artist}
+                  </div>
+                )}
+                {comic.pages && (
+                  <div className="flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 text-sm text-gray-300">
+                    <BookOpen className="w-3.5 h-3.5 text-orange-400" /> {comic.pages} págs.
+                  </div>
+                )}
+                {comic.views > 0 && (
+                  <div className="flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 text-sm text-gray-300">
+                    <Eye className="w-3.5 h-3.5 text-gray-400" /> {comic.views.toLocaleString()} vistas
+                  </div>
+                )}
+              </div>
+
+              {/* Botones */}
+              <div className="flex flex-wrap gap-3">
+                <a href="#analisis" className="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-6 py-3 rounded-xl transition-colors">
+                  <BookOpen className="w-4 h-4" /> Ver análisis
                 </a>
-              </Button>
-            
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-2 border-orange-500 text-orange-400 hover:bg-orange-500 hover:text-white px-10 py-4 text-lg font-bold shadow-xl transform hover:scale-105 transition-all duration-300"
-              asChild
-            >
-              <a href={generateAmazonUrl(`${comic.title} comic marvel`)} target="_blank" rel="noopener noreferrer">
-                <ShoppingCart className="mr-2 h-5 w-5" />
-                Comprar en Amazon
-              </a>
-            </Button>
+                <a
+                  href={generateAmazonUrl(`${comic.title} Marvel Comics`)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 bg-orange-600 hover:bg-orange-500 text-white font-bold px-6 py-3 rounded-xl transition-colors"
+                >
+                  <ShoppingCart className="w-4 h-4" /> Comprar en Amazon
+                </a>
+                <Link href="/comics" className="flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300 font-medium px-5 py-3 rounded-xl transition-colors">
+                  <ArrowLeft className="w-4 h-4" /> Volver
+                </Link>
+              </div>
+            </div>
+
+            {/* Columna derecha: portada */}
+            <div className="shrink-0">
+              <div className="relative">
+                <div className="absolute -inset-6 bg-blue-500/10 blur-3xl rounded-full" />
+                <Image
+                  src={comic.image}
+                  alt={comic.title}
+                  width={280}
+                  height={420}
+                  className="relative rounded-2xl shadow-2xl shadow-black/60 w-52 md:w-64 lg:w-72"
+                  priority
+                />
+              </div>
+            </div>
+
           </div>
         </div>
-
-        {/* Decoración de fondo */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent"></div>
       </section>
 
       {/* Ad */}
@@ -238,122 +212,76 @@ export default async function ComicPage({ params }: Props) {
             {/* Contenido Principal */}
             <div className="lg:col-span-3 space-y-8">
               
-              {/* Ficha Técnica Mejorada */}
-              <div className="bg-gradient-to-br from-gray-900/80 to-blue-950/20 border border-blue-500/30 rounded-xl p-8 backdrop-blur-sm">
-                <h2 className="text-3xl font-bold text-white mb-8 flex items-center">
-                  <BookOpen className="w-8 h-8 mr-3 text-blue-400" />
-                  Información del Cómic
-                </h2>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="space-y-6">
-                    <div className="flex items-start space-x-4">
-                      <div className="p-2 bg-blue-500/20 rounded-lg">
-                        <BookOpen className="w-5 h-5 text-blue-400" />
-                      </div>
-                      <div>
-                        <span className="text-gray-400 text-sm font-medium">Título Completo</span>
-                        <div className="text-white font-bold text-lg">{comic.title}</div>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-start space-x-4">
-                      <div className="p-2 bg-purple-500/20 rounded-lg">
-                        <Calendar className="w-5 h-5 text-purple-400" />
-                      </div>
-                        <div>
-                        <span className="text-gray-400 text-sm font-medium">Año de Publicación</span>
-                        <div className="text-white font-bold text-lg">{comic.year}</div>
-                      </div>
-                    </div>
-                    
-                    {comic.writer && (
-                      <div className="flex items-start space-x-4">
-                        <div className="p-2 bg-green-500/20 rounded-lg">
-                          <User className="w-5 h-5 text-green-400" />
-                        </div>
-                        <div>
-                          <span className="text-gray-400 text-sm font-medium">Guionista</span>
-                          <div className="text-white font-bold text-lg">{comic.writer}</div>
-                        </div>
-                      </div>
-                    )}
-                    
-                    {comic.artist && (
-                      <div className="flex items-start space-x-4">
-                        <div className="p-2 bg-orange-500/20 rounded-lg">
-                          <Users className="w-5 h-5 text-orange-400" />
-                        </div>
-                        <div>
-                          <span className="text-gray-400 text-sm font-medium">Artista</span>
-                          <div className="text-white font-bold text-lg">{comic.artist}</div>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                  
-                  <div className="space-y-6">
-                    <div className="flex items-start space-x-4">
-                      <div className="p-2 bg-yellow-500/20 rounded-lg">
-                        <Star className="w-5 h-5 text-yellow-400" />
-                      </div>
-                      <div>
-                        <span className="text-gray-400 text-sm font-medium">Calificación</span>
-                        <div className="text-white font-bold text-lg flex items-center">
-                          {renderStars(comic.rating)}
-                        </div>
-                      </div>
-                    </div>
-                    
-                    {comic.publisher && (
-                      <div className="flex items-start space-x-4">
-                        <div className="p-2 bg-red-500/20 rounded-lg">
-                          <Building className="w-5 h-5 text-red-400" />
-                        </div>
-                        <div>
-                          <span className="text-gray-400 text-sm font-medium">Editorial</span>
-                          <div className="text-white font-bold text-lg">{comic.publisher}</div>
-                        </div>
-                      </div>
-                    )}
-                    
-                    {comic.pages && (
-                      <div className="flex items-start space-x-4">
-                        <div className="p-2 bg-cyan-500/20 rounded-lg">
-                          <BookOpen className="w-5 h-5 text-cyan-400" />
-                        </div>
-                        <div>
-                          <span className="text-gray-400 text-sm font-medium">Páginas</span>
-                          <div className="text-white font-bold text-lg">{comic.pages}</div>
-                        </div>
-                      </div>
-                    )}
-                    
-                    <div className="flex items-start space-x-4">
-                      <div className="p-2 bg-pink-500/20 rounded-lg">
-                        <Award className="w-5 h-5 text-pink-400" />
-                      </div>
-                      <div>
-                        <span className="text-gray-400 text-sm font-medium">Importancia Histórica</span>
-                        <div className="text-white font-bold text-lg">{comic.importance}</div>
-                      </div>
+              {/* Info cards */}
+              <div className="flex flex-wrap gap-3">
+                {comic.writer && (
+                  <div className="flex items-center gap-3 bg-purple-500/10 border border-purple-500/20 rounded-2xl px-5 py-4">
+                    <User className="w-5 h-5 text-purple-400 shrink-0" />
+                    <div>
+                      <p className="text-gray-500 text-xs uppercase tracking-widest">Guionista</p>
+                      <p className="text-white font-bold">{comic.writer}</p>
                     </div>
                   </div>
-                </div>
+                )}
+                {comic.artist && (
+                  <div className="flex items-center gap-3 bg-green-500/10 border border-green-500/20 rounded-2xl px-5 py-4">
+                    <Users className="w-5 h-5 text-green-400 shrink-0" />
+                    <div>
+                      <p className="text-gray-500 text-xs uppercase tracking-widest">Artista</p>
+                      <p className="text-white font-bold">{comic.artist}</p>
+                    </div>
+                  </div>
+                )}
+                {comic.importance && (
+                  <div className="flex items-center gap-3 bg-yellow-500/10 border border-yellow-500/20 rounded-2xl px-5 py-4">
+                    <Award className="w-5 h-5 text-yellow-400 shrink-0" />
+                    <div>
+                      <p className="text-gray-500 text-xs uppercase tracking-widest">Importancia</p>
+                      <p className="text-white font-bold">{comic.importance}</p>
+                    </div>
+                  </div>
+                )}
+                {comic.publisher && (
+                  <div className="flex items-center gap-3 bg-blue-500/10 border border-blue-500/20 rounded-2xl px-5 py-4">
+                    <Building className="w-5 h-5 text-blue-400 shrink-0" />
+                    <div>
+                      <p className="text-gray-500 text-xs uppercase tracking-widest">Editorial</p>
+                      <p className="text-white font-bold">{comic.publisher}</p>
+                    </div>
+                  </div>
+                )}
+                {comic.pages && (
+                  <div className="flex items-center gap-3 bg-orange-500/10 border border-orange-500/20 rounded-2xl px-5 py-4">
+                    <BookOpen className="w-5 h-5 text-orange-400 shrink-0" />
+                    <div>
+                      <p className="text-gray-500 text-xs uppercase tracking-widest">Páginas</p>
+                      <p className="text-white font-bold">{comic.pages}</p>
+                    </div>
+                  </div>
+                )}
               </div>
 
-              <ComicTagSection
-                title="Personajes Principales"
-                Icon={Zap}
-                items={comic.characters ?? []}
-                colors={{ gradient: 'to-red-950/20', border: 'border-red-500/30', iconBg: 'bg-red-500/20', iconText: 'text-red-400', pillBorder: 'border-red-500/20 hover:border-red-500/40' }}
-              />
+              {/* Arcos narrativos — destacado */}
+              {(comic.storylines ?? []).length > 0 && (
+                <div className="pb-6 border-b border-white/5">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-1 h-7 rounded-full bg-gradient-to-b from-purple-500 to-purple-800" />
+                    <h3 className="text-white font-bold text-lg">Arcos Narrativos</h3>
+                    <span className="ml-auto text-xs text-purple-400 font-semibold">{(comic.storylines ?? []).length}</span>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {(comic.storylines ?? []).map((item, i) => (
+                      <span key={i} className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm border border-purple-500/30 bg-purple-500/10 text-purple-300 font-medium">
+                        <History className="w-3.5 h-3.5" /> {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
 
-              <ComicTagSection
-                title="Arcos Narrativos"
-                Icon={History}
-                items={comic.storylines ?? []}
-                colors={{ gradient: 'to-purple-950/20', border: 'border-purple-500/30', iconBg: 'bg-purple-500/20', iconText: 'text-purple-400', pillBorder: 'border-purple-500/20 hover:border-purple-500/40' }}
+              <ComicCharacters
+                characterNames={comic.characters ?? []}
+                allCharacters={allCharacters}
               />
 
               <ComicTagSection
@@ -522,39 +450,19 @@ export default async function ComicPage({ params }: Props) {
             <div className="lg:col-span-1">
               <div className="sticky top-24 space-y-8">
                 {/* Portada del Cómic */}
-                <div className="bg-gradient-to-br from-gray-900/50 to-black/50 rounded-xl p-6 border border-blue-500/20 backdrop-blur-sm">
-                  <div className="relative group">
-                    <Image
-                      src={comic.image}
-                      alt={`${comic.title} (${comic.year}) - Portada`}
-                      width={300}
-                      height={450}
-                      className="w-full rounded-lg shadow-2xl group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  </div>
-                  
-                  {/* Información rápida */}
-                  <div className="mt-4 space-y-3">
-                    <div className="flex justify-between items-center">
-                      <span className="text-gray-400 text-sm">Calificación</span>
-                      <div className="flex items-center">
-                        <Star className="w-4 h-4 text-yellow-400 fill-current mr-1" />
-                        <span className="text-white font-bold">{comic.rating}/10</span>
-                      </div>
-                    </div>
-                    
-                    {comic.price && (
-                      <div className="flex justify-between items-center">
-                        <span className="text-gray-400 text-sm">Precio Estimado</span>
-                        <span className="text-green-400 font-bold">{comic.price}</span>
-                      </div>
-                    )}
-                    
-                    <div className="flex justify-between items-center">
-                      <span className="text-gray-400 text-sm">Vistas</span>
-                      <span className="text-blue-400 font-bold">{comic.views.toLocaleString()}</span>
-                    </div>
+                <div className="rounded-2xl overflow-hidden border border-white/10">
+                  <Image
+                    src={comic.image}
+                    alt={`${comic.title} (${comic.year}) - Portada`}
+                    width={300}
+                    height={450}
+                    className="w-full"
+                  />
+                  <div className="px-4 py-3 bg-gray-950 flex items-center justify-between">
+                    <span className="text-gray-500 text-xs uppercase tracking-widest">Vistas</span>
+                    <span className="text-white font-bold text-sm flex items-center gap-1">
+                      <Eye className="w-3.5 h-3.5 text-gray-400" /> {comic.views.toLocaleString()}
+                    </span>
                   </div>
                 </div>
                 
@@ -567,27 +475,43 @@ export default async function ComicPage({ params }: Props) {
                     <ShoppingCart className="w-6 h-6 mr-2 text-orange-400" />
                     Productos del Cómic
                   </h3>
-                  <div className="space-y-4">
-                    <AmazonProduct
-                      title={`${comic.title} TPB`}
-                      description="Edición en tapa blanda"
-                      price="19,99€"
-                      originalPrice="24,99€"
-                      discount={20}
-                      category="Cómic"
-                      tags={['Spider-Man', 'Marvel', 'Cómic']}
-                      searchQuery={`${comic.title} trade paperback`}
-                      className="max-w-none"
-                    />
-                    <AmazonProduct
-                      title={`${comic.title} Hardcover`}
-                      description="Edición de lujo en tapa dura"
-                      price="39,99€"
-                      category="Cómic"
-                      tags={['Spider-Man', 'Marvel', 'Hardcover']}
-                      searchQuery={`${comic.title} hardcover omnibus`}
-                      className="max-w-none"
-                    />
+                  <div className="space-y-3">
+                    <a
+                      href={generateAmazonUrl(`${comic.title} trade paperback Marvel`)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl px-4 py-3 transition-colors group"
+                    >
+                      <ShoppingCart className="w-4 h-4 text-orange-400 shrink-0" />
+                      <div className="min-w-0">
+                        <p className="text-white text-sm font-semibold">Tapa blanda (TPB)</p>
+                        <p className="text-gray-500 text-xs">Ver en Amazon</p>
+                      </div>
+                    </a>
+                    <a
+                      href={generateAmazonUrl(`${comic.title} hardcover omnibus Marvel`)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl px-4 py-3 transition-colors group"
+                    >
+                      <ShoppingCart className="w-4 h-4 text-orange-400 shrink-0" />
+                      <div className="min-w-0">
+                        <p className="text-white text-sm font-semibold">Hardcover / Omnibus</p>
+                        <p className="text-gray-500 text-xs">Ver en Amazon</p>
+                      </div>
+                    </a>
+                    <a
+                      href={generateAmazonUrl(`${comic.writer ?? 'Spider-Man'} Marvel Comics colección`)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl px-4 py-3 transition-colors group"
+                    >
+                      <ShoppingCart className="w-4 h-4 text-orange-400 shrink-0" />
+                      <div className="min-w-0">
+                        <p className="text-white text-sm font-semibold">Más de {comic.writer ?? 'este autor'}</p>
+                        <p className="text-gray-500 text-xs">Ver en Amazon</p>
+                      </div>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -596,30 +520,42 @@ export default async function ComicPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Cómics Relacionados Mejorados */}
+      {/* Cómics Relacionados */}
       {relatedComics.length > 0 && (
-        <section className="py-16 border-t border-gray-800">
+        <section className="py-16 border-t border-white/5 bg-gradient-to-b from-gray-950 to-black">
           <div className="container mx-auto px-4 max-w-5xl">
-            <h2 className="text-2xl font-bold text-white mb-8">Cómics Relacionados</h2>
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-1 h-7 rounded-full bg-gradient-to-b from-blue-500 to-blue-800" />
+              <h2 className="text-xl font-bold text-white">Cómics Relacionados</h2>
+              <span className="ml-auto text-xs text-blue-400 font-semibold">{relatedComics.length}</span>
+            </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-5">
               {relatedComics.map((relatedComic) => (
                 <Link key={relatedComic.id} href={`/comics/${relatedComic.slug}`} className="group">
-                  <div className="relative aspect-[2/3] rounded-xl overflow-hidden mb-3 shadow-lg group-hover:shadow-blue-500/20 group-hover:-translate-y-1 transition-all duration-200">
+                  <div className="relative aspect-[2/3] rounded-xl overflow-hidden mb-3 shadow-lg ring-1 ring-white/5 group-hover:ring-blue-500/40 group-hover:-translate-y-1 transition-all duration-200">
                     <Image
                       src={relatedComic.image}
                       alt={relatedComic.title}
                       fill
-                      className="object-cover"
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    {relatedComic.importance && (
+                      <div className="absolute top-2 left-2">
+                        <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${relatedComic.importance === 'Alta' ? 'bg-red-600/90 text-white' : relatedComic.importance === 'Buena' ? 'bg-yellow-600/90 text-white' : 'bg-gray-700/90 text-gray-300'}`}>
+                          {relatedComic.importance}
+                        </span>
+                      </div>
+                    )}
                   </div>
                   <p className="text-white text-xs font-semibold line-clamp-2 leading-snug group-hover:text-blue-400 transition-colors">
                     {relatedComic.title}
                   </p>
-                  <div className="flex items-center justify-between mt-1.5">
+                  <div className="mt-1.5 flex items-center gap-2">
                     <span className="text-gray-500 text-xs">{relatedComic.year}</span>
-                    <span className="flex items-center gap-1 text-yellow-400 text-xs font-bold">
-                      <Star className="w-3 h-3 fill-yellow-400" />{relatedComic.rating}
-                    </span>
+                    {relatedComic.writer && (
+                      <span className="text-gray-600 text-xs truncate">· {relatedComic.writer}</span>
+                    )}
                   </div>
                 </Link>
               ))}

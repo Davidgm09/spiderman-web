@@ -38,62 +38,46 @@ export function ComicEditorialAnalysis({
     : 'Completa el panorama del universo Spider-Man con su propia aportación al conjunto de historias del personaje.'
 
   return (
-    <div className="bg-gradient-to-br from-gray-900/80 to-blue-950/20 border border-blue-500/30 rounded-xl p-8 backdrop-blur-sm">
-      <h3 className="text-3xl font-bold text-white mb-8 flex items-center">
-        <Award className="w-8 h-8 mr-3 text-blue-400" />
-        Análisis Editorial
-      </h3>
+    <div className="rounded-2xl border border-white/10 bg-gray-950/60 overflow-hidden">
+      {/* Header */}
+      <div className="flex items-center gap-3 px-6 py-5 border-b border-white/10 bg-white/5">
+        <div className="w-1 h-7 rounded-full bg-gradient-to-b from-blue-500 to-blue-800" />
+        <h3 className="text-white font-bold text-lg">Análisis Editorial</h3>
+        <Award className="w-4 h-4 text-blue-400 ml-auto" />
+      </div>
 
-      {hasRichContent && longDescription ? (
-        <div
-          className="text-gray-300 text-lg leading-relaxed max-w-none
-            [&>h3]:text-xl [&>h3]:font-semibold [&>h3]:text-blue-400 [&>h3]:mb-3 [&>h3]:mt-6 [&>h3]:border-b [&>h3]:border-blue-500/20 [&>h3]:pb-2
-            [&>p]:mb-4 [&>p]:text-gray-300 [&>p]:leading-relaxed
-            [&>p:first-of-type]:text-lg [&>p:first-of-type]:text-gray-200
-            [&>strong]:text-white [&>strong]:font-semibold
-            [&>em]:text-gray-200 [&>em]:italic
-            [&>ul]:list-disc [&>ul]:ml-6 [&>ul]:mb-4 [&>ul]:space-y-1
-            [&>li]:text-gray-300
-            [&>ol]:list-decimal [&>ol]:ml-6 [&>ol]:mb-4"
-          dangerouslySetInnerHTML={{ __html: cleanHtml(longDescription) }}
-        />
-      ) : (
-        <div className="space-y-8">
-          <div>
-            <h4 className="text-xl font-semibold text-blue-400 mb-3 border-b border-blue-500/20 pb-2">
-              Contexto de Publicación
-            </h4>
-            <p className="text-gray-300 leading-relaxed">
+      {/* Contenido */}
+      <div className="px-6 py-6">
+        {hasRichContent && longDescription ? (
+          <div
+            className="max-w-none
+              [&>p]:mb-5 [&>p]:text-gray-300 [&>p]:leading-[1.85] [&>p]:text-base
+              [&>p:first-of-type]:text-lg [&>p:first-of-type]:text-gray-100 [&>p:first-of-type]:leading-relaxed [&>p:first-of-type]:pl-4 [&>p:first-of-type]:border-l-2 [&>p:first-of-type]:border-blue-500/50 [&>p:first-of-type]:italic
+              [&>h3]:text-base [&>h3]:font-bold [&>h3]:text-blue-400 [&>h3]:mb-3 [&>h3]:mt-6 [&>h3]:uppercase [&>h3]:tracking-widest [&>h3]:text-xs
+              [&>strong]:text-white [&>strong]:font-semibold
+              [&>ul]:list-disc [&>ul]:ml-6 [&>ul]:mb-4 [&>ul]:space-y-1 [&>ul]:text-gray-300 [&>ul]:text-sm
+              [&>ol]:list-decimal [&>ol]:ml-6 [&>ol]:mb-4 [&>ol]:text-gray-300 [&>ol]:text-sm"
+            dangerouslySetInnerHTML={{ __html: cleanHtml(longDescription) }}
+          />
+        ) : (
+          <div className="space-y-6">
+            <p className="text-gray-100 text-base leading-relaxed pl-4 border-l-2 border-blue-500/50 italic">
               {title} se publicó en {year}, durante {eraTexto}.
               {writer ? ` El guion corrió a cargo de ${writer}` : ''}
               {artist ? `, con arte de ${artist}` : ''}.
             </p>
-          </div>
-          <div>
-            <h4 className="text-xl font-semibold text-blue-400 mb-3 border-b border-blue-500/20 pb-2">
-              Valor Narrativo
-            </h4>
-            <p className="text-gray-300 leading-relaxed">
+            <p className="text-gray-300 leading-relaxed text-base">
               {rating >= 9
                 ? 'Una obra excepcional dentro del catálogo de Spider-Man. Su combinación de guion y arte crea una experiencia de lectura que ha perdurado en la memoria colectiva de los fans durante décadas.'
                 : rating >= 7
                 ? 'Una entrega sólida dentro del canon arácnido que equilibra bien acción, emoción y desarrollo de personajes en el formato del cómic de superhéroes.'
                 : 'Una propuesta que aporta su perspectiva particular al universo Spider-Man con elementos de interés para los seguidores del personaje.'
               }
-              {characters && characters.length > 0
-                ? ` Protagonizada por ${characters.slice(0, 3).join(', ')}${characters.length > 3 ? ` y otros ${characters.length - 3} personajes` : ''}.`
-                : ''
-              }
             </p>
+            <p className="text-gray-300 leading-relaxed text-base">{importanciaTexto}</p>
           </div>
-          <div>
-            <h4 className="text-xl font-semibold text-blue-400 mb-3 border-b border-blue-500/20 pb-2">
-              Importancia en el Canon
-            </h4>
-            <p className="text-gray-300 leading-relaxed">{importanciaTexto}</p>
-          </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   )
 }

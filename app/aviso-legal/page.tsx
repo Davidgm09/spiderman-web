@@ -13,7 +13,7 @@ export default function AvisoLegalPage() {
     <div className="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-red-950 py-20 px-4">
       <div className="max-w-3xl mx-auto">
         <h1 className="text-4xl font-bold text-white mb-4">Aviso Legal</h1>
-        <p className="text-gray-400 mb-12">Última actualización: marzo de 2025</p>
+        <p className="text-gray-400 mb-12">Última actualización: marzo de 2026</p>
 
         <div className="prose prose-invert max-w-none space-y-10 text-gray-300 leading-relaxed">
 

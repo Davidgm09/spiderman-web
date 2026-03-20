@@ -539,7 +539,7 @@ export default async function HomePage() {
                   alt={`${featuredContent.blogPosts[0].title} - Blog Spider-World`}
                   fill
                   sizes="(max-width: 1024px) 100vw, 60vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="object-cover object-[center_75%] group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                 <div className="absolute bottom-0 p-6">
