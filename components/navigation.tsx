@@ -99,7 +99,7 @@ export function Navigation() {
                 ref={searchRef}
                 type="search"
                 placeholder="Busca películas, personajes, cómics..."
-                className="w-full bg-gray-900 border border-gray-700 focus:border-red-500 rounded-lg pl-9 pr-4 py-2 text-white placeholder-gray-500 outline-none text-sm transition-colors"
+                className="w-full bg-black/40 border border-white/10 focus:border-red-500/50 rounded-xl pl-9 pr-4 py-2 text-white placeholder-gray-500 outline-none text-sm transition-colors"
               />
             </form>
           </div>

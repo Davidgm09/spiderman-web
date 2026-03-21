@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${game.title} (${game.year}) - Análisis Completo | Spider-World`,
     description,
-    keywords: ['Spider-Man', 'videojuego', game.title, game.year.toString(), 'análisis', 'gameplay'],
+    keywords: game.keywords?.length ? game.keywords : ['Spider-Man', 'videojuego', game.title, game.year.toString(), 'análisis', 'gameplay'],
     alternates: { canonical: url },
     openGraph: {
       title: `${game.title} (${game.year}) - Análisis Completo | Spider-World`,
@@ -66,6 +66,8 @@ export default async function GamePage({ params }: Props) {
   const game = await gameService.getBySlug(slug).catch(() => null)
 
   if (!game) notFound()
+
+  gameService.incrementViews(slug).catch(() => {})
 
   const relatedGames = await gameService.getFeatured(4, slug).catch(() => [])
 
@@ -299,7 +301,7 @@ export default async function GamePage({ params }: Props) {
                   return (
                     <div className="space-y-8">
                       {[
-                        { num: "01", title: "Propuesta Jugable",         text: data.propuesta, color: "text-blue-500" },
+                        { num: "01", title: "Propuesta Jugable",         text: data.propuesta, color: "text-green-500" },
                         { num: "02", title: "Recepción y Repercusión",   text: data.recepcion, color: "text-blue-500" },
                         { num: "03", title: "Legado en el Spider-Verse", text: data.legado,    color: "text-purple-500" },
                       ].map(({ num, title, text, color }) => (
@@ -399,7 +401,7 @@ export default async function GamePage({ params }: Props) {
               <div className="sticky top-24 space-y-6">
                 <SidebarAd />
 
-                <div className="bg-gray-900/60 border border-white/10 rounded-2xl p-5 space-y-3">
+                <div className="bg-gray-950/60 border border-white/5 rounded-2xl p-5 space-y-3">
                   <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-widest mb-4">Comprar en Amazon</h3>
                   {[
                     { label: `${game.title} — ${platformFirst}`,     query: `${game.title} ${platformFirst} game`,          icon: "🎮" },

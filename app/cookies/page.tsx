@@ -5,11 +5,12 @@ export const metadata: Metadata = {
   title: "Política de Cookies | Spider-World",
   description: "Información sobre el uso de cookies en Spider-World.",
   alternates: { canonical: `${SITE_URL}/cookies` },
+  robots: { index: false },
 }
 
 export default function CookiesPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-red-950 py-20 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-red-950 via-gray-900 to-blue-950 py-20 px-4">
       <div className="max-w-3xl mx-auto">
         <h1 className="text-4xl font-bold text-white mb-4">Política de Cookies</h1>
         <p className="text-gray-400 mb-12">Última actualización: marzo de 2026</p>

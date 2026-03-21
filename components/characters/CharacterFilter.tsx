@@ -11,14 +11,7 @@ interface Props {
   marvelUniverse: DatabaseCharacter[];
 }
 
-const FILTERS = [
-  { key: 'all',              label: 'Todos' },
-  { key: 'spider-verse',     label: 'Spider-Verse' },
-  { key: 'spider-villains',  label: 'Villanos' },
-  { key: 'marvel-universe',  label: 'Marvel Universe' },
-] as const;
-
-type FilterKey = typeof FILTERS[number]['key'];
+type FilterKey = 'all' | 'spider-verse' | 'spider-villains' | 'marvel-universe';
 
 export function CharacterFilter({ spiderVerse, spiderVillains, marvelUniverse }: Props) {
   const [query, setQuery] = useState('');
@@ -28,6 +21,13 @@ export function CharacterFilter({ spiderVerse, spiderVillains, marvelUniverse }:
     () => [...spiderVerse, ...spiderVillains, ...marvelUniverse],
     [spiderVerse, spiderVillains, marvelUniverse]
   );
+
+  const FILTERS = [
+    { key: 'all' as FilterKey,             label: 'Todos',          count: all.length },
+    { key: 'spider-verse' as FilterKey,    label: 'Spider-Verse',   count: spiderVerse.length },
+    { key: 'spider-villains' as FilterKey, label: 'Villanos',       count: spiderVillains.length },
+    { key: 'marvel-universe' as FilterKey, label: 'Marvel Universe',count: marvelUniverse.length },
+  ];
 
   const filtered = useMemo(() => {
     let list = active === 'all' ? all : all.filter(c => c.category === active);
@@ -50,19 +50,19 @@ export function CharacterFilter({ spiderVerse, spiderVillains, marvelUniverse }:
       {/* Barra de búsqueda + filtros */}
       <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
         {/* Input búsqueda */}
-        <div className="relative flex-1 max-w-sm">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" />
+        <div className="relative flex-1 max-w-md">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" />
           <input
             type="text"
             value={query}
             onChange={e => setQuery(e.target.value)}
-            placeholder="Buscar personaje..."
-            className="w-full bg-white/5 border border-white/10 rounded-full pl-10 pr-10 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-red-500/50 transition-colors"
+            placeholder="Nombre, alter ego o poder..."
+            className="w-full bg-white/5 border border-white/10 rounded-full pl-11 pr-10 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-red-500/50 transition-colors"
           />
           {query && (
             <button
               onClick={() => setQuery('')}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white transition-colors"
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white transition-colors"
             >
               <X className="w-4 h-4" />
             </button>
@@ -75,20 +75,25 @@ export function CharacterFilter({ spiderVerse, spiderVillains, marvelUniverse }:
             <button
               key={f.key}
               onClick={() => setActive(f.key)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+              className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                 active === f.key
                   ? 'bg-red-600 text-white shadow-lg shadow-red-900/30'
                   : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white border border-white/10'
               }`}
             >
               {f.label}
+              <span className={`text-xs px-1.5 py-0.5 rounded-full ${
+                active === f.key ? 'bg-white/20' : 'bg-white/5'
+              }`}>
+                {f.count}
+              </span>
             </button>
           ))}
         </div>
       </div>
 
       {/* Resultados */}
-      {isSearching ? (
+      {isSearching && (
         <div>
           <p className="text-gray-500 text-sm mb-6">
             {filtered.length > 0
@@ -106,7 +111,7 @@ export function CharacterFilter({ spiderVerse, spiderVillains, marvelUniverse }:
             </div>
           )}
         </div>
-      ) : null}
+      )}
     </div>
   );
 }

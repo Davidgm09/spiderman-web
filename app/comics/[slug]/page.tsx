@@ -62,7 +62,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title,
     description,
-    keywords: ['Spider-Man', 'Marvel Comics', 'cómic', comic.title, comic.year, 'análisis'],
+    keywords: comic.keywords?.length ? comic.keywords : ['Spider-Man', 'Marvel Comics', 'cómic', comic.title, comic.year, 'análisis'],
     alternates: { canonical: url },
     openGraph: {
       title,
@@ -88,7 +88,29 @@ export default async function ComicPage({ params }: Props) {
     notFound()
   }
 
-  comicService.incrementViews(slug).catch(console.error)
+  comicService.incrementViews(slug).catch(() => {})
+
+  const url = `${SITE_URL}/comics/${comic.slug}`
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Book',
+    name: comic.title,
+    description: comic.seoDescription || comic.description,
+    image: comic.image ? { '@type': 'ImageObject', url: comic.image, width: 300, height: 450 } : undefined,
+    url,
+    datePublished: comic.year,
+    author: comic.writer ? { '@type': 'Person', name: comic.writer } : undefined,
+    publisher: { '@type': 'Organization', name: 'Marvel Comics' },
+    genre: 'Comic Book',
+    inLanguage: 'en',
+    aggregateRating: comic.rating ? {
+      '@type': 'AggregateRating',
+      ratingValue: comic.rating,
+      bestRating: 10,
+      worstRating: 0,
+      ratingCount: Math.max(comic.views || 0, 50),
+    } : undefined,
+  }
 
   // Obtener cómics relacionados
   const relatedComics = await comicService.getRelated({ slug, writer: comic.writer ?? '', importance: comic.importance ?? '' }).catch(() => [])
@@ -103,6 +125,7 @@ export default async function ComicPage({ params }: Props) {
 
   return (
     <div className="pt-16">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {/* Hero */}
       <section className="relative min-h-[75vh] flex items-center overflow-hidden">
         {/* Fondo: portada muy difuminada */}

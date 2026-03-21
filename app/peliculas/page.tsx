@@ -1,3 +1,5 @@
+export const revalidate = 3600
+
 import Image from "next/image"
 import Link from "next/link"
 import { Play, Star, Clock, Award } from "lucide-react"
@@ -9,11 +11,27 @@ import { CountdownTimer } from "@/components/movies/CountdownTimer"
 import { movieService } from "@/lib/database"
 import { Movie } from "@prisma/client"
 
-export const metadata = {
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
   title: "Películas de Spider-Man - Todas las Sagas | Spider-World",
   description:
     "Todas las películas de Spider-Man: Trilogía de Raimi, Amazing Spider-Man, MCU y Spider-Verse. Análisis completos, ratings y dónde verlas.",
   keywords: ["Spider-Man películas", "Tobey Maguire", "Andrew Garfield", "Tom Holland", "Spider-Verse", "Marvel", "Sony"],
+  alternates: { canonical: '/peliculas' },
+  openGraph: {
+    title: "Películas de Spider-Man - Todas las Sagas | Spider-World",
+    description: "Todas las películas de Spider-Man: Trilogía de Raimi, Amazing Spider-Man, MCU y Spider-Verse.",
+    type: 'website',
+    url: '/peliculas',
+    images: ['https://image.tmdb.org/t/p/w500/xRMZikjAHNFebD1FLRqgDZeGV4a.jpg'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Películas de Spider-Man - Todas las Sagas | Spider-World",
+    description: "Todas las películas de Spider-Man: Trilogía de Raimi, Amazing Spider-Man, MCU y Spider-Verse.",
+    images: ['https://image.tmdb.org/t/p/w500/xRMZikjAHNFebD1FLRqgDZeGV4a.jpg'],
+  },
 }
 
 const MILES_KEYWORDS = ['nuevo universo', 'cruzando el multiverso', 'beyond the spider-verse', 'into the spider-verse', 'across the spider-verse']

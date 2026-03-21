@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function SobreNosotrosPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-red-950 py-20 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-red-950 via-gray-900 to-blue-950 py-20 px-4">
       <div className="max-w-3xl mx-auto">
         <h1 className="text-4xl font-bold text-white mb-4">Sobre Nosotros</h1>
         <p className="text-gray-400 mb-12">El equipo detrás de Spider-World</p>

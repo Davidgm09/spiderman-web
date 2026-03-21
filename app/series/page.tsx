@@ -1,3 +1,5 @@
+export const revalidate = 3600
+
 import Image from "next/image"
 import Link from "next/link"
 import { Play, Tv, Star } from "lucide-react"
@@ -13,6 +15,20 @@ export const metadata: Metadata = {
   description:
     "Todas las series de Spider-Man desde 1967 hasta hoy. Series animadas clásicas, live-action y dónde verlas. Guía completa con fechas de estreno y análisis.",
   keywords: ["Spider-Man series", "series animadas Spider-Man", "The Spectacular Spider-Man", "Spider-Man 1994", "series Marvel"],
+  alternates: { canonical: '/series' },
+  openGraph: {
+    title: "Series de Spider-Man - Animadas y Live-Action | Spider-World",
+    description: "Todas las series de Spider-Man desde 1967 hasta hoy. Series animadas clásicas, live-action y dónde verlas.",
+    type: 'website',
+    url: '/series',
+    images: ['https://image.tmdb.org/t/p/w500/957mnVq6w3xIZwhO1isb4RWPatr.jpg'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Series de Spider-Man - Animadas y Live-Action | Spider-World",
+    description: "Todas las series de Spider-Man desde 1967 hasta hoy. Series animadas clásicas, live-action y dónde verlas.",
+    images: ['https://image.tmdb.org/t/p/w500/957mnVq6w3xIZwhO1isb4RWPatr.jpg'],
+  },
 }
 
 const ERA_CONFIG = {

@@ -1,3 +1,5 @@
+export const revalidate = 3600
+
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -11,10 +13,19 @@ export const metadata: Metadata = {
   title: 'Personajes de Spider-Man y Marvel | Spider-World',
   description: 'Descubre todos los personajes de Spider-Man y Marvel con información completa, imágenes oficiales y más. Spider-Verse, villanos, héroes y más.',
   keywords: ['Spider-Man personajes', 'Marvel characters', 'Spider-Verse', 'Spider-Gwen', 'Miles Morales', 'personajes Marvel'],
+  alternates: { canonical: '/personajes' },
   openGraph: {
     title: 'Personajes de Spider-Man y Marvel | Spider-World',
     description: 'Explora todos los personajes del Spider-Verse y Marvel con información completa',
     type: 'website',
+    url: '/personajes',
+    images: ['https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/8126579-amazing_spider-man_vol_5_54_stormbreakers_variant_textless.jpg'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Personajes de Spider-Man y Marvel | Spider-World',
+    description: 'Explora todos los personajes del Spider-Verse y Marvel con información completa',
+    images: ['https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/8126579-amazing_spider-man_vol_5_54_stormbreakers_variant_textless.jpg'],
   },
 };
 

@@ -1,3 +1,5 @@
+export const revalidate = 3600
+
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -304,7 +306,7 @@ export default async function HomePage() {
           <div className="lg:col-span-2 flex flex-col gap-4">
             {featuredContent.movies.slice(1).map((movie: Movie) => (
               <Link key={movie.id} href={`/peliculas/${movie.slug}`} className="group">
-                <div className="flex gap-4 bg-gray-800/50 hover:bg-gray-800/80 border border-gray-700 rounded-xl p-3 transition-all">
+                <div className="flex gap-4 bg-gray-950/60 hover:bg-gray-900/80 border border-white/5 hover:border-white/10 rounded-xl p-3 transition-all">
                   <div className="relative w-24 h-32 flex-shrink-0 rounded-lg overflow-hidden">
                     <Image
                       src={movie.image}
@@ -558,7 +560,7 @@ export default async function HomePage() {
 
           <div className="lg:col-span-2 flex flex-col gap-4">
             {featuredContent.blogPosts.slice(1).map((post: BlogPost) => (
-              <Link key={post.id} href={`/blog/${post.slug}`} className="group flex gap-4 bg-gray-800/50 hover:bg-gray-800/80 border border-gray-700 rounded-xl p-4 transition-all">
+              <Link key={post.id} href={`/blog/${post.slug}`} className="group flex gap-4 bg-gray-950/60 hover:bg-gray-900/80 border border-white/5 hover:border-white/10 rounded-xl p-4 transition-all">
                 <div className="relative w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden">
                   <Image
                     src={post.image || "/placeholder.svg?height=80&width=80"}

@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Home, BookOpen, Film, Gamepad2 } from "lucide-react"
+import { Home, BookOpen, Film, Gamepad2, Users, Tv } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Página no encontrada | Spider-World",
@@ -47,16 +47,22 @@ export default function NotFound() {
         <div className="border-t border-gray-800 pt-8">
           <p className="text-gray-500 text-sm mb-5">O explora el Spider-Verse:</p>
           <div className="flex flex-wrap justify-center gap-3">
-            <Link href="/blog">
+            <Link href="/personajes">
               <Button variant="outline" className="border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white">
-                <BookOpen className="w-4 h-4 mr-2" />
-                Blog
+                <Users className="w-4 h-4 mr-2" />
+                Personajes
               </Button>
             </Link>
             <Link href="/peliculas">
               <Button variant="outline" className="border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white">
                 <Film className="w-4 h-4 mr-2" />
                 Películas
+              </Button>
+            </Link>
+            <Link href="/series">
+              <Button variant="outline" className="border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white">
+                <Tv className="w-4 h-4 mr-2" />
+                Series
               </Button>
             </Link>
             <Link href="/comics">
@@ -69,6 +75,12 @@ export default function NotFound() {
               <Button variant="outline" className="border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white">
                 <Gamepad2 className="w-4 h-4 mr-2" />
                 Videojuegos
+              </Button>
+            </Link>
+            <Link href="/blog">
+              <Button variant="outline" className="border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white">
+                <BookOpen className="w-4 h-4 mr-2" />
+                Blog
               </Button>
             </Link>
           </div>

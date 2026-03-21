@@ -9,32 +9,32 @@ export async function GET(req: NextRequest) {
 
   const [characters, movies, series, comics, games, posts] = await Promise.all([
     prisma.character.findMany({
-      where: { OR: [{ name: search }, { description: search }] },
+      where: { isActive: true, OR: [{ name: search }, { description: search }] },
       select: { name: true, slug: true, image: true, category: true },
       take: 5,
     }),
     prisma.movie.findMany({
-      where: { OR: [{ title: search }, { description: search }] },
+      where: { isActive: true, OR: [{ title: search }, { description: search }] },
       select: { title: true, slug: true, image: true, year: true },
       take: 5,
     }),
     prisma.series.findMany({
-      where: { OR: [{ title: search }, { description: search }] },
+      where: { isActive: true, OR: [{ title: search }, { description: search }] },
       select: { title: true, slug: true, image: true, year: true },
       take: 5,
     }),
     prisma.comic.findMany({
-      where: { OR: [{ title: search }, { description: search }] },
+      where: { isActive: true, OR: [{ title: search }, { description: search }] },
       select: { title: true, slug: true, image: true, year: true },
       take: 5,
     }),
     prisma.game.findMany({
-      where: { OR: [{ title: search }, { description: search }] },
+      where: { isActive: true, OR: [{ title: search }, { description: search }] },
       select: { title: true, slug: true, image: true, year: true },
       take: 5,
     }),
     prisma.blogPost.findMany({
-      where: { isPublished: true, OR: [{ title: search }, { excerpt: search }, { content: search }] },
+      where: { isPublished: true, OR: [{ title: search }, { excerpt: search }] },
       select: { title: true, slug: true, image: true, category: true },
       take: 5,
     }),

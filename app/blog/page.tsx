@@ -1,7 +1,5 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Calendar, Clock, User, Eye, ArrowRight, Tag } from "lucide-react"
+import { Calendar, Clock, Eye, ArrowRight, Tag, ChevronLeft, ChevronRight, BookOpen } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
@@ -9,367 +7,348 @@ import { blogService } from "@/lib/database"
 import type { Metadata } from "next"
 import { BlogPost } from "@prisma/client"
 
+const POSTS_PER_PAGE = 6
+
 export const metadata: Metadata = {
   title: "Blog Spider-Man - Análisis, Noticias y Contenido Exclusivo | Spider-World",
   description:
     "Las últimas noticias, análisis profundos y contenido exclusivo del Spider-Verse. Artículos especializados para fans verdaderos de Spider-Man.",
-  keywords: ["blog Spider-Man", "noticias Spider-Man", "análisis Marvel", "Spider-Verse", "contenido exclusivo"]
+  keywords: ["blog Spider-Man", "noticias Spider-Man", "análisis Marvel", "Spider-Verse", "contenido exclusivo"],
+  alternates: { canonical: '/blog' },
+  openGraph: {
+    title: "Blog Spider-Man - Análisis, Noticias y Contenido Exclusivo | Spider-World",
+    description: "Las últimas noticias, análisis profundos y contenido exclusivo del Spider-Verse.",
+    type: 'website',
+    url: '/blog',
+    images: ['https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/8126579-amazing_spider-man_vol_5_54_stormbreakers_variant_textless.jpg'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Blog Spider-Man - Análisis, Noticias y Contenido Exclusivo | Spider-World",
+    description: "Las últimas noticias, análisis profundos y contenido exclusivo del Spider-Verse.",
+    images: ['https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/8126579-amazing_spider-man_vol_5_54_stormbreakers_variant_textless.jpg'],
+  },
 }
 
-// Función para formatear fecha
 function formatDate(dateString: string): string {
-  const date = new Date(dateString);
-  return date.toLocaleDateString('es-ES', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  });
+  const date = new Date(dateString)
+  return date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })
 }
 
-// Función para obtener categorías con conteo
 function getCategoriesWithCount(posts: BlogPost[]) {
-  const categoryCounts: { [key: string]: number } = {};
-  
-  posts.forEach(post => {
-    if (post.category) {
-      categoryCounts[post.category] = (categoryCounts[post.category] || 0) + 1;
-    }
-  });
-  
-  return Object.entries(categoryCounts).map(([name, count]) => ({
-    name,
-    count,
-    color: getColorForCategory(name)
-  }));
+  const counts: Record<string, number> = {}
+  posts.forEach(p => { if (p.category) counts[p.category] = (counts[p.category] || 0) + 1 })
+  return Object.entries(counts).map(([name, count]) => ({ name, count }))
 }
 
-// Función para asignar colores a categorías
-function getColorForCategory(category: string): string {
-  const colorMap: { [key: string]: string } = {
-    'Películas': 'red',
-    'Cómics': 'blue', 
-    'Videojuegos': 'purple',
-    'Series': 'green',
-    'Análisis': 'orange',
-    'Noticias': 'yellow',
-    'Teorías': 'pink'
-  };
-  
-  return colorMap[category] || 'gray';
+const CATEGORY_ACCENT: Record<string, { gradient: string; border: string }> = {
+  'Películas':   { gradient: 'from-red-600',    border: 'border-red-500/40' },
+  'Cómics':      { gradient: 'from-blue-600',   border: 'border-blue-500/40' },
+  'Videojuegos': { gradient: 'from-purple-600', border: 'border-purple-500/40' },
+  'Series':      { gradient: 'from-green-600',  border: 'border-green-500/40' },
+  'Análisis':    { gradient: 'from-orange-600', border: 'border-orange-500/40' },
+  'Noticias':    { gradient: 'from-yellow-600', border: 'border-yellow-500/40' },
+  'Teorías':     { gradient: 'from-pink-600',   border: 'border-pink-500/40' },
 }
 
 interface BlogPageProps {
-  searchParams: Promise<{ category?: string; tag?: string }>
+  searchParams: Promise<{ category?: string; tag?: string; page?: string }>
 }
 
 export default async function BlogPage({ searchParams }: BlogPageProps) {
-  const { category: activeCategory, tag: activeTag } = await searchParams;
+  const { category: activeCategory, tag: activeTag, page: pageParam } = await searchParams
+  const currentPage = Math.max(1, parseInt(pageParam ?? '1', 10) || 1)
 
-  // Obtener posts del blog de la base de datos
-  const allPosts = await blogService.getAll();
+  const allPosts = await blogService.getAll()
+  const categories = getCategoriesWithCount(allPosts)
 
-  // Obtener categorías con conteo (siempre sobre todos los posts)
-  const categories = getCategoriesWithCount(allPosts);
-
-  // Extraer tags únicos de todos los posts, ordenados por frecuencia
-  const tagCounts: Record<string, number> = {};
-  allPosts.forEach(p => p.tags.forEach(t => { tagCounts[t] = (tagCounts[t] || 0) + 1; }));
+  const tagCounts: Record<string, number> = {}
+  allPosts.forEach(p => p.tags.forEach(t => { tagCounts[t] = (tagCounts[t] || 0) + 1 }))
   const popularTags = Object.entries(tagCounts)
     .sort((a, b) => b[1] - a[1])
     .slice(0, 12)
-    .map(([tag]) => tag);
+    .map(([tag]) => tag)
 
-  // Filtrar posts por categoría o tag
   const filteredPosts = allPosts.filter(p => {
-    if (activeCategory && p.category !== activeCategory) return false;
-    if (activeTag && !p.tags.includes(activeTag)) return false;
-    return true;
-  });
+    if (activeCategory && p.category !== activeCategory) return false
+    if (activeTag && !p.tags.includes(activeTag)) return false
+    return true
+  })
 
-  // Artículo destacado solo sin filtros activos
-  const featuredPost = !activeCategory && !activeTag && filteredPosts.length > 0 ? filteredPosts[0] : null;
+  const featuredPost = !activeCategory && !activeTag && currentPage === 1 && filteredPosts.length > 0
+    ? filteredPosts[0]
+    : null
 
-  // Posts de la grid (excluye el destacado si está visible)
-  const recentPosts = featuredPost ? filteredPosts.slice(1) : filteredPosts;
+  const gridPosts = featuredPost ? filteredPosts.slice(1) : filteredPosts
+  const totalPages = Math.ceil(gridPosts.length / POSTS_PER_PAGE)
+  const paginatedPosts = gridPosts.slice((currentPage - 1) * POSTS_PER_PAGE, currentPage * POSTS_PER_PAGE)
+
+  function pageUrl(p: number) {
+    const params = new URLSearchParams()
+    if (activeCategory) params.set('category', activeCategory)
+    if (activeTag) params.set('tag', activeTag)
+    if (p > 1) params.set('page', String(p))
+    const qs = params.toString()
+    return `/blog${qs ? `?${qs}` : ''}`
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-950 via-gray-900 to-blue-950">
-      {/* Header */}
-      <section className="relative py-20 px-4 text-center">
-        <div className="absolute inset-0 bg-gradient-to-r from-red-600/20 to-blue-600/20" />
+
+      {/* Hero con mosaico de imágenes */}
+      <section className="relative py-32 px-4 text-center overflow-hidden">
+        <div className="absolute inset-0 grid grid-cols-5 md:grid-cols-8 gap-1 opacity-30 scale-110">
+          {[...allPosts, ...allPosts].slice(0, 16).map((post, i) => (
+            <div key={i} className="relative h-full min-h-[300px]">
+              <Image src={post.image || ''} alt="" fill sizes="200px" className="object-cover" />
+            </div>
+          ))}
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-red-950 via-gray-900/80 to-gray-900/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-transparent to-red-950" />
+
         <div className="relative z-10 max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent">
-            Blog Spider-World
+          <p className="text-red-400 text-sm font-semibold tracking-widest uppercase mb-4">Spider-World · Blog</p>
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white leading-tight">
+            Blog<br />
+            <span className="bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent">Spider-World</span>
           </h1>
-          <p className="text-xl text-gray-300 mb-8">
-            Las últimas noticias, análisis profundos y contenido exclusivo del Spider-Verse
+          <p className="text-lg text-gray-300 max-w-xl mx-auto mb-8">
+            Análisis profundos, noticias y contenido exclusivo del Spider-Verse.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Badge className="bg-red-600 text-white px-4 py-2">
-              {allPosts.length} Artículos
-            </Badge>
-            <Badge className="bg-blue-600 text-white px-4 py-2">
-              Contenido Exclusivo
-            </Badge>
-            <Badge className="bg-purple-600 text-white px-4 py-2">
-              Análisis Profundos
-            </Badge>
+          <div className="flex flex-wrap justify-center gap-3 mb-10">
+            <Badge className="bg-white/10 text-white border-white/20 px-4 py-1.5 text-sm">{allPosts.length} artículos</Badge>
+            <Badge className="bg-white/10 text-white border-white/20 px-4 py-1.5 text-sm">{categories.length} categorías</Badge>
+          </div>
+
+          {/* Filtros de categoría */}
+          <div className="flex justify-center gap-2 flex-wrap">
+            <Link
+              href="/blog"
+              className={`px-4 py-1.5 rounded-full text-sm font-medium border transition-all duration-200 text-white hover:scale-105 ${
+                !activeCategory && !activeTag
+                  ? 'bg-red-600 border-red-500/60'
+                  : 'bg-white/10 border-white/20 hover:bg-white/20'
+              }`}
+            >
+              Todos
+            </Link>
+            {categories.map((cat) => {
+              const accent = CATEGORY_ACCENT[cat.name] ?? { gradient: 'from-gray-600', border: 'border-gray-500/40' }
+              const isActive = activeCategory === cat.name
+              return (
+                <Link
+                  key={cat.name}
+                  href={isActive ? '/blog' : `/blog?category=${encodeURIComponent(cat.name)}`}
+                  className={`px-4 py-1.5 rounded-full text-sm font-medium border transition-all duration-200 text-white hover:scale-105 ${
+                    isActive
+                      ? `bg-gradient-to-r ${accent.gradient} to-transparent ${accent.border}`
+                      : 'bg-white/10 border-white/20 hover:bg-white/20'
+                  }`}
+                >
+                  {cat.name}
+                </Link>
+              )
+            })}
           </div>
         </div>
       </section>
 
-      {/* Categories */}
-      <section className="py-8 px-4 max-w-7xl mx-auto">
-        <div className="flex flex-wrap justify-center gap-4">
-          <Link href="/blog">
-            <Button
-              variant="outline"
-              className={!activeCategory
-                ? "border-red-600 bg-red-600 text-white"
-                : "border-gray-700 bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white"}
-            >
-              Todos ({allPosts.length})
-            </Button>
-          </Link>
-          {categories.map((category, index) => (
-            <Link key={index} href={`/blog?category=${encodeURIComponent(category.name)}`}>
-              <Button
-                variant="outline"
-                className={activeCategory === category.name
-                  ? "border-red-600 bg-red-600 text-white"
-                  : "border-gray-700 bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white"}
-              >
-                {category.name} ({category.count})
-              </Button>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* Featured Post */}
+      {/* Artículo Destacado */}
       {featuredPost && (
-        <section className="py-12 px-4 max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-white mb-8 text-center">Artículo Destacado</h2>
-
-          <Card className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all overflow-hidden">
-            <div className="md:flex md:items-stretch">
-              <div className="md:w-2/5 md:max-h-[420px] overflow-hidden">
-                <Image
-                  src={featuredPost.image || "/placeholder.svg?height=400&width=600"}
-                  alt={featuredPost.title}
-                  width={600}
-                  height={420}
-                  className="w-full h-64 md:h-full object-cover rounded-t-lg md:rounded-l-lg md:rounded-t-none"
-                />
-              </div>
-              <div className="md:w-3/5 p-8 flex flex-col justify-center">
-                <Badge className="mb-4 bg-red-600">{featuredPost.category}</Badge>
-                <CardTitle className="text-white mb-4 text-2xl leading-tight hover:text-red-400 transition-colors">
-                  <Link href={`/blog/${featuredPost.slug}`}>{featuredPost.title}</Link>
-                </CardTitle>
-                <CardDescription className="text-gray-300 mb-6 leading-relaxed">
-                  {featuredPost.excerpt}
-                </CardDescription>
-                <div className="flex items-center justify-between text-sm text-gray-400 mb-6">
-                  <div className="flex items-center space-x-4">
-                    <div className="flex items-center">
-                      <User className="w-4 h-4 mr-1" />
-                      {featuredPost.author}
-                    </div>
-                    <div className="flex items-center">
-                      <Calendar className="w-4 h-4 mr-1" />
-                      {formatDate(featuredPost.publishDate.toString())}
-                    </div>
+        <div className="max-w-7xl mx-auto px-4 pt-12 mb-8">
+          <Link href={`/blog/${featuredPost.slug}`}>
+            <div className="group relative rounded-3xl overflow-hidden bg-gradient-to-r from-gray-950 to-red-950/40 border border-red-500/20 shadow-2xl shadow-black/60 hover:border-red-400/40 transition-all duration-300">
+              <div className="relative flex flex-col md:flex-row items-stretch gap-0">
+                <div className="relative md:w-72 shrink-0 h-48 md:h-auto overflow-hidden">
+                  <Image
+                    src={featuredPost.image || ''}
+                    alt={featuredPost.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 288px"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent to-gray-950/80 hidden md:block" />
+                </div>
+                <div className="flex-1 px-8 md:px-10 py-8 flex flex-col justify-center">
+                  <Badge className="bg-red-600 text-white w-fit mb-4 text-xs tracking-widest uppercase">Artículo Destacado</Badge>
+                  <h2 className="text-2xl md:text-4xl font-black text-white leading-tight mb-3">{featuredPost.title}</h2>
+                  <p className="text-gray-400 text-sm md:text-base line-clamp-2 max-w-xl mb-5">{featuredPost.excerpt}</p>
+                  <div className="flex flex-wrap items-center gap-4 text-xs text-gray-500 mb-5">
+                    <span className="flex items-center gap-1.5"><Calendar className="w-3 h-3" />{formatDate(featuredPost.publishDate.toString())}</span>
+                    <span className="flex items-center gap-1.5"><Clock className="w-3 h-3" />{featuredPost.readTime}</span>
+                    <span className="flex items-center gap-1.5"><Eye className="w-3 h-3" />{featuredPost.views} lecturas</span>
                   </div>
-                  <div className="flex items-center space-x-4">
-                    <div className="flex items-center">
-                      <Clock className="w-4 h-4 mr-1" />
-                      {featuredPost.readTime}
-                    </div>
-                    <div className="flex items-center">
-                      <Eye className="w-4 h-4 mr-1" />
-                      {featuredPost.views}
-                    </div>
+                  <div className="flex items-center gap-2 w-fit px-5 py-2.5 rounded-full bg-red-600/20 border border-red-500/30 text-red-400 text-sm font-medium group-hover:bg-red-600/30 transition-colors">
+                    Leer artículo <ArrowRight className="w-4 h-4" />
                   </div>
                 </div>
-                <Link href={`/blog/${featuredPost.slug}`}>
-                  <Button className="bg-red-600 hover:bg-red-700">
-                    Leer Artículo Completo
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </Link>
               </div>
             </div>
-          </Card>
-        </section>
+          </Link>
+        </div>
       )}
 
-      {/* Ad Space */}
-      <div className="max-w-7xl mx-auto px-4 py-8">
+      <div className="max-w-7xl mx-auto px-4 py-4">
         <InContentAd />
       </div>
 
-      {/* Blog Posts Grid */}
-      <section className="py-12 px-4 max-w-7xl mx-auto">
+      {/* Grid + Sidebar */}
+      <div className="max-w-7xl mx-auto px-4 pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          {/* Main Content */}
-          <div className="lg:col-span-3">
-            <h2 className="text-3xl font-bold text-white mb-8">
-              {activeCategory ? `Categoría: ${activeCategory}` : activeTag ? `Tag: ${activeTag}` : 'Últimos Artículos'}
-            </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {recentPosts.map((post) => (
-                <Card
-                  key={post.id}
-                  className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all group"
-                >
-                  <CardHeader className="p-0">
-                    <div className="relative h-48 overflow-hidden rounded-t-lg bg-gray-700">
+          {/* Posts */}
+          <div className="lg:col-span-3">
+            {(activeCategory || activeTag) && (
+              <div className="flex items-end gap-4 mb-8 pb-4 border-b border-white/10">
+                <div className="w-1 h-12 rounded-full bg-gradient-to-b from-red-600 to-transparent" />
+                <div>
+                  <h2 className="text-2xl md:text-3xl font-bold text-white">
+                    {activeCategory ?? `#${activeTag}`}
+                  </h2>
+                  <p className="text-gray-500 text-sm mt-1">{filteredPosts.length} artículo{filteredPosts.length !== 1 ? 's' : ''}</p>
+                </div>
+              </div>
+            )}
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              {paginatedPosts.map((post) => (
+                <Link key={post.id} href={`/blog/${post.slug}`} className="group">
+                  <div className="relative rounded-2xl overflow-hidden bg-gray-950/60 border border-white/5 hover:border-white/15 transition-all duration-300 shadow-lg h-full flex flex-col">
+                    <div className="relative h-48 overflow-hidden shrink-0">
                       <Image
-                        src={post.image || "/placeholder.svg?height=250&width=400"}
+                        src={post.image || ''}
                         alt={post.title}
                         fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
                         sizes="(max-width: 768px) 100vw, 50vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
                       />
-                      <Badge className="absolute top-2 right-2 bg-red-600">
-                        {post.category}
-                      </Badge>
-                      <div className="absolute bottom-2 right-2 flex items-center bg-black/70 rounded px-2 py-1 text-xs text-white">
-                        <Eye className="w-3 h-3 mr-1" />
-                        {post.views}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                      {post.category && (
+                        <span className="absolute top-3 left-3 text-xs bg-black/60 backdrop-blur-sm text-white px-2.5 py-1 rounded-full border border-white/10">
+                          {post.category}
+                        </span>
+                      )}
+                      <div className="absolute top-3 right-3 flex items-center gap-1 bg-black/60 backdrop-blur-sm rounded-full px-2 py-1 text-xs text-gray-300">
+                        <Eye className="w-3 h-3" /> {post.views}
                       </div>
                     </div>
-                  </CardHeader>
-                  
-                  <CardContent className="p-4">
-                    <CardTitle className="text-white mb-2 line-clamp-2 hover:text-red-400 transition-colors">
-                      <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-                    </CardTitle>
-                    
-                    <CardDescription className="text-gray-400 mb-4 line-clamp-2">
-                      {post.excerpt}
-                    </CardDescription>
-                    
-                    <div className="flex items-center justify-between text-sm text-gray-400">
-                      <div className="flex items-center space-x-3">
-                        <div className="flex items-center">
-                          <User className="w-3 h-3 mr-1" />
-                          {post.author}
-                        </div>
-                        <div className="flex items-center">
-                          <Calendar className="w-3 h-3 mr-1" />
-                          {formatDate(post.publishDate.toString())}
-                        </div>
-                      </div>
-                      <div className="flex items-center">
-                        <Clock className="w-3 h-3 mr-1" />
-                        {post.readTime}
+                    <div className="p-4 flex flex-col flex-1">
+                      <h3 className="text-white font-bold line-clamp-2 leading-snug mb-2 group-hover:text-red-400 transition-colors">
+                        {post.title}
+                      </h3>
+                      <p className="text-gray-500 text-sm line-clamp-2 mb-4 flex-1">{post.excerpt}</p>
+                      <div className="flex items-center justify-between text-xs text-gray-600">
+                        <span className="flex items-center gap-1.5"><Calendar className="w-3 h-3" />{formatDate(post.publishDate.toString())}</span>
+                        <span className="flex items-center gap-1.5"><Clock className="w-3 h-3" />{post.readTime}</span>
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </Link>
               ))}
             </div>
 
-            {recentPosts.length === 0 && (
-              <div className="text-center py-16 text-gray-400">
+            {paginatedPosts.length === 0 && (
+              <div className="text-center py-20 text-gray-500">
                 No hay artículos en esta categoría todavía.
+              </div>
+            )}
+
+            {/* Paginación */}
+            {totalPages > 1 && (
+              <div className="flex items-center justify-between mt-10 pt-6 border-t border-white/10">
+                <Link
+                  href={pageUrl(currentPage - 1)}
+                  aria-disabled={currentPage === 1}
+                  className={currentPage === 1 ? 'pointer-events-none opacity-40' : ''}
+                >
+                  <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-gray-300 text-sm hover:bg-white/10 transition-colors">
+                    <ChevronLeft className="w-4 h-4" /> Anterior
+                  </div>
+                </Link>
+
+                <div className="flex items-center gap-1">
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
+                    <Link key={p} href={pageUrl(p)}>
+                      <div className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-medium transition-colors ${
+                        p === currentPage
+                          ? 'bg-red-600 text-white'
+                          : 'bg-white/5 border border-white/10 text-gray-400 hover:bg-white/10'
+                      }`}>
+                        {p}
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+
+                <Link
+                  href={pageUrl(currentPage + 1)}
+                  aria-disabled={currentPage === totalPages}
+                  className={currentPage === totalPages ? 'pointer-events-none opacity-40' : ''}
+                >
+                  <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-gray-300 text-sm hover:bg-white/10 transition-colors">
+                    Siguiente <ChevronRight className="w-4 h-4" />
+                  </div>
+                </Link>
               </div>
             )}
           </div>
 
           {/* Sidebar */}
           <div className="lg:col-span-1">
-            <div className="sticky top-24 space-y-8">
-              {/* Popular Tags */}
-              <Card className="bg-gray-800/50 border-gray-700">
-                <CardHeader>
-                  <CardTitle className="text-white flex items-center">
-                    <Tag className="w-5 h-5 mr-2" />
-                    Tags Populares
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {popularTags.map((tag, index) => (
-                      <Link key={index} href={activeTag === tag ? '/blog' : `/blog?tag=${encodeURIComponent(tag)}`}>
-                        <Badge
-                          variant="outline"
-                          className={activeTag === tag
-                            ? "border-red-500 bg-red-600 text-white cursor-pointer"
-                            : "border-gray-600 text-gray-300 hover:border-red-500 hover:text-red-400 cursor-pointer transition-colors"}
-                        >
-                          {tag}
-                        </Badge>
-                      </Link>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+            <div className="sticky top-24 space-y-6">
 
-              {/* Categories */}
-              <Card className="bg-gray-800/50 border-gray-700">
-                <CardHeader>
-                  <CardTitle className="text-white">Categorías</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-2">
-                    {categories.map((category, index) => (
-                      <Link key={index} href={`/blog?category=${encodeURIComponent(category.name)}`} className="flex items-center justify-between p-2 rounded hover:bg-gray-700 transition-colors">
-                        <span className={activeCategory === category.name ? "text-red-400 font-medium" : "text-gray-300"}>
-                          {category.name}
-                        </span>
-                        <Badge className={activeCategory === category.name ? "bg-red-600 text-white" : "bg-gray-600 text-white"}>
-                          {category.count}
-                        </Badge>
-                      </Link>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+              {/* Tags */}
+              <div className="rounded-2xl bg-gray-950/60 border border-white/5 p-5">
+                <div className="flex items-center gap-2 mb-4">
+                  <Tag className="w-4 h-4 text-red-400" />
+                  <h3 className="text-white font-semibold text-sm uppercase tracking-widest">Tags</h3>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {popularTags.map((tag) => (
+                    <Link key={tag} href={activeTag === tag ? '/blog' : `/blog?tag=${encodeURIComponent(tag)}`}>
+                      <span className={`text-xs px-3 py-1.5 rounded-full border transition-colors cursor-pointer ${
+                        activeTag === tag
+                          ? 'border-red-500 bg-red-600/20 text-red-300'
+                          : 'border-white/10 text-gray-400 hover:border-white/30 hover:text-gray-200'
+                      }`}>
+                        {tag}
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
 
-              {/* Sidebar Ad */}
+              {/* Categorías */}
+              <div className="rounded-2xl bg-gray-950/60 border border-white/5 p-5">
+                <div className="flex items-center gap-2 mb-4">
+                  <BookOpen className="w-4 h-4 text-red-400" />
+                  <h3 className="text-white font-semibold text-sm uppercase tracking-widest">Categorías</h3>
+                </div>
+                <div className="space-y-1">
+                  {categories.map((cat) => (
+                    <Link
+                      key={cat.name}
+                      href={activeCategory === cat.name ? '/blog' : `/blog?category=${encodeURIComponent(cat.name)}`}
+                      className="flex items-center justify-between py-2 px-3 rounded-xl hover:bg-white/5 transition-colors group"
+                    >
+                      <span className={`text-sm ${activeCategory === cat.name ? 'text-red-400 font-medium' : 'text-gray-400 group-hover:text-gray-200'}`}>
+                        {cat.name}
+                      </span>
+                      <span className={`text-xs px-2 py-0.5 rounded-full ${activeCategory === cat.name ? 'bg-red-600/30 text-red-400' : 'bg-white/5 text-gray-500'}`}>
+                        {cat.count}
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
               <SidebarAd />
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Stats Section */}
-      <section className="py-16 px-4 max-w-7xl mx-auto">
-        <div className="bg-gray-800/50 rounded-lg p-8 text-center">
-          <h3 className="text-2xl font-bold text-white mb-6">
-            Estadísticas del Blog
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div>
-              <div className="text-3xl font-bold text-red-500 mb-2">{allPosts.length}</div>
-              <div className="text-gray-400">Artículos Publicados</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-blue-500 mb-2">{categories.length}</div>
-              <div className="text-gray-400">Categorías</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-purple-500 mb-2">
-                {allPosts.reduce((total, post) => total + (post.views || 0), 0)}
-              </div>
-              <div className="text-gray-400">Visualizaciones Totales</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-green-500 mb-2">
-                {Math.round(allPosts.reduce((total, post) => {
-                  const readTime = parseInt(post.readTime?.replace(' min', '') || '0');
-                  return total + readTime;
-                }, 0) / allPosts.length) || 0}
-              </div>
-              <div className="text-gray-400">Tiempo Promedio de Lectura</div>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   )
 }

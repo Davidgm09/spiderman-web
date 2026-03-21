@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${series.title} (${series.year}) - Análisis Completo | Spider-World`,
     description,
-    keywords: ['Spider-Man', 'serie animada', series.title, series.year.toString(), 'análisis', 'episodios'],
+    keywords: series.keywords?.length ? series.keywords : ['Spider-Man', 'serie animada', series.title, series.year.toString(), 'análisis', 'episodios'],
     alternates: { canonical: url },
     openGraph: {
       title: `${series.title} (${series.year}) - Análisis Completo | Spider-World`,
@@ -67,6 +67,8 @@ export default async function SeriesDetailPage({ params }: Props) {
   const series = await seriesService.getBySlug(slug).catch(() => null)
 
   if (!series) notFound()
+
+  seriesService.incrementViews(slug).catch(() => {})
 
   const relatedSeries = await seriesService.getFeatured(4, slug).catch(() => [])
 

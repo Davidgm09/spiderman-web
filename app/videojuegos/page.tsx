@@ -1,3 +1,5 @@
+export const revalidate = 3600
+
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
@@ -13,6 +15,20 @@ export const metadata: Metadata = {
   description:
     "Todos los videojuegos de Spider-Man: desde clásicos arcade hasta PS5. Reseñas completas, gameplay, plataformas y enlaces de compra.",
   keywords: ["Spider-Man videojuegos", "Marvel's Spider-Man", "Spider-Man PS4", "Spider-Man PS5", "Insomniac Games", "videojuegos Marvel"],
+  alternates: { canonical: '/videojuegos' },
+  openGraph: {
+    title: "Videojuegos de Spider-Man - Colección Completa | Spider-World",
+    description: "Todos los videojuegos de Spider-Man: desde clásicos arcade hasta PS5. Reseñas completas, gameplay y plataformas.",
+    type: 'website',
+    url: '/videojuegos',
+    images: ['https://media.rawg.io/media/games/5f1/5f1399f755ed3a40b04a9195f4c06be5.jpg'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Videojuegos de Spider-Man - Colección Completa | Spider-World",
+    description: "Todos los videojuegos de Spider-Man: desde clásicos arcade hasta PS5. Reseñas completas, gameplay y plataformas.",
+    images: ['https://media.rawg.io/media/games/5f1/5f1399f755ed3a40b04a9195f4c06be5.jpg'],
+  },
 }
 
 const ERA_CONFIG = {

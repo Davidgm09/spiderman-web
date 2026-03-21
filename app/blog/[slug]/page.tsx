@@ -221,8 +221,8 @@ export default async function BlogPostPage({ params }: Props) {
 
               {/* Artículos relacionados */}
               {relatedPosts.length > 0 && (
-                <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-5">
-                  <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">
+                <div className="rounded-2xl bg-gray-950/60 border border-white/5 p-5">
+                  <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-widest">
                     Más en {post.category}
                   </h3>
                   <div className="space-y-4">
@@ -253,13 +253,13 @@ export default async function BlogPostPage({ params }: Props) {
 
               {/* Keywords SEO */}
               {post.keywords.length > 0 && (
-                <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-5">
-                  <h3 className="text-white font-semibold mb-3 text-sm uppercase tracking-wider">
+                <div className="rounded-2xl bg-gray-950/60 border border-white/5 p-5">
+                  <h3 className="text-white font-semibold mb-3 text-sm uppercase tracking-widest">
                     Temas
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {post.keywords.slice(0, 8).map((kw) => (
-                      <span key={kw} className="text-xs text-gray-400 bg-gray-900/60 border border-gray-700 rounded px-2 py-1">
+                      <span key={kw} className="text-xs text-gray-400 bg-white/5 border border-white/10 rounded-full px-3 py-1">
                         {kw}
                       </span>
                     ))}

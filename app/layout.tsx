@@ -1,5 +1,5 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { Navigation } from "@/components/navigation"
@@ -8,6 +8,10 @@ import { AdSenseScript } from "@/components/ads/AdSenseScript"
 import { CookieBanner } from "@/components/CookieBanner"
 
 const inter = Inter({ subsets: ["latin"] })
+
+export const viewport: Viewport = {
+  themeColor: '#0a0a0a',
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://spider-world.es'),
@@ -34,6 +38,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className="scroll-smooth">
+      <head>
+        <link rel="preconnect" href="https://image.tmdb.org" />
+        <link rel="preconnect" href="https://comicvine.gamespot.com" />
+        <link rel="preconnect" href="https://media.rawg.io" />
+      </head>
       <body className={`${inter.className} bg-black text-white`}>
         <AdSenseScript />
         <Navigation />

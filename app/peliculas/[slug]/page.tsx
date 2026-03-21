@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${movie.title} (${movie.year}) - Análisis Completo | Spider-World`,
     description,
-    keywords: ['Spider-Man', 'película', movie.title, movie.year.toString(), 'análisis', 'reparto'],
+    keywords: movie.keywords?.length ? movie.keywords : ['Spider-Man', 'película', movie.title, movie.year.toString(), 'análisis', 'reparto'],
     alternates: { canonical: url },
     openGraph: {
       title: `${movie.title} (${movie.year}) - Análisis Completo | Spider-World`,
@@ -68,6 +68,8 @@ export default async function MoviePage({ params }: Props) {
   if (!movie) {
     notFound()
   }
+
+  movieService.incrementViews(slug).catch(() => {})
 
   // Obtener películas relacionadas
   const relatedMovies = await movieService.getFeatured(4, slug).catch(() => []);

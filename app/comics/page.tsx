@@ -1,3 +1,5 @@
+export const revalidate = 3600
+
 import Image from "next/image"
 import Link from "next/link"
 import { BookOpen, Star, ShoppingCart } from "lucide-react"
@@ -14,6 +16,20 @@ export const metadata: Metadata = {
   description:
     "Descubre los mejores cómics de Spider-Man: desde Amazing Spider-Man hasta Ultimate Spider-Man. Análisis, ratings y enlaces de compra.",
   keywords: ["Spider-Man cómics", "Marvel Comics", "Amazing Spider-Man", "Ultimate Spider-Man", "Stan Lee", "Steve Ditko"],
+  alternates: { canonical: '/comics' },
+  openGraph: {
+    title: "Cómics de Spider-Man - Colección Completa | Spider-World",
+    description: "Descubre los mejores cómics de Spider-Man: desde Amazing Spider-Man hasta Ultimate Spider-Man.",
+    type: 'website',
+    url: '/comics',
+    images: ['https://comicvine.gamespot.com/a/uploads/original/0/40/102225-7257-107616-1-ultimate-spider-man.jpg'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Cómics de Spider-Man - Colección Completa | Spider-World",
+    description: "Descubre los mejores cómics de Spider-Man: desde Amazing Spider-Man hasta Ultimate Spider-Man.",
+    images: ['https://comicvine.gamespot.com/a/uploads/original/0/40/102225-7257-107616-1-ultimate-spider-man.jpg'],
+  },
 }
 
 const ERA_CONFIG = {

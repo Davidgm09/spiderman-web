@@ -26,9 +26,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE_URL}/blog`, lastModified: new Date(), changeFrequency: 'daily', priority: 0.9 },
     { url: `${BASE_URL}/tienda`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 },
     { url: `${BASE_URL}/sobre-nosotros`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.4 },
-    { url: `${BASE_URL}/aviso-legal`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
-    { url: `${BASE_URL}/privacidad`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
-    { url: `${BASE_URL}/cookies`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
   ]
 
   // Rutas dinámicas
@@ -43,35 +40,35 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const characterRoutes: MetadataRoute.Sitemap = characters.map((c) => ({
     url: `${BASE_URL}/personajes/${c.slug}`,
-    lastModified: new Date(),
+    lastModified: c.updatedAt,
     changeFrequency: 'monthly',
     priority: 0.6,
   }))
 
   const movieRoutes: MetadataRoute.Sitemap = movies.map((m) => ({
     url: `${BASE_URL}/peliculas/${m.slug}`,
-    lastModified: new Date(),
+    lastModified: m.updatedAt,
     changeFrequency: 'monthly',
     priority: 0.7,
   }))
 
   const seriesRoutes: MetadataRoute.Sitemap = series.map((s) => ({
     url: `${BASE_URL}/series/${s.slug}`,
-    lastModified: new Date(),
+    lastModified: s.updatedAt,
     changeFrequency: 'monthly',
     priority: 0.7,
   }))
 
   const comicRoutes: MetadataRoute.Sitemap = comics.map((c) => ({
     url: `${BASE_URL}/comics/${c.slug}`,
-    lastModified: new Date(),
+    lastModified: c.updatedAt,
     changeFrequency: 'monthly',
     priority: 0.6,
   }))
 
   const gameRoutes: MetadataRoute.Sitemap = games.map((g) => ({
     url: `${BASE_URL}/videojuegos/${g.slug}`,
-    lastModified: new Date(),
+    lastModified: g.updatedAt,
     changeFrequency: 'monthly',
     priority: 0.7,
   }))

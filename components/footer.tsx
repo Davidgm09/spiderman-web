@@ -58,27 +58,27 @@ export function Footer() {
             <h4 className="text-white font-semibold mb-4">Temas Populares</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="#" className="text-gray-400 hover:text-red-500 transition-colors">
+                <Link href="/buscar?q=No+Way+Home" className="text-gray-400 hover:text-red-500 transition-colors">
                   Spider-Man No Way Home
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-gray-400 hover:text-red-500 transition-colors">
+                <Link href="/personajes/spider-man-miles-morales-alt" className="text-gray-400 hover:text-red-500 transition-colors">
                   Miles Morales
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-gray-400 hover:text-red-500 transition-colors">
+                <Link href="/buscar?q=Venom" className="text-gray-400 hover:text-red-500 transition-colors">
                   Venom Simbionte
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-gray-400 hover:text-red-500 transition-colors">
+                <Link href="/buscar?q=Spider-Verse" className="text-gray-400 hover:text-red-500 transition-colors">
                   Spider-Verse Multiverso
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-gray-400 hover:text-red-500 transition-colors">
+                <Link href="/personajes/spider-gwen-gwen-stacy-alt" className="text-gray-400 hover:text-red-500 transition-colors">
                   Gwen Stacy Spider-Woman
                 </Link>
               </li>
@@ -145,7 +145,7 @@ export function Footer() {
         {/* Copyright */}
         <div className="text-center">
           <p className="text-gray-500 text-xs">
-            © 2025 Spider-World — Sitio de fans independiente. Todos los derechos de los personajes pertenecen a sus respectivos propietarios.
+            © 2026 Spider-World — Sitio de fans independiente. Todos los derechos de los personajes pertenecen a sus respectivos propietarios.
           </p>
         </div>
       </div>
