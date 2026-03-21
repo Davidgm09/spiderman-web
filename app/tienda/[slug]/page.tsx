@@ -1,395 +1,193 @@
-import { notFound } from "next/navigation"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Star, ShoppingCart, Heart, Truck, Shield, RotateCcw, ExternalLink, Package, Zap } from "lucide-react"
+export const revalidate = 3600
+
+import type { Metadata } from "next"
 import Image from "next/image"
-import { getProductBySlug, getAllProducts, getProductsByCategory } from "@/data/products"
-import { ProductContent } from "@/types/content"
+import Link from "next/link"
+import { notFound } from "next/navigation"
+import { Star, ShoppingCart, Truck, Shield, RotateCcw, ArrowLeft } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
+import { productService } from "@/lib/database"
+import { AMAZON_TAG, SITE_URL } from "@/lib/config"
 
-interface ProductPageProps {
-  params: Promise<{ slug: string }>
-}
-
-export async function generateMetadata({ params }: ProductPageProps) {
-  const { slug } = await params
-  const product = getProductBySlug(slug)
-
-  if (!product) {
-    return {
-      title: "Producto no encontrado",
-      description: "El producto que buscas no existe."
-    }
-  }
-
-  return {
-    title: product.seoTitle,
-    description: product.seoDescription,
-    keywords: product.keywords.join(", "),
-    openGraph: {
-      title: product.title,
-      description: product.description,
-      images: [product.image],
-      type: "website"
-    }
-  }
-}
+type Props = { params: Promise<{ slug: string }> }
 
 export async function generateStaticParams() {
-  const products = getAllProducts()
-  return products.map((product) => ({
-    slug: product.slug
-  }))
+  const products = await productService.getAll()
+  return products.map((p) => ({ slug: p.slug }))
 }
 
-export default async function ProductPage({ params }: ProductPageProps) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const product = getProductBySlug(slug)
+  const product = await productService.getBySlug(slug).catch(() => null)
+  if (!product) return { title: "Producto no encontrado | Spider-World" }
 
-  if (!product) {
-    notFound()
+  const url = `${SITE_URL}/tienda/${product.slug}`
+  return {
+    title: `${product.title} | Tienda Spider-World`,
+    description: product.description?.substring(0, 155) ?? `Compra ${product.title} en Amazon a través de Spider-World.`,
+    alternates: { canonical: url },
+    openGraph: {
+      title: `${product.title} | Spider-World`,
+      description: product.description?.substring(0, 155) ?? "",
+      images: [product.image],
+      url,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${product.title} | Spider-World`,
+      images: [product.image],
+    },
   }
+}
 
-  const relatedProducts = getProductsByCategory(product.category)
-    .filter(p => p.id !== product.id)
-    .slice(0, 3)
+export default async function ProductPage({ params }: Props) {
+  const { slug } = await params
+  const product = await productService.getBySlug(slug).catch(() => null)
+  if (!product) notFound()
+
+  productService.incrementViews(slug).catch(() => {})
+
+  const related = await productService.getFeatured(4).catch(() => [])
+  const relatedFiltered = related.filter((p) => p.id !== product.id).slice(0, 3)
+
+  const amazonUrl = `https://www.amazon.es/s?k=${encodeURIComponent(`${product.title} Spider-Man`)}&tag=${AMAZON_TAG}`
 
   return (
-    <div className="pt-16">
-      {/* Hero Section */}
-      <section className="py-12 bg-gradient-to-b from-black to-red-950/10">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            {/* Product Image */}
-            <div className="relative">
-              <div className="relative bg-gray-900/50 rounded-lg overflow-hidden">
-                <Image
-                  src={product.image || "/placeholder.svg"}
-                  alt={product.title}
-                  width={600}
-                  height={600}
-                  className="w-full h-96 lg:h-[500px] object-cover"
+    <div className="pt-16 min-h-screen bg-gradient-to-b from-black via-gray-950 to-black">
+
+      {/* Hero */}
+      <section className="max-w-6xl mx-auto px-4 py-16">
+        <Link href="/tienda" className="inline-flex items-center gap-2 text-gray-400 hover:text-white text-sm mb-10 transition-colors">
+          <ArrowLeft className="w-4 h-4" />
+          Volver a la Tienda
+        </Link>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          {/* Imagen */}
+          <div className="relative rounded-2xl overflow-hidden bg-gray-950/60 border border-white/5">
+            {product.discount && (
+              <Badge className="absolute top-4 left-4 z-10 bg-red-600 text-white text-sm px-3 py-1">
+                -{product.discount}
+              </Badge>
+            )}
+            {product.inStock === false && (
+              <div className="absolute inset-0 bg-black/60 z-10 flex items-center justify-center">
+                <span className="text-white font-semibold text-lg">Sin stock</span>
+              </div>
+            )}
+            <Image
+              src={product.image}
+              alt={product.title}
+              width={600}
+              height={600}
+              className="w-full h-[420px] object-cover"
+              priority
+            />
+          </div>
+
+          {/* Info */}
+          <div className="space-y-6">
+            {product.category && (
+              <span className="text-xs font-semibold tracking-widest uppercase text-red-400">{product.category}</span>
+            )}
+
+            <h1 className="text-3xl font-bold text-white leading-tight">{product.title}</h1>
+
+            {/* Rating */}
+            <div className="flex items-center gap-2">
+              {[1,2,3,4,5].map((i) => (
+                <Star
+                  key={i}
+                  className={`w-5 h-5 ${i <= Math.floor(product.rating || 0) ? "text-yellow-400 fill-yellow-400" : "text-gray-600"}`}
                 />
-                {product.discount && (
-                  <Badge className="absolute top-4 left-4 bg-red-600 text-lg px-3 py-1">
-                    {product.discount}
-                  </Badge>
-                )}
-                {!product.inStock && (
-                  <Badge className="absolute top-4 right-4 bg-gray-600 text-lg px-3 py-1">
-                    Agotado
-                  </Badge>
-                )}
-              </div>
+              ))}
+              <span className="text-yellow-400 font-semibold ml-1">{product.rating}</span>
+              <span className="text-gray-500 text-sm">({parseInt(product.reviews || "0").toLocaleString("es-ES")} reseñas)</span>
             </div>
 
-            {/* Product Info */}
-            <div className="space-y-6">
-              <div>
-                <Badge className="mb-3 bg-blue-600">{product.category}</Badge>
-                <h1 className="text-3xl lg:text-4xl font-bold text-white mb-2">
-                  {product.title}
-                </h1>
-                <p className="text-xl text-gray-300 mb-4">{product.subtitle}</p>
-                
-                {/* Rating and Reviews */}
-                <div className="flex items-center space-x-4 mb-6">
-                  <div className="flex items-center">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className={`w-5 h-5 ${
-                          i < Math.floor(product.rating) 
-                            ? "text-yellow-400 fill-current" 
-                            : "text-gray-400"
-                        }`}
-                      />
-                    ))}
-                    <span className="ml-2 text-white font-semibold">{product.rating}</span>
-                  </div>
-                  <span className="text-gray-400">({product.reviews.toLocaleString()} reseñas)</span>
-                </div>
-
-                {/* Price */}
-                <div className="flex items-center space-x-4 mb-6">
-                  <span className="text-4xl font-bold text-red-500">{product.price}</span>
-                  {product.originalPrice && (
-                    <span className="text-xl text-gray-400 line-through">{product.originalPrice}</span>
-                  )}
-                </div>
-
-                {/* Brand and SKU */}
-                <div className="flex items-center space-x-6 mb-6 text-sm text-gray-400">
-                  {product.brand && (
-                    <div>
-                      <span className="font-semibold">Marca:</span> {product.brand}
-                    </div>
-                  )}
-                  {product.sku && (
-                    <div>
-                      <span className="font-semibold">SKU:</span> {product.sku}
-                    </div>
-                  )}
-                </div>
-
-                {/* Description */}
-                <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                  {product.description}
-                </p>
-
-                {/* Action Buttons */}
-                <div className="space-y-4">
-                  <Button
-                    className={`w-full text-lg py-6 ${
-                      product.inStock
-                        ? "bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700"
-                        : "bg-gray-600 cursor-not-allowed"
-                    } text-white`}
-                    disabled={!product.inStock}
-                    asChild={product.inStock}
-                  >
-                    {product.inStock ? (
-                      <a href={product.amazonUrl} target="_blank" rel="noopener noreferrer">
-                        <ShoppingCart className="w-5 h-5 mr-3" />
-                        Comprar en Amazon
-                        <ExternalLink className="w-4 h-4 ml-2" />
-                      </a>
-                    ) : (
-                      <>
-                        <Package className="w-5 h-5 mr-3" />
-                        Agotado
-                      </>
-                    )}
-                  </Button>
-                  
-                  <Button variant="outline" className="w-full text-lg py-6 border-red-600/50 text-white hover:bg-red-600/10">
-                    <Heart className="w-5 h-5 mr-3" />
-                    Agregar a Favoritos
-                  </Button>
-                </div>
-
-                {/* Benefits */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8 pt-6 border-t border-gray-700">
-                  <div className="flex items-center space-x-2 text-green-400">
-                    <Truck className="w-5 h-5" />
-                    <span className="text-sm">Envío Gratis</span>
-                  </div>
-                  <div className="flex items-center space-x-2 text-blue-400">
-                    <Shield className="w-5 h-5" />
-                    <span className="text-sm">Garantía Amazon</span>
-                  </div>
-                  <div className="flex items-center space-x-2 text-purple-400">
-                    <RotateCcw className="w-5 h-5" />
-                    <span className="text-sm">30 días devolución</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Product Details */}
-      <section className="py-16 bg-gradient-to-b from-red-950/10 to-black">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Description */}
-            <div className="lg:col-span-2">
-              <Card className="bg-gray-900/50 border-red-600/20">
-                <CardHeader>
-                  <CardTitle className="text-white text-2xl">Descripción del Producto</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-300 leading-relaxed text-lg">
-                    {product.longDescription}
-                  </p>
-                </CardContent>
-              </Card>
-
-              {/* Features */}
-              <Card className="bg-gray-900/50 border-red-600/20 mt-8">
-                <CardHeader>
-                  <CardTitle className="text-white text-2xl flex items-center">
-                    <Zap className="w-6 h-6 mr-2 text-yellow-400" />
-                    Características Principales
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {product.features.map((feature, index) => (
-                      <div key={index} className="flex items-start space-x-3">
-                        <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
-                        <div>
-                          <h4 className="text-white font-semibold">{feature.name}</h4>
-                          <p className="text-gray-400 text-sm">{feature.description}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Variants */}
-              {product.variants && product.variants.length > 0 && (
-                <Card className="bg-gray-900/50 border-red-600/20 mt-8">
-                  <CardHeader>
-                    <CardTitle className="text-white text-2xl">Variantes Disponibles</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                      {product.variants.map((variant, index) => (
-                        <Card key={index} className="bg-gray-800/50 border-gray-600/20">
-                          <CardContent className="p-4">
-                            <h4 className="text-white font-semibold mb-2">{variant.name}</h4>
-                            <div className="flex items-center justify-between">
-                              <div>
-                                <span className="text-red-500 font-bold">{variant.price}</span>
-                                {variant.originalPrice && (
-                                  <span className="text-gray-400 text-sm line-through ml-2">
-                                    {variant.originalPrice}
-                                  </span>
-                                )}
-                              </div>
-                              <Badge className={variant.inStock ? "bg-green-600" : "bg-gray-600"}>
-                                {variant.inStock ? "Disponible" : "Agotado"}
-                              </Badge>
-                            </div>
-                          </CardContent>
-                        </Card>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
+            {/* Precio */}
+            <div className="flex items-baseline gap-3">
+              <span className="text-4xl font-bold text-white">{product.price}€</span>
+              {product.originalPrice && (
+                <span className="text-xl text-gray-500 line-through">{product.originalPrice}€</span>
+              )}
+              {product.discount && (
+                <span className="text-green-400 text-sm font-semibold">Ahorra {product.discount}</span>
               )}
             </div>
 
-            {/* Specifications */}
-            <div>
-              {product.specifications && (
-                <Card className="bg-gray-900/50 border-red-600/20">
-                  <CardHeader>
-                    <CardTitle className="text-white text-xl">Especificaciones</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-3">
-                      {Object.entries(product.specifications).map(([key, value]) => (
-                        <div key={key} className="flex justify-between items-center py-2 border-b border-gray-700 last:border-b-0">
-                          <span className="text-gray-400 text-sm">{key}:</span>
-                          <span className="text-white text-sm font-medium">{value}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              )}
+            {/* Descripción */}
+            {product.description && (
+              <p className="text-gray-300 leading-relaxed">{product.description}</p>
+            )}
 
-              {/* Tags */}
-              <Card className="bg-gray-900/50 border-red-600/20 mt-6">
-                <CardHeader>
-                  <CardTitle className="text-white text-xl">Etiquetas</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {product.tags.map((tag, index) => (
-                      <Badge key={index} variant="outline" className="border-gray-600 text-gray-300">
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
+            {/* Botón Amazon */}
+            <a
+              href={amazonUrl}
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+              className={`flex items-center justify-center gap-3 w-full py-4 rounded-2xl text-white font-bold text-lg transition-all duration-200 hover:scale-[1.02] shadow-lg ${
+                product.inStock === false
+                  ? "bg-gray-700 cursor-not-allowed pointer-events-none"
+                  : "bg-orange-500 hover:bg-orange-400 shadow-orange-900/40"
+              }`}
+            >
+              <ShoppingCart className="w-5 h-5" />
+              {product.inStock === false ? "Sin stock" : "Comprar en Amazon"}
+            </a>
 
-      {/* Related Products */}
-      {relatedProducts.length > 0 && (
-        <section className="py-16 bg-gradient-to-b from-black to-red-950/10">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">
-              Productos Relacionados
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {relatedProducts.map((relatedProduct) => (
-                <Card
-                  key={relatedProduct.id}
-                  className="bg-gray-900/50 border-red-600/20 hover:border-red-600/50 transition-all duration-300 hover:scale-105"
-                >
-                  <CardHeader className="p-0">
-                    <div className="relative">
-                      <Image
-                        src={relatedProduct.image || "/placeholder.svg"}
-                        alt={relatedProduct.title}
-                        width={300}
-                        height={200}
-                        className="w-full h-48 object-cover rounded-t-lg"
-                      />
-                      {relatedProduct.discount && (
-                        <Badge className="absolute top-2 left-2 bg-red-600">
-                          {relatedProduct.discount}
-                        </Badge>
-                      )}
-                    </div>
-                  </CardHeader>
-                  <CardContent className="p-4">
-                    <h3 className="text-white font-semibold mb-2 line-clamp-2">
-                      {relatedProduct.title}
-                    </h3>
-                    <div className="flex items-center mb-2">
-                      <div className="flex items-center">
-                        {[...Array(5)].map((_, i) => (
-                          <Star
-                            key={i}
-                            className={`w-4 h-4 ${
-                              i < Math.floor(relatedProduct.rating)
-                                ? "text-yellow-400 fill-current"
-                                : "text-gray-400"
-                            }`}
-                          />
-                        ))}
-                      </div>
-                      <span className="text-sm text-gray-400 ml-2">
-                        ({relatedProduct.reviews})
-                      </span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <span className="text-xl font-bold text-red-500">
-                          {relatedProduct.price}
-                        </span>
-                        {relatedProduct.originalPrice && (
-                          <span className="text-sm text-gray-400 line-through ml-2">
-                            {relatedProduct.originalPrice}
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                    <Button
-                      className="w-full mt-4 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white"
-                      asChild
-                    >
-                      <a href={`/tienda/${relatedProduct.slug}`}>
-                        Ver Producto
-                      </a>
-                    </Button>
-                  </CardContent>
-                </Card>
+            {/* Beneficios */}
+            <div className="grid grid-cols-3 gap-3 pt-4 border-t border-white/10">
+              {[
+                { icon: Truck,     color: "text-green-400",  label: "Envío Prime" },
+                { icon: Shield,    color: "text-blue-400",   label: "Garantía Amazon" },
+                { icon: RotateCcw, color: "text-purple-400", label: "30 días devolución" },
+              ].map(({ icon: Icon, color, label }) => (
+                <div key={label} className="flex flex-col items-center gap-1 text-center">
+                  <Icon className={`w-5 h-5 ${color}`} />
+                  <span className="text-xs text-gray-400">{label}</span>
+                </div>
               ))}
             </div>
+
+            {/* Aviso afiliado */}
+            <p className="text-xs text-gray-600">
+              Enlace de afiliado — si compras a través de este enlace recibimos una pequeña comisión sin coste adicional para ti.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Productos relacionados */}
+      {relatedFiltered.length > 0 && (
+        <section className="max-w-6xl mx-auto px-4 pb-20">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-1 h-7 rounded-full bg-gradient-to-b from-red-500 to-red-800" />
+            <h2 className="text-xl font-bold text-white">Productos relacionados</h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+            {relatedFiltered.map((p) => (
+              <Link key={p.id} href={`/tienda/${p.slug}`} className="group bg-gray-950/60 border border-white/5 hover:border-white/15 rounded-2xl overflow-hidden transition-all">
+                <Image
+                  src={p.image}
+                  alt={p.title}
+                  width={300}
+                  height={200}
+                  className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="p-4">
+                  <h3 className="text-white text-sm font-semibold line-clamp-2 mb-2">{p.title}</h3>
+                  <div className="flex items-center justify-between">
+                    <span className="text-white font-bold">{p.price}€</span>
+                    <span className="text-xs text-orange-400 font-semibold">Ver →</span>
+                  </div>
+                </div>
+              </Link>
+            ))}
           </div>
         </section>
       )}
 
-      {/* Disclaimer */}
-      <section className="py-8 bg-gray-900/20">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-sm text-gray-500">
-            * Enlaces de afiliado - Ganamos una pequeña comisión sin costo extra para ti cuando compras a través de nuestros enlaces.
-            Esto nos ayuda a mantener el sitio web y seguir ofreciendo contenido de calidad sobre Spider-Man.
-          </p>
-        </div>
-      </section>
     </div>
   )
-} 
+}
