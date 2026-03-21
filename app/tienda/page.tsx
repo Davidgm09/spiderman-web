@@ -1,330 +1,208 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Star, ShoppingCart, Heart, Truck, Shield, RotateCcw, Filter } from "lucide-react"
-import Image from "next/image"
-import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
-import { productService } from "@/lib/database"
-import { AMAZON_TAG } from "@/lib/config"
+export const revalidate = 3600
+
 import type { Metadata } from "next"
-import { Product } from "@prisma/client"
+import Image from "next/image"
+import { Star, ShoppingCart, Truck, Shield, RotateCcw } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
+import { InContentAd } from "@/components/ads/GoogleAdsense"
+import { productService } from "@/lib/database"
+import { AMAZON_TAG, SITE_URL } from "@/lib/config"
+import type { Product } from "@prisma/client"
 
 export const metadata: Metadata = {
   title: "Tienda Spider-Man - Figuras, Camisetas, Funkos y Más | Spider-World",
   description:
-    "Los mejores productos oficiales de Spider-Man con descuentos exclusivos. Figuras, camisetas, funkos, mochilas y más. Envío rápido y garantía Amazon.",
-  keywords: ["tienda Spider-Man", "productos Spider-Man", "figuras Spider-Man", "camisetas Marvel", "funkos", "merchandising"]
+    "Los mejores productos oficiales de Spider-Man en Amazon: figuras, camisetas, Funko Pop, mochilas y coleccionables. Envío rápido y garantía Amazon.",
+  keywords: ["tienda Spider-Man", "productos Spider-Man", "figuras Spider-Man", "camisetas Marvel", "funkos", "merchandising"],
+  alternates: { canonical: `${SITE_URL}/tienda` },
+  openGraph: {
+    title: "Tienda Spider-Man - Figuras, Camisetas, Funkos y Más | Spider-World",
+    description: "Los mejores productos oficiales de Spider-Man en Amazon.",
+    url: `${SITE_URL}/tienda`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tienda Spider-Man | Spider-World",
+    description: "Los mejores productos oficiales de Spider-Man en Amazon.",
+  },
 }
 
-// Función para obtener categorías con conteo
-function getCategoriesWithCount(products: Product[]) {
-  const categoryCounts: { [key: string]: number } = {};
-  
-  products.forEach(product => {
-    if (product.category) {
-      categoryCounts[product.category] = (categoryCounts[product.category] || 0) + 1;
-    }
-  });
-  
-  return Object.entries(categoryCounts).map(([name, count]) => ({
-    name,
-    count,
-    color: getColorForCategory(name)
-  }));
-}
-
-// Función para asignar colores a categorías
-function getColorForCategory(category: string): string {
-  const colorMap: { [key: string]: string } = {
-    'Figuras': 'red',
-    'Ropa': 'blue',
-    'Accesorios': 'purple',
-    'Juguetes': 'green',
-    'Coleccionables': 'orange',
-    'Tecnología': 'yellow'
-  };
-  
-  return colorMap[category] || 'gray';
-}
-
-// Función para formatear características
-function formatFeatures(features: string | string[]): string[] {
-  if (Array.isArray(features)) {
-    return features;
-  }
-  if (typeof features === 'string') {
-    return features.split(',').map(f => f.trim());
-  }
-  return [];
-}
-
-// Función para generar URL de Amazon
 function generateAmazonUrl(product: Product): string {
-  const query = encodeURIComponent(`${product.title} Spider-Man`);
-  return `https://www.amazon.es/s?k=${query}&tag=${AMAZON_TAG}`;
+  const query = encodeURIComponent(`${product.title} Spider-Man`)
+  return `https://www.amazon.es/s?k=${query}&tag=${AMAZON_TAG}`
+}
+
+const CATEGORY_COLORS: Record<string, string> = {
+  Figuras:       "text-red-400 border-red-500/30 bg-red-500/10",
+  Ropa:          "text-blue-400 border-blue-500/30 bg-blue-500/10",
+  Accesorios:    "text-purple-400 border-purple-500/30 bg-purple-500/10",
+  Juguetes:      "text-green-400 border-green-500/30 bg-green-500/10",
+  Coleccionables:"text-orange-400 border-orange-500/30 bg-orange-500/10",
+  Tecnología:    "text-yellow-400 border-yellow-500/30 bg-yellow-500/10",
 }
 
 export default async function TiendaPage() {
-  // Obtener productos de la base de datos
-  const allProducts = await productService.getAll();
-  
-  // Obtener productos destacados (los mejor valorados)
-  const featuredProducts = allProducts.slice(0, 12);
-  
-  // Obtener los más vendidos (productos con más reviews)
-  const bestSellers = [...allProducts]
-    .sort((a, b) => parseInt(b.reviews || '0') - parseInt(a.reviews || '0'))
-    .slice(0, 6);
-  
-  // Obtener categorías con conteo
-  const categories = getCategoriesWithCount(allProducts);
+  const allProducts = await productService.getAll()
+  const featured = allProducts.slice(0, 12)
+
+  const categoryCounts: Record<string, number> = {}
+  allProducts.forEach((p) => {
+    if (p.category) categoryCounts[p.category] = (categoryCounts[p.category] || 0) + 1
+  })
+  const categories = Object.entries(categoryCounts)
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-950 via-gray-900 to-blue-950">
-      {/* Header */}
-      <section className="relative py-20 px-4 text-center">
-        <div className="absolute inset-0 bg-gradient-to-r from-red-600/20 to-blue-600/20" />
-        <div className="relative z-10 max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent">
-            Tienda Spider-Man Oficial
+
+      {/* Hero */}
+      <section className="relative pt-28 pb-16 px-4 text-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-red-600/10 to-blue-600/10" />
+        <div className="relative z-10 max-w-3xl mx-auto">
+          <p className="text-red-400 text-sm font-semibold tracking-widest uppercase mb-3">Spider-World · Tienda</p>
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent">
+            Productos Oficiales Spider-Man
           </h1>
-          <p className="text-xl text-gray-300 mb-8">
-            Los mejores productos oficiales de Spider-Man con descuentos exclusivos
+          <p className="text-gray-400 text-lg mb-8">
+            Figuras, camisetas, Funko Pop y coleccionables. Todo a través de Amazon con envío rápido.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Badge className="bg-red-600 text-white px-4 py-2">
-              {allProducts.length} Productos
-            </Badge>
-            <Badge className="bg-blue-600 text-white px-4 py-2">
-              Envío Gratis
-            </Badge>
-            <Badge className="bg-purple-600 text-white px-4 py-2">
-              Garantía Amazon
-            </Badge>
+          <div className="flex flex-wrap justify-center gap-3">
+            <span className="px-4 py-1.5 rounded-full text-sm bg-white/5 border border-white/10 text-gray-300">{allProducts.length} productos</span>
+            <span className="px-4 py-1.5 rounded-full text-sm bg-white/5 border border-white/10 text-gray-300">Envío Prime</span>
+            <span className="px-4 py-1.5 rounded-full text-sm bg-white/5 border border-white/10 text-gray-300">Garantía Amazon</span>
           </div>
         </div>
       </section>
 
-      {/* Aviso de afiliado */}
-      <div className="max-w-7xl mx-auto px-4 mb-2">
-        <p className="text-xs text-gray-500 text-center bg-gray-900/50 border border-gray-700/30 rounded-lg py-2 px-4">
-          <strong className="text-gray-400">Aviso:</strong> Spider-World participa en el Programa de Afiliados de Amazon EU.
-          Si compras a través de nuestros enlaces, podríamos recibir una pequeña comisión sin coste adicional para ti.{" "}
-          <a href="/aviso-legal" className="text-red-400 hover:text-red-300 underline">Más información</a>.
+      {/* Aviso afiliado */}
+      <div className="max-w-5xl mx-auto px-4 mb-8">
+        <p className="text-xs text-gray-500 text-center bg-gray-950/60 border border-white/5 rounded-xl py-2.5 px-4">
+          Spider-World participa en el Programa de Afiliados de Amazon EU. Si compras a través de nuestros enlaces recibimos una pequeña comisión sin coste adicional para ti.{" "}
+          <a href="/aviso-legal" className="text-red-400 hover:text-red-300">Más información</a>.
         </p>
       </div>
 
-      {/* Benefits */}
-      <section className="py-12 px-4 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="flex items-center justify-center space-x-3 bg-gray-800/50 p-6 rounded-lg">
-            <Truck className="w-8 h-8 text-green-500" />
-            <div>
-              <div className="font-semibold text-white">Envío Gratis</div>
-              <div className="text-sm text-gray-400">En pedidos +$50</div>
-            </div>
-          </div>
-          <div className="flex items-center justify-center space-x-3 bg-gray-800/50 p-6 rounded-lg">
-            <Shield className="w-8 h-8 text-blue-500" />
-            <div>
-              <div className="font-semibold text-white">Garantía Amazon</div>
-              <div className="text-sm text-gray-400">Productos oficiales</div>
-            </div>
-          </div>
-          <div className="flex items-center justify-center space-x-3 bg-gray-800/50 p-6 rounded-lg">
-            <RotateCcw className="w-8 h-8 text-purple-500" />
-            <div>
-              <div className="font-semibold text-white">Devoluciones</div>
-              <div className="text-sm text-gray-400">30 días gratis</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Categories */}
-      <section className="py-8 px-4 max-w-7xl mx-auto">
-        <h2 className="text-2xl font-bold text-white mb-6 text-center">Categorías</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-          {categories.map((category, index) => (
-            <Card
-              key={index}
-              className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all cursor-pointer"
-            >
-              <CardContent className="p-4 text-center">
-                <h3 className="font-semibold text-white mb-1">{category.name}</h3>
-                <p className="text-sm text-gray-400">{category.count} productos</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
-
-      {/* Best Sellers */}
-      <section className="py-12 px-4 max-w-7xl mx-auto">
-        <h2 className="text-2xl font-bold text-center text-white mb-8">🔥 Más Vendidos Esta Semana</h2>
-        <div className="flex flex-wrap justify-center gap-4">
-          {bestSellers.map((item) => (
-            <div key={item.id} className="bg-gray-800/50 px-4 py-2 rounded-full border border-red-600/20">
-              <span className="text-white font-medium">{item.title}</span>
-              <span className="text-red-400 text-sm ml-2">• {parseInt(item.reviews || '0').toLocaleString()}+ vendidos</span>
+      {/* Beneficios */}
+      <section className="max-w-5xl mx-auto px-4 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {[
+            { icon: Truck,     color: "text-green-400",  title: "Envío Prime",       sub: "Entrega en 1-2 días" },
+            { icon: Shield,    color: "text-blue-400",   title: "Garantía Amazon",   sub: "Productos oficiales" },
+            { icon: RotateCcw, color: "text-purple-400", title: "Devoluciones",      sub: "30 días sin coste" },
+          ].map(({ icon: Icon, color, title, sub }) => (
+            <div key={title} className="flex items-center gap-4 bg-gray-950/60 border border-white/5 rounded-2xl p-5">
+              <Icon className={`w-8 h-8 shrink-0 ${color}`} />
+              <div>
+                <div className="font-semibold text-white">{title}</div>
+                <div className="text-sm text-gray-400">{sub}</div>
+              </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Ad Space */}
-      <div className="max-w-7xl mx-auto px-4 py-8">
+      {/* Categorías */}
+      {categories.length > 0 && (
+        <section className="max-w-5xl mx-auto px-4 mb-12">
+          <h2 className="text-xl font-bold text-white mb-4">Categorías</h2>
+          <div className="flex flex-wrap gap-3">
+            {categories.map(([name, count]) => (
+              <span
+                key={name}
+                className={`px-4 py-2 rounded-full text-sm font-medium border ${CATEGORY_COLORS[name] ?? "text-gray-400 border-white/10 bg-white/5"}`}
+              >
+                {name} <span className="opacity-60">({count})</span>
+              </span>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <div className="max-w-7xl mx-auto px-4 mb-10">
         <InContentAd />
       </div>
 
-      {/* Products Grid */}
-      <section className="py-12 px-4 max-w-7xl mx-auto">
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="text-3xl font-bold text-white">Productos Destacados</h2>
-          <div className="flex items-center space-x-4">
-            <Button variant="outline" className="border-gray-600 text-gray-300">
-              <Filter className="w-4 h-4 mr-2" />
-              Filtros
-            </Button>
-          </div>
+      {/* Grid de productos */}
+      <section className="max-w-7xl mx-auto px-4 pb-20">
+        <div className="flex items-center gap-3 mb-8">
+          <div className="w-1 h-7 rounded-full bg-gradient-to-b from-red-500 to-red-800" />
+          <h2 className="text-2xl font-bold text-white">Productos Destacados</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {featuredProducts.map((product) => (
-            <Card
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {featured.map((product) => (
+            <div
               key={product.id}
-              className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all group relative overflow-hidden"
+              className="group bg-gray-950/60 border border-white/5 hover:border-white/15 rounded-2xl overflow-hidden transition-all duration-300 flex flex-col"
             >
-              {product.discount && (
-                <Badge className="absolute top-2 left-2 bg-red-600 z-10">-{product.discount}%</Badge>
-              )}
-              <CardHeader className="p-0">
-                <div className="relative">
-                  <Image
-                    src={product.image}
-                    alt={product.title}
-                    width={300}
-                    height={300}
-                    className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute top-2 right-2">
-                    <Button size="sm" variant="ghost" className="text-white hover:text-red-500 bg-black/50">
-                      <Heart className="w-4 h-4" />
-                    </Button>
-                  </div>
-                </div>
-              </CardHeader>
-              
-              <CardContent className="p-4">
-                <Badge className="mb-2 bg-blue-600">{product.category}</Badge>
-                <CardTitle className="text-white mb-2 text-lg leading-tight line-clamp-2">
-                  {product.title}
-                </CardTitle>
-
-                <div className="flex items-center mb-3">
-                  <div className="flex items-center">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className={`w-4 h-4 ${
-                          i < Math.floor(product.rating || 0) ? "text-yellow-400 fill-current" : "text-gray-400"
-                        }`}
-                      />
-                    ))}
-                  </div>
-                  <span className="text-sm text-gray-400 ml-2">({parseInt(product.reviews || '0').toLocaleString()})</span>
-                </div>
-
-                <div className="flex items-center justify-between mb-4">
-                  <div>
-                    <span className="text-2xl font-bold text-red-500">${product.price}</span>
-                    {product.originalPrice && (
-                      <span className="text-sm text-gray-400 line-through ml-2">${product.originalPrice}</span>
-                    )}
-                  </div>
-                </div>
-
-                {product.features && (
-                  <div className="mb-4">
-                    <h4 className="text-sm font-semibold text-white mb-2">Características:</h4>
-                    <ul className="space-y-1">
-                      {formatFeatures(product.features).slice(0, 2).map((feature, i) => (
-                        <li key={i} className="text-xs text-gray-400">
-                          • {feature}
-                        </li>
-                      ))}
-                    </ul>
+              {/* Imagen */}
+              <div className="relative">
+                {product.discount && (
+                  <Badge className="absolute top-2 left-2 z-10 bg-red-600 text-white text-xs">
+                    -{product.discount}
+                  </Badge>
+                )}
+                {product.inStock === false && (
+                  <div className="absolute inset-0 bg-black/60 z-10 flex items-center justify-center">
+                    <span className="text-white text-sm font-semibold">Sin stock</span>
                   </div>
                 )}
+                <Image
+                  src={product.image}
+                  alt={product.title}
+                  width={300}
+                  height={300}
+                  className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
 
-                <div className="space-y-2">
-                  <Button
-                    className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white"
-                    asChild
-                  >
-                    <a href={`/tienda/${product.slug}`}>
-                      Ver Producto
-                    </a>
-                  </Button>
-                  
-                  <Button
-                    className="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white"
-                    asChild
-                  >
-                    <a href={generateAmazonUrl(product)} target="_blank" rel="noopener noreferrer">
-                      <ShoppingCart className="w-4 h-4 mr-2" />
-                      Comprar en Amazon
-                    </a>
-                  </Button>
+              {/* Info */}
+              <div className="p-4 flex flex-col flex-1">
+                {product.category && (
+                  <span className={`text-xs font-semibold mb-2 ${CATEGORY_COLORS[product.category] ?? "text-gray-400"}`}>
+                    {product.category}
+                  </span>
+                )}
+
+                <h3 className="text-white font-semibold text-sm leading-snug line-clamp-2 mb-3 flex-1">
+                  {product.title}
+                </h3>
+
+                {/* Rating */}
+                <div className="flex items-center gap-1.5 mb-3">
+                  {[1,2,3,4,5].map((i) => (
+                    <Star
+                      key={i}
+                      className={`w-3.5 h-3.5 ${i <= Math.floor(product.rating || 0) ? "text-yellow-400 fill-yellow-400" : "text-gray-600"}`}
+                    />
+                  ))}
+                  <span className="text-gray-500 text-xs ml-1">({parseInt(product.reviews || "0").toLocaleString("es-ES")})</span>
                 </div>
-              </CardContent>
-            </Card>
+
+                {/* Precio */}
+                <div className="flex items-baseline gap-2 mb-4">
+                  <span className="text-xl font-bold text-white">{product.price}€</span>
+                  {product.originalPrice && (
+                    <span className="text-sm text-gray-500 line-through">{product.originalPrice}€</span>
+                  )}
+                </div>
+
+                {/* Botón */}
+                <a
+                  href={generateAmazonUrl(product)}
+                  target="_blank"
+                  rel="noopener noreferrer sponsored"
+                  className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-orange-500 hover:bg-orange-400 text-white text-sm font-semibold transition-colors duration-200"
+                >
+                  <ShoppingCart className="w-4 h-4" />
+                  Ver en Amazon
+                </a>
+              </div>
+            </div>
           ))}
         </div>
-
-        {/* Load More */}
-        <div className="text-center mt-12">
-          <Button variant="outline" className="border-red-600 text-red-400 hover:bg-red-600 hover:text-white">
-            Ver Más Productos
-          </Button>
-        </div>
       </section>
 
-      {/* Sidebar Ad */}
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <SidebarAd />
-      </div>
-
-      {/* Stats Section */}
-      <section className="py-16 px-4 max-w-7xl mx-auto">
-        <div className="bg-gray-800/50 rounded-lg p-8 text-center">
-          <h3 className="text-2xl font-bold text-white mb-6">
-            Estadísticas de la Tienda
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div>
-              <div className="text-3xl font-bold text-red-500 mb-2">{allProducts.length}</div>
-              <div className="text-gray-400">Productos Disponibles</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-blue-500 mb-2">{categories.length}</div>
-              <div className="text-gray-400">Categorías</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-purple-500 mb-2">
-                {Math.round(allProducts.reduce((total, product) => total + (product.rating || 0), 0) / allProducts.length * 10) / 10 || 0}
-              </div>
-              <div className="text-gray-400">Rating Promedio</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-green-500 mb-2">
-                {allProducts.reduce((total, product) => total + parseInt(product.reviews || '0'), 0).toLocaleString()}
-              </div>
-              <div className="text-gray-400">Reviews Totales</div>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   )
 }
