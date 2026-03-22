@@ -39,6 +39,11 @@ const nextConfig = {
       { protocol: 'https', hostname: 'acdn-us.mitiendanube.com' },
       { protocol: 'https', hostname: 'www.eslahoradelastortas.com' },
       { protocol: 'https', hostname: 'www.milcomics.com' },
+      // LEGO set images
+      { protocol: 'https', hostname: 'www.lego.com' },
+      // Funko Pop images
+      { protocol: 'https', hostname: 'boomloot.com' },
+      { protocol: 'https', hostname: 'pop-figures.com' },
     ],
   },
   async redirects() {
