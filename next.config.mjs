@@ -28,6 +28,17 @@ const nextConfig = {
       { protocol: 'https', hostname: 'vignette3.wikia.nocookie.net' },
       { protocol: 'https', hostname: 'posterspy.com' },
       { protocol: 'https', hostname: 'almanaquerevista.com' },
+      // Tienda — product images from verified retailers
+      { protocol: 'https', hostname: 'www.actionfigure411.com' },
+      { protocol: 'https', hostname: 'images.icecat.biz' },
+      { protocol: 'https', hostname: 'cdn11.bigcommerce.com' },
+      { protocol: 'https', hostname: 'www.popfigures.com' },
+      { protocol: 'https', hostname: 'cdn.media.amplience.net' },
+      { protocol: 'https', hostname: 'imagikids.com' },
+      { protocol: 'https', hostname: 'www.characterstop.com' },
+      { protocol: 'https', hostname: 'acdn-us.mitiendanube.com' },
+      { protocol: 'https', hostname: 'www.eslahoradelastortas.com' },
+      { protocol: 'https', hostname: 'www.milcomics.com' },
     ],
   },
   async redirects() {
