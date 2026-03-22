@@ -110,7 +110,7 @@ export default async function TiendaPage({ searchParams }: Props) {
 
       {/* Barra de filtros */}
       <div className="sticky top-16 z-20 bg-gray-950/80 backdrop-blur-md border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center gap-3 overflow-x-auto scrollbar-hide">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-center gap-3 overflow-x-auto scrollbar-hide">
           <Link
             href={query ? `/tienda?q=${encodeURIComponent(query)}` : "/tienda"}
             className={`shrink-0 px-4 py-1.5 rounded-full text-sm font-medium border transition-colors ${
