@@ -1,13 +1,11 @@
-export const revalidate = 3600
-
 import type { Metadata } from "next"
 import Image from "next/image"
+import Link from "next/link"
 import { Star, ShoppingCart, Truck, Shield, RotateCcw } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { InContentAd } from "@/components/ads/GoogleAdsense"
 import { productService } from "@/lib/database"
-import { AMAZON_TAG, SITE_URL } from "@/lib/config"
-import type { Product } from "@prisma/client"
+import { SITE_URL } from "@/lib/config"
 
 export const metadata: Metadata = {
   title: "Tienda Spider-Man - Figuras, Camisetas, Funkos y Más | Spider-World",
@@ -28,11 +26,6 @@ export const metadata: Metadata = {
   },
 }
 
-function generateAmazonUrl(product: Product): string {
-  const query = encodeURIComponent(`${product.title} Spider-Man`)
-  return `https://www.amazon.es/s?k=${query}&tag=${AMAZON_TAG}`
-}
-
 const CATEGORY_COLORS: Record<string, string> = {
   Figuras:       "text-red-400 border-red-500/30 bg-red-500/10",
   Ropa:          "text-blue-400 border-blue-500/30 bg-blue-500/10",
@@ -42,9 +35,15 @@ const CATEGORY_COLORS: Record<string, string> = {
   Tecnología:    "text-yellow-400 border-yellow-500/30 bg-yellow-500/10",
 }
 
-export default async function TiendaPage() {
+type Props = { searchParams: Promise<{ categoria?: string }> }
+
+export default async function TiendaPage({ searchParams }: Props) {
+  const { categoria } = await searchParams
   const allProducts = await productService.getAll()
-  const featured = allProducts.slice(0, 12)
+
+  const filtered = categoria
+    ? allProducts.filter((p) => p.category === categoria)
+    : allProducts
 
   const categoryCounts: Record<string, number> = {}
   allProducts.forEach((p) => {
@@ -71,6 +70,12 @@ export default async function TiendaPage() {
             <span className="px-4 py-1.5 rounded-full text-sm bg-white/5 border border-white/10 text-gray-300">Envío Prime</span>
             <span className="px-4 py-1.5 rounded-full text-sm bg-white/5 border border-white/10 text-gray-300">Garantía Amazon</span>
           </div>
+          {categoria && (
+            <p className="mt-4 text-sm text-gray-500">
+              Filtrando por <span className="text-white font-medium">{categoria}</span>
+              {" · "}<Link href="/tienda" className="text-red-400 hover:text-red-300">Ver todos</Link>
+            </p>
+          )}
         </div>
       </section>
 
@@ -106,13 +111,28 @@ export default async function TiendaPage() {
         <section className="max-w-5xl mx-auto px-4 mb-12">
           <h2 className="text-xl font-bold text-white mb-4">Categorías</h2>
           <div className="flex flex-wrap gap-3">
+            <Link
+              href="/tienda"
+              className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors ${
+                !categoria
+                  ? "bg-white/15 border-white/30 text-white"
+                  : "text-gray-400 border-white/10 bg-white/5 hover:bg-white/10"
+              }`}
+            >
+              Todos <span className="opacity-60">({allProducts.length})</span>
+            </Link>
             {categories.map(([name, count]) => (
-              <span
+              <Link
                 key={name}
-                className={`px-4 py-2 rounded-full text-sm font-medium border ${CATEGORY_COLORS[name] ?? "text-gray-400 border-white/10 bg-white/5"}`}
+                href={categoria === name ? "/tienda" : `/tienda?categoria=${encodeURIComponent(name)}`}
+                className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors ${
+                  categoria === name
+                    ? (CATEGORY_COLORS[name] ?? "text-gray-400 border-white/10 bg-white/5") + " ring-2 ring-white/20"
+                    : (CATEGORY_COLORS[name] ?? "text-gray-400 border-white/10 bg-white/5") + " opacity-70 hover:opacity-100"
+                }`}
               >
                 {name} <span className="opacity-60">({count})</span>
-              </span>
+              </Link>
             ))}
           </div>
         </section>
@@ -126,13 +146,16 @@ export default async function TiendaPage() {
       <section className="max-w-7xl mx-auto px-4 pb-20">
         <div className="flex items-center gap-3 mb-8">
           <div className="w-1 h-7 rounded-full bg-gradient-to-b from-red-500 to-red-800" />
-          <h2 className="text-2xl font-bold text-white">Productos Destacados</h2>
+          <h2 className="text-2xl font-bold text-white">
+            {categoria ? `${categoria} (${filtered.length})` : "Todos los productos"}
+          </h2>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {featured.map((product) => (
-            <div
+          {filtered.map((product) => (
+            <Link
               key={product.id}
+              href={`/tienda/${product.slug}`}
               className="group bg-gray-950/60 border border-white/5 hover:border-white/15 rounded-2xl overflow-hidden transition-all duration-300 flex flex-col"
             >
               {/* Imagen */}
@@ -188,17 +211,12 @@ export default async function TiendaPage() {
                 </div>
 
                 {/* Botón */}
-                <a
-                  href={generateAmazonUrl(product)}
-                  target="_blank"
-                  rel="noopener noreferrer sponsored"
-                  className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-orange-500 hover:bg-orange-400 text-white text-sm font-semibold transition-colors duration-200"
-                >
+                <div className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-orange-500 group-hover:bg-orange-400 text-white text-sm font-semibold transition-colors duration-200">
                   <ShoppingCart className="w-4 h-4" />
-                  Ver en Amazon
-                </a>
+                  Ver producto
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
