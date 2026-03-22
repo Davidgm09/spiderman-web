@@ -50,7 +50,9 @@ export default async function ProductPage({ params }: Props) {
   const related = await productService.getFeatured(4).catch(() => [])
   const relatedFiltered = related.filter((p) => p.id !== product.id).slice(0, 3)
 
-  const amazonUrl = `https://www.amazon.es/s?k=${encodeURIComponent(`${product.title} Spider-Man`)}&tag=${AMAZON_TAG}`
+  const amazonUrl = product.asin
+    ? `https://www.amazon.es/dp/${product.asin}?tag=${AMAZON_TAG}`
+    : `https://www.amazon.es/s?k=${encodeURIComponent(`${product.title} Spider-Man`)}&tag=${AMAZON_TAG}`
 
   return (
     <div className="pt-16 min-h-screen bg-gradient-to-b from-black via-gray-950 to-black">

@@ -266,6 +266,7 @@ model Product {
   reviews             String
   image               String
   category            String
+  asin                String?   // Amazon ASIN for direct product links
   slug                String    @unique
   seoTitle            String
   seoDescription      String
