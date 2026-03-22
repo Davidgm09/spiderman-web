@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
-import { Star, ShoppingCart, Truck, Shield, RotateCcw } from "lucide-react"
+import { Star, ShoppingCart, Truck, Shield, RotateCcw, Search, X } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { InContentAd } from "@/components/ads/GoogleAdsense"
 import { productService } from "@/lib/database"
@@ -35,15 +35,21 @@ const CATEGORY_COLORS: Record<string, string> = {
   Tecnología:    "text-yellow-400 border-yellow-500/30 bg-yellow-500/10",
 }
 
-type Props = { searchParams: Promise<{ categoria?: string }> }
+type Props = { searchParams: Promise<{ categoria?: string; q?: string }> }
 
 export default async function TiendaPage({ searchParams }: Props) {
-  const { categoria } = await searchParams
+  const { categoria, q } = await searchParams
   const allProducts = await productService.getAll()
 
-  const filtered = categoria
-    ? allProducts.filter((p) => p.category === categoria)
-    : allProducts
+  const query = q?.trim().toLowerCase() ?? ""
+
+  const filtered = allProducts.filter((p) => {
+    const matchCat = categoria ? p.category === categoria : true
+    const matchQ = query
+      ? p.title.toLowerCase().includes(query) || p.description?.toLowerCase().includes(query)
+      : true
+    return matchCat && matchQ
+  })
 
   const categoryCounts: Record<string, number> = {}
   allProducts.forEach((p) => {
@@ -70,10 +76,12 @@ export default async function TiendaPage({ searchParams }: Props) {
             <span className="px-4 py-1.5 rounded-full text-sm bg-white/5 border border-white/10 text-gray-300">Envío Prime</span>
             <span className="px-4 py-1.5 rounded-full text-sm bg-white/5 border border-white/10 text-gray-300">Garantía Amazon</span>
           </div>
-          {categoria && (
+          {(categoria || query) && (
             <p className="mt-4 text-sm text-gray-500">
-              Filtrando por <span className="text-white font-medium">{categoria}</span>
-              {" · "}<Link href="/tienda" className="text-red-400 hover:text-red-300">Ver todos</Link>
+              {query && <>Búsqueda: <span className="text-white font-medium">&quot;{q}&quot;</span></>}
+              {query && categoria && " · "}
+              {categoria && <>Categoría: <span className="text-white font-medium">{categoria}</span></>}
+              {" · "}<Link href="/tienda" className="text-red-400 hover:text-red-300">Limpiar filtros</Link>
             </p>
           )}
         </div>
@@ -106,13 +114,37 @@ export default async function TiendaPage({ searchParams }: Props) {
         </div>
       </section>
 
+      {/* Búsqueda */}
+      <section className="max-w-2xl mx-auto px-4 mb-8">
+        <form action="/tienda" method="GET" className="relative">
+          {categoria && <input type="hidden" name="categoria" value={categoria} />}
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" />
+          <input
+            type="text"
+            name="q"
+            defaultValue={q ?? ""}
+            placeholder="Buscar productos..."
+            className="w-full bg-gray-950/60 border border-white/10 focus:border-white/30 rounded-2xl py-3 pl-11 pr-10 text-white placeholder-gray-500 text-sm outline-none transition-colors"
+          />
+          {query && (
+            <Link
+              href={categoria ? `/tienda?categoria=${encodeURIComponent(categoria)}` : "/tienda"}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white transition-colors"
+              aria-label="Borrar búsqueda"
+            >
+              <X className="w-4 h-4" />
+            </Link>
+          )}
+        </form>
+      </section>
+
       {/* Categorías */}
       {categories.length > 0 && (
         <section className="max-w-5xl mx-auto px-4 mb-12">
           <h2 className="text-xl font-bold text-white mb-4">Categorías</h2>
           <div className="flex flex-wrap gap-3">
             <Link
-              href="/tienda"
+              href={query ? `/tienda?q=${encodeURIComponent(query)}` : "/tienda"}
               className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors ${
                 !categoria
                   ? "bg-white/15 border-white/30 text-white"
@@ -121,19 +153,26 @@ export default async function TiendaPage({ searchParams }: Props) {
             >
               Todos <span className="opacity-60">({allProducts.length})</span>
             </Link>
-            {categories.map(([name, count]) => (
-              <Link
-                key={name}
-                href={categoria === name ? "/tienda" : `/tienda?categoria=${encodeURIComponent(name)}`}
-                className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors ${
-                  categoria === name
-                    ? (CATEGORY_COLORS[name] ?? "text-gray-400 border-white/10 bg-white/5") + " ring-2 ring-white/20"
-                    : (CATEGORY_COLORS[name] ?? "text-gray-400 border-white/10 bg-white/5") + " opacity-70 hover:opacity-100"
-                }`}
-              >
-                {name} <span className="opacity-60">({count})</span>
-              </Link>
-            ))}
+            {categories.map(([name, count]) => {
+              const isActive = categoria === name
+              const base = query ? `?q=${encodeURIComponent(query)}&` : "?"
+              const href = isActive
+                ? (query ? `/tienda?q=${encodeURIComponent(query)}` : "/tienda")
+                : `/tienda${base}categoria=${encodeURIComponent(name)}`
+              return (
+                <Link
+                  key={name}
+                  href={href}
+                  className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors ${
+                    isActive
+                      ? (CATEGORY_COLORS[name] ?? "text-gray-400 border-white/10 bg-white/5") + " ring-2 ring-white/20"
+                      : (CATEGORY_COLORS[name] ?? "text-gray-400 border-white/10 bg-white/5") + " opacity-70 hover:opacity-100"
+                  }`}
+                >
+                  {name} <span className="opacity-60">({count})</span>
+                </Link>
+              )
+            })}
           </div>
         </section>
       )}
@@ -147,9 +186,19 @@ export default async function TiendaPage({ searchParams }: Props) {
         <div className="flex items-center gap-3 mb-8">
           <div className="w-1 h-7 rounded-full bg-gradient-to-b from-red-500 to-red-800" />
           <h2 className="text-2xl font-bold text-white">
-            {categoria ? `${categoria} (${filtered.length})` : "Todos los productos"}
+            {filtered.length === allProducts.length
+              ? "Todos los productos"
+              : `${filtered.length} resultado${filtered.length !== 1 ? "s" : ""}`}
           </h2>
         </div>
+
+        {filtered.length === 0 && (
+          <div className="text-center py-20 text-gray-500">
+            <Search className="w-10 h-10 mx-auto mb-3 opacity-30" />
+            <p className="text-lg">No se encontraron productos</p>
+            <Link href="/tienda" className="text-red-400 hover:text-red-300 text-sm mt-2 inline-block">Limpiar filtros</Link>
+          </div>
+        )}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {filtered.map((product) => (
