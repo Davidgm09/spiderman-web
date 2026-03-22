@@ -3,7 +3,6 @@ import Image from "next/image"
 import Link from "next/link"
 import { Star, ShoppingCart, Truck, Shield, RotateCcw, Search, X } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
-import { InContentAd } from "@/components/ads/GoogleAdsense"
 import { productService } from "@/lib/database"
 import { SITE_URL } from "@/lib/config"
 
@@ -58,132 +57,109 @@ export default async function TiendaPage({ searchParams }: Props) {
   const categories = Object.entries(categoryCounts)
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-950 via-gray-900 to-blue-950">
+    <div className="min-h-screen bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950">
 
-      {/* Hero */}
-      <section className="relative pt-28 pb-16 px-4 text-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-red-600/10 to-blue-600/10" />
-        <div className="relative z-10 max-w-3xl mx-auto">
-          <p className="text-red-400 text-sm font-semibold tracking-widest uppercase mb-3">Spider-World · Tienda</p>
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent">
-            Productos Oficiales Spider-Man
+      {/* Hero compacto con búsqueda integrada */}
+      <section className="relative pt-28 pb-10 px-4 overflow-hidden">
+        {/* Fondo decorativo */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(220,38,38,0.12)_0%,_transparent_65%)]" />
+
+        <div className="relative z-10 max-w-3xl mx-auto text-center">
+          <p className="text-red-500 text-xs font-bold tracking-widest uppercase mb-3">Spider-World · Tienda Oficial</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-3">
+            Merchandising<br className="hidden sm:block" /> Spider-Man
           </h1>
-          <p className="text-gray-400 text-lg mb-8">
-            Figuras, camisetas, Funko Pop y coleccionables. Todo a través de Amazon con envío rápido.
+          <p className="text-gray-500 text-base mb-8">
+            Figuras, Funko Pop, cómics y ropa. Enviado desde Amazon.
           </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <span className="px-4 py-1.5 rounded-full text-sm bg-white/5 border border-white/10 text-gray-300">{allProducts.length} productos</span>
-            <span className="px-4 py-1.5 rounded-full text-sm bg-white/5 border border-white/10 text-gray-300">Envío Prime</span>
-            <span className="px-4 py-1.5 rounded-full text-sm bg-white/5 border border-white/10 text-gray-300">Garantía Amazon</span>
+
+          {/* Barra de búsqueda */}
+          <form action="/tienda" method="GET" className="relative max-w-xl mx-auto mb-6">
+            {categoria && <input type="hidden" name="categoria" value={categoria} />}
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" />
+            <input
+              type="text"
+              name="q"
+              defaultValue={q ?? ""}
+              placeholder="Buscar figuras, cómics, ropa..."
+              className="w-full bg-white/5 border border-white/10 hover:border-white/20 focus:border-white/30 rounded-2xl py-3.5 pl-11 pr-12 text-white placeholder-gray-600 text-sm outline-none transition-colors"
+            />
+            {query ? (
+              <Link
+                href={categoria ? `/tienda?categoria=${encodeURIComponent(categoria)}` : "/tienda"}
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white transition-colors"
+                aria-label="Borrar búsqueda"
+              >
+                <X className="w-4 h-4" />
+              </Link>
+            ) : (
+              <button type="submit" className="absolute right-3 top-1/2 -translate-y-1/2 bg-red-600 hover:bg-red-500 text-white rounded-xl px-3 py-1.5 text-xs font-semibold transition-colors">
+                Buscar
+              </button>
+            )}
+          </form>
+
+          {/* Beneficios en línea */}
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs text-gray-500">
+            <span className="flex items-center gap-1.5"><Truck className="w-3.5 h-3.5 text-green-500" />Envío Prime 1-2 días</span>
+            <span className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 text-blue-500" />Garantía Amazon</span>
+            <span className="flex items-center gap-1.5"><RotateCcw className="w-3.5 h-3.5 text-purple-500" />30 días devolución</span>
           </div>
-          {(categoria || query) && (
-            <p className="mt-4 text-sm text-gray-500">
-              {query && <>Búsqueda: <span className="text-white font-medium">&quot;{q}&quot;</span></>}
-              {query && categoria && " · "}
-              {categoria && <>Categoría: <span className="text-white font-medium">{categoria}</span></>}
-              {" · "}<Link href="/tienda" className="text-red-400 hover:text-red-300">Limpiar filtros</Link>
-            </p>
-          )}
         </div>
       </section>
 
+      {/* Barra de filtros */}
+      <div className="sticky top-16 z-20 bg-gray-950/80 backdrop-blur-md border-b border-white/5">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center gap-3 overflow-x-auto scrollbar-hide">
+          <Link
+            href={query ? `/tienda?q=${encodeURIComponent(query)}` : "/tienda"}
+            className={`shrink-0 px-4 py-1.5 rounded-full text-sm font-medium border transition-colors ${
+              !categoria
+                ? "bg-white text-gray-900 border-white"
+                : "text-gray-400 border-white/10 bg-transparent hover:border-white/25 hover:text-white"
+            }`}
+          >
+            Todos <span className="opacity-60">({allProducts.length})</span>
+          </Link>
+          {categories.map(([name, count]) => {
+            const isActive = categoria === name
+            const base = query ? `?q=${encodeURIComponent(query)}&` : "?"
+            const href = isActive
+              ? (query ? `/tienda?q=${encodeURIComponent(query)}` : "/tienda")
+              : `/tienda${base}categoria=${encodeURIComponent(name)}`
+            return (
+              <Link
+                key={name}
+                href={href}
+                className={`shrink-0 px-4 py-1.5 rounded-full text-sm font-medium border transition-colors ${
+                  isActive
+                    ? (CATEGORY_COLORS[name] ?? "text-white border-white/30 bg-white/10")
+                    : "text-gray-400 border-white/10 bg-transparent hover:border-white/25 hover:text-white"
+                }`}
+              >
+                {name} <span className="opacity-50">({count})</span>
+              </Link>
+            )
+          })}
+          {(categoria || query) && (
+            <Link href="/tienda" className="shrink-0 ml-auto text-xs text-gray-600 hover:text-red-400 transition-colors flex items-center gap-1">
+              <X className="w-3 h-3" /> Limpiar
+            </Link>
+          )}
+        </div>
+      </div>
+
       {/* Aviso afiliado */}
-      <div className="max-w-5xl mx-auto px-4 mb-8">
-        <p className="text-xs text-gray-500 text-center bg-gray-950/60 border border-white/5 rounded-xl py-2.5 px-4">
-          Spider-World participa en el Programa de Afiliados de Amazon EU. Si compras a través de nuestros enlaces recibimos una pequeña comisión sin coste adicional para ti.{" "}
-          <a href="/aviso-legal" className="text-red-400 hover:text-red-300">Más información</a>.
+      <div className="max-w-7xl mx-auto px-4 pt-6">
+        <p className="text-xs text-gray-600 text-center">
+          Participamos en el Programa de Afiliados de Amazon EU — recibimos una comisión sin coste para ti.{" "}
+          <a href="/aviso-legal" className="text-gray-500 hover:text-gray-400 underline underline-offset-2">Más info</a>
         </p>
       </div>
 
-      {/* Beneficios */}
-      <section className="max-w-5xl mx-auto px-4 mb-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {[
-            { icon: Truck,     color: "text-green-400",  title: "Envío Prime",       sub: "Entrega en 1-2 días" },
-            { icon: Shield,    color: "text-blue-400",   title: "Garantía Amazon",   sub: "Productos oficiales" },
-            { icon: RotateCcw, color: "text-purple-400", title: "Devoluciones",      sub: "30 días sin coste" },
-          ].map(({ icon: Icon, color, title, sub }) => (
-            <div key={title} className="flex items-center gap-4 bg-gray-950/60 border border-white/5 rounded-2xl p-5">
-              <Icon className={`w-8 h-8 shrink-0 ${color}`} />
-              <div>
-                <div className="font-semibold text-white">{title}</div>
-                <div className="text-sm text-gray-400">{sub}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Búsqueda */}
-      <section className="max-w-2xl mx-auto px-4 mb-8">
-        <form action="/tienda" method="GET" className="relative">
-          {categoria && <input type="hidden" name="categoria" value={categoria} />}
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" />
-          <input
-            type="text"
-            name="q"
-            defaultValue={q ?? ""}
-            placeholder="Buscar productos..."
-            className="w-full bg-gray-950/60 border border-white/10 focus:border-white/30 rounded-2xl py-3 pl-11 pr-10 text-white placeholder-gray-500 text-sm outline-none transition-colors"
-          />
-          {query && (
-            <Link
-              href={categoria ? `/tienda?categoria=${encodeURIComponent(categoria)}` : "/tienda"}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white transition-colors"
-              aria-label="Borrar búsqueda"
-            >
-              <X className="w-4 h-4" />
-            </Link>
-          )}
-        </form>
-      </section>
-
-      {/* Categorías */}
-      {categories.length > 0 && (
-        <section className="max-w-5xl mx-auto px-4 mb-12">
-          <h2 className="text-xl font-bold text-white mb-4">Categorías</h2>
-          <div className="flex flex-wrap gap-3">
-            <Link
-              href={query ? `/tienda?q=${encodeURIComponent(query)}` : "/tienda"}
-              className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors ${
-                !categoria
-                  ? "bg-white/15 border-white/30 text-white"
-                  : "text-gray-400 border-white/10 bg-white/5 hover:bg-white/10"
-              }`}
-            >
-              Todos <span className="opacity-60">({allProducts.length})</span>
-            </Link>
-            {categories.map(([name, count]) => {
-              const isActive = categoria === name
-              const base = query ? `?q=${encodeURIComponent(query)}&` : "?"
-              const href = isActive
-                ? (query ? `/tienda?q=${encodeURIComponent(query)}` : "/tienda")
-                : `/tienda${base}categoria=${encodeURIComponent(name)}`
-              return (
-                <Link
-                  key={name}
-                  href={href}
-                  className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors ${
-                    isActive
-                      ? (CATEGORY_COLORS[name] ?? "text-gray-400 border-white/10 bg-white/5") + " ring-2 ring-white/20"
-                      : (CATEGORY_COLORS[name] ?? "text-gray-400 border-white/10 bg-white/5") + " opacity-70 hover:opacity-100"
-                  }`}
-                >
-                  {name} <span className="opacity-60">({count})</span>
-                </Link>
-              )
-            })}
-          </div>
-        </section>
-      )}
-
-      <div className="max-w-7xl mx-auto px-4 mb-10">
-        <InContentAd />
-      </div>
-
       {/* Grid de productos */}
-      <section className="max-w-7xl mx-auto px-4 pb-20">
-        <div className="flex items-center gap-3 mb-8">
+      <section className="max-w-7xl mx-auto px-4 pt-8 pb-20">
+        <div className="flex items-center gap-3 mb-6">
           <div className="w-1 h-7 rounded-full bg-gradient-to-b from-red-500 to-red-800" />
           <h2 className="text-2xl font-bold text-white">
             {filtered.length === allProducts.length
@@ -193,10 +169,11 @@ export default async function TiendaPage({ searchParams }: Props) {
         </div>
 
         {filtered.length === 0 && (
-          <div className="text-center py-20 text-gray-500">
-            <Search className="w-10 h-10 mx-auto mb-3 opacity-30" />
-            <p className="text-lg">No se encontraron productos</p>
-            <Link href="/tienda" className="text-red-400 hover:text-red-300 text-sm mt-2 inline-block">Limpiar filtros</Link>
+          <div className="text-center py-24 text-gray-500">
+            <Search className="w-10 h-10 mx-auto mb-3 opacity-20" />
+            <p className="text-lg font-medium text-gray-400">Sin resultados</p>
+            <p className="text-sm mt-1 mb-4">Prueba con otro término o categoría</p>
+            <Link href="/tienda" className="text-sm text-red-400 hover:text-red-300 transition-colors">Limpiar filtros</Link>
           </div>
         )}
 
