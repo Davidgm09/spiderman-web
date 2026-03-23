@@ -44,6 +44,21 @@ const nextConfig = {
       // Funko Pop images
       { protocol: 'https', hostname: 'boomloot.com' },
       { protocol: 'https', hostname: 'pop-figures.com' },
+      { protocol: 'https', hostname: 'realpopmania.com' },
+      // Action figures
+      { protocol: 'https', hostname: 'www.toyshnip.com' },
+      { protocol: 'https', hostname: 'goodbuygear.com' },
+      { protocol: 'https', hostname: 'www.maziply.com' },
+      { protocol: 'https', hostname: 'floridagifts.com' },
+      // Apparel
+      { protocol: 'https', hostname: 'heroesvillains.com' },
+      { protocol: 'https', hostname: 'frikigeek.com' },
+      { protocol: 'https', hostname: 'www.polargear.com' },
+      // Accessories
+      { protocol: 'https', hostname: 'hero-land.com' },
+      { protocol: 'https', hostname: 'lafrikileria.com' },
+      // Comics
+      { protocol: 'https', hostname: 'tienda.tomosygrapas.com' },
     ],
   },
   async redirects() {
