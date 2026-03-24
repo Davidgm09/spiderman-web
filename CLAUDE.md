@@ -61,11 +61,41 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
 ### Key Files
 
 - `lib/database.ts` — All Prisma service functions (`characterService`, `movieService`, `comicService`, `blogService`, `productService`, etc.)
-- `lib/content-helpers.tsx` — Shared helpers used across all detail pages: `renderStars()` (0–10 scale to 5-star UI), `generateAmazonUrl()`, `convertToEmbedUrl()`
+- `lib/content-helpers.tsx` — Shared helpers used across all detail pages: `renderStars()` (0–10 scale to 5-star UI), `parseJson<T>()` (safe JSON field parsing), `generateAmazonUrl()`, `convertToEmbedUrl()`
+- `lib/config.ts` — Site-wide constants: `SITE_URL`, `AMAZON_TAG`, `ADSENSE_CLIENT_ID`
 - `lib/rawg-api.ts` — RAWG API client for games
 - `lib/supabase.ts` — Supabase Storage client for image uploads (used by `app/admin/upload/`)
 - `types/content.ts` — TypeScript interfaces for all content types (`MovieContent`, `GameContent`, etc.)
-- `prisma/schema.prisma` — Single source of truth for all models
+- `prisma/schema.prisma` — Single source of truth for all models. Also contains cache/analytics tables: `MarvelCache`, `ExternalApiCache`, `ContentAnalytics`, `AffiliateProduct`, `UserFavorite`, `SearchQuery`
+
+### Service Layer Conventions
+
+All service functions in `lib/database.ts` follow these conventions:
+- Always filter `isActive: true` — inactive records are never shown
+- Default ordering: `rating DESC`, then `views DESC`
+- JSON fields in the DB (e.g. `sceneImages`, `castWithPhotos`, `screenshotImages`) should be parsed with `parseJson<T>()` from `lib/content-helpers.tsx`
+
+### Page Patterns
+
+All content detail pages share this structure:
+
+```ts
+export const revalidate = 3600; // ISR: revalidate every hour
+
+export async function generateStaticParams() { /* returns all slugs */ }
+export async function generateMetadata({ params }): Promise<Metadata> { /* dynamic SEO */ }
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params; // Next.js 15: must await params
+}
+```
+
+### Import Alias
+
+Use `@/` to import from the project root (configured in `tsconfig.json`):
+```ts
+import { characterService } from '@/lib/database';
+import { renderStars } from '@/lib/content-helpers';
+```
 
 ### Content Models
 
