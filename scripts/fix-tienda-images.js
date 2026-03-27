@@ -116,6 +116,39 @@ const IMAGE_FIXES = [
     slug: 'marvel-spider-man-peluche-hablador-30cm',
     image: 'https://floridagifts.com/cdn/shop/files/spider-man-plush-33073941315768.png?v=1692809743',
   },
+  // ── IMÁGENES ROTAS — reemplazadas con imágenes de Amazon ────────────────────
+  {
+    slug: 'lego-marvel-76178-daily-bugle-coleccionista',
+    image: 'https://m.media-amazon.com/images/I/81ZyiKnKhRL._AC_SL1500_.jpg',
+  },
+  {
+    slug: 'hasbro-marvel-legends-spider-gwen-across-spider-verse',
+    image: 'https://m.media-amazon.com/images/I/91F8GK7va-L._AC_SL1500_.jpg',
+  },
+  {
+    slug: 'hasbro-marvel-legends-retro-spider-man-clasico',
+    image: 'https://m.media-amazon.com/images/I/815k5V8u7gL._AC_SL1500_.jpg',
+  },
+  {
+    slug: 'paladone-marvel-spider-man-taza-ceramica-550ml',
+    image: 'https://m.media-amazon.com/images/I/51jc4Q5M0nL._AC_SL1500_.jpg',
+  },
+  {
+    slug: 'marvel-spider-man-miles-morales-gorro-beanie-adulto',
+    image: 'https://m.media-amazon.com/images/I/81xeCMNx3-L._AC_SL1500_.jpg',
+  },
+  {
+    slug: 'marvel-comics-spider-man-llavero-metalico',
+    image: 'https://m.media-amazon.com/images/I/51g6jv1lnKL._AC_SL1000_.jpg',
+  },
+  {
+    slug: 'hasbro-marvel-spider-man-web-shooter-gear-lanzarredes',
+    image: 'https://m.media-amazon.com/images/I/71u-CCsvpRL._AC_SL1024_.jpg',
+  },
+  {
+    slug: 'hasbro-spider-man-guante-lanzatelaranas-electronico',
+    image: 'https://m.media-amazon.com/images/I/71BvoYNAyeL._AC_SX679_.jpg',
+  },
 ];
 
 async function main() {

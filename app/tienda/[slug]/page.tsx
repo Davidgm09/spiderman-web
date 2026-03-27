@@ -47,15 +47,46 @@ export default async function ProductPage({ params }: Props) {
 
   productService.incrementViews(slug).catch(() => {})
 
-  const related = await productService.getFeatured(4).catch(() => [])
-  const relatedFiltered = related.filter((p) => p.id !== product.id).slice(0, 3)
+  const relatedFiltered = await productService.getByCategory(product.category, slug).catch(() => [])
 
   const amazonUrl = product.asin
     ? `https://www.amazon.es/dp/${product.asin}?tag=${AMAZON_TAG}`
     : `https://www.amazon.es/s?k=${encodeURIComponent(`${product.title} Spider-Man`)}&tag=${AMAZON_TAG}`
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.title,
+    description: product.description,
+    image: product.image.startsWith('/') ? `${SITE_URL}${product.image}` : product.image,
+    brand: { "@type": "Brand", name: "Marvel" },
+    offers: {
+      "@type": "Offer",
+      url: amazonUrl,
+      priceCurrency: "EUR",
+      price: product.price,
+      availability: product.inStock
+        ? "https://schema.org/InStock"
+        : "https://schema.org/OutOfStock",
+      seller: { "@type": "Organization", name: "Amazon" },
+    },
+    ...(product.rating && product.reviews ? {
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: product.rating,
+        reviewCount: parseInt(product.reviews),
+        bestRating: 5,
+        worstRating: 1,
+      }
+    } : {})
+  }
+
   return (
     <div className="pt-16 min-h-screen bg-gradient-to-b from-black via-gray-950 to-black">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
       {/* Hero */}
       <section className="max-w-6xl mx-auto px-4 py-16">

@@ -506,6 +506,19 @@ export const productService = {
     });
   },
 
+  // Obtener productos relacionados por categoría
+  async getByCategory(category: string, excludeSlug: string, limit: number = 3) {
+    return await prisma.product.findMany({
+      where: {
+        inStock: true,
+        category,
+        slug: { not: excludeSlug }
+      },
+      orderBy: { rating: 'desc' },
+      take: limit
+    });
+  },
+
   // Incrementar vistas
   async incrementViews(slug: string) {
     return await prisma.product.update({
