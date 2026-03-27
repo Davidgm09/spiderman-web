@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node scripts/populate-blog.js --clean)",
+      "WebFetch(domain:en.wikipedia.org)",
+      "WebFetch(domain:www.themoviedb.org)",
+      "WebFetch(domain:marvel.fandom.com)",
+      "Bash(grep -n \"Promise.all\" app/**/*.tsx lib/**/*.tsx)",
+      "Bash(grep -n \"dangerouslySetInnerHTML\" app/**/*.tsx)",
+      "Bash(grep -n \"await.*incrementViews\" app/personajes/*/page.tsx app/blog/*/page.tsx app/peliculas/*/page.tsx)",
+      "Bash(node scripts/test-translate.js)",
+      "Bash(node scripts/translate-content.js --games)",
+      "WebFetch(domain:image.tmdb.org)"
+    ]
+  }
+}
