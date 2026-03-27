@@ -15,6 +15,7 @@ import { movieAnalysis } from "@/lib/editorial-analysis"
 import { AmazonProductCard } from "@/components/affiliate/AmazonProductCard"
 import { TiendaProductCards } from "@/components/affiliate/TiendaProductCards"
 import { StickyAffiliateSidebar } from "@/components/affiliate/StickyAffiliateSidebar"
+import { Breadcrumb } from "@/components/breadcrumb"
 
 export const revalidate = 3600
 
@@ -270,6 +271,7 @@ export default async function MoviePage({ params }: Props) {
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
             {/* Main Content */}
             <div className="lg:col-span-3">
+              <Breadcrumb items={[{ label: "Películas", href: "/peliculas" }, { label: movie.title }]} />
               {/* Ficha técnica — stats grandes */}
               <div className="flex flex-wrap gap-6 mb-10 pb-10 border-b border-white/10">
                 {[

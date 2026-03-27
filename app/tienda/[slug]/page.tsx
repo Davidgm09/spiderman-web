@@ -4,7 +4,8 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { Star, ShoppingCart, Truck, Shield, RotateCcw, ArrowLeft } from "lucide-react"
+import { Star, ShoppingCart, Truck, Shield, RotateCcw } from "lucide-react"
+import { Breadcrumb } from "@/components/breadcrumb"
 import { Badge } from "@/components/ui/badge"
 import { productService } from "@/lib/database"
 import { AMAZON_TAG, SITE_URL } from "@/lib/config"
@@ -90,10 +91,7 @@ export default async function ProductPage({ params }: Props) {
 
       {/* Hero */}
       <section className="max-w-6xl mx-auto px-4 py-16">
-        <Link href="/tienda" className="inline-flex items-center gap-2 text-gray-400 hover:text-white text-sm mb-10 transition-colors">
-          <ArrowLeft className="w-4 h-4" />
-          Volver a la Tienda
-        </Link>
+        <Breadcrumb items={[{ label: "Tienda", href: "/tienda" }, { label: product.title }]} />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Imagen */}
