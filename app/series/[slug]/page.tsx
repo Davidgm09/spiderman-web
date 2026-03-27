@@ -6,12 +6,15 @@ import { Play, ShoppingCart, Users, Tv, ArrowLeft, Award, Star, Clock } from "lu
 import { Badge } from "@/components/ui/badge"
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { seriesService } from "@/lib/database"
-import { SITE_URL } from "@/lib/config"
+import { SITE_URL, AMAZON_TAG } from "@/lib/config"
 import { generateAmazonUrl, parseJson } from "@/lib/content-helpers"
 import type { CastMember, EpisodeImage } from "@/lib/json-types"
 import { SeriesGallery } from "@/components/series/SeriesGallery"
 import { seriesAnalysis } from "@/lib/editorial-analysis"
 import { Breadcrumb } from "@/components/breadcrumb"
+import { AmazonProductCard } from "@/components/affiliate/AmazonProductCard"
+import { TiendaProductCards } from "@/components/affiliate/TiendaProductCards"
+import { StickyAffiliateSidebar } from "@/components/affiliate/StickyAffiliateSidebar"
 
 export const revalidate = 3600
 
@@ -193,7 +196,7 @@ export default async function SeriesDetailPage({ params }: Props) {
                   </a>
                 )}
                 <a
-                  href={generateAmazonUrl(`${series.title} DVD Spider-Man`)}
+                  href={series.amazonLink ?? generateAmazonUrl(`${series.title} DVD Spider-Man`)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white font-semibold rounded-full transition-all duration-200 hover:scale-105"
@@ -388,31 +391,16 @@ export default async function SeriesDetailPage({ params }: Props) {
             </div>
 
             {/* Sidebar */}
-            <div className="lg:col-span-1">
-              <div className="sticky top-24 space-y-6">
-                <SidebarAd />
-
-                <div className="bg-gray-900/60 border border-white/10 rounded-2xl p-5 space-y-3">
-                  <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-widest mb-4">Comprar en Amazon</h3>
-                  {[
-                    { label: `${series.title} — DVD`,          query: `${series.title} complete series DVD`,     icon: "📺" },
-                    { label: `${series.title} — Blu-ray`,      query: `${series.title} blu-ray complete`,        icon: "🎬" },
-                    { label: `Funko Pop Spider-Man`,           query: `funko pop spider-man animated`,           icon: "🕷️" },
-                  ].map(({ label, query, icon }) => (
-                    <a
-                      key={label}
-                      href={generateAmazonUrl(query)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-3 w-full px-4 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/20 transition-all duration-200 group"
-                    >
-                      <span className="text-lg">{icon}</span>
-                      <span className="text-sm text-gray-300 group-hover:text-white transition-colors flex-1">{label}</span>
-                      <ShoppingCart className="w-4 h-4 text-gray-500 group-hover:text-orange-400 transition-colors shrink-0" />
-                    </a>
-                  ))}
-                </div>
-              </div>
+            <div className="lg:col-span-1 space-y-4">
+              <SidebarAd />
+              <AmazonProductCard
+                title={`${series.title} — Serie Completa`}
+                image={series.image}
+                href={series.amazonLink ?? generateAmazonUrl(`${series.title} complete series DVD blu-ray`)}
+                badge="DVD / Blu-ray"
+                asin={series.amazonLink ? (series.amazonLink.match(/\/dp\/([A-Z0-9]{10})/)?.[1] ?? undefined) : undefined}
+              />
+              <TiendaProductCards categories={["Figuras", "Coleccionables", "Juguetes"]} limit={2} />
             </div>
 
           </div>

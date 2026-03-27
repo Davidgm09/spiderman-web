@@ -78,6 +78,7 @@ model Movie {
   castWithPhotos      Json?     // Array de objetos {name, character, photo, bio}
   trailerUrl          String?
   backdropImages      String[]  // Array de URLs de imágenes de fondo
+  amazonAsin          String?   // Amazon ASIN for Blu-ray direct link
   isActive            Boolean   @default(true)
   views               Int       @default(0)
   createdAt           DateTime  @default(now())
@@ -153,6 +154,7 @@ model Game {
   characterImages     Json?     // Array de personajes
   gameplayVideos      Json?     // Array de videos de gameplay
   conceptArt          Json?     // Array de arte conceptual
+  amazonAsin          String?   // Amazon ASIN for physical edition
   isActive            Boolean   @default(true)
   views               Int       @default(0)
   createdAt           DateTime  @default(now())

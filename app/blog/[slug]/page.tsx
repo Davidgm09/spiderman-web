@@ -9,6 +9,7 @@ import { Breadcrumb } from "@/components/breadcrumb"
 import { SidebarAd } from "@/components/ads/GoogleAdsense"
 import { blogService } from "@/lib/database"
 import { SITE_URL } from "@/lib/config"
+import { generateAmazonUrl } from "@/lib/content-helpers"
 import { BlogPost } from "@prisma/client"
 import { ViewTracker } from "@/components/blog/ViewTracker"
 import { ShareButtons } from "@/components/blog/ShareButtons"
@@ -266,6 +267,55 @@ export default async function BlogPostPage({ params }: Props) {
                   </div>
                 </div>
               )}
+
+              {/* Productos Amazon */}
+              {(() => {
+                const categoryProducts: Record<string, { label: string; query: string; icon: string }[]> = {
+                  'Películas':   [
+                    { label: 'Películas Spider-Man Blu-ray', query: 'spider-man peliculas bluray 4k', icon: '🎬' },
+                    { label: 'Póster Spider-Man oficial', query: 'spider-man poster oficial marvel', icon: '🖼️' },
+                    { label: 'Funko Pop Spider-Man cine', query: 'funko pop spider-man pelicula', icon: '🎭' },
+                  ],
+                  'Cómics':     [
+                    { label: 'Cómics Spider-Man Panini', query: 'spider-man comic panini español', icon: '📖' },
+                    { label: 'Omnibus Amazing Spider-Man', query: 'amazing spider-man omnibus marvel', icon: '📚' },
+                    { label: 'Cómics Marvel colección', query: 'marvel saga spider-man coleccion', icon: '🗂️' },
+                  ],
+                  'Videojuegos': [
+                    { label: 'Marvel Spider-Man PS5', query: "marvel's spider-man ps5 videojuego", icon: '🎮' },
+                    { label: 'Spider-Man edición coleccionista', query: 'spider-man edicion coleccionista juego', icon: '🏆' },
+                    { label: 'Funko Pop Spider-Man gaming', query: 'funko pop spider-man videojuego', icon: '🕹️' },
+                  ],
+                  'Series':      [
+                    { label: 'Spider-Man series DVD', query: 'spider-man serie animada dvd', icon: '📀' },
+                    { label: 'Figura Spider-Man animado', query: 'figura spider-man serie animada marvel', icon: '🦸' },
+                    { label: 'Funko Pop Spider-Man animado', query: 'funko pop spider-man animated series', icon: '🎭' },
+                  ],
+                }
+                const defaultProducts = [
+                  { label: 'Figuras Spider-Man', query: 'figura spider-man marvel coleccionista', icon: '🦸' },
+                  { label: 'Cómics Spider-Man', query: 'spider-man comic español panini', icon: '📖' },
+                  { label: 'Funko Pop Spider-Man', query: 'funko pop spider-man marvel', icon: '🎭' },
+                ]
+                const products = categoryProducts[post.category] ?? defaultProducts
+                return (
+                  <div className="bg-gray-900/60 border border-white/10 rounded-2xl p-5 space-y-3">
+                    <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-widest mb-4">Comprar en Amazon</h3>
+                    {products.map(({ label, query, icon }) => (
+                      <a
+                        key={label}
+                        href={generateAmazonUrl(query)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-3 p-3 rounded-xl bg-white/5 hover:bg-orange-500/10 border border-white/5 hover:border-orange-500/30 transition-all duration-200 group"
+                      >
+                        <span className="text-xl">{icon}</span>
+                        <span className="text-sm text-gray-300 group-hover:text-orange-400 transition-colors leading-snug">{label}</span>
+                      </a>
+                    ))}
+                  </div>
+                )
+              })()}
 
               <SidebarAd />
             </div>

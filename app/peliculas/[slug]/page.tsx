@@ -9,8 +9,12 @@ import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { movieService } from "@/lib/database"
 import { SITE_URL } from "@/lib/config"
 import { generateAmazonUrl, parseJson } from "@/lib/content-helpers"
+import { AMAZON_TAG } from "@/lib/config"
 import type { GalleryImage, CastMember } from "@/lib/json-types"
 import { movieAnalysis } from "@/lib/editorial-analysis"
+import { AmazonProductCard } from "@/components/affiliate/AmazonProductCard"
+import { TiendaProductCards } from "@/components/affiliate/TiendaProductCards"
+import { StickyAffiliateSidebar } from "@/components/affiliate/StickyAffiliateSidebar"
 
 export const revalidate = 3600
 
@@ -228,7 +232,7 @@ export default async function MoviePage({ params }: Props) {
                   </a>
                 )}
                 <a
-                  href={generateAmazonUrl(`${movie.title} ${movie.year} 4K blu-ray`)}
+                  href={movie.amazonAsin ? `https://www.amazon.es/dp/${movie.amazonAsin}?tag=${AMAZON_TAG}` : generateAmazonUrl(`${movie.title} ${movie.year} 4K blu-ray`)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white font-semibold rounded-full transition-all duration-200 hover:scale-105"
@@ -418,33 +422,16 @@ export default async function MoviePage({ params }: Props) {
             </div>
 
             {/* Sidebar */}
-            <div className="lg:col-span-1">
-              <div className="sticky top-24 space-y-6">
-                {/* Ad */}
-                <SidebarAd />
-
-                {/* Comprar en Amazon */}
-                <div className="bg-gray-900/60 border border-white/10 rounded-2xl p-5 space-y-3">
-                  <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-widest mb-4">Comprar en Amazon</h3>
-                  {[
-                    { label: `${movie.title} — Blu-ray 4K`, query: `${movie.title} ${movie.year} 4K blu-ray`, icon: "🎬" },
-                    { label: `Póster oficial`, query: `${movie.title} poster oficial`, icon: "🖼️" },
-                    { label: `Funko Pop Spider-Man`, query: `funko pop spider-man`, icon: "🕷️" },
-                  ].map(({ label, query, icon }) => (
-                    <a
-                      key={label}
-                      href={generateAmazonUrl(query)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-3 w-full px-4 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/20 transition-all duration-200 group"
-                    >
-                      <span className="text-lg">{icon}</span>
-                      <span className="text-sm text-gray-300 group-hover:text-white transition-colors flex-1">{label}</span>
-                      <ShoppingCart className="w-4 h-4 text-gray-500 group-hover:text-orange-400 transition-colors shrink-0" />
-                    </a>
-                  ))}
-                </div>
-              </div>
+            <div className="lg:col-span-1 space-y-4">
+              <SidebarAd />
+              <AmazonProductCard
+                title={`${movie.title} (${movie.year})`}
+                image={movie.image}
+                href={movie.amazonAsin ? `https://www.amazon.es/dp/${movie.amazonAsin}?tag=${AMAZON_TAG}` : generateAmazonUrl(`${movie.title} ${movie.year} 4K blu-ray`)}
+                badge="Blu-ray"
+                asin={movie.amazonAsin ?? undefined}
+              />
+              <TiendaProductCards categories={["Figuras", "Coleccionables", "Juguetes"]} limit={2} />
             </div>
           </div>
         </div>
@@ -505,4 +492,4 @@ export default async function MoviePage({ params }: Props) {
 
     </div>
   )
-} 
+}
