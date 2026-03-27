@@ -8,6 +8,8 @@ import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { comicService } from "@/lib/database"
 import { SITE_URL } from "@/lib/config"
 import { generateAmazonUrl, parseJson } from "@/lib/content-helpers"
+import { AmazonProductCard } from "@/components/affiliate/AmazonProductCard"
+import { TiendaProductCards } from "@/components/affiliate/TiendaProductCards"
 import { Breadcrumb } from "@/components/breadcrumb"
 import type { ConceptArtItem, CoverVariant, ArtistPhoto, PagePreview } from "@/lib/json-types"
 import { ComicTagSection } from "@/components/comics/ComicTagSection"
@@ -492,51 +494,14 @@ export default async function ComicPage({ params }: Props) {
                 {/* Ad */}
                 <SidebarAd />
                 
-                {/* Productos Recomendados Mejorados */}
-                <div className="bg-gradient-to-br from-gray-900/50 to-orange-950/20 rounded-xl p-6 border border-orange-500/20 backdrop-blur-sm">
-                  <h3 className="text-xl font-bold text-white mb-6 flex items-center">
-                    <ShoppingCart className="w-6 h-6 mr-2 text-orange-400" />
-                    Productos del Cómic
-                  </h3>
-                  <div className="space-y-3">
-                    <a
-                      href={generateAmazonUrl(`${comic.title} trade paperback Marvel`)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl px-4 py-3 transition-colors group"
-                    >
-                      <ShoppingCart className="w-4 h-4 text-orange-400 shrink-0" />
-                      <div className="min-w-0">
-                        <p className="text-white text-sm font-semibold">Tapa blanda (TPB)</p>
-                        <p className="text-gray-500 text-xs">Ver en Amazon</p>
-                      </div>
-                    </a>
-                    <a
-                      href={generateAmazonUrl(`${comic.title} hardcover omnibus Marvel`)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl px-4 py-3 transition-colors group"
-                    >
-                      <ShoppingCart className="w-4 h-4 text-orange-400 shrink-0" />
-                      <div className="min-w-0">
-                        <p className="text-white text-sm font-semibold">Hardcover / Omnibus</p>
-                        <p className="text-gray-500 text-xs">Ver en Amazon</p>
-                      </div>
-                    </a>
-                    <a
-                      href={generateAmazonUrl(`${comic.writer ?? 'Spider-Man'} Marvel Comics colección`)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl px-4 py-3 transition-colors group"
-                    >
-                      <ShoppingCart className="w-4 h-4 text-orange-400 shrink-0" />
-                      <div className="min-w-0">
-                        <p className="text-white text-sm font-semibold">Más de {comic.writer ?? 'este autor'}</p>
-                        <p className="text-gray-500 text-xs">Ver en Amazon</p>
-                      </div>
-                    </a>
-                  </div>
-                </div>
+                <AmazonProductCard
+                  title={`${comic.title} — Edición Completa`}
+                  image={comic.image}
+                  href={generateAmazonUrl(`${comic.title} Marvel comic español`)}
+                  badge="Cómic"
+                  subtitle={comic.writer ? `Por ${comic.writer}` : undefined}
+                />
+                <TiendaProductCards categories={["Cómics", "Figuras", "Coleccionables"]} />
               </div>
             </div>
           </div>
