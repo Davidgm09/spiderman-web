@@ -400,7 +400,7 @@ export default async function SeriesDetailPage({ params }: Props) {
                 badge="DVD / Blu-ray"
                 asin={series.amazonLink ? (series.amazonLink.match(/\/dp\/([A-Z0-9]{10})/)?.[1] ?? undefined) : undefined}
               />
-              <TiendaProductCards categories={["Figuras", "Coleccionables", "Juguetes"]} limit={2} />
+              <TiendaProductCards categories={["Figuras", "Coleccionables", "Juguetes"]} />
             </div>
 
           </div>

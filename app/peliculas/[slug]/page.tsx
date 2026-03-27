@@ -431,7 +431,7 @@ export default async function MoviePage({ params }: Props) {
                 badge="Blu-ray"
                 asin={movie.amazonAsin ?? undefined}
               />
-              <TiendaProductCards categories={["Figuras", "Coleccionables", "Juguetes"]} limit={2} />
+              <TiendaProductCards categories={["Figuras", "Coleccionables", "Juguetes"]} />
             </div>
           </div>
         </div>

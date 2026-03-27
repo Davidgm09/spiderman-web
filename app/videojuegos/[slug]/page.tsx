@@ -409,7 +409,7 @@ export default async function GamePage({ params }: Props) {
                 badge={platformFirst}
                 asin={game.amazonAsin ?? undefined}
               />
-              <TiendaProductCards categories={["Videojuegos", "Figuras", "Coleccionables"]} limit={2} />
+              <TiendaProductCards categories={["Videojuegos", "Figuras", "Coleccionables"]} />
             </div>
 
           </div>

@@ -1,42 +1,35 @@
 import { productService } from "@/lib/database"
-import { AmazonProductCard } from "./AmazonProductCard"
 import { AMAZON_TAG } from "@/lib/config"
+import { TiendaProductCardsClient } from "./TiendaProductCardsClient"
 
 interface TiendaProductCardsProps {
-  categories: string[]   // categorías a buscar, en orden de prioridad
-  limit?: number
+  categories: string[]
+  display?: number       // cuántos mostrar (aleatorio de los que se fetchen)
+  fetchLimit?: number    // cuántos traer de BD para tener variedad
   excludeSlug?: string
 }
 
-export async function TiendaProductCards({ categories, limit = 2, excludeSlug }: TiendaProductCardsProps) {
+export async function TiendaProductCards({
+  categories,
+  display = 4,
+  fetchLimit = 6,
+  excludeSlug,
+}: TiendaProductCardsProps) {
   let products: Awaited<ReturnType<typeof productService.getByCategory>> = []
+
   for (const cat of categories) {
-    const result = await productService.getByCategory(cat, excludeSlug ?? "", limit)
+    const result = await productService.getByCategory(cat, excludeSlug ?? "", fetchLimit)
     products = [...products, ...result]
-    if (products.length >= limit) break
+    if (products.length >= fetchLimit) break
   }
-  products = products.slice(0, limit)
 
   if (products.length === 0) return null
 
   return (
-    <div>
-      <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-2">
-        De nuestra tienda
-      </p>
-      <div className="grid grid-cols-2 gap-2">
-        {products.map((p) => (
-          <AmazonProductCard
-            key={p.id}
-            title={p.title}
-            image={p.image}
-            href={p.asin ? `https://www.amazon.es/dp/${p.asin}?tag=${AMAZON_TAG}` : `/tienda/${p.slug}`}
-            badge={p.category}
-            price={p.price}
-            variant="compact"
-          />
-        ))}
-      </div>
-    </div>
+    <TiendaProductCardsClient
+      products={products}
+      amazonTag={AMAZON_TAG}
+      display={display}
+    />
   )
 }
