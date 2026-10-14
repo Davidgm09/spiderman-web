@@ -151,7 +151,7 @@ async function translateComics() {
 }
 
 async function main() {
-  console.log('🕷️  Spider-World — Traductor de contenido')
+  console.log('🕷️  Sentido Arácnido — Traductor de contenido')
   console.log('==========================================')
 
   if (doGames) await translateGames()

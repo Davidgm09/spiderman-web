@@ -45,7 +45,7 @@ export function Navigation() {
             </div>
             <div>
               <span className="text-xl font-bold bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent">
-                Spider-World
+                Sentido Arácnido
               </span>
               <div className="text-xs text-gray-400">Tu guía del Spider-Verse</div>
             </div>

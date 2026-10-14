@@ -157,7 +157,7 @@ export const characterService = {
       seriesCount: marvelCharacter.series?.available || 0,
       category,
       slug,
-      seoTitle: `${marvelCharacter.name} - Personaje Marvel | Spider-World`,
+      seoTitle: `${marvelCharacter.name} - Personaje Marvel | Sentido Arácnido`,
       seoDescription: marvelCharacter.description ?
         marvelCharacter.description.substring(0, 155) + '...' :
         `Descubre todo sobre ${marvelCharacter.name}, sus poderes, historia y apariciones en cómics y películas Marvel.`,

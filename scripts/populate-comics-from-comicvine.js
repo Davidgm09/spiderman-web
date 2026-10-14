@@ -43,7 +43,7 @@ function cvGet(endpoint, params = {}) {
   Object.entries(params).forEach(([k, v]) => url.searchParams.set(k, String(v)));
 
   return new Promise((resolve, reject) => {
-    const options = { headers: { 'User-Agent': 'Spider-World/1.0' } };
+    const options = { headers: { 'User-Agent': 'Sentido Arácnido/1.0' } };
     https.get(url.toString(), options, (res) => {
       let raw = '';
       res.on('data', (chunk) => (raw += chunk));
@@ -163,7 +163,7 @@ async function saveComic(issue, volume) {
         description: cleanDesc,
         longDescription: `<h2>${title}</h2><p>${cleanDesc}</p>`,
         slug,
-        seoTitle: `${title} - Cómic Marvel | Spider-World`,
+        seoTitle: `${title} - Cómic Marvel | Sentido Arácnido`,
         seoDescription: `${cleanDesc.substring(0, 150)}...`,
         keywords: [volume.name.toLowerCase(), 'spider-man', 'marvel comics', `#${issue.issue_number}`, year.toString()],
         characters: ['Spider-Man'],

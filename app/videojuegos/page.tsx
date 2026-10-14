@@ -11,13 +11,13 @@ import { gameService, blogService } from "@/lib/database"
 import { Game } from "@prisma/client"
 
 export const metadata: Metadata = {
-  title: "Videojuegos de Spider-Man - Colección Completa | Spider-World",
+  title: "Videojuegos de Spider-Man - Colección Completa | Sentido Arácnido",
   description:
     "Todos los videojuegos de Spider-Man: desde clásicos arcade hasta PS5. Reseñas completas, gameplay, plataformas y enlaces de compra.",
   keywords: ["Spider-Man videojuegos", "Marvel's Spider-Man", "Spider-Man PS4", "Spider-Man PS5", "Insomniac Games", "videojuegos Marvel"],
   alternates: { canonical: '/videojuegos' },
   openGraph: {
-    title: "Videojuegos de Spider-Man - Colección Completa | Spider-World",
+    title: "Videojuegos de Spider-Man - Colección Completa | Sentido Arácnido",
     description: "Todos los videojuegos de Spider-Man: desde clásicos arcade hasta PS5. Reseñas completas, gameplay y plataformas.",
     type: 'website',
     url: '/videojuegos',
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Videojuegos de Spider-Man - Colección Completa | Spider-World",
+    title: "Videojuegos de Spider-Man - Colección Completa | Sentido Arácnido",
     description: "Todos los videojuegos de Spider-Man: desde clásicos arcade hasta PS5. Reseñas completas, gameplay y plataformas.",
     images: ['https://media.rawg.io/media/games/5f1/5f1399f755ed3a40b04a9195f4c06be5.jpg'],
   },
@@ -89,7 +89,7 @@ export default async function VideojuegosPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-transparent to-red-950" />
 
         <div className="relative z-10 max-w-4xl mx-auto">
-          <p className="text-blue-400 text-sm font-semibold tracking-widest uppercase mb-4">Spider-World · Videojuegos</p>
+          <p className="text-blue-400 text-sm font-semibold tracking-widest uppercase mb-4">Sentido Arácnido · Videojuegos</p>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white leading-tight">
             Videojuegos de<br />
             <span className="bg-gradient-to-r from-blue-500 to-red-500 bg-clip-text text-transparent">Spider-Man</span>

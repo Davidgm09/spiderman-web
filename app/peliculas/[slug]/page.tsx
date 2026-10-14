@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   
   if (!movie) {
     return {
-      title: "Película no encontrada | Spider-World",
+      title: "Película no encontrada | Sentido Arácnido",
       description: "La película que buscas no está disponible.",
     }
   }
@@ -46,12 +46,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const url = `${SITE_URL}/peliculas/${movie.slug}`;
 
   return {
-    title: `${movie.title} (${movie.year}) - Análisis Completo | Spider-World`,
+    title: `${movie.title} (${movie.year}) - Análisis Completo | Sentido Arácnido`,
     description,
     keywords: movie.keywords?.length ? movie.keywords : ['Spider-Man', 'película', movie.title, movie.year.toString(), 'análisis', 'reparto'],
     alternates: { canonical: url },
     openGraph: {
-      title: `${movie.title} (${movie.year}) - Análisis Completo | Spider-World`,
+      title: `${movie.title} (${movie.year}) - Análisis Completo | Sentido Arácnido`,
       description,
       images: [movie.image],
       type: "article",
@@ -59,7 +59,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: `${movie.title} (${movie.year}) - Análisis Completo | Spider-World`,
+      title: `${movie.title} (${movie.year}) - Análisis Completo | Sentido Arácnido`,
       description,
       images: [movie.image],
     },

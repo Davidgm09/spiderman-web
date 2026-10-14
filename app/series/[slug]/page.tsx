@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!series) {
     return {
-      title: "Serie no encontrada | Spider-World",
+      title: "Serie no encontrada | Sentido Arácnido",
       description: "La serie que buscas no está disponible.",
     }
   }
@@ -45,12 +45,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const url = `${SITE_URL}/series/${series.slug}`
 
   return {
-    title: `${series.title} (${series.year}) - Análisis Completo | Spider-World`,
+    title: `${series.title} (${series.year}) - Análisis Completo | Sentido Arácnido`,
     description,
     keywords: series.keywords?.length ? series.keywords : ['Spider-Man', 'serie animada', series.title, series.year.toString(), 'análisis', 'episodios'],
     alternates: { canonical: url },
     openGraph: {
-      title: `${series.title} (${series.year}) - Análisis Completo | Spider-World`,
+      title: `${series.title} (${series.year}) - Análisis Completo | Sentido Arácnido`,
       description,
       images: [series.image],
       type: "article",
@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: `${series.title} (${series.year}) - Análisis Completo | Spider-World`,
+      title: `${series.title} (${series.year}) - Análisis Completo | Sentido Arácnido`,
       description,
       images: [series.image],
     },

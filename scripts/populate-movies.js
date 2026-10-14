@@ -156,7 +156,7 @@ function transformMovieToDb(movie) {
     description,
     longDescription: `<h2>${movie.title}</h2><p>${description}</p>`,
     slug,
-    seoTitle: `${movie.title} (${year}) - Análisis Completo | Spider-World`,
+    seoTitle: `${movie.title} (${year}) - Análisis Completo | Sentido Arácnido`,
     seoDescription: description.substring(0, 155),
     keywords: [
       movie.title,

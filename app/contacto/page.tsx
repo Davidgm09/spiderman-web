@@ -3,8 +3,8 @@ import { Mail, Clock, MessageSquare, CheckCircle } from "lucide-react"
 import { SITE_URL } from "@/lib/config"
 
 export const metadata: Metadata = {
-  title: "Contacto | Spider-World",
-  description: "Contacta con Spider-World para colaboraciones, errores o sugerencias sobre el universo Spider-Man.",
+  title: "Contacto | Sentido Arácnido",
+  description: "Contacta con Sentido Arácnido para colaboraciones, errores o sugerencias sobre el universo Spider-Man.",
   alternates: { canonical: '/contacto' },
   robots: { index: false },
 }
@@ -18,7 +18,7 @@ export default async function ContactoPage({ searchParams }: { searchParams: Pro
 
       {/* Header */}
       <section className="pt-32 pb-12 px-4 text-center">
-        <p className="text-red-400 text-sm font-semibold tracking-widest uppercase mb-4">Spider-World · Contacto</p>
+        <p className="text-red-400 text-sm font-semibold tracking-widest uppercase mb-4">Sentido Arácnido · Contacto</p>
         <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 leading-tight">
           Escríbenos
         </h1>
@@ -40,7 +40,7 @@ export default async function ContactoPage({ searchParams }: { searchParams: Pro
         {/* Info cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
           {[
-            { icon: Mail,         color: "text-red-400",    title: "Email",     desc: "hola@spider-world.es" },
+            { icon: Mail,         color: "text-red-400",    title: "Email",     desc: "hola@sentidoaracnido.com" },
             { icon: Clock,        color: "text-blue-400",   title: "Respuesta", desc: "En menos de 48 horas" },
             { icon: MessageSquare,color: "text-purple-400", title: "Motivos",   desc: "Colaboraciones, errores, sugerencias" },
           ].map(({ icon: Icon, color, title, desc }) => (
@@ -57,13 +57,13 @@ export default async function ContactoPage({ searchParams }: { searchParams: Pro
           <h2 className="text-xl font-bold text-white mb-6">Envíanos un mensaje</h2>
 
           <form
-            action="https://formsubmit.co/hola@spider-world.es"
+            action="https://formsubmit.co/hola@sentidoaracnido.com"
             method="POST"
             className="space-y-5"
           >
             <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_next" value={`${SITE_URL}/contacto?enviado=true`} />
-            <input type="hidden" name="_subject" value="Nuevo mensaje desde Spider-World" />
+            <input type="hidden" name="_subject" value="Nuevo mensaje desde Sentido Arácnido" />
 
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-2">Nombre</label>

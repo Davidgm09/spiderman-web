@@ -11,13 +11,13 @@ import { BlogPost } from "@prisma/client"
 const POSTS_PER_PAGE = 6
 
 export const metadata: Metadata = {
-  title: "Blog Spider-Man - Análisis, Noticias y Contenido Exclusivo | Spider-World",
+  title: "Blog Spider-Man - Análisis, Noticias y Contenido Exclusivo | Sentido Arácnido",
   description:
     "Las últimas noticias, análisis profundos y contenido exclusivo del Spider-Verse. Artículos especializados para fans verdaderos de Spider-Man.",
   keywords: ["blog Spider-Man", "noticias Spider-Man", "análisis Marvel", "Spider-Verse", "contenido exclusivo"],
   alternates: { canonical: '/blog' },
   openGraph: {
-    title: "Blog Spider-Man - Análisis, Noticias y Contenido Exclusivo | Spider-World",
+    title: "Blog Spider-Man - Análisis, Noticias y Contenido Exclusivo | Sentido Arácnido",
     description: "Las últimas noticias, análisis profundos y contenido exclusivo del Spider-Verse.",
     type: 'website',
     url: '/blog',
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Blog Spider-Man - Análisis, Noticias y Contenido Exclusivo | Spider-World",
+    title: "Blog Spider-Man - Análisis, Noticias y Contenido Exclusivo | Sentido Arácnido",
     description: "Las últimas noticias, análisis profundos y contenido exclusivo del Spider-Verse.",
     images: ['https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/8126579-amazing_spider-man_vol_5_54_stormbreakers_variant_textless.jpg'],
   },
@@ -109,10 +109,10 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
         <div className="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-transparent to-red-950" />
 
         <div className="relative z-10 max-w-4xl mx-auto">
-          <p className="text-red-400 text-sm font-semibold tracking-widest uppercase mb-4">Spider-World · Blog</p>
+          <p className="text-red-400 text-sm font-semibold tracking-widest uppercase mb-4">Sentido Arácnido · Blog</p>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white leading-tight">
             Blog<br />
-            <span className="bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent">Spider-World</span>
+            <span className="bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent">Sentido Arácnido</span>
           </h1>
           <p className="text-lg text-gray-300 max-w-xl mx-auto mb-8">
             Análisis profundos, noticias y contenido exclusivo del Spider-Verse.

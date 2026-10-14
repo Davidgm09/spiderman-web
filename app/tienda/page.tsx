@@ -6,20 +6,20 @@ import { SITE_URL } from "@/lib/config"
 import ProductGrid from "@/components/tienda/ProductGrid"
 
 export const metadata: Metadata = {
-  title: "Tienda Spider-Man - Figuras, Camisetas, Funkos y Más | Spider-World",
+  title: "Tienda Spider-Man - Figuras, Camisetas, Funkos y Más | Sentido Arácnido",
   description:
     "Los mejores productos oficiales de Spider-Man en Amazon: figuras, camisetas, Funko Pop, mochilas y coleccionables. Envío rápido y garantía Amazon.",
   keywords: ["tienda Spider-Man", "productos Spider-Man", "figuras Spider-Man", "camisetas Marvel", "funkos", "merchandising"],
   alternates: { canonical: `${SITE_URL}/tienda` },
   openGraph: {
-    title: "Tienda Spider-Man - Figuras, Camisetas, Funkos y Más | Spider-World",
+    title: "Tienda Spider-Man - Figuras, Camisetas, Funkos y Más | Sentido Arácnido",
     description: "Los mejores productos oficiales de Spider-Man en Amazon.",
     url: `${SITE_URL}/tienda`,
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tienda Spider-Man | Spider-World",
+    title: "Tienda Spider-Man | Sentido Arácnido",
     description: "Los mejores productos oficiales de Spider-Man en Amazon.",
   },
 }
@@ -66,7 +66,7 @@ export default async function TiendaPage({ searchParams }: Props) {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(220,38,38,0.12)_0%,_transparent_65%)]" />
 
         <div className="relative z-10 max-w-3xl mx-auto text-center">
-          <p className="text-red-500 text-xs font-bold tracking-widest uppercase mb-3">Spider-World · Tienda Oficial</p>
+          <p className="text-red-500 text-xs font-bold tracking-widest uppercase mb-3">Sentido Arácnido · Tienda Oficial</p>
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-3">
             Merchandising<br className="hidden sm:block" /> Spider-Man
           </h1>

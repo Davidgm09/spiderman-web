@@ -21,7 +21,7 @@ type Props = { params: Promise<{ slug: string }> }
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const character = await characterService.getBySlug(slug).catch(() => null);
-  if (!character) return { title: 'Personaje no encontrado | Spider-World' };
+  if (!character) return { title: 'Personaje no encontrado | Sentido Arácnido' };
   const url = `${SITE_URL}/personajes/${character.slug}`;
   return {
     title: character.seoTitle,

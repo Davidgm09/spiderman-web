@@ -13,11 +13,11 @@ import { SITE_URL, ADS_ENABLED } from "@/lib/config"
 import { Movie, Comic, Game, Series, BlogPost, Product } from "@prisma/client"
 
 export const metadata = {
-  title: "Spider-World - El Universo Completo de Spider-Man",
+  title: "Sentido Arácnido - El Universo Completo de Spider-Man",
   description: "Descubre todo sobre Spider-Man: películas, cómics, videojuegos, series y productos oficiales. La guía definitiva del trepamuros.",
   keywords: ["Spider-Man", "Marvel", "cómics", "películas", "videojuegos", "Peter Parker", "Spider-Verse"],
   openGraph: {
-    title: "Spider-World - El Universo Completo de Spider-Man",
+    title: "Sentido Arácnido - El Universo Completo de Spider-Man",
     description: "La guía definitiva de Spider-Man con análisis, reseñas y productos oficiales",
     images: ["https://image.tmdb.org/t/p/w1200/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg"],
   }
@@ -152,7 +152,7 @@ export default async function HomePage() {
   const websiteJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Spider-World',
+    name: 'Sentido Arácnido',
     url: BASE_URL,
     description: 'La guía definitiva de Spider-Man: películas, cómics, videojuegos, series y más.',
     inLanguage: 'es',
@@ -169,7 +169,7 @@ export default async function HomePage() {
   const organizationJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'Spider-World',
+    name: 'Sentido Arácnido',
     url: BASE_URL,
     logo: {
       '@type': 'ImageObject',
@@ -177,7 +177,7 @@ export default async function HomePage() {
       width: 512,
       height: 512,
     },
-    description: 'Spider-World es la guía definitiva del universo Spider-Man en español: análisis de películas, cómics, videojuegos, series y personajes.',
+    description: 'Sentido Arácnido es la guía definitiva del universo Spider-Man en español: análisis de películas, cómics, videojuegos, series y personajes.',
     inLanguage: 'es',
     foundingDate: '2024',
     areaServed: { '@type': 'Country', name: 'Spain' },
@@ -540,7 +540,7 @@ export default async function HomePage() {
               <div className="relative rounded-2xl overflow-hidden h-full min-h-[280px] shadow-xl">
                 <Image
                   src={featuredContent.blogPosts[0].image || "/placeholder.svg?height=300&width=600"}
-                  alt={`${featuredContent.blogPosts[0].title} - Blog Spider-World`}
+                  alt={`${featuredContent.blogPosts[0].title} - Blog Sentido Arácnido`}
                   fill
                   sizes="(max-width: 1024px) 100vw, 60vw"
                   className="object-cover object-[center_75%] group-hover:scale-105 transition-transform duration-500"
@@ -566,7 +566,7 @@ export default async function HomePage() {
                 <div className="relative w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden">
                   <Image
                     src={post.image || "/placeholder.svg?height=80&width=80"}
-                    alt={`${post.title} - Blog Spider-World`}
+                    alt={`${post.title} - Blog Sentido Arácnido`}
                     fill
                     sizes="80px"
                     className="object-cover group-hover:scale-105 transition-transform duration-300"

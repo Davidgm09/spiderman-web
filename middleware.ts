@@ -20,7 +20,7 @@ export function middleware(request: NextRequest) {
     return new NextResponse('Acceso no autorizado', {
       status: 401,
       headers: {
-        'WWW-Authenticate': 'Basic realm="Spider-World Admin"',
+        'WWW-Authenticate': 'Basic realm="Sentido Aracnido Admin"',
       },
     })
   }

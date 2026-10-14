@@ -3,9 +3,9 @@ import Link from "next/link"
 import { SITE_URL } from "@/lib/config"
 
 export const metadata: Metadata = {
-  title: "Sobre Nosotros | Spider-World",
+  title: "Sobre Nosotros | Sentido Arácnido",
   description:
-    "Conoce el equipo detrás de Spider-World, el portal en español más completo sobre el universo de Spider-Man: películas, cómics, videojuegos, series y personajes.",
+    "Conoce el equipo detrás de Sentido Arácnido, el portal en español más completo sobre el universo de Spider-Man: películas, cómics, videojuegos, series y personajes.",
   alternates: { canonical: `${SITE_URL}/sobre-nosotros` },
 }
 
@@ -14,14 +14,14 @@ export default function SobreNosotrosPage() {
     <div className="min-h-screen bg-gradient-to-br from-red-950 via-gray-900 to-blue-950 py-20 px-4">
       <div className="max-w-3xl mx-auto">
         <h1 className="text-4xl font-bold text-white mb-4">Sobre Nosotros</h1>
-        <p className="text-gray-400 mb-12">El equipo detrás de Spider-World</p>
+        <p className="text-gray-400 mb-12">El equipo detrás de Sentido Arácnido</p>
 
         <div className="prose prose-invert max-w-none space-y-10 text-gray-300 leading-relaxed">
 
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-4">¿Qué es Spider-World?</h2>
+            <h2 className="text-2xl font-semibold text-white mb-4">¿Qué es Sentido Arácnido?</h2>
             <p>
-              Spider-World es el portal de referencia en español sobre el universo de Spider-Man. Nació de la pasión
+              Sentido Arácnido es el portal de referencia en español sobre el universo de Spider-Man. Nació de la pasión
               por uno de los personajes más icónicos de Marvel: Peter Parker, Miles Morales y todos los Spider-Men
               que han cruzado el multiverso.
             </p>
@@ -46,7 +46,7 @@ export default function SobreNosotrosPage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-4">Qué encontrarás en Spider-World</h2>
+            <h2 className="text-2xl font-semibold text-white mb-4">Qué encontrarás en Sentido Arácnido</h2>
             <ul className="list-disc list-inside space-y-2 mt-3">
               <li><strong className="text-white">Películas:</strong> análisis completos de toda la filmografía de Spider-Man, desde la trilogía Raimi hasta el MCU.</li>
               <li><strong className="text-white">Cómics:</strong> reseñas y guías de lectura de los arcos más importantes de la historia del personaje.</li>
@@ -60,7 +60,7 @@ export default function SobreNosotrosPage() {
           <section>
             <h2 className="text-2xl font-semibold text-white mb-4">Transparencia y monetización</h2>
             <p>
-              Spider-World se financia mediante dos sistemas que no afectan a la independencia editorial:
+              Sentido Arácnido se financia mediante dos sistemas que no afectan a la independencia editorial:
             </p>
             <ul className="list-disc list-inside space-y-2 mt-3">
               <li>

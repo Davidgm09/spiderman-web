@@ -2,8 +2,8 @@ import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Spider-World',
-    short_name: 'Spider-World',
+    name: 'Sentido Arácnido',
+    short_name: 'Sentido Arácnido',
     description: 'La guía definitiva del universo Spider-Man: películas, cómics, videojuegos, series y más.',
     start_url: '/',
     display: 'standalone',

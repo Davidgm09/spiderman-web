@@ -28,7 +28,7 @@ const allCharacters = [
     comicsCount: 2500,
     seriesCount: 45,
     slug: "spider-man-peter-parker-alt",
-    seoTitle: "Spider-Man (Peter Parker) - El Héroe Arácnido Original | Spider-World",
+    seoTitle: "Spider-Man (Peter Parker) - El Héroe Arácnido Original | Sentido Arácnido",
     seoDescription: "Descubre todo sobre Peter Parker, el Spider-Man original. Historia, poderes, cómics y su papel en el Spider-Verse.",
     keywords: ["Spider-Man", "Peter Parker", "Marvel", "superhéroe", "arácnido", "Nueva York"],
     isFeatured: true
@@ -52,7 +52,7 @@ const allCharacters = [
     comicsCount: 350,
     seriesCount: 12,
     slug: "spider-man-miles-morales-alt",
-    seoTitle: "Spider-Man (Miles Morales) - El Nuevo Spider-Man | Spider-World",
+    seoTitle: "Spider-Man (Miles Morales) - El Nuevo Spider-Man | Sentido Arácnido",
     seoDescription: "Conoce a Miles Morales, el joven Spider-Man con poderes únicos de invisibilidad y descargas bioeléctricas.",
     keywords: ["Miles Morales", "Spider-Man", "Ultimate", "invisible", "bioeléctrico"],
     isFeatured: true
@@ -76,7 +76,7 @@ const allCharacters = [
     comicsCount: 180,
     seriesCount: 8,
     slug: "spider-gwen-gwen-stacy-alt",
-    seoTitle: "Spider-Gwen (Gwen Stacy) - La Spider-Woman de Tierra-65 | Spider-World",
+    seoTitle: "Spider-Gwen (Gwen Stacy) - La Spider-Woman de Tierra-65 | Sentido Arácnido",
     seoDescription: "Descubre a Gwen Stacy como Spider-Woman en el universo alternativo donde ella obtuvo los poderes arácnidos.",
     keywords: ["Spider-Gwen", "Gwen Stacy", "Spider-Woman", "Ghost-Spider", "Tierra-65"],
     isFeatured: true
@@ -100,7 +100,7 @@ const allCharacters = [
     comicsCount: 220,
     seriesCount: 6,
     slug: "spider-man-2099-miguel-ohara-alt",
-    seoTitle: "Spider-Man 2099 (Miguel O'Hara) - El Spider-Man del Futuro | Spider-World",
+    seoTitle: "Spider-Man 2099 (Miguel O'Hara) - El Spider-Man del Futuro | Sentido Arácnido",
     seoDescription: "Conoce a Miguel O'Hara, Spider-Man 2099, el héroe arácnido del futuro con poderes genéticos únicos.",
     keywords: ["Spider-Man 2099", "Miguel O'Hara", "futuro", "genético", "Alchemax"],
     isFeatured: true
@@ -124,7 +124,7 @@ const allCharacters = [
     comicsCount: 150,
     seriesCount: 5,
     slug: "spider-woman-julia-carpenter-alt",
-    seoTitle: "Spider-Woman (Julia Carpenter) - La Segunda Spider-Woman | Spider-World",
+    seoTitle: "Spider-Woman (Julia Carpenter) - La Segunda Spider-Woman | Sentido Arácnido",
     seoDescription: "Descubre a Julia Carpenter, la segunda Spider-Woman que se convirtió en Arachne y luego en Madame Web.",
     keywords: ["Julia Carpenter", "Spider-Woman", "Arachne", "Madame Web", "precognición"],
     isFeatured: false
@@ -148,7 +148,7 @@ const allCharacters = [
     comicsCount: 45,
     seriesCount: 3,
     slug: "spider-ham-peter-porker-alt",
-    seoTitle: "Spider-Ham (Peter Porker) - El Spider-Man Cerdo | Spider-World",
+    seoTitle: "Spider-Ham (Peter Porker) - El Spider-Man Cerdo | Sentido Arácnido",
     seoDescription: "Conoce a Peter Porker, Spider-Ham, la versión cerdo antropomórfico de Spider-Man del universo animal.",
     keywords: ["Spider-Ham", "Peter Porker", "animal", "cerdo", "cartoon", "Tierra-8311"],
     isFeatured: false
@@ -172,7 +172,7 @@ const allCharacters = [
     comicsCount: 25,
     seriesCount: 2,
     slug: "spider-man-noir-peter-parker-alt",
-    seoTitle: "Spider-Man Noir (Peter Parker) - El Spider-Man de los Años 30 | Spider-World",
+    seoTitle: "Spider-Man Noir (Peter Parker) - El Spider-Man de los Años 30 | Sentido Arácnido",
     seoDescription: "Descubre a Spider-Man Noir, la versión de Peter Parker de los años 1930 en una Nueva York de la Gran Depresión.",
     keywords: ["Spider-Man Noir", "años 30", "Gran Depresión", "noir", "Tierra-90214"],
     isFeatured: false
@@ -196,7 +196,7 @@ const allCharacters = [
     comicsCount: 180,
     seriesCount: 4,
     slug: "spider-girl-mayday-parker-alt",
-    seoTitle: "Spider-Girl (Mayday Parker) - La Hija de Spider-Man | Spider-World",
+    seoTitle: "Spider-Girl (Mayday Parker) - La Hija de Spider-Man | Sentido Arácnido",
     seoDescription: "Conoce a May 'Mayday' Parker, Spider-Girl, la hija de Peter Parker en el universo MC2.",
     keywords: ["Spider-Girl", "Mayday Parker", "hija", "MC2", "Tierra-982", "segunda generación"],
     isFeatured: false
@@ -220,7 +220,7 @@ const allCharacters = [
     comicsCount: 85,
     seriesCount: 3,
     slug: "silk-cindy-moon-alt",
-    seoTitle: "Silk (Cindy Moon) - La Otra Mordida por la Araña | Spider-World",
+    seoTitle: "Silk (Cindy Moon) - La Otra Mordida por la Araña | Sentido Arácnido",
     seoDescription: "Descubre a Cindy Moon, Silk, quien fue mordida por la misma araña que Peter Parker pero desarrolló poderes únicos.",
     keywords: ["Silk", "Cindy Moon", "misma araña", "Inheritors", "capullos"],
     isFeatured: false
@@ -244,7 +244,7 @@ const allCharacters = [
     comicsCount: 120,
     seriesCount: 5,
     slug: "ben-reilly-scarlet-spider-alt",
-    seoTitle: "Ben Reilly (Scarlet Spider) - El Clon de Spider-Man | Spider-World",
+    seoTitle: "Ben Reilly (Scarlet Spider) - El Clon de Spider-Man | Sentido Arácnido",
     seoDescription: "Conoce a Ben Reilly, el clon de Peter Parker que se convirtió en Scarlet Spider y temporalmente en Spider-Man.",
     keywords: ["Ben Reilly", "Scarlet Spider", "clon", "Peter Parker", "Chacal"],
     isFeatured: false
@@ -268,7 +268,7 @@ const allCharacters = [
     comicsCount: 35,
     seriesCount: 2,
     slug: "spider-uk-billy-braddock-alt",
-    seoTitle: "Spider-UK (Billy Braddock) - El Spider-Man Británico | Spider-World",
+    seoTitle: "Spider-UK (Billy Braddock) - El Spider-Man Británico | Sentido Arácnido",
     seoDescription: "Descubre a Billy Braddock, Spider-UK, que combina los poderes de Spider-Man con los del Capitán Britania.",
     keywords: ["Spider-UK", "Billy Braddock", "Reino Unido", "Capitán Britania", "Tierra-833"],
     isFeatured: false
@@ -292,7 +292,7 @@ const allCharacters = [
     comicsCount: 15,
     seriesCount: 1,
     slug: "spider-man-india-pavitr-prabhakar-alt",
-    seoTitle: "Spider-Man India (Pavitr Prabhakar) - El Spider-Man de Mumbai | Spider-World",
+    seoTitle: "Spider-Man India (Pavitr Prabhakar) - El Spider-Man de Mumbai | Sentido Arácnido",
     seoDescription: "Conoce a Pavitr Prabhakar, Spider-Man India, que protege Mumbai con poderes arácnidos y elementos místicos.",
     keywords: ["Spider-Man India", "Pavitr Prabhakar", "Mumbai", "India", "místico", "Tierra-50101"],
     isFeatured: false
@@ -316,7 +316,7 @@ const allCharacters = [
     comicsCount: 45,
     seriesCount: 2,
     slug: "spider-woman-mattie-franklin-alt",
-    seoTitle: "Spider-Woman (Mattie Franklin) - La Tercera Spider-Woman | Spider-World",
+    seoTitle: "Spider-Woman (Mattie Franklin) - La Tercera Spider-Woman | Sentido Arácnido",
     seoDescription: "Descubre a Mattie Franklin, la tercera Spider-Woman que obtuvo poderes a través de una ceremonia mística.",
     keywords: ["Mattie Franklin", "Spider-Woman", "tercera", "ceremonia mística", "adolescente"],
     isFeatured: false
@@ -340,7 +340,7 @@ const allCharacters = [
     comicsCount: 65,
     seriesCount: 3,
     slug: "madame-web-cassandra-webb-alt",
-    seoTitle: "Madame Web (Cassandra Webb) - La Vidente Arácnida | Spider-World",
+    seoTitle: "Madame Web (Cassandra Webb) - La Vidente Arácnida | Sentido Arácnido",
     seoDescription: "Conoce a Cassandra Webb, Madame Web, la mutante precognitiva que guía a los héroes arácnidos.",
     keywords: ["Madame Web", "Cassandra Webb", "precognición", "telepatía", "mentora"],
     isFeatured: false
@@ -364,7 +364,7 @@ const allCharacters = [
     comicsCount: 95,
     seriesCount: 4,
     slug: "kaine-parker-scarlet-spider-alt",
-    seoTitle: "Kaine Parker (Scarlet Spider) - El Clon Redimido | Spider-World",
+    seoTitle: "Kaine Parker (Scarlet Spider) - El Clon Redimido | Sentido Arácnido",
     seoDescription: "Descubre a Kaine Parker, el primer clon de Peter Parker que se redimió como Scarlet Spider.",
     keywords: ["Kaine Parker", "Scarlet Spider", "clon", "Houston", "marca de Kaine"],
     isFeatured: false
@@ -390,7 +390,7 @@ const allCharacters = [
     comicsCount: 850,
     seriesCount: 25,
     slug: "green-goblin-norman-osborn-alt",
-    seoTitle: "Green Goblin (Norman Osborn) - El Némesis de Spider-Man | Spider-World",
+    seoTitle: "Green Goblin (Norman Osborn) - El Némesis de Spider-Man | Sentido Arácnido",
     seoDescription: "Descubre todo sobre Norman Osborn, el Green Goblin, el villano más icónico y peligroso de Spider-Man.",
     keywords: ["Green Goblin", "Norman Osborn", "Spider-Man", "Oscorp", "némesis", "villano"],
     isFeatured: true
@@ -414,7 +414,7 @@ const allCharacters = [
     comicsCount: 720,
     seriesCount: 20,
     slug: "doctor-octopus-otto-octavius-alt",
-    seoTitle: "Doctor Octopus (Otto Octavius) - El Científico Tentacular | Spider-World",
+    seoTitle: "Doctor Octopus (Otto Octavius) - El Científico Tentacular | Sentido Arácnido",
     seoDescription: "Conoce a Otto Octavius, Doctor Octopus, el genio científico con tentáculos mecánicos y líder de los Sinister Six.",
     keywords: ["Doctor Octopus", "Otto Octavius", "tentáculos", "Sinister Six", "Superior Spider-Man"],
     isFeatured: true
@@ -438,7 +438,7 @@ const allCharacters = [
     comicsCount: 450,
     seriesCount: 15,
     slug: "venom-eddie-brock-alt",
-    seoTitle: "Venom (Eddie Brock) - El Simbionte Letal | Spider-World",
+    seoTitle: "Venom (Eddie Brock) - El Simbionte Letal | Sentido Arácnido",
     seoDescription: "Descubre a Eddie Brock, Venom, el periodista fusionado con el simbionte que se convirtió en némesis de Spider-Man.",
     keywords: ["Venom", "Eddie Brock", "simbionte", "alien", "letal", "antihéroe"],
     isFeatured: true
@@ -462,7 +462,7 @@ const allCharacters = [
     comicsCount: 380,
     seriesCount: 12,
     slug: "sandman-william-baker-alt",
-    seoTitle: "Sandman (William Baker) - El Hombre de Arena | Spider-World",
+    seoTitle: "Sandman (William Baker) - El Hombre de Arena | Sentido Arácnido",
     seoDescription: "Conoce a William Baker, Sandman, el criminal que se convirtió en arena y alternó entre villano y antihéroe.",
     keywords: ["Sandman", "William Baker", "Flint Marko", "arena", "Sinister Six"],
     isFeatured: false
@@ -486,7 +486,7 @@ const allCharacters = [
     comicsCount: 290,
     seriesCount: 8,
     slug: "lizard-curtis-connors-alt",
-    seoTitle: "Lizard (Curtis Connors) - El Científico Reptil | Spider-World",
+    seoTitle: "Lizard (Curtis Connors) - El Científico Reptil | Sentido Arácnido",
     seoDescription: "Descubre a Curtis Connors, el Lizard, el científico que se transformó en criatura reptiliana buscando regenerar su brazo.",
     keywords: ["Lizard", "Curtis Connors", "reptil", "regeneración", "científico", "transformación"],
     isFeatured: false
@@ -510,7 +510,7 @@ const allCharacters = [
     comicsCount: 310,
     seriesCount: 10,
     slug: "electro-maxwell-dillon-alt",
-    seoTitle: "Electro (Maxwell Dillon) - El Hombre Eléctrico | Spider-World",
+    seoTitle: "Electro (Maxwell Dillon) - El Hombre Eléctrico | Sentido Arácnido",
     seoDescription: "Conoce a Maxwell Dillon, Electro, el electricista que obtuvo poderes eléctricos tras ser alcanzado por un rayo.",
     keywords: ["Electro", "Maxwell Dillon", "electricidad", "rayo", "Sinister Six"],
     isFeatured: false
@@ -534,7 +534,7 @@ const allCharacters = [
     comicsCount: 280,
     seriesCount: 9,
     slug: "mysterio-quentin-beck-alt",
-    seoTitle: "Mysterio (Quentin Beck) - El Maestro de las Ilusiones | Spider-World",
+    seoTitle: "Mysterio (Quentin Beck) - El Maestro de las Ilusiones | Sentido Arácnido",
     seoDescription: "Descubre a Quentin Beck, Mysterio, el especialista en efectos especiales que usa ilusiones para aterrorizar a Spider-Man.",
     keywords: ["Mysterio", "Quentin Beck", "ilusiones", "efectos especiales", "Hollywood", "psicológico"],
     isFeatured: false
@@ -558,7 +558,7 @@ const allCharacters = [
     comicsCount: 240,
     seriesCount: 7,
     slug: "rhino-aleksei-sytsevich-alt",
-    seoTitle: "Rhino (Aleksei Sytsevich) - La Fuerza Imparable | Spider-World",
+    seoTitle: "Rhino (Aleksei Sytsevich) - La Fuerza Imparable | Sentido Arácnido",
     seoDescription: "Conoce a Aleksei Sytsevich, Rhino, el criminal ruso con traje blindado permanente y fuerza sobrehumana.",
     keywords: ["Rhino", "Aleksei Sytsevich", "ruso", "blindado", "fuerza", "imparable"],
     isFeatured: false
@@ -582,7 +582,7 @@ const allCharacters = [
     comicsCount: 320,
     seriesCount: 11,
     slug: "vulture-adrian-toomes-alt",
-    seoTitle: "Vulture (Adrian Toomes) - El Primer Villano de Spider-Man | Spider-World",
+    seoTitle: "Vulture (Adrian Toomes) - El Primer Villano de Spider-Man | Sentido Arácnido",
     seoDescription: "Descubre a Adrian Toomes, Vulture, el inventor anciano que se convirtió en el primer supervillano de Spider-Man.",
     keywords: ["Vulture", "Adrian Toomes", "vuelo", "inventor", "primer villano", "anciano"],
     isFeatured: false
@@ -606,7 +606,7 @@ const allCharacters = [
     comicsCount: 250,
     seriesCount: 8,
     slug: "kraven-the-hunter-sergei-kravinoff-alt",
-    seoTitle: "Kraven the Hunter (Sergei Kravinoff) - El Cazador Supremo | Spider-World",
+    seoTitle: "Kraven the Hunter (Sergei Kravinoff) - El Cazador Supremo | Sentido Arácnido",
     seoDescription: "Conoce a Sergei Kravinoff, Kraven the Hunter, el cazador aristocrático obsesionado con cazar a Spider-Man.",
     keywords: ["Kraven", "Sergei Kravinoff", "cazador", "aristocrático", "ruso", "presa definitiva"],
     isFeatured: false
@@ -630,7 +630,7 @@ const allCharacters = [
     comicsCount: 180,
     seriesCount: 6,
     slug: "hobgoblin-roderick-kingsley-alt",
-    seoTitle: "Hobgoblin (Roderick Kingsley) - El Goblin Calculador | Spider-World",
+    seoTitle: "Hobgoblin (Roderick Kingsley) - El Goblin Calculador | Sentido Arácnido",
     seoDescription: "Descubre a Roderick Kingsley, Hobgoblin, el diseñador de modas que mejoró el equipamiento del Green Goblin.",
     keywords: ["Hobgoblin", "Roderick Kingsley", "diseñador", "Green Goblin", "calculador"],
     isFeatured: false
@@ -654,7 +654,7 @@ const allCharacters = [
     comicsCount: 220,
     seriesCount: 12,
     slug: "carnage-cletus-kasady-alt",
-    seoTitle: "Carnage (Cletus Kasady) - El Simbionte Asesino | Spider-World",
+    seoTitle: "Carnage (Cletus Kasady) - El Simbionte Asesino | Sentido Arácnido",
     seoDescription: "Conoce a Cletus Kasady, Carnage, el asesino en serie fusionado con la descendencia de Venom.",
     keywords: ["Carnage", "Cletus Kasady", "asesino", "simbionte", "psicópata", "violento"],
     isFeatured: true
@@ -678,7 +678,7 @@ const allCharacters = [
     comicsCount: 200,
     seriesCount: 7,
     slug: "scorpion-mac-gargan-alt",
-    seoTitle: "Scorpion (Mac Gargan) - El Investigador Transformado | Spider-World",
+    seoTitle: "Scorpion (Mac Gargan) - El Investigador Transformado | Sentido Arácnido",
     seoDescription: "Descubre a Mac Gargan, Scorpion, el investigador privado transformado por Jameson para derrotar a Spider-Man.",
     keywords: ["Scorpion", "Mac Gargan", "investigador", "Jameson", "cola", "aguijón"],
     isFeatured: false
@@ -702,7 +702,7 @@ const allCharacters = [
     comicsCount: 85,
     seriesCount: 4,
     slug: "morlun-alt",
-    seoTitle: "Morlun - El Cazador Multiversal de Spider-Men | Spider-World",
+    seoTitle: "Morlun - El Cazador Multiversal de Spider-Men | Sentido Arácnido",
     seoDescription: "Conoce a Morlun, el ser ancestral que caza Spider-Men a través del multiverso para alimentarse de su fuerza vital.",
     keywords: ["Morlun", "multiversal", "Inheritors", "cazador", "totem arácnido", "fuerza vital"],
     isFeatured: false
@@ -726,7 +726,7 @@ const allCharacters = [
     comicsCount: 150,
     seriesCount: 5,
     slug: "jackal-miles-warren-alt",
-    seoTitle: "Jackal (Miles Warren) - El Maestro de la Clonación | Spider-World",
+    seoTitle: "Jackal (Miles Warren) - El Maestro de la Clonación | Sentido Arácnido",
     seoDescription: "Descubre a Miles Warren, el Jackal, el profesor que creó clones de Spider-Man por venganza.",
     keywords: ["Jackal", "Miles Warren", "clones", "Gwen Stacy", "bioquímica", "profesor"],
     isFeatured: false
@@ -752,7 +752,7 @@ const allCharacters = [
     comicsCount: 1200,
     seriesCount: 35,
     slug: "iron-man-tony-stark-alt",
-    seoTitle: "Iron Man (Tony Stark) - El Genio Inventor de los Vengadores | Spider-World",
+    seoTitle: "Iron Man (Tony Stark) - El Genio Inventor de los Vengadores | Sentido Arácnido",
     seoDescription: "Descubre a Tony Stark, Iron Man, el genio multimillonario que usa tecnología avanzada para proteger el mundo.",
     keywords: ["Iron Man", "Tony Stark", "Vengadores", "tecnología", "genio", "armadura"],
     isFeatured: true
@@ -776,7 +776,7 @@ const allCharacters = [
     comicsCount: 1100,
     seriesCount: 28,
     slug: "captain-america-steve-rogers-alt",
-    seoTitle: "Captain America (Steve Rogers) - El Primer Vengador | Spider-World",
+    seoTitle: "Captain America (Steve Rogers) - El Primer Vengador | Sentido Arácnido",
     seoDescription: "Conoce a Steve Rogers, Captain America, el súper soldado que se convirtió en símbolo de libertad y líder de los Vengadores.",
     keywords: ["Captain America", "Steve Rogers", "súper soldado", "Vengadores", "escudo", "libertad"],
     isFeatured: true
@@ -800,7 +800,7 @@ const allCharacters = [
     comicsCount: 900,
     seriesCount: 25,
     slug: "thor-odinson-alt",
-    seoTitle: "Thor Odinson - El Dios del Trueno Vengador | Spider-World",
+    seoTitle: "Thor Odinson - El Dios del Trueno Vengador | Sentido Arácnido",
     seoDescription: "Descubre a Thor, el Dios Asgardiano del Trueno que protege la Tierra como miembro de los Vengadores.",
     keywords: ["Thor", "Dios del Trueno", "Asgard", "Mjolnir", "Vengadores", "nórdico"],
     isFeatured: true
@@ -824,7 +824,7 @@ const allCharacters = [
     comicsCount: 800,
     seriesCount: 22,
     slug: "hulk-bruce-banner-alt",
-    seoTitle: "Hulk (Bruce Banner) - El Gigante Verde de los Vengadores | Spider-World",
+    seoTitle: "Hulk (Bruce Banner) - El Gigante Verde de los Vengadores | Sentido Arácnido",
     seoDescription: "Conoce a Bruce Banner, Hulk, el científico que se transforma en una criatura de fuerza ilimitada.",
     keywords: ["Hulk", "Bruce Banner", "gamma", "fuerza", "transformación", "Vengadores"],
     isFeatured: true
@@ -848,7 +848,7 @@ const allCharacters = [
     comicsCount: 350,
     seriesCount: 15,
     slug: "black-widow-natasha-romanoff-alt",
-    seoTitle: "Black Widow (Natasha Romanoff) - La Espía Vengadora | Spider-World",
+    seoTitle: "Black Widow (Natasha Romanoff) - La Espía Vengadora | Sentido Arácnido",
     seoDescription: "Descubre a Natasha Romanoff, Black Widow, la ex-espía rusa que se convirtió en heroína y Vengadora.",
     keywords: ["Black Widow", "Natasha Romanoff", "espía", "S.H.I.E.L.D.", "Vengadores", "rusa"],
     isFeatured: false
@@ -872,7 +872,7 @@ const allCharacters = [
     comicsCount: 420,
     seriesCount: 12,
     slug: "hawkeye-clint-barton-alt",
-    seoTitle: "Hawkeye (Clint Barton) - El Arquero Vengador | Spider-World",
+    seoTitle: "Hawkeye (Clint Barton) - El Arquero Vengador | Sentido Arácnido",
     seoDescription: "Conoce a Clint Barton, Hawkeye, el maestro arquero que se convirtió en uno de los Vengadores más leales.",
     keywords: ["Hawkeye", "Clint Barton", "arquero", "Vengadores", "puntería", "arco"],
     isFeatured: false
@@ -896,7 +896,7 @@ const allCharacters = [
     comicsCount: 650,
     seriesCount: 18,
     slug: "daredevil-matt-murdock-alt",
-    seoTitle: "Daredevil (Matt Murdock) - El Hombre Sin Miedo | Spider-World",
+    seoTitle: "Daredevil (Matt Murdock) - El Hombre Sin Miedo | Sentido Arácnido",
     seoDescription: "Descubre a Matt Murdock, Daredevil, el abogado ciego con sentidos sobrehumanos que protege Hell's Kitchen.",
     keywords: ["Daredevil", "Matt Murdock", "ciego", "Hell's Kitchen", "sentidos", "abogado"],
     isFeatured: false
@@ -920,7 +920,7 @@ const allCharacters = [
     comicsCount: 580,
     seriesCount: 16,
     slug: "fantastic-four-reed-richards-alt",
-    seoTitle: "Fantastic Four (Reed Richards) - Mr. Fantastic | Spider-World",
+    seoTitle: "Fantastic Four (Reed Richards) - Mr. Fantastic | Sentido Arácnido",
     seoDescription: "Conoce a Reed Richards, Mr. Fantastic, el científico elástico y líder de los Fantastic Four.",
     keywords: ["Fantastic Four", "Reed Richards", "Mr. Fantastic", "elástico", "científico", "rayos cósmicos"],
     isFeatured: false
@@ -944,7 +944,7 @@ const allCharacters = [
     comicsCount: 480,
     seriesCount: 14,
     slug: "doctor-strange-stephen-strange-alt",
-    seoTitle: "Doctor Strange (Stephen Strange) - El Hechicero Supremo | Spider-World",
+    seoTitle: "Doctor Strange (Stephen Strange) - El Hechicero Supremo | Sentido Arácnido",
     seoDescription: "Descubre a Stephen Strange, Doctor Strange, el ex-cirujano que se convirtió en Hechicero Supremo de la Tierra.",
     keywords: ["Doctor Strange", "Stephen Strange", "hechicero", "magia", "místico", "cirujano"],
     isFeatured: false
@@ -968,7 +968,7 @@ const allCharacters = [
     comicsCount: 850,
     seriesCount: 22,
     slug: "wolverine-james-howlett-alt",
-    seoTitle: "Wolverine (James Howlett) - El Mutante con Garras de Adamantium | Spider-World",
+    seoTitle: "Wolverine (James Howlett) - El Mutante con Garras de Adamantium | Sentido Arácnido",
     seoDescription: "Conoce a James Howlett, Wolverine, el mutante con garras de adamantium y factor de curación.",
     keywords: ["Wolverine", "Logan", "James Howlett", "adamantium", "garras", "X-Men"],
     isFeatured: false
@@ -992,7 +992,7 @@ const allCharacters = [
     comicsCount: 520,
     seriesCount: 14,
     slug: "storm-ororo-munroe-alt",
-    seoTitle: "Storm (Ororo Munroe) - La Diosa del Clima | Spider-World",
+    seoTitle: "Storm (Ororo Munroe) - La Diosa del Clima | Sentido Arácnido",
     seoDescription: "Descubre a Ororo Munroe, Storm, la mutante que controla el clima y lidera a los X-Men.",
     keywords: ["Storm", "Ororo Munroe", "clima", "X-Men", "liderazgo", "mutante"],
     isFeatured: false
@@ -1016,7 +1016,7 @@ const allCharacters = [
     comicsCount: 380,
     seriesCount: 16,
     slug: "deadpool-wade-wilson-alt",
-    seoTitle: "Deadpool (Wade Wilson) - El Mercenario Bocazas | Spider-World",
+    seoTitle: "Deadpool (Wade Wilson) - El Mercenario Bocazas | Sentido Arácnido",
     seoDescription: "Conoce a Wade Wilson, Deadpool, el mercenario con factor de curación que rompe la cuarta pared.",
     keywords: ["Deadpool", "Wade Wilson", "mercenario", "cuarta pared", "regeneración", "bocazas"],
     isFeatured: false
@@ -1040,7 +1040,7 @@ const allCharacters = [
     comicsCount: 420,
     seriesCount: 12,
     slug: "black-panther-tchalla-alt",
-    seoTitle: "Black Panther (T'Challa) - El Rey de Wakanda | Spider-World",
+    seoTitle: "Black Panther (T'Challa) - El Rey de Wakanda | Sentido Arácnido",
     seoDescription: "Descubre a T'Challa, Black Panther, el rey de la avanzada nación de Wakanda y protector del vibranium.",
     keywords: ["Black Panther", "T'Challa", "Wakanda", "vibranium", "rey", "África"],
     isFeatured: false
@@ -1064,7 +1064,7 @@ const allCharacters = [
     comicsCount: 480,
     seriesCount: 15,
     slug: "human-torch-johnny-storm-alt",
-    seoTitle: "Human Torch (Johnny Storm) - La Antorcha Humana | Spider-World",
+    seoTitle: "Human Torch (Johnny Storm) - La Antorcha Humana | Sentido Arácnido",
     seoDescription: "Conoce a Johnny Storm, Human Torch, el miembro más joven de los Fantastic Four con poderes de fuego.",
     keywords: ["Human Torch", "Johnny Storm", "Fantastic Four", "fuego", "vuelo", "llamas"],
     isFeatured: false
@@ -1088,7 +1088,7 @@ const allCharacters = [
     comicsCount: 180,
     seriesCount: 8,
     slug: "ant-man-scott-lang-alt",
-    seoTitle: "Ant-Man (Scott Lang) - El Héroe de Tamaño Variable | Spider-World",
+    seoTitle: "Ant-Man (Scott Lang) - El Héroe de Tamaño Variable | Sentido Arácnido",
     seoDescription: "Descubre a Scott Lang, Ant-Man, el ex-ladrón que se convirtió en héroe usando tecnología de reducción de tamaño.",
     keywords: ["Ant-Man", "Scott Lang", "partículas Pym", "tamaño", "hormigas", "ex-ladrón"],
     isFeatured: false

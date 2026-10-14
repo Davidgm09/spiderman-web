@@ -11,7 +11,7 @@ interface Props {
 export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
   const { q } = await searchParams
   return {
-    title: q ? `Resultados para "${q}" | Spider-World` : "Buscador | Spider-World",
+    title: q ? `Resultados para "${q}" | Sentido Arácnido` : "Buscador | Sentido Arácnido",
     description: "Busca películas, personajes, cómics, series, videojuegos y artículos sobre Spider-Man.",
     robots: { index: false },
   }
@@ -91,7 +91,7 @@ export default async function BuscarPage({ searchParams }: Props) {
 
       {/* Header */}
       <section className="pt-32 pb-12 px-4 text-center">
-        <p className="text-red-400 text-sm font-semibold tracking-widest uppercase mb-4">Spider-World · Búsqueda</p>
+        <p className="text-red-400 text-sm font-semibold tracking-widest uppercase mb-4">Sentido Arácnido · Búsqueda</p>
         <h1 className="text-4xl md:text-6xl font-bold text-white mb-3 leading-tight">
           {hasQuery
             ? <>Resultados para <span className="bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent">"{query}"</span></>

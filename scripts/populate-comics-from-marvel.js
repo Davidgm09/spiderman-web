@@ -204,7 +204,7 @@ function transformComicToDb(comic) {
     description,
     longDescription: `<h2>${title}</h2><p>${description}</p>`,
     slug,
-    seoTitle: `${title} (${year}) — Cómic Spider-Man | Spider-World`,
+    seoTitle: `${title} (${year}) — Cómic Spider-Man | Sentido Arácnido`,
     seoDescription: description.substring(0, 155),
     keywords: [
       title,

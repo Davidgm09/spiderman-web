@@ -10,12 +10,12 @@ import { InContentAd } from '@/components/ads/GoogleAdsense';
 import { Zap, Skull, Shield, Star, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Personajes de Spider-Man y Marvel | Spider-World',
+  title: 'Personajes de Spider-Man y Marvel | Sentido Arácnido',
   description: 'Descubre todos los personajes de Spider-Man y Marvel con información completa, imágenes oficiales y más. Spider-Verse, villanos, héroes y más.',
   keywords: ['Spider-Man personajes', 'Marvel characters', 'Spider-Verse', 'Spider-Gwen', 'Miles Morales', 'personajes Marvel'],
   alternates: { canonical: '/personajes' },
   openGraph: {
-    title: 'Personajes de Spider-Man y Marvel | Spider-World',
+    title: 'Personajes de Spider-Man y Marvel | Sentido Arácnido',
     description: 'Explora todos los personajes del Spider-Verse y Marvel con información completa',
     type: 'website',
     url: '/personajes',
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Personajes de Spider-Man y Marvel | Spider-World',
+    title: 'Personajes de Spider-Man y Marvel | Sentido Arácnido',
     description: 'Explora todos los personajes del Spider-Verse y Marvel con información completa',
     images: ['https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/8126579-amazing_spider-man_vol_5_54_stormbreakers_variant_textless.jpg'],
   },
@@ -70,7 +70,7 @@ export default async function PersonajesPage() {
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10 py-24 text-center">
           <p className="text-xs tracking-[0.3em] uppercase text-red-400 font-semibold mb-4"
             style={{ textShadow: '0 2px 8px rgba(0,0,0,0.8)' }}>
-            Spider-World · Base de datos
+            Sentido Arácnido · Base de datos
           </p>
           <h1 className="text-6xl md:text-8xl font-black text-white mb-6 leading-tight"
             style={{ textShadow: '0 4px 24px rgba(0,0,0,0.9)' }}>

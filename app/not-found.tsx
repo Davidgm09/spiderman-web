@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button"
 import { Home, BookOpen, Film, Gamepad2, Users, Tv } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Página no encontrada | Spider-World",
-  description: "Esta página no existe. Vuelve al inicio de Spider-World.",
+  title: "Página no encontrada | Sentido Arácnido",
+  description: "Esta página no existe. Vuelve al inicio de Sentido Arácnido.",
 }
 
 export default function NotFound() {

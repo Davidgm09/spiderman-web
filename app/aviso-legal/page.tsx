@@ -3,8 +3,8 @@ import Link from "next/link"
 import { SITE_URL } from "@/lib/config"
 
 export const metadata: Metadata = {
-  title: "Aviso Legal | Spider-World",
-  description: "Aviso legal de Spider-World. Información sobre el titular del sitio, propiedad intelectual y condiciones de uso.",
+  title: "Aviso Legal | Sentido Arácnido",
+  description: "Aviso legal de Sentido Arácnido. Información sobre el titular del sitio, propiedad intelectual y condiciones de uso.",
   alternates: { canonical: `${SITE_URL}/aviso-legal` },
   robots: { index: false },
 }
@@ -23,7 +23,7 @@ export default function AvisoLegalPage() {
             <p>
               En cumplimiento de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información
               y de Comercio Electrónico (LSSI-CE), se informa que el presente sitio web,{" "}
-              <strong className="text-white">spider-world.es</strong>, es un proyecto de carácter informativo y
+              <strong className="text-white">sentidoaracnido.com</strong>, es un proyecto de carácter informativo y
               de entretenimiento gestionado de forma independiente.
             </p>
             <p className="mt-4">
@@ -35,7 +35,7 @@ export default function AvisoLegalPage() {
           <section>
             <h2 className="text-2xl font-semibold text-white mb-4">2. Objeto y ámbito de aplicación</h2>
             <p>
-              El presente Aviso Legal regula el acceso y uso del sitio web spider-world.es (en adelante, «el Sitio»),
+              El presente Aviso Legal regula el acceso y uso del sitio web sentidoaracnido.com (en adelante, «el Sitio»),
               que el titular pone a disposición de los usuarios de internet. El acceso al Sitio implica la aceptación
               plena y sin reservas de las presentes condiciones.
             </p>
@@ -45,7 +45,7 @@ export default function AvisoLegalPage() {
             <h2 className="text-2xl font-semibold text-white mb-4">3. Propiedad intelectual</h2>
             <p>
               Los contenidos editoriales del Sitio (textos, análisis, reseñas, artículos de blog) son elaborados por
-              el equipo de Spider-World y están protegidos por los derechos de propiedad intelectual aplicables.
+              el equipo de Sentido Arácnido y están protegidos por los derechos de propiedad intelectual aplicables.
             </p>
             <p className="mt-4">
               <strong className="text-white">Spider-Man y todos los personajes, nombres, imágenes y marcas relacionadas
@@ -53,7 +53,7 @@ export default function AvisoLegalPage() {
               Sony Pictures Entertainment posee los derechos cinematográficos de Spider-Man.
             </p>
             <p className="mt-4">
-              Spider-World es un proyecto independiente de fans, sin ninguna afiliación, patrocinio ni respaldo
+              Sentido Arácnido es un proyecto independiente de fans, sin ninguna afiliación, patrocinio ni respaldo
               oficial de Marvel, Disney ni Sony. Las imágenes de películas, series y cómics se utilizan con fines
               informativos, críticos y educativos, al amparo del derecho de cita reconocido en el artículo 32
               del Real Decreto Legislativo 1/1996 (Ley de Propiedad Intelectual).
@@ -63,12 +63,12 @@ export default function AvisoLegalPage() {
           <section>
             <h2 className="text-2xl font-semibold text-white mb-4">4. Programa de afiliados de Amazon</h2>
             <p>
-              Spider-World participa en el <strong className="text-white">Programa de Afiliados de Amazon EU</strong>,
+              Sentido Arácnido participa en el <strong className="text-white">Programa de Afiliados de Amazon EU</strong>,
               un programa de publicidad para afiliados diseñado para que sitios web puedan ganar comisiones
               mediante la publicación de enlaces a Amazon.es y sitios afiliados.
             </p>
             <p className="mt-4">
-              Cuando el usuario hace clic en un enlace de afiliado y realiza una compra en Amazon, Spider-World
+              Cuando el usuario hace clic en un enlace de afiliado y realiza una compra en Amazon, Sentido Arácnido
               puede recibir una pequeña comisión económica. Este coste no se traslada al usuario: el precio que
               paga es exactamente el mismo que si accediera directamente a Amazon.
             </p>

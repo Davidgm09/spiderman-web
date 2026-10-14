@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import { SITE_URL } from "@/lib/config"
 
 export const metadata: Metadata = {
-  title: "Política de Privacidad | Spider-World",
-  description: "Política de privacidad de Spider-World. Información sobre cómo recopilamos y usamos tus datos.",
+  title: "Política de Privacidad | Sentido Arácnido",
+  description: "Política de privacidad de Sentido Arácnido. Información sobre cómo recopilamos y usamos tus datos.",
   alternates: { canonical: `${SITE_URL}/privacidad` },
   robots: { index: false },
 }
@@ -20,14 +20,14 @@ export default function PrivacidadPage() {
           <section>
             <h2 className="text-2xl font-semibold text-white mb-4">1. Quiénes somos</h2>
             <p>
-              Spider-World es un sitio web informativo y de entretenimiento dedicado al universo de Spider-Man. Puedes
+              Sentido Arácnido es un sitio web informativo y de entretenimiento dedicado al universo de Spider-Man. Puedes
               contactarnos a través de la página de <a href="/contacto" className="text-red-400 hover:text-red-300">contacto</a>.
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-semibold text-white mb-4">2. Datos que recopilamos</h2>
-            <p>Spider-World no recopila datos personales de forma directa. Sin embargo, los siguientes servicios de
+            <p>Sentido Arácnido no recopila datos personales de forma directa. Sin embargo, los siguientes servicios de
             terceros integrados en el sitio pueden recopilar información de forma automática:</p>
             <ul className="list-disc list-inside mt-3 space-y-2">
               <li><strong className="text-white">Google AdSense:</strong> muestra anuncios personalizados basados en tu actividad de navegación.</li>
@@ -59,7 +59,7 @@ export default function PrivacidadPage() {
           <section>
             <h2 className="text-2xl font-semibold text-white mb-4">4. Publicidad (Google AdSense)</h2>
             <p>
-              Spider-World participa en el programa Google AdSense. Google, como proveedor externo, usa cookies para
+              Sentido Arácnido participa en el programa Google AdSense. Google, como proveedor externo, usa cookies para
               mostrar anuncios basados en las visitas anteriores del usuario a este y otros sitios web. Los usuarios
               pueden desactivar la publicidad personalizada visitando{" "}
               <a
@@ -76,7 +76,7 @@ export default function PrivacidadPage() {
           <section>
             <h2 className="text-2xl font-semibold text-white mb-4">5. Programa de afiliados de Amazon</h2>
             <p>
-              Spider-World participa en el Programa de Afiliados de Amazon EU, un programa de publicidad para afiliados
+              Sentido Arácnido participa en el Programa de Afiliados de Amazon EU, un programa de publicidad para afiliados
               diseñado para ofrecer un medio para que los sitios web ganen comisiones por publicidad mediante la creación
               de enlaces a Amazon.es. Cuando haces clic en un enlace de afiliado y realizas una compra, recibimos una
               pequeña comisión sin coste adicional para ti.

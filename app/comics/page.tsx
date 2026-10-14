@@ -13,13 +13,13 @@ import { generateAmazonUrl } from "@/lib/content-helpers"
 import { Comic } from "@prisma/client"
 
 export const metadata: Metadata = {
-  title: "Cómics de Spider-Man - Colección Completa | Spider-World",
+  title: "Cómics de Spider-Man - Colección Completa | Sentido Arácnido",
   description:
     "Descubre los mejores cómics de Spider-Man: desde Amazing Spider-Man hasta Ultimate Spider-Man. Análisis, ratings y enlaces de compra.",
   keywords: ["Spider-Man cómics", "Marvel Comics", "Amazing Spider-Man", "Ultimate Spider-Man", "Stan Lee", "Steve Ditko"],
   alternates: { canonical: '/comics' },
   openGraph: {
-    title: "Cómics de Spider-Man - Colección Completa | Spider-World",
+    title: "Cómics de Spider-Man - Colección Completa | Sentido Arácnido",
     description: "Descubre los mejores cómics de Spider-Man: desde Amazing Spider-Man hasta Ultimate Spider-Man.",
     type: 'website',
     url: '/comics',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Cómics de Spider-Man - Colección Completa | Spider-World",
+    title: "Cómics de Spider-Man - Colección Completa | Sentido Arácnido",
     description: "Descubre los mejores cómics de Spider-Man: desde Amazing Spider-Man hasta Ultimate Spider-Man.",
     images: ['https://comicvine.gamespot.com/a/uploads/original/0/40/102225-7257-107616-1-ultimate-spider-man.jpg'],
   },
@@ -162,7 +162,7 @@ export default async function ComicsPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-transparent to-blue-950" />
 
         <div className="relative z-10 max-w-4xl mx-auto">
-          <p className="text-blue-400 text-sm font-semibold tracking-widest uppercase mb-4">Spider-World · Cómics</p>
+          <p className="text-blue-400 text-sm font-semibold tracking-widest uppercase mb-4">Sentido Arácnido · Cómics</p>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white leading-tight">
             Cómics de<br />
             <span className="bg-gradient-to-r from-blue-500 to-red-500 bg-clip-text text-transparent">Spider-Man</span>

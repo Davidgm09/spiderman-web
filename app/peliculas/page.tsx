@@ -14,13 +14,13 @@ import { Movie } from "@prisma/client"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Películas de Spider-Man - Todas las Sagas | Spider-World",
+  title: "Películas de Spider-Man - Todas las Sagas | Sentido Arácnido",
   description:
     "Todas las películas de Spider-Man: Trilogía de Raimi, Amazing Spider-Man, MCU y Spider-Verse. Análisis completos, ratings y dónde verlas.",
   keywords: ["Spider-Man películas", "Tobey Maguire", "Andrew Garfield", "Tom Holland", "Spider-Verse", "Marvel", "Sony"],
   alternates: { canonical: '/peliculas' },
   openGraph: {
-    title: "Películas de Spider-Man - Todas las Sagas | Spider-World",
+    title: "Películas de Spider-Man - Todas las Sagas | Sentido Arácnido",
     description: "Todas las películas de Spider-Man: Trilogía de Raimi, Amazing Spider-Man, MCU y Spider-Verse.",
     type: 'website',
     url: '/peliculas',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Películas de Spider-Man - Todas las Sagas | Spider-World",
+    title: "Películas de Spider-Man - Todas las Sagas | Sentido Arácnido",
     description: "Todas las películas de Spider-Man: Trilogía de Raimi, Amazing Spider-Man, MCU y Spider-Verse.",
     images: ['https://image.tmdb.org/t/p/w500/xRMZikjAHNFebD1FLRqgDZeGV4a.jpg'],
   },
@@ -96,7 +96,7 @@ export default async function PeliculasPage() {
 
         {/* Contenido */}
         <div className="relative z-10 max-w-4xl mx-auto">
-          <p className="text-red-400 text-sm font-semibold tracking-widest uppercase mb-4">Spider-World · Cine</p>
+          <p className="text-red-400 text-sm font-semibold tracking-widest uppercase mb-4">Sentido Arácnido · Cine</p>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white leading-tight">
             Películas de<br />
             <span className="bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent">Spider-Man</span>

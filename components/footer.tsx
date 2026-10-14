@@ -12,7 +12,7 @@ export function Footer() {
                 <span className="text-white font-bold text-sm">S</span>
               </div>
               <span className="text-xl font-bold bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent">
-                Spider-World
+                Sentido Arácnido
               </span>
             </Link>
             <p className="text-gray-400 mb-4 leading-relaxed">
@@ -122,7 +122,7 @@ export function Footer() {
         <div className="border-t border-red-600/20 pt-8 mb-8">
           <div className="text-gray-400 text-sm leading-relaxed">
             <p className="mb-4">
-              <strong className="text-white">Spider-World</strong> es el sitio web definitivo para fans de Spider-Man,
+              <strong className="text-white">Sentido Arácnido</strong> es el sitio web definitivo para fans de Spider-Man,
               Peter Parker, Miles Morales y todo el Spider-Verse. Encuentra las mejores películas de Spider-Man, desde
               la trilogía de Tobey Maguire hasta Tom Holland en el MCU. Descubre cómics clásicos como Amazing
               Spider-Man, Ultimate Spider-Man y las mejores sagas del trepamuros.
@@ -145,7 +145,7 @@ export function Footer() {
         {/* Copyright */}
         <div className="text-center">
           <p className="text-gray-500 text-xs">
-            © 2026 Spider-World — Sitio de fans independiente. Todos los derechos de los personajes pertenecen a sus respectivos propietarios.
+            © 2026 Sentido Arácnido — Sitio de fans independiente. Todos los derechos de los personajes pertenecen a sus respectivos propietarios.
           </p>
         </div>
       </div>

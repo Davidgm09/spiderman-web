@@ -20,22 +20,22 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const product = await productService.getBySlug(slug).catch(() => null)
-  if (!product) return { title: "Producto no encontrado | Spider-World" }
+  if (!product) return { title: "Producto no encontrado | Sentido Arácnido" }
 
   const url = `${SITE_URL}/tienda/${product.slug}`
   return {
-    title: `${product.title} | Tienda Spider-World`,
-    description: product.description?.substring(0, 155) ?? `Compra ${product.title} en Amazon a través de Spider-World.`,
+    title: `${product.title} | Tienda Sentido Arácnido`,
+    description: product.description?.substring(0, 155) ?? `Compra ${product.title} en Amazon a través de Sentido Arácnido.`,
     alternates: { canonical: url },
     openGraph: {
-      title: `${product.title} | Spider-World`,
+      title: `${product.title} | Sentido Arácnido`,
       description: product.description?.substring(0, 155) ?? "",
       images: [product.image],
       url,
     },
     twitter: {
       card: "summary_large_image",
-      title: `${product.title} | Spider-World`,
+      title: `${product.title} | Sentido Arácnido`,
       images: [product.image],
     },
   }

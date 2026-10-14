@@ -62,7 +62,7 @@ function generateSlug(title) {
 // Generate SEO content
 function generateSEOContent(series) {
   const year = series.first_air_date ? new Date(series.first_air_date).getFullYear() : '';
-  const seoTitle = `${series.name} (${year}) - Serie de Spider-Man | Spider-World`;
+  const seoTitle = `${series.name} (${year}) - Serie de Spider-Man | Sentido Arácnido`;
   const seoDescription = `Descubre todo sobre ${series.name} (${year}). ${series.overview ? series.overview.substring(0, 120) + '...' : 'Serie completa de Spider-Man con análisis detallado.'}`;
   
   const keywords = [

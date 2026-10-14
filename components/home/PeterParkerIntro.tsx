@@ -26,9 +26,9 @@ const SPIDER_DATA = {
   paragraphs: [
     "Sí, era yo todo el tiempo. Con un gran poder viene una gran responsabilidad. Aprendí eso a las malas, pero es lo que me hace seguir.",
     "Protejo Queens cada día. Sentido arácnido, telarañas, escalar paredes... no está mal para un chaval de instituto que todavía tiene que entregar deberes.",
-    "Bienvenido a Spider-World: el lugar donde encontrarás todo sobre mi universo. Cómics, películas, videojuegos, series y mucho más.",
+    "Bienvenido a Sentido Arácnido: el lugar donde encontrarás todo sobre mi universo. Cómics, películas, videojuegos, series y mucho más.",
   ],
-  cta: "Explora todo el universo Ultimate y más en Spider-World.",
+  cta: "Explora todo el universo Ultimate y más en Sentido Arácnido.",
   buttonText: "Volver a mi identidad",
   accent: "blue" as const,
 }

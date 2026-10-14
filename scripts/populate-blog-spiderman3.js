@@ -17,7 +17,7 @@ const POST = {
   publishDate: new Date('2025-03-20'),
   slug: 'marvels-spider-man-3-insomniac-todo-lo-que-sabemos',
   image: '/images/spiderman3.webp',
-  seoTitle: "Marvel's Spider-Man 3: fecha, historia y todo lo que sabemos | Spider-World",
+  seoTitle: "Marvel's Spider-Man 3: fecha, historia y todo lo que sabemos | Sentido Arácnido",
   seoDescription: "Todo lo que sabemos sobre Marvel's Spider-Man 3 de Insomniac Games: historia, personajes confirmados, plataformas y posible fecha de lanzamiento en PS5.",
   keywords: ["Marvel's Spider-Man 3", 'Insomniac Games', 'PS5', 'Spider-Man videojuego', 'Peter Parker', 'Miles Morales'],
   tags: ["Spider-Man 3", 'Insomniac', 'PS5', 'videojuego', 'próximamente'],

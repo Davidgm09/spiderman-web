@@ -11,13 +11,13 @@ import { seriesService } from "@/lib/database"
 import { Series } from "@prisma/client"
 
 export const metadata: Metadata = {
-  title: "Series de Spider-Man - Animadas y Live-Action | Spider-World",
+  title: "Series de Spider-Man - Animadas y Live-Action | Sentido Arácnido",
   description:
     "Todas las series de Spider-Man desde 1967 hasta hoy. Series animadas clásicas, live-action y dónde verlas. Guía completa con fechas de estreno y análisis.",
   keywords: ["Spider-Man series", "series animadas Spider-Man", "The Spectacular Spider-Man", "Spider-Man 1994", "series Marvel"],
   alternates: { canonical: '/series' },
   openGraph: {
-    title: "Series de Spider-Man - Animadas y Live-Action | Spider-World",
+    title: "Series de Spider-Man - Animadas y Live-Action | Sentido Arácnido",
     description: "Todas las series de Spider-Man desde 1967 hasta hoy. Series animadas clásicas, live-action y dónde verlas.",
     type: 'website',
     url: '/series',
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Series de Spider-Man - Animadas y Live-Action | Spider-World",
+    title: "Series de Spider-Man - Animadas y Live-Action | Sentido Arácnido",
     description: "Todas las series de Spider-Man desde 1967 hasta hoy. Series animadas clásicas, live-action y dónde verlas.",
     images: ['https://image.tmdb.org/t/p/w500/957mnVq6w3xIZwhO1isb4RWPatr.jpg'],
   },
@@ -93,7 +93,7 @@ export default async function SeriesPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-transparent to-red-950" />
 
         <div className="relative z-10 max-w-4xl mx-auto">
-          <p className="text-red-400 text-sm font-semibold tracking-widest uppercase mb-4">Spider-World · Series</p>
+          <p className="text-red-400 text-sm font-semibold tracking-widest uppercase mb-4">Sentido Arácnido · Series</p>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white leading-tight">
             Series de<br />
             <span className="bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent">Spider-Man</span>

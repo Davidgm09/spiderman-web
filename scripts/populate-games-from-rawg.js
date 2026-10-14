@@ -190,7 +190,7 @@ function transformGameToDb(game, details, screenshots) {
       ? details.description
       : `<h2>${game.name}</h2><p>${description}</p>`,
     slug,
-    seoTitle: `${game.name} (${year}) — Videojuego Spider-Man | Spider-World`,
+    seoTitle: `${game.name} (${year}) — Videojuego Spider-Man | Sentido Arácnido`,
     seoDescription: description.substring(0, 155),
     keywords: [
       game.name,

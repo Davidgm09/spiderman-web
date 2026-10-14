@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!game) {
     return {
-      title: "Videojuego no encontrado | Spider-World",
+      title: "Videojuego no encontrado | Sentido Arácnido",
       description: "El videojuego que buscas no está disponible.",
     }
   }
@@ -44,12 +44,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const url = `${SITE_URL}/videojuegos/${game.slug}`
 
   return {
-    title: `${game.title} (${game.year}) - Análisis Completo | Spider-World`,
+    title: `${game.title} (${game.year}) - Análisis Completo | Sentido Arácnido`,
     description,
     keywords: game.keywords?.length ? game.keywords : ['Spider-Man', 'videojuego', game.title, game.year.toString(), 'análisis', 'gameplay'],
     alternates: { canonical: url },
     openGraph: {
-      title: `${game.title} (${game.year}) - Análisis Completo | Spider-World`,
+      title: `${game.title} (${game.year}) - Análisis Completo | Sentido Arácnido`,
       description,
       images: [game.image],
       type: "article",
@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: `${game.title} (${game.year}) - Análisis Completo | Spider-World`,
+      title: `${game.title} (${game.year}) - Análisis Completo | Sentido Arácnido`,
       description,
       images: [game.image],
     },

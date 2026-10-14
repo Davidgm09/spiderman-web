@@ -117,7 +117,7 @@ async function syncCategoryCharacters(category, characters) {
         comicsCount: character.comics?.available || 0,
         seriesCount: character.series?.available || 0,
         slug: slug,
-        seoTitle: `${character.name} - Personaje ${category === 'spider-verse' ? 'Spider-Verse' : 'Marvel'} | Spider-World`,
+        seoTitle: `${character.name} - Personaje ${category === 'spider-verse' ? 'Spider-Verse' : 'Marvel'} | Sentido Arácnido`,
         seoDescription: character.description ? 
           character.description.substring(0, 155) + '...' :
           `Descubre todo sobre ${character.name}: poderes, historia, cómics y apariciones. Guía completa del universo ${category === 'spider-verse' ? 'Spider-Verse' : 'Marvel'}.`,

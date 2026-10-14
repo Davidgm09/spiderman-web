@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!comic) {
     return {
-      title: "Cómic no encontrado | Spider-World",
+      title: "Cómic no encontrado | Sentido Arácnido",
       description: "El cómic que buscas no está disponible.",
     }
   }
@@ -59,7 +59,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     : `Descubre ${comic.title}, cómic de Spider-Man con análisis completo, escritores y dónde comprarlo.`;
 
   const url = `${SITE_URL}/comics/${comic.slug}`;
-  const title = `${comic.title} (${comic.year}) - Análisis Completo | Spider-World`;
+  const title = `${comic.title} (${comic.year}) - Análisis Completo | Sentido Arácnido`;
 
   return {
     title,

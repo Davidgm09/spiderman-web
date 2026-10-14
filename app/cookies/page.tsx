@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import { SITE_URL } from "@/lib/config"
 
 export const metadata: Metadata = {
-  title: "Política de Cookies | Spider-World",
-  description: "Información sobre el uso de cookies en Spider-World.",
+  title: "Política de Cookies | Sentido Arácnido",
+  description: "Información sobre el uso de cookies en Sentido Arácnido.",
   alternates: { canonical: `${SITE_URL}/cookies` },
   robots: { index: false },
 }

@@ -27,7 +27,7 @@ function cvGet(endpoint, params = {}) {
   Object.entries(params).forEach(([k, v]) => url.searchParams.set(k, String(v)))
 
   return new Promise((resolve, reject) => {
-    https.get(url.toString(), { headers: { 'User-Agent': 'Spider-World/1.0' } }, (res) => {
+    https.get(url.toString(), { headers: { 'User-Agent': 'Sentido Arácnido/1.0' } }, (res) => {
       let raw = ''
       res.on('data', (chunk) => (raw += chunk))
       res.on('end', () => {

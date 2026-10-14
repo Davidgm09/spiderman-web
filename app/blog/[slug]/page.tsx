@@ -34,13 +34,13 @@ function formatDate(date: Date | string) {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const post = await blogService.getBySlug(slug)
-  if (!post) return { title: "Artículo no encontrado | Spider-World" }
+  if (!post) return { title: "Artículo no encontrado | Sentido Arácnido" }
 
   const description = post.seoDescription || post.excerpt.substring(0, 155)
   const url = `${SITE_URL}/blog/${post.slug}`;
 
   return {
-    title: post.seoTitle || `${post.title} | Spider-World Blog`,
+    title: post.seoTitle || `${post.title} | Sentido Arácnido Blog`,
     description,
     keywords: post.keywords,
     alternates: { canonical: url },
@@ -94,7 +94,7 @@ export default async function BlogPostPage({ params }: Props) {
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Spider-World',
+      name: 'Sentido Arácnido',
       url: BASE_URL,
       logo: {
         '@type': 'ImageObject',

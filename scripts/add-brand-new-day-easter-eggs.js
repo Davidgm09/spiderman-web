@@ -10,7 +10,7 @@ async function main() {
       excerpt: "El tráiler de Spider-Man: Brand New Day está lleno de detalles que pasan desapercibidos a primera vista. Hemos analizado cada fotograma para encontrar los guiños más importantes.",
       slug: "brand-new-day-trailer-easter-eggs-detalles-ocultos",
       category: "Análisis",
-      author: "Redacción Spider-World",
+      author: "Redacción Sentido Arácnido",
       readTime: "7 min",
       publishDate: new Date("2026-03-19"),
       image: "https://posterspy.com/wp-content/uploads/2025/04/SPIDER-MAN-BRAND-NEW-DAY.jpg",
@@ -59,7 +59,7 @@ async function main() {
 
 <hr />
 
-<p>¿Has detectado algún detalle más que no hayamos mencionado? Brand New Day llega el 31 de julio de 2026. Mientras tanto, sigue explorando todo el universo Spider-Man en Spider-World.</p>`
+<p>¿Has detectado algún detalle más que no hayamos mencionado? Brand New Day llega el 31 de julio de 2026. Mientras tanto, sigue explorando todo el universo Spider-Man en Sentido Arácnido.</p>`
     }
   })
 
