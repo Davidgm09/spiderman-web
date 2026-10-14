@@ -56,7 +56,7 @@ export function ImageUpload({
       formData.append('file', file)
       formData.append('folder', folder)
 
-      const response = await fetch('/api/upload', {
+      const response = await fetch('/admin/api/upload', {
         method: 'POST',
         body: formData
       })

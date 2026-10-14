@@ -9,7 +9,7 @@ import { InContentAd } from "@/components/ads/GoogleAdsense"
 import { AmazonProduct } from "@/components/affiliate/AmazonProduct"
 import { movieService, comicService, gameService, seriesService, blogService, productService, prisma } from "@/lib/database"
 import { PeterParkerIntro } from "@/components/home/PeterParkerIntro"
-import { SITE_URL } from "@/lib/config"
+import { SITE_URL, ADS_ENABLED } from "@/lib/config"
 import { Movie, Comic, Game, Series, BlogPost, Product } from "@prisma/client"
 
 export const metadata = {
@@ -338,9 +338,11 @@ export default async function HomePage() {
       </section>
 
       {/* Ad Space */}
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <InContentAd />
-      </div>
+      {ADS_ENABLED && (
+        <div className="max-w-7xl mx-auto px-4 py-8">
+          <InContentAd />
+        </div>
+      )}
 
       {/* Featured Comics */}
       <section id="comics" className="py-16 px-4 max-w-7xl mx-auto relative">
@@ -619,9 +621,11 @@ export default async function HomePage() {
       </section>
 
       {/* Ad */}
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <InContentAd />
-      </div>
+      {ADS_ENABLED && (
+        <div className="max-w-7xl mx-auto px-4 py-8">
+          <InContentAd />
+        </div>
+      )}
 
     </div>
   )

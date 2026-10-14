@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { ADS_ENABLED, ADSENSE_CLIENT_ID } from '@/lib/config';
 
 declare global {
   interface Window {
@@ -23,39 +24,25 @@ export function GoogleAd({
   className = '',
   style = {}
 }: GoogleAdProps) {
-  const clientId = process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT_ID;
-
   useEffect(() => {
-    if (typeof window !== 'undefined' && clientId) {
+    if (ADS_ENABLED) {
       try {
         (window.adsbygoogle = window.adsbygoogle || []).push({});
       } catch (error) {
         console.error('AdSense error:', error);
       }
     }
-  }, [clientId]);
+  }, []);
 
-  if (!clientId) {
-    // Show placeholder in development
-    return (
-      <div 
-        className={`bg-gray-200 dark:bg-gray-800 flex items-center justify-center text-gray-500 ${className}`}
-        style={{ minHeight: '250px', ...style }}
-      >
-        <div className="text-center">
-          <div className="text-sm">Anuncio AdSense</div>
-          <div className="text-xs opacity-60">Slot: {adSlot}</div>
-        </div>
-      </div>
-    );
-  }
+  // Sin AdSense aprobado no se renderiza nada (ni placeholder ni hueco vacío)
+  if (!ADS_ENABLED) return null;
 
   return (
     <div className={`ad-container ${className}`} style={style}>
       <ins
         className="adsbygoogle"
         style={{ display: 'block' }}
-        data-ad-client={clientId}
+        data-ad-client={ADSENSE_CLIENT_ID}
         data-ad-slot={adSlot}
         data-ad-format={adFormat}
         data-full-width-responsive={fullWidthResponsive}

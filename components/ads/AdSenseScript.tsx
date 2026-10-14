@@ -2,6 +2,7 @@
 
 import Script from 'next/script'
 import { useState, useEffect } from 'react'
+import { ADS_ENABLED, ADSENSE_CLIENT_ID } from '@/lib/config'
 
 export function AdSenseScript() {
   const [consented, setConsented] = useState(false)
@@ -18,13 +19,12 @@ export function AdSenseScript() {
     return () => window.removeEventListener('cookie-consent-accepted', onAccept)
   }, [])
 
-  const clientId = process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT_ID
-  if (!consented || !clientId || clientId === 'ca-pub-xxxxxxxxx') return null
+  if (!consented || !ADS_ENABLED) return null
 
   return (
     <Script
       async
-      src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${clientId}`}
+      src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT_ID}`}
       crossOrigin="anonymous"
       strategy="afterInteractive"
     />

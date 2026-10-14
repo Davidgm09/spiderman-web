@@ -17,15 +17,15 @@ const IMAGE_FIXES = [
   // ── FUNKO POPS ──────────────────────────────────────────────────────────────
   {
     slug: 'funko-pop-miles-morales-spider-verse-402',
-    image: 'https://www.popfigures.com/cdn/shop/products/image_d787e4df-5592-4038-ae5d-0616ceb1c323.jpg?v=1655996501',
+    image: 'https://m.media-amazon.com/images/I/71FAnSSvbuL._AC_SL1500_.jpg',
   },
   {
     slug: 'funko-pop-spider-gwen-spider-verse-405',
-    image: 'https://pop-figures.com/media/img/figurine/405-funko-pop-figure-spider-man-into-the-spiderverse-spider-gwen-into-the-spider-verse.jpg',
+    image: 'https://m.media-amazon.com/images/I/71J0F+BGozL._AC_SL1500_.jpg',
   },
   {
     slug: 'funko-pop-spider-man-noir-spider-verse-406',
-    image: 'https://pop-figures.com/media/img/figurine/406-funko-pop-figure-spider-man-into-the-spiderverse-spider-man-noir-with-hat.jpg',
+    image: 'https://m.media-amazon.com/images/I/81iXCjQfwJL._AC_SL1500_.jpg',
   },
   {
     slug: 'funko-pop-spider-man-traje-casero-homecoming',
@@ -97,7 +97,7 @@ const IMAGE_FIXES = [
   },
   {
     slug: 'marvel-spider-man-billetera-cuero-vegano',
-    image: 'https://hero-land.com/cdn/shop/files/1_5_1_2024_12_22_48_547.png?v=1708363688',
+    image: 'https://m.media-amazon.com/images/I/71xS82JQ8aL._AC_SL1000_.jpg',
   },
   {
     slug: 'stor-spider-man-sandwichera-infantil-3-compartimentos',

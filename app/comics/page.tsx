@@ -1,5 +1,6 @@
 export const revalidate = 3600
 
+import { ADS_ENABLED } from "@/lib/config"
 import Image from "next/image"
 import Link from "next/link"
 import { BookOpen, Star, ShoppingCart } from "lucide-react"
@@ -280,9 +281,11 @@ export default async function ComicsPage() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 py-4">
-        <InContentAd />
-      </div>
+      {ADS_ENABLED && (
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <InContentAd />
+        </div>
+      )}
 
       {/* Eras */}
       <div className="max-w-7xl mx-auto px-4 pb-20 space-y-20">

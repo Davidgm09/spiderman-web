@@ -1,4 +1,5 @@
 import { Badge } from "@/components/ui/badge"
+import { ADS_ENABLED } from "@/lib/config"
 import { Calendar, Clock, Eye, ArrowRight, Tag, ChevronLeft, ChevronRight, BookOpen } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -189,9 +190,11 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
         </div>
       )}
 
-      <div className="max-w-7xl mx-auto px-4 py-4">
-        <InContentAd />
-      </div>
+      {ADS_ENABLED && (
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <InContentAd />
+        </div>
+      )}
 
       {/* Grid + Sidebar */}
       <div className="max-w-7xl mx-auto px-4 pb-20">

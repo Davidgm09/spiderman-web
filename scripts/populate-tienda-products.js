@@ -282,7 +282,7 @@ const PRODUCTS = [
     discount: null,
     rating: 4.8,
     reviews: "987",
-    image: "https://acdn-us.mitiendanube.com/stores/001/161/337/products/cci-365649788411016865-41b5bc8a6baad7a40b17733589749976-1024-1024.webp",
+    image: "https://m.media-amazon.com/images/I/91o9txbFgBS._SL1500_.jpg",
     category: "Cómics",
     asin: "8413348536",
     slug: "el-asombroso-spiderman-1-vuelta-a-casa-marvel-saga-panini",
