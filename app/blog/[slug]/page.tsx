@@ -98,7 +98,7 @@ export default async function BlogPostPage({ params }: Props) {
       url: BASE_URL,
       logo: {
         '@type': 'ImageObject',
-        url: `${BASE_URL}/placeholder-logo.png`,
+        url: `${BASE_URL}/logo.png`,
         width: 200,
         height: 60,
       },

@@ -173,7 +173,7 @@ export default async function HomePage() {
     url: BASE_URL,
     logo: {
       '@type': 'ImageObject',
-      url: `${BASE_URL}/icons/spider-512.svg`,
+      url: `${BASE_URL}/logo.png`,
       width: 512,
       height: 512,
     },

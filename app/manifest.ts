@@ -12,14 +12,14 @@ export default function manifest(): MetadataRoute.Manifest {
     lang: 'es',
     icons: [
       {
-        src: '/icons/spider-192.svg',
+        src: '/icons/spider-192.png',
         sizes: '192x192',
-        type: 'image/svg+xml',
+        type: 'image/png',
       },
       {
-        src: '/icons/spider-512.svg',
+        src: '/icons/spider-512.png',
         sizes: '512x512',
-        type: 'image/svg+xml',
+        type: 'image/png',
         purpose: 'maskable',
       },
     ],
