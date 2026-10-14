@@ -6,6 +6,7 @@ import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { AdSenseScript } from "@/components/ads/AdSenseScript"
 import { CookieBanner } from "@/components/CookieBanner"
+import { SITE_URL } from "@/lib/config"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -14,7 +15,7 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://spider-world.es'),
+  metadataBase: new URL(SITE_URL),
   title: "Spider-World - Todo sobre Spider-Man: Películas, Cómics, Juegos y Series",
   description:
     "Tu portal definitivo al Spider-Verse. Descubre películas, cómics, videojuegos, series y productos oficiales de Spider-Man. Análisis, noticias y las mejores ofertas.",
