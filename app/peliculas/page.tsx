@@ -7,8 +7,8 @@ import { Play, Star, Clock, Award } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { InContentAd } from "@/components/ads/GoogleAdsense"
-import { CountdownTimer } from "@/components/movies/CountdownTimer"
 import { movieService } from "@/lib/database"
+import { ADS_ENABLED } from "@/lib/config"
 import { Movie } from "@prisma/client"
 
 import type { Metadata } from "next"
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 
 const MILES_KEYWORDS = ['nuevo universo', 'cruzando el multiverso', 'beyond the spider-verse', 'into the spider-verse', 'across the spider-verse']
 const AMAZING_KEYWORDS = ['amazing spider-man']
-const MCU_KEYWORDS = ['homecoming', 'lejos de casa', 'no way home']
+const MCU_KEYWORDS = ['homecoming', 'lejos de casa', 'no way home', 'brand new day']
 const RELATED_KEYWORDS = ['venom', 'morbius', 'kraven', 'madame web']
 const RAIMI_YEARS = new Set([2002, 2004, 2007])
 
@@ -137,30 +137,39 @@ export default async function PeliculasPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent" />
           <div className="absolute inset-0 flex flex-col justify-center px-8 md:px-12 max-w-2xl">
-            <Badge className="bg-red-600 w-fit mb-4 text-xs tracking-widest uppercase">Próximamente</Badge>
+            <Badge className="bg-red-600 w-fit mb-4 text-xs tracking-widest uppercase">Último estreno</Badge>
             <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-2">
               Spider-Man:<br />Brand New Day
             </h2>
             <p className="text-gray-300 text-sm mb-2">
               Tom Holland regresa como Peter Parker en una nueva aventura donde nadie recuerda quién es.
             </p>
-            <p className="text-red-400 text-xs font-semibold uppercase tracking-widest mb-1">Cuenta atrás para el estreno · 31 Jul 2026</p>
-            <CountdownTimer />
-            <Link
-              href="/blog/spider-man-brand-new-day-trailer-oficial"
-              className="mt-5 w-fit inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-red-600 hover:bg-red-500 border border-red-400/40 text-white text-sm font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-red-900/40"
-            >
-              <Play className="w-4 h-4 fill-white" />
-              Ver análisis del tráiler
-            </Link>
+            <p className="text-red-400 text-xs font-semibold uppercase tracking-widest mb-1">Estreno en España · 31 Jul 2026</p>
+            <div className="mt-5 flex flex-wrap gap-3">
+              <Link
+                href="/peliculas/spider-man-brand-new-day-2026"
+                className="w-fit inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-red-600 hover:bg-red-500 border border-red-400/40 text-white text-sm font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-red-900/40"
+              >
+                <Play className="w-4 h-4 fill-white" />
+                Ver la película
+              </Link>
+              <Link
+                href="/blog/spider-man-brand-new-day-trailer-oficial"
+                className="w-fit inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-sm font-semibold transition-all duration-200"
+              >
+                Análisis del tráiler
+              </Link>
+            </div>
           </div>
         </div>
       </div>
 
 
-      <div className="max-w-7xl mx-auto px-4 py-4">
-        <InContentAd />
-      </div>
+      {ADS_ENABLED && (
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <InContentAd />
+        </div>
+      )}
 
       {/* Universos */}
       <div className="max-w-7xl mx-auto px-4 pb-20 space-y-20">

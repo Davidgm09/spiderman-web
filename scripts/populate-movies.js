@@ -1,6 +1,6 @@
 /**
  * Popula películas de Spider-Man desde TMDB API
- * Uso: node scripts/populate-movies.js [--clean]
+ * Uso: node scripts/populate-movies.js [--clean] [--only=TMDB_ID,TMDB_ID]
  *
  * Requiere en .env.local:
  *   TMDB_API_KEY=...
@@ -35,6 +35,8 @@ const KNOWN_MOVIE_IDS = [
   526896,  // Morbius (2022)
   539972,  // Kraven the Hunter (2024)
   634492,  // Madame Web (2024)
+  912649,  // Venom: The Last Dance (2024)
+  969681,  // Spider-Man: Brand New Day (2026)
 ];
 
 const delay = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -189,7 +191,11 @@ async function populateMovies() {
   let updated = 0;
   let skipped = 0;
 
-  for (const movieId of KNOWN_MOVIE_IDS) {
+  // --only=ID1,ID2 procesa solo esas películas (sin tocar las que ya existen)
+  const onlyArg = process.argv.find((a) => a.startsWith('--only='));
+  const ids = onlyArg ? onlyArg.slice('--only='.length).split(',').map(Number) : KNOWN_MOVIE_IDS;
+
+  for (const movieId of ids) {
     try {
       console.log(`🔄 TMDB ID ${movieId}...`);
       const movie = await fetchMovieDetails(movieId);
