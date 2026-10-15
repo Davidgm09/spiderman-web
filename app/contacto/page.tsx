@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { Mail, Clock, MessageSquare, CheckCircle } from "lucide-react"
-import { SITE_URL } from "@/lib/config"
+import { SITE_URL, CONTACT_EMAIL } from "@/lib/config"
 
 export const metadata: Metadata = {
   title: "Contacto | Sentido Arácnido",
@@ -40,14 +40,14 @@ export default async function ContactoPage({ searchParams }: { searchParams: Pro
         {/* Info cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
           {[
-            { icon: Mail,         color: "text-red-400",    title: "Email",     desc: "hola@sentidoaracnido.com" },
+            { icon: Mail,         color: "text-red-400",    title: "Email",     desc: CONTACT_EMAIL },
             { icon: Clock,        color: "text-blue-400",   title: "Respuesta", desc: "En menos de 48 horas" },
             { icon: MessageSquare,color: "text-purple-400", title: "Motivos",   desc: "Colaboraciones, errores, sugerencias" },
           ].map(({ icon: Icon, color, title, desc }) => (
             <div key={title} className="bg-gray-950/60 border border-white/5 rounded-2xl p-6 text-center">
               <Icon className={`w-7 h-7 ${color} mx-auto mb-3`} />
               <h3 className="text-white font-semibold mb-1 text-sm">{title}</h3>
-              <p className="text-gray-500 text-sm">{desc}</p>
+              <p className="text-gray-500 text-sm break-words">{desc}</p>
             </div>
           ))}
         </div>
@@ -57,11 +57,13 @@ export default async function ContactoPage({ searchParams }: { searchParams: Pro
           <h2 className="text-xl font-bold text-white mb-6">Envíanos un mensaje</h2>
 
           <form
-            action="https://formsubmit.co/hola@sentidoaracnido.com"
+            action={`https://formsubmit.co/${CONTACT_EMAIL}`}
             method="POST"
             className="space-y-5"
           >
             <input type="hidden" name="_captcha" value="false" />
+            {/* Honeypot anti-spam: FormSubmit descarta el envío si este campo llega relleno */}
+            <input type="text" name="_honey" className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
             <input type="hidden" name="_next" value={`${SITE_URL}/contacto?enviado=true`} />
             <input type="hidden" name="_subject" value="Nuevo mensaje desde Sentido Arácnido" />
 
