@@ -606,15 +606,11 @@ export default async function HomePage() {
               key={product.id}
               title={product.title}
               description={product.description}
-              price={product.price}
-              originalPrice={product.originalPrice ?? undefined}
-              rating={product.rating}
-              reviews={parseInt(product.reviews)}
               imageUrl={product.image}
               category={product.category}
               tags={product.keywords || []}
-              discount={product.discount ? parseInt(product.discount.replace('%', '').replace(' OFF', '')) : undefined}
               inStock={product.inStock}
+              asin={product.asin ?? undefined}
             />
           ))}
         </div>

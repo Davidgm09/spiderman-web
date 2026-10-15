@@ -6,7 +6,6 @@ interface AmazonProductCardProps {
   image: string
   href: string
   badge?: string
-  price?: string
   subtitle?: string
   variant?: "featured" | "compact"
   asin?: string  // si se pasa, usa la imagen del producto real de Amazon
@@ -17,7 +16,6 @@ export function AmazonProductCard({
   image,
   href,
   badge,
-  price,
   subtitle,
   variant = "featured",
   asin,
@@ -30,7 +28,7 @@ export function AmazonProductCard({
       <a
         href={href}
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener noreferrer sponsored"
         className="group flex flex-col rounded-xl overflow-hidden border border-white/8 hover:border-orange-500/40 bg-gray-900 hover:bg-gray-800 transition-all duration-200"
       >
         <div className="relative w-full aspect-[3/4] bg-gray-800 overflow-hidden">
@@ -51,7 +49,6 @@ export function AmazonProductCard({
           <p className="text-xs font-medium text-gray-200 line-clamp-2 leading-snug">
             {title}
           </p>
-          {price && <p className="text-sm font-bold text-white">{price}€</p>}
           <div className="flex items-center justify-center gap-1.5 bg-orange-600 group-hover:bg-orange-500 transition-colors rounded-lg py-2">
             <ShoppingCart className="w-3.5 h-3.5 text-white" />
             <span className="text-xs font-bold text-white uppercase tracking-wide">Amazon</span>
@@ -66,7 +63,7 @@ export function AmazonProductCard({
     <a
       href={href}
       target="_blank"
-      rel="noopener noreferrer"
+      rel="noopener noreferrer sponsored"
       className="group flex flex-col rounded-xl overflow-hidden border border-white/8 hover:border-orange-500/40 bg-gray-900 hover:bg-gray-800 transition-all duration-200"
     >
       <div className="relative w-full aspect-[2/3] bg-gray-800 overflow-hidden">
@@ -88,10 +85,9 @@ export function AmazonProductCard({
           {title}
         </p>
         {subtitle && <p className="text-xs text-gray-500">{subtitle}</p>}
-        {price && <p className="text-lg font-bold text-white">{price}€</p>}
         <div className="flex items-center justify-center gap-2 bg-orange-600 group-hover:bg-orange-500 transition-colors rounded-xl py-2.5">
           <ShoppingCart className="w-4 h-4 text-white" />
-          <span className="text-xs font-bold text-white uppercase tracking-wide">Comprar en Amazon</span>
+          <span className="text-xs font-bold text-white uppercase tracking-wide">Ver precio en Amazon</span>
         </div>
       </div>
     </a>

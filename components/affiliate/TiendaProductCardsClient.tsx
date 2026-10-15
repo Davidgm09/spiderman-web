@@ -10,7 +10,6 @@ interface Product {
   asin: string | null
   slug: string
   category: string
-  price: string | null
 }
 
 interface TiendaProductCardsClientProps {
@@ -40,7 +39,6 @@ export function TiendaProductCardsClient({ products, amazonTag, display = 4 }: T
             image={p.image}
             href={p.asin ? `https://www.amazon.es/dp/${p.asin}?tag=${amazonTag}` : `/tienda/${p.slug}`}
             badge={p.category}
-            price={p.price ?? undefined}
             variant="compact"
           />
         ))}

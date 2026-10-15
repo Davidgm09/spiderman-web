@@ -5,22 +5,17 @@ import { AMAZON_TAG } from '@/lib/config';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ExternalLink, ShoppingCart, Star, Truck } from 'lucide-react';
+import { ExternalLink, ShoppingCart } from 'lucide-react';
 import Image from 'next/image';
 
 interface AmazonProductProps {
   title: string;
   description?: string;
-  price?: string;
-  originalPrice?: string;
-  discount?: number;
-  rating?: number;
-  reviews?: number;
   imageUrl?: string;
   category: string;
   tags: string[];
-  prime?: boolean;
   inStock?: boolean;
+  asin?: string; // si se pasa, enlaza a la ficha del producto en vez de a una búsqueda
   searchQuery?: string; // Para búsqueda dinámica
   className?: string;
 }
@@ -28,16 +23,11 @@ interface AmazonProductProps {
 export function AmazonProduct({
   title,
   description,
-  price,
-  originalPrice,
-  discount,
-  rating,
-  reviews,
   imageUrl,
   category,
   tags,
-  prime = false,
   inStock = true,
+  asin,
   searchQuery,
   className = ''
 }: AmazonProductProps) {
@@ -46,6 +36,7 @@ export function AmazonProduct({
 
   // Generate Amazon affiliate link
   const generateAmazonLink = () => {
+    if (asin) return `https://www.amazon.es/dp/${asin}?tag=${amazonTag}`;
     const query = searchQuery || title;
     const encodedQuery = encodeURIComponent(query);
     return `https://www.amazon.es/s?k=${encodedQuery}&tag=${amazonTag}`;
@@ -77,27 +68,6 @@ export function AmazonProduct({
             </div>
           )}
           
-          {/* Badges */}
-          <div className="absolute top-2 right-2 flex flex-col gap-1">
-            {discount && (
-              <Badge className="bg-red-600 text-white">
-                -{discount}%
-              </Badge>
-            )}
-            {prime && (
-              <Badge className="bg-blue-600 text-white flex items-center gap-1">
-                <Truck className="w-3 h-3" />
-                Prime
-              </Badge>
-            )}
-            {rating && (
-              <Badge className="bg-orange-600 text-white flex items-center gap-1">
-                <Star className="w-3 h-3" />
-                {rating.toFixed(1)}
-              </Badge>
-            )}
-          </div>
-
           {!inStock && (
             <div className="absolute inset-0 bg-black/60 flex items-center justify-center rounded-t-lg">
               <Badge variant="destructive">Agotado</Badge>
@@ -116,21 +86,6 @@ export function AmazonProduct({
             {description}
           </CardDescription>
         )}
-
-        {/* Price section */}
-        <div className="flex items-center justify-between mb-3">
-          <div className="flex items-center gap-2">
-            {price && (
-              <span className="text-orange-400 font-bold text-lg">{price}</span>
-            )}
-            {originalPrice && originalPrice !== price && (
-              <span className="text-gray-500 line-through text-sm">{originalPrice}</span>
-            )}
-          </div>
-          {reviews && (
-            <span className="text-gray-400 text-xs">({reviews} reseñas)</span>
-          )}
-        </div>
 
         {/* Tags */}
         <div className="flex flex-wrap gap-1 mb-3">
@@ -153,11 +108,11 @@ export function AmazonProduct({
           <a 
             href={affiliateLink}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener noreferrer sponsored"
             className="flex items-center justify-center gap-2"
           >
             <ShoppingCart className="w-4 h-4" />
-            {inStock ? 'Ver en Amazon' : 'No disponible'}
+            {inStock ? 'Ver precio en Amazon' : 'No disponible'}
             <ExternalLink className="w-4 h-4" />
           </a>
         </Button>
@@ -193,7 +148,6 @@ export function SpiderManMovie({ title, year, format = 'Blu-ray' }: { title: str
       searchQuery={`${title} ${year} ${format} spider-man`}
       category="Película"
       tags={['Spider-Man', 'Marvel', 'Película', format]}
-      prime={true}
       className="max-w-sm"
     />
   );

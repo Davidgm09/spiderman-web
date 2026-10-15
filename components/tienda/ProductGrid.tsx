@@ -3,8 +3,7 @@
 import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Star, ShoppingCart } from "lucide-react"
-import { Badge } from "@/components/ui/badge"
+import { ShoppingCart } from "lucide-react"
 
 const CATEGORY_COLORS: Record<string, string> = {
   Figuras:        "text-red-400 border-red-500/30 bg-red-500/10",
@@ -24,12 +23,7 @@ type Product = {
   title: string
   image: string
   category: string
-  discount: string | null
   inStock: boolean
-  rating: number | null
-  reviews: string | null
-  price: string
-  originalPrice: string | null
 }
 
 export default function ProductGrid({ products }: { products: Product[] }) {
@@ -49,11 +43,6 @@ export default function ProductGrid({ products }: { products: Product[] }) {
           >
             {/* Imagen */}
             <div className="relative">
-              {product.discount && (
-                <Badge className="absolute top-2 left-2 z-10 bg-red-600 text-white text-xs">
-                  -{product.discount}
-                </Badge>
-              )}
               {product.inStock === false && (
                 <div className="absolute inset-0 bg-black/60 z-10 flex items-center justify-center">
                   <span className="text-white text-sm font-semibold">Sin stock</span>
@@ -79,25 +68,6 @@ export default function ProductGrid({ products }: { products: Product[] }) {
               <h3 className="text-white font-semibold text-sm leading-snug line-clamp-2 mb-3 flex-1">
                 {product.title}
               </h3>
-
-              {/* Rating */}
-              <div className="flex items-center gap-1.5 mb-3">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <Star
-                    key={i}
-                    className={`w-3.5 h-3.5 ${i <= Math.floor(product.rating || 0) ? "text-yellow-400 fill-yellow-400" : "text-gray-600"}`}
-                  />
-                ))}
-                <span className="text-gray-500 text-xs ml-1">({parseInt(product.reviews || "0").toLocaleString("es-ES")})</span>
-              </div>
-
-              {/* Precio */}
-              <div className="flex items-baseline gap-2 mb-4">
-                <span className="text-xl font-bold text-white">{product.price}€</span>
-                {product.originalPrice && (
-                  <span className="text-sm text-gray-500 line-through">{product.originalPrice}€</span>
-                )}
-              </div>
 
               {/* Botón */}
               <div className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-orange-500 group-hover:bg-orange-400 text-white text-sm font-semibold transition-colors duration-200">

@@ -235,7 +235,7 @@ export default async function MoviePage({ params }: Props) {
                 <a
                   href={movie.amazonAsin ? `https://www.amazon.es/dp/${movie.amazonAsin}?tag=${AMAZON_TAG}` : generateAmazonUrl(`${movie.title} ${movie.year} 4K blu-ray`)}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer sponsored"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white font-semibold rounded-full transition-all duration-200 hover:scale-105"
                 >
                   <ShoppingCart className="w-4 h-4" />

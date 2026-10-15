@@ -197,7 +197,7 @@ export default async function ComicPage({ params }: Props) {
                 <a
                   href={generateAmazonUrl(`${comic.title} Marvel Comics`)}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer sponsored"
                   className="flex items-center gap-2 bg-orange-600 hover:bg-orange-500 text-white font-bold px-6 py-3 rounded-xl transition-colors"
                 >
                   <ShoppingCart className="w-4 h-4" /> Comprar en Amazon

@@ -4,9 +4,8 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { Star, ShoppingCart, Truck, Shield, RotateCcw } from "lucide-react"
+import { ShoppingCart, Truck, Shield, RotateCcw } from "lucide-react"
 import { Breadcrumb } from "@/components/breadcrumb"
-import { Badge } from "@/components/ui/badge"
 import { productService } from "@/lib/database"
 import { AMAZON_TAG, SITE_URL } from "@/lib/config"
 
@@ -54,41 +53,9 @@ export default async function ProductPage({ params }: Props) {
     ? `https://www.amazon.es/dp/${product.asin}?tag=${AMAZON_TAG}`
     : `https://www.amazon.es/s?k=${encodeURIComponent(`${product.title} Spider-Man`)}&tag=${AMAZON_TAG}`
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    name: product.title,
-    description: product.description,
-    image: product.image.startsWith('/') ? `${SITE_URL}${product.image}` : product.image,
-    brand: { "@type": "Brand", name: "Marvel" },
-    offers: {
-      "@type": "Offer",
-      url: amazonUrl,
-      priceCurrency: "EUR",
-      price: product.price,
-      availability: product.inStock
-        ? "https://schema.org/InStock"
-        : "https://schema.org/OutOfStock",
-      seller: { "@type": "Organization", name: "Amazon" },
-    },
-    ...(product.rating && product.reviews ? {
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: product.rating,
-        reviewCount: parseInt(product.reviews),
-        bestRating: 5,
-        worstRating: 1,
-      }
-    } : {})
-  }
 
   return (
     <div className="pt-16 min-h-screen bg-gradient-to-b from-black via-gray-950 to-black">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-
       {/* Hero */}
       <section className="max-w-6xl mx-auto px-4 py-16">
         <Breadcrumb items={[{ label: "Tienda", href: "/tienda" }, { label: product.title }]} />
@@ -96,11 +63,6 @@ export default async function ProductPage({ params }: Props) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Imagen */}
           <div className="relative rounded-2xl overflow-hidden bg-gray-950/60 border border-white/5">
-            {product.discount && (
-              <Badge className="absolute top-4 left-4 z-10 bg-red-600 text-white text-sm px-3 py-1">
-                -{product.discount}
-              </Badge>
-            )}
             {product.inStock === false && (
               <div className="absolute inset-0 bg-black/60 z-10 flex items-center justify-center">
                 <span className="text-white font-semibold text-lg">Sin stock</span>
@@ -124,29 +86,6 @@ export default async function ProductPage({ params }: Props) {
 
             <h1 className="text-3xl font-bold text-white leading-tight">{product.title}</h1>
 
-            {/* Rating */}
-            <div className="flex items-center gap-2">
-              {[1,2,3,4,5].map((i) => (
-                <Star
-                  key={i}
-                  className={`w-5 h-5 ${i <= Math.floor(product.rating || 0) ? "text-yellow-400 fill-yellow-400" : "text-gray-600"}`}
-                />
-              ))}
-              <span className="text-yellow-400 font-semibold ml-1">{product.rating}</span>
-              <span className="text-gray-500 text-sm">({parseInt(product.reviews || "0").toLocaleString("es-ES")} reseñas)</span>
-            </div>
-
-            {/* Precio */}
-            <div className="flex items-baseline gap-3">
-              <span className="text-4xl font-bold text-white">{product.price}€</span>
-              {product.originalPrice && (
-                <span className="text-xl text-gray-500 line-through">{product.originalPrice}€</span>
-              )}
-              {product.discount && (
-                <span className="text-green-400 text-sm font-semibold">Ahorra {product.discount}</span>
-              )}
-            </div>
-
             {/* Descripción */}
             {product.description && (
               <p className="text-gray-300 leading-relaxed">{product.description}</p>
@@ -164,13 +103,13 @@ export default async function ProductPage({ params }: Props) {
               }`}
             >
               <ShoppingCart className="w-5 h-5" />
-              {product.inStock === false ? "Sin stock" : "Comprar en Amazon"}
+              {product.inStock === false ? "Sin stock" : "Ver precio en Amazon"}
             </a>
 
             {/* Beneficios */}
             <div className="grid grid-cols-3 gap-3 pt-4 border-t border-white/10">
               {[
-                { icon: Truck,     color: "text-green-400",  label: "Envío Prime" },
+                { icon: Truck,     color: "text-green-400",  label: "Envío de Amazon" },
                 { icon: Shield,    color: "text-blue-400",   label: "Garantía Amazon" },
                 { icon: RotateCcw, color: "text-purple-400", label: "30 días devolución" },
               ].map(({ icon: Icon, color, label }) => (
@@ -183,7 +122,7 @@ export default async function ProductPage({ params }: Props) {
 
             {/* Aviso afiliado */}
             <p className="text-xs text-gray-600">
-              Enlace de afiliado — si compras a través de este enlace recibimos una pequeña comisión sin coste adicional para ti.
+              Enlace de afiliado — si compras a través de este enlace recibimos una pequeña comisión sin coste adicional para ti. El precio y la disponibilidad los fija Amazon y pueden cambiar.
             </p>
           </div>
         </div>
@@ -209,7 +148,7 @@ export default async function ProductPage({ params }: Props) {
                 <div className="p-4">
                   <h3 className="text-white text-sm font-semibold line-clamp-2 mb-2">{p.title}</h3>
                   <div className="flex items-center justify-between">
-                    <span className="text-white font-bold">{p.price}€</span>
+                    <span className="text-xs text-gray-500">Disponible en Amazon</span>
                     <span className="text-xs text-orange-400 font-semibold">Ver →</span>
                   </div>
                 </div>

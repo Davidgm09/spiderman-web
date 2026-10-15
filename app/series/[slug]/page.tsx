@@ -198,7 +198,7 @@ export default async function SeriesDetailPage({ params }: Props) {
                 <a
                   href={series.amazonLink ?? generateAmazonUrl(`${series.title} DVD Spider-Man`)}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer sponsored"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white font-semibold rounded-full transition-all duration-200 hover:scale-105"
                 >
                   <ShoppingCart className="w-4 h-4" />
