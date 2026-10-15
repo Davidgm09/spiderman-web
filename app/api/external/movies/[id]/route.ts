@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { AMAZON_TAG } from '@/lib/config'
 
 export async function GET(
   request: NextRequest,
@@ -47,17 +48,17 @@ export async function GET(
       amazon_links: [
         {
           platform: '4K Blu-ray',
-          url: `https://www.amazon.com/s?k=${encodeURIComponent(movieData.title + ' 4K blu-ray')}&tag=${process.env.NEXT_PUBLIC_AMAZON_AFFILIATE_TAG || 'spiderweb-20'}`,
+          url: `https://www.amazon.com/s?k=${encodeURIComponent(movieData.title + ' 4K blu-ray')}&tag=${AMAZON_TAG}`,
         },
         {
           platform: 'Digital HD',
-          url: `https://www.amazon.com/s?k=${encodeURIComponent(movieData.title + ' digital')}&tag=${process.env.NEXT_PUBLIC_AMAZON_AFFILIATE_TAG || 'spiderweb-20'}`,
+          url: `https://www.amazon.com/s?k=${encodeURIComponent(movieData.title + ' digital')}&tag=${AMAZON_TAG}`,
         }
       ],
       digital_stores: [
         {
           platform: 'Amazon Prime Video',
-          url: `https://www.amazon.com/s?k=${encodeURIComponent(movieData.title)}&i=instant-video&tag=${process.env.NEXT_PUBLIC_AMAZON_AFFILIATE_TAG || 'spiderweb-20'}`,
+          url: `https://www.amazon.com/s?k=${encodeURIComponent(movieData.title)}&i=instant-video&tag=${AMAZON_TAG}`,
         },
         {
           platform: 'Apple TV',

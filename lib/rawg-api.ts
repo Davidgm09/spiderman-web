@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { CacheManager, ErrorLogger } from './database';
+import { AMAZON_TAG } from './config';
 
 const RAWG_API_KEY = process.env.RAWG_API_KEY;
 const RAWG_BASE_URL = 'https://api.rawg.io/api';
@@ -280,7 +281,7 @@ function isSpiderManGame(game: any): boolean {
 
 // Generate Amazon affiliate links for games
 function generateGameAmazonLinks(gameName: string, platforms?: any[]): Array<{platform: string; url: string}> {
-  const amazonTag = process.env.AMAZON_AFFILIATE_TAG || 'spiderweb-20';
+  const amazonTag = AMAZON_TAG;
   const links: Array<{platform: string; url: string}> = [];
 
   if (!platforms) {

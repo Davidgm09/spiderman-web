@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import axios from 'axios';
 import { CacheManager, ErrorLogger } from '@/lib/database';
+import { AMAZON_TAG } from '@/lib/config';
 
 const TMDB_API_KEY = process.env.TMDB_API_KEY;
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
@@ -239,7 +240,7 @@ async function fetchMovieDetails(movieId: string) {
 
 // Generate Amazon affiliate links
 function generateAmazonLink(title: string, releaseDate: string): string {
-  const amazonTag = process.env.AMAZON_AFFILIATE_TAG || 'spiderweb-20';
+  const amazonTag = AMAZON_TAG;
   const searchQuery = encodeURIComponent(`${title} ${new Date(releaseDate).getFullYear()}`);
   
   return `https://www.amazon.com/s?k=${searchQuery}&tag=${amazonTag}`;
@@ -248,7 +249,7 @@ function generateAmazonLink(title: string, releaseDate: string): string {
 // Generate digital purchase links
 function generateDigitalLinks(title: string, imdbId?: string): Array<{platform: string; url: string}> {
   const encodedTitle = encodeURIComponent(title);
-  const amazonTag = process.env.AMAZON_AFFILIATE_TAG || 'spiderweb-20';
+  const amazonTag = AMAZON_TAG;
   
   const links = [
     {
