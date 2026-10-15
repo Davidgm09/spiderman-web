@@ -22,7 +22,7 @@ const POST = {
   image: 'https://image.tmdb.org/t/p/w1280/vjMvFSmGUxEtqVdaZgvFee9XkZl.jpg',
   seoTitle: 'Spider-Man: Brand New Day: taquilla, críticas y guía sin spoilers | Sentido Arácnido',
   seoDescription:
-    'Todo sobre Spider-Man: Brand New Day sin spoilers: argumento, reparto, récords de taquilla, nota de la crítica y fechas de digital y Blu-ray.',
+    'Todo sobre Spider-Man: Brand New Day sin spoilers: argumento, reparto, récords de taquilla, nota de la crítica y cuándo verla en casa.',
   keywords: [
     'Spider-Man Brand New Day',
     'Brand New Day taquilla',
@@ -91,7 +91,7 @@ const POST = {
 <p>Peter también aparece en <em>Capitán América: Civil War</em>, <em>Vengadores: Infinity War</em> y <em>Vengadores: Endgame</em>, pero con las tres anteriores tienes de sobra para entender la historia.</p>
 
 <h2>¿Cuándo podré verla en casa?</h2>
-<p>En Estados Unidos, <em>Brand New Day</em> salió a la venta en <strong>digital el 6 de octubre de 2026</strong>, y la edición física en <strong>4K Ultra HD, Blu-ray y DVD</strong> llega el <strong>15 de diciembre</strong>, con tomas falsas y contenido extra. Para España todavía no hay fechas confirmadas en el momento de escribir este artículo; lo actualizaremos en cuanto se anuncien. Como película de Sony, lo previsible es que acabe llegando a plataformas por los acuerdos habituales del estudio, pero no hay fecha oficial.</p>
+<p>En Estados Unidos, <em>Brand New Day</em> salió a la venta en <strong>digital el 6 de octubre de 2026</strong>. Para España todavía no hay fechas confirmadas en el momento de escribir este artículo; lo actualizaremos en cuanto se anuncien. Como película de Sony, lo previsible es que acabe llegando a plataformas por los acuerdos habituales del estudio, pero no hay fecha oficial.</p>
 
 <h2>¿Y ahora qué?</h2>
 <p>De momento no hay una quinta película de Tom Holland anunciada. Según Sony, todavía no ha habido conversaciones concretas para ello, y Kevin Feige ha explicado que Holland y Zendaya se tomarán un descanso antes de confirmar planes. El propio Holland ha dicho que seguirá siendo Spider-Man «mientras le quieran».</p>
