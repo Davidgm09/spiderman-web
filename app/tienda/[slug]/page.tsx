@@ -7,7 +7,7 @@ import { notFound } from "next/navigation"
 import { ShoppingCart, Truck, Shield, RotateCcw } from "lucide-react"
 import { Breadcrumb } from "@/components/breadcrumb"
 import { productService } from "@/lib/database"
-import { AMAZON_TAG, SITE_URL } from "@/lib/config"
+import { AMAZON_TAG, SITE_URL, pageTitle } from "@/lib/config"
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const url = `${SITE_URL}/tienda/${product.slug}`
   return {
-    title: `${product.title} | Tienda Sentido Arácnido`,
+    title: pageTitle(product.title),
     description: product.description?.substring(0, 155) ?? `Compra ${product.title} en Amazon a través de Sentido Arácnido.`,
     alternates: { canonical: url },
     openGraph: {

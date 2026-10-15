@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge"
 import { BookOpen, ShoppingCart, Calendar, User, ArrowLeft, Users, History, Eye, Camera, Palette, TrendingUp, Star, Building, Award } from "lucide-react"
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { comicService } from "@/lib/database"
-import { SITE_URL } from "@/lib/config"
+import { SITE_URL, pageTitle } from "@/lib/config"
 import { generateAmazonUrl, parseJson } from "@/lib/content-helpers"
 import { AmazonProductCard } from "@/components/affiliate/AmazonProductCard"
 import { TiendaProductCards } from "@/components/affiliate/TiendaProductCards"
@@ -59,7 +59,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     : `Descubre ${comic.title}, cómic de Spider-Man con análisis completo, escritores y dónde comprarlo.`;
 
   const url = `${SITE_URL}/comics/${comic.slug}`;
-  const title = `${comic.title} (${comic.year}) - Análisis Completo | Sentido Arácnido`;
+  const title = pageTitle(`${comic.title} (${comic.year})`);
 
   return {
     title,

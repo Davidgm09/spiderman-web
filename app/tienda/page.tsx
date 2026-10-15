@@ -6,13 +6,13 @@ import { SITE_URL } from "@/lib/config"
 import ProductGrid from "@/components/tienda/ProductGrid"
 
 export const metadata: Metadata = {
-  title: "Tienda Spider-Man - Figuras, Camisetas, Funkos y Más | Sentido Arácnido",
+  title: "Tienda Spider-Man: figuras, Funko y más | Sentido Arácnido",
   description:
     "Los mejores productos oficiales de Spider-Man en Amazon: figuras, camisetas, Funko Pop, mochilas y coleccionables. Envío rápido y garantía Amazon.",
   keywords: ["tienda Spider-Man", "productos Spider-Man", "figuras Spider-Man", "camisetas Marvel", "funkos", "merchandising"],
   alternates: { canonical: `${SITE_URL}/tienda` },
   openGraph: {
-    title: "Tienda Spider-Man - Figuras, Camisetas, Funkos y Más | Sentido Arácnido",
+    title: "Tienda Spider-Man: figuras, Funko y más | Sentido Arácnido",
     description: "Los mejores productos oficiales de Spider-Man en Amazon.",
     url: `${SITE_URL}/tienda`,
     type: "website",

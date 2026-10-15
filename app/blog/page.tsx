@@ -11,13 +11,13 @@ import { BlogPost } from "@prisma/client"
 const POSTS_PER_PAGE = 6
 
 export const metadata: Metadata = {
-  title: "Blog Spider-Man - Análisis, Noticias y Contenido Exclusivo | Sentido Arácnido",
+  title: "Blog de Spider-Man: análisis y noticias | Sentido Arácnido",
   description:
     "Las últimas noticias, análisis profundos y contenido exclusivo del Spider-Verse. Artículos especializados para fans verdaderos de Spider-Man.",
   keywords: ["blog Spider-Man", "noticias Spider-Man", "análisis Marvel", "Spider-Verse", "contenido exclusivo"],
   alternates: { canonical: '/blog' },
   openGraph: {
-    title: "Blog Spider-Man - Análisis, Noticias y Contenido Exclusivo | Sentido Arácnido",
+    title: "Blog de Spider-Man: análisis y noticias | Sentido Arácnido",
     description: "Las últimas noticias, análisis profundos y contenido exclusivo del Spider-Verse.",
     type: 'website',
     url: '/blog',
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Blog Spider-Man - Análisis, Noticias y Contenido Exclusivo | Sentido Arácnido",
+    title: "Blog de Spider-Man: análisis y noticias | Sentido Arácnido",
     description: "Las últimas noticias, análisis profundos y contenido exclusivo del Spider-Verse.",
     images: ['https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/8126579-amazing_spider-man_vol_5_54_stormbreakers_variant_textless.jpg'],
   },

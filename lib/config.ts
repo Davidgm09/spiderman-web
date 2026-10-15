@@ -14,3 +14,13 @@ export const LEGAL_OWNER = {
   nif: '',      // NIF/DNI
   address: '',  // Domicilio (calle, número, CP, ciudad)
 }
+
+export const SITE_NAME = 'Sentido Arácnido'
+
+// Google muestra unos 60 caracteres del título: el nombre de la web solo se añade si cabe.
+// Acepta títulos que ya traen " | Sentido Arácnido" (los seoTitle de la BD) y lo recoloca.
+export function pageTitle(base: string, maxLength = 60): string {
+  const clean = base.replace(/\s*[|·-]\s*Sentido Arácnido(\s+Blog)?\s*$/, '').trim()
+  const full = `${clean} | ${SITE_NAME}`
+  return full.length <= maxLength ? full : clean
+}

@@ -8,7 +8,7 @@ import { Calendar, Clock, User, Eye, ArrowLeft, Tag } from "lucide-react"
 import { Breadcrumb } from "@/components/breadcrumb"
 import { SidebarAd } from "@/components/ads/GoogleAdsense"
 import { blogService } from "@/lib/database"
-import { SITE_URL } from "@/lib/config"
+import { SITE_URL, pageTitle } from "@/lib/config"
 import { generateAmazonUrl } from "@/lib/content-helpers"
 import { BlogPost } from "@prisma/client"
 import { ViewTracker } from "@/components/blog/ViewTracker"
@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const url = `${SITE_URL}/blog/${post.slug}`;
 
   return {
-    title: post.seoTitle || `${post.title} | Sentido Arácnido Blog`,
+    title: pageTitle(post.seoTitle || post.title),
     description,
     keywords: post.keywords,
     alternates: { canonical: url },

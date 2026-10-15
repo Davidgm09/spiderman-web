@@ -11,13 +11,13 @@ import { gameService, blogService } from "@/lib/database"
 import { Game } from "@prisma/client"
 
 export const metadata: Metadata = {
-  title: "Videojuegos de Spider-Man - Colección Completa | Sentido Arácnido",
+  title: "Todos los videojuegos de Spider-Man | Sentido Arácnido",
   description:
     "Todos los videojuegos de Spider-Man: desde clásicos arcade hasta PS5. Reseñas completas, gameplay, plataformas y enlaces de compra.",
   keywords: ["Spider-Man videojuegos", "Marvel's Spider-Man", "Spider-Man PS4", "Spider-Man PS5", "Insomniac Games", "videojuegos Marvel"],
   alternates: { canonical: '/videojuegos' },
   openGraph: {
-    title: "Videojuegos de Spider-Man - Colección Completa | Sentido Arácnido",
+    title: "Todos los videojuegos de Spider-Man | Sentido Arácnido",
     description: "Todos los videojuegos de Spider-Man: desde clásicos arcade hasta PS5. Reseñas completas, gameplay y plataformas.",
     type: 'website',
     url: '/videojuegos',
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Videojuegos de Spider-Man - Colección Completa | Sentido Arácnido",
+    title: "Todos los videojuegos de Spider-Man | Sentido Arácnido",
     description: "Todos los videojuegos de Spider-Man: desde clásicos arcade hasta PS5. Reseñas completas, gameplay y plataformas.",
     images: ['https://media.rawg.io/media/games/5f1/5f1399f755ed3a40b04a9195f4c06be5.jpg'],
   },

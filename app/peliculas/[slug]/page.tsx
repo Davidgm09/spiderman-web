@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { Play, ShoppingCart, User, Tv, ArrowLeft, Award, Star } from "lucide-react"
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { movieService } from "@/lib/database"
-import { SITE_URL } from "@/lib/config"
+import { SITE_URL, pageTitle } from "@/lib/config"
 import { generateAmazonUrl, parseJson } from "@/lib/content-helpers"
 import { AMAZON_TAG } from "@/lib/config"
 import type { GalleryImage, CastMember } from "@/lib/json-types"
@@ -47,12 +47,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const url = `${SITE_URL}/peliculas/${movie.slug}`;
 
   return {
-    title: `${movie.title} (${movie.year}) - Análisis Completo | Sentido Arácnido`,
+    title: pageTitle(`${movie.title} (${movie.year})`),
     description,
     keywords: movie.keywords?.length ? movie.keywords : ['Spider-Man', 'película', movie.title, movie.year.toString(), 'análisis', 'reparto'],
     alternates: { canonical: url },
     openGraph: {
-      title: `${movie.title} (${movie.year}) - Análisis Completo | Sentido Arácnido`,
+      title: pageTitle(`${movie.title} (${movie.year})`),
       description,
       images: [movie.image],
       type: "article",
@@ -60,7 +60,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: `${movie.title} (${movie.year}) - Análisis Completo | Sentido Arácnido`,
+      title: pageTitle(`${movie.title} (${movie.year})`),
       description,
       images: [movie.image],
     },

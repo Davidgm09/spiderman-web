@@ -6,7 +6,7 @@ import { Play, ShoppingCart, Users, Tv, ArrowLeft, Award, Star, Clock } from "lu
 import { Badge } from "@/components/ui/badge"
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { seriesService } from "@/lib/database"
-import { SITE_URL, AMAZON_TAG } from "@/lib/config"
+import { SITE_URL, AMAZON_TAG, pageTitle } from "@/lib/config"
 import { generateAmazonUrl, parseJson } from "@/lib/content-helpers"
 import type { CastMember, EpisodeImage } from "@/lib/json-types"
 import { SeriesGallery } from "@/components/series/SeriesGallery"
@@ -46,12 +46,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const url = `${SITE_URL}/series/${series.slug}`
 
   return {
-    title: `${series.title} (${series.year}) - Análisis Completo | Sentido Arácnido`,
+    title: pageTitle(`${series.title} (${series.year})`),
     description,
     keywords: series.keywords?.length ? series.keywords : ['Spider-Man', 'serie animada', series.title, series.year.toString(), 'análisis', 'episodios'],
     alternates: { canonical: url },
     openGraph: {
-      title: `${series.title} (${series.year}) - Análisis Completo | Sentido Arácnido`,
+      title: pageTitle(`${series.title} (${series.year})`),
       description,
       images: [series.image],
       type: "article",
@@ -59,7 +59,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: `${series.title} (${series.year}) - Análisis Completo | Sentido Arácnido`,
+      title: pageTitle(`${series.title} (${series.year})`),
       description,
       images: [series.image],
     },

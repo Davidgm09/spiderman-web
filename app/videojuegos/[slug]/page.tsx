@@ -6,7 +6,7 @@ import { Play, ShoppingCart, User, Monitor, ArrowLeft, Award, Star } from "lucid
 import { Badge } from "@/components/ui/badge"
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { gameService } from "@/lib/database"
-import { SITE_URL, AMAZON_TAG } from "@/lib/config"
+import { SITE_URL, AMAZON_TAG, pageTitle } from "@/lib/config"
 import { generateAmazonUrl, parseJson } from "@/lib/content-helpers"
 import { Breadcrumb } from "@/components/breadcrumb"
 import type { GalleryImage, ConceptArtItem, CharacterImage } from "@/lib/json-types"
@@ -45,12 +45,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const url = `${SITE_URL}/videojuegos/${game.slug}`
 
   return {
-    title: `${game.title} (${game.year}) - Análisis Completo | Sentido Arácnido`,
+    title: pageTitle(`${game.title} (${game.year})`),
     description,
     keywords: game.keywords?.length ? game.keywords : ['Spider-Man', 'videojuego', game.title, game.year.toString(), 'análisis', 'gameplay'],
     alternates: { canonical: url },
     openGraph: {
-      title: `${game.title} (${game.year}) - Análisis Completo | Sentido Arácnido`,
+      title: pageTitle(`${game.title} (${game.year})`),
       description,
       images: [game.image],
       type: "article",
@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: `${game.title} (${game.year}) - Análisis Completo | Sentido Arácnido`,
+      title: pageTitle(`${game.title} (${game.year})`),
       description,
       images: [game.image],
     },

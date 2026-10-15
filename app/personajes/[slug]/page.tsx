@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { characterService } from '@/lib/database';
-import { SITE_URL } from '@/lib/config';
+import { SITE_URL, pageTitle } from '@/lib/config';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Star, Zap, Shield, BookOpen, Users, ShoppingCart } from 'lucide-react';
@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!character) return { title: 'Personaje no encontrado | Sentido Arácnido' };
   const url = `${SITE_URL}/personajes/${character.slug}`;
   return {
-    title: character.seoTitle,
+    title: pageTitle(character.seoTitle),
     description: character.seoDescription,
     keywords: character.keywords,
     alternates: { canonical: url },
