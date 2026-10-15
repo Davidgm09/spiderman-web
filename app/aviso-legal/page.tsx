@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { SITE_URL } from "@/lib/config"
+import { OwnerDetails } from "@/components/legal/OwnerDetails"
 
 export const metadata: Metadata = {
   title: "Aviso Legal | Sentido Arácnido",
@@ -14,7 +15,7 @@ export default function AvisoLegalPage() {
     <div className="min-h-screen bg-gradient-to-br from-red-950 via-gray-900 to-blue-950 py-20 px-4">
       <div className="max-w-3xl mx-auto">
         <h1 className="text-4xl font-bold text-white mb-4">Aviso Legal</h1>
-        <p className="text-gray-400 mb-12">Última actualización: marzo de 2026</p>
+        <p className="text-gray-400 mb-12">Última actualización: octubre de 2026</p>
 
         <div className="prose prose-invert max-w-none space-y-10 text-gray-300 leading-relaxed">
 
@@ -26,6 +27,7 @@ export default function AvisoLegalPage() {
               <strong className="text-white">sentidoaracnido.com</strong>, es un proyecto de carácter informativo y
               de entretenimiento gestionado de forma independiente.
             </p>
+            <OwnerDetails />
             <p className="mt-4">
               Para cualquier consulta puedes contactarnos a través de la{" "}
               <Link href="/contacto" className="text-red-400 hover:text-red-300">página de contacto</Link>.
