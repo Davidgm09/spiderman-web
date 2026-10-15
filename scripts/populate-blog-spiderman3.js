@@ -12,7 +12,7 @@ const POST = {
   subtitle: 'El cierre de la trilogía que redefinió los juegos de superhéroes',
   excerpt: "Insomniac Games prepara la entrega final de su trilogía de Spider-Man. Repasamos todo lo que se sabe hasta ahora: historia, personajes, plataformas y posible fecha de lanzamiento.",
   category: 'Videojuegos',
-  author: 'Redacción Spider-Web',
+  author: 'Redacción Sentido Arácnido',
   readTime: '7 min',
   publishDate: new Date('2025-03-20'),
   slug: 'marvels-spider-man-3-insomniac-todo-lo-que-sabemos',

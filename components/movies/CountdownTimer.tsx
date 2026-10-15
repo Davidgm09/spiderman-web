@@ -2,10 +2,8 @@
 
 import { useEffect, useState } from "react"
 
-const RELEASE_DATE = new Date("2026-07-31T00:00:00")
-
-function getTimeLeft() {
-  const diff = RELEASE_DATE.getTime() - Date.now()
+function getTimeLeft(target: Date) {
+  const diff = target.getTime() - Date.now()
   if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 }
   return {
     days: Math.floor(diff / (1000 * 60 * 60 * 24)),
@@ -15,19 +13,23 @@ function getTimeLeft() {
   }
 }
 
-export function CountdownTimer() {
-  const [time, setTime] = useState(getTimeLeft())
+// releaseDate en formato ISO, p. ej. "2027-06-18T00:00:00"
+export function CountdownTimer({ releaseDate }: { releaseDate: string }) {
+  // null hasta montar en el cliente: así el HTML del servidor y el del navegador coinciden
+  const [time, setTime] = useState<ReturnType<typeof getTimeLeft> | null>(null)
 
   useEffect(() => {
-    const interval = setInterval(() => setTime(getTimeLeft()), 1000)
+    const target = new Date(releaseDate)
+    setTime(getTimeLeft(target))
+    const interval = setInterval(() => setTime(getTimeLeft(target)), 1000)
     return () => clearInterval(interval)
-  }, [])
+  }, [releaseDate])
 
   const units = [
-    { value: time.days, label: "días" },
-    { value: time.hours, label: "horas" },
-    { value: time.minutes, label: "min" },
-    { value: time.seconds, label: "seg" },
+    { value: time?.days, label: "días" },
+    { value: time?.hours, label: "horas" },
+    { value: time?.minutes, label: "min" },
+    { value: time?.seconds, label: "seg" },
   ]
 
   return (
@@ -36,7 +38,7 @@ export function CountdownTimer() {
         <div key={label} className="flex items-center gap-3">
           <div className="text-center">
             <div className="text-2xl md:text-3xl font-bold text-white tabular-nums w-14 text-center bg-white/10 rounded-xl py-1.5 backdrop-blur-sm">
-              {String(value).padStart(2, "0")}
+              {value === undefined ? "--" : String(value).padStart(2, "0")}
             </div>
             <div className="text-xs text-gray-400 uppercase tracking-wide mt-1">{label}</div>
           </div>

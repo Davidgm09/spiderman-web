@@ -7,6 +7,7 @@ import { Play, Star, Clock, Award } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { InContentAd } from "@/components/ads/GoogleAdsense"
+import { CountdownTimer } from "@/components/movies/CountdownTimer"
 import { movieService } from "@/lib/database"
 import { ADS_ENABLED } from "@/lib/config"
 import { Movie } from "@prisma/client"
@@ -144,7 +145,7 @@ export default async function PeliculasPage() {
             <p className="text-gray-300 text-sm mb-2">
               Tom Holland regresa como Peter Parker en una nueva aventura donde nadie recuerda quién es.
             </p>
-            <p className="text-red-400 text-xs font-semibold uppercase tracking-widest mb-1">Estreno en España · 31 Jul 2026</p>
+            <p className="text-red-400 text-xs font-semibold uppercase tracking-widest mb-1">Estrenada en julio de 2026 · La más taquillera de Spider-Man</p>
             <div className="mt-5 flex flex-wrap gap-3">
               <Link
                 href="/peliculas/spider-man-brand-new-day-2026"
@@ -154,12 +155,35 @@ export default async function PeliculasPage() {
                 Ver la película
               </Link>
               <Link
-                href="/blog/spider-man-brand-new-day-trailer-oficial"
+                href="/blog/spider-man-brand-new-day-taquilla-criticas-sin-spoilers"
                 className="w-fit inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-sm font-semibold transition-all duration-200"
               >
-                Análisis del tráiler
+                Taquilla y críticas
               </Link>
             </div>
+          </div>
+        </div>
+
+        {/* Próximo estreno: Beyond the Spider-Verse */}
+        <div className="relative rounded-3xl overflow-hidden min-h-[300px] shadow-2xl shadow-purple-900/40 mb-8">
+          <Image
+            src="https://image.tmdb.org/t/p/w1280/7tT2w75p69nll5PvALpWFCYx5dU.jpg"
+            alt="Spider-Man: Beyond the Spider-Verse"
+            fill
+            sizes="100vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent" />
+          <div className="absolute inset-0 flex flex-col justify-center px-8 md:px-12 max-w-2xl">
+            <Badge className="bg-purple-600 w-fit mb-4 text-xs tracking-widest uppercase">Próximo estreno</Badge>
+            <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-2">
+              Spider-Man:<br />Beyond the Spider-Verse
+            </h2>
+            <p className="text-gray-300 text-sm mb-2">
+              El cierre de la trilogía animada de Miles Morales.
+            </p>
+            <p className="text-purple-300 text-xs font-semibold uppercase tracking-widest mb-1">Estreno en EE. UU. · 18 Jun 2027</p>
+            <CountdownTimer releaseDate="2027-06-18T00:00:00" />
           </div>
         </div>
       </div>
