@@ -16,11 +16,13 @@ export const metadata: Metadata = {
     description: "Los mejores productos oficiales de Spider-Man en Amazon.",
     url: `${SITE_URL}/tienda`,
     type: "website",
+    images: ["/opengraph-image.png"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Tienda Spider-Man | Sentido Arácnido",
     description: "Los mejores productos oficiales de Spider-Man en Amazon.",
+    images: ["/opengraph-image.png"],
   },
 }
 

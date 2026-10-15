@@ -16,6 +16,7 @@ import { AmazonProductCard } from "@/components/affiliate/AmazonProductCard"
 import { TiendaProductCards } from "@/components/affiliate/TiendaProductCards"
 import { StickyAffiliateSidebar } from "@/components/affiliate/StickyAffiliateSidebar"
 import { Breadcrumb } from "@/components/breadcrumb"
+import { YouTubeLite } from "@/components/ui/YouTubeLite"
 
 export const revalidate = 3600
 
@@ -312,14 +313,7 @@ export default async function MoviePage({ params }: Props) {
                     <h3 className="text-2xl font-bold text-white">Tráiler Oficial</h3>
                   </div>
                   <div className="relative aspect-video rounded-xl overflow-hidden shadow-2xl shadow-black/60">
-                    <iframe
-                      src={movie.trailerUrl.replace('watch?v=', 'embed/')}
-                      title={`Tráiler de ${movie.title}`}
-                      className="w-full h-full border-0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      referrerPolicy="strict-origin-when-cross-origin"
-                      allowFullScreen
-                    />
+                    <YouTubeLite url={movie.trailerUrl} title={`Tráiler de ${movie.title}`} />
                   </div>
                 </div>
               )}

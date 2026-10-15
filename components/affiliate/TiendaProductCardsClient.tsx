@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo } from 'react'
+import { useEffect, useState } from 'react'
 import { AmazonProductCard } from './AmazonProductCard'
 
 interface Product {
@@ -19,9 +19,13 @@ interface TiendaProductCardsClientProps {
 }
 
 export function TiendaProductCardsClient({ products, amazonTag, display = 4 }: TiendaProductCardsClientProps) {
-  const picked = useMemo(() => {
+  // Primero los N primeros (igual en servidor y navegador) y se barajan ya en el navegador:
+  // barajar durante el render daba un HTML distinto en cada lado (error de hidratación #418)
+  const [picked, setPicked] = useState(() => products.slice(0, display))
+
+  useEffect(() => {
     const shuffled = [...products].sort(() => Math.random() - 0.5)
-    return shuffled.slice(0, display)
+    setPicked(shuffled.slice(0, display))
   }, [products, display])
 
   if (picked.length === 0) return null

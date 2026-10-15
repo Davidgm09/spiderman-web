@@ -84,7 +84,7 @@ export function Navigation() {
             >
               <Search className="w-5 h-5" />
             </button>
-            <Button className="bg-red-600 hover:bg-red-700" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <Button className="bg-red-600 hover:bg-red-700" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"} aria-expanded={isMenuOpen}>
               {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
           </div>

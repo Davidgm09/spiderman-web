@@ -47,7 +47,7 @@ export function CookieBanner() {
               Utilizamos cookies propias y de terceros (Google AdSense, Amazon) para mostrarte publicidad
               personalizada y analizar el tráfico. Puedes aceptar todas las cookies o rechazar las no esenciales.{' '}
               <Link href="/cookies" className="text-red-400 hover:text-red-300 underline underline-offset-2">
-                Más información
+                Más información sobre las cookies
               </Link>
             </p>
           </div>

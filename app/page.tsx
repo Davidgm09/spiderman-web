@@ -16,6 +16,7 @@ export const metadata = {
   title: "Sentido Arácnido - El Universo Completo de Spider-Man",
   description: "Descubre todo sobre Spider-Man: películas, cómics, videojuegos, series y productos oficiales. La guía definitiva del trepamuros.",
   keywords: ["Spider-Man", "Marvel", "cómics", "películas", "videojuegos", "Peter Parker", "Spider-Verse"],
+  alternates: { canonical: "/" },
   openGraph: {
     title: "Sentido Arácnido - El Universo Completo de Spider-Man",
     description: "La guía definitiva de Spider-Man con análisis, reseñas y productos oficiales",
@@ -84,39 +85,18 @@ async function getFeaturedContent() {
 function SimpleHero() {
   return (
     <div className="absolute inset-0 overflow-hidden">
-      {/* Fondo base */}
-      <div 
-        className="absolute inset-0"
-        style={{
-          backgroundImage: "url('/images/inihero.jpg')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-        }}
-      />
-      
+      {/* Fondo base (next/image: WebP redimensionado y con prioridad; las 3 capas comparten la misma descarga) */}
+      <Image src="/images/inihero.jpg" alt="" fill priority sizes="100vw" className="object-cover object-center" />
+
       {/* Capa con efecto breathing */}
-      <div 
-        className="absolute inset-0 animate-spider-breathe"
-        style={{
-          backgroundImage: "url('/images/inihero.jpg')",
-          backgroundSize: '105% 105%',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          opacity: 0.8,
-        }}
-      />
-      
+      <div className="absolute inset-0 animate-spider-breathe opacity-80">
+        <Image src="/images/inihero.jpg" alt="" fill sizes="100vw" className="object-cover object-center scale-105" />
+      </div>
+
       {/* Capa con efecto pulse */}
-      <div 
-        className="absolute inset-0 animate-spider-pulse"
-        style={{
-          backgroundImage: "url('/images/inihero.jpg')",
-          backgroundSize: '102% 102%',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-        }}
-      />
+      <div className="absolute inset-0 animate-spider-pulse">
+        <Image src="/images/inihero.jpg" alt="" fill sizes="100vw" className="object-cover object-center scale-[1.02]" />
+      </div>
       
       {/* Efecto shimmer sutil */}
       <div className="absolute inset-0 web-shimmer opacity-30" />
