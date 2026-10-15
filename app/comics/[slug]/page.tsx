@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge"
 import { BookOpen, ShoppingCart, Calendar, User, ArrowLeft, Users, History, Eye, Camera, Palette, TrendingUp, Star, Building, Award } from "lucide-react"
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { comicService } from "@/lib/database"
-import { SITE_URL, pageTitle } from "@/lib/config"
+import { SITE_URL, pageTitle, metaDescription } from "@/lib/config"
 import { generateAmazonUrl, parseJson } from "@/lib/content-helpers"
 import { AmazonProductCard } from "@/components/affiliate/AmazonProductCard"
 import { TiendaProductCards } from "@/components/affiliate/TiendaProductCards"
@@ -44,19 +44,13 @@ const getImportanceColor = (_importance: string) => {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params
+  const slug = decodeURIComponent((await params).slug)
   const comic = await comicService.getBySlug(slug).catch(() => null)
 
-  if (!comic) {
-    return {
-      title: "Cómic no encontrado | Sentido Arácnido",
-      description: "El cómic que buscas no está disponible.",
-    }
-  }
+  // notFound() aquí (antes de empezar a enviar la página) devuelve un 404 real
+  if (!comic) notFound()
 
-  const description = comic.description
-    ? comic.description.substring(0, 155) + '...'
-    : `Descubre ${comic.title}, cómic de Spider-Man con análisis completo, escritores y dónde comprarlo.`;
+  const description = metaDescription(`${comic.title} (${comic.year})`, comic.description, `Cómic de Spider-Man con análisis completo, escritores y dónde comprarlo.`)
 
   const url = `${SITE_URL}/comics/${comic.slug}`;
   const title = pageTitle(`${comic.title} (${comic.year})`);
@@ -83,7 +77,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ComicPage({ params }: Props) {
-  const { slug } = await params
+  const slug = decodeURIComponent((await params).slug)
   const comic = await comicService.getBySlug(slug).catch(() => null)
 
   if (!comic) {

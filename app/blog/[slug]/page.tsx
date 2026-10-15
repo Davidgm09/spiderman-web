@@ -32,9 +32,10 @@ function formatDate(date: Date | string) {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params
+  const slug = decodeURIComponent((await params).slug)
   const post = await blogService.getBySlug(slug)
-  if (!post) return { title: "Artículo no encontrado | Sentido Arácnido" }
+  // notFound() aquí (antes de empezar a enviar la página) devuelve un 404 real
+  if (!post) notFound()
 
   const description = post.seoDescription || post.excerpt.substring(0, 155)
   const url = `${SITE_URL}/blog/${post.slug}`;
@@ -63,7 +64,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function BlogPostPage({ params }: Props) {
-  const { slug } = await params
+  const slug = decodeURIComponent((await params).slug)
   const post = await blogService.getBySlug(slug)
   if (!post) notFound()
 

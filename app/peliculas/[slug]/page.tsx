@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { Play, ShoppingCart, User, Tv, ArrowLeft, Award, Star } from "lucide-react"
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { movieService } from "@/lib/database"
-import { SITE_URL, pageTitle } from "@/lib/config"
+import { SITE_URL, pageTitle, metaDescription } from "@/lib/config"
 import { generateAmazonUrl, parseJson } from "@/lib/content-helpers"
 import { AMAZON_TAG } from "@/lib/config"
 import type { GalleryImage, CastMember } from "@/lib/json-types"
@@ -30,19 +30,13 @@ type Props = {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params
+  const slug = decodeURIComponent((await params).slug)
   const movie = await movieService.getBySlug(slug).catch(() => null)
   
-  if (!movie) {
-    return {
-      title: "Película no encontrada | Sentido Arácnido",
-      description: "La película que buscas no está disponible.",
-    }
-  }
+  // notFound() aquí (antes de empezar a enviar la página) devuelve un 404 real
+  if (!movie) notFound()
 
-  const description = movie.description 
-    ? movie.description.substring(0, 155) + '...'
-    : `Descubre ${movie.title}, película de Spider-Man con análisis completo, reparto y dónde verla.`;
+  const description = metaDescription(`${movie.title} (${movie.year})`, movie.description, `Película de Spider-Man con análisis completo, reparto y dónde verla.`)
 
   const url = `${SITE_URL}/peliculas/${movie.slug}`;
 
@@ -68,7 +62,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function MoviePage({ params }: Props) {
-  const { slug } = await params
+  const slug = decodeURIComponent((await params).slug)
   const movie = await movieService.getBySlug(slug).catch(() => null)
 
   if (!movie) {

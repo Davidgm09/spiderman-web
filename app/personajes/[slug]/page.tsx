@@ -19,9 +19,10 @@ export async function generateStaticParams() {
 type Props = { params: Promise<{ slug: string }> }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
+  const slug = decodeURIComponent((await params).slug)
   const character = await characterService.getBySlug(slug).catch(() => null);
-  if (!character) return { title: 'Personaje no encontrado | Sentido Arácnido' };
+  // notFound() aquí (antes de empezar a enviar la página) devuelve un 404 real
+  if (!character) notFound()
   const url = `${SITE_URL}/personajes/${character.slug}`;
   return {
     title: pageTitle(character.seoTitle),
@@ -34,7 +35,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function CharacterDetailPage({ params }: Props) {
-  const { slug } = await params;
+  const slug = decodeURIComponent((await params).slug)
   const character = await characterService.getBySlug(slug).catch(() => null);
   if (!character) notFound();
 

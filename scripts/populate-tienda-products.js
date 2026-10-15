@@ -437,7 +437,7 @@ const PRODUCTS = [
     image: "https://cdn11.bigcommerce.com/s-cy4lua1xoh/images/stencil/608x608/products/45952/481752/55228e62-9747-5cf6-b748-8352dbe6bd1b__66249.1728321864.jpg?c=1",
     category: "Coleccionables",
     asin: "B08T67T7C4",
-    slug: "funko-pop-carnage-venom-habrá-matanza",
+    slug: "funko-pop-carnage-venom-habra-matanza",
     seoTitle: "Funko Pop Carnage Venom Habrá Matanza | Amazon.es",
     seoDescription: "Funko Pop! Carnage de Venom: Habrá Matanza. Figura vinilo con simbionte rojo. Disponible en Amazon.es.",
     keywords: ["funko pop carnage", "venom", "spider-man villano", "coleccionable"],

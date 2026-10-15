@@ -6,7 +6,7 @@ import { Play, ShoppingCart, User, Monitor, ArrowLeft, Award, Star } from "lucid
 import { Badge } from "@/components/ui/badge"
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { gameService } from "@/lib/database"
-import { SITE_URL, AMAZON_TAG, pageTitle } from "@/lib/config"
+import { SITE_URL, AMAZON_TAG, pageTitle, metaDescription } from "@/lib/config"
 import { generateAmazonUrl, parseJson } from "@/lib/content-helpers"
 import { Breadcrumb } from "@/components/breadcrumb"
 import type { GalleryImage, ConceptArtItem, CharacterImage } from "@/lib/json-types"
@@ -28,19 +28,13 @@ type Props = {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params
+  const slug = decodeURIComponent((await params).slug)
   const game = await gameService.getBySlug(slug).catch(() => null)
 
-  if (!game) {
-    return {
-      title: "Videojuego no encontrado | Sentido Arácnido",
-      description: "El videojuego que buscas no está disponible.",
-    }
-  }
+  // notFound() aquí (antes de empezar a enviar la página) devuelve un 404 real
+  if (!game) notFound()
 
-  const description = game.description
-    ? game.description.substring(0, 155) + '...'
-    : `Descubre ${game.title}, videojuego de Spider-Man con análisis completo, gameplay y dónde comprarlo.`
+  const description = metaDescription(`${game.title} (${game.year})`, game.description, `Videojuego de Spider-Man con análisis completo, gameplay y dónde comprarlo.`)
 
   const url = `${SITE_URL}/videojuegos/${game.slug}`
 
@@ -66,7 +60,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function GamePage({ params }: Props) {
-  const { slug } = await params
+  const slug = decodeURIComponent((await params).slug)
   const game = await gameService.getBySlug(slug).catch(() => null)
 
   if (!game) notFound()

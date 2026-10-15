@@ -24,3 +24,12 @@ export function pageTitle(base: string, maxLength = 60): string {
   const full = `${clean} | ${SITE_NAME}`
   return full.length <= maxLength ? full : clean
 }
+
+// Descripción para buscadores: empieza por el nombre del contenido (así no hay dos iguales)
+// y se corta a ~155 caracteres sin partir palabras
+export function metaDescription(prefix: string, text: string | null | undefined, fallback: string, maxLength = 155): string {
+  const body = (text || fallback).replace(/\s+/g, ' ').trim()
+  const full = `${prefix}: ${body}`
+  if (full.length <= maxLength) return full
+  return full.slice(0, maxLength - 1).replace(/[\s,.;:]+\S*$/, '') + '…'
+}

@@ -6,7 +6,7 @@ import { Play, ShoppingCart, Users, Tv, ArrowLeft, Award, Star, Clock } from "lu
 import { Badge } from "@/components/ui/badge"
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { seriesService } from "@/lib/database"
-import { SITE_URL, AMAZON_TAG, pageTitle } from "@/lib/config"
+import { SITE_URL, AMAZON_TAG, pageTitle, metaDescription } from "@/lib/config"
 import { generateAmazonUrl, parseJson } from "@/lib/content-helpers"
 import type { CastMember, EpisodeImage } from "@/lib/json-types"
 import { SeriesGallery } from "@/components/series/SeriesGallery"
@@ -29,19 +29,13 @@ type Props = {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params
+  const slug = decodeURIComponent((await params).slug)
   const series = await seriesService.getBySlug(slug).catch(() => null)
 
-  if (!series) {
-    return {
-      title: "Serie no encontrada | Sentido Arácnido",
-      description: "La serie que buscas no está disponible.",
-    }
-  }
+  // notFound() aquí (antes de empezar a enviar la página) devuelve un 404 real
+  if (!series) notFound()
 
-  const description = series.description
-    ? series.description.substring(0, 155) + '...'
-    : `Descubre ${series.title}, serie de Spider-Man con análisis completo, episodios y dónde verla.`
+  const description = metaDescription(`${series.title} (${series.year})`, series.description, `Serie de Spider-Man con análisis completo, episodios y dónde verla.`)
 
   const url = `${SITE_URL}/series/${series.slug}`
 
@@ -67,7 +61,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function SeriesDetailPage({ params }: Props) {
-  const { slug } = await params
+  const slug = decodeURIComponent((await params).slug)
   const series = await seriesService.getBySlug(slug).catch(() => null)
 
   if (!series) notFound()

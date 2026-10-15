@@ -17,9 +17,10 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params
+  const slug = decodeURIComponent((await params).slug)
   const product = await productService.getBySlug(slug).catch(() => null)
-  if (!product) return { title: "Producto no encontrado | Sentido Arácnido" }
+  // notFound() aquí (antes de empezar a enviar la página) devuelve un 404 real
+  if (!product) notFound()
 
   const url = `${SITE_URL}/tienda/${product.slug}`
   return {
@@ -41,7 +42,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ProductPage({ params }: Props) {
-  const { slug } = await params
+  const slug = decodeURIComponent((await params).slug)
   const product = await productService.getBySlug(slug).catch(() => null)
   if (!product) notFound()
 
