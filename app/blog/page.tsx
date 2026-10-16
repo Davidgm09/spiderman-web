@@ -50,6 +50,7 @@ const CATEGORY_ACCENT: Record<string, { gradient: string; border: string }> = {
   'Análisis':    { gradient: 'from-orange-600', border: 'border-orange-500/40' },
   'Noticias':    { gradient: 'from-yellow-600', border: 'border-yellow-500/40' },
   'Teorías':     { gradient: 'from-pink-600',   border: 'border-pink-500/40' },
+  'Guías':       { gradient: 'from-cyan-600',   border: 'border-cyan-500/40' },
 }
 
 interface BlogPageProps {

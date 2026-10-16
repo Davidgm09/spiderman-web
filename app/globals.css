@@ -266,6 +266,48 @@ body {
   @apply text-sm text-gray-500 italic text-center mt-2 px-4;
 }
 
+/* Fichas de producto en guías de regalos */
+.blog-content .gift {
+  @apply flex gap-5 items-start p-4 my-5 rounded-xl;
+  background: rgba(17, 24, 39, 0.6);
+  border: 1px solid rgba(220, 38, 38, 0.2);
+}
+
+.blog-content .gift-img {
+  @apply flex items-center justify-center shrink-0 w-32 h-32 p-2 rounded-lg bg-white;
+  border-bottom: none;
+}
+
+.blog-content .gift-img img {
+  @apply max-h-full w-auto object-contain rounded-none shadow-none;
+}
+
+.blog-content .gift h3 {
+  @apply mt-0 mb-2;
+}
+
+.blog-content .gift p {
+  @apply mb-3;
+}
+
+.blog-content a.gift-btn {
+  @apply inline-block px-4 py-2 rounded-lg bg-red-600 text-white text-sm font-semibold no-underline;
+  border-bottom: none;
+}
+
+.blog-content a.gift-btn:hover {
+  @apply bg-red-700 text-white;
+}
+
+@media (max-width: 480px) {
+  .blog-content .gift {
+    @apply flex-col;
+  }
+  .blog-content .gift-img {
+    @apply w-full h-48;
+  }
+}
+
 /* Espaciado más moderado entre secciones */
 .blog-content > * + * {
   margin-top: 1rem;

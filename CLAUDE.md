@@ -30,6 +30,7 @@ All scripts read from `.env` (not `.env.local`). Run them with `node scripts/<na
 | `scripts/apply-comic-synopses.js` | Static | Hand-reviewed Spanish synopses from `scripts/data/comic-synopses-es.json` (re-run after any comic re-import) |
 | `scripts/refresh-series-status.js` | TMDB | Refreshes series status, seasons, episodes and rating |
 | `scripts/update-blog-noticias-2026.js` | Static | Updated versions of news articles (re-run after `populate-blog.js --clean`) |
+| `scripts/add-blog-guias-2026.js` | Static | "Guías" articles (gift guide with Amazon affiliate cards, `.gift` styles in `globals.css`); re-run after `populate-blog.js --clean` |
 
 After re-importing comics from Comic Vine, run `enrich-comics-from-comicvine.js`, then `--credits`, then `apply-comic-synopses.js`: the import leaves placeholder data (`characters: ['Spider-Man']`, writer "Marvel Comics") and machine-translated, truncated synopses.
 
