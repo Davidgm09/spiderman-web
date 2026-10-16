@@ -43,8 +43,18 @@ ${UPDATED}
 <h2>¿De qué va?</h2>
 <p>La película arranca cuatro años después de <em>No Way Home</em>. El mundo sigue sin recordar quién es Peter Parker, que vive solo y se dedica por completo a proteger Nueva York a pie de calle. La presión y el agotamiento provocan una evolución de sus poderes justo cuando surge una nueva amenaza. Las quinielas sobre villanos y cameos fueron cambiando hasta el último momento; si quieres verla sin destripes, no te contaremos más.</p>
 
+<figure>
+  <img src="https://image.tmdb.org/t/p/w1280/r08LxMJCbf1SiJIWeyH9aJmdqwC.jpg" alt="Peter Parker y su reflejo como Spider-Man en Brand New Day" loading="lazy" />
+  <figcaption>Brand New Day arranca con un Peter Parker solo, al que nadie recuerda tras No Way Home.</figcaption>
+</figure>
+
 <h2>Un éxito histórico</h2>
 <p>Los números hablan solos: más de <strong>2.500 millones de dólares</strong> en todo el mundo, el <strong>mayor estreno de la historia en EE. UU.</strong> (360 millones en su primer fin de semana) y la película de Spider-Man más taquillera de siempre. La crítica también la ha respaldado, con un 90% de reseñas positivas en Rotten Tomatoes y una «A» del público en CinemaScore. Lo repasamos con detalle en nuestro <a href="/blog/spider-man-brand-new-day-taquilla-criticas-sin-spoilers">análisis sin spoilers de Brand New Day</a>.</p>
+
+<figure>
+  <img src="https://image.tmdb.org/t/p/w1280/4tjxYg2AbOzzG9G1YuiT2NzYhlH.jpg" alt="Spider-Man en Spider-Man: Brand New Day" loading="lazy" />
+  <figcaption>Tom Holland cumple ya diez años como Spider-Man en el MCU, desde su debut en Capitán América: Civil War (2016).</figcaption>
+</figure>
 
 <h2>¿Habrá Spider-Man 5?</h2>
 <p>De momento, <strong>no hay quinta película anunciada</strong>. Esto es lo que se ha dicho tras el estreno:</p>
@@ -83,6 +93,11 @@ ${UPDATED}
 <p>Por ahora, ninguna de las dos compañías ha anunciado una nueva película de Tom Holland. Tom Rothman, de Sony, ha reconocido que todavía no ha habido conversaciones concretas sobre una quinta entrega, y Kevin Feige ha explicado que Holland y Zendaya se tomarán un descanso antes de confirmar planes.</p>
 <p>Eso no significa que no haya ideas: según Feige, él y Amy Pascal ya han hablado de propuestas para las <strong>próximas cinco películas de Spider-Man en imagen real</strong>. Y Holland lo tiene claro: seguirá con el traje «mientras le quieran». Pascal ya avanzó en 2021 que la siguiente película de Holland —la que acabó siendo <em>Brand New Day</em>— se planteaba como el inicio de una nueva trilogía.</p>
 
+<figure>
+  <img src="https://image.tmdb.org/t/p/w1280/uyrOU4BDm2kbVxFsMiDFIHDhc4d.jpg" alt="Spider-Man en Times Square en Spider-Man: No Way Home" loading="lazy" />
+  <figcaption>El final de No Way Home dejó a Peter sin nadie que le recordara: ese es el punto de partida de Brand New Day.</figcaption>
+</figure>
+
 <h2>¿Volverá en Vengadores?</h2>
 <p>La escena poscréditos de <em>Brand New Day</em> lo deja claro: <strong>Spider-Man volverá</strong>. Las dos grandes citas en el horizonte son:</p>
 <ul>
@@ -90,6 +105,11 @@ ${UPDATED}
   <li><strong><em>Vengadores: Secret Wars</em></strong> (17 de diciembre de 2027): varios rumores sitúan a Holland en el rodaje, aunque con poca disponibilidad por su agenda. Ni Marvel ni Sony lo han confirmado.</li>
 </ul>
 <p>Con lo que se sabe hoy, <em>Secret Wars</em> es la apuesta más probable para el próximo regreso de Peter Parker, pero conviene tomarlo como lo que es: un rumor.</p>
+
+<figure>
+  <img src="https://image.tmdb.org/t/p/w1280/8mnXR9rey5uQ08rZAvzojKWbDQS.jpg" alt="Miles Morales en Spider-Man: Un nuevo universo" loading="lazy" />
+  <figcaption>Miles Morales, protagonista del Spider-Verso animado, tiene pendiente su salto a la imagen real.</figcaption>
+</figure>
 
 <h2>Miles Morales, en imagen real</h2>
 <p>La otra gran noticia es que <strong>Feige ha confirmado que Miles Morales llegará a la imagen real</strong>, después de <em>Spider-Man: Beyond the Spider-Verse</em>, la última película de la trilogía animada, que se estrena en junio de 2027.</p>
@@ -126,6 +146,11 @@ ${UPDATED}
 <h2>Un camino lleno de retrasos</h2>
 <p>La película tenía fecha original para el <strong>29 de marzo de 2024</strong>, pero salió del calendario tras las huelgas de Hollywood de 2023. Después se fijó para el 4 de junio de 2027, pasó al 25 de junio y finalmente se adelantó una semana, al 18, coincidiendo con el fin de semana del Día del Padre en EE. UU.</p>
 
+<figure>
+  <img src="https://image.tmdb.org/t/p/w1280/fUcT8bcJD3SZsy84Z9QRP6kOS7v.jpg" alt="Miles Morales y su padre, Jefferson Davis" loading="lazy" />
+  <figcaption>Miles y su padre, Jefferson: la amenaza del «evento canónico» sobre él es una de las tramas que Beyond tiene que resolver.</figcaption>
+</figure>
+
 <h2>El equipo</h2>
 <p>La dirección corre a cargo de <strong>Bob Persichetti y Justin K. Thompson</strong>, mientras que <strong>Phil Lord y Christopher Miller</strong> vuelven como guionistas y productores, los mismos que impulsaron la saga desde <em>Un nuevo universo</em> (2018).</p>
 
@@ -135,6 +160,11 @@ ${UPDATED}
   <li>En <strong>agosto de 2026</strong> se filtraron en internet unos cuatro minutos y medio de metraje sin terminar. Christopher Miller criticó públicamente la filtración por mostrar animación sin acabar.</li>
   <li>El <strong>primer tráiler oficial</strong> aún no ha salido. Se espera antes de que termine 2026, aunque Sony no ha dado fecha.</li>
 </ul>
+
+<figure>
+  <img src="https://image.tmdb.org/t/p/w1280/6yZgfrPJGhXEHD2jH7hzmRt9KpQ.jpg" alt="El Merodeador de la Tierra-42" loading="lazy" />
+  <figcaption>El Merodeador de la Tierra-42, el Miles Morales alternativo con el que se cerró Cruzando el Multiverso.</figcaption>
+</figure>
 
 <h2>Qué esperar</h2>
 <p><em>Beyond</em> tiene que cerrar todas las tramas que dejó abiertas <em>Across</em>: el rescate de Miles, el enfrentamiento con la Mancha, el choque con Miguel O'Hara y la Sociedad Spider y el debate sobre los «eventos canónicos» que todo Spider-Man supuestamente debe vivir. Y hay un motivo más para seguirla de cerca: Kevin Feige ha confirmado que, después de esta película, <strong>Miles Morales dará el salto a la imagen real</strong>.</p>
@@ -164,6 +194,11 @@ ${UPDATED}
 
 <p>Los tráileres de <em>Spider-Man: Brand New Day</em> dejaron mucho más que las grandes revelaciones. Estos son los detalles más interesantes que se escondían en sus planos.</p>
 
+<figure>
+  <img src="https://image.tmdb.org/t/p/w1280/yHMJbIEBHnKYWh20XtxV16emwXT.jpg" alt="Peter Parker y Spider-Man reflejados en un rascacielos" loading="lazy" />
+  <figcaption>Imagen promocional de Brand New Day: Peter Parker y, en el reflejo, Spider-Man.</figcaption>
+</figure>
+
 <h2>1. Una pizzería con aire de «Spider-Man 2»</h2>
 <p>Uno de los primeros planos muestra el cartel de «Gen's Pizza», con un logotipo circular rojo sobre blanco que recuerda mucho al de Joe's Pizza, el local en el que Peter trabajaba —y del que le despedían— en <a href="/peliculas/spider-man-2-2004">Spider-Man 2</a>.</p>
 
@@ -178,6 +213,11 @@ ${UPDATED}
 
 <h2>5. Ned y MJ, en un vídeo</h2>
 <p>Peter ve un vídeo de Ned y MJ, que siguen sin recordarle tras el hechizo de <a href="/peliculas/spider-man-no-way-home-2021">No Way Home</a>. Una imagen que resume la soledad con la que arranca la película.</p>
+
+<figure>
+  <img src="https://image.tmdb.org/t/p/w1280/qeQJx07rK2xm8SD2sJxFKhE7gs0.jpg" alt="Peter Parker con el traje de Spider-Man bajo la chaqueta" loading="lazy" />
+  <figcaption>Peter, con el traje bajo la ropa de calle: en Brand New Day vive dedicado a patrullar Nueva York.</figcaption>
+</figure>
 
 <h2>6. La sudadera de la Universidad Empire State</h2>
 <p>Peter lleva una sudadera de la Universidad Empire State, la universidad de los cómics. En el MCU se mencionó por primera vez en <em>El increíble Hulk</em> (2008).</p>
