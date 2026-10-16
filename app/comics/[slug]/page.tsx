@@ -304,14 +304,16 @@ export default async function ComicPage({ params }: Props) {
               />
 
               <ComicEditorialAnalysis
+                slug={comic.slug}
                 title={comic.title}
                 year={comic.year}
                 writer={comic.writer}
                 artist={comic.artist}
-                importance={comic.importance}
-                rating={comic.rating}
                 characters={comic.characters}
+                storylines={comic.storylines}
+                firstAppearances={comic.firstAppearances}
                 longDescription={comic.longDescription}
+                allCharacters={allCharacters}
               />
 
               {storyline && (

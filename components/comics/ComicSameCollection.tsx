@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { cleanArcName } from '@/lib/comic-context'
 
 interface ComicItem {
   slug: string
@@ -20,7 +21,7 @@ export function ComicSameCollection({ storyline, comics }: ComicSameCollectionPr
     <div className="mt-8">
       <div className="flex items-center gap-3 mb-5">
         <div className="w-1 h-7 rounded-full bg-gradient-to-b from-blue-500 to-blue-800" />
-        <h3 className="text-white font-bold text-lg">Más de <span className="text-blue-400">{storyline}</span></h3>
+        <h3 className="text-white font-bold text-lg">Más de <span className="text-blue-400">{cleanArcName(storyline)}</span></h3>
         <span className="ml-auto text-xs text-blue-400 font-semibold">{comics.length}</span>
       </div>
       <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3">

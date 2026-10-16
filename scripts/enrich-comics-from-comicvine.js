@@ -156,7 +156,7 @@ async function main() {
         characters: characters.length ? characters.slice(0, MAX_CHARACTERS) : comic.characters,
         firstAppearances: (detail.first_appearance_characters || []).map((c) => c.name),
         storylines: (detail.story_arc_credits || []).length
-          ? detail.story_arc_credits.map((a) => a.name)
+          ? detail.story_arc_credits.map((a) => a.name.replace(/^"[^"]*"\s*/, '').trim())
           : comic.storylines,
       };
       console.log(
