@@ -5,6 +5,8 @@ export const CONTACT_EMAIL = 'sentidoaracnido.contacto@gmail.com'
 export const AMAZON_TAG = process.env.NEXT_PUBLIC_AMAZON_AFFILIATE_TAG || 'sentidoaracni-21'
 export const ADSENSE_CLIENT_ID = process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT_ID || ''
 // Solo hay anuncios si el client ID es real (no vacío ni el placeholder "ca-pub-xxxxxxxxx")
+// ID de medición de Google Analytics 4 (público: va en el código de cada página)
+export const GA_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-B8ES4Q628L'
 export const ADS_ENABLED = /^ca-pub-\d+$/.test(ADSENSE_CLIENT_ID)
 
 // Titular de la web (LSSI art. 10 y RGPD). Rellena cada campo cuando decidas publicarlo:

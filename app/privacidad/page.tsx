@@ -34,7 +34,7 @@ export default function PrivacidadPage() {
             terceros integrados en el sitio pueden recopilar información de forma automática:</p>
             <ul className="list-disc list-inside mt-3 space-y-2">
               <li><strong className="text-white">Google AdSense:</strong> muestra anuncios personalizados basados en tu actividad de navegación.</li>
-              <li><strong className="text-white">Google Analytics (si se activa en el futuro):</strong> analiza el tráfico de forma anónima.</li>
+              <li><strong className="text-white">Google Analytics:</strong> si aceptas las cookies, mide de forma agregada cómo se usa la web (páginas visitadas, tiempo, tipo de dispositivo).</li>
               <li><strong className="text-white">Amazon Afiliados:</strong> si haces clic en un enlace de producto, Amazon puede registrar esa visita.</li>
             </ul>
           </section>

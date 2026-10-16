@@ -5,6 +5,7 @@ import "./globals.css"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { AdSenseScript } from "@/components/ads/AdSenseScript"
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics"
 import { CookieBanner } from "@/components/CookieBanner"
 import { SITE_URL } from "@/lib/config"
 
@@ -45,6 +46,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} bg-black text-white`}>
         <AdSenseScript />
+        <GoogleAnalytics />
         <Navigation />
         <main className="min-h-screen">{children}</main>
         <Footer />
