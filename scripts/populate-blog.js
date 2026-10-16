@@ -2,6 +2,11 @@
  * Popula artículos de blog sobre Spider-Man
  * Uso: node scripts/populate-blog.js [--clean]
  *
+ * Tras un --clean, aplica después las versiones actualizadas de algunos artículos:
+ *   node scripts/update-blog-noticias-2026.js
+ *   node scripts/populate-blog-spiderman3.js
+ *   node scripts/populate-blog-brand-new-day-analisis.js
+ *
  * Requiere en .env:
  *   DATABASE_URL=...
  */
