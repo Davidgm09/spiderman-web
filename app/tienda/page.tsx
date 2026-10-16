@@ -3,7 +3,7 @@ import Link from "next/link"
 import { Search, X, CheckCircle2, ShoppingCart, Tag, Gift, ArrowRight } from "lucide-react"
 import { productService } from "@/lib/database"
 import { SITE_URL } from "@/lib/config"
-import ProductGrid from "@/components/tienda/ProductGrid"
+import ProductGrid, { ProductCard } from "@/components/tienda/ProductGrid"
 
 export const metadata: Metadata = {
   title: "Tienda Spider-Man: figuras, Funko y más | Sentido Arácnido",
@@ -60,6 +60,15 @@ export default async function TiendaPage({ searchParams }: Props) {
       : true
     return matchCat && matchQ
   })
+
+  // Novedades de la película: bloque propio en la vista general (y fuera de la cuadrícula para no repetirlos)
+  const showHighlights = !categoria && !query
+  const NOVEDADES_ORDEN = ["marvel-legends-spider-man", "funko-pop-spider-man-brand", "funko-pop-spider-man-traje", "hasbro-spider-man-power", "marvel-legends-hulk", "funko-pop-super-hulk", "camiseta"]
+  const rank = (slug: string) => { const i = NOVEDADES_ORDEN.findIndex((k) => slug.startsWith(k)); return i < 0 ? NOVEDADES_ORDEN.length : i }
+  const novedades = showHighlights
+    ? allProducts.filter((p) => p.slug.includes("brand-new-day")).sort((a, b) => rank(a.slug) - rank(b.slug))
+    : []
+  const gridProducts = showHighlights ? filtered.filter((p) => !p.slug.includes("brand-new-day")) : filtered
 
   const categoryCounts: Record<string, number> = {}
   allProducts.forEach((p) => {
@@ -201,6 +210,23 @@ export default async function TiendaPage({ searchParams }: Props) {
         </section>
       )}
 
+      {/* Novedades de Brand New Day */}
+      {novedades.length > 0 && (
+        <section className="max-w-7xl mx-auto px-4 pt-10">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="w-1 h-7 rounded-full bg-gradient-to-b from-red-500 to-blue-600" />
+            <h2 className="text-2xl font-bold text-white">Novedad: Spider-Man: Brand New Day</h2>
+          </div>
+          <p className="text-sm text-gray-400 mb-6">
+            Figuras, Funko Pop y camisetas de la cuarta película de Tom Holland.{" "}
+            <Link href="/peliculas/spider-man-brand-new-day-2026" className="text-red-400 hover:text-red-300 underline">Ver la ficha de la película</Link>
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
+            {novedades.map((p, i) => <ProductCard key={p.id} product={p} priority={i < 4} />)}
+          </div>
+        </section>
+      )}
+
       {/* Grid de productos */}
       <section className="max-w-7xl mx-auto px-4 pt-8 pb-20">
         <div className="flex items-center gap-3 mb-6">
@@ -221,7 +247,7 @@ export default async function TiendaPage({ searchParams }: Props) {
           </div>
         )}
 
-        <ProductGrid products={filtered} />
+        <ProductGrid products={gridProducts} />
       </section>
 
     </div>

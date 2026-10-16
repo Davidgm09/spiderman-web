@@ -32,6 +32,7 @@ All scripts read from `.env` (not `.env.local`). Run them with `node scripts/<na
 | `scripts/update-blog-noticias-2026.js` | Static | Updated versions of news articles (re-run after `populate-blog.js --clean`) |
 | `scripts/add-blog-guias-2026.js` | Static | "Guías" articles (gift guide with Amazon affiliate cards, `.gift` styles in `globals.css`); re-run after `populate-blog.js --clean` |
 | `scripts/fix-tienda-productos-2026.js` | Static | Store fixes verified on Amazon.es (wrong ASINs, out-of-stock replacements); re-run after `populate-tienda-products.js --clean` |
+| `scripts/add-tienda-brand-new-day.js` | Static | 8 Brand New Day products verified on Amazon.es (shown in their own block on `/tienda`); re-run after `populate-tienda-products.js --clean`, then `fix-tienda-productos-2026.js` |
 | `scripts/build-juegos-data.js` | DB | Builds `data/juegos/personajes.json` for the daily game Arañadle (gender, origin universe, debut year, unified group names, Spanish search names, clues); re-run when characters change |
 
 After re-importing comics from Comic Vine, run `enrich-comics-from-comicvine.js`, then `--credits`, then `apply-comic-synopses.js`: the import leaves placeholder data (`characters: ['Spider-Man']`, writer "Marvel Comics") and machine-translated, truncated synopses.
