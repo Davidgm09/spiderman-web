@@ -82,6 +82,16 @@ export const movieAnalysis: Record<string, MovieAnalysis> = {
     recepcion: "La película se convirtió en blanco de críticas feroces que señalaron problemas en el guion, el ritmo y la coherencia narrativa. La frase \"He was in the Amazon with my mom\" se viralizó como símbolo de diálogo poco natural. Sin embargo, algunas voces señalaron que la propuesta original de una película de superhéroes femenina con tono de thriller merecía una ejecución más cuidada.",
     legado: 'Madame Web es probablemente la película más discutida del universo arácnido por razones que poco tienen que ver con sus virtudes. Su impacto en la industria está más relacionado con el debate sobre cómo desarrollar personajes femeninos de superhéroes que con su aportación narrativa. El futuro del Sony Spider-Man Universe dependerá en buena medida de las lecciones aprendidas de esta etapa.',
   },
+  'venom-el-ultimo-baile-2024': {
+    contexto: 'El último baile cierra la trilogía de Venom y la etapa de Tom Hardy como Eddie Brock. Kelly Marcel, guionista de las dos entregas anteriores, debutó aquí como directora con una road movie en la que Eddie y el simbionte huyen a la vez de los militares y de los Xenófagos, criaturas enviadas por Knull, el creador de los simbiontes en los cómics.',
+    recepcion: 'Fue la entrega menos taquillera de la trilogía y recibió críticas mayoritariamente negativas, que señalaron un guion disperso y una amenaza principal poco desarrollada. Aun así, buena parte del público valoró la química entre Eddie y Venom, que siempre fue el gran activo de la saga, y la despedida emotiva del personaje.',
+    legado: 'Más que por su historia, El último baile se recuerda como el cierre de una etapa: la del universo de Spider-Man de Sony sin Spider-Man. Junto con Kraven the Hunter, estrenada semanas después, marcó el final de esa línea de películas y dejó a Venom como su personaje más rentable y querido por el público.',
+  },
+  'spider-man-brand-new-day-2026': {
+    contexto: 'Brand New Day arranca cuatro años después de No Way Home, con un Peter Parker adulto al que nadie recuerda y que se dedica por completo a proteger Nueva York a pie de calle. Destin Daniel Cretton, director de Shang-Chi, toma el relevo de Jon Watts y apuesta por una historia más madura y centrada en el personaje, sin perder la conexión con el resto del MCU.',
+    recepcion: 'La crítica la recibió de forma mayoritariamente positiva —un 90% de reseñas favorables en Rotten Tomatoes y una «A» del público en CinemaScore—, con elogios para Tom Holland, la acción y el tono más adulto, y reproches por su metraje y una segunda mitad menos sólida. En taquilla firmó el mayor estreno de la historia en EE. UU. y superó los 2.500 millones de dólares en todo el mundo.',
+    legado: 'Es la película de Spider-Man más taquillera de la historia y la tercera más vista de todos los tiempos. Más allá de las cifras, redefine al Peter de Holland como un héroe solitario y adulto, y deja abierta una nueva etapa del personaje en el MCU que Marvel y Sony aún no han concretado.',
+  },
 }
 
 // ─── Series ───────────────────────────────────────────────────────────────────
