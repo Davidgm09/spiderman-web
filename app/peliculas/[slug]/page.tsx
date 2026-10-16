@@ -91,13 +91,6 @@ export default async function MoviePage({ params }: Props) {
     director: movie.director ? { '@type': 'Person', name: movie.director } : undefined,
     actor: movie.actors?.slice(0, 3).map((name: string) => ({ '@type': 'Person', name })),
     genre: movie.genre,
-    aggregateRating: movie.rating ? {
-      '@type': 'AggregateRating',
-      ratingValue: movie.rating,
-      bestRating: 10,
-      worstRating: 0,
-      ratingCount: Math.max(movie.views || 0, 50),
-    } : undefined,
     inLanguage: 'es',
   }
 

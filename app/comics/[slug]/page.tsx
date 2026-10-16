@@ -99,13 +99,6 @@ export default async function ComicPage({ params }: Props) {
     publisher: { '@type': 'Organization', name: 'Marvel Comics' },
     genre: 'Comic Book',
     inLanguage: 'en',
-    aggregateRating: comic.rating ? {
-      '@type': 'AggregateRating',
-      ratingValue: comic.rating,
-      bestRating: 10,
-      worstRating: 0,
-      ratingCount: Math.max(comic.views || 0, 50),
-    } : undefined,
   }
 
   // Obtener cómics relacionados
@@ -251,7 +244,7 @@ export default async function ComicPage({ params }: Props) {
                     </div>
                   </div>
                 )}
-                {comic.importance && (
+                {comic.importance && comic.importance !== "Media" && (
                   <div className="flex items-center gap-3 bg-yellow-500/10 border border-yellow-500/20 rounded-2xl px-5 py-4">
                     <Award className="w-5 h-5 text-yellow-400 shrink-0" />
                     <div>

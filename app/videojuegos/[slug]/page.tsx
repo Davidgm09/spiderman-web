@@ -86,13 +86,6 @@ export default async function GamePage({ params }: Props) {
     genre: game.genre,
     gamePlatform: game.platform,
     author: { '@type': 'Organization', name: game.developer },
-    aggregateRating: game.rating ? {
-      '@type': 'AggregateRating',
-      ratingValue: game.rating,
-      bestRating: 10,
-      worstRating: 0,
-      ratingCount: Math.max(game.views || 0, 50),
-    } : undefined,
     inLanguage: 'es',
   }
 

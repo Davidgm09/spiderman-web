@@ -83,13 +83,6 @@ export default async function SeriesDetailPage({ params }: Props) {
     numberOfSeasons: series.seasons || undefined,
     numberOfEpisodes: series.episodes || undefined,
     genre: series.genre,
-    aggregateRating: series.rating ? {
-      '@type': 'AggregateRating',
-      ratingValue: series.rating,
-      bestRating: 10,
-      worstRating: 0,
-      ratingCount: Math.max(series.views || 0, 50),
-    } : undefined,
     inLanguage: 'es',
   }
 

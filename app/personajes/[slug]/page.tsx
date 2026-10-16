@@ -73,13 +73,6 @@ export default async function CharacterDetailPage({ params }: Props) {
     memberOf: character.affiliation?.length
       ? character.affiliation.map((org: string) => ({ '@type': 'Organization', name: org }))
       : undefined,
-    aggregateRating: character.rating ? {
-      '@type': 'AggregateRating',
-      ratingValue: character.rating,
-      bestRating: 5,
-      worstRating: 0,
-      ratingCount: Math.max(character.views || 0, 50),
-    } : undefined,
     inLanguage: 'es',
   };
 

@@ -21,7 +21,9 @@ function matchCharacter(name: string, characters: Character[]): Character | null
 }
 
 export function ComicCharacters({ characterNames, allCharacters }: ComicCharactersProps) {
+  // Sin datos reales (solo "Spider-Man", el valor por defecto de la importación) no aporta nada
   if (!characterNames || characterNames.length === 0) return null
+  if (characterNames.length === 1 && characterNames[0] === 'Spider-Man') return null
 
   const matched = characterNames
     .map(name => ({ name, character: matchCharacter(name, allCharacters) }))
