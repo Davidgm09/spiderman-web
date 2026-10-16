@@ -4,7 +4,8 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { ShoppingCart, Truck, Shield, RotateCcw } from "lucide-react"
+import { ShoppingCart, CheckCircle2, Tag, Gift, ArrowRight } from "lucide-react"
+import { ProductCard } from "@/components/tienda/ProductGrid"
 import { Breadcrumb } from "@/components/breadcrumb"
 import { productService } from "@/lib/database"
 import { AMAZON_TAG, SITE_URL, pageTitle } from "@/lib/config"
@@ -66,7 +67,7 @@ export default async function ProductPage({ params }: Props) {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Imagen */}
-          <div className="relative rounded-2xl overflow-hidden bg-gray-950/60 border border-white/5">
+          <div className="relative rounded-2xl overflow-hidden bg-white border border-white/5 aspect-square">
             {product.inStock === false && (
               <div className="absolute inset-0 bg-black/60 z-10 flex items-center justify-center">
                 <span className="text-white font-semibold text-lg">Sin stock</span>
@@ -75,9 +76,9 @@ export default async function ProductPage({ params }: Props) {
             <Image
               src={product.image}
               alt={product.title}
-              width={600}
-              height={600}
-              className="w-full h-[420px] object-cover"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-contain p-6 sm:p-10"
               priority
             />
           </div>
@@ -113,9 +114,9 @@ export default async function ProductPage({ params }: Props) {
             {/* Beneficios */}
             <div className="grid grid-cols-3 gap-3 pt-4 border-t border-white/10">
               {[
-                { icon: Truck,     color: "text-green-400",  label: "Envío de Amazon" },
-                { icon: Shield,    color: "text-blue-400",   label: "Garantía Amazon" },
-                { icon: RotateCcw, color: "text-purple-400", label: "30 días devolución" },
+                { icon: CheckCircle2, color: "text-green-400",  label: "Revisado por Sentido Arácnido" },
+                { icon: ShoppingCart, color: "text-orange-400", label: "Compra directa en Amazon" },
+                { icon: Tag,          color: "text-blue-400",   label: "Sin coste extra para ti" },
               ].map(({ icon: Icon, color, label }) => (
                 <div key={label} className="flex flex-col items-center gap-1 text-center">
                   <Icon className={`w-5 h-5 ${color}`} />
@@ -126,8 +127,17 @@ export default async function ProductPage({ params }: Props) {
 
             {/* Aviso afiliado */}
             <p className="text-xs text-gray-600">
-              Enlace de afiliado — si compras a través de este enlace recibimos una pequeña comisión sin coste adicional para ti. El precio y la disponibilidad los fija Amazon y pueden cambiar.
+              Enlace de afiliado — si compras a través de este enlace recibimos una pequeña comisión sin coste adicional para ti. El precio, el envío y la disponibilidad los fija Amazon y pueden cambiar.
             </p>
+
+            <Link
+              href="/blog/regalos-spider-man-navidad-guia"
+              className="group flex items-center gap-3 p-4 rounded-xl border border-orange-400/30 bg-orange-500/10 hover:border-orange-400/60 transition-colors"
+            >
+              <Gift className="w-6 h-6 text-orange-400 shrink-0" />
+              <span className="flex-1 text-sm text-gray-200">¿Es para regalar? Mira más ideas en nuestra <strong className="text-white">guía de regalos de Spider-Man</strong></span>
+              <ArrowRight className="w-4 h-4 text-orange-400 group-hover:translate-x-0.5 transition-transform" />
+            </Link>
           </div>
         </div>
       </section>
@@ -139,25 +149,8 @@ export default async function ProductPage({ params }: Props) {
             <div className="w-1 h-7 rounded-full bg-gradient-to-b from-red-500 to-red-800" />
             <h2 className="text-xl font-bold text-white">Productos relacionados</h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-            {relatedFiltered.map((p) => (
-              <Link key={p.id} href={`/tienda/${p.slug}`} className="group bg-gray-950/60 border border-white/5 hover:border-white/15 rounded-2xl overflow-hidden transition-all">
-                <Image
-                  src={p.image}
-                  alt={p.title}
-                  width={300}
-                  height={200}
-                  className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="p-4">
-                  <h3 className="text-white text-sm font-semibold line-clamp-2 mb-2">{p.title}</h3>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-gray-500">Disponible en Amazon</span>
-                    <span className="text-xs text-orange-400 font-semibold">Ver →</span>
-                  </div>
-                </div>
-              </Link>
-            ))}
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-5">
+            {relatedFiltered.map((p) => <ProductCard key={p.id} product={p} />)}
           </div>
         </section>
       )}

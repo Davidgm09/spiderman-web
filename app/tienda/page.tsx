@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { Truck, Shield, RotateCcw, Search, X } from "lucide-react"
+import { Search, X, CheckCircle2, ShoppingCart, Tag, Gift, ArrowRight } from "lucide-react"
 import { productService } from "@/lib/database"
 import { SITE_URL } from "@/lib/config"
 import ProductGrid from "@/components/tienda/ProductGrid"
@@ -8,12 +8,12 @@ import ProductGrid from "@/components/tienda/ProductGrid"
 export const metadata: Metadata = {
   title: "Tienda Spider-Man: figuras, Funko y más | Sentido Arácnido",
   description:
-    "Los mejores productos oficiales de Spider-Man en Amazon: figuras, camisetas, Funko Pop, mochilas y coleccionables. Envío rápido y garantía Amazon.",
+    "Selección de productos de Spider-Man en Amazon revisados uno a uno: figuras Marvel Legends, Funko Pop, LEGO, cómics de Panini, ropa y regalos.",
   keywords: ["tienda Spider-Man", "productos Spider-Man", "figuras Spider-Man", "camisetas Marvel", "funkos", "merchandising"],
   alternates: { canonical: `${SITE_URL}/tienda` },
   openGraph: {
     title: "Tienda Spider-Man: figuras, Funko y más | Sentido Arácnido",
-    description: "Los mejores productos oficiales de Spider-Man en Amazon.",
+    description: "Figuras, Funko Pop, LEGO, cómics y regalos de Spider-Man, revisados uno a uno.",
     url: `${SITE_URL}/tienda`,
     type: "website",
     images: ["/opengraph-image.png"],
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Tienda Spider-Man | Sentido Arácnido",
-    description: "Los mejores productos oficiales de Spider-Man en Amazon.",
+    description: "Figuras, Funko Pop, LEGO, cómics y regalos de Spider-Man, revisados uno a uno.",
     images: ["/opengraph-image.png"],
   },
 }
@@ -36,6 +36,14 @@ const CATEGORY_COLORS: Record<string, string> = {
   Tecnología:     "text-yellow-400 border-yellow-500/30 bg-yellow-500/10",
   Cómics:         "text-pink-400 border-pink-500/30 bg-pink-500/10",
 }
+
+// Accesos rápidos por tipo de comprador (cada uno abre una categoría)
+const COLLECTIONS = [
+  { emoji: "🧸", title: "Para los más pequeños", text: "LEGO, máscaras y juguetes", category: "Juguetes", bg: "from-green-500/15 to-transparent" },
+  { emoji: "🦸", title: "Para coleccionistas", text: "Figuras Marvel Legends", category: "Figuras", bg: "from-red-500/15 to-transparent" },
+  { emoji: "📚", title: "Para lectores", text: "Cómics de Panini y ómnibus", category: "Cómics", bg: "from-pink-500/15 to-transparent" },
+  { emoji: "🎁", title: "Detalles y Funko", text: "Funko Pop y coleccionables", category: "Coleccionables", bg: "from-orange-500/15 to-transparent" },
+]
 
 type Props = { searchParams: Promise<{ categoria?: string; q?: string }> }
 
@@ -68,12 +76,12 @@ export default async function TiendaPage({ searchParams }: Props) {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(220,38,38,0.12)_0%,_transparent_65%)]" />
 
         <div className="relative z-10 max-w-3xl mx-auto text-center">
-          <p className="text-red-500 text-xs font-bold tracking-widest uppercase mb-3">Sentido Arácnido · Tienda Oficial</p>
+          <p className="text-red-500 text-xs font-bold tracking-widest uppercase mb-3">Sentido Arácnido · Selección de productos</p>
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-3">
             Merchandising<br className="hidden sm:block" /> Spider-Man
           </h1>
           <p className="text-gray-500 text-base mb-8">
-            Figuras, Funko Pop, cómics y ropa. Enviado desde Amazon.
+            Figuras, Funko Pop, LEGO, cómics y ropa que hemos elegido y revisado uno a uno. La compra se hace en Amazon.
           </p>
 
           {/* Barra de búsqueda */}
@@ -104,9 +112,9 @@ export default async function TiendaPage({ searchParams }: Props) {
 
           {/* Beneficios en línea */}
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs text-gray-500">
-            <span className="flex items-center gap-1.5"><Truck className="w-3.5 h-3.5 text-green-500" />Envío Prime 1-2 días</span>
-            <span className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 text-blue-500" />Garantía Amazon</span>
-            <span className="flex items-center gap-1.5"><RotateCcw className="w-3.5 h-3.5 text-purple-500" />30 días devolución</span>
+            <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-green-500" />Productos revisados uno a uno</span>
+            <span className="flex items-center gap-1.5"><ShoppingCart className="w-3.5 h-3.5 text-orange-400" />Compras directamente en Amazon</span>
+            <span className="flex items-center gap-1.5"><Tag className="w-3.5 h-3.5 text-blue-400" />Sin coste extra para ti</span>
           </div>
         </div>
       </section>
@@ -159,6 +167,39 @@ export default async function TiendaPage({ searchParams }: Props) {
           <a href="/aviso-legal" className="text-gray-500 hover:text-gray-400 underline underline-offset-2">Más info</a>
         </p>
       </div>
+
+      {/* Ideas para regalar (solo en la vista general) */}
+      {!categoria && !query && (
+        <section className="max-w-7xl mx-auto px-4 pt-8">
+          <Link
+            href="/blog/regalos-spider-man-navidad-guia"
+            className="group flex flex-col sm:flex-row items-center gap-4 p-5 sm:p-6 rounded-2xl border border-orange-400/30 bg-gradient-to-r from-orange-500/15 via-red-500/10 to-transparent hover:border-orange-400/60 transition-colors"
+          >
+            <Gift className="w-10 h-10 text-orange-400 shrink-0" />
+            <div className="flex-1 text-center sm:text-left">
+              <p className="text-lg font-bold text-white">¿Buscas un regalo? Mira nuestra guía de Navidad</p>
+              <p className="text-sm text-gray-400">Ordenada por tipo de fan: niños, coleccionistas, lectores de cómics y detalles para el amigo invisible.</p>
+            </div>
+            <span className="inline-flex items-center gap-1 text-sm font-semibold text-orange-400 group-hover:text-orange-300">
+              Ver la guía <ArrowRight className="w-4 h-4" />
+            </span>
+          </Link>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mt-4">
+            {COLLECTIONS.map((c) => (
+              <Link
+                key={c.title}
+                href={`/tienda?categoria=${encodeURIComponent(c.category)}`}
+                className={`rounded-2xl p-4 sm:p-5 border border-white/5 bg-gradient-to-br ${c.bg} hover:border-white/20 transition-colors`}
+              >
+                <span className="text-2xl" aria-hidden>{c.emoji}</span>
+                <p className="mt-2 font-bold text-white text-sm sm:text-base">{c.title}</p>
+                <p className="text-xs text-gray-400 mt-1">{c.text}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Grid de productos */}
       <section className="max-w-7xl mx-auto px-4 pt-8 pb-20">

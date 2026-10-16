@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: "Sentido Arácnido - Todo sobre Spider-Man: Películas, Cómics, Juegos y Series",
   description:
-    "Tu portal definitivo al Spider-Verse. Descubre películas, cómics, videojuegos, series y productos oficiales de Spider-Man. Análisis, noticias y las mejores ofertas.",
+    "Tu portal definitivo al Spider-Verse. Descubre películas, cómics, videojuegos, series y productos de Spider-Man. Análisis, noticias y las mejores ofertas.",
   keywords:
     "Spider-Man, Peter Parker, Miles Morales, películas Spider-Man, cómics Marvel, videojuegos Spider-Man, series animadas, Spider-Verse, multiverso",
   openGraph: {

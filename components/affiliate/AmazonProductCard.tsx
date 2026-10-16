@@ -9,6 +9,7 @@ interface AmazonProductCardProps {
   subtitle?: string
   variant?: "featured" | "compact"
   asin?: string  // si se pasa, usa la imagen del producto real de Amazon
+  product?: boolean  // foto de producto: entera sobre fondo blanco en vez de recortada
 }
 
 export function AmazonProductCard({
@@ -19,7 +20,9 @@ export function AmazonProductCard({
   subtitle,
   variant = "featured",
   asin,
+  product = false,
 }: AmazonProductCardProps) {
+  const fit = product ? "object-contain p-2 bg-white" : "object-cover object-top"
   const productImage = asin
     ? `https://m.media-amazon.com/images/P/${asin}.01._SCLZZZZZZZ_.jpg`
     : image
@@ -31,13 +34,13 @@ export function AmazonProductCard({
         rel="noopener noreferrer sponsored"
         className="group flex flex-col rounded-xl overflow-hidden border border-white/8 hover:border-orange-500/40 bg-gray-900 hover:bg-gray-800 transition-all duration-200"
       >
-        <div className="relative w-full aspect-[3/4] bg-gray-800 overflow-hidden">
+        <div className={`relative w-full aspect-[3/4] overflow-hidden ${product ? "bg-white" : "bg-gray-800"}`}>
           <Image
             src={productImage}
             alt={title}
             fill
             sizes="160px"
-            className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
+            className={`${fit} group-hover:scale-105 transition-transform duration-300`}
           />
           {badge && (
             <span className="absolute top-1.5 left-1.5 text-[9px] font-bold uppercase tracking-wide bg-orange-600 text-white px-1.5 py-0.5 rounded-md">
@@ -66,13 +69,13 @@ export function AmazonProductCard({
       rel="noopener noreferrer sponsored"
       className="group flex flex-col rounded-xl overflow-hidden border border-white/8 hover:border-orange-500/40 bg-gray-900 hover:bg-gray-800 transition-all duration-200"
     >
-      <div className="relative w-full aspect-[2/3] bg-gray-800 overflow-hidden">
+      <div className={`relative w-full aspect-[2/3] overflow-hidden ${product ? "bg-white" : "bg-gray-800"}`}>
         <Image
           src={productImage}
           alt={title}
           fill
           sizes="300px"
-          className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
+          className={`${fit} group-hover:scale-105 transition-transform duration-300`}
         />
         {badge && (
           <span className="absolute top-2 left-2 text-[10px] font-bold uppercase tracking-wide bg-orange-600 text-white px-2 py-1 rounded-md shadow">

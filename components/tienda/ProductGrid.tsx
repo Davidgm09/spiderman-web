@@ -3,16 +3,16 @@
 import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { ShoppingCart } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 
 const CATEGORY_COLORS: Record<string, string> = {
-  Figuras:        "text-red-400 border-red-500/30 bg-red-500/10",
-  Ropa:           "text-blue-400 border-blue-500/30 bg-blue-500/10",
-  Accesorios:     "text-purple-400 border-purple-500/30 bg-purple-500/10",
-  Juguetes:       "text-green-400 border-green-500/30 bg-green-500/10",
-  Coleccionables: "text-orange-400 border-orange-500/30 bg-orange-500/10",
-  Tecnología:     "text-yellow-400 border-yellow-500/30 bg-yellow-500/10",
-  Cómics:         "text-pink-400 border-pink-500/30 bg-pink-500/10",
+  Figuras:        "text-red-400",
+  Ropa:           "text-blue-400",
+  Accesorios:     "text-purple-400",
+  Juguetes:       "text-green-400",
+  Coleccionables: "text-orange-400",
+  Tecnología:     "text-yellow-400",
+  Cómics:         "text-pink-400",
 }
 
 const PAGE_SIZE = 12
@@ -26,6 +26,46 @@ type Product = {
   inStock: boolean
 }
 
+export function ProductCard({ product, priority = false }: { product: Product; priority?: boolean }) {
+  return (
+    <Link
+      href={`/tienda/${product.slug}`}
+      className="group flex flex-col rounded-2xl overflow-hidden bg-gray-900/60 border border-white/5 hover:border-orange-400/50 hover:-translate-y-1 transition-all duration-200"
+    >
+      {/* Foto entera sobre fondo blanco, como en Amazon */}
+      <div className="relative aspect-square bg-white">
+        {product.inStock === false && (
+          <div className="absolute inset-0 bg-black/60 z-10 flex items-center justify-center">
+            <span className="text-white text-sm font-semibold">Sin stock</span>
+          </div>
+        )}
+        <Image
+          src={product.image}
+          alt={product.title}
+          fill
+          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+          className="object-contain p-3 sm:p-5 group-hover:scale-105 transition-transform duration-300"
+          priority={priority}
+        />
+      </div>
+
+      <div className="p-3 sm:p-4 flex flex-col flex-1">
+        {product.category && (
+          <span className={`text-[11px] sm:text-xs font-semibold uppercase tracking-wide mb-1.5 ${CATEGORY_COLORS[product.category] ?? "text-gray-400"}`}>
+            {product.category}
+          </span>
+        )}
+        <h3 className="text-white font-medium text-sm leading-snug line-clamp-2 sm:line-clamp-3 flex-1">
+          {product.title}
+        </h3>
+        <span className="mt-3 inline-flex items-center gap-1 text-xs sm:text-sm font-semibold text-orange-400 group-hover:text-orange-300">
+          Ver detalles <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+        </span>
+      </div>
+    </Link>
+  )
+}
+
 export default function ProductGrid({ products }: { products: Product[] }) {
   const [visible, setVisible] = useState(PAGE_SIZE)
 
@@ -34,49 +74,8 @@ export default function ProductGrid({ products }: { products: Product[] }) {
 
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {shown.map((product) => (
-          <Link
-            key={product.id}
-            href={`/tienda/${product.slug}`}
-            className="group bg-gray-950/60 border border-white/5 hover:border-white/15 rounded-2xl overflow-hidden transition-all duration-300 flex flex-col"
-          >
-            {/* Imagen */}
-            <div className="relative">
-              {product.inStock === false && (
-                <div className="absolute inset-0 bg-black/60 z-10 flex items-center justify-center">
-                  <span className="text-white text-sm font-semibold">Sin stock</span>
-                </div>
-              )}
-              <Image
-                src={product.image}
-                alt={product.title}
-                width={300}
-                height={300}
-                className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-
-            {/* Info */}
-            <div className="p-4 flex flex-col flex-1">
-              {product.category && (
-                <span className={`text-xs font-semibold mb-2 ${CATEGORY_COLORS[product.category] ?? "text-gray-400"}`}>
-                  {product.category}
-                </span>
-              )}
-
-              <h3 className="text-white font-semibold text-sm leading-snug line-clamp-2 mb-3 flex-1">
-                {product.title}
-              </h3>
-
-              {/* Botón */}
-              <div className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-orange-500 group-hover:bg-orange-400 text-white text-sm font-semibold transition-colors duration-200">
-                <ShoppingCart className="w-4 h-4" />
-                Ver producto
-              </div>
-            </div>
-          </Link>
-        ))}
+      <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
+        {shown.map((product, i) => <ProductCard key={product.id} product={product} priority={i < 4} />)}
       </div>
 
       {hasMore && (

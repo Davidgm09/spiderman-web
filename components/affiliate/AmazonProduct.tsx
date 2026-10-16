@@ -60,7 +60,7 @@ export function AmazonProduct({
               alt={title}
               width={300}
               height={300}
-              className="w-full h-64 object-cover rounded-t-lg"
+              className="w-full h-64 object-contain p-4 bg-white rounded-t-lg"
             />
           ) : (
             <div className="w-full h-64 bg-gradient-to-br from-orange-600/20 to-red-600/20 rounded-t-lg flex items-center justify-center">

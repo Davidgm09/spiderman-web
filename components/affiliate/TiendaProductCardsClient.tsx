@@ -44,6 +44,7 @@ export function TiendaProductCardsClient({ products, amazonTag, display = 4 }: T
             href={p.asin ? `https://www.amazon.es/dp/${p.asin}?tag=${amazonTag}` : `/tienda/${p.slug}`}
             badge={p.category}
             variant="compact"
+            product
           />
         ))}
       </div>

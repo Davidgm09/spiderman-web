@@ -14,12 +14,12 @@ import { Movie, Comic, Game, Series, BlogPost, Product } from "@prisma/client"
 
 export const metadata = {
   title: "Sentido Arácnido - El Universo Completo de Spider-Man",
-  description: "Descubre todo sobre Spider-Man: películas, cómics, videojuegos, series y productos oficiales. La guía definitiva del trepamuros.",
+  description: "Descubre todo sobre Spider-Man: películas, cómics, videojuegos, series y productos. La guía definitiva del trepamuros.",
   keywords: ["Spider-Man", "Marvel", "cómics", "películas", "videojuegos", "Peter Parker", "Spider-Verse"],
   alternates: { canonical: "/" },
   openGraph: {
     title: "Sentido Arácnido - El Universo Completo de Spider-Man",
-    description: "La guía definitiva de Spider-Man con análisis, reseñas y productos oficiales",
+    description: "La guía definitiva de Spider-Man con análisis, reseñas y productos",
     images: ["https://image.tmdb.org/t/p/w1200/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg"],
   }
 }
