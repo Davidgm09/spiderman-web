@@ -148,7 +148,134 @@ ${section(REGALOS.detalles)}
 `,
 };
 
-const POSTS = [GUIA_REGALOS];
+const tmdb = (id) => `https://image.tmdb.org/t/p/w1280/${id}.jpg`;
+const figure = (id, alt, cap) => `<figure>
+  <img src="${tmdb(id)}" alt="${alt}" loading="lazy" />
+  <figcaption>${cap}</figcaption>
+</figure>`;
+const peli = (slug, title) => `<a href="/peliculas/${slug}"><em>${title}</em></a>`;
+
+const ORDEN_PELICULAS = {
+  slug: 'orden-ver-peliculas-spider-man',
+  title: 'En qué orden ver las películas de Spider-Man',
+  subtitle: 'Por estreno, por sagas y por cronología del MCU: todas las películas, de Tobey Maguire a Brand New Day',
+  excerpt:
+    'Tres Spider-Man de carne y hueso, un Spider-Verso animado y un universo de villanos de Sony: te explicamos en qué orden ver todas las películas de Spider-Man y qué necesitas haber visto antes de Brand New Day.',
+  category: 'Guías',
+  readTime: '8 min',
+  publishDate: new Date('2026-10-16'),
+  image: tmdb('tPpYGm2mVecue7Bk3gNVoSPA5qn'),
+  seoTitle: 'Orden de las películas de Spider-Man: guía completa (2026)',
+  seoDescription:
+    'En qué orden ver las películas de Spider-Man: por estreno, por sagas y en cronología del MCU, del Spider-Man de Raimi a Brand New Day y el Spider-Verso.',
+  keywords: ['orden películas Spider-Man', 'películas Spider-Man en orden', 'orden cronológico Spider-Man', 'Spider-Man MCU orden', 'Brand New Day', 'Spider-Verse'],
+  tags: ['guía', 'películas', 'MCU', 'Spider-Verse', 'Brand New Day', 'Tom Holland'],
+  content: `
+<p>Desde 2002, Spider-Man ha tenido <strong>tres actores en imagen real</strong> —Tobey Maguire, Andrew Garfield y Tom Holland—, una trilogía animada que ha cambiado el cine de animación y un universo paralelo de Sony centrado en Venom y otros personajes de su mundo. Son muchas películas, y no todas se conectan entre sí, así que es normal no saber por dónde empezar.</p>
+
+<p>En esta guía te damos el orden de estreno completo, el orden por sagas (el que recomendamos para una primera vez) y la cronología interna del MCU. Al final te contamos qué necesitas haber visto antes de <em>Brand New Day</em>.</p>
+
+<h2>Todas las películas por orden de estreno</h2>
+<p>Si quieres verlas todas tal y como llegaron a los cines, este es el orden:</p>
+<table>
+  <thead><tr><th>Año</th><th>Película</th><th>Saga</th></tr></thead>
+  <tbody>
+    <tr><td>2002</td><td>${peli('spider-man-2002', 'Spider-Man')}</td><td>Sam Raimi</td></tr>
+    <tr><td>2004</td><td>${peli('spider-man-2-2004', 'Spider-Man 2')}</td><td>Sam Raimi</td></tr>
+    <tr><td>2007</td><td>${peli('spider-man-3-2007', 'Spider-Man 3')}</td><td>Sam Raimi</td></tr>
+    <tr><td>2012</td><td>${peli('the-amazing-spider-man-2012', 'The Amazing Spider-Man')}</td><td>Marc Webb</td></tr>
+    <tr><td>2014</td><td>${peli('the-amazing-spider-man-2-el-poder-de-electro-2014', 'The Amazing Spider-Man 2: El poder de Electro')}</td><td>Marc Webb</td></tr>
+    <tr><td>2016</td><td><em>Capitán América: Civil War</em></td><td>MCU (debut de Holland)</td></tr>
+    <tr><td>2017</td><td>${peli('spider-man-homecoming-2017', 'Spider-Man: Homecoming')}</td><td>MCU</td></tr>
+    <tr><td>2018</td><td><em>Vengadores: Infinity War</em></td><td>MCU</td></tr>
+    <tr><td>2018</td><td>${peli('venom-2018', 'Venom')}</td><td>Universo Sony</td></tr>
+    <tr><td>2018</td><td>${peli('spider-man-un-nuevo-universo-2018', 'Spider-Man: Un nuevo universo')}</td><td>Spider-Verso</td></tr>
+    <tr><td>2019</td><td><em>Vengadores: Endgame</em></td><td>MCU</td></tr>
+    <tr><td>2019</td><td>${peli('spider-man-lejos-de-casa-2019', 'Spider-Man: Lejos de casa')}</td><td>MCU</td></tr>
+    <tr><td>2021</td><td>${peli('venom-habra-matanza-2021', 'Venom: Habrá Matanza')}</td><td>Universo Sony</td></tr>
+    <tr><td>2021</td><td>${peli('spider-man-no-way-home-2021', 'Spider-Man: No Way Home')}</td><td>MCU</td></tr>
+    <tr><td>2022</td><td>${peli('morbius-2022', 'Morbius')}</td><td>Universo Sony</td></tr>
+    <tr><td>2023</td><td>${peli('spider-man-cruzando-el-multiverso-2023', 'Spider-Man: Cruzando el Multiverso')}</td><td>Spider-Verso</td></tr>
+    <tr><td>2024</td><td>${peli('madame-web-2024', 'Madame Web')}</td><td>Universo Sony</td></tr>
+    <tr><td>2024</td><td>${peli('venom-el-ultimo-baile-2024', 'Venom: El último baile')}</td><td>Universo Sony</td></tr>
+    <tr><td>2024</td><td>${peli('kraven-the-hunter-2024', 'Kraven el cazador')}</td><td>Universo Sony</td></tr>
+    <tr><td>2026</td><td>${peli('spider-man-brand-new-day-2026', 'Spider-Man: Brand New Day')}</td><td>MCU</td></tr>
+  </tbody>
+</table>
+<p>Las tres películas de los Vengadores no son de Spider-Man, pero sí son importantes para entender al Peter Parker de Tom Holland. Hablamos de ellas más abajo.</p>
+
+<h2>El orden que recomendamos: por sagas</h2>
+<p>Las sagas de Maguire, Garfield y Holland son <strong>independientes entre sí</strong> (hasta que <em>No Way Home</em> las junta), así que la forma más cómoda de verlas por primera vez es saga a saga, en orden de estreno.</p>
+
+<h3>1. La trilogía de Sam Raimi (Tobey Maguire)</h3>
+${figure('faV0HuR6WnQoLrVq3r6mhjaABL9', 'Spider-Man contra el Doctor Octopus en el tren de Spider-Man 2', 'La pelea del tren de Spider-Man 2 (2004), una de las mejores escenas de acción del cine de superhéroes.')}
+<ol>
+  <li>${peli('spider-man-2002', 'Spider-Man')} (2002): el origen, con Willem Dafoe como Duende Verde.</li>
+  <li>${peli('spider-man-2-2004', 'Spider-Man 2')} (2004): Alfred Molina como Doctor Octopus. Para muchos, la mejor película de Spider-Man (te contamos por qué en <a href="/blog/spider-man-2-2004-analisis-mejor-pelicula-superheroes">nuestro análisis</a>).</li>
+  <li>${peli('spider-man-3-2007', 'Spider-Man 3')} (2007): el simbionte, el Hombre de Arena y el nuevo Duende.</li>
+</ol>
+
+<h3>2. The Amazing Spider-Man (Andrew Garfield)</h3>
+${figure('HVcza6tJtWFrLriuh3Ano4Vt46', 'Spider-Man y Gwen Stacy en The Amazing Spider-Man', 'Andrew Garfield y Emma Stone: la relación entre Peter y Gwen es el corazón de la saga de Marc Webb.')}
+<ol>
+  <li>${peli('the-amazing-spider-man-2012', 'The Amazing Spider-Man')} (2012): un nuevo origen, con el Lagarto como villano.</li>
+  <li>${peli('the-amazing-spider-man-2-el-poder-de-electro-2014', 'The Amazing Spider-Man 2: El poder de Electro')} (2014): Electro, el Duende Verde de Harry Osborn y el final más duro de la saga.</li>
+</ol>
+<p>Se quedó en dos películas: Sony canceló la tercera y llegó a un acuerdo con Marvel Studios para llevar a Spider-Man al MCU. Si te quedaste con mal sabor de boca, quizá te interese <a href="/blog/the-amazing-spider-man-2012-revaloracion-andrew-garfield">nuestra revisión de la etapa de Garfield</a>.</p>
+
+<h3>3. Spider-Man en el MCU (Tom Holland)</h3>
+${figure('Bwh7Lol5k3hSqYOtqXWxbbJVMx', 'Spider-Man y el Doctor Strange en Spider-Man: No Way Home', 'Tom Holland y Benedict Cumberbatch en No Way Home (2021), la película que abrió el multiverso.')}
+<ol>
+  <li><em>Capitán América: Civil War</em> (2016): primera aparición de Holland, reclutado por Tony Stark.</li>
+  <li>${peli('spider-man-homecoming-2017', 'Spider-Man: Homecoming')} (2017): con el Buitre de Michael Keaton.</li>
+  <li><em>Vengadores: Infinity War</em> (2018) y <em>Vengadores: Endgame</em> (2019): no son películas de Spider-Man, pero lo que le pasa a Peter en ellas explica todo lo que viene después.</li>
+  <li>${peli('spider-man-lejos-de-casa-2019', 'Spider-Man: Lejos de casa')} (2019): Mysterio y el final que revela al mundo quién es Spider-Man.</li>
+  <li>${peli('spider-man-no-way-home-2021', 'Spider-Man: No Way Home')} (2021): el multiverso se abre y vuelven Maguire, Garfield y sus villanos.</li>
+  <li>${peli('spider-man-brand-new-day-2026', 'Spider-Man: Brand New Day')} (2026): Peter empieza de cero, solo y sin que nadie recuerde quién es.</li>
+</ol>
+
+<h3>4. El Spider-Verso animado (Miles Morales)</h3>
+${figure('9xfDWXAUbFXQK585JvByT5pEAhe', 'Miles Morales rodeado de Spider-Men en Cruzando el Multiverso', 'Las películas del Spider-Verso se pueden ver en cualquier momento: no dependen de ninguna otra saga.')}
+<ol>
+  <li>${peli('spider-man-un-nuevo-universo-2018', 'Spider-Man: Un nuevo universo')} (2018): ganadora del Óscar a la mejor película de animación.</li>
+  <li>${peli('spider-man-cruzando-el-multiverso-2023', 'Spider-Man: Cruzando el Multiverso')} (2023): termina con un «continuará», así que ojo.</li>
+  <li><em>Spider-Man: Beyond the Spider-Verse</em>: cierra la trilogía en junio de 2027. Te contamos <a href="/blog/beyond-spider-verse-actualizacion-2025">todo lo que se sabe</a>.</li>
+</ol>
+
+<h3>5. El universo de Sony (Venom y compañía)</h3>
+${figure('hNsYUryiwxcdeTMkaBcPF3iEg0p', 'Tom Hardy como Eddie Brock y Venom', 'Tom Hardy protagonizó las tres películas de Venom, la parte más exitosa del universo de Sony.')}
+<p>Sony también lanzó su propio universo con personajes del mundo de Spider-Man, pero <strong>sin Spider-Man</strong>. Es la saga más prescindible: si solo te interesa el trepamuros, puedes saltártela entera. Si quieres verla, este es su orden:</p>
+<ol>
+  <li>${peli('venom-2018', 'Venom')} (2018)</li>
+  <li>${peli('venom-habra-matanza-2021', 'Venom: Habrá Matanza')} (2021): su escena poscréditos conecta directamente con <em>No Way Home</em>.</li>
+  <li>${peli('morbius-2022', 'Morbius')} (2022): aparece el Buitre de Michael Keaton, llegado del MCU.</li>
+  <li>${peli('madame-web-2024', 'Madame Web')} (2024)</li>
+  <li>${peli('venom-el-ultimo-baile-2024', 'Venom: El último baile')} (2024): cierra la historia de Eddie Brock.</li>
+  <li>${peli('kraven-the-hunter-2024', 'Kraven el cazador')} (2024): la última película de este universo, que Sony dio por terminado tras su estreno.</li>
+</ol>
+
+<h2>Cronología del MCU: ¿cambia algo?</h2>
+<p>En el caso de Spider-Man, el orden cronológico dentro del MCU coincide con el de estreno: <em>Civil War</em> y <em>Homecoming</em> transcurren en 2016; tras el salto de cinco años de <em>Endgame</em> llegan <em>Lejos de casa</em> y <em>No Way Home</em>, que va justo a continuación; y <em>Brand New Day</em> arranca cuatro años después de <em>No Way Home</em>.</p>
+<p>La única excepción son las escenas poscréditos que cruzan universos: la de <em>Venom: Habrá Matanza</em> enlaza con la de <em>No Way Home</em>, así que, si quieres verlas en orden, mira <em>Habrá Matanza</em> antes.</p>
+
+<h2>¿Qué tengo que ver antes de Brand New Day?</h2>
+${figure('34jW8LvjRplM8Pv06cBFDpLlenR', 'Spider-Man colgado boca abajo en Venecia en Lejos de casa', 'Lejos de casa (2019) termina con el secreto de Peter al descubierto, lo que desencadena No Way Home.')}
+<p>Lo imprescindible es la etapa de Tom Holland, sobre todo <strong>No Way Home</strong>, porque <em>Brand New Day</em> parte directamente de su final. Si tienes poco tiempo:</p>
+<ul>
+  <li><strong>Mínimo:</strong> ${peli('spider-man-no-way-home-2021', 'No Way Home')}.</li>
+  <li><strong>Recomendado:</strong> ${peli('spider-man-homecoming-2017', 'Homecoming')}, ${peli('spider-man-lejos-de-casa-2019', 'Lejos de casa')} y ${peli('spider-man-no-way-home-2021', 'No Way Home')}.</li>
+  <li><strong>Completo:</strong> además, las películas de Maguire y Garfield, para disfrutar de verdad del reencuentro de <em>No Way Home</em>.</li>
+</ul>
+<p>Un extra: el Punisher de Jon Bernthal llega a <em>Brand New Day</em> después de su paso por la serie <em>Daredevil: Born Again</em>. No es necesario verla, pero ayuda a situar al personaje. Y si ya has visto la película, tienes nuestro <a href="/blog/spider-man-brand-new-day-taquilla-criticas-sin-spoilers">análisis sin spoilers</a> y lo que se sabe sobre <a href="/blog/futuro-spider-man-mcu-despues-brand-new-day">el futuro de Spider-Man en el MCU</a>.</p>
+
+<h2>¿Y lo que viene?</h2>
+<p>Las próximas citas son <em>Vengadores: Doomsday</em> (diciembre de 2026), aunque Tom Holland no figura en su reparto anunciado; <em>Spider-Man: Beyond the Spider-Verse</em> (junio de 2027); y <em>Vengadores: Secret Wars</em> (diciembre de 2027), donde los rumores sitúan el próximo regreso de Peter Parker. Actualizaremos esta guía a medida que se confirmen.</p>
+
+<p>Tienes la ficha de cada película, con reparto, curiosidades y tráiler, en nuestra sección de <a href="/peliculas">películas</a>.</p>
+`,
+};
+
+const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS];
 
 (async () => {
   for (const p of POSTS) {
