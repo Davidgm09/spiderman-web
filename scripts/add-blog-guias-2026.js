@@ -574,7 +574,64 @@ ${gift({ asin: 'B0FHKY4D5M', name: 'Marvel Legends · The Amazing Spider-Man (No
 `,
 };
 
-const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS, FINAL_BND, MEJORES_COMICS, JUEGOS_POST, TRAJES];
+const villano = (n, name, actor, film, text) => `<h3>${n}. ${name}</h3>
+<p><strong>${actor}</strong> · ${film}</p>
+<p>${text}</p>`;
+
+const VILLANOS_CINE = {
+  slug: 'villanos-spider-man-peliculas-ranking',
+  title: 'Los villanos de Spider-Man en el cine, de peor a mejor',
+  subtitle: 'Del Rino de Paul Giamatti al Doctor Octopus de Alfred Molina: todos los grandes villanos de las películas, ordenados',
+  excerpt:
+    'Ordenamos a los villanos de las películas de Spider-Man, de Sam Raimi a Tom Holland pasando por el Spider-Verso, del menos al más memorable. ¿Coincides con nuestro número uno?',
+  category: 'Películas',
+  readTime: '9 min',
+  publishDate: new Date('2026-10-17'),
+  image: tmdb('fn4n6uOYcB6Uh89nbNPoU2w80RV'),
+  seoTitle: 'Villanos de Spider-Man en el cine: ranking de peor a mejor',
+  seoDescription:
+    'Ranking de los villanos de las películas de Spider-Man, de peor a mejor: Doctor Octopus, Duende Verde, el Buitre, Mysterio, Venom, Electro y más.',
+  keywords: ['villanos Spider-Man películas', 'ranking villanos Spider-Man', 'mejor villano Spider-Man', 'Doctor Octopus Alfred Molina', 'Duende Verde Willem Dafoe', 'Buitre Michael Keaton'],
+  tags: ['villanos', 'ranking', 'películas', 'MCU', 'Sam Raimi', 'Spider-Verse'],
+  content: `
+<p>Un héroe es tan bueno como sus villanos, y Spider-Man tiene la mejor galería de enemigos de Marvel. Pero en el cine no todos han tenido la misma suerte: algunos son de los mejores villanos del género y otros apenas tuvieron unos minutos. Este es nuestro ranking de los villanos de las películas de Spider-Man, <strong>de peor a mejor</strong>.</p>
+<p>Hemos dejado fuera a los villanos del universo de Sony sin Spider-Man y los de <em>Brand New Day</em>, para no destripar nada a quien todavía no la haya visto. Si lo que buscas es el ranking de los villanos de los cómics, lo tienes en <a href="/blog/mejores-villanos-spider-man-ranking-definitivo">los 10 mejores villanos de Spider-Man</a>.</p>
+
+<h2>Los que merecían más</h2>
+${villano(14, 'El Rino', 'Paul Giamatti', '<em>The Amazing Spider-Man 2</em> (2014)', 'Abre y cierra la película, pero apenas tiene minutos en pantalla. Giamatti se lo pasa en grande con el acento ruso y la armadura robótica del final promete una pelea que nunca llega a verse.')}
+${villano(13, 'Shocker', 'Logan Marshall-Green y Bokeem Woodbine', '<em>Spider-Man: Homecoming</em> (2017)', 'En <em>Homecoming</em> hay dos Shocker, los secuaces del Buitre que usan su guantelete. Cumplen como rivales de barrio para un Spider-Man novato, pero no pasan de ahí.')}
+${villano(12, 'Venom', 'Topher Grace', '<em>Spider-Man 3</em> (2007)', 'Es de sobra conocido que Sam Raimi no quería incluir a Venom, y se nota: llega tarde, comparte película con otros dos villanos y apenas tiene tiempo para ser una amenaza. Topher Grace hace un Eddie Brock interesante como rival de Peter en el periódico, pero el personaje merecía su propia historia.')}
+${villano(11, 'El Duende Verde (Harry Osborn)', 'Dane DeHaan', '<em>The Amazing Spider-Man 2</em> (2014)', 'La transformación de Harry es demasiado rápida para que funcione del todo, aunque su papel en el desenlace de la película, el que cambia para siempre la vida de Peter, es uno de los momentos más duros de la saga.')}
+${villano(10, 'El Lagarto', 'Rhys Ifans', '<em>The Amazing Spider-Man</em> (2012)', 'El Dr. Curt Connors tiene una buena base —el científico que quiere recuperar su brazo—, pero su plan de convertir a toda la ciudad en reptiles y su diseño digital lo dejan a medio camino. Volvió brevemente en <em>No Way Home</em>.')}
+
+<h2>La zona media</h2>
+${figure('u7SeO6Y42P7VCTWLhpnL96cyOqd', 'Spider-Man frente a Electro y el Duende Verde en The Amazing Spider-Man 2', 'The Amazing Spider-Man 2 reunió a Electro, el Duende Verde y el Rino en una sola película.')}
+${villano(9, 'Electro', 'Jamie Foxx', '<em>The Amazing Spider-Man 2</em> (2014) y <em>No Way Home</em> (2021)', 'Max Dillon, el trabajador invisible que se obsesiona con Spider-Man, tiene una idea interesante detrás y una de las bandas sonoras más recordadas de la saga. Su segunda oportunidad en <em>No Way Home</em>, con un aspecto más clásico y mucho más carisma, le sienta de maravilla.')}
+${villano(8, 'El Nuevo Duende (Harry Osborn)', 'James Franco', '<em>Spider-Man 3</em> (2007)', 'Tres películas de amistad rota dan peso a su arco: el hijo que culpa a su mejor amigo de la muerte de su padre. Su final, sacrificándose para salvar a Peter, cierra la trilogía con emoción.')}
+${villano(7, 'El Hombre de Arena', 'Thomas Haden Church', '<em>Spider-Man 3</em> (2007)', 'Flint Marko es un villano trágico: un padre desesperado por pagar el tratamiento de su hija. La escena de su «nacimiento» en la arena es de lo mejor de la película y su redención final le da una dimensión que pocos villanos tienen.')}
+${villano(6, 'La Mancha', 'Jason Schwartzman (voz)', '<em>Spider-Man: Cruzando el Multiverso</em> (2023)', 'Empieza como un chiste —«un villano de la semana»— y acaba convertido en una amenaza para todo el multiverso. Su evolución es uno de los grandes aciertos de la película, y la historia sigue en <em>Beyond the Spider-Verse</em>.')}
+
+<h2>Los mejores</h2>
+${villano(5, 'Kingpin', 'Liev Schreiber (voz)', '<em>Spider-Man: Un nuevo universo</em> (2018)', 'Un diseño enorme y desproporcionado, casi una mole, y una motivación sorprendentemente humana: abrir el multiverso para recuperar a la mujer y al hijo que perdió. Uno de los villanos animados más memorables del cine de superhéroes.')}
+${figure('vamhMTvh9m9zFHDoR0v1nRtf6T4', 'Mysterio y Spider-Man en Lejos de casa', 'El Mysterio de Jake Gyllenhaal: el maestro de las ilusiones que se gana la confianza de Peter.')}
+${villano(4, 'Mysterio', 'Jake Gyllenhaal', '<em>Spider-Man: Lejos de casa</em> (2019)', 'Quentin Beck se presenta como un héroe de otra Tierra y resulta ser un antiguo empleado de Stark experto en ilusiones. La secuencia en la que atrapa a Peter en sus ilusiones es de las más creativas del MCU, y su venganza final —revelar al mundo quién es Spider-Man— cambia el rumbo de la saga.')}
+${villano(3, 'El Buitre', 'Michael Keaton', '<em>Spider-Man: Homecoming</em> (2017)', 'Adrian Toomes es un villano de clase trabajadora con motivos comprensibles. Y tiene la mejor escena de tensión del MCU: el trayecto en coche en el que Peter descubre que el padre de su cita para el baile es el hombre al que lleva toda la película persiguiendo.')}
+${villano(2, 'El Duende Verde (Norman Osborn)', 'Willem Dafoe', '<em>Spider-Man</em> (2002) y <em>No Way Home</em> (2021)', 'La escena del espejo, en la que Norman discute con su otra personalidad, lo dice todo: Dafoe es aterrador y divertido a la vez. Casi veinte años después volvió en <em>No Way Home</em> en plena forma y protagonizó el momento más doloroso de la película.')}
+${figure('faV0HuR6WnQoLrVq3r6mhjaABL9', 'Spider-Man contra el Doctor Octopus en el tren de Spider-Man 2', 'La pelea del tren de Spider-Man 2, con el Doctor Octopus de Alfred Molina.')}
+${villano(1, 'Doctor Octopus', 'Alfred Molina', '<em>Spider-Man 2</em> (2004) y <em>No Way Home</em> (2021)', 'Otto Octavius es un genio amable y un mentor para Peter hasta que su experimento de fusión fracasa y los brazos mecánicos toman el control de su mente. Es un villano trágico, con una pelea del tren que sigue siendo de las mejores del género y un final, sacrificándose para destruir su propio reactor, a la altura. Para nosotros, y para buena parte de los fans, el mejor villano de Spider-Man en el cine. Te lo contamos en <a href="/blog/spider-man-2-2004-analisis-mejor-pelicula-superheroes">nuestro análisis de Spider-Man 2</a>.')}
+
+<h2>Menciones</h2>
+<ul>
+  <li><strong>El Escorpión</strong> (Michael Mando): debutó como Mac Gargan en <em>Homecoming</em>, con una escena poscréditos que prometía su transformación, y por fin aparece como villano en <em>Brand New Day</em>.</li>
+  <li><strong>El Merodeador</strong> de <em>Un nuevo universo</em>: más que un villano, es el giro más doloroso de la película para Miles.</li>
+  <li>Los villanos de <strong>Brand New Day</strong>: si ya la has visto, te lo contamos todo en <a href="/blog/spider-man-brand-new-day-final-explicado">el final explicado</a> (con spoilers).</li>
+</ul>
+
+<p>¿Y tú, con cuál te quedas? Si quieres repasar las películas en orden, aquí tienes <a href="/blog/orden-ver-peliculas-spider-man">en qué orden ver las películas de Spider-Man</a>, y si te van los villanos en la estantería, en <a href="/tienda">nuestra tienda</a> tienes al Duende Verde, a Carnage o a Hulk en figura y Funko Pop.</p>
+`,
+};
+
+const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS, FINAL_BND, MEJORES_COMICS, JUEGOS_POST, TRAJES, VILLANOS_CINE];
 
 (async () => {
   for (const p of POSTS) {
