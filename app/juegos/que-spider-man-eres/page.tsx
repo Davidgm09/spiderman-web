@@ -7,6 +7,8 @@ import type { GameCharacter } from "@/lib/juegos"
 import data from "@/data/juegos/que-spider-man-eres.json"
 import personajes from "@/data/juegos/personajes.json"
 
+// La imagen de /juegos (definir openGraph aquí anula la heredada)
+const OG_IMAGE = "/juegos/opengraph-image.jpg"
 const TITLE = "¿Qué Spider-Man eres? Test de personalidad del multiverso"
 const DESCRIPTION =
   "Responde 8 preguntas y descubre si eres Peter Parker, Miles Morales, Gwen Stacy, Miguel O'Hara, Spider-Man Noir, Spider-Ham, Pavitr o Mayday Parker."
@@ -30,8 +32,8 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
     title: p ? title : `${TITLE} | Sentido Arácnido`,
     description,
     alternates: { canonical: "/juegos/que-spider-man-eres" },
-    openGraph: { title, description, type: "website", url: "/juegos/que-spider-man-eres", ...(p && { images: [p.image] }) },
-    twitter: { card: "summary_large_image", title, description, ...(p && { images: [p.image] }) },
+    openGraph: { title, description, type: "website", url: "/juegos/que-spider-man-eres", images: [p ? p.image : OG_IMAGE] },
+    twitter: { card: "summary_large_image", title, description, images: [p ? p.image : OG_IMAGE] },
   }
 }
 

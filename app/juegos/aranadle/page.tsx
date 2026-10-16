@@ -7,6 +7,8 @@ import { OtherGames } from "@/components/juegos/OtherGames"
 import type { GameCharacter } from "@/lib/juegos"
 import personajes from "@/data/juegos/personajes.json"
 
+// La imagen de /juegos (definir openGraph aquí anula la heredada)
+const OG_IMAGE = "/juegos/opengraph-image.jpg"
 const TITLE = "Arañadle: adivina el personaje de Spider-Man del día"
 const DESCRIPTION =
   "Cada día, un personaje secreto del universo de Spider-Man. Tienes 8 intentos y pistas de colores para adivinarlo. Comparte tu resultado y mantén la racha."
@@ -15,8 +17,8 @@ export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: "/juegos/aranadle" },
-  openGraph: { title: TITLE, description: DESCRIPTION, type: "website", url: "/juegos/aranadle" },
-  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION },
+  openGraph: { title: TITLE, description: DESCRIPTION, type: "website", url: "/juegos/aranadle", images: [OG_IMAGE] },
+  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION, images: [OG_IMAGE] },
 }
 
 const LEGEND = [

@@ -1,76 +1,86 @@
 'use client'
 
-import { useState } from 'react'
-import { Twitter, Facebook, Link, Check, Send } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { Twitter, Facebook, Link, Check, Send, Share2, MessageCircle } from 'lucide-react'
+import { trackEvent } from '@/lib/analytics'
 
 interface ShareButtonsProps {
   url: string
   title: string
+  compact?: boolean // solo iconos (cabecera del artículo)
 }
 
-export function ShareButtons({ url, title }: ShareButtonsProps) {
+export function ShareButtons({ url, title, compact = false }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false)
+  const [canNativeShare, setCanNativeShare] = useState(false)
+
+  // El menú nativo solo existe en el navegador (y sobre todo en móvil): se comprueba tras montar
+  useEffect(() => {
+    setCanNativeShare(typeof navigator !== 'undefined' && typeof navigator.share === 'function' && /Android|iPhone|iPad/i.test(navigator.userAgent))
+  }, [])
 
   const encodedUrl = encodeURIComponent(url)
   const encodedTitle = encodeURIComponent(title)
 
-  const links = {
-    twitter: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
-    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
-    whatsapp: `https://api.whatsapp.com/send?text=${encodedTitle}%20${encodedUrl}`,
-  }
+  const networks = [
+    { id: 'whatsapp', label: 'WhatsApp', icon: Send, color: 'bg-green-600 hover:bg-green-700', href: `https://api.whatsapp.com/send?text=${encodedTitle}%20${encodedUrl}` },
+    { id: 'telegram', label: 'Telegram', icon: Send, color: 'bg-sky-500 hover:bg-sky-600', href: `https://t.me/share/url?url=${encodedUrl}&text=${encodedTitle}` },
+    { id: 'x', label: 'X', icon: Twitter, color: 'bg-black hover:bg-gray-900 border border-white/10', href: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}` },
+    { id: 'facebook', label: 'Facebook', icon: Facebook, color: 'bg-blue-600 hover:bg-blue-700', href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}` },
+    { id: 'reddit', label: 'Reddit', icon: MessageCircle, color: 'bg-orange-600 hover:bg-orange-700', href: `https://www.reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}` },
+  ]
+
+  const track = (red: string) => trackEvent('compartir', { red, url })
 
   function copyLink() {
-    navigator.clipboard.writeText(url).then(() => {
+    track('copiar')
+    navigator.clipboard?.writeText(url).then(() => {
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
-    })
+    }).catch(() => window.prompt('Copia el enlace:', url))
   }
 
+  async function nativeShare() {
+    track('nativo')
+    try {
+      await navigator.share({ title, url })
+    } catch {
+      // cancelado por el usuario
+    }
+  }
+
+  const button = `flex items-center justify-center gap-1.5 rounded-lg text-white text-sm font-medium transition-colors ${compact ? 'w-9 h-9' : 'px-3 py-1.5'}`
+
   return (
-    <div className="flex items-center gap-3 flex-wrap">
-      <span className="text-sm text-gray-400 font-medium">Compartir:</span>
+    <div className="flex items-center gap-2 flex-wrap">
+      {!compact && <span className="text-sm text-gray-400 font-medium mr-1">Compartir:</span>}
 
-      <a
-        href={links.twitter}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Compartir en X (Twitter)"
-        className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black hover:bg-gray-900 text-white text-sm font-medium transition-colors"
-      >
-        <Twitter className="w-4 h-4" />
-        X
-      </a>
+      {canNativeShare && (
+        <button onClick={nativeShare} aria-label="Compartir" className={`${button} bg-red-600 hover:bg-red-700`}>
+          <Share2 className="w-4 h-4" />
+          {!compact && 'Compartir'}
+        </button>
+      )}
 
-      <a
-        href={links.facebook}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Compartir en Facebook"
-        className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium transition-colors"
-      >
-        <Facebook className="w-4 h-4" />
-        Facebook
-      </a>
+      {networks.map(({ id, label, icon: Icon, color, href }) => (
+        <a
+          key={id}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Compartir en ${label}`}
+          title={`Compartir en ${label}`}
+          onClick={() => track(id)}
+          className={`${button} ${color}`}
+        >
+          <Icon className="w-4 h-4" />
+          {!compact && label}
+        </a>
+      ))}
 
-      <a
-        href={links.whatsapp}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Compartir en WhatsApp"
-        className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-green-600 hover:bg-green-700 text-white text-sm font-medium transition-colors"
-      >
-        <Send className="w-4 h-4" />
-        WhatsApp
-      </a>
-
-      <button
-        onClick={copyLink}
-        aria-label="Copiar enlace"
-        className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-700 hover:bg-gray-600 text-white text-sm font-medium transition-colors"
-      >
+      <button onClick={copyLink} aria-label="Copiar enlace" title="Copiar enlace" className={`${button} bg-gray-700 hover:bg-gray-600`}>
         {copied ? <Check className="w-4 h-4 text-green-400" /> : <Link className="w-4 h-4" />}
-        {copied ? '¡Copiado!' : 'Copiar'}
+        {!compact && (copied ? '¡Copiado!' : 'Copiar')}
       </button>
     </div>
   )

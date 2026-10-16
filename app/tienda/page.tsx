@@ -16,13 +16,11 @@ export const metadata: Metadata = {
     description: "Figuras, Funko Pop, LEGO, cómics y regalos de Spider-Man, revisados uno a uno.",
     url: `${SITE_URL}/tienda`,
     type: "website",
-    images: ["/opengraph-image.png"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Tienda Spider-Man | Sentido Arácnido",
     description: "Figuras, Funko Pop, LEGO, cómics y regalos de Spider-Man, revisados uno a uno.",
-    images: ["/opengraph-image.png"],
   },
 }
 

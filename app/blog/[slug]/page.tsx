@@ -165,6 +165,9 @@ export default async function BlogPostPage({ params }: Props) {
               <Eye className="w-4 h-4" /> {post.views} vistas
             </span>
           </div>
+          <div className="mt-5">
+            <ShareButtons url={postUrl} title={post.title} compact />
+          </div>
         </div>
       </section>
 
