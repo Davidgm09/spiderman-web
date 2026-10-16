@@ -1,6 +1,6 @@
 import { Award } from 'lucide-react'
 import type { Character } from '@prisma/client'
-import { comicContext, comicSeriesName, cleanArcName } from '@/lib/comic-context'
+import { comicContext, comicSeriesName, cleanArcName, keyIssueAnalysis } from '@/lib/comic-context'
 import { matchCharacter } from '@/lib/comic-characters'
 
 interface ComicEditorialAnalysisProps {
@@ -40,7 +40,8 @@ const isPlaceholder = (text: string) => /^Cómic .* de Marvel Comics\.?$/.test(t
 export function ComicEditorialAnalysis({
   slug, title, year, writer, artist, characters, storylines, firstAppearances, longDescription, allCharacters,
 }: ComicEditorialAnalysisProps) {
-  const synopsisText = longDescription?.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim() ?? ''
+  // "Descripción general" es el título de sección que Comic Vine deja pegado en algunas sinopsis
+  const synopsisText = longDescription?.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim().replace(/Descripción general\s*/, '') ?? ''
   const hasSynopsis = !!synopsisText && !isPlaceholder(synopsisText.replace(title, '').trim()) && !isPlaceholder(synopsisText)
   // HTML simple (título + un párrafo, lo habitual en la importación): texto plano cortado en la última frase
   const isSimple = !!longDescription && !/<(ul|ol|h3|strong|br)/i.test(longDescription) && (longDescription.match(/<p>/g) ?? []).length <= 1
@@ -48,6 +49,7 @@ export function ComicEditorialAnalysis({
   const synopsis = hasSynopsis && !isSimple ? cleanHtml(longDescription!) : null
 
   const context = comicContext(slug, title, year)
+  const keyAnalysis = keyIssueAnalysis(slug)
 
   // Datos concretos del número
   const facts: string[] = []
@@ -75,7 +77,7 @@ export function ComicEditorialAnalysis({
   const firsts = firstAppearances ?? []
   if (firsts.length) facts.push(`Incluye la primera aparición de ${listEs(firsts)}.`)
 
-  if (!synopsis && !synopsisPlain && !context && facts.length === 0) return null
+  if (!synopsis && !synopsisPlain && !keyAnalysis && !context && facts.length === 0) return null
 
   return (
     <div className="rounded-2xl border border-white/10 bg-gray-950/60 overflow-hidden">
@@ -87,6 +89,13 @@ export function ComicEditorialAnalysis({
       </div>
 
       <div className="px-6 py-6 space-y-6">
+        {keyAnalysis && (
+          <div>
+            <h4 className="text-xs font-bold text-blue-400 uppercase tracking-widest mb-3">Por qué es importante</h4>
+            <p className="text-gray-100 leading-relaxed text-base pl-4 border-l-2 border-blue-500/50">{keyAnalysis}</p>
+          </div>
+        )}
+
         {synopsisPlain && (
           <div>
             <h4 className="text-xs font-bold text-blue-400 uppercase tracking-widest mb-3">Sinopsis</h4>

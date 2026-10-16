@@ -51,6 +51,40 @@ export function cleanArcName(arc: string): string {
   return arc.replace(/^"[^"]*"\s*/, '').trim()
 }
 
+// Números clave: por qué importan (hechos contrastados con su ficha de Comic Vine)
+const KEY_ISSUES: Record<string, string> = {
+  'the-amazing-spider-man-1-1963':
+    'Es el primer número de la serie propia de Spider-Man, publicado en 1963 tras el éxito de su debut en Amazing Fantasy #15. Stan Lee y Steve Ditko presentan aquí al Camaleón, el primer supervillano de la colección, y a J. Jonah Jameson, cuya campaña contra Spider-Man desde la prensa se convertiría en una constante de la serie. Incluye además el célebre intento de Peter de unirse a los Cuatro Fantásticos para cobrar un sueldo, una escena que resume uno de los rasgos que lo hicieron diferente: el superhéroe con problemas para pagar las facturas.',
+  'the-amazing-spider-man-annual-1-1964':
+    'Presenta a los Seis Siniestros —Doctor Octopus, Electro, Kraven el Cazador, Mysterio, Sandman y el Buitre—, la primera gran alianza de enemigos de Spider-Man y una de las fórmulas más repetidas del cómic de superhéroes. Stan Lee y Steve Ditko estructuraron la historia como una sucesión de combates, cada uno con una página completa, y el número incluye cameos de buena parte del universo Marvel de la época. Los Seis Siniestros han vuelto una y otra vez en cómics, series y videojuegos.',
+  'the-amazing-spider-man-10-1964':
+    'Presenta a los Enforcers —Fancy Dan, Montana y el Ox— y al Gran Hombre, un misterioso cerebro criminal que intenta unificar a las bandas de Nueva York. El misterio sobre su identidad, que se resuelve en este mismo número, implica a Frederick Foswell, periodista del Daily Bugle, y es un buen ejemplo de cómo Lee y Ditko mezclaban el crimen urbano con la vida diaria de Peter.',
+  'the-amazing-spider-man-11-1964':
+    'Marca el regreso del Doctor Octopus, que ya se perfilaba como el gran rival de Spider-Man, y contiene uno de los primeros momentos trágicos de la serie: la muerte de Bennett Brant, hermano de Betty Brant, en medio del enfrentamiento. Betty culpa a Spider-Man de lo ocurrido, un ejemplo temprano de cómo las aventuras del héroe tenían consecuencias reales en la vida de Peter.',
+  'the-amazing-spider-man-100-1971':
+    'El número 100 de la serie. Cansado de las cargas de ser Spider-Man, Peter fabrica un suero para librarse de sus poderes con un resultado inesperado: le crecen cuatro brazos más. Así arranca la «saga de los seis brazos», que continúa en los dos números siguientes. Incluye además un desfile onírico de villanos y secundarios de la serie, a modo de homenaje a sus primeros cien números.',
+  'the-amazing-spider-man-101-1971':
+    'Primera aparición de Morbius, el Vampiro Viviente, en plena «saga de los seis brazos». Es uno de los primeros números de la serie no escritos por Stan Lee: lo firman Roy Thomas al guion y Gil Kane al dibujo. Morbius llegó justo cuando el Comics Code relajaba sus restricciones sobre los vampiros, y su origen científico —un bioquímico enfermo que se transforma al intentar curarse— encajaba con el tono de la serie. Con los años tuvo cómics propios y su propia película en 2022.',
+  'ultimate-spider-man-1-2000':
+    'El número con el que Marvel inauguró su línea Ultimate en el año 2000. Brian Michael Bendis y Mark Bagley reescribieron el origen de Spider-Man para una nueva generación: la araña que pica a Peter ha sido alterada con el suero OZ de Osborn Industries, y Peter es un adolescente de quince años con un tono más cercano al de los lectores de la época. Fue un éxito inmediato y una influencia directa en las adaptaciones posteriores del personaje, incluido el cine.',
+  'edge-of-spider-verse-2-2014':
+    'Primera aparición de Spider-Gwen: la Gwen Stacy de Tierra-65, un universo en el que fue ella, y no Peter Parker, quien recibió la picadura de la araña. Jason Latour y Robbi Rodriguez crearon un personaje y un diseño —el traje blanco con capucha— que conectaron de inmediato con los lectores. Su éxito dio lugar a una serie propia en 2015 y a su papel en las películas animadas del Spider-Verse, y este número es hoy uno de los cómics modernos más buscados por los coleccionistas.',
+  'spider-gwen-1-2015':
+    'Primer número de la serie propia de Spider-Gwen, lanzada en 2015 tras el éxito de su debut en Edge of Spider-Verse #2. Jason Latour y Robbi Rodriguez amplían su universo con versiones alternativas de secundarios clásicos —su padre, el capitán George Stacy, o un Frank Castle policía— y consolidan un tono propio, más punk, que la distanció de las series de Peter Parker.',
+  'superman-vs-the-amazing-spider-man-1-1976':
+    'El primer gran crossover entre Marvel y DC. Publicado en 1976 en formato tabloide, enfrenta y después une a Superman y Spider-Man contra la alianza de Lex Luthor y el Doctor Octopus. Más allá de su historia, fue un acontecimiento editorial: demostró que las dos grandes compañías podían colaborar y abrió la puerta a los encuentros entre sus personajes que vinieron después.',
+  'the-spectacular-spider-man-1-1976':
+    'Primer número de Peter Parker, the Spectacular Spider-Man, la segunda serie mensual del personaje, lanzada en 1976 por Gerry Conway y Sal Buscema. Enfrenta a Spider-Man con la Tarántula y marca el inicio de una cabecera que duraría más de veinte años y en la que se publicaron algunas de las historias más recordadas del personaje.',
+  'giant-size-spider-man-1-1974':
+    'Spider-Man se cruza con Drácula en plena moda del terror en Marvel, que publicaba desde 1972 La tumba de Drácula con enorme éxito. Es un buen ejemplo de la apuesta de Giant-Size Spider-Man: sacar al trepamuros de su entorno habitual y enfrentarlo a otros géneros del catálogo de la editorial.',
+  'giant-size-spider-man-4-1975':
+    'Una de las primeras apariciones del Punisher, que había debutado un año antes en The Amazing Spider-Man #129 (1974) como antagonista de Spider-Man. Aquí se enfrenta junto al trepamuros a Moses Magnum, en una etapa en la que el personaje todavía se estaba definiendo antes de convertirse en uno de los antihéroes más populares de Marvel.',
+}
+
+export function keyIssueAnalysis(slug: string): string | null {
+  return KEY_ISSUES[slug] ?? null
+}
+
 export function comicSeriesName(title: string): string {
   return title.replace(/\s*#.*$/, '').trim()
 }
