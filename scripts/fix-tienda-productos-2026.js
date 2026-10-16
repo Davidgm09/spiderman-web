@@ -298,6 +298,60 @@ const TITLES = {
   'marvel-spider-man-sudadera-capucha-hombre': 'Marvel · Sudadera con capucha Spider-Man Web',
 };
 
+// Descripciones: qué es, para quién y por qué merece la pena, sin datos que no se puedan comprobar
+// (capacidades, materiales, tallas o accesorios que Amazon no confirma)
+const DESCRIPTIONS = {
+  'disney-marvel-spider-man-botella-aluminio-600ml': 'Botella de aluminio reutilizable con asa y cierre de clic, decorada con Spider-Man. Un regalo práctico para el cole o el entrenamiento de los peques.',
+  'marvel-spider-man-cartera-web-hero': 'Cartera con licencia de Marvel y diseño de Spider-Man. Un detalle útil para el día a día, perfecto como complemento de otro regalo.',
+  'marvel-spider-man-mochila-escolar-infantil': 'Mochila escolar de Spider-Man con doble compartimento y bolsillo lateral. Para que la vuelta al cole sea un poco más arácnida.',
+  'paladone-marvel-spider-man-taza-ceramica-550ml': 'Taza grande de cerámica de Paladone decorada con viñetas de los cómics de Spider-Man. El clásico que nunca falla en un amigo invisible.',
+  'marvel-comics-spider-man-llavero-metalico': 'Llavero metálico de SeDi con el diseño de Spider-Man de los cómics. Un detalle pequeño y barato para acompañar otro regalo.',
+  'stor-spider-man-sandwichera-infantil-3-compartimentos': 'Sandwichera de Stor con tres compartimentos para separar el almuerzo, decorada con Spider-Man. Ideal para los niños que llevan comida al cole.',
+  'funko-pop-anti-venom-peter-parker-spider-man-2': "Peter Parker con el traje de Anti-Venom que estrena en Marvel's Spider-Man 2 de PS5. Para fans del juego de Insomniac que quieran un recuerdo en la estantería.",
+  'funko-pop-carnage-venom-habra-matanza': 'El Carnage de Woody Harrelson en Venom: Habrá Matanza, en versión Funko Pop!. Porque toda colección necesita también a sus villanos.',
+  'funko-pop-miguel-ohara-across-spider-verse': "Miguel O'Hara, el Spider-Man 2099 que lidera la Sociedad Araña en Cruzando el Multiverso. Para quien salió del cine pidiendo más Spider-Verso.",
+  'funko-pop-miles-morales-across-spider-verse': 'Miles Morales con su traje de Cruzando el Multiverso, en una edición exclusiva de Amazon. Uno de los Funko favoritos de los fans más jóvenes.',
+  'funko-pop-spider-gwen-sin-mascara-152': 'Gwen Stacy como Spider-Gwen, con la capucha puesta y la máscara retirada, tal como se diseñó en los cómics. Un clásico de las colecciones del Spider-Verso.',
+  'funko-pop-spider-man-primera-aparicion-diamond-glitter-593': 'Spider-Man con su traje clásico rojo y azul en la versión Diamond Glitter, con acabado brillante. De las favoritas de los coleccionistas de Funko.',
+  'funko-pop-spider-man-noir-spider-verse-406': 'El Spider-Man Noir de Un nuevo universo, en blanco y negro y con su sombrero. Uno de los Funko más bonitos del Spider-Verso.',
+  'funko-pop-spider-man-traje-casero-homecoming': 'El Peter de Tom Holland con el traje casero de sudadera y gafas de Homecoming, el de sus primeros pasos como héroe. Un guiño para los fans del MCU.',
+  'funko-pop-spider-man-integrated-suit-no-way-home-913': 'El traje rojo, azul y dorado que lleva Tom Holland en No Way Home, en versión Funko Pop!. El número 913 de la línea Marvel.',
+  'spider-man-by-roger-stern-omnibus': 'La etapa de Roger Stern a principios de los 80 en un solo volumen: la primera aparición del Duende (Hobgoblin), «¡Nada puede detener al Juggernaut!» y «El niño que coleccionaba a Spider-Man». En inglés, para lectores veteranos.',
+  'amazing-spider-man-omnibus-vol-1-stan-lee-ditko': 'Los primeros años de Spider-Man por Stan Lee y Steve Ditko, desde Amazing Fantasy #15, en un ómnibus enorme de tapa dura. El gran regalo para un lector de clásicos, en inglés.',
+  'el-asombroso-spiderman-2-hasta-que-las-estrellas-se-congelen': 'Segundo tomo de la etapa de J. Michael Straczynski y John Romita Jr. en la colección Marvel Saga, la continuación directa de «Vuelta a casa».',
+  'spiderman-ultima-caceria-kraven-must-have-panini': 'Kraven entierra a Spider-Man y ocupa su lugar en la historia de J. M. DeMatteis y Mike Zeck, para muchos la mejor de Spider-Man. Completa en un tomo Must Have, para lectores que buscan algo oscuro y adulto.',
+  'spider-man-maximum-carnage-panini': 'El crossover de 1993 en el que Carnage y su «familia» siembran el caos en Nueva York y Spider-Man tiene que aliarse con Venom. Acción noventera de principio a fin.',
+  'spiderman-grandes-poderes-grandes-enemigos-mi-primer-comic': 'Historias cortas y sencillas de Spider-Man de la colección Mi primer cómic de Panini, pensada para los lectores que empiezan. Una buena puerta de entrada a los cómics.',
+  'miles-morales-nuevo-spiderman-vol-1-bendis-panini': 'El origen de Miles Morales por sus creadores, Brian Michael Bendis y Sara Pichelli. El regalo perfecto para quien conoció a Miles en las películas y quiere leer sus cómics.',
+  'el-asombroso-spiderman-39-superior-mi-peor-enemigo': 'El Doctor Octopus se queda con el cuerpo de Peter Parker y decide ser un Spider-Man «superior». El inicio de la etapa de Dan Slott, dentro de la colección Marvel Saga.',
+  'spiderman-azul-jeph-loeb-tim-sale-panini': 'Peter recuerda cómo se enamoró de Gwen Stacy en esta historia de Jeph Loeb y Tim Sale. Más romance que acción: ideal para quien busca el lado más emocional del personaje.',
+  'spider-man-1-tormento-todd-mcfarlane-panini': 'La historia más oscura del Lagarto, escrita y dibujada por Todd McFarlane en 1990. Un clásico del dibujo noventero en un tomo Must Have.',
+  'spiderman-vuelta-a-casa-must-have-panini': 'La primera historia de la etapa de J. Michael Straczynski y John Romita Jr., con Morlun y Ezekiel, en un tomo Must Have. Si te gusta, la etapa continúa en la colección Marvel Saga.',
+  'hasbro-spider-man-bend-flex-15cm': 'Figura flexible de Hasbro de 15 cm: brazos y piernas se doblan para crear cualquier pose. Resistente y pensada para jugar, ideal para los más pequeños.',
+  'hasbro-marvel-legends-duende-verde-deluxe-no-way-home': 'El Duende Verde de Willem Dafoe en No Way Home, en formato deluxe de Marvel Legends y con su armadura original. Para coleccionistas del MCU.',
+  'hasbro-marvel-legends-miles-morales-spider-verse': 'Miles Morales con su traje de Cruzando el Multiverso y la articulación de la línea Marvel Legends a escala de 15 cm. Queda espectacular en cualquier vitrina.',
+  'hasbro-marvel-legends-5-pack-spider-man-universe-exclusivo-amazon': 'Cinco figuras Marvel Legends a escala de 15 cm en un solo pack exclusivo de Amazon. Una forma rápida de empezar o ampliar una colección.',
+  'hasbro-marvel-legends-gamerverse-velocity-suit': 'El Peter Parker de los juegos de Insomniac con el traje Velocity, en la subserie Gamerverse de Marvel Legends. Para quien ha jugado a Marvel\'s Spider-Man.',
+  'hasbro-marvel-legends-spider-gwen-across-spider-verse': 'Spider-Gwen con su diseño de Cruzando el Multiverso en la línea Marvel Legends. Para coleccionistas del Spider-Verso.',
+  'hasbro-marvel-legends-spider-man-estilo-animacion': 'Spider-Man en la línea Marvel Legends con un acabado que imita la animación clásica, a escala de 15 cm y con accesorios. Un guiño para los fans de las series animadas.',
+  'hasbro-marvel-legends-amazing-spider-man-no-way-home': 'El Spider-Man de Andrew Garfield tal como aparece en No Way Home, en la línea Marvel Legends. Para quien se emocionó con su regreso.',
+  'hasbro-spider-man-lanzador-aracnido-supremo': 'Lanzador de muñeca de Hasbro que dispara agua o fluido arácnido y se puede recargar. Para jugar a ser Spider-Man en casa o en el parque.',
+  'hasbro-marvel-spider-man-mascara-electronica-miles-morales': 'Máscara electrónica de Miles Morales de Hasbro, para jugar a ser Spider-Man por casa (y para Carnaval). De las que más éxito tienen entre los fans de Un nuevo universo.',
+  'hasbro-marvel-spider-man-titan-hero-series-30cm': 'La figura grande de toda la vida: un Spider-Man de 30 cm de la línea Titan Hero Series, resistente y a buen precio. Recomendada a partir de 4 años.',
+  'hasbro-marvel-spider-man-spider-mobile-miles-morales': 'Vehículo Spider-Mobile con su figura de Miles Morales, pensado para jugar. Un regalo resistente para los fans más pequeños.',
+  'lego-marvel-76178-daily-bugle-coleccionista': 'El edificio del Daily Bugle en versión LEGO: 3.772 piezas y 25 minifiguras del universo de Spider-Man. El set definitivo para coleccionistas adultos con espacio en la estantería.',
+  'lego-marvel-76226-figura-articulada-spider-man': 'Una figura de Spider-Man construida con piezas LEGO y articulada para ponerla en cualquier pose. Sirve tanto para montar como para exponer.',
+  'lego-marvel-76279-spider-man-coche-carreras': 'Set sencillo de LEGO Marvel con el coche de carreras de Spider-Man y un Duende Verde venomizado. Un buen primer LEGO de superhéroes.',
+  'marvel-spider-man-peluche-hablador-30cm': 'Peluche de Spider-Man con sonidos, blandito y pensado para los más pequeños de la casa.',
+  'marvel-spider-man-miles-morales-gorro-beanie-adulto': 'Gorro de punto para adulto de Concept One inspirado en el traje de Miles Morales. Útil, barato y fácil de acertar en invierno.',
+  'marvel-spider-man-camiseta-manga-larga-nino': 'Camiseta infantil de manga larga con estampado de Spider-Man y licencia de Marvel, en varias tallas.',
+  'marvel-spiderman-logo-camiseta-hombre-algodon': 'Camiseta de estilo retro inspirada en los cómics clásicos de The Amazing Spider-Man. Funciona tanto para fans veteranos como para los que no lo son tanto.',
+  'marvel-pack-2-camisetas-spider-man-nino-manga-corta': 'Dos camisetas infantiles de manga corta de Spider-Man, una azul y otra roja. Un regalo práctico para los más pequeños.',
+  'marvel-spider-man-pack-3-calcetines-nino': 'Tres pares de calcetines infantiles de Spider-Man con licencia de Marvel. El complemento perfecto para otro regalo.',
+  'marvel-spider-man-pijama-nino-conjunto-2-piezas': 'Pijama de Spider-Man de dos piezas para niño. Para los que no se quitarían el traje ni para dormir.',
+  'marvel-spider-man-sudadera-capucha-hombre': 'Sudadera con capucha y diseño de telaraña de Spider-Man, un básico de invierno con licencia de Marvel en varias tallas y colores.',
+};
+
 async function main() {
   let n = 0;
   for (const [oldSlug, fix] of Object.entries(FIXES)) {
@@ -318,9 +372,18 @@ async function main() {
     if (!r.count) console.log(`⚠️  Título sin producto: ${slug}`);
     t += r.count;
   }
-  const missing = await prisma.product.findMany({ where: { slug: { notIn: Object.keys(TITLES) } }, select: { slug: true } });
+  // Los de Brand New Day tienen título propio en add-tienda-brand-new-day.js
+  const missing = await prisma.product.findMany({ where: { slug: { notIn: Object.keys(TITLES) }, NOT: { slug: { contains: 'brand-new-day' } } }, select: { slug: true } });
   missing.forEach((p) => console.log(`⚠️  Sin título nuevo: ${p.slug}`));
   console.log(`${t} títulos unificados`);
+
+  let d = 0;
+  for (const [slug, description] of Object.entries(DESCRIPTIONS)) {
+    const r = await prisma.product.updateMany({ where: { slug }, data: { description, seoDescription: description.slice(0, 155) } });
+    if (!r.count) console.log(`⚠️  Descripción sin producto: ${slug}`);
+    d += r.count;
+  }
+  console.log(`${d} descripciones reescritas`);
   await prisma.$disconnect();
 }
 
