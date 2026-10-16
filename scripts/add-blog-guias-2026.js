@@ -275,7 +275,84 @@ ${figure('34jW8LvjRplM8Pv06cBFDpLlenR', 'Spider-Man colgado boca abajo en Veneci
 `,
 };
 
-const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS];
+// Fuentes (16/10/2026): Wikipedia (sinopsis y reparto), NME, Gizmodo, entrevistas a Jacob Batalon (The Hollywood Reporter / SYFY)
+const FINAL_BND = {
+  slug: 'spider-man-brand-new-day-final-explicado',
+  title: 'Spider-Man: Brand New Day, final explicado (con spoilers)',
+  subtitle: 'Jean Grey, Control de Daños, el disparo del Punisher, el apretón de manos de Ned y la escena poscréditos',
+  excerpt:
+    'Quién es de verdad el villano, qué le pasa a Peter con sus poderes, cómo sobrevive al disparo, si Ned le recuerda y qué significa la escena poscréditos. Todo el final de Brand New Day explicado, con spoilers.',
+  category: 'Películas',
+  readTime: '8 min',
+  publishDate: new Date('2026-10-16'),
+  image: tmdb('subj7knTn4DeS6KS7qI66EQKe9i'),
+  seoTitle: 'Spider-Man: Brand New Day, final explicado (spoilers)',
+  seoDescription:
+    'El final de Spider-Man: Brand New Day explicado: Jean Grey, Control de Daños, el disparo del Punisher, Ned y la escena poscréditos en el espacio.',
+  keywords: ['Brand New Day final explicado', 'Spider-Man Brand New Day final', 'escena poscréditos Brand New Day', 'Jean Grey Spider-Man', 'Ned recuerda a Peter', 'Spider-Man 4 final'],
+  tags: ['Brand New Day', 'final explicado', 'spoilers', 'Tom Holland', 'MCU', 'Jean Grey'],
+  content: `
+<blockquote><strong>Aviso: este artículo contiene spoilers de todo <em>Spider-Man: Brand New Day</em>, incluido el final y la escena poscréditos.</strong> Si todavía no la has visto, te recomendamos nuestro <a href="/blog/spider-man-brand-new-day-taquilla-criticas-sin-spoilers">análisis sin spoilers</a>.</blockquote>
+
+<p><em>Brand New Day</em> es la película más personal del Spider-Man de Tom Holland: menos multiverso y más calle, con un Peter Parker que lleva cuatro años completamente solo. Pero su final deja varias preguntas abiertas a propósito. Vamos por partes.</p>
+
+<h2>Resumen rápido de la trama</h2>
+<p>Cuatro años después del hechizo de <a href="/peliculas/spider-man-no-way-home-2021"><em>No Way Home</em></a>, nadie recuerda a Peter Parker. Él patrulla Nueva York a tiempo completo, se gana la confianza de la detective Jean DeWolff y visita a menudo la tumba de la tía May. Mientras tanto, alguien ataca instalaciones del <strong>Departamento de Control de Daños</strong> buscando algo llamado «V-Max»: un telépata capaz de saltar de cuerpo en cuerpo, que incluso usa al Escorpión (Michael Mando) para escapar de prisión, pero que no consigue entrar en la mente de Peter. Yelena Belova le pasa la información; Bill Metzger, el director de Control de Daños, niega saber nada.</p>
+<p>A la vez, el cuerpo de Peter empieza a cambiar: sus sentidos se disparan y le salen hileras en las muñecas que producen <strong>telaraña orgánica</strong>. Tras perder el control y dar una paliza brutal al Escorpión, acude a Bruce Banner, que le ayuda a construir un <strong>inhibidor</strong> para contener la mutación.</p>
+
+${figure('h84nJuyZrgqXinN3oNDHb8u3JEu', 'Spider-Man contra el Escorpión en una imagen promocional de Brand New Day', 'El Escorpión de Michael Mando vuelve con armadura y cola mecánica: es el primer peón que usa la telépata.')}
+
+<h2>¿Quién es el villano de verdad?</h2>
+<p>La telépata resulta ser <strong>Jean Grey</strong> (Sadie Sink). Pero la película juega a que no es una villana al uso: Jean busca a su hermana <strong>Sara</strong>, también telépata, a la que secuestró Control de Daños para experimentar con ella. Ese «V-Max» que Jean persigue está ligado a los experimentos secretos de Metzger con personas con poderes.</p>
+<p>Por eso hay debate sobre quién es el antagonista. Jean es la amenaza a la que se enfrenta Peter durante casi toda la película —llega a poseer a MJ y a Bruce Banner, desatando a un Hulk salvaje que Spider-Man tiene que calmar—, pero el verdadero villano es <strong>Bill Metzger</strong> (Tramell Tillman), el hombre que la dejó sin hermana. En los cómics, Jean Grey es una de las fundadoras de la Patrulla-X, así que su presentación aquí abre la puerta a los mutantes en el MCU.</p>
+
+<h2>El clímax: Roosevelt Island</h2>
+<p>Control de Daños captura a Jean. En una de sus instalaciones de Roosevelt Island, ella desata un <strong>campo psiónico</strong> que deja paralizados a todos… menos a Peter. Jean le ataca con los ninjas de La Mano, poseídos, y Peter se quita el inhibidor de Banner: sin él, sus poderes mutados le hacen mucho más fuerte, lo justo para vencerlos.</p>
+<p>Cuando llega hasta Jean, ella está a punto de matar a Metzger. Y aquí está la clave de la película: en vez de pelear, <strong>Peter se quita la máscara y la deja entrar en su mente</strong>. Jean ve un recuerdo de la tía May aceptando a Peter tal y como es, con sus poderes. Es el mismo duelo que arrastra Peter desde <em>No Way Home</em>, y es lo que consigue calmarla.</p>
+
+<h2>El disparo del Punisher</h2>
+<p>Justo entonces, Frank Castle (Jon Bernthal) dispara a Jean desde otro edificio. <strong>Peter se interpone y recibe el balazo</strong>. Herido de gravedad, sobrevive porque Jean le mantiene con vida con sus poderes hasta que llega la ayuda.</p>
+<p>Peter despierta en el hospital junto a Castle, que se disculpa. Y en uno de los momentos más celebrados de la película, el Punisher se pone la máscara de Spider-Man y se asoma a la ventana para distraer a todo el mundo mientras Peter sale del hospital sin que nadie descubra quién es.</p>
+
+${figure('qeQJx07rK2xm8SD2sJxFKhE7gs0', 'Peter Parker con el traje de Spider-Man bajo la chaqueta', 'Peter termina la película con una idea clara: ya no quiere ser Spider-Man solo.')}
+
+<h2>¿Qué pasa con Jean y con Control de Daños?</h2>
+<ul>
+  <li><strong>Jean Grey</strong> se marcha de Nueva York. Queda libre, y con la puerta abierta a volver.</li>
+  <li><strong>Bill Metzger</strong> desaparece: sigue en paradero desconocido al final de la película.</li>
+  <li><strong>Control de Daños</strong> queda bajo investigación por sus experimentos.</li>
+</ul>
+
+<h2>¿Y MJ?</h2>
+<p>Es probablemente la parte más amarga del final. Peter le cuenta a MJ la verdad, pero ella <strong>no recupera sus recuerdos</strong>: ahora tiene pareja, y aunque llega a conectar de nuevo con Peter, la película no fuerza una reconciliación. Su historia queda en el aire.</p>
+
+<h2>El final: ¿Ned recuerda a Peter?</h2>
+<p>Tras todo lo vivido, Peter decide que no quiere seguir haciéndolo todo solo. Se encuentra con Ned en una tienda, se presenta… y Ned, casi sin darse cuenta, <strong>le hace su apretón de manos secreto</strong>, el mismo que inventaron en <em>Homecoming</em>. Termina con un «¿Peter?».</p>
+<p>¿Significa que Ned ha recuperado la memoria? La película no lo dice. El propio Jacob Batalon lo ha descrito como un final abierto: puede que Ned solo recuerde el apretón de manos por pura memoria muscular, o que haya un pequeño destello de reconocimiento. Lo que sí está claro es que el hechizo de Strange no ha borrado del todo el vínculo entre los dos amigos.</p>
+
+<h2>La escena poscréditos, explicada</h2>
+<p>Hay una sola escena, al final de los créditos. Vemos la aplicación de Ned para seguir a Spider-Man: primero le sitúa en Nueva York, como siempre, pero de repente falla, el mapa se aleja de la Tierra y <strong>la ubicación de Spider-Man aparece en el espacio</strong>. Después, el rótulo: «Spider-Man volverá».</p>
+<p>No hay explicación oficial, y el director Destin Daniel Cretton ha dejado claro que la escena es ambigua a propósito. Las teorías principales son:</p>
+<ul>
+  <li><strong>Vengadores: Secret Wars</strong> (diciembre de 2027): la más popular. En los cómics, las <em>Secret Wars</em> originales llevaron a Spider-Man a otro planeta, donde consiguió el traje negro que acabó siendo el simbionte.</li>
+  <li><strong>Vengadores: Doomsday</strong> (diciembre de 2026): posible, aunque Tom Holland no figura en el reparto anunciado.</li>
+  <li><strong>El multiverso</strong>: que la aplicación haya localizado a otro Spider-Man, no al nuestro.</li>
+</ul>
+<p>Te contamos todo lo que se sabe de los próximos pasos en <a href="/blog/futuro-spider-man-mcu-despues-brand-new-day">el futuro de Spider-Man en el MCU</a>.</p>
+
+<h2>Lo que deja abierto Brand New Day</h2>
+<ul>
+  <li>La <strong>mutación</strong> de Peter: sus poderes han evolucionado y la telaraña ya es orgánica. ¿Seguirá cambiando?</li>
+  <li><strong>Jean Grey</strong> y la llegada de los mutantes.</li>
+  <li><strong>Bill Metzger</strong>, en libertad.</li>
+  <li>La relación de Peter con <strong>Ned y MJ</strong>, que por fin puede reconstruirse.</li>
+  <li>Y, claro, <strong>dónde está Spider-Man</strong> en esa escena poscréditos.</li>
+</ul>
+<p>¿Te has perdido algún guiño? Repasa los <a href="/blog/brand-new-day-trailer-easter-eggs-detalles-ocultos">detalles ocultos de los tráileres</a>, mira en qué <a href="/blog/orden-ver-peliculas-spider-man">orden ver todas las películas de Spider-Man</a> o consulta <a href="/peliculas/spider-man-brand-new-day-2026">la ficha de la película</a>.</p>
+`,
+};
+
+const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS, FINAL_BND];
 
 (async () => {
   for (const p of POSTS) {
