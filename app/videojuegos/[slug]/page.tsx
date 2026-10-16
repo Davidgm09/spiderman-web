@@ -69,8 +69,12 @@ export default async function GamePage({ params }: Props) {
 
   const relatedGames = await gameService.getFeatured(4, slug).catch(() => [])
 
-  const platformStr = Array.isArray(game.platform) ? game.platform.join(', ') : game.platform ?? ''
-  const platformFirst = Array.isArray(game.platform) ? game.platform[0] : game.platform ?? 'PS5'
+  // RAWG suele poner el PC primero aunque el juego saliera antes en consola: PC y Mac al final
+  const platforms = Array.isArray(game.platform)
+    ? [...game.platform].sort((x, y) => Number(/^(PC|macOS)$/.test(x)) - Number(/^(PC|macOS)$/.test(y)))
+    : game.platform ? [game.platform] : []
+  const platformStr = platforms.join(', ')
+  const platformFirst = platforms[0] ?? 'PS5'
 
   const screenshotImages = parseJson<GalleryImage>(game.screenshotImages)
   const characterImages = parseJson<CharacterImage>(game.characterImages)

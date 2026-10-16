@@ -121,7 +121,7 @@ export default async function BlogPostPage({ params }: Props) {
       <ViewTracker slug={post.slug} />
 
       {/* Hero */}
-      <section className="relative h-[55vh] min-h-[400px] flex items-end overflow-hidden">
+      <section className="relative min-h-[55vh] pt-24 flex items-end overflow-hidden">
         {post.image && (
           <Image
             src={post.image}

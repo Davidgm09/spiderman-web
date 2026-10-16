@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Twitter, Facebook, Link, Check, Send, Share2, MessageCircle } from 'lucide-react'
+import { Twitter, Facebook, Link, Check, Send, Share2, Phone, MessagesSquare } from 'lucide-react'
 import { trackEvent } from '@/lib/analytics'
 
 interface ShareButtonsProps {
@@ -23,11 +23,11 @@ export function ShareButtons({ url, title, compact = false }: ShareButtonsProps)
   const encodedTitle = encodeURIComponent(title)
 
   const networks = [
-    { id: 'whatsapp', label: 'WhatsApp', icon: Send, color: 'bg-green-600 hover:bg-green-700', href: `https://api.whatsapp.com/send?text=${encodedTitle}%20${encodedUrl}` },
+    { id: 'whatsapp', label: 'WhatsApp', icon: Phone, color: 'bg-green-600 hover:bg-green-700', href: `https://api.whatsapp.com/send?text=${encodedTitle}%20${encodedUrl}` },
     { id: 'telegram', label: 'Telegram', icon: Send, color: 'bg-sky-500 hover:bg-sky-600', href: `https://t.me/share/url?url=${encodedUrl}&text=${encodedTitle}` },
     { id: 'x', label: 'X', icon: Twitter, color: 'bg-black hover:bg-gray-900 border border-white/10', href: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}` },
     { id: 'facebook', label: 'Facebook', icon: Facebook, color: 'bg-blue-600 hover:bg-blue-700', href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}` },
-    { id: 'reddit', label: 'Reddit', icon: MessageCircle, color: 'bg-orange-600 hover:bg-orange-700', href: `https://www.reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}` },
+    { id: 'reddit', label: 'Reddit', icon: MessagesSquare, color: 'bg-orange-600 hover:bg-orange-700', href: `https://www.reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}` },
   ]
 
   const track = (red: string) => trackEvent('compartir', { red, url })
