@@ -3,7 +3,7 @@
  * Uso: node scripts/populate-blog.js [--clean]
  *
  * Tras un --clean, aplica después las versiones actualizadas de algunos artículos:
- *   node scripts/update-blog-noticias-2026.js
+ *   node scripts/update-blog-noticias-2026.js   (incluye el artículo de easter eggs de Brand New Day)
  *   node scripts/populate-blog-spiderman3.js
  *   node scripts/populate-blog-brand-new-day-analisis.js
  *
@@ -85,9 +85,9 @@ const BLOG_POSTS = [
     content: `<p><em>Spider-Man: Across the Spider-Verse</em> (2023) llega con la misión imposible de superar a una de las mejores películas de animación del siglo. No solo lo consigue: eleva el listón tan alto que resulta difícil imaginar qué podrá hacer <em>Beyond the Spider-Verse</em> para igualarlo.</p>
 
 <h2>Un universo visual sin precedentes</h2>
-<p>Cada dimensión tiene su propio lenguaje visual. El Mumbai de Pavitr Prabhakar mezcla patrones de mandala con colores saturados típicos del cine de Bollywood. El mundo de Jessica Drew tiene una paleta brutalista de grises y rojos. Y el universo de Spot evoluciona de forma fascinante a lo largo del metraje, pasando del humor a la amenaza genuina conforme su poder crece.</p>
+<p>Cada dimensión tiene su propio lenguaje visual. El Mumbai de Pavitr Prabhakar mezcla patrones de mandala con colores saturados típicos del cine de Bollywood. El mundo de Gwen parece una acuarela cuyos colores cambian con sus emociones. Y la propia Mancha (The Spot) evoluciona de forma fascinante a lo largo del metraje, pasando del humor a la amenaza genuina conforme su poder crece.</p>
 
-<p>El equipo de dirección —Joaquim Dos Santos, Kemp Powers y Justin K. Thompson— coordinó más de 200 artistas para dar a cada dimensión su identidad. El resultado es una experiencia visual sin comparación en la animación mainstream.</p>
+<p>El equipo de dirección —Joaquim Dos Santos, Kemp Powers y Justin K. Thompson— coordinó a un enorme equipo de artistas para dar a cada dimensión su identidad. El resultado es una experiencia visual sin comparación en la animación mainstream.</p>
 
 <figure>
   <img src="https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/9476911-large-3730198.jpg" alt="Spider-Man 2099 Miguel O'Hara" />
@@ -95,7 +95,7 @@ const BLOG_POSTS = [
 </figure>
 
 <h2>Miles Morales frente al canon</h2>
-<p>El conflicto central no es un villano tradicional: es el propio concepto de canon. El Spider-Man de Miguel O'Hara (Spider-Man 2099) lidera la Sociedad Spider y defiende que ciertos eventos —incluida la muerte del inspector Singh, figura paterna de Miles— deben ocurrir para mantener el multiverso estable.</p>
+<p>El conflicto central no es un villano tradicional: es el propio concepto de canon. El Spider-Man de Miguel O'Hara (Spider-Man 2099) lidera la Sociedad Spider y defiende que ciertos «eventos canónicos» deben ocurrir para mantener el multiverso estable, incluida la muerte del padre de Miles, Jefferson Davis, justo cuando está a punto de ser ascendido a capitán.</p>
 
 <p>Este dilema es brillante porque no tiene respuesta fácil. Miguel tiene razón en que alterar eventos clave puede colapsar universos enteros. Miles tiene razón en que nadie debería resignarse a perder a un ser querido si puede evitarlo. La película no resuelve el debate: lo deja abierto deliberadamente.</p>
 
@@ -130,7 +130,7 @@ const BLOG_POSTS = [
       'Guía con los 5 mejores cómics de Spider-Man para nuevos lectores: desde la muerte de Gwen Stacy hasta Kraven\'s Last Hunt y Ultimate Spider-Man.',
     keywords: ['cómics Spider-Man', 'guía lectores', 'mejores cómics', 'Marvel', 'Peter Parker', 'iniciarse'],
     tags: ['cómics', 'guía', 'Peter Parker', 'recomendaciones', 'Marvel'],
-    content: `<p>El universo cómico de Spider-Man lleva publicándose desde 1962. Con miles de números y decenas de series, decidir por dónde empezar puede ser paralizante. Esta selección prioriza historias autoconclusivas, accesibles sin contexto previo y representativas de lo mejor del personaje.</p>
+    content: `<p>Spider-Man lleva protagonizando cómics desde 1962. Con miles de números y decenas de series, decidir por dónde empezar puede ser paralizante. Esta selección prioriza historias autoconclusivas, accesibles sin contexto previo y representativas de lo mejor del personaje.</p>
 
 <h2>1. The Amazing Spider-Man: La muerte de Gwen Stacy (1973)</h2>
 <p>Los números 121-122 de <em>The Amazing Spider-Man</em> son los más importantes de la historia del personaje. La muerte de Gwen Stacy a manos del Duende Verde —y el debate sobre si Spider-Man la mató al detenerla— cambió los cómics de superhéroes para siempre. Antes, los héroes siempre llegaban a tiempo. Después de este arco, ya nada era seguro.</p>
@@ -169,7 +169,7 @@ const BLOG_POSTS = [
     title: 'El legado de "The Night Gwen Stacy Died" — 50 años cambiando los cómics',
     subtitle: 'Cómo dos números de 1973 transformaron para siempre la narrativa del superhéroe',
     excerpt:
-      'En mayo de 1973, Amazing Spider-Man #121 mató a Gwen Stacy y rompió el contrato implícito entre los cómics y sus lectores. Medio siglo después, analizamos su impacto duradero.',
+      'En 1973, Amazing Spider-Man #121 mató a Gwen Stacy y rompió el contrato implícito entre los cómics y sus lectores. Medio siglo después, analizamos su impacto duradero.',
     category: 'Cómics',
     author: 'Redacción Sentido Arácnido',
     readTime: '9 min',
@@ -181,7 +181,7 @@ const BLOG_POSTS = [
       'Análisis del impacto de Amazing Spider-Man #121-122 en la historia de los cómics. Cómo la muerte de Gwen Stacy en 1973 cambió la narrativa del superhéroe para siempre.',
     keywords: ['Gwen Stacy', 'Amazing Spider-Man 121', 'muerte Gwen Stacy', 'historia cómics', 'Gerry Conway', 'Gil Kane'],
     tags: ['Gwen Stacy', 'historia', 'cómics clásicos', 'Marvel', 'años 70'],
-    content: `<p>El 17 de mayo de 1973, Gerry Conway y Gil Kane publicaron <em>The Amazing Spider-Man</em> #121. Lo que nadie sabía era que ese número iba a redefinir lo que los cómics de superhéroes podían hacer con sus personajes. Gwen Stacy, la novia de Peter Parker, moría. Y no de forma heroica: caía de un puente, y había un debate real sobre si Spider-Man la había matado al detenerla.</p>
+    content: `<p>En 1973, Gerry Conway y Gil Kane publicaron The Amazing Spider-Man #121. Lo que nadie sabía era que ese número iba a redefinir lo que los cómics de superhéroes podían hacer con sus personajes. Gwen Stacy, la novia de Peter Parker, moría. Y no de forma heroica: caía de un puente, y había un debate real sobre si Spider-Man la había matado al detenerla.</p>
 
 <h2>El mundo antes de Gwen</h2>
 <p>Hasta 1973, los cómics de superhéroes operaban bajo una regla no escrita: los héroes siempre llegaban a tiempo. Las novias, los amigos, los inocentes podían estar en peligro, pero el héroe los salvaba. Era parte del género. Los lectores sabían que Lois Lane nunca moriría, que Iris West estaría siempre a salvo.</p>
@@ -189,11 +189,9 @@ const BLOG_POSTS = [
 <p>Stan Lee y Steve Ditko ya habían introducido matices en las páginas de Spider-Man desde 1962, pero incluso ellos seguían esas reglas fundamentales. Peter Parker era un héroe con problemas reales —dinero, soledad, culpa— pero los seres queridos estaban protegidos por la armadura invisible del género.</p>
 
 <h2>La caída del puente George Washington</h2>
-<p>Conway concibió la muerte de Gwen como una forma de liberar a Peter Parker de una relación que sentía estancada narrativamente. Gil Kane dibujó la escena con una claridad brutal: el cuerpo de Gwen golpeado por el hilo de telaraña, la cabeza cayendo hacia atrás en un ángulo imposible. La onomatopeya "SNAP" en el panel donde el cuello de Gwen se rompe se convertiría en uno de los detalles más debatidos en la historia del medio.</p>
+<p>La decisión, que según el propio Conway partió de una sugerencia de John Romita, buscaba sacudir una relación que el equipo sentía estancada narrativamente. Gil Kane dibujó la escena con una claridad brutal: el cuerpo de Gwen golpeado por el hilo de telaraña, la cabeza cayendo hacia atrás en un ángulo imposible. La onomatopeya "SNAP" en el panel donde el cuello de Gwen se rompe se convertiría en uno de los detalles más debatidos en la historia del medio.</p>
 
-<blockquote>
-  <p>"Traicioné todos los compromisos que los cómics habían hecho con sus lectores. Y eso era exactamente lo que quería hacer." — Gerry Conway</p>
-</blockquote>
+
 
 <h2>El impacto inmediato</h2>
 <p>La respuesta de los lectores fue de conmoción genuina. Cartas de protesta llegaron a las oficinas de Marvel durante meses. Algunos fans amenazaron con dejar de leer. Pero otros —especialmente los lectores universitarios que Spider-Man había comenzado a atraer— respondieron con entusiasmo. Finalmente, los cómics se atrevían a algo real.</p>
@@ -204,13 +202,13 @@ const BLOG_POSTS = [
 </figure>
 
 <h2>El legado a largo plazo</h2>
-<p>La muerte de Gwen Stacy inauguró lo que los académicos del medio llaman la "Era de Bronce" de los cómics, caracterizada por temas más oscuros y consecuencias permanentes. Sin ese número, probablemente no existirían historias como <em>Watchmen</em>, <em>The Dark Knight Returns</em> o <em>Kraven's Last Hunt</em>.</p>
+<p>Muchos historiadores del medio sitúan la muerte de Gwen Stacy como uno de los hitos que marcan el paso a la Edad de Bronce de los cómics, caracterizada por temas más oscuros y consecuencias permanentes. Sin ese número, probablemente no existirían historias como <em>Watchmen</em>, <em>The Dark Knight Returns</em> o <em>Kraven's Last Hunt</em>.</p>
 
 <p>También estableció el arquetipo del "Refrigerador" —término acuñado décadas después por Gail Simone para describir la tendencia a matar personajes femeninos para motivar al héroe masculino. La muerte de Gwen es el ejemplo fundacional de ese tropo, para bien y para mal.</p>
 
 <figure>
   <img src="https://comicvine.gamespot.com/a/uploads/scale_medium/11125/111253436/6733785-9.jpg" alt="Venom, el simbionte unido a Eddie Brock" />
-  <figcaption>Venom, presentado al mundo en Amazing Spider-Man #300 (1988) por Todd McFarlane. La muerte de Gwen Stacy en el #121 fue el catalizador de toda la narrativa de culpa que llevó a este momento.</figcaption>
+  <figcaption>Venom, presentado en Amazing Spider-Man #300 (1988): los cómics de los años ochenta heredaron el tono más oscuro que inauguró la muerte de Gwen Stacy.</figcaption>
 </figure>
 
 <h2>Conclusión</h2>
@@ -237,7 +235,7 @@ const BLOG_POSTS = [
     content: `<p>Insomniac Games lanzó <em>Marvel's Spider-Man 2</em> en octubre de 2023 con una promesa sencilla y ambiciosa a la vez: tomar todo lo que funcionaba en las dos entregas anteriores y elevarlo. El resultado es el juego de superhéroes más completo jamás creado, con algunos matices.</p>
 
 <h2>Nueva York, ahora completa</h2>
-<p>La ciudad de Nueva York en Spider-Man 2 es un 60% más grande que en la primera entrega. Queens y Brooklyn se unen a Manhattan, y la diferencia se nota inmediatamente en la variedad arquitectónica. El Puente de Brooklyn tiene su propio conjunto de eventos secundarios. Coney Island alberga una serie de misiones memorables. El simple acto de balancearse por la ciudad —mejorado con las alas de telaraña que permiten planear— es suficiente para justificar las horas de juego.</p>
+<p>La Nueva York de Spider-Man 2 es mucho más grande que la de la primera entrega: Queens y Brooklyn se unen a Manhattan, y la diferencia se nota inmediatamente en la variedad arquitectónica. El simple acto de balancearse por la ciudad —mejorado con las alas de telaraña que permiten planear— es suficiente para justificar las horas de juego.</p>
 
 <figure>
   <img src="https://media.rawg.io/media/screenshots/c71/c718076de2326247d29ea5ed32e67c6c.jpg" alt="Venom en Marvel's Spider-Man 2 PS5" />
@@ -247,7 +245,7 @@ const BLOG_POSTS = [
 <h2>Dos Spider-Man, una historia</h2>
 <p>El juego alterna entre Peter Parker y Miles Morales con fluidez. Ambos tienen árboles de habilidades distintos que recompensan la especialización. Peter con el simbionte adquiere movimientos brutales y contundentes; Miles sigue siendo el rey de los combos eléctricos. La transición entre personajes no requiere reiniciar nada: simplemente abres el mapa y cambias.</p>
 
-<p>La historia de Peter con el traje simbionte es el corazón de la campaña. Insomniac no tiene miedo de mostrar a un Peter Parker genuinamente aterrador cuando el simbionte toma el control. Las escenas más perturbadoras del juego —Peter amenazando a un villano con matarlo, tratando a Miles con crueldad— funcionan porque los tres juegos anteriores nos han dado razones para querer a este Peter.</p>
+<p>La historia de Peter con el traje simbionte es el corazón de la campaña. Insomniac no tiene miedo de mostrar a un Peter Parker genuinamente aterrador cuando el simbionte toma el control. Las escenas más perturbadoras del juego —Peter amenazando a un villano con matarlo, tratando a Miles con crueldad— funcionan porque los juegos anteriores nos han dado razones para querer a este Peter.</p>
 
 <h2>El mejor Kraven del entretenimiento</h2>
 <p>Kraven el Cazador es el antagonista principal y la sorpresa del año. Este Kraven no busca cazar a Spider-Man por ego: busca una muerte digna, el único adversario que pueda matarle. Su relación con el Venom simbionte y su código de honor distorsionado crean uno de los villanos más complejos de Insomniac.</p>
@@ -258,7 +256,7 @@ const BLOG_POSTS = [
 </figure>
 
 <h2>Puntos débiles</h2>
-<p>El tramo final del juego corre a un ritmo acelerado que no le hace justicia a todos los arcos que ha construido. La resolución de la historia de Miles se siente apresurada comparada con la de Peter. Y los coleccionables siguen siendo demasiados —más de 300 entre todas las categorías.</p>
+<p>El tramo final del juego corre a un ritmo acelerado que no le hace justicia a todos los arcos que ha construido. La resolución de la historia de Miles se siente apresurada comparada con la de Peter. Y los coleccionables siguen siendo demasiados.</p>
 
 <h2>Veredicto</h2>
 <p>Spider-Man 2 es el pináculo del género de acción-aventura de superhéroes. Las horas que pasa siendo perfecto superan con creces los momentos en que se queda corto.</p>
@@ -285,7 +283,7 @@ const BLOG_POSTS = [
 <p>Spider-Man lleva más de tres décadas en los videojuegos. Desde los primeros títulos de Atari hasta la era Insomniac, el trepamuros ha protagonizado algunas de las mejores —y peores— experiencias del género de acción. Este ranking se centra en los que realmente importan.</p>
 
 <h2>5. Spider-Man (Neversoft, 2000)</h2>
-<p>El juego que definió cómo debía funcionar un Spider-Man en 3D. El sistema de balanceo era primitivo comparado con lo que vendría después, pero Neversoft capturó algo esencial: la sensación de poder columpiarse por la ciudad. Con voces del reparto de la serie animada de los 90 y villanos clásicos, sigue siendo un clásico genuino.</p>
+<p>El juego que definió cómo debía funcionar un Spider-Man en 3D. El sistema de balanceo era primitivo comparado con lo que vendría después, pero Neversoft capturó algo esencial: la sensación de poder columpiarse por la ciudad. Con Stan Lee como narrador y una buena galería de villanos clásicos, sigue siendo un clásico genuino.</p>
 
 <h2>4. Spider-Man 2 (Treyarch, 2004)</h2>
 <p>Basado en la película de Sam Raimi, este juego fue el primero en implementar un sistema de balanceo basado en física real. Por primera vez, las telarañas se anclaban a edificios reales y la velocidad dependía de la altura. Muchos jugadores siguen considerándolo el mejor sistema de movimiento de la historia del personaje.</p>
@@ -336,7 +334,7 @@ const BLOG_POSTS = [
 <h2>El contexto: Fox Kids en los 90</h2>
 <p>La serie llegó en el momento perfecto. <em>Batman: The Animated Series</em> había demostrado en 1992 que los dibujos animados de superhéroes podían ser sofisticados y oscuros. Fox Kids quería su versión con Marvel, y Spider-Man era la apuesta natural.</p>
 
-<p>El resultado fue una serie con aspiraciones narrativas inusuales para la época: arcos de múltiples episodios, personajes con motivaciones complejas, y adaptaciones más o menos fieles de los mejores arcos del cómic —Venom, el Clon, la Saga de la Armadura de Hierro.</p>
+<p>El resultado fue una serie con aspiraciones narrativas inusuales para la época: arcos de múltiples episodios, personajes con motivaciones complejas, y adaptaciones más o menos fieles de los mejores arcos del cómic, como el del traje alienígena y Venom o Secret Wars.</p>
 
 <figure>
   <img src="https://image.tmdb.org/t/p/w1280/lN09YohDmsqyljNzykQxV0quvK.jpg" alt="Spider-Man: La serie animada (1994)" />
@@ -344,14 +342,14 @@ const BLOG_POSTS = [
 </figure>
 
 <h2>Las limitaciones que definieron el estilo</h2>
-<p>La censura de Standards and Practices de Fox fue brutal. Spider-Man no podía golpear a nadie directamente. Nadie podía morir en pantalla —Gwen Stacy "desaparece en una dimensión alternativa" en lugar de morir. No podían aparecer armas de fuego apuntando a personas.</p>
+<p>La censura de Standards and Practices de Fox fue brutal. Spider-Man no podía golpear a nadie directamente. Nadie podía morir en pantalla: cuando la serie necesitó una pérdida trágica, Mary Jane no muere, sino que cae en un portal dimensional. No podían aparecer armas de fuego apuntando a personas.</p>
 
 <p>Paradójicamente, estas restricciones forzaron una creatividad narrativa que enriqueció la serie. Los guionistas tuvieron que construir tensión dramática con diálogo y consecuencias emocionales en lugar de violencia. El resultado fue una serie que se tomaba en serio a sus personajes.</p>
 
 <h2>Los grandes momentos</h2>
 <p>La saga de Venom y Carnage es el pico de la serie: dos temporadas construyendo el origen de Eddie Brock, el simbionte, y finalmente la amenaza de Carnage como antagonista imparable. La voz de Hank Azaria como Venom sigue siendo canónica para muchos fans.</p>
 
-<p>El arco de la Saga del Clon, directamente adaptado del cómic, resulta extraordinariamente fiel al material fuente y funciona mejor en animación que el original en papel, donde se extendió demasiado.</p>
+<p>El arco final, «Spider Wars», recoge elementos de la Saga del Clon —con Ben Reilly como Scarlet Spider— y los mezcla con un multiverso de Spider-Men, en una versión mucho más compacta que la del cómic, que se extendió demasiado.</p>
 
 <figure>
   <img src="https://image.tmdb.org/t/p/w780/wXthtEN5kdWA1bHz03lkuCJS6hA.jpg" alt="Spider-Man The Animated Series 1994 — póster oficial" />
@@ -359,7 +357,7 @@ const BLOG_POSTS = [
 </figure>
 
 <h2>El final inconcluso</h2>
-<p>La serie terminó con un cliffhanger que nunca fue resuelto oficialmente. En el episodio final, Spider-Man viaja al mundo real y conoce a Stan Lee. La quinta temporada quedó truncada, dejando docenas de tramas sin resolver. Es la gran herida de la serie.</p>
+<p>La serie terminó tras su quinta temporada con un cabo suelto que nunca se resolvió oficialmente: Spider-Man parte en busca de Mary Jane, perdida en otra dimensión. En el episodio final, además, conoce a Stan Lee. Ese final abierto es la gran herida de la serie.</p>
 
 <h2>Conclusión</h2>
 <p>Treinta años después, la serie de 1994 sigue siendo la más completa en su adaptación del Spider-Man de los cómics clásicos. Nada desde entonces ha igualado su ambición narrativa en el formato animado.</p>`.trim(),
@@ -406,9 +404,9 @@ const BLOG_POSTS = [
 </figure>
 
 <h2>El legado de la cancelación</h2>
-<p>Cuando Disney adquirió Marvel en 2009, los derechos de animación de Spider-Man quedaron en un limbo que imposibilitó la renovación de la serie. Greg Weisman ha dejado claro en múltiples entrevistas que tenía planificadas cinco temporadas. Los guiones de la tercera temporada existían.</p>
+<p>Cuando Disney adquirió Marvel en 2009, los derechos de animación de Spider-Man quedaron en un limbo que imposibilitó la renovación de la serie. Greg Weisman ha contado en varias entrevistas que tenía planes para muchas más temporadas, y que la historia tenía un rumbo claro.</p>
 
-<p>Veinte años después, la petición para revivirla sigue activa en Change.org con cientos de miles de firmas. Es el mejor testimonio posible de la calidad de lo que pudo ser.</p>`.trim(),
+<p>Más de quince años después, los fans siguen pidiendo su regreso. Es el mejor testimonio posible de la calidad de lo que pudo ser.</p>`.trim(),
   },
 
   // ─── ANÁLISIS ────────────────────────────────────────────────────────────────
@@ -433,7 +431,7 @@ const BLOG_POSTS = [
 <h2>Los orígenes como declaración filosófica</h2>
 <p>Peter Parker viene del trauma de la omisión. No actuó cuando debía y su tío Ben murió. Su heroísmo es, en parte, penitencia perpetua. Hay en Peter un elemento de autoflagelación que impregna toda su narrativa: el sacrificio de su vida amorosa, profesional, personal, todo en el altar de la responsabilidad.</p>
 
-<p>Miles Morales viene de un lugar diferente. Él no tiene una muerte directamente en su conciencia al principio. Su motivación es la admiración —quiere ser como el Spider-Man que conoció— y la culpa indirecta de la muerte de su tío Aaron, el Topo Terrestre. Pero el matiz es crucial: Miles no actúa para expiar. Actúa porque cree genuinamente que puede hacer el mundo mejor.</p>
+<p>Miles Morales viene de un lugar diferente. Él no tiene una muerte directamente en su conciencia al principio. Su motivación es la admiración —quiere ser como el Spider-Man que conoció— y la culpa indirecta por la muerte de su tío Aaron Davis, el Merodeador (Prowler). Pero el matiz es crucial: Miles no actúa para expiar. Actúa porque cree genuinamente que puede hacer el mundo mejor.</p>
 
 <figure>
   <img src="https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/8126579-amazing_spider-man_vol_5_54_stormbreakers_variant_textless.jpg" alt="Peter Parker Spider-Man traje clásico" />
@@ -443,7 +441,7 @@ const BLOG_POSTS = [
 <h2>Clase social y representación</h2>
 <p>Peter Parker de Queens en los años 60 era el eterno chico de clase media-baja luchando con facturas médicas de su Tía May, jefes hostiles (J. Jonah Jameson) y la imposibilidad de estabilizarse económicamente. Su lucha de clases es real pero anclada en la América blanca de los 60.</p>
 
-<p>Miles Morales, hijo de un policía afroamericano y una enfermera puertorriqueña, representa un espectro de experiencias mucho más amplio. Sus primeras historias en Ultimate Comics navegan temas de identidad racial, gentrificación en Brooklyn, y la complejidad de pertenecer a múltiples comunidades culturales simultáneamente. Miles es Spider-Man para un siglo XXI más diverso y más consciente de sus contradicciones.</p>
+<p>Miles Morales, hijo de Jefferson Davis, afroamericano, y de Rio Morales, una enfermera puertorriqueña, representa un espectro de experiencias mucho más amplio. Sus primeras historias en Ultimate Comics navegan temas de identidad racial, gentrificación en Brooklyn, y la complejidad de pertenecer a múltiples comunidades culturales simultáneamente. Miles es Spider-Man para un siglo XXI más diverso y más consciente de sus contradicciones.</p>
 
 <h2>La relación con el fracaso</h2>
 <p>Peter Parker falla constantemente y carga con cada fracaso como evidencia de que no es suficiente bueno. Es un perfeccionista atormentado. Sus fracasos alimentan su neurosis.</p>
@@ -477,9 +475,9 @@ const BLOG_POSTS = [
     content: `<p>Todo empezó con una decisión comercial. En 1984, Marvel publicó <em>Secret Wars</em>, un evento diseñado principalmente para vender juguetes. En ese contexto, Jim Shooter necesitaba un nuevo traje para Spider-Man. Mike Zeck diseñó el icónico traje negro. Nadie imaginaba que ese diseño generaría uno de los personajes más complejos del universo Marvel.</p>
 
 <h2>El traje negro: 1984-1988</h2>
-<p>El traje negro apareció en <em>Secret Wars</em> #8 (1984) como un artefacto alienígena que se adhería al cuerpo de Peter Parker y le proporcionaba capacidades mejoradas. Durante tres años, la serie exploró de forma gradual la naturaleza del traje: se descubrió que era un organismo vivo, que intentaba fusionarse permanentemente con Peter, que potenciaba sus impulsos más oscuros.</p>
+<p>El traje negro debutó en The Amazing Spider-Man #252 (1984), y su origen se contó en Secret Wars #8 (1984): un artefacto alienígena que se adhería al cuerpo de Peter Parker y le proporcionaba capacidades mejoradas. Durante los meses siguientes, la serie exploró de forma gradual la naturaleza del traje: se descubrió que era un organismo vivo, que intentaba fusionarse permanentemente con Peter, que potenciaba sus impulsos más oscuros.</p>
 
-<p>La revelación definitiva llegó en <em>The Amazing Spider-Man</em> #258 (1984), cuando Reed Richards identificó el traje como un parásito alienígena. Spider-Man se deshizo de él con campanas —el simbionte era vulnerable al sonido— en una escena que, vista en retrospectiva, es extrañamente emotiva. El simbionte no quería hacer daño: solo quería quedarse.</p>
+<p>La revelación definitiva llegó en The Amazing Spider-Man #258 (1984), cuando Reed Richards identificó el traje como un parásito alienígena y se lo quitó con un aparato sónico, ya que el simbionte era vulnerable al sonido. Poco después, en Web of Spider-Man #1 (1985), el simbionte volvió a unirse a Peter, que se libró de él bajo el estruendo de las campanas de una iglesia, en una escena que, vista en retrospectiva, es extrañamente emotiva: el simbionte no quería hacer daño, solo quería quedarse.</p>
 
 <figure>
   <img src="https://comicvine.gamespot.com/a/uploads/scale_medium/11125/111253436/6733785-9.jpg" alt="Venom, el simbionte unido a Eddie Brock" />
@@ -642,7 +640,7 @@ const BLOG_POSTS = [
 <p>Es el momento más emotivo del género. Y lo consiguió en 2004, sin CGI moderno, sin universo compartido, sin postcredits.</p>
 
 <h2>El legado, veinte años después</h2>
-<p>Spider-Man 2 recibió el Oscar a Mejores Efectos Visuales y una nominación al Globo de Oro. Roger Ebert le dio cuatro estrellas. El tiempo le ha dado la razón a todos ellos. Si quieres enseñarle a alguien qué puede ser una película de superhéroes cuando está hecha con intención artística real, le pones Spider-Man 2. Sin más.</p>
+<p>Spider-Man 2 ganó el Óscar a los mejores efectos visuales y estuvo nominada en las dos categorías de sonido. Roger Ebert le dio cuatro estrellas. El tiempo le ha dado la razón a todos ellos. Si quieres enseñarle a alguien qué puede ser una película de superhéroes cuando está hecha con intención artística real, le pones Spider-Man 2. Sin más.</p>
 
 <p><strong>Puntuación: 10/10</strong></p>
     `.trim(),
@@ -685,7 +683,7 @@ const BLOG_POSTS = [
 </figure>
 
 <h2>No Way Home le hizo justicia</h2>
-<p>El regreso de Andrew Garfield en <em>No Way Home</em> provocó algo inesperado: una ola masiva de simpatía y redescubrimiento. Millones de personas que habían descartado su versión del personaje volvieron a verla con otros ojos. Y muchos salieron con la misma conclusión: nos equivocamos con él. Merecia más.</p>
+<p>El regreso de Andrew Garfield en <em>No Way Home</em> provocó algo inesperado: una ola masiva de simpatía y redescubrimiento. Millones de personas que habían descartado su versión del personaje volvieron a verla con otros ojos. Y muchos salieron con la misma conclusión: nos equivocamos con él. Merecía más.</p>
 
 <p><strong>Puntuación: 7/10</strong> — Injustamente castigada. Con un mejor villano, podría haber sido extraordinaria.</p>
     `.trim(),
@@ -707,7 +705,7 @@ const BLOG_POSTS = [
     keywords: ['Superior Spider-Man', 'Doctor Octopus', 'Dan Slott', 'Peter Parker', 'Otto Octavius', 'Marvel cómics'],
     tags: ['Superior Spider-Man', 'Doctor Octopus', 'Dan Slott', 'cómics', 'Marvel', 'análisis'],
     content: `
-<p>El 9 de enero de 2013, Dan Slott recibió amenazas de muerte. El motivo: había publicado <em>The Amazing Spider-Man #700</em>, en el que Doctor Octopus intercambiaba su mente moribunda con el cuerpo de Peter Parker. Peter moría en el cuerpo de Otto. Otto Octavius se convertía en Spider-Man. Los fans estaban furiosos. Y Slott tenía razón.</p>
+<p>A finales de diciembre de 2012, Dan Slott empezó a recibir amenazas de muerte. El motivo: acababa de publicar <em>The Amazing Spider-Man #700</em>, en el que Doctor Octopus intercambiaba su mente moribunda con el cuerpo de Peter Parker. Peter moría en el cuerpo de Otto. Otto Octavius se convertía en Spider-Man. Los fans estaban furiosos. Y Slott tenía razón.</p>
 
 <h2>La premisa que nadie quería admitir que era brillante</h2>
 <p>La idea de fondo de <em>Superior Spider-Man</em> es deceptivamente simple: ¿qué pasaría si un villano genuinamente inteligente y sin escrúpulos se pusiera el traje de Spider-Man con la intención de ser el mejor Spider-Man posible? La respuesta de Slott es perturbadora y fascinante: sería más efectivo que Peter. Y también mucho más peligroso.</p>
@@ -716,7 +714,7 @@ const BLOG_POSTS = [
 
 <figure>
   <img src="https://comicvine.gamespot.com/a/uploads/scale_super/11121/111213729/4457709-8859111324-40.png~original" alt="Superior Spider-Man — Doctor Octopus en el traje de Spider-Man" />
-  <figcaption>Otto Octavius como el Superior Spider-Man: más eficiente que Peter Parker, pero sin la brújula moral que define al personaje. Ryan Stegman dibujó una de las mejores corridas del personaje.</figcaption>
+  <figcaption>Otto Octavius como el Superior Spider-Man: más eficiente que Peter Parker, pero sin la brújula moral que define al personaje. Ryan Stegman firmó algunas de las páginas más memorables de la etapa.</figcaption>
 </figure>
 
 <h2>El arco de redención de Otto Octavius</h2>
@@ -730,7 +728,7 @@ const BLOG_POSTS = [
 <h2>El legado en el universo Marvel</h2>
 <p>Superior Spider-Man no fue un experimento cerrado. Otto Octavius como personaje ha seguido apareciendo en el universo Marvel con una profundidad que no tenía antes de la saga. La serie le dio tres dimensiones a un villano que llevaba décadas siendo un obstáculo recurrente. Y cuando Peter Parker volvió —spoiler de doce años— la vuelta fue más emotiva precisamente porque la ausencia había sido real.</p>
 
-<p>Si no has leído Superior Spider-Man, tienes 33 números esperándote. Es el mejor arco de Spider-Man del siglo XXI.</p>
+<p>Si no has leído Superior Spider-Man, tienes 31 números esperándote. Es el mejor arco de Spider-Man del siglo XXI.</p>
     `.trim(),
   },
   {
@@ -747,7 +745,7 @@ const BLOG_POSTS = [
     seoDescription: 'Análisis completo de Ultimate Spider-Man de Brian Michael Bendis y Mark Bagley: la reinvención de Peter Parker que modernizó el personaje y creó a Miles Morales.',
     keywords: ['Ultimate Spider-Man', 'Brian Michael Bendis', 'Mark Bagley', 'Peter Parker', 'Miles Morales', 'Marvel Ultimate'],
     tags: ['Ultimate Spider-Man', 'Bendis', 'cómics', 'Peter Parker', 'Miles Morales', 'Marvel'],
-    content: `<p>En octubre de 2000, Marvel lanzó <em>Ultimate Spider-Man #1</em> con una premisa aparentemente simple: reempezar desde cero. Peter Parker vuelve a ser un adolescente en el instituto, el origen se moderniza, las relaciones se construyen desde el principio. Lo que Brian Michael Bendis y Mark Bagley hicieron con esa premisa durante los siguientes doce años es una de las runs más consistentes de la historia del cómic de superhéroes.</p>
+    content: `<p>En octubre de 2000, Marvel lanzó <em>Ultimate Spider-Man #1</em> con una premisa aparentemente simple: reempezar desde cero. Peter Parker vuelve a ser un adolescente en el instituto, el origen se moderniza, las relaciones se construyen desde el principio. Lo que Brian Michael Bendis hizo con esa premisa durante la década siguiente —con Mark Bagley a su lado en los primeros 111 números— es una de las etapas más consistentes de la historia del cómic de superhéroes.</p>
 
 <h2>Un Peter Parker para el siglo XXI</h2>
 <p>El Peter Parker de Bendis habla como un adolescente real de 2000. Tiene un ordenador. Navega por internet. Sus chistes son diferentes a los de Stan Lee. Sus problemas —el acoso escolar, la presión académica, el primer amor— son universales pero contados con una precisión emocional que el Peter original de los 60 no podía tener.</p>
@@ -770,7 +768,7 @@ const BLOG_POSTS = [
 <h2>El legado: Miles Morales</h2>
 <p>Cuando Peter Parker murió en <em>Ultimate Comics Spider-Man #160</em> —en una batalla contra el Duende Verde que lo dejó sin fuerzas para seguir— Bendis no cerró la serie. La reinventó por segunda vez con Miles Morales, un adolescente afrolatino de Brooklyn que recogía el testigo. Miles es hoy uno de los personajes más queridos de Marvel. Sin Ultimate Spider-Man, Miles no existe.</p>
 
-<p>Si quieres leer la mejor Spider-Man del siglo XXI, lees Ultimate Spider-Man de Bendis. No hay debate.</p>`.trim(),
+<p>Si quieres leer el mejor Spider-Man del siglo XXI, lees Ultimate Spider-Man de Bendis. No hay debate.</p>`.trim(),
   },
 
   // ─── VIDEOJUEGOS (nuevos) ────────────────────────────────────────────────────
@@ -791,9 +789,9 @@ const BLOG_POSTS = [
     content: `<p>Cuando Sony anunció <em>Spider-Man: Miles Morales</em> como título de lanzamiento de PS5, la reacción inicial fue de cautela. ¿Un juego de Miles Morales? ¿No es demasiado pronto? ¿Es solo un DLC glorificado del juego de 2018? Insomniac Games respondió con una de las aventuras más emotivas de la generación. Dura entre ocho y doce horas dependiendo del jugador. Cada una de ellas importa.</p>
 
 <h2>Una historia de Navidad en Harlem</h2>
-<p>Miles Morales transcurre durante las Navidades en Harlem, el barrio donde Miles creció. Esa elección de escenario no es casual: la Navidad es tiempo de familia, de comunidad, de las personas que ya no están. Y la historia de Miles gira exactamente alrededor de eso. La muerte de su padre, Jefferson Davis, en el primer juego es la sombra que cubre todo.</p>
+<p>Miles Morales transcurre durante las Navidades en Harlem, el barrio al que Miles acaba de mudarse con su madre. Esa elección de escenario no es casual: la Navidad es tiempo de familia, de comunidad, de las personas que ya no están. Y la historia de Miles gira exactamente alrededor de eso. La muerte de su padre, Jefferson Davis, en el primer juego es la sombra que cubre todo.</p>
 
-<p>El antagonista de la historia, Roxxon Energy Corporation, no es un villano de cómic estilizado: es una corporación que está destruyendo el barrio de Miles para construir un reactor de energía. La tensión entre el bien de la ciudad y el bien de tu comunidad es el conflicto central, y Insomniac lo maneja con una madurez que pocas veces se ve en videojuegos.</p>
+<p>Uno de los antagonistas, Roxxon Energy Corporation, no es un villano de cómic estilizado: es una corporación que pone en peligro el barrio de Miles con su nuevo reactor de energía. Frente a ella se alza el Tinkerer y su banda, la Resistencia, lo que coloca a Miles en medio de un conflicto muy personal. La tensión entre el bien de la ciudad y el bien de tu comunidad es el conflicto central, y Insomniac lo maneja con una madurez que pocas veces se ve en videojuegos.</p>
 
 <figure>
   <img src="https://media.rawg.io/media/screenshots/e20/e2007d863194a66053c79d325401950f.jpg" alt="Miles Morales con su traje en Spider-Man PS5" />
@@ -801,7 +799,7 @@ const BLOG_POSTS = [
 </figure>
 
 <h2>Los poderes de Miles: bioeléctrico y camuflaje</h2>
-<p>Jugar como Miles se siente diferente a jugar como Peter Parker. Sus poderes bioeléctricos —el Venom Blast— permiten descargas que aturden enemigos, explotan objetos y crean combos únicos. El camuflaje añade una dimensión de sigilo que el juego original no tenía. Y la Overdrive, la habilidad definitiva, es tan visualmente espectacular que cada vez que la usas para la primera vez sientes que estás en una cutscene.</p>
+<p>Jugar como Miles se siente diferente a jugar como Peter Parker. Sus poderes bioeléctricos —el Venom Blast— permiten descargas que aturden enemigos, explotan objetos y crean combos únicos. El camuflaje añade una dimensión de sigilo que el juego original no tenía. Y sus ataques más potentes son tan espectaculares que, la primera vez que los usas, sientes que estás en una cinemática.</p>
 
 <figure>
   <img src="https://media.rawg.io/media/games/048/048b46cdc66cbc7e235e1f359c2a77ec.jpg" alt="Miles Morales balanceándose en Marvel's Spider-Man: Miles Morales" />
@@ -809,7 +807,7 @@ const BLOG_POSTS = [
 </figure>
 
 <h2>La actuación de Nadji Jeter</h2>
-<p>En un juego tan dependiente de su historia, la actuación importa tanto como el gameplay. Nadji Jeter lleva a Miles Morales desde la inseguridad del primer acto hasta la determinación del clímax con una naturalidad que haría el papel más difícil de lo que parece. Es el mismo personaje que Shameik Moore voz en la película. Son equivalentes. Son igualmente grandes.</p>
+<p>En un juego tan dependiente de su historia, la actuación importa tanto como el gameplay. Nadji Jeter lleva a Miles Morales desde la inseguridad del primer acto hasta la determinación del clímax con una naturalidad que hace que el papel parezca más fácil de lo que es. Es el mismo personaje al que Shameik Moore pone voz en las películas del Spider-Verse, y ambas interpretaciones están a la misma altura.</p>
 
 <p>Spider-Man: Miles Morales es una obra breve y perfecta. No intenta ser más de lo que es. Y eso, en la industria del videojuego moderno, es casi un acto radical.</p>
 
@@ -842,7 +840,7 @@ const BLOG_POSTS = [
 </figure>
 
 <h2>El sistema de alineamiento moral</h2>
-<p>Lo que distingue a Web of Shadows de cualquier otro juego del personaje es su sistema de decisiones. A lo largo de la historia, Spider-Man debe elegir constantemente entre la vía del héroe y la vía del simbionte. Salvar a un civil o perseguir al villano. Confiar en Lobezno o en Venom. Cada decisión mueve un medidor moral y afecta no solo al final, sino a cómo te tratan los personajes secundarios.</p>
+<p>Lo que distingue a Web of Shadows de cualquier otro juego del personaje es su sistema de decisiones. A lo largo de la historia, Spider-Man debe elegir constantemente entre la vía del héroe y la vía del simbionte. Salvar a un civil o perseguir al villano. Aliarse con héroes como Lobezno o Luke Cage, o con villanos como Electro o el Buitre. Cada decisión mueve un medidor moral y afecta no solo al final, sino a cómo te tratan los personajes secundarios.</p>
 
 <figure>
   <img src="https://media.rawg.io/media/screenshots/0ef/0ef9b0308884797886a2734e5c982053.jpg" alt="Peter Parker en Spider-Man Web of Shadows" />
@@ -850,7 +848,7 @@ const BLOG_POSTS = [
 </figure>
 
 <h2>Por qué merece ser recordado</h2>
-<p>El sistema de vuelo libre es extraordinariamente fluido para la época. Las mecánicas de combate combinando traje rojo y negro son satisfactorias. Y los cuatro finales —incluyendo uno en el que Spider-Man cede completamente al simbionte— ofrecen una rejugabilidad real.</p>
+<p>El balanceo libre por la ciudad es extraordinariamente fluido para la época. Las mecánicas de combate combinando traje rojo y negro son satisfactorias. Y los cuatro finales —incluyendo uno en el que Spider-Man cede completamente al simbionte— ofrecen una rejugabilidad real.</p>
 
 <p>Si tienes acceso a una copia de Web of Shadows en PC, Xbox 360 o PS3, dale una oportunidad. Es el Spider-Man más oscuro y moralmente complejo que ha existido en formato de videojuego.</p>`.trim(),
   },
@@ -874,7 +872,7 @@ const BLOG_POSTS = [
 <p>Antes de que Spider-Man tuviera su propia serie animada definitiva en 1994, antes de Spectacular Spider-Man, antes de Ultimate, hubo <em>Spider-Man and His Amazing Friends</em>. Tres temporadas entre 1981 y 1983 en NBC. Spider-Man, Iceman y Firestar como equipo. Para millones de niños de los años 80, esta fue su introducción al trepamuros. Y fue una introducción extraordinaria.</p>
 
 <h2>El contexto: NBC quería a la Antorcha Humana</h2>
-<p>La historia detrás de la serie dice mucho de cómo funciona la industria del entretenimiento. NBC quería que Spider-Man formara equipo con la Antorcha Humana de los 4 Fantásticos. Los derechos de televisión del personaje pertenecían a otra productora, así que el equipo de producción creó a Firestar desde cero: una chica con poderes de manipulación de microondas y una historia de abuso de confianza que, para ser una serie infantil de los 80, era sorprendentemente madura.</p>
+<p>La historia detrás de la serie dice mucho de cómo funciona la industria del entretenimiento. NBC quería que Spider-Man formara equipo con la Antorcha Humana de los 4 Fantásticos. Los derechos de televisión del personaje pertenecían a otra productora, así que el equipo de producción creó a Firestar desde cero: una chica con poderes de manipulación de microondas y una personalidad propia que la hacía mucho más que una sustituta.</p>
 
 <figure>
   <img src="https://image.tmdb.org/t/p/w1280/cL8MPDoy00GtVnUvhhNJXBcreNU.jpg" alt="Spider-Man and His Amazing Friends — serie animada 1981" />
@@ -882,7 +880,7 @@ const BLOG_POSTS = [
 </figure>
 
 <h2>Firestar: el mejor personaje original de una serie de superhéroes</h2>
-<p>Angelica Jones / Firestar es, sin exageración, uno de los mejores personajes originales que ha producido la animación de superhéroes. Su arco —una chica con poderes que fue manipulada por Emma Frost para convertirla en arma— tiene una complejidad emocional que va muy por encima del estándar de la época. La serie la trató con dignidad y seriedad.</p>
+<p>Angelica Jones / Firestar es, sin exageración, uno de los mejores personajes originales que ha producido la animación de superhéroes. La serie la trató con dignidad y seriedad, y su paso a los cómics le dio todavía más profundidad: en su miniserie de 1986, Angelica es una chica manipulada por Emma Frost para convertirla en un arma, una historia con una complejidad emocional muy por encima del estándar de la época.</p>
 
 <p>Marvel la incorporó al universo de los cómics en 1985 en <em>Uncanny X-Men #193</em>. Hoy sigue siendo un personaje activo con décadas de historia. Todo empezó porque no podían usar a la Antorcha Humana.</p>
 
@@ -915,7 +913,7 @@ const BLOG_POSTS = [
 <p>Cuando en abril de 2012 se estrenó <em>Ultimate Spider-Man</em> en Disney XD, la comunidad de fans del trepamuros reaccionó con una división que raramente se ve en la animación infantil. Por un lado, los que venían de <em>The Spectacular Spider-Man</em> —cancelada apenas tres años antes— encontraron el tono radicalmente diferente: bromas meta, cabezas flotantes al estilo anime, referencias de internet, humor físico constante. Por otro, una nueva generación de niños que simplemente lo disfrutaba sin el bagaje de comparaciones.</p>
 
 <h2>La propuesta creativa: Spider-Man como experiencia de usuario</h2>
-<p>El showrunner Paul Dini y el productor ejecutivo Jeph Loeb tomaron una decisión arriesgada: Ultimate Spider-Man no sería una adaptación dramática del personaje. Sería una celebración del personaje diseñada para la generación YouTube. Los monólogos internos de Peter se visualizaban como fantasías animadas. Los villanos aparecían y desaparecían con una rapidez que priorizaba el entretenimiento sobre la coherencia narrativa.</p>
+<p>Sus creadores, el colectivo de guionistas Man of Action, y el productor ejecutivo Jeph Loeb tomaron una decisión arriesgada: Ultimate Spider-Man no sería una adaptación dramática del personaje. Sería una celebración del personaje diseñada para la generación YouTube. Los monólogos internos de Peter se visualizaban como fantasías animadas. Los villanos aparecían y desaparecían con una rapidez que priorizaba el entretenimiento sobre la coherencia narrativa.</p>
 
 <figure>
   <img src="https://image.tmdb.org/t/p/w1280/fjtttNJpwa6usPstiYuyKMBFQDN.jpg" alt="Ultimate Spider-Man 2012 serie animada" />
@@ -963,7 +961,7 @@ const BLOG_POSTS = [
 
 <figure>
   <img src="https://image.tmdb.org/t/p/w1280/8G6HCS82vNxgg5wp7oBDSk32XpF.jpg" alt="J. Jonah Jameson en la película de Spider-Man" />
-  <figcaption>J.K. Simmons como J. Jonah Jameson en las películas de Sam Raimi: una actuación tan definitoria del personaje que Marvel lo trajo de vuelta al MCU veinte años después, con el mismo actor.</figcaption>
+  <figcaption>J.K. Simmons como J. Jonah Jameson en las películas de Sam Raimi: una actuación tan definitoria del personaje que Marvel lo trajo de vuelta al MCU casi veinte años después, con el mismo actor.</figcaption>
 </figure>
 
 <h2>J.K. Simmons y la actuación definitoria</h2>
@@ -1011,7 +1009,7 @@ const BLOG_POSTS = [
 <p>La mejor versión de Doc Ock es la de Alfred Molina en Spider-Man 2: un genio trágico destruido por su propia ambición. En los cómics, la saga de Superior Spider-Man le añadió una dimensión de redención que lo convierte en el personaje más complejo de la galería. El villano que se convirtió en héroe y entendió, demasiado tarde, lo que eso significa.</p>
 
 <h2>🥉 3. Venom (Eddie Brock)</h2>
-<p>Venom es el opuesto perfecto: todo lo que Spider-Man es, pero sin la restricción moral. El simbionte amplifca al portador. En Spider-Man amplifica la responsabilidad. En Eddie Brock amplifica el resentimiento. El resultado es uno de los diseños más icónicos del cómic: negro, enorme, con la lengua y la sonrisa imposible.</p>
+<p>Venom es el opuesto perfecto: todo lo que Spider-Man es, pero sin la restricción moral. El simbionte amplifica al portador. En Spider-Man amplifica la responsabilidad. En Eddie Brock amplifica el resentimiento. El resultado es uno de los diseños más icónicos del cómic: negro, enorme, con la lengua y la sonrisa imposible.</p>
 
 <figure>
   <img src="https://comicvine.gamespot.com/a/uploads/original/11121/111219492/4548791-4097259373-Buc5bvKIMAI-i3X.jpg:large" alt="Venom — Eddie Brock Marvel" />
@@ -1022,7 +1020,7 @@ const BLOG_POSTS = [
 <p>Si Venom es el opuesto moral de Spider-Man, Carnage es el opuesto del opuesto: un asesino en serie sin código, sin motivación más allá del caos. Carnage es lo que pasa cuando el simbionte encuentra a alguien sin ninguna barrera moral que amplificar.</p>
 
 <h2>5. Electro (Max Dillon)</h2>
-<p>El hombre invisible hecho visible. Electro es el trabajador ordinario al que la sociedad ignoró hasta que se convirtió en una amenaza. En las mejores versiones del personaje — la de <em>The Amazing Spider-Man 2</em> de Jamie Foxx, o la de <em>Superior Foes</em> — hay una crítica social debajo del traje amarillo.</p>
+<p>El hombre invisible hecho visible. Electro es el trabajador ordinario al que la sociedad ignoró hasta que se convirtió en una amenaza. En sus mejores versiones —como la de Jamie Foxx en The Amazing Spider-Man 2— hay una crítica social debajo del traje.</p>
 
 <h2>6-10: El resto de la galería</h2>
 <ul>

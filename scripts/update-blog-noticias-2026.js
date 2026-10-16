@@ -142,6 +142,61 @@ ${UPDATED}
 <p>Mientras esperas, repasa nuestro <a href="/blog/across-the-spider-verse-analisis">análisis de Across the Spider-Verse</a> o la <a href="/peliculas/spider-man-cruzando-el-multiverso-2023">ficha de la película</a>.</p>
 `,
   },
+
+  {
+    // La versión anterior describía detalles que no aparecen en los tráileres (apartamento 4B, una Canon AE-1,
+    // un titular en el 0:47, el Golden Gate, el tema de Danny Elfman...). Reescrito con detalles contrastados.
+    slug: 'brand-new-day-trailer-easter-eggs-detalles-ocultos',
+    title: '10 detalles que probablemente te perdiste en los tráileres de Brand New Day',
+    subtitle: 'Guiños a las películas anteriores, a los cómics y pistas sobre lo que estaba por venir',
+    excerpt:
+      'De la pizzería que recuerda a Spider-Man 2 a la telaraña orgánica de Peter o el regreso del Escorpión: los detalles más interesantes de los tráileres de Spider-Man: Brand New Day.',
+    category: 'Análisis',
+    readTime: '6 min',
+    publishDate: new Date('2026-03-19'),
+    seoTitle: '10 detalles ocultos en los tráileres de Brand New Day',
+    seoDescription:
+      'Los guiños y detalles de los tráileres de Spider-Man: Brand New Day: la telaraña orgánica, el Escorpión, el Departamento de Control de Daños, el Punisher y más.',
+    keywords: ['Brand New Day tráiler', 'easter eggs', 'Spider-Man 4', 'Tom Holland', 'detalles ocultos'],
+    tags: ['Brand New Day', 'Easter eggs', 'análisis', 'Tom Holland', 'MCU', '2026'],
+    content: `
+<p><em>Actualizado el 16 de octubre de 2026 con los dos tráileres oficiales: el primero se presentó el 18 de marzo de 2026 desde el Empire State Building y el segundo llegó en junio.</em></p>
+
+<p>Los tráileres de <em>Spider-Man: Brand New Day</em> dejaron mucho más que las grandes revelaciones. Estos son los detalles más interesantes que se escondían en sus planos.</p>
+
+<h2>1. Una pizzería con aire de «Spider-Man 2»</h2>
+<p>Uno de los primeros planos muestra el cartel de «Gen's Pizza», con un logotipo circular rojo sobre blanco que recuerda mucho al de Joe's Pizza, el local en el que Peter trabajaba —y del que le despedían— en <a href="/peliculas/spider-man-2-2004">Spider-Man 2</a>.</p>
+
+<h2>2. El regreso del Escorpión</h2>
+<p>Mac Gargan, interpretado de nuevo por Michael Mando, vuelve a enfrentarse a Spider-Man con un «¿Me has echado de menos, Spidey?». El personaje no aparecía desde la escena poscréditos de <a href="/peliculas/spider-man-homecoming-2017">Spider-Man: Homecoming</a> (2017).</p>
+
+<h2>3. Telaraña orgánica</h2>
+<p>Los lanzarredes de Peter fallan y, en su lugar, la telaraña empieza a salir directamente de sus muñecas. Es la solución que usaron las películas de Sam Raimi con Tobey Maguire, frente a los lanzarredes mecánicos de los cómics clásicos, y una pista de que el cuerpo de Peter está cambiando.</p>
+
+<h2>4. Unos ojos que recuerdan al simbionte</h2>
+<p>En algunos planos, los ojos del traje se vuelven rojos y negros, y Peter dice estar «fuera de control». La imagen evoca la etapa del traje simbionte en los cómics, aunque los tráileres apuntan a otra cosa: una transformación del propio Peter.</p>
+
+<h2>5. Ned y MJ, en un vídeo</h2>
+<p>Peter ve un vídeo de Ned y MJ, que siguen sin recordarle tras el hechizo de <a href="/peliculas/spider-man-no-way-home-2021">No Way Home</a>. Una imagen que resume la soledad con la que arranca la película.</p>
+
+<h2>6. La sudadera de la Universidad Empire State</h2>
+<p>Peter lleva una sudadera de la Universidad Empire State, la universidad de los cómics. En el MCU se mencionó por primera vez en <em>El increíble Hulk</em> (2008).</p>
+
+<h2>7. Bruce Banner, profesor y con inhibidor</h2>
+<p>Mark Ruffalo reaparece como un Bruce Banner profesor universitario que lleva un dispositivo para contener a Hulk. Cuando ese inhibidor falla, llega el enfrentamiento, con un Hulk salvaje que usa su clásico «trueno» —el aplauso devastador que ya se vio en <em>El increíble Hulk</em>— contra Spider-Man.</p>
+
+<h2>8. El Departamento de Control de Daños</h2>
+<p>Tramell Tillman interpreta a Bill Metzger, al frente del Departamento de Control de Daños. En los cómics, Metzger es un activista antimutante, un detalle que encaja con las pistas sobre mutaciones que dejan los tráileres.</p>
+
+<h2>9. El Punisher, recién llegado de «Daredevil»</h2>
+<p>Jon Bernthal vuelve como Frank Castle tras su paso por <em>Daredevil: Born Again</em>, con su inseparable taza de café negro. Tom Holland definió su relación con Spider-Man como algo que pasa de la antipatía mutua a una rivalidad de «hermano mayor y hermano pequeño».</p>
+
+<h2>10. Una figura encapuchada</h2>
+<p>Una figura encapuchada, con el rostro oculto, alimentó las teorías sobre el papel de Sadie Sink. Tras el estreno sabemos que interpreta a Jean Grey, uno de los personajes clave de la película.</p>
+
+<p>¿Quieres saber cómo quedó todo esto en la película? Lo contamos en nuestro <a href="/blog/spider-man-brand-new-day-taquilla-criticas-sin-spoilers">análisis sin spoilers de Brand New Day</a>.</p>
+`,
+  },
 ];
 
 async function main() {

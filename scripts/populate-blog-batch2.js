@@ -24,7 +24,7 @@ const NEW_POSTS = [
     keywords: ['Into the Spider-Verse', 'Miles Morales', 'animación', 'Oscar', 'Spider-Verse', 'Sony'],
     tags: ['Into the Spider-Verse', 'Miles Morales', 'animación', 'Sony Pictures Animation'],
     content: `
-<p><em>Spider-Man: Into the Spider-Verse</em> (2018) no debería haber funcionado. Era una película de animación de Spider-Man protagonizada por un personaje poco conocido para el gran público, con un estilo visual experimental y sin actores de renombre detrás del proyecto. Ganó el Oscar a Mejor Película de Animación. Y lo merecía.</p>
+<p><em>Spider-Man: Into the Spider-Verse</em> (2018) no debería haber funcionado. Era una película de animación de Spider-Man protagonizada por un personaje poco conocido para el gran público y con un estilo visual experimental que nadie había probado a esa escala. Ganó el Oscar a Mejor Película de Animación. Y lo merecía.</p>
 
 <h2>Miles Morales como protagonista definitivo</h2>
 <p>La gran apuesta de Into the Spider-Verse fue poner a Miles Morales en el centro de la historia. A diferencia de Peter Parker, Miles no es un chico blanco de clase media de Queens: es afrolatino, de Brooklyn, con una familia unida y un talento para el arte que define su personalidad mucho antes de que la araña radioactiva aparezca.</p>
@@ -37,9 +37,9 @@ const NEW_POSTS = [
 </figure>
 
 <h2>Una revolución técnica</h2>
-<p>El estilo visual de Into the Spider-Verse es inconfundible: combina las tramas de puntos del cómic impreso, los onomatopeyas en pantalla, los fondos pintados con textura y las animaciones a 12 fotogramas por segundo (en lugar de los 24 estándar) para crear un look que parece literalmente un cómic en movimiento.</p>
+<p>El estilo visual de Into the Spider-Verse es inconfundible: combina las tramas de puntos del cómic impreso, las onomatopeyas en pantalla, los fondos pintados con textura y las animaciones a 12 fotogramas por segundo (en lugar de los 24 estándar) para crear un look que parece literalmente un cómic en movimiento.</p>
 
-<p>Este no fue un accidente: el equipo de Sony Animation pasó años desarrollando la técnica, con directores de arte como Justin K. Thompson definiendo una estética que ninguna otra película ha podido replicar completamente.</p>
+<p>Este no fue un accidente: el equipo de Sony Animation pasó años desarrollando la técnica, con el diseñador de producción Justin K. Thompson definiendo una estética que ninguna otra película ha podido replicar completamente.</p>
 
 <h2>El legado</h2>
 <p>Into the Spider-Verse no solo lanzó la saga Spider-Verse —con <em>Across the Spider-Verse</em> como secuela igualmente brillante— sino que cambió las expectativas del cine de animación en general. Después de esta película, ya no es suficiente con que algo "se vea bien". Tiene que tener una identidad visual propia.</p>
@@ -51,7 +51,7 @@ const NEW_POSTS = [
   // ─── CÓMICS ───────────────────────────────────────────────────────────────────
   {
     title: 'Kraven\'s Last Hunt: la historia más oscura jamás contada de Spider-Man',
-    subtitle: 'Por qué el arco de J.M. DeMatteis sigue siendo insuperable 40 años después',
+    subtitle: 'Por qué el arco de J.M. DeMatteis sigue siendo insuperable casi 40 años después',
     excerpt: 'Kraven\'s Last Hunt (1987) es el arco más oscuro y literario de Spider-Man: un estudio sobre la muerte, la identidad y la obsesión que trasciende el género.',
     category: 'Cómics',
     author: 'Redacción Sentido Arácnido',
@@ -77,7 +77,7 @@ const NEW_POSTS = [
 </figure>
 
 <h2>Por qué es insuperable</h2>
-<p>La prosa de DeMatteis es inusualmente literaria para un cómic de superhéroes de los años 80. Cita a Dostoyevski. Explora el inconsciente de Kraven con secuencias oníricas. Y cuando llega el final —que no desvelaremos aquí— el impacto emocional es devastador precisamente porque la historia se ha tomado el tiempo de hacerte entender a su villano.</p>
+<p>La prosa de DeMatteis es inusualmente literaria para un cómic de superhéroes de los años 80. Recorre toda la historia con versos del poema «El tigre», de William Blake. Explora el inconsciente de Kraven con secuencias oníricas. Y cuando llega el final —que no desvelaremos aquí— el impacto emocional es devastador precisamente porque la historia se ha tomado el tiempo de hacerte entender a su villano.</p>
 
 <p>Zeck y el entintador Bob McLeod hacen el resto: las páginas de Kraven bajo la lluvia, con el traje de Spider-Man manchado de barro, son algunas de las más impactantes del cómic estadounidense.</p>
 
@@ -118,7 +118,7 @@ const NEW_POSTS = [
 <p>Sin spoilers: el tercer acto del juego se atreve a algo que pocas historias de superhéroes hacen. Las consecuencias son permanentes y dolorosas, y el juego te las hace sentir.</p>
 
 <h2>El legado</h2>
-<p>Spider-Man (2018) vendió más de 33 millones de copias y generó un universo propio que incluye <em>Miles Morales</em> y <em>Spider-Man 2</em>. Pero su verdadero legado es haber demostrado que un juego de superhéroes puede tener la misma ambición narrativa que los mejores RPGs o juegos de aventura.</p>
+<p>Spider-Man (2018) y <em>Miles Morales</em> superaron juntos los 33 millones de copias vendidas en 2022, y el juego generó un universo propio que continuó con <em>Spider-Man 2</em></em>. Pero su verdadero legado es haber demostrado que un juego de superhéroes puede tener la misma ambición narrativa que los mejores RPGs o juegos de aventura.</p>
 `,
   },
 
@@ -149,12 +149,12 @@ const NEW_POSTS = [
 </figure>
 
 <h2>Guiones valientes</h2>
-<p>La serie adaptó arcos de cómic con una fidelidad inusual para producciones de esta época, e introdujo elementos de las relaciones sentimentales de Peter Parker con una madurez que la serie de 1994 nunca se permitió. El episodio final, en particular, tiene un giro que pocas series infantojuveniles se habrían atrevido a hacer.</p>
+<p>Planteada como una continuación de la primera película de Sam Raimi, la serie apostó por historias originales y trató las relaciones sentimentales de Peter Parker con una madurez que la serie de 1994 nunca se permitió. El episodio final, en particular, tiene un giro que pocas series infantojuveniles se habrían atrevido a hacer.</p>
 
 <h2>Por qué no funcionó</h2>
 <p>MTV no sabía muy bien qué hacer con ella. La distribución fue irregular, la audiencia objetivo nunca quedó clara y el CGI generó rechazo inicial en fans acostumbrados a la animación tradicional. Sony no renovó para una segunda temporada.</p>
 
-<p>Hoy se puede ver en streaming. Si eres fan de Spider-Man y tienes curiosidad por una versión que intentó algo diferente, merece una oportunidad.</p>
+<p>Si eres fan de Spider-Man y tienes curiosidad por una versión que intentó algo diferente, merece una oportunidad.</p>
 `,
   },
 
