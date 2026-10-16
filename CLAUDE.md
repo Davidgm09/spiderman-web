@@ -37,6 +37,12 @@ All scripts read from `.env` (not `.env.local`). Run them with `node scripts/<na
 
 After re-importing comics from Comic Vine, run `enrich-comics-from-comicvine.js`, then `--credits`, then `apply-comic-synopses.js`: the import leaves placeholder data (`characters: ['Spider-Man']`, writer "Marvel Comics") and machine-translated, truncated synopses.
 
+## Database safety
+
+- `vercel.json` runs a daily cron to `/api/keepalive` (a tiny Prisma count) so the free Supabase project is never paused for inactivity. If `CRON_SECRET` is set in Vercel, the route only accepts Vercel's own call.
+- `node scripts/backup-db.js` dumps every table to `backups/<date>/` as JSON (git-ignored). Run it weekly and before big changes.
+- `node scripts/restore-db.js backups/<date>` is a dry run; add `--apply` to insert missing rows (never deletes or overwrites). On a new database run `npx prisma db push` first.
+
 **Marvel API is permanently down** (has been for ~1 year). Use Comic Vine instead for character/comic data.
 
 ## Environment Variables (`.env`)

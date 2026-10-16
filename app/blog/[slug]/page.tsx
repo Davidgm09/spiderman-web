@@ -80,18 +80,16 @@ export default async function BlogPostPage({ params }: Props) {
     '@type': 'BlogPosting',
     headline: post.title,
     description: post.seoDescription || post.excerpt,
-    image: post.image ? {
-      '@type': 'ImageObject',
-      url: post.image,
-      width: 1200,
-      height: 630,
-    } : undefined,
+    // URL completa (las imágenes propias son rutas relativas como /images/...)
+    image: post.image ? (post.image.startsWith('/') ? `${BASE_URL}${post.image}` : post.image) : undefined,
     url: postUrl,
     datePublished: post.publishDate.toISOString(),
     dateModified: post.updatedAt.toISOString(),
+    // Los artículos los firma la redacción, no una persona
     author: {
-      '@type': 'Person',
+      '@type': 'Organization',
       name: post.author,
+      url: `${BASE_URL}/sobre-nosotros`,
     },
     publisher: {
       '@type': 'Organization',
