@@ -26,6 +26,12 @@ All scripts read from `.env` (not `.env.local`). Run them with `node scripts/<na
 | `scripts/populate-games-from-rawg.js [--clean]` | RAWG | Uses `KNOWN_GAME_IDS` + rating filter |
 | `scripts/populate-comics-from-comicvine.js [--clean]` | Comic Vine | Fetches volumes → issues |
 | `scripts/populate-blog.js [--clean]` | Static | 12 hand-written articles (2 per category) |
+| `scripts/enrich-comics-from-comicvine.js [--credits]` | Comic Vine | Real characters, story arcs and writer/artist per issue (rate-limited ~200 req/h; resumable) |
+| `scripts/apply-comic-synopses.js` | Static | Hand-reviewed Spanish synopses from `scripts/data/comic-synopses-es.json` (re-run after any comic re-import) |
+| `scripts/refresh-series-status.js` | TMDB | Refreshes series status, seasons, episodes and rating |
+| `scripts/update-blog-noticias-2026.js` | Static | Updated versions of news articles (re-run after `populate-blog.js --clean`) |
+
+After re-importing comics from Comic Vine, run `enrich-comics-from-comicvine.js`, then `--credits`, then `apply-comic-synopses.js`: the import leaves placeholder data (`characters: ['Spider-Man']`, writer "Marvel Comics") and machine-translated, truncated synopses.
 
 **Marvel API is permanently down** (has been for ~1 year). Use Comic Vine instead for character/comic data.
 
