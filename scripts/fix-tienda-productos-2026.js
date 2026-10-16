@@ -194,6 +194,24 @@ const FIXES = {
   // Solo quedan imitaciones sin licencia: se retira de la tienda
   'hasbro-spider-man-guante-lanzatelaranas-electronico': { inStock: false },
 
+  // ── Promesas de envío o ediciones que no podemos garantizar ─────────────────
+  'funko-pop-spider-man-integrated-suit-no-way-home-913': {
+    seoDescription: 'Funko Pop! Marvel Spider-Man Integrated Suit No Way Home #913. Figura de vinilo de unos 9,5 cm. Disponible en Amazon.es.',
+  },
+  'marvel-pack-2-camisetas-spider-man-nino-manga-corta': {
+    seoDescription: 'Pack de 2 camisetas infantiles de Spider-Man con licencia de Marvel, azul y roja con estampados. Disponible en Amazon.es.',
+  },
+  'amazing-spider-man-omnibus-vol-1-stan-lee-ditko': {
+    features: ['Recoge los primeros números de The Amazing Spider-Man de Stan Lee', 'Arte original de Steve Ditko', 'Formato ómnibus de gran tamaño con tapa dura', 'Edición en inglés'],
+  },
+  'funko-pop-spider-man-primera-aparicion-diamond-glitter-593': {
+    seoDescription: 'Funko Pop! Spider-Man #593 en versión Diamond Glitter, con el traje clásico rojo y azul. Disponible en Amazon.es.',
+    features: ['Versión Diamond Glitter con acabado brillante', 'Traje clásico rojo y azul de Spider-Man', 'Número 593 de la colección Pop! Marvel', 'Caja con ventana'],
+  },
+  'miles-morales-nuevo-spiderman-vol-1-bendis-panini': {
+    features: ['Origen completo de Miles Morales como Spider-Man', 'Guion de Brian Michael Bendis con arte de Sara Pichelli', 'Edición en español de Panini Comics', 'Primeros números de Ultimate Comics: Spider-Man (2011)'],
+  },
+
   // ── Datos de ficha que no coincidían con el producto ────────────────────────
   'funko-pop-spider-man-2099-blanco-exclusiva-amazon-961': {
     slug: 'funko-pop-miguel-ohara-across-spider-verse',
