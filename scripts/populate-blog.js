@@ -1032,6 +1032,8 @@ const BLOG_POSTS = [
   <li><strong>El Buitre (Adrian Toomes)</strong> — el anciano que no se rinde. La vejez como fuente de poder en lugar de debilidad.</li>
   <li><strong>El Chacal (Miles Warren)</strong> — el arquitecto de la Clone Saga. Un villano académico movido por una obsesión que lo destruyó.</li>
 </ul>
+
+<p>¿Y en el cine? Tenemos un ranking aparte con <a href="/blog/villanos-spider-man-peliculas-ranking">los villanos de Spider-Man en las películas, de peor a mejor</a>.</p>
     `.trim(),
   },
 
