@@ -32,6 +32,7 @@ All scripts read from `.env` (not `.env.local`). Run them with `node scripts/<na
 | `scripts/update-blog-noticias-2026.js` | Static | Updated versions of news articles (re-run after `populate-blog.js --clean`) |
 | `scripts/add-blog-guias-2026.js` | Static | "Guías" articles (gift guide with Amazon affiliate cards, `.gift` styles in `globals.css`); re-run after `populate-blog.js --clean` |
 | `scripts/fix-tienda-productos-2026.js` | Static | Store fixes verified on Amazon.es (wrong ASINs, out-of-stock replacements); re-run after `populate-tienda-products.js --clean` |
+| `scripts/build-juegos-data.js` | DB | Builds `data/juegos/personajes.json` for the daily game Arañadle (gender, origin universe, debut year, unified group names, Spanish search names, clues); re-run when characters change |
 
 After re-importing comics from Comic Vine, run `enrich-comics-from-comicvine.js`, then `--credits`, then `apply-comic-synopses.js`: the import leaves placeholder data (`characters: ['Spider-Man']`, writer "Marvel Comics") and machine-translated, truncated synopses.
 
@@ -127,6 +128,7 @@ The site is in Spanish. URL segments map to:
 | `/videojuegos` | Games |
 | `/blog` | Blog posts |
 | `/tienda` | Store (Amazon affiliate) |
+| `/juegos` | Minigames: Arañadle (daily), test, personality quiz. Static JSON in `data/juegos/`, client components in `components/juegos/`, no DB at runtime |
 | `/admin/upload` | Admin image upload tool |
 
 All dynamic routes follow `/app/[content-type]/[slug]/page.tsx`. **Important for Next.js 15:** `params` is a `Promise` and must be awaited:

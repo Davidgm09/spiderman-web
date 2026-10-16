@@ -238,6 +238,22 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* Juegos */}
+      <section className="px-4 max-w-5xl mx-auto">
+        <Link
+          href="/juegos/aranadle"
+          className="group flex flex-col sm:flex-row items-center gap-4 sm:gap-6 p-5 sm:p-6 rounded-2xl border border-red-500/30 bg-gradient-to-r from-red-950/80 via-gray-900/80 to-blue-950/80 hover:border-red-500/70 transition-colors"
+        >
+          <div className="text-4xl" aria-hidden>🕷️</div>
+          <div className="flex-1 text-center sm:text-left">
+            <p className="text-xs uppercase tracking-widest text-red-400 font-semibold">Nuevo · Juego diario</p>
+            <p className="text-xl font-bold text-white">¿Adivinas el personaje de Spider-Man de hoy?</p>
+            <p className="text-sm text-gray-400">Arañadle: un personaje secreto cada día, 8 intentos y pistas de colores. También tienes un test y un quiz en la sección de juegos.</p>
+          </div>
+          <span className="shrink-0 px-5 py-2.5 rounded-lg bg-red-600 group-hover:bg-red-700 text-white font-semibold transition-colors">Jugar</span>
+        </Link>
+      </section>
+
       {/* Featured Movies */}
       <section id="peliculas" className="py-16 px-4 max-w-7xl mx-auto relative">
         <div className="absolute inset-0 bg-red-950/20 -z-10" />

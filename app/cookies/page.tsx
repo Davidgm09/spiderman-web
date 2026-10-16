@@ -57,9 +57,25 @@ export default function CookiesPage() {
                     <td className="py-3 px-4">Seguimiento de afiliados</td>
                     <td className="py-3 px-4">Sesión</td>
                   </tr>
+                  <tr>
+                    <td className="py-3 px-4">cookie-consent*</td>
+                    <td className="py-3 px-4">Sentido Arácnido</td>
+                    <td className="py-3 px-4">Recordar tu elección sobre las cookies</td>
+                    <td className="py-3 px-4">Hasta que la borres</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 px-4">aranadle-v1, test-spider-man-v1*</td>
+                    <td className="py-3 px-4">Sentido Arácnido</td>
+                    <td className="py-3 px-4">Guardar tus partidas y estadísticas de los <a href="/juegos" className="text-red-400 hover:text-red-300 underline">juegos</a></td>
+                    <td className="py-3 px-4">Hasta que la borres</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
+            <p className="text-sm text-gray-400 mt-3">
+              * No son cookies, sino almacenamiento local de tu navegador: son técnicas, solo sirven para que la web funcione
+              como esperas y nunca se envían a ningún servidor.
+            </p>
           </section>
 
           <section>

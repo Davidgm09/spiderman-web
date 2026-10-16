@@ -1,0 +1,62 @@
+{
+ "profiles": {
+  "peter": {"name": "Peter Parker", "slug": "spider-man-peter-parker-alt", "title": "El de toda la vida", "text": "Eres responsable hasta el agotamiento, tiras de humor cuando las cosas se ponen feas y siempre antepones a los demás. Te cuesta pedir ayuda, pero nunca te rindes: un gran poder conlleva una gran responsabilidad, y tú lo llevas tatuado."},
+  "miles": {"name": "Miles Morales", "slug": "spider-man-miles-morales-alt", "title": "El que salta al vacío", "text": "Creativo, con música en los cascos y un cuaderno lleno de dibujos. Dudas de ti más de lo que deberías, pero cuando das el salto lo haces a tu manera. La familia lo es todo para ti."},
+  "gwen": {"name": "Gwen Stacy", "slug": "spider-gwen-gwen-stacy-alt", "title": "La que marca su propio ritmo", "text": "Independiente, leal y con un punto rebelde. Vas a tu aire, tocas la batería de tu propia vida y no soportas que te digan qué tienes que hacer. Quien se gana tu confianza la tiene para siempre."},
+  "miguel": {"name": "Miguel O'Hara", "slug": "spider-man-2099-miguel-ohara-alt", "title": "El líder del futuro", "text": "Serio, brillante y con un plan para todo. Te gusta que las cosas funcionen y no te asusta tomar decisiones difíciles. A veces te pasas de estricto, pero cuando hay una crisis, todos te miran a ti."},
+  "noir": {"name": "Spider-Man Noir", "slug": "spider-man-noir-peter-parker-alt", "title": "El justiciero en blanco y negro", "text": "Un clásico. Te van las historias antiguas, el jazz y las noches de lluvia. Tienes tu propio código, aunque no siempre coincida con las normas, y prefieres actuar en solitario."},
+  "ham": {"name": "Spider-Ham", "slug": "spider-ham-peter-porker-alt", "title": "El alma de la fiesta", "text": "Tu superpoder es el humor. Conviertes cualquier desastre en un chiste y nadie se aburre a tu lado. Detrás de tanta broma hay alguien que siempre está cuando se le necesita."},
+  "pavitr": {"name": "Pavitr Prabhakar", "slug": "spider-man-india-pavitr-prabhakar-alt", "title": "La energía hecha héroe", "text": "Optimista, entusiasta y contagioso. Vives las cosas al máximo y te encanta el ruido, el color y la gente. Puede que a veces te lances sin pensar, pero tu buen rollo arrastra a todo el mundo."},
+  "mayday": {"name": "Mayday Parker", "slug": "spider-girl-mayday-parker-alt", "title": "La que demuestra su valía", "text": "Llevas un apellido que pesa y quieres estar a la altura. Decidida y cabezota, haces caso a tu familia… hasta que llega el momento de seguir tu propio camino. Y entonces nadie te para."}
+ },
+ "questions": [
+  {"q": "Tienes un sábado libre. ¿Qué haces?", "a": [
+   {"t": "Me encierro con un proyecto de ciencia o de bricolaje", "p": {"peter": 2, "miguel": 1}},
+   {"t": "Salgo a dibujar o a pintar con música a todo volumen", "p": {"miles": 2, "gwen": 1}},
+   {"t": "Maratón de películas antiguas en blanco y negro", "p": {"noir": 2, "miguel": 1}},
+   {"t": "Quedo con mis amigos y no paramos de reír", "p": {"ham": 2, "pavitr": 1}}
+  ]},
+  {"q": "En tu grupo de amigos eres…", "a": [
+   {"t": "Quien organiza los planes", "p": {"mayday": 2, "miguel": 1}},
+   {"t": "Quien hace reír a todos", "p": {"ham": 2, "peter": 1}},
+   {"t": "Quien anima a los demás cuando están de bajón", "p": {"pavitr": 2, "miles": 1}},
+   {"t": "Quien va un poco a su aire", "p": {"gwen": 2, "noir": 1}}
+  ]},
+  {"q": "¿Qué música suena en tus cascos?", "a": [
+   {"t": "Punk o rock", "p": {"gwen": 2, "mayday": 1}},
+   {"t": "Hip-hop", "p": {"miles": 2, "pavitr": 1}},
+   {"t": "Jazz", "p": {"noir": 2, "peter": 1}},
+   {"t": "Electrónica", "p": {"pavitr": 2, "miguel": 1}}
+  ]},
+  {"q": "Te surge un problema gordo. ¿Cómo lo afrontas?", "a": [
+   {"t": "Lo analizo con calma hasta dar con la solución", "p": {"peter": 2, "miguel": 1}},
+   {"t": "Improviso sobre la marcha", "p": {"miles": 2, "ham": 1}},
+   {"t": "Sigo mi instinto, aunque tenga que saltarme alguna norma", "p": {"noir": 2, "gwen": 1}},
+   {"t": "Lo hablo con mi familia", "p": {"mayday": 2, "pavitr": 1}}
+  ]},
+  {"q": "¿Qué es lo que más valoras?", "a": [
+   {"t": "La familia", "p": {"mayday": 2, "peter": 1}},
+   {"t": "La libertad", "p": {"gwen": 2, "noir": 1}},
+   {"t": "El orden", "p": {"miguel": 2, "noir": 1}},
+   {"t": "La alegría", "p": {"pavitr": 2, "ham": 1}}
+  ]},
+  {"q": "Si pudieras tener un poder extra, sería…", "a": [
+   {"t": "Volverme invisible", "p": {"miles": 2, "noir": 1}},
+   {"t": "Ver el futuro", "p": {"miguel": 2, "mayday": 1}},
+   {"t": "Hacer reír a cualquiera", "p": {"ham": 2, "pavitr": 1}},
+   {"t": "Un sentido arácnido todavía más fino", "p": {"gwen": 2, "peter": 1}}
+  ]},
+  {"q": "¿En qué ciudad te gustaría patrullar?", "a": [
+   {"t": "En la Nueva York de siempre", "p": {"peter": 2, "miles": 1}},
+   {"t": "En una ciudad futurista", "p": {"miguel": 2, "mayday": 1}},
+   {"t": "En unas calles de los años 30 bajo la lluvia", "p": {"noir": 2, "gwen": 1}},
+   {"t": "En una metrópolis llena de color y de ruido", "p": {"pavitr": 2, "ham": 1}}
+  ]},
+  {"q": "Tu mayor defecto es que…", "a": [
+   {"t": "Me cuesta pedir ayuda", "p": {"peter": 2, "noir": 1}},
+   {"t": "Me pongo muy estricto con las normas", "p": {"miguel": 2, "gwen": 1}},
+   {"t": "No me tomo nada en serio", "p": {"ham": 2, "pavitr": 1}},
+   {"t": "Siempre quiero demostrar que valgo", "p": {"mayday": 2, "miles": 1}}
+  ]}
+ ]
+}

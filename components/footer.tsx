@@ -50,6 +50,11 @@ export function Footer() {
                   Blog y Análisis
                 </Link>
               </li>
+              <li>
+                <Link href="/juegos" className="text-gray-400 hover:text-red-500 transition-colors">
+                  Juegos de Spider-Man
+                </Link>
+              </li>
             </ul>
           </div>
 

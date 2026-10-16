@@ -29,6 +29,7 @@ export function Navigation() {
     { href: "/series", label: "Series" },
     { href: "/videojuegos", label: "Videojuegos" },
     { href: "/personajes", label: "Personajes" },
+    { href: "/juegos", label: "Juegos" },
     { href: "/blog", label: "Blog" },
     { href: "/tienda", label: "Tienda" },
   ]
@@ -52,7 +53,7 @@ export function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-5 xl:space-x-8">
             {navItems.map((item) => (
               <Link
                 key={item.href}

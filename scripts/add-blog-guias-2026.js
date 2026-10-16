@@ -439,7 +439,52 @@ ${edicion('8413342597', 'Spiderman: Toda una vida (100% Marvel HC)', '61bFzjxfvY
 `,
 };
 
-const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS, FINAL_BND, MEJORES_COMICS];
+const localFigure = (src, alt, cap) => `<figure>
+  <img src="${src}" alt="${alt}" loading="lazy" />
+  <figcaption>${cap}</figcaption>
+</figure>`;
+
+const JUEGOS_POST = {
+  slug: 'juegos-spider-man-aranadle-test-quiz',
+  title: 'Nuevos juegos de Spider-Man: Arañadle, test de cultura y ¿qué Spider-Man eres?',
+  subtitle: 'Un personaje secreto cada día, un test de 10 preguntas y un quiz de personalidad. Gratis y sin registro',
+  excerpt:
+    'Estrenamos sección de juegos: Arañadle, para adivinar el personaje del día; un test para demostrar cuánto sabes de Spider-Man; y un quiz para descubrir qué Spider-Man del multiverso eres.',
+  category: 'Noticias',
+  readTime: '3 min',
+  publishDate: new Date('2026-10-16'),
+  image: '/images/juegos-aranadle.jpg',
+  seoTitle: 'Juegos de Spider-Man: Arañadle, test y quiz de personalidad',
+  seoDescription:
+    'Juega gratis a Arañadle, el reto diario de adivinar el personaje de Spider-Man, al test de cultura arácnida y al quiz ¿Qué Spider-Man eres?',
+  keywords: ['juegos Spider-Man', 'Arañadle', 'adivina el personaje Spider-Man', 'test Spider-Man', 'qué Spider-Man eres', 'quiz Spider-Man'],
+  tags: ['juegos', 'Arañadle', 'test', 'quiz', 'novedades'],
+  content: `
+<p>Sentido Arácnido estrena <a href="/juegos">sección de juegos</a>. Son tres minijuegos para el navegador, gratis y sin necesidad de registrarse, construidos con los mismos datos que usamos en nuestras fichas de personajes, películas y cómics.</p>
+
+<h2>Arañadle: adivina el personaje del día</h2>
+<p>Si has jugado a Wordle, te sonará la idea. Cada día hay un <strong>personaje secreto</strong> del universo de Spider-Man, el mismo para todo el mundo. Escribe cualquier personaje y la tabla te dirá en qué se parece al secreto: género, si es héroe arácnido, villano u otro héroe de Marvel, su universo, el año de su debut, sus creadores y los grupos a los que pertenece.</p>
+${localFigure('/images/juegos-aranadle.jpg', 'Una partida de Arañadle con tres intentos', 'Verde si coincide, amarillo si coincide en parte, rojo si no. La flecha del debut indica si el personaje secreto es más antiguo o más reciente.')}
+<p>Tienes <strong>8 intentos</strong>, una pista tras el cuarto fallo y una imagen borrosa tras el sexto. Al terminar puedes compartir tu resultado con emojis, sin destripar la solución, y el juego lleva la cuenta de tus partidas y de tu racha. El personaje cambia cada día a medianoche. <a href="/juegos/aranadle">Juega al reto de hoy</a>.</p>
+
+<h2>Test de cultura arácnida</h2>
+<p>Diez preguntas al azar sobre películas, cómics, series, videojuegos y personajes, de más fácil a más difícil. Cada vez que juegas te salen preguntas distintas, y después de responder cada una te explicamos el dato.</p>
+${localFigure('/images/juegos-test.jpg', 'Una pregunta del test de cultura arácnida', 'Tras cada respuesta, una breve explicación. Al final, tu nota, tu rango y un repaso de los fallos con enlaces para saber más.')}
+<p>Según tu nota, conseguirás un rango, de «Vecino de Queens» a «Spider-Man Superior». <a href="/juegos/test-spider-man">¿Cuánto sabes de Spider-Man?</a></p>
+
+<h2>¿Qué Spider-Man eres?</h2>
+<p>Ocho preguntas sobre tu forma de ser —qué haces un sábado, qué música escuchas, cómo te enfrentas a un problema— y un resultado entre ocho Spider-Man del multiverso: Peter Parker, Miles Morales, Gwen Stacy, Miguel O'Hara, Spider-Man Noir, Spider-Ham, Pavitr Prabhakar o Mayday Parker.</p>
+${localFigure('/images/juegos-quiz.jpg', 'Resultado de Miles Morales en el quiz ¿Qué Spider-Man eres?', 'Cada resultado tiene su propia descripción y enlaza a la ficha del personaje. Y si lo compartes, el enlace muestra tu resultado.')}
+<p><a href="/juegos/que-spider-man-eres">Descubre qué Spider-Man eres</a>.</p>
+
+<h2>Tus datos, solo en tu navegador</h2>
+<p>Las estadísticas (partidas, rachas y mejores notas) se guardan únicamente en tu navegador: no hace falta cuenta y no recogemos ningún dato personal. Si borras los datos del navegador o juegas en modo incógnito, simplemente empezarás de cero.</p>
+
+<p>Iremos ampliando los juegos con más personajes y preguntas. Si encuentras un dato que no cuadra o tienes una idea, <a href="/contacto">escríbenos</a>.</p>
+`,
+};
+
+const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS, FINAL_BND, MEJORES_COMICS, JUEGOS_POST];
 
 (async () => {
   for (const p of POSTS) {
