@@ -27,6 +27,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: pageTitle(product.title),
     description: product.description?.substring(0, 155) ?? `Compra ${product.title} en Amazon a través de Sentido Arácnido.`,
     alternates: { canonical: url },
+    // Fichas de afiliado con poco texto propio: visibles para el usuario, pero fuera del índice de Google
+    // (la página /tienda sí se indexa)
+    robots: { index: false, follow: true },
     openGraph: {
       title: `${product.title} | Sentido Arácnido`,
       description: product.description?.substring(0, 155) ?? "",

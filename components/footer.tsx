@@ -118,22 +118,6 @@ export function Footer() {
           </div>
         </div>
 
-        {/* SEO Footer Text */}
-        <div className="border-t border-red-600/20 pt-8 mb-8">
-          <div className="text-gray-400 text-sm leading-relaxed">
-            <p className="mb-4">
-              <strong className="text-white">Sentido Arácnido</strong> es el sitio web definitivo para fans de Spider-Man,
-              Peter Parker, Miles Morales y todo el Spider-Verse. Encuentra las mejores películas de Spider-Man, desde
-              la trilogía de Tobey Maguire hasta Tom Holland en el MCU. Descubre cómics clásicos como Amazing
-              Spider-Man, Ultimate Spider-Man y las mejores sagas del trepamuros.
-            </p>
-            <p>
-              Explora videojuegos épicos como Marvel's Spider-Man 2 para PS5, análisis de series animadas, y productos
-              oficiales con los mejores precios de Amazon. Tu fuente confiable para noticias, análisis y contenido
-              exclusivo sobre el universo arácnido más querido del mundo.
-            </p>
-          </div>
-        </div>
 
         {/* Disclaimer */}
         <div className="border-t border-red-600/20 pt-8 mb-4">
