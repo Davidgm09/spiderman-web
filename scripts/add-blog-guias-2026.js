@@ -352,7 +352,94 @@ ${figure('qeQJx07rK2xm8SD2sJxFKhE7gs0', 'Peter Parker con el traje de Spider-Man
 `,
 };
 
-const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS, FINAL_BND];
+// Ediciones comprobadas en Amazon.es el 16/10/2026 (título, disponibilidad e imagen)
+const edicion = (asin, name, imgId, text) => gift({ asin, name, img: `https://m.media-amazon.com/images/I/${imgId}._SL500_.jpg`, text });
+
+const MEJORES_COMICS = {
+  slug: 'mejores-comics-spider-man-historia',
+  title: 'Los 10 mejores cómics de Spider-Man de la historia (y dónde leerlos en español)',
+  subtitle: 'De la muerte de Gwen Stacy a Toda una vida: las historias esenciales del trepamuros, con su edición actual de Panini',
+  excerpt:
+    'Seis décadas de cómics dan para mucho. Estas son las diez historias de Spider-Man que todo fan debería leer, por qué son importantes y en qué edición puedes encontrarlas hoy en español.',
+  category: 'Cómics',
+  readTime: '10 min',
+  publishDate: new Date('2026-10-16'),
+  image: '/images/mejores-comics-spider-man.jpg',
+  seoTitle: 'Los 10 mejores cómics de Spider-Man y dónde leerlos en español',
+  seoDescription:
+    'Los mejores cómics de Spider-Man de la historia: la muerte de Gwen Stacy, La última cacería de Kraven, Azul, Ultimate y más, con su edición en español.',
+  keywords: ['mejores cómics Spider-Man', 'cómics Spider-Man imprescindibles', 'mejores historias Spider-Man', 'Spider-Man Panini', 'qué cómic de Spider-Man leer'],
+  tags: ['cómics', 'ranking', 'Panini', 'guía', 'Marvel', 'lectura'],
+  content: `
+<p><em>Como afiliados de Amazon, obtenemos ingresos por las compras adscritas que cumplen los requisitos aplicables.</em></p>
+
+<p>Spider-Man lleva protagonizando cómics desde 1962, y en ese tiempo ha vivido algunas de las mejores historias de la historia del medio. Esta lista reúne las <strong>diez imprescindibles</strong>: no son necesariamente las más fáciles para empezar —para eso tienes nuestra <a href="/blog/comics-spider-man-guia-nuevos-lectores">guía para nuevos lectores</a>—, sino las que mejor definen al personaje y las que más han influido en todo lo que vino después.</p>
+<p>Para cada una te indicamos la <strong>edición que puedes encontrar hoy en español</strong>. Las hemos comprobado una a una en Amazon.</p>
+
+<h2>1. La muerte de Gwen Stacy (1973)</h2>
+<p><em>The Amazing Spider-Man</em> #121-122 · Gerry Conway, Gil Kane y John Romita</p>
+<p>El Duende Verde secuestra a Gwen Stacy y la arroja desde lo alto de un puente. Spider-Man la atrapa con su telaraña… y el frenazo brusco, acompañado de un seco «snap», parece romperle el cuello. Fue la primera vez que un cómic de superhéroes se atrevía a matar a la pareja del protagonista, y el número siguiente se cierra con la aparente muerte del propio Norman Osborn. Para muchos historiadores, aquí terminó la Edad de Plata de los cómics. Lo contamos con detalle en <a href="/blog/legado-muerte-gwen-stacy-50-anos">el legado de la muerte de Gwen Stacy</a>.</p>
+${edicion('841101522X', 'El Asombroso Spiderman 6: ¡La muerte de Gwen Stacy! (Marvel Gold)', '714OtI6uOAL', 'El tomo de la colección Marvel Gold que recoge esta etapa clásica, con la historia completa y los números que la rodean.')}
+
+<h2>2. La última cacería de Kraven (1987)</h2>
+<p>Seis números entre <em>Web of Spider-Man</em>, <em>The Amazing Spider-Man</em> y <em>The Spectacular Spider-Man</em> · J. M. DeMatteis y Mike Zeck</p>
+<p>Kraven derrota a Spider-Man, lo entierra vivo y se pone su traje para demostrar que puede ser mejor que él. Una historia oscura y casi poética sobre la obsesión y la muerte, que muchos consideran la mejor de Spider-Man jamás escrita. Te la analizamos en <a href="/blog/kravens-last-hunt-analisis-mejor-arco-spider-man">nuestro artículo sobre Kraven's Last Hunt</a>.</p>
+${edicion('8413349354', 'Spiderman: La última cacería de Kraven (Marvel Must Have)', '71U7xm0EKXL', 'La historia completa en un solo tomo de la colección Must Have, la puerta de entrada más asequible a los grandes clásicos de Marvel.')}
+
+<h2>3. ¡Si éste es mi destino…! (1965-1966)</h2>
+<p><em>The Amazing Spider-Man</em> #31-33 · Stan Lee y Steve Ditko</p>
+<p>La tía May se está muriendo y Peter necesita un suero para salvarla, pero acaba atrapado bajo toneladas de maquinaria en la guarida del Planificador Maestro —el Doctor Octopus—. La escena en la que Peter, al límite, levanta el peso a fuerza de pura voluntad es una de las páginas más famosas de la historia del cómic. Es la esencia de Spider-Man: no se rinde nunca.</p>
+${edicion('8490247633', 'El Asombroso Spiderman: ¡Si éste es mi destino…! (Panini)', '81ujNMgEvuL', 'Edición de Panini dedicada a esta etapa de Lee y Ditko, en el mejor momento de la pareja creativa original del personaje.')}
+
+<h2>4. La etapa de Roger Stern (1982-1984)</h2>
+<p><em>The Amazing Spider-Man</em>, desde el #224 · Roger Stern, John Romita Jr. y otros</p>
+<p>Una de las etapas más queridas por los fans veteranos. En apenas dos años, Stern dejó tres clásicos: <strong>«¡Nada puede detener al Juggernaut!»</strong> (#229-230), en la que Spider-Man se enfrenta a alguien literalmente imparable; la primera aparición del <strong>Duende</strong> (Hobgoblin) en el #238, que abrió uno de los grandes misterios de la serie; y <strong>«El niño que coleccionaba a Spider-Man»</strong> (#248), una historia corta que todavía emociona.</p>
+${edicion('1302928376', 'Spider-Man by Roger Stern Omnibus (en inglés)', '91NFFNGmqAL', 'Ahora mismo, la forma más completa de leer esta etapa es este ómnibus en inglés de Marvel. Las ediciones en español de Panini se agotan con facilidad: si ves alguna disponible, merece la pena.')}
+
+<h2>5. Spider-Man: Azul (2002)</h2>
+<p>Seis números · Jeph Loeb y Tim Sale</p>
+<p>En el día de San Valentín, Peter graba un mensaje para Gwen Stacy recordando cómo se enamoraron. Loeb y Sale, que ya habían hecho lo mismo con Batman y Daredevil, firman una carta de amor a la etapa clásica y al primer gran amor de Peter. Es más un romance que una historia de acción, y por eso mismo funciona tan bien.</p>
+${edicion('8411507017', 'Spiderman: Azul (Marvel Must Have)', '818-ZibukRL', 'La historia completa en un tomo. Ideal para quien busca el lado más emocional del personaje.')}
+
+<h2>6. Ultimate Spider-Man: Poder y responsabilidad (2000)</h2>
+<p><em>Ultimate Spider-Man</em> #1-7 · Brian Michael Bendis y Mark Bagley</p>
+<p>El origen de Spider-Man contado de nuevo para el siglo XXI, con un Peter Parker de 15 años, torpe y muy humano. Bendis se toma su tiempo —el tío Ben no muere hasta bien avanzada la historia—, y ese ritmo pausado es lo que la hace tan especial. Fue la base de muchas adaptaciones posteriores. Te lo contamos en <a href="/blog/ultimate-spider-man-bendis-analisis-run-completa">nuestro análisis de la etapa de Bendis</a>, y tienes la ficha del <a href="/comics/ultimate-spider-man-1-2000">primer número</a>.</p>
+${edicion('8411016846', 'Ultimate Spiderman: Poder y responsabilidad (Panini)', '71KpSi-IqhL', 'El primer arco de la serie, perfecto tanto para veteranos como para quien no ha leído nunca un cómic de Spider-Man.')}
+
+<h2>7. Vuelta a casa (2001)</h2>
+<p><em>The Amazing Spider-Man</em> vol. 2 #30-35 · J. Michael Straczynski y John Romita Jr.</p>
+<p>Un misterioso Ezekiel le plantea a Peter una pregunta incómoda: ¿y si la picadura de la araña no fue un accidente? Mientras tanto, Morlun, un ser que se alimenta de los «tótems» animales, viene a por él. Straczynski renovó la serie con ideas nuevas y un Peter adulto que trabaja como profesor en su antiguo instituto.</p>
+${edicion('8413348536', 'El Asombroso Spiderman 1: Vuelta a casa (Marvel Saga)', '91o9txbFgBS', 'Primer tomo de la etapa de Straczynski en la colección Marvel Saga. Si te gusta, la colección continúa en orden.')}
+
+<h2>8. Superior Spider-Man: Mi peor enemigo (2013)</h2>
+<p><em>Superior Spider-Man</em> · Dan Slott y Ryan Stegman</p>
+<p>El Doctor Octopus, moribundo, cambia su mente por la de Peter Parker y se queda con su cuerpo. A partir de ahí, Otto decide demostrar que puede ser un Spider-Man «superior»: más eficaz, más implacable y bastante más arrogante. Una premisa arriesgada que salió muy bien. Te lo explicamos en <a href="/blog/superior-spider-man-doctor-octopus-analisis">nuestro análisis</a>.</p>
+${edicion('8413340632', 'El Asombroso Spiderman 39: Spiderman Superior. Mi peor enemigo (Marvel Saga)', '71PNI985jPS', 'El inicio de la etapa Superior Spider-Man dentro de la colección Marvel Saga.')}
+
+<h2>9. Miles Morales: El nuevo Spiderman (2011)</h2>
+<p><em>Ultimate Comics: Spider-Man</em> · Brian Michael Bendis y Sara Pichelli</p>
+<p>Tras la muerte del Peter Parker del universo Ultimate, un chico de Brooklyn llamado Miles Morales recibe la picadura de otra araña y decide tomar el relevo. Es el origen del Spider-Man que años después protagonizaría <em>Un nuevo universo</em> y que hoy es tan popular como el original.</p>
+${edicion('8491677208', 'Miles Morales. Spiderman: El nuevo Spiderman 1 (Panini)', '81QY6DarCAL', 'El comienzo de la historia de Miles, por los mismos creadores que lo inventaron.')}
+
+<h2>10. Spiderman: Toda una vida (2019)</h2>
+<p>Seis números · Chip Zdarsky y Mark Bagley</p>
+<p>¿Y si Spider-Man hubiera envejecido en tiempo real desde 1962? Cada número transcurre en una década distinta, desde los años sesenta hasta la de 2010, y reimagina los grandes momentos del personaje con un Peter que cumple años, se casa, tiene hijos y envejece. Es la mejor historia moderna de Spider-Man y un homenaje a toda su trayectoria.</p>
+${edicion('8413342597', 'Spiderman: Toda una vida (100% Marvel HC)', '61bFzjxfvYL', 'Edición en tapa dura de Panini con la miniserie completa. Si ya conoces la historia del personaje, la disfrutarás el doble.')}
+
+<h2>Menciones de honor</h2>
+<ul>
+  <li><strong>Tormento</strong> (1990), de Todd McFarlane: la historia más oscura del Lagarto y un festival del dibujo de los noventa. <a href="${amazon('8411016404')}" ${REL}>Ver en Amazon</a>.</li>
+  <li><strong>Matanza Máxima</strong> (1993): el gran crossover de Carnage, con Spider-Man obligado a aliarse con Venom. <a href="${amazon('8411010430')}" ${REL}>Ver en Amazon</a>.</li>
+  <li><strong>Spider-Verse</strong> (2014), de Dan Slott: la reunión de Spider-Men de todo el multiverso, con el mismo espíritu que las películas animadas del Spider-Verso.</li>
+  <li><strong>Las primeras historias de Lee y Ditko</strong> (1962-1966): si te gustan los clásicos, empieza por el principio, con la <a href="/comics/the-amazing-spider-man-1-1963">ficha de The Amazing Spider-Man #1</a>.</li>
+</ul>
+
+<h2>¿Por cuál empiezo?</h2>
+<p>Si nunca has leído cómics de Spider-Man, <strong>Ultimate Spider-Man</strong> o <strong>Azul</strong> son las entradas más fáciles. Si prefieres lo clásico, <strong>¡Si éste es mi destino…!</strong> y <strong>La muerte de Gwen Stacy</strong>. Y si buscas algo más adulto, <strong>La última cacería de Kraven</strong>. Para una selección pensada solo para principiantes, echa un vistazo a nuestra <a href="/blog/comics-spider-man-guia-nuevos-lectores">guía para nuevos lectores</a>, y si buscas regalar alguno, a nuestra <a href="/blog/regalos-spider-man-navidad-guia">guía de regalos</a>.</p>
+`,
+};
+
+const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS, FINAL_BND, MEJORES_COMICS];
 
 (async () => {
   for (const p of POSTS) {

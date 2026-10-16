@@ -163,7 +163,9 @@ const BLOG_POSTS = [
 </figure>
 
 <h2>Conclusión</h2>
-<p>Estos cinco títulos cubren seis décadas de historia y todos los registros emocionales del personaje: tragedia, humor, acción, romance y filosofía existencial. Una vez terminados, tendrás la base perfecta para explorar cualquier otro rincón del universo araña.</p>`.trim(),
+<p>Estos cinco títulos cubren seis décadas de historia y todos los registros emocionales del personaje: tragedia, humor, acción, romance y filosofía existencial. Una vez terminados, tendrás la base perfecta para explorar cualquier otro rincón del universo araña.</p>
+
+<p>¿Quieres ir más allá? Tienes la lista completa en <a href="/blog/mejores-comics-spider-man-historia">los 10 mejores cómics de Spider-Man de la historia</a>, con la edición en español de cada uno.</p>`.trim(),
   },
   {
     title: 'El legado de "The Night Gwen Stacy Died" — 50 años cambiando los cómics',
