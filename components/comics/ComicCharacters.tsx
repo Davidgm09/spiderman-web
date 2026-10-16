@@ -27,7 +27,8 @@ export function ComicCharacters({ characterNames, allCharacters }: ComicCharacte
 
   const matched = characterNames
     .map(name => ({ name, character: matchCharacter(name, allCharacters) }))
-    .filter(item => item.character !== null) as { name: string; character: Character }[]
+    .filter(item => item.character !== null)
+    .filter((item, i, arr) => arr.findIndex(o => o.character!.slug === item.character!.slug) === i) as { name: string; character: Character }[]
 
   const unmatched = characterNames.filter(
     name => !matchCharacter(name, allCharacters)
@@ -63,15 +64,17 @@ export function ComicCharacters({ characterNames, allCharacters }: ComicCharacte
             </span>
           </Link>
         ))}
-        {unmatched.map(name => (
-          <div key={name} className="flex flex-col items-center gap-3 w-32">
-            <div className="w-28 h-28 rounded-full bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
-              <span className="text-gray-500 text-lg font-bold">{name[0]}</span>
-            </div>
-            <span className="text-gray-500 text-sm text-center leading-tight line-clamp-2">{name}</span>
-          </div>
-        ))}
       </div>
+      {/* Personajes sin ficha en la web: etiquetas compactas en vez de círculos vacíos */}
+      {unmatched.length > 0 && (
+        <div className={`flex flex-wrap gap-2 ${matched.length > 0 ? 'mt-5' : ''}`}>
+          {unmatched.map(name => (
+            <span key={name} className="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-gray-300 text-sm">
+              {name}
+            </span>
+          ))}
+        </div>
+      )}
     </div>
   )
 }
