@@ -19,7 +19,7 @@ const MANUAL_OVERRIDES = {
   'spider-man-2000-2000':
     'https://www.youtube.com/watch?v=vDp4JvDx8cI',
   'spider-man-mysterio-s-menace-2001':
-    'https://www.youtube.com/watch?v=G0n47HT6X6E',
+    'https://www.youtube.com/watch?v=rW8YvO1vRP0',
   'spider-man-2-enter-electro-2001':
     'https://www.youtube.com/watch?v=WUvov69CmHw',
   'spider-man-2-the-game-2004':
