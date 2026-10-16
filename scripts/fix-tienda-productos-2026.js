@@ -212,6 +212,15 @@ const FIXES = {
     features: ['Origen completo de Miles Morales como Spider-Man', 'Guion de Brian Michael Bendis con arte de Sara Pichelli', 'Edición en español de Panini Comics', 'Primeros números de Ultimate Comics: Spider-Man (2011)'],
   },
 
+  // La portada y el ISBN son de la colección Must Have, no de Marvel Saga
+  'el-asombroso-spiderman-1-vuelta-a-casa-marvel-saga-panini': {
+    slug: 'spiderman-vuelta-a-casa-must-have-panini',
+    description: 'La primera historia de la etapa de J. Michael Straczynski y John Romita Jr. en un solo tomo de la colección Marvel Must Have de Panini. Si te gusta, la etapa continúa en la colección Marvel Saga.',
+    features: ['Editorial: Panini España', 'Idioma: español', 'Guion: J. Michael Straczynski', 'Dibujo: John Romita Jr.', 'Colección: Marvel Must Have'],
+    seoTitle: 'Spiderman: Vuelta a casa (Marvel Must Have) | Amazon.es',
+    seoDescription: 'Spiderman: Vuelta a casa, de Straczynski y Romita Jr., en la colección Marvel Must Have de Panini. Disponible en Amazon.es.',
+  },
+
   // ── Datos de ficha que no coincidían con el producto ────────────────────────
   'funko-pop-spider-man-2099-blanco-exclusiva-amazon-961': {
     slug: 'funko-pop-miguel-ohara-across-spider-verse',
@@ -234,6 +243,61 @@ const FIXES = {
   },
 };
 
+// Títulos cortos y con el mismo formato en toda la tienda: «Marca · Producto (detalle)».
+// Clave: slug actual (ya corregido arriba). El seoTitle de cada ficha conserva la versión larga.
+const TITLES = {
+  'disney-marvel-spider-man-botella-aluminio-600ml': 'Kids Licensing · Botella de aluminio de Spider-Man',
+  'marvel-spider-man-cartera-web-hero': 'Marvel · Cartera de Spider-Man Web Hero',
+  'marvel-comics-spider-man-llavero-metalico': 'SeDi · Llavero metálico de Spider-Man',
+  'marvel-spider-man-mochila-escolar-infantil': 'Marvel · Mochila escolar de Spider-Man',
+  'paladone-marvel-spider-man-taza-ceramica-550ml': 'Paladone · Taza de Spider-Man con viñetas de cómic',
+  'stor-spider-man-sandwichera-infantil-3-compartimentos': 'Stor · Sandwichera de Spider-Man (3 compartimentos)',
+  'funko-pop-anti-venom-peter-parker-spider-man-2': "Funko Pop! · Anti-Venom (Marvel's Spider-Man 2)",
+  'funko-pop-carnage-venom-habra-matanza': 'Funko Pop! · Carnage (Venom: Habrá Matanza)',
+  'funko-pop-spider-man-integrated-suit-no-way-home-913': 'Funko Pop! · Spider-Man traje integrado (No Way Home)',
+  'funko-pop-spider-man-noir-spider-verse-406': 'Funko Pop! · Spider-Man Noir (Un nuevo universo)',
+  'funko-pop-spider-man-primera-aparicion-diamond-glitter-593': 'Funko Pop! · Spider-Man Diamond Glitter (#593)',
+  'funko-pop-spider-man-traje-casero-homecoming': 'Funko Pop! · Spider-Man traje casero (Homecoming)',
+  'funko-pop-miguel-ohara-across-spider-verse': "Funko Pop! · Miguel O'Hara (Cruzando el Multiverso)",
+  'funko-pop-miles-morales-across-spider-verse': 'Funko Pop! · Miles Morales (Cruzando el Multiverso)',
+  'funko-pop-spider-gwen-sin-mascara-152': 'Funko Pop! · Spider-Gwen sin máscara (#152)',
+  'spiderman-vuelta-a-casa-must-have-panini': 'Panini · Spiderman: Vuelta a casa (Must Have)',
+  'el-asombroso-spiderman-2-hasta-que-las-estrellas-se-congelen': 'Panini · Hasta que las estrellas se congelen (Marvel Saga 2)',
+  'el-asombroso-spiderman-39-superior-mi-peor-enemigo': 'Panini · Spiderman Superior: Mi peor enemigo (Marvel Saga 39)',
+  'miles-morales-nuevo-spiderman-vol-1-bendis-panini': 'Panini · Miles Morales: El nuevo Spiderman 1',
+  'spider-man-1-tormento-todd-mcfarlane-panini': 'Panini · Spiderman: Tormento (Must Have)',
+  'spider-man-by-roger-stern-omnibus': 'Marvel · Spider-Man by Roger Stern Omnibus (inglés)',
+  'spider-man-maximum-carnage-panini': 'Panini · Matanza Máxima (Marvel Héroes)',
+  'spiderman-azul-jeph-loeb-tim-sale-panini': 'Panini · Spiderman: Azul (Must Have)',
+  'spiderman-grandes-poderes-grandes-enemigos-mi-primer-comic': 'Panini · Mi primer cómic: Grandes poderes, grandes enemigos',
+  'spiderman-ultima-caceria-kraven-must-have-panini': 'Panini · La última cacería de Kraven (Must Have)',
+  'amazing-spider-man-omnibus-vol-1-stan-lee-ditko': 'Marvel · The Amazing Spider-Man Omnibus Vol. 1 (inglés)',
+  'hasbro-marvel-legends-5-pack-spider-man-universe-exclusivo-amazon': 'Marvel Legends · Pack de 5 figuras de Spider-Man',
+  'hasbro-marvel-legends-miles-morales-spider-verse': 'Marvel Legends · Miles Morales (Cruzando el Multiverso)',
+  'hasbro-spider-man-bend-flex-15cm': 'Hasbro · Spider-Man Bend and Flex (15 cm)',
+  'hasbro-marvel-legends-gamerverse-velocity-suit': 'Marvel Legends · Peter Parker traje Velocity (Gamerverse)',
+  'hasbro-marvel-legends-duende-verde-deluxe-no-way-home': 'Marvel Legends · Duende Verde Deluxe (No Way Home)',
+  'hasbro-marvel-legends-spider-gwen-across-spider-verse': 'Marvel Legends · Spider-Gwen (Cruzando el Multiverso)',
+  'hasbro-marvel-legends-spider-man-estilo-animacion': 'Marvel Legends · Spider-Man estilo animación',
+  'hasbro-marvel-legends-amazing-spider-man-no-way-home': 'Marvel Legends · The Amazing Spider-Man (No Way Home)',
+  'hasbro-marvel-spider-man-mascara-electronica-miles-morales': 'Hasbro · Máscara electrónica de Miles Morales',
+  'hasbro-marvel-spider-man-spider-mobile-miles-morales': 'Hasbro · Spider-Mobile con figura de Miles Morales',
+  'hasbro-marvel-spider-man-titan-hero-series-30cm': 'Hasbro · Spider-Man Titan Hero Series (30 cm)',
+  'hasbro-spider-man-guante-lanzatelaranas-electronico': 'Hasbro · Guante lanzatelarañas electrónico',
+  'hasbro-spider-man-lanzador-aracnido-supremo': 'Hasbro · Lanzador Arácnido Supremo',
+  'lego-marvel-76178-daily-bugle-coleccionista': 'LEGO 76178 · Daily Bugle',
+  'lego-marvel-76226-figura-articulada-spider-man': 'LEGO 76226 · Figura articulada de Spider-Man',
+  'lego-marvel-76279-spider-man-coche-carreras': 'LEGO 76279 · Coche de carreras de Spider-Man',
+  'marvel-spider-man-peluche-hablador-30cm': 'Marvel · Peluche hablador de Spider-Man',
+  'marvel-spiderman-logo-camiseta-hombre-algodon': 'Marvel · Camiseta retro The Amazing Spider-Man',
+  'marvel-spider-man-camiseta-manga-larga-nino': 'Marvel · Camiseta de manga larga de Spider-Man (niño)',
+  'marvel-pack-2-camisetas-spider-man-nino-manga-corta': 'Marvel · Pack de 2 camisetas de Spider-Man (niño)',
+  'marvel-spider-man-pack-3-calcetines-nino': 'Marvel · Pack de 3 calcetines de Spider-Man (niño)',
+  'marvel-spider-man-pijama-nino-conjunto-2-piezas': 'Marvel · Pijama de Spider-Man (niño)',
+  'marvel-spider-man-miles-morales-gorro-beanie-adulto': 'Concept One · Gorro de punto de Miles Morales',
+  'marvel-spider-man-sudadera-capucha-hombre': 'Marvel · Sudadera con capucha Spider-Man Web',
+};
+
 async function main() {
   let n = 0;
   for (const [oldSlug, fix] of Object.entries(FIXES)) {
@@ -247,6 +311,16 @@ async function main() {
     n++;
   }
   console.log(`\n${n} productos corregidos`);
+
+  let t = 0;
+  for (const [slug, title] of Object.entries(TITLES)) {
+    const r = await prisma.product.updateMany({ where: { slug }, data: { title } });
+    if (!r.count) console.log(`⚠️  Título sin producto: ${slug}`);
+    t += r.count;
+  }
+  const missing = await prisma.product.findMany({ where: { slug: { notIn: Object.keys(TITLES) } }, select: { slug: true } });
+  missing.forEach((p) => console.log(`⚠️  Sin título nuevo: ${p.slug}`));
+  console.log(`${t} títulos unificados`);
   await prisma.$disconnect();
 }
 

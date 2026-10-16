@@ -409,7 +409,7 @@ ${edicion('8411016846', 'Ultimate Spiderman: Poder y responsabilidad (Panini)', 
 <h2>7. Vuelta a casa (2001)</h2>
 <p><em>The Amazing Spider-Man</em> vol. 2 #30-35 · J. Michael Straczynski y John Romita Jr.</p>
 <p>Un misterioso Ezekiel le plantea a Peter una pregunta incómoda: ¿y si la picadura de la araña no fue un accidente? Mientras tanto, Morlun, un ser que se alimenta de los «tótems» animales, viene a por él. Straczynski renovó la serie con ideas nuevas y un Peter adulto que trabaja como profesor en su antiguo instituto.</p>
-${edicion('8413348536', 'El Asombroso Spiderman 1: Vuelta a casa (Marvel Saga)', '91o9txbFgBS', 'Primer tomo de la etapa de Straczynski en la colección Marvel Saga. Si te gusta, la colección continúa en orden.')}
+${edicion('8413348536', 'Spiderman: Vuelta a casa (Marvel Must Have)', '91o9txbFgBS', 'La primera historia de la etapa de Straczynski en un tomo de la colección Must Have. Si te gusta, la etapa continúa en la colección Marvel Saga.')}
 
 <h2>8. Superior Spider-Man: Mi peor enemigo (2013)</h2>
 <p><em>Superior Spider-Man</em> · Dan Slott y Ryan Stegman</p>
