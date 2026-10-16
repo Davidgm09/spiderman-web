@@ -6,6 +6,7 @@ import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { AdSenseScript } from "@/components/ads/AdSenseScript"
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics"
+import { AffiliateClickTracker } from "@/components/analytics/AffiliateClickTracker"
 import { CookieBanner } from "@/components/CookieBanner"
 import { SITE_URL } from "@/lib/config"
 
@@ -47,6 +48,7 @@ export default function RootLayout({
       <body className={`${inter.className} bg-black text-white`}>
         <AdSenseScript />
         <GoogleAnalytics />
+        <AffiliateClickTracker />
         <Navigation />
         <main className="min-h-screen">{children}</main>
         <Footer />
