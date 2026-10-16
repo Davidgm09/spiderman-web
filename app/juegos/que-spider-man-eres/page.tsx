@@ -39,13 +39,13 @@ export default async function QueSpiderManEresPage({ searchParams }: PageProps) 
   const { r } = await searchParams
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-950 via-gray-900 to-red-950 pt-24 pb-16">
-      <div className="container mx-auto px-4 max-w-5xl">
+    <div className="pt-24 pb-16">
+      <div className="relative z-10 container mx-auto px-4 max-w-5xl">
         <Breadcrumb items={[{ label: "Juegos", href: "/juegos" }, { label: "¿Qué Spider-Man eres?" }]} />
 
         <header className="text-center my-8">
-          <p className="text-purple-400 text-sm font-semibold tracking-widest uppercase mb-2">Test de personalidad</p>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-3">¿Qué Spider-Man eres?</h1>
+          <p className="font-pixel text-[10px] text-yellow-300 tracking-widest mb-5">03 · Personalidad</p>
+          <h1 className="font-pixel text-2xl md:text-4xl leading-snug mb-5"><span className="text-white">¿Qué</span> <span className="neon-red">Spider-Man</span> <span className="text-white">eres?</span></h1>
           <p className="text-gray-300 max-w-2xl mx-auto">
             Ocho preguntas, ocho Spider-Man del multiverso. Responde con sinceridad y descubre con cuál te identificas.
           </p>

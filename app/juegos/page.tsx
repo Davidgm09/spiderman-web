@@ -17,6 +17,12 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION },
 }
 
+const RULES = [
+  { icon: "♥", title: "Gratis y sin registro", text: "Entra y juega. No hace falta cuenta ni descargar nada." },
+  { icon: "★", title: "Tu progreso, contigo", text: "Rachas, récords y resultados se guardan solo en tu navegador." },
+  { icon: "?", title: "Datos de verdad", text: "Todo sale de nuestras fichas de personajes, películas y cómics, revisadas una a una." },
+]
+
 export default function JuegosPage() {
   const jsonLd = {
     "@context": "https://schema.org",
@@ -31,44 +37,48 @@ export default function JuegosPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-950 via-gray-900 to-blue-950 pt-24 pb-16">
+    <div className="pt-24 pb-16">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <div className="container mx-auto px-4 max-w-5xl">
+      <div className="relative z-10 container mx-auto px-4 max-w-6xl">
         <Breadcrumb items={[{ label: "Juegos" }]} />
 
-        <header className="text-center my-10">
-          <p className="text-blue-400 text-sm font-semibold tracking-widest uppercase mb-3">Sentido Arácnido · Juegos</p>
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 leading-tight">
-            Juegos de <span className="bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent">Spider-Man</span>
+        <header className="text-center mt-10 mb-12">
+          <p className="font-pixel text-[10px] sm:text-xs text-yellow-300 mb-6 tracking-widest">Sentido Arácnido · Arcade</p>
+          <h1 className="font-pixel text-3xl sm:text-5xl leading-tight mb-6">
+            <span className="neon-red">ELIGE</span> <span className="text-white">TU</span> <span className="neon-blue">JUEGO</span>
           </h1>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-            Un reto nuevo cada día, un test para demostrar cuánto sabes y un quiz para descubrir tu Spider-Man del multiverso.
-            Gratis, sin registro y en el navegador.
+          <p className="text-gray-300 max-w-xl mx-auto">
+            Un reto nuevo cada día, un desafío para demostrar cuánto sabes y un test para descubrir tu Spider-Man del multiverso.
+          </p>
+          <p className="font-pixel text-[10px] sm:text-xs text-white mt-8 arcade-blink" aria-hidden>
+            ▼ PULSA PARA JUGAR ▼
           </p>
         </header>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {JUEGOS.map((g) => <GameCard key={g.slug} game={g} />)}
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+          {JUEGOS.map((g, i) => <GameCard key={g.slug} game={g} index={i} />)}
         </div>
+
+        <section className="mt-16 grid sm:grid-cols-3 gap-4">
+          {RULES.map((r) => (
+            <div key={r.title} className="rounded-xl bg-black/50 border-2 border-gray-800 p-5">
+              <span className="font-pixel text-lg neon-red">{r.icon}</span>
+              <h2 className="font-pixel text-[11px] leading-relaxed text-white mt-3 mb-2">{r.title.toUpperCase()}</h2>
+              <p className="text-sm text-gray-400">{r.text}</p>
+            </div>
+          ))}
+        </section>
 
         <div className="mt-12">
           <InContentAd />
         </div>
 
-        <section className="mt-12 max-w-3xl mx-auto text-gray-300 space-y-4">
-          <h2 className="text-2xl font-bold text-white">Juegos hechos por fans, para fans</h2>
-          <p>
-            Todos los juegos usan los datos de nuestras fichas de{" "}
-            <Link href="/personajes" className="text-red-400 hover:text-red-300 underline">personajes</Link>,{" "}
-            <Link href="/peliculas" className="text-red-400 hover:text-red-300 underline">películas</Link> y{" "}
-            <Link href="/comics" className="text-red-400 hover:text-red-300 underline">cómics</Link>, revisados uno a uno.
-            Si fallas una pregunta, siempre tienes a mano el artículo donde se explica la respuesta.
-          </p>
-          <p>
-            Tus estadísticas (partidas, rachas y mejores notas) se guardan solo en tu navegador: no necesitas cuenta
-            ni compartimos ningún dato.
-          </p>
-        </section>
+        <p className="mt-10 text-center text-sm text-gray-500 max-w-2xl mx-auto">
+          ¿Has fallado alguna pregunta? Cada respuesta enlaza a nuestras fichas de{" "}
+          <Link href="/personajes" className="text-red-400 hover:text-red-300 underline">personajes</Link>,{" "}
+          <Link href="/peliculas" className="text-red-400 hover:text-red-300 underline">películas</Link> y{" "}
+          <Link href="/comics" className="text-red-400 hover:text-red-300 underline">cómics</Link> para que sigas aprendiendo.
+        </p>
       </div>
     </div>
   )

@@ -21,13 +21,13 @@ export default function TestPage() {
   const questions = preguntas as Question[]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-950 via-gray-900 to-red-950 pt-24 pb-16">
-      <div className="container mx-auto px-4 max-w-5xl">
+    <div className="pt-24 pb-16">
+      <div className="relative z-10 container mx-auto px-4 max-w-5xl">
         <Breadcrumb items={[{ label: "Juegos", href: "/juegos" }, { label: "Test de cultura arácnida" }]} />
 
         <header className="text-center my-8">
-          <p className="text-blue-400 text-sm font-semibold tracking-widest uppercase mb-2">Test</p>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-3">¿Cuánto sabes de Spider-Man?</h1>
+          <p className="font-pixel text-[10px] text-yellow-300 tracking-widest mb-5">02 · Desafío</p>
+          <h1 className="font-pixel text-2xl md:text-4xl leading-snug mb-5"><span className="text-white">¿Cuánto sabes de</span> <span className="neon-blue">Spider-Man?</span></h1>
           <p className="text-gray-300 max-w-2xl mx-auto">
             10 preguntas al azar de entre {questions.length}, de más fácil a más difícil. Cada partida es distinta.
           </p>

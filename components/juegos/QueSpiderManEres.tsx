@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { RotateCcw, ArrowRight } from 'lucide-react'
 import { trackEvent } from '@/lib/analytics'
+import { saveState } from '@/lib/juegos'
 import { ShareButton } from './ShareButton'
 
 export interface Profile {
@@ -54,6 +55,7 @@ export function QueSpiderManEres({ profiles, questions, initialResult }: Props) 
     setAnswers(next)
     setResult(r)
     trackEvent('juego_terminado', { juego: 'que-spider-man-eres', resultado: r })
+    saveState('que-spider-man-eres-v1', { last: r })
     window.history.replaceState(null, '', `?r=${r}`)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }

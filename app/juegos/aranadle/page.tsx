@@ -29,14 +29,14 @@ export default function AranadlePage() {
   const characters = personajes as GameCharacter[]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-950 via-gray-900 to-blue-950 pt-24 pb-16">
-      <div className="container mx-auto px-4 max-w-5xl">
+    <div className="pt-24 pb-16">
+      <div className="relative z-10 container mx-auto px-4 max-w-5xl">
         <Breadcrumb items={[{ label: "Juegos", href: "/juegos" }, { label: "Arañadle" }]} />
 
         <header className="text-center my-8">
-          <p className="text-red-400 text-sm font-semibold tracking-widest uppercase mb-2">Juego diario</p>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-3">
-            Araña<span className="text-red-500">dle</span>
+          <p className="font-pixel text-[10px] text-yellow-300 tracking-widest mb-5">01 · Reto diario</p>
+          <h1 className="font-pixel text-3xl md:text-5xl mb-5">
+            <span className="text-white">ARAÑA</span><span className="neon-red">DLE</span>
           </h1>
           <p className="text-gray-300 max-w-2xl mx-auto">
             Adivina el personaje del universo de Spider-Man de hoy. Cada intento te dice en qué se parece al personaje secreto.
@@ -49,7 +49,7 @@ export default function AranadlePage() {
 
         <section className="max-w-4xl mx-auto mt-10 grid md:grid-cols-2 gap-6 text-sm text-gray-300">
           <div className="rounded-xl bg-gray-900/60 border border-gray-800 p-5">
-            <h2 className="text-lg font-semibold text-white mb-3">Cómo se juega</h2>
+            <h2 className="font-pixel text-xs text-white mb-4">Cómo se juega</h2>
             <ul className="space-y-2 list-disc pl-5">
               <li>Escribe el nombre de cualquier personaje (en inglés o en español) y elígelo de la lista.</li>
               <li>Cada casilla te dice si ese dato coincide con el del personaje secreto.</li>
@@ -59,7 +59,7 @@ export default function AranadlePage() {
             </ul>
           </div>
           <div className="rounded-xl bg-gray-900/60 border border-gray-800 p-5">
-            <h2 className="text-lg font-semibold text-white mb-3">Qué significa cada color</h2>
+            <h2 className="font-pixel text-xs text-white mb-4">Los colores</h2>
             <ul className="space-y-2">
               {LEGEND.map((l) => (
                 <li key={l.text} className="flex items-center gap-3">
