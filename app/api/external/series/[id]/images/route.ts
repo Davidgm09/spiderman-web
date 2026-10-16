@@ -120,8 +120,8 @@ async function fetchSeriesImages(seriesId: string): Promise<SeriesImages | null>
     backdrops.slice(0, 4).forEach((backdrop: SeriesImages['backdrops'][number]) => {
       gallery.push({
         url: backdrop.full_url,
-        title: `Escena icónica de ${series.name}`,
-        description: `Una de las escenas más memorables de la serie`,
+        title: `Imagen de ${series.name}`,
+        description: `Imagen promocional de ${series.name}`,
         type: 'backdrop' as const
       });
     });
@@ -147,8 +147,8 @@ async function fetchSeriesImages(seriesId: string): Promise<SeriesImages | null>
       const backdrop = backdrops[gallery.length];
       gallery.push({
         url: backdrop.full_url,
-        title: `${series.name} - Escena ${gallery.length + 1}`,
-        description: `Momentos visuales impactantes de la serie`,
+        title: `${series.name}: imagen ${gallery.length + 1}`,
+        description: `Imagen de ${series.name}`,
         type: 'backdrop' as const
       });
     }

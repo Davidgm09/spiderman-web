@@ -94,24 +94,9 @@ export default async function MoviePage({ params }: Props) {
     inLanguage: 'es',
   }
 
-  // Usar datos reales de la base de datos o fallback
-  const sceneGallery: GalleryImage[] = parseJson<GalleryImage>(movie.sceneImages).length > 0
-    ? parseJson<GalleryImage>(movie.sceneImages)
-    : [
-        { url: movie.image, title: `Escena icónica de ${movie.title}`, description: "Una de las escenas más memorables de la película" },
-        { url: movie.image, title: `Momento épico de ${movie.title}`, description: "Acción y emoción en su máxima expresión" },
-        { url: movie.image, title: `Gran final de ${movie.title}`, description: "El clímax que todos esperábamos" },
-      ];
-
-  // Usar datos reales del reparto o fallback
-  const castData: CastMember[] = parseJson<CastMember>(movie.castWithPhotos).length > 0
-    ? parseJson<CastMember>(movie.castWithPhotos)
-    : movie.actors?.map((actor: string) => ({
-        name: actor,
-        character: "Personaje",
-        photo: '/placeholder-user.jpg',
-        bio: `Actor en ${movie.title}`
-      })) || [];
+  // Solo datos reales: si faltan, la sección no se muestra (nada de textos o fotos de relleno)
+  const sceneGallery: GalleryImage[] = parseJson<GalleryImage>(movie.sceneImages)
+  const castData: CastMember[] = parseJson<CastMember>(movie.castWithPhotos)
 
   return (
     <div className="pt-16 bg-gradient-to-b from-black via-gray-950 to-black" style={{ backgroundImage: 'radial-gradient(ellipse 80% 50% at 10% 50%, rgba(180,0,0,0.18) 0%, transparent 70%), radial-gradient(ellipse 70% 40% at 90% 70%, rgba(0,80,220,0.22) 0%, transparent 70%)' }}>
@@ -267,7 +252,7 @@ export default async function MoviePage({ params }: Props) {
                   movie.duration ? { label: "Duración", value: movie.duration } : null,
                   movie.rating ? { label: "Puntuación", value: `${movie.rating}/10` } : null,
                   movie.boxOffice ? { label: "Recaudación", value: movie.boxOffice } : null,
-                  movie.platform ? { label: "Plataforma", value: movie.platform } : null,
+                  movie.platform ? { label: "Estreno", value: movie.platform === "Theatrical" ? "En cines" : movie.platform } : null,
                 ].filter(Boolean).map((item, i, arr) => (
                   <div key={item!.label} className="flex items-center gap-6">
                     <div>
@@ -345,7 +330,7 @@ export default async function MoviePage({ params }: Props) {
                 <div className="mt-10">
                   <div className="flex items-center gap-3 mb-5">
                     <div className="w-1 h-7 rounded-full bg-gradient-to-b from-red-500 to-red-800" />
-                    <h3 className="text-2xl font-bold text-white">Galería de Escenas</h3>
+                    <h3 className="text-2xl font-bold text-white">Galería de imágenes</h3>
                   </div>
                   <div className="grid grid-cols-3 gap-2">
                     {sceneGallery.map((scene, index) => (
@@ -356,15 +341,11 @@ export default async function MoviePage({ params }: Props) {
                         <div className={`relative w-full ${index === 0 ? 'aspect-video' : 'aspect-video'}`}>
                           <Image
                             src={scene.url}
-                            alt={scene.title}
+                            alt={`${movie.title}: imagen ${index + 1}`}
                             fill
                             sizes="(max-width: 768px) 100vw, 50vw"
                             className="object-cover transition-transform duration-500 group-hover:scale-105"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                          <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-                            <p className="text-white text-xs font-medium line-clamp-1">{scene.title}</p>
-                          </div>
                         </div>
                       </div>
                     ))}

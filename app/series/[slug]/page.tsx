@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { seriesService } from "@/lib/database"
 import { SITE_URL, AMAZON_TAG, pageTitle, metaDescription } from "@/lib/config"
-import { generateAmazonUrl, parseJson } from "@/lib/content-helpers"
+import { generateAmazonUrl, parseJson, seriesStatus } from "@/lib/content-helpers"
 import type { CastMember, EpisodeImage } from "@/lib/json-types"
 import { SeriesGallery } from "@/components/series/SeriesGallery"
 import { seriesAnalysis } from "@/lib/editorial-analysis"
@@ -110,9 +110,9 @@ export default async function SeriesDetailPage({ params }: Props) {
                   {series.rating >= 8 ? 'Serie Esencial' : 'Serie Spider-Man'}
                 </Badge>
                 <span className="text-gray-500 text-sm">{series.year}</span>
-                {series.status && (
-                  <span className={`text-sm font-medium ${series.status === 'En emisión' ? 'text-green-400' : 'text-gray-500'}`}>
-                    · {series.status}
+                {seriesStatus(series.status) && (
+                  <span className={`text-sm font-medium ${seriesStatus(series.status) === 'En emisión' ? 'text-green-400' : 'text-gray-500'}`}>
+                    · {seriesStatus(series.status)}
                   </span>
                 )}
               </div>

@@ -8,6 +8,7 @@ import type { Metadata } from "next"
 import { Badge } from "@/components/ui/badge"
 import { InContentAd } from "@/components/ads/GoogleAdsense"
 import { seriesService } from "@/lib/database"
+import { seriesStatus } from "@/lib/content-helpers"
 import { Series } from "@prisma/client"
 
 export const metadata: Metadata = {
@@ -263,7 +264,7 @@ export default async function SeriesPage() {
                         )}
 
                         {/* Badge estado */}
-                        {serie.status === 'En emisión' && (
+                        {seriesStatus(serie.status) === 'En emisión' && (
                           <div className="absolute bottom-2 right-2">
                             <Tv className="w-4 h-4 text-green-400 drop-shadow-lg" />
                           </div>

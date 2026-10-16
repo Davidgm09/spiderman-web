@@ -2,6 +2,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Character } from '@prisma/client'
 
+// Personajes sin ficha que se listan antes de resumir el resto en "+N más"
+const MAX_UNMATCHED = 12
+
 interface ComicCharactersProps {
   characterNames: string[]
   allCharacters: Character[]
@@ -40,7 +43,7 @@ export function ComicCharacters({ characterNames, allCharacters }: ComicCharacte
     <div className="pb-6 border-b border-white/5">
       <div className="flex items-center gap-3 mb-5">
         <div className="w-1 h-7 rounded-full bg-gradient-to-b from-red-500 to-red-800" />
-        <h3 className="text-white font-bold text-lg">Personajes Principales</h3>
+        <h3 className="text-white font-bold text-lg">Personajes</h3>
         <span className="ml-auto text-xs text-red-400 font-semibold">{characterNames.length}</span>
       </div>
       <div className="flex flex-wrap gap-5">
@@ -68,11 +71,14 @@ export function ComicCharacters({ characterNames, allCharacters }: ComicCharacte
       {/* Personajes sin ficha en la web: etiquetas compactas en vez de círculos vacíos */}
       {unmatched.length > 0 && (
         <div className={`flex flex-wrap gap-2 ${matched.length > 0 ? 'mt-5' : ''}`}>
-          {unmatched.map(name => (
+          {unmatched.slice(0, MAX_UNMATCHED).map(name => (
             <span key={name} className="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-gray-300 text-sm">
               {name}
             </span>
           ))}
+          {unmatched.length > MAX_UNMATCHED && (
+            <span className="px-3 py-1.5 rounded-full text-gray-500 text-sm">+{unmatched.length - MAX_UNMATCHED} más</span>
+          )}
         </div>
       )}
     </div>

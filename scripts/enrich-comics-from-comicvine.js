@@ -7,6 +7,8 @@
  *   --dry-run  muestra lo que haría sin escribir en la BD
  *   --limit=N  procesa solo N cómics
  *   --force    reprocesa también los que ya tienen personajes reales
+ *   --credits  solo guionista/artista de los cómics que tienen "Marvel Comics" de relleno
+ *              (si Comic Vine no tiene créditos, se dejan vacíos y la ficha no los muestra)
  *
  * Requiere COMICVINE_API_KEY en .env. Comic Vine limita a ~200 peticiones/hora por recurso
  * y bloquea ráfagas, así que va a una petición cada ~1,2 s.
@@ -21,8 +23,9 @@ const API_KEY = process.env.COMICVINE_API_KEY;
 const BASE_URL = 'https://comicvine.gamespot.com/api';
 const DRY_RUN = process.argv.includes('--dry-run');
 const FORCE = process.argv.includes('--force');
+const CREDITS = process.argv.includes('--credits');
 const LIMIT = Number((process.argv.find((a) => a.startsWith('--limit=')) || '').split('=')[1]) || Infinity;
-const MAX_CHARACTERS = 20;
+const MAX_CHARACTERS = 100; // Comic Vine los da en orden alfabético: se guardan todos y la ficha prioriza
 
 const delay = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -111,7 +114,9 @@ async function main() {
 
   const comics = await prisma.comic.findMany({ orderBy: { slug: 'asc' } });
   const pending = comics
-    .filter((c) => FORCE || (c.characters.length === 1 && c.characters[0] === 'Spider-Man') || c.characters.length === 0)
+    .filter((c) => CREDITS
+      ? c.writer === 'Marvel Comics' || c.artist === 'Marvel Comics'
+      : FORCE || (c.characters.length === 1 && c.characters[0] === 'Spider-Man') || c.characters.length === 0)
     .slice(0, LIMIT);
   console.log(`📚 ${pending.length} cómics por completar${DRY_RUN ? ' (simulación, no se escribe nada)' : ''}\n`);
 
@@ -125,6 +130,21 @@ async function main() {
         stats.notFound++;
         continue;
       }
+      if (CREDITS) {
+        const { person_credits: people = [] } = (await cvGet(`/issue/4000-${found.issue.id}`, { field_list: 'person_credits' })).results;
+        const byRole = (re) => people.filter((p) => re.test(p.role || '')).map((p) => p.name);
+        const writer = byRole(/writer/i)[0] || '';
+        const artist = byRole(/penciler|artist/i)[0] || '';
+        const data = {
+          ...(comic.writer === 'Marvel Comics' ? { writer } : {}),
+          ...(comic.artist === 'Marvel Comics' ? { artist } : {}),
+        };
+        console.log(`✅ ${tag} [${found.match}]: guion "${data.writer ?? comic.writer}" · arte "${data.artist ?? comic.artist}"`);
+        if (!DRY_RUN) await prisma.comic.update({ where: { id: comic.id }, data });
+        stats.ok++;
+        continue;
+      }
+
       const detail = (await cvGet(`/issue/4000-${found.issue.id}`, {
         field_list: 'character_credits,first_appearance_characters,story_arc_credits',
       })).results;

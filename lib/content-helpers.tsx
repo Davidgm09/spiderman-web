@@ -68,3 +68,27 @@ export function convertToEmbedUrl(url: string): string {
     return url;
   }
 }
+
+// Estado de una serie tal como lo da TMDB (en inglés) -> texto en español
+const SERIES_STATUS_ES: Record<string, string> = {
+  'Returning Series': 'En emisión',
+  'Ended': 'Finalizada',
+  'Canceled': 'Cancelada',
+  'In Production': 'En producción',
+  'Planned': 'Anunciada',
+  'Pilot': 'Piloto',
+}
+export function seriesStatus(status: string | null | undefined): string | null {
+  if (!status) return null
+  return SERIES_STATUS_ES[status] ?? status
+}
+
+// Géneros de videojuego tal como los da RAWG (en inglés) -> español
+const GAME_GENRE_ES: Record<string, string> = {
+  Action: 'Acción', Adventure: 'Aventura', Platformer: 'Plataformas', Arcade: 'Arcade',
+  Fighting: 'Lucha', Puzzle: 'Puzle', Racing: 'Carreras', Shooter: 'Disparos', 'Role Playing': 'Rol',
+}
+export function gameGenre(genre: string | null | undefined): string | null {
+  if (!genre) return null
+  return GAME_GENRE_ES[genre] ?? genre
+}

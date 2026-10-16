@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { gameService } from "@/lib/database"
 import { SITE_URL, AMAZON_TAG, pageTitle, metaDescription } from "@/lib/config"
-import { generateAmazonUrl, parseJson } from "@/lib/content-helpers"
+import { generateAmazonUrl, parseJson, gameGenre } from "@/lib/content-helpers"
 import { Breadcrumb } from "@/components/breadcrumb"
 import type { GalleryImage, ConceptArtItem, CharacterImage } from "@/lib/json-types"
 import { gameAnalysis } from "@/lib/editorial-analysis"
@@ -166,7 +166,7 @@ export default async function GamePage({ params }: Props) {
                 {game.genre && (
                   <div className="flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 text-sm text-gray-300">
                     <Award className="w-3.5 h-3.5 text-gray-400" />
-                    {game.genre}
+                    {gameGenre(game.genre)}
                   </div>
                 )}
               </div>
@@ -233,7 +233,7 @@ export default async function GamePage({ params }: Props) {
                   game.developer ? { label: "Desarrollador", value: game.developer } : null,
                   game.publisher ? { label: "Publisher", value: game.publisher } : null,
                   game.rating ? { label: "Puntuación", value: `${game.rating}/10` } : null,
-                  game.genre ? { label: "Género", value: game.genre } : null,
+                  game.genre ? { label: "Género", value: gameGenre(game.genre) } : null,
                 ].filter(Boolean).map((item, i, arr) => (
                   <div key={item!.label} className="flex items-center gap-6">
                     <div>
