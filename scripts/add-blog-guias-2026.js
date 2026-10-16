@@ -484,7 +484,97 @@ ${localFigure('/images/juegos-quiz.jpg', 'Resultado de Miles Morales en el quiz 
 `,
 };
 
-const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS, FINAL_BND, MEJORES_COMICS, JUEGOS_POST];
+// Fuentes (17/10/2026): créditos de vestuario (Den of Geek, entrevista a Deborah Lynn Scott) y declaraciones
+// de Tom Holland y Destin Daniel Cretton sobre el traje de Brand New Day (TheWrap, /Film)
+const TRAJES = {
+  slug: 'trajes-spider-man-peliculas',
+  title: 'Todos los trajes de Spider-Man en las películas, de Tobey Maguire a Brand New Day',
+  subtitle: 'Del disfraz de lucha libre de 2002 al traje «de calle» de Tom Holland: la evolución completa, película a película',
+  excerpt:
+    'Spider-Man ha estrenado más de una docena de trajes en el cine. Repasamos todos, de la trilogía de Sam Raimi al traje de Brand New Day, con lo que hace especial a cada uno.',
+  category: 'Películas',
+  readTime: '9 min',
+  publishDate: new Date('2026-10-17'),
+  image: tmdb('w1oD1MzHjnBJc5snKupIQaSBLIh'),
+  seoTitle: 'Todos los trajes de Spider-Man en las películas (2002-2026)',
+  seoDescription:
+    'La evolución de los trajes de Spider-Man en el cine: Tobey Maguire, Andrew Garfield, Tom Holland y el Spider-Verso, hasta el nuevo traje de Brand New Day.',
+  keywords: ['trajes de Spider-Man', 'trajes Spider-Man películas', 'traje Brand New Day', 'Iron Spider', 'traje integrado', 'traje negro Spider-Man'],
+  tags: ['trajes', 'películas', 'MCU', 'Tom Holland', 'Brand New Day', 'Spider-Verse'],
+  content: `
+<p>Pocos superhéroes han cambiado tanto de vestuario en el cine como Spider-Man. Entre las películas de Tobey Maguire, Andrew Garfield y Tom Holland, el trepamuros ha estrenado más de una docena de trajes: caseros, tecnológicos, alienígenas, mágicos… y, en <em>Brand New Day</em>, uno que vuelve a sus raíces. Este es el repaso completo, película a película.</p>
+
+<h2>La trilogía de Sam Raimi (2002-2007)</h2>
+${figure('w1oD1MzHjnBJc5snKupIQaSBLIh', 'El traje rojo y el traje negro de Spider-Man 3', 'El traje clásico frente al traje negro: el gran conflicto visual de Spider-Man 3 (2007).')}
+
+<h3>1. El disfraz de lucha libre (<em>Spider-Man</em>, 2002)</h3>
+<p>Antes del traje de verdad, Peter se fabrica un disfraz improvisado —con una araña dibujada en el pecho y un pasamontañas— para ganar dinero en un combate de lucha libre. Es ahí, de hecho, donde nace el nombre de «Spider-Man».</p>
+
+<h3>2. El traje clásico (<em>Spider-Man</em> y <em>Spider-Man 2</em>)</h3>
+<p>El diseño de James Acheson, responsable del vestuario de toda la trilogía, marcó a una generación: rojo y azul, con la <strong>telaraña plateada en relieve</strong> y lentes reflectantes. Muchos fans lo siguen considerando el mejor traje de Spider-Man en imagen real, y su telaraña en relieve ha inspirado a casi todos los que vinieron después. En <em>Spider-Man 2</em> se mantuvo con pequeños retoques.</p>
+
+<h3>3. El traje negro (<em>Spider-Man 3</em>, 2007)</h3>
+<p>El simbionte alienígena cubre el traje de Peter y lo vuelve negro, con la telaraña también en relieve. Más fuerte, sí, pero también más agresivo: el traje saca la peor versión de Peter. Cuando por fin se lo quita, acaba en Eddie Brock y da lugar a Venom. Lo contamos en <a href="/blog/simbionte-historia-evolucion-venom">la historia del simbionte</a>.</p>
+
+<h2>The Amazing Spider-Man (2012-2014)</h2>
+${figure('HVcza6tJtWFrLriuh3Ano4Vt46', 'Spider-Man y Gwen Stacy en The Amazing Spider-Man', 'El traje de 2012, diseñado por Kym Barrett, buscaba un Spider-Man más atlético y distinto del de Raimi.')}
+
+<h3>4. El traje de <em>The Amazing Spider-Man</em> (2012)</h3>
+<p>Diseñado por Kym Barrett, con la tarea de ser «distinto, pero no demasiado». Peter lo fabrica él mismo, con una textura que recuerda a la de un balón, la araña negra grande en el pecho y, como novedad frente a Raimi, <strong>lanzarredes mecánicos</strong> que construye Peter, como en los cómics.</p>
+
+<h3>5. El traje de <em>The Amazing Spider-Man 2</em> (2014)</h3>
+${figure('k0hlAzTryCYX1O1LyC6P8tAa8s0', 'Spider-Man en The Amazing Spider-Man 2: El poder de Electro', 'Lentes blancas grandes y un azul más vivo: el traje de 2014 es de los más fieles a los cómics.')}
+<p>Deborah Lynn Scott, ganadora del Óscar al mejor vestuario, rediseñó el traje para la secuela: <strong>lentes blancas y grandes</strong>, azul más brillante y un aspecto mucho más cercano al de los cómics. Para muchos fans, es el traje más fiel que ha tenido el personaje en imagen real.</p>
+
+<h2>Tom Holland en el MCU (2016-2026)</h2>
+${figure('tPpYGm2mVecue7Bk3gNVoSPA5qn', 'Peter Parker con el traje de Stark y una sudadera en Homecoming', 'El traje de Stark en Homecoming (2017), con sus ojos móviles y una inteligencia artificial propia.')}
+
+<h3>6. El traje casero (<em>Capitán América: Civil War</em> y <em>Homecoming</em>)</h3>
+<p>Una sudadera roja, unas gafas y mucha imaginación: el primer traje del Peter de Holland, el que llevaba antes de conocer a Tony Stark. En <em>Homecoming</em> tiene que volver a ponérselo cuando Stark le quita el suyo.</p>
+
+<h3>7. El traje de Stark (<em>Civil War</em> y <em>Homecoming</em>)</h3>
+<p>El regalo de Tony Stark: rojo y azul, con <strong>ojos que se mueven</strong> como en los cómics. En <em>Homecoming</em> descubrimos todo lo que esconde: una inteligencia artificial, Karen; un «protocolo de ruedines» para limitar sus funciones; alas de telaraña para planear y cientos de combinaciones para los lanzarredes.</p>
+
+<h3>8. La Armadura de Hierro, «Iron Spider» (<em>Infinity War</em> y <em>Endgame</em>)</h3>
+<p>El traje que Peter rechaza al final de <em>Homecoming</em> y acaba usando en <em>Vengadores: Infinity War</em>: hecho de nanotecnología, se despliega solo y tiene <strong>cuatro patas mecánicas</strong> en la espalda. Es el traje con el que Peter pelea contra Thanos.</p>
+
+<h3>9. El traje sigiloso (<em>Lejos de casa</em>, 2019)</h3>
+<p>Un traje negro que Nick Fury le proporciona en Europa para pasar desapercibido. Con él, Peter se convierte por unos días en un misterioso héroe europeo que acaba conociéndose como «Night Monkey».</p>
+
+<h3>10. El traje rojo y negro (<em>Lejos de casa</em>)</h3>
+${figure('34jW8LvjRplM8Pv06cBFDpLlenR', 'Spider-Man colgado boca abajo en Venecia en Lejos de casa', 'El traje rojo y negro de Lejos de casa, el primero que Peter diseña él solo con tecnología de Stark.')}
+<p>El primer traje que <strong>Peter diseña él solo</strong>, con el fabricador de Stark a bordo del avión de Happy. Cambia el azul por el negro y fue uno de los más populares entre los fans.</p>
+
+<h3>11. El traje integrado (<em>No Way Home</em>, 2021)</h3>
+${figure('Bwh7Lol5k3hSqYOtqXWxbbJVMx', 'Spider-Man con el traje integrado y el Doctor Strange en No Way Home', 'El traje integrado de No Way Home combina el rojo y el azul con detalles dorados.')}
+<p>Rojo, azul y con detalles <strong>dorados</strong>: combina la nanotecnología de la Armadura de Hierro con el diseño de <em>Lejos de casa</em>. Además, Peter usa una variante <strong>negra y dorada</strong> en algunas escenas de la película.</p>
+
+<h3>12. El traje cosido a mano (final de <em>No Way Home</em>)</h3>
+<p>Después del hechizo de Strange, sin dinero y sin nadie que le recuerde, Peter se cose un traje nuevo en su piso: rojo y azul brillante, con la telaraña en relieve. Es el primer traje del Peter de Holland <strong>sin tecnología de Stark</strong>, y el más parecido a los cómics hasta ese momento. Ese plano final, con Peter balanceándose por Nueva York, es el punto de partida de todo lo que viene después.</p>
+
+<h3>13. El traje de <em>Brand New Day</em> (2026)</h3>
+${figure('4tjxYg2AbOzzG9G1YuiT2NzYhlH', 'Spider-Man con su traje de Brand New Day', 'Imagen promocional de Brand New Day: un traje más sencillo y «de calle», con la telaraña en relieve.')}
+<p>El nuevo traje sigue el camino del final de <em>No Way Home</em>: nada de tecnología punta. Tom Holland lo describió como una mezcla de los trajes de Tobey Maguire y Andrew Garfield, un «hijo arácnido» de los tres, con la <strong>telaraña en relieve</strong> y una <strong>araña más grande en el pecho</strong>. El director, Destin Daniel Cretton, explicó que querían un traje más práctico y con arrugas visibles, para que se notara la persona que hay debajo. En algunos planos de los tráileres, además, los ojos se vuelven rojos y negros; lo contamos en <a href="/blog/brand-new-day-trailer-easter-eggs-detalles-ocultos">los detalles ocultos de los tráileres</a>.</p>
+
+<h2>Y en el Spider-Verso</h2>
+${figure('8mnXR9rey5uQ08rZAvzojKWbDQS', 'Miles Morales con su traje en Spider-Man: Un nuevo universo', 'El traje negro y rojo de Miles, uno de los más reconocibles del cine de animación.')}
+<p>Las películas animadas tienen su propio desfile de trajes. El de <strong>Miles Morales</strong> en <em>Un nuevo universo</em> —negro con la araña roja, que Miles personaliza con spray— se ha convertido en un icono por sí mismo. A su lado, el traje blanco con capucha de <strong>Gwen Stacy</strong>, el de <strong>Spider-Man Noir</strong> en blanco y negro y, en <em>Cruzando el Multiverso</em>, cientos de variantes, de Spider-Punk al traje del <strong>Spider-Man 2099</strong> de Miguel O'Hara.</p>
+
+<h2>¿Cuál es el mejor?</h2>
+<p>No hay una respuesta única, pero hay tres que se repiten en casi todas las listas de fans: el <strong>traje clásico de Raimi</strong> por su telaraña en relieve, el de <strong>The Amazing Spider-Man 2</strong> por su fidelidad a los cómics y el <strong>traje cosido a mano de No Way Home</strong>, por todo lo que significa para el personaje. El de Brand New Day, que mezcla lo mejor de los anteriores, aspira a unirse al club.</p>
+
+<h2>Lleva tu traje favorito a la estantería</h2>
+${gift({ asin: 'B0G1TXWSG4', name: 'Marvel Legends · Spider-Man (Brand New Day)', img: 'https://m.media-amazon.com/images/I/610AmlzYxvL._AC_SL500_.jpg', text: 'El traje nuevo de Brand New Day a escala de 15 cm, con manos intercambiables y efectos de telaraña.' })}
+${gift({ asin: 'B0FPNH2G4P', name: 'Funko Pop! · Spider-Man traje casero de No Way Home', img: 'https://m.media-amazon.com/images/I/81-+7FhxC9L._AC_SL500_.jpg', text: 'El traje que Peter se cose al final de No Way Home, en la colección Funko de Brand New Day.' })}
+${gift({ asin: 'B08T5XCJ5L', name: 'Funko Pop! · Spider-Man traje integrado (No Way Home)', img: 'https://m.media-amazon.com/images/I/71Wwc55Sy5L._AC_SL500_.jpg', text: 'El traje rojo, azul y dorado de No Way Home.' })}
+${gift({ asin: 'B0FHKY4D5M', name: 'Marvel Legends · The Amazing Spider-Man (No Way Home)', img: 'https://m.media-amazon.com/images/I/613SU5JvFrL._AC_SL500_.jpg', text: 'El traje de Andrew Garfield tal como aparece en No Way Home.' })}
+<p><em>Como afiliados de Amazon, obtenemos ingresos por las compras adscritas que cumplen los requisitos aplicables.</em> Tienes más figuras y Funko de Spider-Man en <a href="/tienda">nuestra tienda</a>.</p>
+
+<p>¿Quieres verlas todas en orden? Te lo contamos en <a href="/blog/orden-ver-peliculas-spider-man">en qué orden ver las películas de Spider-Man</a>.</p>
+`,
+};
+
+const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS, FINAL_BND, MEJORES_COMICS, JUEGOS_POST, TRAJES];
 
 (async () => {
   for (const p of POSTS) {
