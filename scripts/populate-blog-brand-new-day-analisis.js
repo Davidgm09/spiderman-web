@@ -98,6 +98,8 @@ const POST = {
 <p>Lo que sí está en el horizonte es <strong><em>Spider-Man: Beyond the Spider-Verse</em></strong>, el cierre de la trilogía animada de Miles Morales, con estreno previsto en EE. UU. el <strong>18 de junio de 2027</strong>. Feige ha confirmado además que <strong>Miles Morales dará el salto a la imagen real</strong> después de esa película. Si quieres profundizar, te lo contamos en <a href="/blog/futuro-spider-man-mcu-despues-brand-new-day">el futuro de Spider-Man en el MCU</a>.</p>
 
 <p>Y si te quedaste con ganas de más, repasa <a href="/blog/brand-new-day-trailer-easter-eggs-detalles-ocultos">los easter eggs del tráiler</a> o consulta <a href="/peliculas/spider-man-brand-new-day-2026">la ficha completa de la película</a>.</p>
+
+<p><strong>¿Ya la has visto?</strong> Entonces te interesa nuestro <a href="/blog/spider-man-brand-new-day-final-explicado">final de Brand New Day explicado</a> (con spoilers): Jean Grey, el disparo del Punisher, Ned y la escena poscréditos.</p>
 `,
 };
 
