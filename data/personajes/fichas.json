@@ -1869,5 +1869,337 @@
     "a": "En <em>Spider-Man: India</em> #1, en 2004."
    }
   ]
+ },
+ "hobgoblin-roderick-kingsley-alt": {
+  "nombre": "Hobgoblin",
+  "secciones": [
+   {
+    "titulo": "Origen: el heredero del Duende Verde",
+    "html": "<p>Roderick Kingsley era un diseñador de moda sin escrúpulos. Gracias a un delincuente de poca monta, llegó a uno de los escondites secretos de Norman Osborn, con su equipo y su fórmula, y los mejoró para convertirse en el <strong>Hobgoblin</strong> (el Duende). Debutó en <em>The Amazing Spider-Man</em> #238 (1983), de Roger Stern y John Romita Jr.</p>"
+   },
+   {
+    "titulo": "El gran misterio de los 80",
+    "html": "<p>Durante años, nadie supo quién se escondía tras la máscara. En 1987 se dio a entender que era Ned Leeds, el amigo periodista de Peter, pero en 1997 el propio Roger Stern cerró el misterio con <em>Spider-Man: Hobgoblin Lives</em>: el Hobgoblin original había sido siempre Kingsley. Más tarde llegó a «franquiciar» su identidad, vendiendo el traje a otros criminales. Te contamos la etapa de Stern en <a href=\"/blog/mejores-comics-spider-man-historia\">los 10 mejores cómics de Spider-Man</a>.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>Una versión mejorada de la fórmula del Duende Verde, sin la locura, le da fuerza y resistencia sobrehumanas. Usa planeador, bombas calabaza y guantes de descargas eléctricas.</p>"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién es el Hobgoblin original?",
+    "a": "Roderick Kingsley, un diseñador de moda. Durante años se pensó que era Ned Leeds, pero en 1997 se confirmó que era Kingsley."
+   },
+   {
+    "q": "¿En qué se diferencia del Duende Verde?",
+    "a": "Usa una fórmula mejorada sin la locura de Norman Osborn: es más frío y calculador."
+   },
+   {
+    "q": "¿Quién creó al Hobgoblin?",
+    "a": "Roger Stern y John Romita Jr., en 1983."
+   }
+  ]
+ },
+ "jackal-miles-warren-alt": {
+  "nombre": "El Chacal",
+  "secciones": [
+   {
+    "titulo": "Origen: el profesor obsesionado",
+    "html": "<p>Miles Warren era profesor de bioquímica en la Universidad Empire State, donde daba clase a Peter Parker y a Gwen Stacy. Se obsesionó con Gwen, y cuando ella murió culpó a Spider-Man. Se convirtió en el <strong>Chacal</strong> y usó sus conocimientos de genética para crear clones. Debutó como el Chacal en <em>The Amazing Spider-Man</em> #129 (1974), de Gerry Conway y Ross Andru: el mismo número en el que apareció por primera vez el <strong>Punisher</strong>, al que el Chacal contrató para acabar con Spider-Man.</p>"
+   },
+   {
+    "titulo": "La saga del clon",
+    "html": "<p>En 1975 creó clones de Gwen Stacy y de Peter Parker, y en los 90 esa historia volvió en la famosa <strong>saga del clon</strong>, con Ben Reilly y Kaine. En <em>La conspiración del clon</em> (2016) regresó con la empresa New U, que prometía «resucitar» a los muertos.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>Es un genio de la genética y la clonación. Con su propia experimentación consiguió fuerza, agilidad y garras.</p>"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién es el Chacal?",
+    "a": "Miles Warren, el profesor de Peter y Gwen que se obsesionó con ella y creó los clones de la saga del clon."
+   },
+   {
+    "q": "¿El Chacal y el Punisher aparecieron en el mismo cómic?",
+    "a": "Sí: los dos debutaron en <em>The Amazing Spider-Man</em> #129 (1974)."
+   },
+   {
+    "q": "¿Qué clones creó?",
+    "a": "Entre otros, Ben Reilly, Kaine y un clon de Gwen Stacy."
+   }
+  ]
+ },
+ "morlun-alt": {
+  "nombre": "Morlun",
+  "secciones": [
+   {
+    "titulo": "Origen: el cazador de tótems",
+    "html": "<p>Morlun es un ser ancestral que se alimenta de la energía de los «tótems» animales, y los Spider-Man son su plato favorito. Debutó en <em>The Amazing Spider-Man</em> vol. 2 #30 (2001), en la historia <em>Vuelta a casa</em> de J. Michael Straczynski y John Romita Jr., y casi acaba con Peter en su primer enfrentamiento.</p>"
+   },
+   {
+    "titulo": "Spider-Verse",
+    "html": "<p>En la saga <em>Spider-Verse</em> (2014), Morlun y su familia, los <strong>Herederos</strong>, recorrieron el multiverso cazando a Spider-Man de todas las realidades, lo que obligó a unir fuerzas a Peter, Miles, Spider-Gwen, Spider-Man 2099 y muchos más. Es una de las sagas que inspiraron el Spider-Verso del cine.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>Fuerza, velocidad y resistencia enormes, una vida casi eterna y la capacidad de absorber la fuerza vital de los tótems. Su debilidad es la radiación y la «contaminación» de su presa.</p>"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién es Morlun?",
+    "a": "Un ser ancestral que caza a los Spider-Man para alimentarse de su energía."
+   },
+   {
+    "q": "¿En qué cómic aparece Morlun?",
+    "a": "Debutó en <em>Vuelta a casa</em> (2001) y fue el gran villano de <em>Spider-Verse</em> (2014)."
+   },
+   {
+    "q": "¿Quiénes son los Herederos?",
+    "a": "La familia de Morlun, que caza a los héroes arácnidos de todo el multiverso."
+   }
+  ]
+ },
+ "ben-reilly-scarlet-spider-alt": {
+  "nombre": "Ben Reilly",
+  "secciones": [
+   {
+    "titulo": "Origen: el clon que volvió",
+    "html": "<p>Ben Reilly es un clon de Peter Parker creado por el Chacal. Apareció en <em>The Amazing Spider-Man</em> #149 (1975) y se le dio por muerto, pero en los 90 regresó como <strong>Scarlet Spider</strong>, con su famosa sudadera roja con capucha.</p>"
+   },
+   {
+    "titulo": "El otro Spider-Man",
+    "html": "<p>Durante la saga del clon se llegó a contar que Ben era el Peter original, y durante un tiempo fue <strong>Spider-Man</strong>. Murió en 1996 y la revelación quedó desmentida, pero el personaje volvió en <em>La conspiración del clon</em> (2016) y años después llegó a ser Spider-Man de nuevo. Sigue siendo uno de los personajes más queridos y polémicos de los 90.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Spider-Man: Cruzando el Multiverso",
+    "anio": 2023,
+    "actor": "Voz original: Andy Samberg (Scarlet Spider)",
+    "enlace": "/peliculas/spider-man-cruzando-el-multiverso-2023"
+   },
+   {
+    "titulo": "Spider-Noir (serie)",
+    "anio": 2026,
+    "actor": "Nicolas Cage (una versión noir de Ben Reilly)",
+    "enlace": "/series/spider-noir"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Ben Reilly es el Peter Parker original?",
+    "a": "No. En los 90 se insinuó que sí, pero se acabó confirmando que el clon es Ben y el original, Peter."
+   },
+   {
+    "q": "¿Qué es la saga del clon?",
+    "a": "Una larga historia de los 90 en la que vuelven los clones de Peter creados por el Chacal, con Ben Reilly como protagonista."
+   },
+   {
+    "q": "¿Sale Ben Reilly en el cine?",
+    "a": "Como Scarlet Spider en <em>Cruzando el Multiverso</em> (2023), y en una versión noir interpretada por Nicolas Cage en la serie <em>Spider-Noir</em> (2026)."
+   }
+  ]
+ },
+ "kaine-parker-scarlet-spider-alt": {
+  "nombre": "Kaine",
+  "secciones": [
+   {
+    "titulo": "Origen: el clon imperfecto",
+    "html": "<p>Kaine fue el <strong>primer clon</strong> de Peter Parker que creó el Chacal, pero salió defectuoso: su cuerpo se degenera poco a poco y tiene poderes distintos. Durante años fue un antihéroe violento que perseguía a Ben Reilly. Apareció en <em>Web of Spider-Man</em> #119 (1994), creado por Terry Kavanagh y Steven Butler.</p>"
+   },
+   {
+    "titulo": "Redención como Scarlet Spider",
+    "html": "<p>Tras morir y regresar durante <em>La isla arácnida</em> (2011), Kaine quedó curado de su degeneración y se marchó a Houston, donde se convirtió en un nuevo <strong>Scarlet Spider</strong> con serie propia (2012).</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>Los poderes de Spider-Man, aguijones en las muñecas, un sentido arácnido con visiones del futuro y la «marca de Kaine», una huella que deja quemada en sus víctimas.</p>"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién es Kaine?",
+    "a": "El primer clon de Peter Parker, imperfecto, que acabó convertido en el héroe Scarlet Spider."
+   },
+   {
+    "q": "¿Kaine y Ben Reilly son la misma persona?",
+    "a": "No: los dos son clones de Peter y los dos han sido Scarlet Spider, pero son personajes distintos."
+   },
+   {
+    "q": "¿Qué es la marca de Kaine?",
+    "a": "Una quemadura con la forma de su mano que deja en la cara de sus víctimas."
+   }
+  ]
+ },
+ "silk-cindy-moon-alt": {
+  "nombre": "Silk",
+  "secciones": [
+   {
+    "titulo": "Origen: la otra persona a la que picó la araña",
+    "html": "<p>La araña radiactiva que picó a Peter Parker picó también, justo después, a su compañera de clase <strong>Cindy Moon</strong>. Un hombre llamado Ezekiel la encerró en un búnker durante años para protegerla de Morlun y los Herederos, que cazaban a los héroes arácnidos. Peter la liberó en <em>The Amazing Spider-Man</em> (2014), en la etapa de Dan Slott y Humberto Ramos.</p>"
+   },
+   {
+    "titulo": "Su propia serie",
+    "html": "<p>Ya libre, Cindy se convirtió en <strong>Silk</strong>, buscó a su familia desaparecida y empezó a trabajar como periodista para J. Jonah Jameson. Tuvo serie propia desde 2015.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>Los poderes arácnidos clásicos, un sentido arácnido más fino que el de Peter y la capacidad de producir telaraña orgánica desde las yemas de los dedos.</p>"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿A Silk le picó la misma araña que a Peter Parker?",
+    "a": "Sí: la araña radiactiva le picó justo después de picar a Peter."
+   },
+   {
+    "q": "¿Por qué estuvo encerrada Silk?",
+    "a": "Ezekiel la encerró para protegerla de Morlun y los Herederos, que cazaban a los héroes arácnidos."
+   },
+   {
+    "q": "¿Cuándo apareció Silk?",
+    "a": "En <em>The Amazing Spider-Man</em> (2014), creada por Dan Slott y Humberto Ramos."
+   }
+  ]
+ },
+ "spider-girl-mayday-parker-alt": {
+  "nombre": "Spider-Girl",
+  "secciones": [
+   {
+    "titulo": "Origen: la hija de Spider-Man",
+    "html": "<p>En el universo alternativo MC2, Peter Parker se retiró tras perder una pierna y formó una familia con Mary Jane. Su hija, <strong>May «Mayday» Parker</strong>, heredó sus poderes en la adolescencia y, contra la voluntad de sus padres, se convirtió en Spider-Girl. Debutó en <em>What If?</em> #105 (1998), de Tom DeFalco y Ron Frenz.</p>"
+   },
+   {
+    "titulo": "Una serie de culto",
+    "html": "<p>Su serie, <em>Spider-Girl</em>, superó los 100 números y se convirtió en una de las series protagonizadas por una heroína más longevas de Marvel. Más tarde siguió en <em>The Amazing Spider-Girl</em>, y Mayday participó en la saga <em>Spider-Verse</em> (2014).</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>Los poderes de su padre, con un sentido arácnido especialmente desarrollado, y un gran talento para la lucha.</p>"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Spider-Man tiene una hija?",
+    "a": "En el universo alternativo MC2, sí: May «Mayday» Parker, Spider-Girl."
+   },
+   {
+    "q": "¿Quién creó a Spider-Girl?",
+    "a": "Tom DeFalco y Ron Frenz, en 1998."
+   },
+   {
+    "q": "¿Mayday Parker es la misma que la tía May?",
+    "a": "No. Lleva su nombre en honor a la tía May, pero es la hija de Peter y Mary Jane."
+   }
+  ]
+ },
+ "spider-uk-billy-braddock-alt": {
+  "nombre": "Spider-UK",
+  "secciones": [
+   {
+    "titulo": "Origen: el Spider-Man británico",
+    "html": "<p>William «Billy» Braddock es el Spider-Man de la Tierra-833, una versión británica del héroe que además forma parte del <strong>Cuerpo del Capitán Britania</strong>, los protectores de las distintas versiones de Gran Bretaña en el multiverso. Apareció en <em>Edge of Spider-Verse</em> #2 (2014), creado por Jason Latour y Robbi Rodriguez.</p>"
+   },
+   {
+    "titulo": "Líder de los Web-Warriors",
+    "html": "<p>Durante <em>Spider-Verse</em> (2014) luchó contra Morlun y los Herederos, y su mundo quedó destruido. Después se quedó al frente de los <strong>Web-Warriors</strong>, el grupo de héroes arácnidos que protege el multiverso.</p>"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién es Spider-UK?",
+    "a": "Billy Braddock, el Spider-Man británico de la Tierra-833 y miembro del Cuerpo del Capitán Britania."
+   },
+   {
+    "q": "¿Qué son los Web-Warriors?",
+    "a": "El grupo de Spider-Man de distintas realidades que vigila el multiverso tras <em>Spider-Verse</em>. Spider-UK fue su líder."
+   },
+   {
+    "q": "¿Cuándo apareció?",
+    "a": "En 2014, durante el evento <em>Spider-Verse</em>."
+   }
+  ]
+ },
+ "spider-woman-julia-carpenter-alt": {
+  "nombre": "Julia Carpenter",
+  "secciones": [
+   {
+    "titulo": "Origen: la segunda Spider-Woman",
+    "html": "<p>Julia Carpenter se sometió a unos experimentos del gobierno, con veneno de araña y extractos de plantas exóticas, que le dieron poderes arácnidos. Se convirtió en la segunda <strong>Spider-Woman</strong>. Debutó en las <em>Secret Wars</em> originales, en el #6 (1984), creada por Jim Shooter y Mike Zeck.</p>"
+   },
+   {
+    "titulo": "De Spider-Woman a Madame Web",
+    "html": "<p>Formó parte de los Vengadores de la Costa Oeste y, más tarde, adoptó el nombre de <strong>Arachne</strong>. En 2010, la Madame Web original, Cassandra Webb, le traspasó sus poderes antes de morir, y Julia se convirtió en la nueva <strong>Madame Web</strong>, con visión del futuro.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>Fuerza y agilidad sobrehumanas, telarañas psiónicas que crea con la mente y, como Madame Web, clarividencia.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Madame Web",
+    "anio": 2024,
+    "actor": "Sydney Sweeney (como Julia Cornwall)",
+    "enlace": "/peliculas/madame-web-2024"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Julia Carpenter es la primera Spider-Woman?",
+    "a": "No, es la segunda. La primera es Jessica Drew."
+   },
+   {
+    "q": "¿Por qué se convirtió en Madame Web?",
+    "a": "La Madame Web original le traspasó sus poderes antes de morir, en 2010."
+   },
+   {
+    "q": "¿Sale en la película Madame Web?",
+    "a": "Sí, una versión del personaje interpretada por Sydney Sweeney, aunque en la película se llama Julia Cornwall."
+   }
+  ]
+ },
+ "spider-woman-mattie-franklin-alt": {
+  "nombre": "Mattie Franklin",
+  "secciones": [
+   {
+    "titulo": "Origen: la tercera Spider-Woman",
+    "html": "<p>Mattie Franklin es la sobrina de J. Jonah Jameson. Consiguió sus poderes al interrumpir un ritual místico, la <strong>Reunión de los Cinco</strong>, y se convirtió en la tercera <strong>Spider-Woman</strong>. Apareció del todo en <em>The Amazing Spider-Man</em> #441 (1998), creada por John Byrne y Rafael Kayanan.</p>"
+   },
+   {
+    "titulo": "Un final trágico",
+    "html": "<p>Mattie fue una heroína joven que buscaba su lugar, con serie propia y un tiempo con los Loners, un grupo de jóvenes héroes. Murió en la saga <em>Grim Hunt</em> (2010), a manos de la familia de Kraven.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>Fuerza y agilidad sobrehumanas, capacidad de volar y patas arácnidas psíquicas que puede generar a voluntad.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Madame Web",
+    "anio": 2024,
+    "actor": "Celeste O'Connor",
+    "enlace": "/peliculas/madame-web-2024"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Mattie Franklin es familia de J. Jonah Jameson?",
+    "a": "Sí, es su sobrina."
+   },
+   {
+    "q": "¿Cuántas Spider-Woman ha habido?",
+    "a": "Las tres principales son Jessica Drew, Julia Carpenter y Mattie Franklin."
+   },
+   {
+    "q": "¿Sale en la película Madame Web?",
+    "a": "Sí, interpretada por Celeste O'Connor."
+   }
+  ]
  }
 }
