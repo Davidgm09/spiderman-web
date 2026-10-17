@@ -2,6 +2,7 @@ import Link from "next/link"
 import type { GameCharacter } from "@/lib/juegos"
 import personajes from "@/data/juegos/personajes.json"
 import quiz from "@/data/juegos/que-spider-man-eres.json"
+import preguntas from "@/data/juegos/preguntas.json"
 import { PlayerChip } from "./PlayerChip"
 
 export interface GameInfo {
@@ -21,7 +22,7 @@ export const JUEGOS: GameInfo[] = [
     title: "Arañadle",
     mode: "Reto diario",
     description: "Adivina el personaje secreto del día con pistas de colores.",
-    stats: ["45 personajes", "8 vidas"],
+    stats: [`${personajes.length} personajes`, "8 vidas"],
     glow: "#ef4444",
     accent: "from-red-600/90 to-red-950",
     art: ["spider-man-2099-miguel-ohara-alt"],
@@ -31,7 +32,7 @@ export const JUEGOS: GameInfo[] = [
     title: "Test arácnido",
     mode: "Desafío",
     description: "10 preguntas de películas, cómics y juegos. ¿Llegarás al pleno?",
-    stats: ["78 preguntas", "10 rondas"],
+    stats: [`${preguntas.length} preguntas`, "10 rondas"],
     glow: "#3b82f6",
     accent: "from-blue-600/90 to-blue-950",
     art: ["doctor-octopus-otto-octavius-alt", "green-goblin-norman-osborn-alt", "venom-eddie-brock-alt", "mysterio-quentin-beck-alt"],
