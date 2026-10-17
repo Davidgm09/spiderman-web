@@ -923,5 +923,467 @@
     "a": "Stan Lee y Steve Ditko, en 1963, los mismos creadores de Spider-Man."
    }
   ]
+ },
+ "electro-maxwell-dillon-alt": {
+  "nombre": "Electro",
+  "secciones": [
+   {
+    "titulo": "Origen: el electricista alcanzado por un rayo",
+    "html": "<p>Max Dillon trabajaba reparando tendidos eléctricos cuando un rayo lo alcanzó mientras estaba colgado de un poste. En lugar de matarlo, le dio la capacidad de generar y controlar la electricidad. Debutó en <em>The Amazing Spider-Man</em> #9 (1964), creado por Stan Lee y Steve Ditko.</p>"
+   },
+   {
+    "titulo": "Contra Spider-Man",
+    "html": "<p>Electro fue uno de los miembros fundadores de los <strong>Seis Siniestros</strong>, el grupo de villanos que reunió el Doctor Octopus en 1964 junto al Buitre, el Hombre de Arena, Mysterio y Kraven. Desde entonces es uno de los enemigos más habituales de Spider-Man, casi siempre más interesado en el dinero y el poder que en una venganza personal.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>Genera y lanza descargas eléctricas, absorbe la electricidad de su entorno, se desplaza a gran velocidad por los cables y puede sobrecargar cualquier aparato eléctrico.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "The Amazing Spider-Man 2: El poder de Electro",
+    "anio": 2014,
+    "actor": "Jamie Foxx",
+    "enlace": "/peliculas/the-amazing-spider-man-2-el-poder-de-electro-2014"
+   },
+   {
+    "titulo": "Marvel's Spider-Man (videojuego)",
+    "anio": 2018,
+    "actor": "Miembro de los Seis Siniestros",
+    "enlace": "/videojuegos/marvel-s-spider-man-2018"
+   },
+   {
+    "titulo": "Spider-Man: No Way Home",
+    "anio": 2021,
+    "actor": "Jamie Foxx",
+    "enlace": "/peliculas/spider-man-no-way-home-2021"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién interpreta a Electro?",
+    "a": "Jamie Foxx, en <em>The Amazing Spider-Man 2</em> (2014) y en <em>Spider-Man: No Way Home</em> (2021)."
+   },
+   {
+    "q": "¿Cómo consiguió sus poderes?",
+    "a": "Le alcanzó un rayo mientras reparaba un tendido eléctrico."
+   },
+   {
+    "q": "¿Electro forma parte de los Seis Siniestros?",
+    "a": "Sí, fue uno de sus miembros fundadores en 1964."
+   }
+  ]
+ },
+ "mysterio-quentin-beck-alt": {
+  "nombre": "Mysterio",
+  "secciones": [
+   {
+    "titulo": "Origen: el maestro de los efectos especiales",
+    "html": "<p>Quentin Beck era un especialista en efectos especiales y doble de riesgo de Hollywood que soñaba con ser famoso. Decidió usar su talento para el engaño convirtiéndose en <strong>Mysterio</strong>, un villano que confunde a sus enemigos con ilusiones, hologramas y gases. Debutó en <em>The Amazing Spider-Man</em> #13 (1964), de Stan Lee y Steve Ditko.</p>"
+   },
+   {
+    "titulo": "Contra Spider-Man",
+    "html": "<p>Fue uno de los fundadores de los <strong>Seis Siniestros</strong> en 1964. Su gran baza es psicológica: hace que Spider-Man dude de lo que ve, y por eso protagoniza algunas de las secuencias más surrealistas de los cómics… y de las películas.</p>"
+   },
+   {
+    "titulo": "Habilidades",
+    "html": "<p>Mysterio no tiene superpoderes. Lo compensa con su ingenio para la ilusión, la hipnosis, los gases alucinógenos y la tecnología, además de un casco que lo protege de sus propios trucos.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Spider-Man: Lejos de casa",
+    "anio": 2019,
+    "actor": "Jake Gyllenhaal",
+    "enlace": "/peliculas/spider-man-lejos-de-casa-2019"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién interpreta a Mysterio?",
+    "a": "Jake Gyllenhaal, en <em>Spider-Man: Lejos de casa</em> (2019). En la película es un antiguo empleado de Tony Stark experto en ilusiones."
+   },
+   {
+    "q": "¿Mysterio tiene superpoderes?",
+    "a": "No: todo son trucos, ilusiones y tecnología."
+   },
+   {
+    "q": "¿Qué hizo Mysterio al final de Lejos de casa?",
+    "a": "Reveló al mundo que Peter Parker es Spider-Man con un vídeo manipulado, lo que desencadena <em>No Way Home</em>. Lo repasamos en <a href=\"/blog/villanos-spider-man-peliculas-ranking\">nuestro ranking de villanos del cine</a>."
+   }
+  ]
+ },
+ "vulture-adrian-toomes-alt": {
+  "nombre": "El Buitre",
+  "secciones": [
+   {
+    "titulo": "Origen: el ingeniero traicionado",
+    "html": "<p>Adrian Toomes era un ingeniero brillante que inventó un <strong>arnés de vuelo electromagnético</strong>. Cuando descubrió que su socio lo había estafado y le había dejado sin empresa, usó su invento para vengarse y lanzarse al crimen como el Buitre. Debutó en <em>The Amazing Spider-Man</em> #2 (1963), de Stan Lee y Steve Ditko: fue uno de los primeros supervillanos del personaje, solo por detrás del Camaleón.</p>"
+   },
+   {
+    "titulo": "Contra Spider-Man",
+    "html": "<p>Fue miembro fundador de los <strong>Seis Siniestros</strong> en 1964 y uno de los rivales más veteranos de Spider-Man. Su edad avanzada es parte de su personaje: un anciano que se niega a aceptar que el mundo lo haya dejado de lado.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>Su arnés le permite volar a gran velocidad y le da una fuerza superior a la normal. Además, es un inventor y un piloto excelente.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Spider-Man: Homecoming",
+    "anio": 2017,
+    "actor": "Michael Keaton",
+    "enlace": "/peliculas/spider-man-homecoming-2017"
+   },
+   {
+    "titulo": "Marvel's Spider-Man (videojuego)",
+    "anio": 2018,
+    "actor": "Miembro de los Seis Siniestros",
+    "enlace": "/videojuegos/marvel-s-spider-man-2018"
+   },
+   {
+    "titulo": "Morbius",
+    "anio": 2022,
+    "actor": "Michael Keaton (breve aparición)",
+    "enlace": "/peliculas/morbius-2022"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién interpreta al Buitre?",
+    "a": "Michael Keaton, en <em>Spider-Man: Homecoming</em> (2017). Para nosotros, uno de los mejores villanos del cine de Spider-Man: te lo contamos en <a href=\"/blog/villanos-spider-man-peliculas-ranking\">nuestro ranking</a>."
+   },
+   {
+    "q": "¿Fue el primer villano de Spider-Man?",
+    "a": "No exactamente: fue el segundo supervillano de la serie, tras el Camaleón, que apareció en <em>The Amazing Spider-Man</em> #1."
+   },
+   {
+    "q": "¿Qué relación tiene con Peter en Homecoming?",
+    "a": "Es el padre de Liz, la chica con la que Peter va al baile del instituto, algo que Peter descubre en una de las escenas más tensas del MCU."
+   }
+  ]
+ },
+ "lizard-curtis-connors-alt": {
+  "nombre": "El Lagarto",
+  "secciones": [
+   {
+    "titulo": "Origen: el científico que quería recuperar su brazo",
+    "html": "<p>El Dr. Curt Connors era un cirujano que perdió el brazo derecho en la guerra. Como experto en reptiles, investigó cómo algunos regeneran sus extremidades y probó un suero en sí mismo. Recuperó el brazo… pero se transformó en el <strong>Lagarto</strong>, una criatura salvaje que apenas recuerda quién es. Debutó en <em>The Amazing Spider-Man</em> #6 (1963), de Stan Lee y Steve Ditko.</p>"
+   },
+   {
+    "titulo": "Una tragedia más que un villano",
+    "html": "<p>Connors es amigo y mentor científico de Peter Parker, y tiene mujer e hijo. Por eso sus enfrentamientos con Spider-Man son tan dolorosos: Peter siempre intenta curarlo, no derrotarlo. Una de sus historias más oscuras es <em>Tormento</em> (1990), de Todd McFarlane, que incluimos entre <a href=\"/blog/mejores-comics-spider-man-historia\">los mejores cómics de Spider-Man</a>.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>Fuerza y agilidad sobrehumanas, piel escamosa muy resistente, una cola que usa como arma, regeneración y la capacidad de controlar a otros reptiles.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Spider-Man 2 y Spider-Man 3",
+    "anio": 2004,
+    "actor": "Dylan Baker (como Curt Connors, sin llegar a transformarse)",
+    "enlace": "/peliculas/spider-man-2-2004"
+   },
+   {
+    "titulo": "The Amazing Spider-Man",
+    "anio": 2012,
+    "actor": "Rhys Ifans",
+    "enlace": "/peliculas/the-amazing-spider-man-2012"
+   },
+   {
+    "titulo": "Spider-Man: No Way Home",
+    "anio": 2021,
+    "actor": "Rhys Ifans",
+    "enlace": "/peliculas/spider-man-no-way-home-2021"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién interpreta al Lagarto?",
+    "a": "Rhys Ifans, en <em>The Amazing Spider-Man</em> (2012) y <em>No Way Home</em> (2021). Antes, Dylan Baker había interpretado a Curt Connors en <em>Spider-Man 2</em> y <em>Spider-Man 3</em>, sin llegar a transformarse."
+   },
+   {
+    "q": "¿Por qué se convirtió en el Lagarto?",
+    "a": "Por un suero con ADN de reptil que se inyectó para recuperar el brazo que había perdido."
+   },
+   {
+    "q": "¿El Lagarto es malo?",
+    "a": "Curt Connors es un buen hombre y amigo de Peter; el Lagarto es su lado salvaje e incontrolable."
+   }
+  ]
+ },
+ "sandman-william-baker-alt": {
+  "nombre": "El Hombre de Arena",
+  "secciones": [
+   {
+    "titulo": "Origen: el preso fugado",
+    "html": "<p>William Baker, más conocido como <strong>Flint Marko</strong>, era un criminal que se escondió de la policía en una playa donde se estaba haciendo una prueba nuclear. La radiación unió su cuerpo a la arena: desde entonces puede convertirse en ella y darle cualquier forma. Debutó en <em>The Amazing Spider-Man</em> #4 (1963), de Stan Lee y Steve Ditko.</p>"
+   },
+   {
+    "titulo": "Contra Spider-Man",
+    "html": "<p>Fue uno de los fundadores de los <strong>Seis Siniestros</strong> en 1964, pero es también uno de los villanos que más veces ha intentado reformarse: ha trabajado como mercenario para Silver Sable y llegó a colaborar con los héroes durante una temporada.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>Puede convertir su cuerpo en arena, endurecerla como la piedra, cambiar de tamaño y dar a sus brazos la forma de mazas o martillos. Los golpes lo atraviesan sin hacerle daño.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Spider-Man 3",
+    "anio": 2007,
+    "actor": "Thomas Haden Church",
+    "enlace": "/peliculas/spider-man-3-2007"
+   },
+   {
+    "titulo": "Spider-Man: No Way Home",
+    "anio": 2021,
+    "actor": "Thomas Haden Church",
+    "enlace": "/peliculas/spider-man-no-way-home-2021"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién interpreta al Hombre de Arena?",
+    "a": "Thomas Haden Church, en <em>Spider-Man 3</em> (2007) y <em>No Way Home</em> (2021)."
+   },
+   {
+    "q": "¿El Hombre de Arena mató al tío Ben?",
+    "a": "Solo en la película <em>Spider-Man 3</em>, que cambió la historia para hacerlo responsable. En los cómics, el asesino del tío Ben es otro criminal."
+   },
+   {
+    "q": "¿Cuál es su nombre real?",
+    "a": "William Baker, aunque casi siempre usa el alias de Flint Marko."
+   }
+  ]
+ },
+ "kraven-the-hunter-sergei-kravinoff-alt": {
+  "nombre": "Kraven el Cazador",
+  "secciones": [
+   {
+    "titulo": "Origen: el cazador más grande del mundo",
+    "html": "<p>Sergei Kravinoff es un aristócrata ruso obsesionado con ser el mejor cazador del mundo. Unas <strong>pociones de hierbas</strong> le dieron fuerza, velocidad y sentidos sobrehumanos, y una larga vida. Tras cazar a las bestias más peligrosas, decidió que su presa definitiva sería Spider-Man. Debutó en <em>The Amazing Spider-Man</em> #15 (1964), de Stan Lee y Steve Ditko.</p>"
+   },
+   {
+    "titulo": "La última cacería de Kraven",
+    "html": "<p>Fue uno de los fundadores de los <strong>Seis Siniestros</strong> en 1964, pero su historia más famosa es <em>La última cacería de Kraven</em> (1987), de J. M. DeMatteis y Mike Zeck: Kraven derrota a Spider-Man, lo entierra vivo y ocupa su lugar para demostrar que puede ser mejor que él. Para muchos, la mejor historia de Spider-Man jamás escrita; te la analizamos en <a href=\"/blog/kravens-last-hunt-analisis-mejor-arco-spider-man\">este artículo</a>.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>Fuerza, velocidad y sentidos sobrehumanos gracias a sus pociones, envejecimiento muy lento y una enorme experiencia como rastreador y cazador.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Marvel's Spider-Man 2 (videojuego)",
+    "anio": 2023,
+    "actor": "Uno de los grandes villanos del juego, junto a Venom",
+    "enlace": "/videojuegos/marvel-s-spider-man-2-2023"
+   },
+   {
+    "titulo": "Kraven el cazador",
+    "anio": 2024,
+    "actor": "Aaron Taylor-Johnson",
+    "enlace": "/peliculas/kraven-the-hunter-2024"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién interpreta a Kraven?",
+    "a": "Aaron Taylor-Johnson, en <em>Kraven el cazador</em> (2024)."
+   },
+   {
+    "q": "¿Qué pasa en La última cacería de Kraven?",
+    "a": "Kraven derrota a Spider-Man, lo entierra y se pone su traje para demostrar que es mejor que él."
+   },
+   {
+    "q": "¿Kraven tiene superpoderes?",
+    "a": "Sí: unas pociones de hierbas le dan fuerza, velocidad y sentidos sobrehumanos."
+   }
+  ]
+ },
+ "carnage-cletus-kasady-alt": {
+  "nombre": "Carnage",
+  "secciones": [
+   {
+    "titulo": "Origen: el hijo del simbionte",
+    "html": "<p>Cletus Kasady era un asesino en serie que compartía celda con Eddie Brock. Cuando el simbionte de Venom fue a rescatar a Eddie, dejó atrás una <strong>cría</strong> que se unió a Kasady y dio lugar a Carnage, una versión roja y mucho más violenta de Venom. Kasady apareció en <em>The Amazing Spider-Man</em> #344 (1991) y como Carnage en el #361 (1992), creados por David Michelinie, Erik Larsen y Mark Bagley.</p>"
+   },
+   {
+    "titulo": "Contra Spider-Man (y Venom)",
+    "html": "<p>Carnage es tan peligroso que Spider-Man ha tenido que aliarse con Venom para detenerlo, como en <strong>Matanza Máxima</strong> (1993), el gran crossover en el que Carnage reúne a su propia «familia» de villanos. Lo contamos en <a href=\"/blog/simbionte-historia-evolucion-venom\">la historia del simbionte</a>.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>Los mismos que Venom, pero más potentes: fuerza sobrehumana, cambio de forma, armas creadas con su propio cuerpo y la capacidad de no activar el sentido arácnido de Spider-Man.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Venom (escena poscréditos)",
+    "anio": 2018,
+    "actor": "Woody Harrelson",
+    "enlace": "/peliculas/venom-2018"
+   },
+   {
+    "titulo": "Venom: Habrá Matanza",
+    "anio": 2021,
+    "actor": "Woody Harrelson",
+    "enlace": "/peliculas/venom-habra-matanza-2021"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién interpreta a Carnage?",
+    "a": "Woody Harrelson, en <em>Venom: Habrá Matanza</em> (2021), tras una breve aparición al final de <em>Venom</em> (2018)."
+   },
+   {
+    "q": "¿De dónde sale el simbionte de Carnage?",
+    "a": "Es una cría del simbionte de Venom, que se unió a Cletus Kasady en la cárcel."
+   },
+   {
+    "q": "¿Carnage es más fuerte que Venom?",
+    "a": "En los cómics, sí: por eso Spider-Man y Venom han tenido que unir fuerzas para vencerlo."
+   }
+  ]
+ },
+ "scorpion-mac-gargan-alt": {
+  "nombre": "El Escorpión",
+  "secciones": [
+   {
+    "titulo": "Origen: el detective de Jameson",
+    "html": "<p>Mac Gargan era un detective privado al que J. Jonah Jameson contrató para averiguar cómo conseguía Peter Parker sus fotos de Spider-Man. Como no lo logró, Jameson le pagó para someterse a un experimento que lo convirtió en el <strong>Escorpión</strong>, con un traje blindado y una cola mecánica. El proceso lo dejó tan inestable que se volvió contra el propio Jameson. Gargan apareció en <em>The Amazing Spider-Man</em> #19 (1964) y se convirtió en el Escorpión en el #20 (1965), de Stan Lee y Steve Ditko.</p>"
+   },
+   {
+    "titulo": "De Escorpión a Venom",
+    "html": "<p>Años después, Gargan se unió al simbionte de Venom. Con él llegó a hacerse pasar por Spider-Man en los Vengadores Oscuros de Norman Osborn.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>Fuerza, velocidad y agilidad sobrehumanas, un traje blindado y una cola mecánica que usa como arma.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Spider-Man: Homecoming",
+    "anio": 2017,
+    "actor": "Michael Mando (como Mac Gargan)",
+    "enlace": "/peliculas/spider-man-homecoming-2017"
+   },
+   {
+    "titulo": "Marvel's Spider-Man (videojuego)",
+    "anio": 2018,
+    "actor": "Miembro de los Seis Siniestros",
+    "enlace": "/videojuegos/marvel-s-spider-man-2018"
+   },
+   {
+    "titulo": "Spider-Man: Brand New Day",
+    "anio": 2026,
+    "actor": "Michael Mando",
+    "enlace": "/peliculas/spider-man-brand-new-day-2026"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién interpreta al Escorpión?",
+    "a": "Michael Mando. Apareció como Mac Gargan en <em>Homecoming</em> (2017) y vuelve como el Escorpión, con su armadura, en <em>Brand New Day</em> (2026)."
+   },
+   {
+    "q": "¿Quién creó al Escorpión en los cómics?",
+    "a": "Fue J. Jonah Jameson quien pagó el experimento que transformó a Mac Gargan."
+   },
+   {
+    "q": "¿El Escorpión fue Venom?",
+    "a": "Sí, en los cómics Mac Gargan llegó a unirse al simbionte."
+   }
+  ]
+ },
+ "rhino-aleksei-sytsevich-alt": {
+  "nombre": "Rino",
+  "secciones": [
+   {
+    "titulo": "Origen: el matón con armadura",
+    "html": "<p>Aleksei Sytsevich era un matón ruso que aceptó someterse a un experimento a cambio de dinero. Le dieron fuerza sobrehumana y un traje blindado con forma de rinoceronte que, con el tiempo, acabó fusionado con su piel. Debutó en <em>The Amazing Spider-Man</em> #41 (1966), creado por Stan Lee y John Romita Sr.: fue el primer villano que Romita creó para la serie.</p>"
+   },
+   {
+    "titulo": "Más que un bruto",
+    "html": "<p>Aunque suele aparecer como pura fuerza bruta, algunos cómics han mostrado a un Rino que solo quiere retirarse y vivir tranquilo, lo que le ha dado historias sorprendentemente tristes.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>Fuerza y resistencia sobrehumanas, una armadura casi impenetrable y unas cargas devastadoras con su cuerno. Su punto débil: le cuesta cambiar de dirección una vez lanzado.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "The Amazing Spider-Man 2: El poder de Electro",
+    "anio": 2014,
+    "actor": "Paul Giamatti",
+    "enlace": "/peliculas/the-amazing-spider-man-2-el-poder-de-electro-2014"
+   },
+   {
+    "titulo": "Marvel's Spider-Man (videojuego)",
+    "anio": 2018,
+    "actor": "Miembro de los Seis Siniestros",
+    "enlace": "/videojuegos/marvel-s-spider-man-2018"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién interpreta a Rino?",
+    "a": "Paul Giamatti, en <em>The Amazing Spider-Man 2</em> (2014)."
+   },
+   {
+    "q": "¿Quién creó a Rino?",
+    "a": "Stan Lee y John Romita Sr., en 1966."
+   },
+   {
+    "q": "¿La armadura de Rino se puede quitar?",
+    "a": "Al principio sí, pero en los cómics acabó fusionada con su piel."
+   }
+  ]
+ },
+ "madame-web-cassandra-webb-alt": {
+  "nombre": "Madame Web",
+  "secciones": [
+   {
+    "titulo": "Origen: la vidente de la telaraña",
+    "html": "<p>Cassandra Webb es una anciana ciega y con una grave enfermedad que la obliga a vivir conectada a un sistema de soporte vital con forma de <strong>telaraña</strong>. A cambio, tiene poderes de clarividencia: puede ver el futuro y lo que ocurre lejos de ella. Debutó en <em>The Amazing Spider-Man</em> #210 (1980), creada por Dennis O'Neil y John Romita Jr.</p>"
+   },
+   {
+    "titulo": "Guía de los héroes arácnidos",
+    "html": "<p>Madame Web ha ayudado a Spider-Man y a otros héroes arácnidos con sus visiones. Murió en la saga <em>Grim Hunt</em> (2010), a manos de la familia de Kraven, y sus poderes pasaron a <strong>Julia Carpenter</strong>, la segunda Spider-Woman, que se convirtió en la nueva Madame Web.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>Clarividencia, precognición y telepatía. Puede ver acontecimientos de otros lugares y del futuro, aunque no siempre con claridad.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Madame Web",
+    "anio": 2024,
+    "actor": "Dakota Johnson",
+    "enlace": "/peliculas/madame-web-2024"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién interpreta a Madame Web?",
+    "a": "Dakota Johnson, en <em>Madame Web</em> (2024), una versión más joven del personaje."
+   },
+   {
+    "q": "¿Qué poderes tiene Madame Web?",
+    "a": "Clarividencia y precognición: puede ver el futuro y lo que ocurre lejos de ella."
+   },
+   {
+    "q": "¿Madame Web y Julia Carpenter son la misma persona?",
+    "a": "No. La Madame Web original es Cassandra Webb; Julia Carpenter heredó sus poderes y el nombre en 2010."
+   }
+  ]
  }
 }
