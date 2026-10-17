@@ -83,7 +83,7 @@ export default async function GamePage({ params }: Props) {
     '@context': 'https://schema.org',
     '@type': 'VideoGame',
     name: game.title,
-    description: game.seoDescription || game.description,
+    description: game.description,
     image: game.image ? { '@type': 'ImageObject', url: game.image, width: 300, height: 450 } : undefined,
     url: `${SITE_URL}/videojuegos/${game.slug}`,
     datePublished: game.year?.toString(),

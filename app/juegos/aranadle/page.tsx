@@ -9,9 +9,9 @@ import personajes from "@/data/juegos/personajes.json"
 
 // La imagen de /juegos (definir openGraph aquí anula la heredada)
 const OG_IMAGE = "/juegos/opengraph-image.jpg"
-const TITLE = "Arañadle: adivina el personaje de Spider-Man del día"
+const TITLE = "Arañadle, el Wordle de Spider-Man: reto diario"
 const DESCRIPTION =
-  "Cada día, un personaje secreto del universo de Spider-Man. Tienes 8 intentos y pistas de colores para adivinarlo. Comparte tu resultado y mantén la racha."
+  "El Wordle de Spider-Man en español: cada día, un personaje secreto del universo arácnido. Tienes 8 intentos y pistas de colores para adivinarlo. Gratis y sin registro."
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -42,6 +42,9 @@ export default function AranadlePage() {
           </h1>
           <p className="text-gray-300 max-w-2xl mx-auto">
             Adivina el personaje del universo de Spider-Man de hoy. Cada intento te dice en qué se parece al personaje secreto.
+          </p>
+          <p className="text-gray-400 text-sm max-w-2xl mx-auto mt-3">
+            Un juego al estilo de Wordle, pero con héroes, villanos y Spider-Men del multiverso: un reto nuevo cada día, gratis y sin registro.
           </p>
         </header>
 

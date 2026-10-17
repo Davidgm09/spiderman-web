@@ -76,7 +76,7 @@ export default async function SeriesDetailPage({ params }: Props) {
     '@context': 'https://schema.org',
     '@type': 'TVSeries',
     name: series.title,
-    description: series.seoDescription || series.description,
+    description: series.description,
     image: series.image ? { '@type': 'ImageObject', url: series.image, width: 300, height: 450 } : undefined,
     url: `${SITE_URL}/series/${series.slug}`,
     startDate: series.firstAirDate || series.year?.toString(),
