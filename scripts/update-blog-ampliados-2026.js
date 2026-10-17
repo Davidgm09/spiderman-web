@@ -477,7 +477,127 @@ ${tmdbFigure('e7CE5vx4KqUuz0peKdHRVZB0Pn8', 'Miles Morales cayendo entre rascaci
 `,
 };
 
-const POSTS = [MEJORES_JUEGOS, MEJORES_VILLANOS, SPIDERMAN_PS4, SPIDERMAN_2_PS5, NO_WAY_HOME, UN_NUEVO_UNIVERSO];
+const CRUZANDO_EL_MULTIVERSO = {
+  slug: 'across-the-spider-verse-analisis',
+  title: 'Spider-Man: Cruzando el Multiverso, análisis: la secuela que supera a la original',
+  subtitle: 'Gwen, Miguel O\'Hara, la Sociedad Araña, la Mancha y el «canon»: por qué Across the Spider-Verse eleva aún más el listón (con spoilers)',
+  excerpt:
+    'Spider-Man: Cruzando el Multiverso (2023) lleva a Miles al corazón del multiverso y le enfrenta al propio concepto de canon. Analizamos su historia, su animación, sus personajes y su final.',
+  readTime: '10 min',
+  seoTitle: 'Spider-Man: Cruzando el Multiverso, análisis y final',
+  seoDescription:
+    'Análisis de Spider-Man: Cruzando el Multiverso (2023): Gwen, Miguel O\'Hara y la Sociedad Araña, el «canon», la Mancha, su animación y el final que lleva a Beyond the Spider-Verse.',
+  keywords: ['Cruzando el Multiverso análisis', 'Across the Spider-Verse', 'Spider-Man Cruzando el Multiverso', 'Sociedad Araña', 'Miguel O\'Hara', 'final Across the Spider-Verse'],
+  tags: ['análisis', 'películas', 'animación', 'Miles Morales', 'Spider-Verse', 'spoilers'],
+  content: `
+<blockquote><strong>Aviso: este análisis contiene spoilers, incluido el final de la película.</strong></blockquote>
+
+<p>${peli('spider-man-cruzando-el-multiverso-2023', 'Spider-Man: Cruzando el Multiverso')} (<em>Across the Spider-Verse</em>, 2023) tenía la misión imposible de superar a ${peli('spider-man-un-nuevo-universo-2018', 'Un nuevo universo')}, una de las mejores películas de animación del siglo. No solo lo consigue: sube tanto el listón que resulta difícil imaginar cómo podrá igualarlo <a href="/blog/beyond-spider-verse-actualizacion-2025">Beyond the Spider-Verse</a>.</p>
+
+<h2>Ficha rápida</h2>
+<table>
+  <tbody>
+    <tr><td><strong>Estreno</strong></td><td>Junio de 2023</td></tr>
+    <tr><td><strong>Dirección</strong></td><td>Joaquim Dos Santos, Kemp Powers y Justin K. Thompson</td></tr>
+    <tr><td><strong>Guion</strong></td><td>Phil Lord, Christopher Miller y David Callaham</td></tr>
+    <tr><td><strong>Voces originales</strong></td><td>Shameik Moore, Hailee Steinfeld, Oscar Isaac, Jason Schwartzman, Daniel Kaluuya</td></tr>
+    <tr><td><strong>Premios</strong></td><td>Nominada al Óscar a la mejor película de animación</td></tr>
+  </tbody>
+</table>
+
+<h2>Gwen, protagonista a la altura de Miles</h2>
+${tmdbFigure('rDcB8RqsAQuKGRajkPFbYLZZWMj', 'Gwen Stacy bajo la lluvia en una azotea', 'Gwen Stacy en su universo: la película empieza con ella, y con un mundo cuyos colores cambian con sus emociones.')}
+<p>La película arranca con ${pj('spider-gwen-gwen-stacy', 'Gwen Stacy')}, y es casi tan suya como de Miles. En su universo, su padre, el capitán George Stacy, la persigue convencido de que Spider-Woman mató a Peter Parker. Su mundo parece una acuarela cuyos colores cambian con lo que siente, y su relación con su padre es una de las partes más emotivas de toda la saga.</p>
+
+<h2>Un universo para cada Spider-Man</h2>
+${tmdbFigure('pfxTNwujdWV9BRdIZmuCV17BKWv', 'Gwen, Peter B. Parker con su hija y otros héroes arácnidos en una azotea', 'Gwen, Peter B. Parker con su hija Mayday y otros héroes arácnidos de la Sociedad Araña.')}
+<p>Cada dimensión tiene su propio lenguaje visual. Mumbattan, el mundo de ${pj('spider-man-india-pavitr-prabhakar', 'Spider-Man India')}, es un estallido de color; el de Spider-Punk parece un fanzine recortado; el de Gwen, una acuarela. La película mezcla todos esos estilos, a veces en el mismo plano, y aun así nunca resulta confusa. Es, sin exagerar, una de las películas de animación más ambiciosas jamás hechas.</p>
+<p>El reparto arácnido crece: ${pj('spider-man-2099-miguel-ohara', 'Miguel O\'Hara')} (Spider-Man 2099), ${pj('spider-punk-hobie-brown', 'Spider-Punk')}, una ${pj('spider-woman-jessica-drew', 'Jessica Drew')} en moto, ${pj('ben-reilly-scarlet-spider', 'Ben Reilly')} como Scarlet Spider, y cientos de variantes más en la sede de la Sociedad Araña.</p>
+
+<h2>La Mancha</h2>
+<p>El villano empieza como un chiste: un científico lleno de agujeros que abre portales y al que nadie toma en serio. Pero la Mancha crece a lo largo de la película hasta convertirse en una amenaza para todo el multiverso. Su resentimiento hacia Miles, al que culpa de su transformación, le da un giro muy interesante: es un villano que el propio Miles creó sin saberlo.</p>
+
+<h2>Miles contra el «canon»</h2>
+<p>El verdadero conflicto no es un villano, sino una idea. Miguel O'Hara lidera la Sociedad Araña y defiende que hay «eventos canónicos» que todos los Spider-Man deben vivir para que sus universos no se derrumben, como la muerte de un capitán de policía cercano a ellos. Cuando Miles descubre que en su caso ese capitán va a ser su padre, Jefferson Davis, se niega a aceptarlo, y toda la Sociedad Araña se lanza a por él.</p>
+<p>El dilema funciona porque no tiene una respuesta fácil: Miguel ha visto colapsar un universo, y Miles no está dispuesto a perder a su padre. La persecución por la sede de la Sociedad es una de las secuencias de acción más espectaculares de la saga.</p>
+
+<h2>El final</h2>
+${tmdbFigure('v35mDDVGNCXTscKeggbPdvoQU2i', 'Gwen y Miles balanceándose juntos', 'Gwen y Miles: la película termina con los dos separados, y Gwen reuniendo un equipo para ir a buscarle.')}
+<p>Miles intenta volver a casa, pero el portal le lleva a la Tierra-42: el universo del que venía la araña que le picó. En ese mundo no hay Spider-Man, su padre está muerto y su versión alternativa es el Merodeador, con su tío Aaron todavía vivo. Mientras, Gwen reúne a su propio equipo de héroes arácnidos para ir a rescatarle. Y ahí, con un «continuará», termina la película.</p>
+
+<h2>Veredicto</h2>
+<p>Cruzando el Multiverso es cine de animación de primer nivel, con personajes complejos, un dilema moral de verdad y una dirección artística que se estudiará durante años. Su único «pero» es que es la primera mitad de una historia: el final abierto duele, aunque confirma que la saga no tiene miedo de apostar alto.</p>
+<p><strong>Puntuación: 10/10.</strong> Antes de verla, mejor ver <a href="/blog/spider-man-into-the-spider-verse-analisis-revolucion-animacion">Un nuevo universo</a>.</p>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Cruzando el Multiverso tiene final?</h3>
+<p>No: termina con un «continuará» que se resolverá en Beyond the Spider-Verse.</p>
+<h3>¿Qué es un evento canónico?</h3>
+<p>Según Miguel O'Hara, un momento que todos los Spider-Man deben vivir, como la muerte de un capitán de policía cercano a ellos. Si se evita, el universo puede colapsar.</p>
+<h3>¿Quién es el Merodeador de la Tierra-42?</h3>
+<p>Una versión alternativa de Miles Morales en el universo del que venía la araña que le picó.</p>
+`,
+};
+
+const SPIDER_MAN_2 = {
+  slug: 'spider-man-2-2004-analisis-mejor-pelicula-superheroes',
+  title: 'Spider-Man 2 (2004), análisis: ¿la mejor película de superhéroes jamás hecha?',
+  subtitle: 'La crisis de Peter Parker, el Doctor Octopus de Alfred Molina, la escena del tren y un Óscar: por qué la secuela de Sam Raimi sigue siendo insuperable',
+  excerpt:
+    'Veinte años después, Spider-Man 2 sigue siendo para muchos la mejor película de superhéroes. Analizamos su historia, su villano, sus escenas clave y su legado.',
+  readTime: '10 min',
+  seoTitle: 'Spider-Man 2 (2004): análisis de la película de Sam Raimi',
+  seoDescription:
+    'Análisis de Spider-Man 2 (2004) de Sam Raimi: la crisis de Peter Parker, el Doctor Octopus de Alfred Molina, la escena del tren, el Óscar y por qué sigue siendo la mejor.',
+  keywords: ['Spider-Man 2 análisis', 'Spider-Man 2 2004', 'Sam Raimi', 'Doctor Octopus Alfred Molina', 'escena del tren Spider-Man 2', 'mejor película de superhéroes'],
+  tags: ['análisis', 'películas', 'Sam Raimi', 'Tobey Maguire', 'Doctor Octopus', 'clásico'],
+  content: `
+<p>En 2004, Sam Raimi hizo algo que muy pocos directores consiguen: una secuela mejor que la original. ${peli('spider-man-2-2004', 'Spider-Man 2')} no es solo una buena película de superhéroes; para muchos críticos y fans es la mejor que se ha hecho. Dos décadas después, con el MCU, el Spider-Verso y el multiverso de por medio, sigue siendo la referencia.</p>
+
+<h2>Ficha rápida</h2>
+<table>
+  <tbody>
+    <tr><td><strong>Estreno</strong></td><td>2004</td></tr>
+    <tr><td><strong>Director</strong></td><td>Sam Raimi</td></tr>
+    <tr><td><strong>Guion</strong></td><td>Alvin Sargent, a partir de una historia de Alfred Gough, Miles Millar y Michael Chabon</td></tr>
+    <tr><td><strong>Reparto</strong></td><td>Tobey Maguire, Kirsten Dunst, Alfred Molina, James Franco, Rosemary Harris</td></tr>
+    <tr><td><strong>Música</strong></td><td>Danny Elfman</td></tr>
+    <tr><td><strong>Premios</strong></td><td>Óscar a los mejores efectos visuales; nominada en las dos categorías de sonido</td></tr>
+  </tbody>
+</table>
+
+<h2>Peter Parker quiere dejarlo</h2>
+${tmdbFigure('lOcQZjhU99PMykoIStbmZLUVj9D', 'Peter Parker con el traje de Spider-Man y sin máscara, de noche', 'Peter Parker, agotado: en Spider-Man 2, ser Spider-Man le está costando la vida que quiere tener.')}
+<p>La genialidad de la película está en su punto de partida: Peter Parker quiere dejar de ser Spider-Man. No por cobardía, sino porque el precio es insoportable. Pierde trabajos, suspende en la universidad, no puede pagar el alquiler y ve cómo Mary Jane se aleja de él. El traje no le da poder: le quita la vida.</p>
+<p>Su crisis llega a afectar a sus poderes, que empiezan a fallarle, hasta que decide tirar el traje a la basura. Es un homenaje directo a <em>The Amazing Spider-Man</em> #50 (1967), «Spider-Man No More!», y una de las imágenes más icónicas de la película. Esa idea, que ser héroe tiene un coste real, es lo que la eleva por encima de casi todas las películas del género.</p>
+
+<h2>El Doctor Octopus de Alfred Molina</h2>
+${tmdbFigure('faV0HuR6WnQoLrVq3r6mhjaABL9', 'Spider-Man y el Doctor Octopus luchando sobre el techo de un tren', 'La pelea en el tren entre Spider-Man y el Doctor Octopus, una de las mejores escenas de acción del cine de superhéroes.')}
+<p>Otto Octavius no quiere dominar el mundo. Es un científico brillante y bondadoso, mentor de Peter, que pierde a su mujer y el control de sí mismo en el accidente de su experimento de fusión. Los brazos mecánicos, que se comunican con su cerebro, acaban dominándole. Su historia es un reflejo de la de Peter: dos hombres aplastados por las consecuencias de sus decisiones.</p>
+<p>Alfred Molina hace un villano humano y trágico, y es tan bueno que volvió al papel diecisiete años después en ${peli('spider-man-no-way-home-2021', 'No Way Home')}. Lo tienes en lo más alto de <a href="/blog/villanos-spider-man-peliculas-ranking">nuestro ranking de villanos del cine</a>.</p>
+
+<h2>La escena del tren</h2>
+<p>La pelea sobre el tren elevado es el gran momento de la película y uno de los mejores momentos de acción del cine de superhéroes. Pero lo que la hace grande es lo que viene después: Peter, sin máscara y agotado tras frenar el tren con sus telarañas, cae inconsciente, y los pasajeros que acaba de salvar le sostienen y le protegen. Le devuelven la máscara y prometen no contar a nadie quién es. La ciudad cuida de su héroe.</p>
+
+<h2>Mary Jane y la tía May</h2>
+${tmdbFigure('6al048Lat3eLVQOuKtc9h6Tu94d', 'Spider-Man y Mary Jane en el póster de Spider-Man 2', 'Spider-Man y Mary Jane en el póster de Spider-Man 2 (2004). Además de su historia de amor, la película tiene en el Doctor Octopus de Alfred Molina a un villano construido desde la tragedia.')}
+<p>La historia de amor con ${pj('mary-jane-watson', 'Mary Jane')} es el otro gran pilar: ella está a punto de casarse con otro, y Peter tiene que decidir si le cuenta la verdad. Y la ${pj('aunt-may-parker', 'tía May')} de Rosemary Harris protagoniza uno de los discursos más bonitos de la saga, sobre por qué la gente necesita héroes, justo cuando Peter más necesita oírlo.</p>
+
+<h2>El legado</h2>
+<p>Spider-Man 2 ganó el Óscar a los mejores efectos visuales, y el crítico Roger Ebert le dio la máxima nota. Su influencia se nota en casi todas las películas de superhéroes posteriores que han intentado equilibrar espectáculo y drama personal. Si quieres enseñarle a alguien lo que puede llegar a ser una película de superhéroes, le pones esta.</p>
+<p><strong>Puntuación: 10/10.</strong> Si te preguntas quién es el mejor Spider-Man del cine, te lo contamos en <a href="/blog/tobey-maguire-andrew-garfield-tom-holland-mejor-spider-man">Tobey Maguire vs. Andrew Garfield vs. Tom Holland</a>.</p>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Por qué Spider-Man 2 se considera la mejor película de Spider-Man?</h3>
+<p>Por su equilibrio entre acción y drama: una historia muy humana sobre el precio de ser héroe, con un villano trágico y escenas memorables como la del tren.</p>
+<h3>¿Qué Óscar ganó Spider-Man 2?</h3>
+<p>El Óscar a los mejores efectos visuales.</p>
+<h3>¿Hay que ver la primera antes?</h3>
+<p>Sí, conviene: es la continuación directa de Spider-Man (2002).</p>
+`,
+};
+
+const POSTS = [MEJORES_JUEGOS, MEJORES_VILLANOS, SPIDERMAN_PS4, SPIDERMAN_2_PS5, NO_WAY_HOME, UN_NUEVO_UNIVERSO, CRUZANDO_EL_MULTIVERSO, SPIDER_MAN_2];
 
 (async () => {
   for (const { slug, ...data } of POSTS) {
