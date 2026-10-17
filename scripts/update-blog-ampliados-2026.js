@@ -1066,7 +1066,124 @@ ${cvFigure('original/0/4/44573-7257-51619-1-ultimate-spider-man.jpg', 'Portada d
 `,
 };
 
-const POSTS = [MEJORES_JUEGOS, MEJORES_VILLANOS, SPIDERMAN_PS4, SPIDERMAN_2_PS5, NO_WAY_HOME, UN_NUEVO_UNIVERSO, CRUZANDO_EL_MULTIVERSO, SPIDER_MAN_2, MILES_MORALES_JUEGO, AMAZING_2012, ULTIMA_CACERIA, SUPERIOR, ULTIMATE_BENDIS, SIMBIONTE, PETER_VS_MILES, GUIA_COMICS];
+const serie = (slug, title) => `<a href="/series/${slug}"><em>${title}</em></a>`;
+
+const SERIE_1994 = {
+  slug: 'spider-man-animated-series-1994-analisis',
+  title: 'Spider-Man: La serie animada (1994), análisis: por qué sigue siendo la mejor adaptación',
+  subtitle: 'Venom, Kingpin, Hobgoblin, las Guerras Secretas y un final inconcluso: la serie de Fox Kids que marcó a toda una generación',
+  excerpt:
+    'Spider-Man: La serie animada (1994) marcó a toda una generación. Analizamos sus personajes, sus grandes sagas, la censura que la condicionó y su final inconcluso.',
+  readTime: '10 min',
+  seoTitle: 'Spider-Man: La serie animada (1994): análisis completo',
+  seoDescription:
+    'Análisis de Spider-Man: La serie animada (1994): sus 65 episodios, Venom y Carnage, Kingpin, las Guerras Secretas, la censura de Fox Kids y su final inconcluso.',
+  keywords: ['Spider-Man serie animada 1994', 'Spider-Man The Animated Series', 'serie Spider-Man 90', 'Spider-Man Fox Kids', 'Spider Wars', 'Venom serie 1994'],
+  tags: ['análisis', 'series', 'animación', 'años 90', 'Fox Kids', 'Venom'],
+  content: `
+<p>Si preguntas a alguien que creció en los 90 cuál es «su» Spider-Man, es muy probable que responda lo mismo: la ${serie('spiderman', 'serie animada de 1994')}. Durante cinco temporadas, la serie de Fox Kids adaptó los mejores arcos de los cómics con una ambición que pocas series de dibujos animados tenían, y estableció cómo debía funcionar Spider-Man en animación.</p>
+
+<h2>Ficha rápida</h2>
+<table>
+  <tbody>
+    <tr><td><strong>Emisión</strong></td><td>1994-1998, en Fox Kids</td></tr>
+    <tr><td><strong>Episodios</strong></td><td>65, en 5 temporadas</td></tr>
+    <tr><td><strong>Producción</strong></td><td>Marvel Films y Saban, con John Semper como guionista principal</td></tr>
+    <tr><td><strong>Voces originales</strong></td><td>Christopher Daniel Barnes (Peter Parker), Sara Ballantine (Mary Jane), Ed Asner (J. Jonah Jameson), Roscoe Lee Browne (Kingpin)</td></tr>
+    <tr><td><strong>Tema principal</strong></td><td>Compuesto por Joe Perry, guitarrista de Aerosmith</td></tr>
+  </tbody>
+</table>
+
+<h2>El contexto: Fox Kids en los 90</h2>
+<p>La serie llegó en el momento perfecto. <em>Batman: La serie animada</em> había demostrado en 1992 que los dibujos de superhéroes podían ser sofisticados, y Fox Kids, que ya emitía la serie de los X-Men, quería otro gran éxito de Marvel. El resultado fue una serie con arcos de varios episodios, personajes con motivaciones complejas y adaptaciones bastante fieles de las grandes historias del cómic. Además, usaba edificios de Nueva York generados por ordenador, algo muy novedoso para la época.</p>
+
+<h2>Los personajes</h2>
+${tmdbFigure('wr2XpWwtaFz0bfELWfSd8ynM2mB', 'Spider-Man frente a Hobgoblin, que vuela en su planeador entre rascacielos', 'Spider-Man frente a Hobgoblin, uno de los muchos villanos clásicos que adaptó la serie.')}
+<p>La serie reunió a casi toda la galería clásica: el Buitre, el Escorpión, el Lagarto, Mysterio, el Doctor Octopus, Hobgoblin, el Duende Verde, Venom y Carnage. Por encima de todos estaba ${pj('kingpin-wilson-fisk', 'Kingpin')}, el gran villano en la sombra, con la voz grave de Roscoe Lee Browne. Y entre los aliados, Mary Jane, ${pj('black-cat-felicia-hardy', 'la Gata Negra')} y ${pj('madame-web-cassandra-webb', 'Madame Web')}, clave en las últimas temporadas.</p>
+
+<h2>La censura que la definió</h2>
+<p>Las normas de Fox eran estrictísimas. Spider-Man casi no podía dar puñetazos, nadie podía morir en pantalla y las armas eran pistolas láser en lugar de armas de fuego. Cuando la serie necesitó una pérdida trágica, Mary Jane no muere: cae en un portal dimensional.</p>
+<p>Paradójicamente, esas restricciones obligaron a los guionistas a construir la tensión con diálogos y consecuencias emocionales, y el resultado fue una serie que se tomaba en serio a sus personajes.</p>
+
+<h2>Las grandes sagas</h2>
+${tmdbFigure('bgfCgBpBXz7eQ2Ajz9zlMLyT7FM', 'Spider-Man con el traje negro lanzando una telaraña', 'Spider-Man con el traje negro del simbionte, en una de las sagas más recordadas de la serie.')}
+<ul>
+  <li><strong>El traje alienígena:</strong> el simbionte llega a la Tierra, se une a Peter y acaba creando a ${pj('venom-eddie-brock', 'Venom')}. Más tarde llega ${pj('carnage-cletus-kasady', 'Carnage')}.</li>
+  <li><strong>Las Guerras Secretas:</strong> Spider-Man lidera a un grupo de héroes de Marvel en otro planeta, en una adaptación del evento de 1984.</li>
+  <li><strong>Las Guerras Arácnidas (<em>Spider Wars</em>):</strong> el final de la serie reúne a varios Spider-Man de distintas realidades, incluido Scarlet Spider, una idea que se adelantó veinte años al Spider-Verso.</li>
+</ul>
+
+<h2>El final inconcluso</h2>
+<p>La serie terminó en 1998 con un cabo suelto que nunca se resolvió: Spider-Man parte en busca de Mary Jane, perdida en otra dimensión, acompañado por Madame Web. En ese último episodio, además, conoce a Stan Lee en persona. Ese final abierto sigue siendo la gran herida de la serie, y la razón por la que muchos fans pidieron durante años una continuación.</p>
+
+<h2>Su legado</h2>
+<p>Treinta años después, la serie de 1994 sigue siendo la adaptación más completa del Spider-Man de los cómics clásicos. Su influencia se nota en las series posteriores, como <a href="/blog/spectacular-spider-man-serie-analisis">The Spectacular Spider-Man</a>, y en el propio Spider-Verso. Si quieres ver todas las series del personaje, las tienes en nuestra sección de <a href="/series">series</a>.</p>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Cuántos episodios tiene la serie de Spider-Man de 1994?</h3>
+<p>65 episodios, repartidos en 5 temporadas, entre 1994 y 1998.</p>
+<h3>¿Cómo termina la serie de 1994?</h3>
+<p>Con Spider-Man partiendo en busca de Mary Jane, perdida en otra dimensión. Nunca hubo continuación oficial.</p>
+<h3>¿Quién pone la voz a Spider-Man?</h3>
+<p>En la versión original, Christopher Daniel Barnes.</p>
+`,
+};
+
+const SPECTACULAR = {
+  slug: 'spectacular-spider-man-serie-analisis',
+  title: 'The Spectacular Spider-Man (2008), análisis: la serie cancelada demasiado pronto',
+  subtitle: 'Greg Weisman, un Peter Parker adolescente, el Duende Verde y Venom: por qué los fans siguen pidiendo una tercera temporada',
+  excerpt:
+    'The Spectacular Spider-Man solo duró dos temporadas, pero muchos fans la consideran la mejor serie animada del personaje. Analizamos su estilo, sus personajes, sus villanos y su cancelación.',
+  readTime: '9 min',
+  seoTitle: 'The Spectacular Spider-Man (2008): análisis de la serie',
+  seoDescription:
+    'Análisis de The Spectacular Spider-Man (2008) de Greg Weisman: sus 26 episodios, su estilo visual, el Duende Verde, Venom, sus villanos y por qué se canceló.',
+  keywords: ['The Spectacular Spider-Man', 'Spectacular Spider-Man serie', 'Spectacular Spider-Man temporada 3', 'Greg Weisman', 'serie animada Spider-Man 2008', 'El Espectacular Spider-Man'],
+  tags: ['análisis', 'series', 'animación', 'Greg Weisman', 'Venom', 'Duende Verde'],
+  content: `
+<p>En 2008, Greg Weisman, creador de <em>Gargoyles</em>, estrenó ${serie('el-espectacular-spiderman', 'The Spectacular Spider-Man')} con una idea clara: contar la historia de un Peter Parker adolescente con la profundidad de una buena serie de televisión. En solo 26 episodios construyó algo extraordinario… y entonces la serie se canceló. Más de quince años después, los fans siguen pidiendo su regreso.</p>
+
+<h2>Ficha rápida</h2>
+<table>
+  <tbody>
+    <tr><td><strong>Emisión</strong></td><td>2008-2009 (primera temporada en The CW; segunda en Disney XD)</td></tr>
+    <tr><td><strong>Episodios</strong></td><td>26, en 2 temporadas</td></tr>
+    <tr><td><strong>Creadores de la serie</strong></td><td>Greg Weisman y Victor Cook</td></tr>
+    <tr><td><strong>Voz original de Peter</strong></td><td>Josh Keaton</td></tr>
+  </tbody>
+</table>
+
+<h2>El diseño: menos es más</h2>
+${tmdbFigure('oTxEsie330VbVYTEJFqRahw2CkC', 'Spider-Man en el centro, rodeado de los rostros en gris de los personajes de la serie', 'Spider-Man rodeado del reparto de la serie: su estilo de líneas limpias fue polémico al principio.')}
+<p>El estilo visual provocó polémica antes del estreno: personajes estilizados, líneas limpias y diseños sencillos. Muchos fans lo criticaron sin haber visto un solo episodio, y se equivocaron. La sencillez era una decisión pensada: permitía una animación muy fluida, con mucha expresividad en las caras y unas escenas de acción ágiles y fáciles de seguir.</p>
+
+<h2>Un Peter Parker con capas</h2>
+<p>La serie arranca con Peter en su primer año como Spider-Man y en el instituto Midtown, y cuida por igual sus dos vidas: los problemas del instituto afectan a Spider-Man, y lo que aprende con el traje cambia cómo se relaciona con sus compañeros. Gwen Stacy, Harry Osborn, Liz Allan y Flash Thompson tienen arcos propios, y cada episodio planta semillas que dan fruto muchos capítulos después, al estilo de las mejores etapas de los cómics.</p>
+
+<h2>Los villanos</h2>
+${tmdbFigure('lZVfy6EQ8YTVwCeFyElXeDbEL8W', 'Spider-Man esquivando al Lagarto entre rascacielos', 'Spider-Man contra el Lagarto: la serie dio a cada villano clásico una versión muy cuidada.')}
+<p>La galería de villanos es amplísima: el Buitre, Electro, el ${pj('lizard-curtis-connors', 'Lagarto')}, el Hombre de Arena, Rino, ${pj('shocker-herman-schultz', 'Shocker')}, Mysterio, el Escorpión y un misterioso jefe del crimen, el Big Man, cuya identidad es una de las sorpresas de la serie. Por encima de todos está el Duende Verde, y la revelación de quién se esconde tras su máscara es uno de los mejores giros de cualquier serie de Spider-Man.</p>
+${tmdbFigure('6rzoUOEkOVxB6EXHp0EgeNd4tke', 'Spider-Man con el traje negro colgado entre rascacielos', 'Spider-Man con el traje negro: la serie adaptó la llegada del simbionte y el nacimiento de Venom.')}
+<p>La serie también adaptó la llegada del simbionte: Peter usa el traje negro, se libra de él y da pie al nacimiento de Venom, con Eddie Brock como amigo de la infancia de Peter.</p>
+
+<h2>Una cancelación injusta</h2>
+<p>Cuando Disney compró Marvel en 2009, los derechos de animación de Spider-Man se complicaron y la serie no se renovó. Greg Weisman ha contado en muchas entrevistas que tenía planeadas más temporadas y que sabía hacia dónde iba la historia. Que los fans sigan pidiendo una tercera temporada tantos años después es la mejor prueba de su calidad.</p>
+
+<h2>¿Por qué verla hoy?</h2>
+<p>Porque es la serie que mejor entiende al Peter Parker adolescente, con una historia continua que se disfruta de principio a fin. Si te gustó, prueba también la <a href="/blog/spider-man-animated-series-1994-analisis">serie animada de 1994</a>, la gran referencia de los 90, o descubre todas las series del personaje en nuestra sección de <a href="/series">series</a>.</p>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Cuántas temporadas tiene The Spectacular Spider-Man?</h3>
+<p>Dos temporadas, con 26 episodios en total.</p>
+<h3>¿Habrá temporada 3 de The Spectacular Spider-Man?</h3>
+<p>No hay ningún anuncio oficial. La serie se canceló en 2009 por la situación de los derechos tras la compra de Marvel por Disney.</p>
+<h3>¿Quién creó la serie?</h3>
+<p>Greg Weisman y Victor Cook.</p>
+`,
+};
+
+const POSTS = [MEJORES_JUEGOS, MEJORES_VILLANOS, SPIDERMAN_PS4, SPIDERMAN_2_PS5, NO_WAY_HOME, UN_NUEVO_UNIVERSO, CRUZANDO_EL_MULTIVERSO, SPIDER_MAN_2, MILES_MORALES_JUEGO, AMAZING_2012, ULTIMA_CACERIA, SUPERIOR, ULTIMATE_BENDIS, SIMBIONTE, PETER_VS_MILES, GUIA_COMICS, SERIE_1994, SPECTACULAR];
 
 (async () => {
   for (const { slug, ...data } of POSTS) {
