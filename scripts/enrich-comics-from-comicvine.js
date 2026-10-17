@@ -9,6 +9,9 @@
  *   --force    reprocesa también los que ya tienen personajes reales
  *   --credits  solo guionista/artista de los cómics que tienen "Marvel Comics" de relleno
  *              (si Comic Vine no tiene créditos, se dejan vacíos y la ficha no los muestra)
+ *   --all-credits  guionista/dibujante reales de TODOS los cómics, número a número (la importación
+ *              ponía los de la serie a todos sus números). Guarda el progreso en
+ *              backups/credits-progress.json y continúa donde lo dejó si salta el límite de Comic Vine.
  *
  * Requiere COMICVINE_API_KEY en .env. Comic Vine limita a ~200 peticiones/hora por recurso
  * y bloquea ráfagas, así que va a una petición cada ~1,2 s.
@@ -23,7 +26,16 @@ const API_KEY = process.env.COMICVINE_API_KEY;
 const BASE_URL = 'https://comicvine.gamespot.com/api';
 const DRY_RUN = process.argv.includes('--dry-run');
 const FORCE = process.argv.includes('--force');
-const CREDITS = process.argv.includes('--credits');
+const ALL_CREDITS = process.argv.includes('--all-credits');
+const CREDITS = process.argv.includes('--credits') || ALL_CREDITS;
+const fs = require('fs');
+const path = require('path');
+const PROGRESS = path.join(__dirname, '..', 'backups', 'credits-progress.json');
+const progress = ALL_CREDITS && fs.existsSync(PROGRESS) ? JSON.parse(fs.readFileSync(PROGRESS, 'utf8')) : {};
+const saveProgress = () => {
+  fs.mkdirSync(path.dirname(PROGRESS), { recursive: true });
+  fs.writeFileSync(PROGRESS, JSON.stringify(progress, null, 1));
+};
 const LIMIT = Number((process.argv.find((a) => a.startsWith('--limit=')) || '').split('=')[1]) || Infinity;
 const MAX_CHARACTERS = 100; // Comic Vine los da en orden alfabético: se guardan todos y la ficha prioriza
 
@@ -114,7 +126,9 @@ async function main() {
 
   const comics = await prisma.comic.findMany({ orderBy: { slug: 'asc' } });
   const pending = comics
-    .filter((c) => CREDITS
+    .filter((c) => ALL_CREDITS
+      ? !progress[c.slug]
+      : CREDITS
       ? c.writer === 'Marvel Comics' || c.artist === 'Marvel Comics'
       : FORCE || (c.characters.length === 1 && c.characters[0] === 'Spider-Man') || c.characters.length === 0)
     .slice(0, LIMIT);
@@ -127,20 +141,28 @@ async function main() {
       const found = await findIssue(comic);
       if (!found) {
         console.log(`⚠️  ${tag}: no encontrado en Comic Vine`);
+        if (ALL_CREDITS && !DRY_RUN) { progress[comic.slug] = 'no encontrado'; saveProgress(); }
         stats.notFound++;
         continue;
       }
       if (CREDITS) {
         const { person_credits: people = [] } = (await cvGet(`/issue/4000-${found.issue.id}`, { field_list: 'person_credits' })).results;
-        const byRole = (re) => people.filter((p) => re.test(p.role || '')).map((p) => p.name);
+        const NAME_FIX = { 'Jason LaTour': 'Jason Latour' }; // misma persona escrita de dos formas en Comic Vine
+        const byRole = (re) => people.filter((p) => re.test(p.role || '')).map((p) => NAME_FIX[p.name] || p.name);
         const writer = byRole(/writer/i)[0] || '';
         const artist = byRole(/penciler|artist/i)[0] || '';
-        const data = {
-          ...(comic.writer === 'Marvel Comics' ? { writer } : {}),
-          ...(comic.artist === 'Marvel Comics' ? { artist } : {}),
-        };
-        console.log(`✅ ${tag} [${found.match}]: guion "${data.writer ?? comic.writer}" · arte "${data.artist ?? comic.artist}"`);
+        // --all-credits: si Comic Vine no tiene ningún crédito, se deja lo que había
+        const data = ALL_CREDITS
+          ? (writer || artist ? { writer, artist } : {})
+          : {
+            ...(comic.writer === 'Marvel Comics' ? { writer } : {}),
+            ...(comic.artist === 'Marvel Comics' ? { artist } : {}),
+          };
+        const changed = data.writer !== undefined && (data.writer !== comic.writer || data.artist !== comic.artist);
+        console.log(`${changed ? '✏️ ' : '✅'} ${tag} [${found.match}]: guion "${data.writer ?? comic.writer}" · arte "${data.artist ?? comic.artist}"` +
+          (changed ? `  (antes: ${comic.writer} / ${comic.artist})` : ''));
         if (!DRY_RUN) await prisma.comic.update({ where: { id: comic.id }, data });
+        if (ALL_CREDITS && !DRY_RUN) { progress[comic.slug] = { writer: data.writer ?? comic.writer, artist: data.artist ?? comic.artist }; saveProgress(); }
         stats.ok++;
         continue;
       }
