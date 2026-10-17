@@ -703,7 +703,117 @@ ${tmdbFigure('o2eWnUL9cPARxgNXFrfnvnPwR84', 'El Lagarto agarrando a Spider-Man',
 `,
 };
 
-const POSTS = [MEJORES_JUEGOS, MEJORES_VILLANOS, SPIDERMAN_PS4, SPIDERMAN_2_PS5, NO_WAY_HOME, UN_NUEVO_UNIVERSO, CRUZANDO_EL_MULTIVERSO, SPIDER_MAN_2, MILES_MORALES_JUEGO, AMAZING_2012];
+const ULTIMA_CACERIA = {
+  slug: 'kravens-last-hunt-analisis-mejor-arco-spider-man',
+  title: 'La última cacería de Kraven: análisis de la historia más oscura de Spider-Man',
+  subtitle: 'Kraven entierra a Spider-Man y ocupa su lugar: por qué el clásico de DeMatteis y Zeck (1987) sigue siendo uno de los mejores cómics del personaje',
+  excerpt:
+    'En 1987, J. M. DeMatteis y Mike Zeck publicaron Kraven\'s Last Hunt, la historia en la que Kraven derrota a Spider-Man, lo entierra y se pone su traje. Te contamos por qué es imprescindible y cómo leerla.',
+  readTime: '9 min',
+  seoTitle: 'La última cacería de Kraven (Kraven\'s Last Hunt): análisis',
+  seoDescription:
+    'Análisis de Kraven\'s Last Hunt (1987), de DeMatteis y Zeck: Kraven entierra a Spider-Man y ocupa su lugar. Qué números la forman, por qué es tan buena y cómo leerla.',
+  keywords: ['La última cacería de Kraven', 'Kraven\'s Last Hunt', 'Kraven el Cazador cómic', 'DeMatteis Zeck', 'mejores cómics de Spider-Man', 'Spider-Man enterrado'],
+  tags: ['análisis', 'cómics', 'Kraven', 'clásico', 'años 80', 'DeMatteis'],
+  content: `
+<p>En 1987, J. M. DeMatteis y Mike Zeck publicaron una historia en seis partes que cambió lo que podía ser un cómic de Spider-Man. <em>Kraven's Last Hunt</em>, publicada en España como <em>La última cacería de Kraven</em>, no es una aventura de acción: es un estudio psicológico sobre la obsesión, la identidad y la muerte, protagonizado por un villano que se había quedado anticuado y que aquí se convierte en leyenda.</p>
+
+<h2>Ficha rápida</h2>
+<table>
+  <tbody>
+    <tr><td><strong>Guion</strong></td><td>J. M. DeMatteis</td></tr>
+    <tr><td><strong>Dibujo</strong></td><td>Mike Zeck, con tintas de Bob McLeod</td></tr>
+    <tr><td><strong>Publicación</strong></td><td>Octubre y noviembre de 1987</td></tr>
+    <tr><td><strong>Números</strong></td><td>Web of Spider-Man #31-32, The Amazing Spider-Man #293-294 y The Spectacular Spider-Man #131-132</td></tr>
+    <tr><td><strong>Protagonistas</strong></td><td>Spider-Man, ${pj('kraven-the-hunter-sergei-kravinoff', 'Kraven el Cazador')}, Mary Jane y la Alimaña</td></tr>
+  </tbody>
+</table>
+
+<h2>La premisa</h2>
+${cvFigure('scale_medium/6/67663/7042766-5877939700-79143.jpg', 'Portada de la edición de lujo de Kraven\'s Last Hunt con Kraven armado y Spider-Man detrás', 'Kraven, rifle en mano, con Spider-Man y su traje negro a su espalda, en la portada de la edición de lujo.')}
+<p>Kraven lleva años intentando cazar a Spider-Man sin conseguirlo, y siente que su vida y su honor se han quedado vacíos. Decide terminar de una vez: le dispara, lo da por muerto y lo entierra. Después se pone su traje y patrulla Nueva York como Spider-Man para demostrar que puede ser mejor que él.</p>
+<p>La historia ocurre justo después de la boda de Peter y Mary Jane, y una parte importante sigue a MJ, que espera durante días sin saber si su marido está vivo. Mientras, el «nuevo» Spider-Man persigue a la Alimaña (Vermin), un villano con aspecto de rata, con una brutalidad que el auténtico nunca se permitiría.</p>
+
+<h2>Por qué es tan buena</h2>
+<p>DeMatteis escribe con una prosa inusualmente literaria para un cómic de superhéroes de los 80. La historia está atravesada por los versos de «El tigre», el poema de William Blake, y se adentra en la mente de Kraven con secuencias casi oníricas. Por primera vez, el villano no es solo un rival: es un hombre roto, que busca en esta última cacería algo que dé sentido a su vida.</p>
+${cvFigure('scale_medium/6/67663/3669085-01.jpg', 'Portada de Kraven\'s Last Hunt con Spider-Man saliendo de su tumba', 'La portada del recopilatorio de Kraven\'s Last Hunt: Spider-Man, con el traje negro, sale de la tumba en la que lo enterró Kraven. Una de las imágenes más icónicas del cómic de superhéroes.')}
+<p>Zeck dibuja algunas de las páginas más impactantes de la historia del personaje: Spider-Man saliendo de su tumba entre el barro, bajo la lluvia, es una imagen que se ha homenajeado mil veces. Y el final, que no vamos a desvelar, es devastador precisamente porque la historia se ha tomado el tiempo de hacerte entender a Kraven.</p>
+
+<h2>Su legado</h2>
+<p>La historia consolidó a Kraven como uno de los grandes villanos de Spider-Man y cerró su historia durante más de veinte años, hasta <em>Grim Hunt</em> (2010). Su sombra se nota en muchas versiones posteriores del personaje, como el Kraven de <a href="/blog/marvels-spider-man-2-ps5-analisis">Marvel's Spider-Man 2</a>, y está en todas las listas de los mejores cómics de Spider-Man, incluida <a href="/blog/mejores-comics-spider-man-historia">la nuestra</a>.</p>
+
+<h2>Cómo leerla</h2>
+<p>La historia está recopilada en un solo tomo, fácil de encontrar en español. Se puede leer sin conocer nada más del personaje, aunque ayuda saber que Peter y MJ acaban de casarse. Si te gusta, sigue con otras historias de la misma época o con nuestra <a href="/blog/comics-spider-man-guia-nuevos-lectores">guía de cómics de Spider-Man para nuevos lectores</a>.</p>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Qué números forman La última cacería de Kraven?</h3>
+<p>Web of Spider-Man #31-32, The Amazing Spider-Man #293-294 y The Spectacular Spider-Man #131-132, todos de 1987.</p>
+<h3>¿Kraven mata a Spider-Man?</h3>
+<p>Le dispara un dardo tranquilizante y le entierra vivo, haciéndole pasar por muerto, y ocupa su lugar durante dos semanas.</p>
+<h3>¿Por qué Spider-Man lleva el traje negro?</h3>
+<p>Porque en 1987 Peter usaba un traje negro de tela, inspirado en el simbionte del que se había librado años antes.</p>
+`,
+};
+
+const SUPERIOR = {
+  slug: 'superior-spider-man-doctor-octopus-analisis',
+  title: 'Superior Spider-Man: análisis de la etapa en la que Doctor Octopus fue Spider-Man',
+  subtitle: 'Otto Octavius en el cuerpo de Peter Parker: cómo una idea que enfureció a los fans acabó siendo una de las mejores etapas del siglo XXI',
+  excerpt:
+    'En 2012, el Doctor Octopus se apoderó del cuerpo de Peter Parker y se convirtió en el Superior Spider-Man. Analizamos la etapa de Dan Slott: su premisa, la evolución de Otto, su final y cómo leerla.',
+  readTime: '10 min',
+  seoTitle: 'Superior Spider-Man: análisis (Doctor Octopus como Spider-Man)',
+  seoDescription:
+    'Análisis de Superior Spider-Man, de Dan Slott: el Doctor Octopus en el cuerpo de Peter Parker, qué pasa, cómo termina, sus dibujantes y en qué orden leerlo.',
+  keywords: ['Superior Spider-Man', 'Superior Spider-Man análisis', 'Doctor Octopus Spider-Man', 'Dan Slott', 'Amazing Spider-Man 700', 'Otto Octavius'],
+  tags: ['análisis', 'cómics', 'Doctor Octopus', 'Dan Slott', 'siglo XXI', 'Superior Spider-Man'],
+  content: `
+<p>A finales de 2012, Dan Slott empezó a recibir amenazas de muerte. Acababa de publicarse <em>The Amazing Spider-Man</em> #700, el número que cerraba la serie después de cincuenta años, y en él el ${pj('doctor-octopus-otto-octavius', 'Doctor Octopus')}, moribundo, intercambiaba su mente con la de Peter Parker. Peter moría en el cuerpo de Otto, y Otto se quedaba con su vida… y con su traje. Los fans estaban furiosos. Y, como se vio después, Slott tenía un plan.</p>
+
+<h2>Ficha rápida</h2>
+<table>
+  <tbody>
+    <tr><td><strong>Guion</strong></td><td>Dan Slott (con Christos Gage en algunos números)</td></tr>
+    <tr><td><strong>Dibujo</strong></td><td>Ryan Stegman, Humberto Ramos y Giuseppe Camuncoli, entre otros</td></tr>
+    <tr><td><strong>Publicación</strong></td><td>2013-2014</td></tr>
+    <tr><td><strong>Prólogo</strong></td><td>The Amazing Spider-Man #698-700 (<em>Dying Wish</em>)</td></tr>
+    <tr><td><strong>Final</strong></td><td><em>Goblin Nation</em> (2014)</td></tr>
+  </tbody>
+</table>
+
+<h2>La premisa</h2>
+${cvFigure('scale_medium/6/67663/3548171-01.jpg', 'Portada de Superior Spider-Man #1 con un Spider-Man de traje oscurecido', 'Otto Octavius como el Superior Spider-Man: más eficiente que Peter Parker, pero sin la brújula moral que define al personaje. Ryan Stegman firmó algunas de las páginas más memorables de la etapa.')}
+<p>La idea es tan sencilla como inquietante: ¿qué pasaría si un genio sin escrúpulos se pusiera el traje de Spider-Man con la intención de ser el mejor Spider-Man posible? La respuesta de Slott es que sería más eficaz que Peter, y también mucho más peligroso.</p>
+<p>Otto no duda ni se tortura: optimiza. Llena Nueva York de pequeños robots araña para vigilar la ciudad, termina el doctorado que Peter nunca acabó, funda su propia empresa y construye mejores herramientas. Por primera vez en décadas, los criminales tienen miedo de verdad a Spider-Man. El problema es el precio moral de ese miedo, y algunas personas cercanas a Peter, como la policía Carlie Cooper, empiezan a sospechar que algo no va bien.</p>
+
+<h2>La evolución de Otto</h2>
+${cvFigure('scale_medium/6/67663/6735989-01.jpg', 'Portada de Superior Spider-Man con Spider-Man en posición de combate', 'Las portadas de Superior Spider-Man jugaban constantemente con la dualidad: el traje familiar de Peter Parker, la postura y actitud inconfundiblemente de Otto Octavius.')}
+<p>Lo que convierte la saga en algo más que un golpe de efecto es la transformación de Otto. Al vivir la vida de Peter y con sus recuerdos, el villano empieza a entender, casi sin querer, lo que significa ser Spider-Man. Se enamora, se preocupa por la gente que le rodea y descubre que ser «superior» no es lo mismo que ser mejor. Otto nunca deja de ser Otto, pero se convierte en un personaje con muchos más matices que el villano que era.</p>
+
+<h2>El final</h2>
+<p>En <em>Goblin Nation</em> (2014), el Duende Verde lanza un ataque contra Nueva York que Otto no es capaz de detener. Para salvar a la persona que ama, Otto hace algo que nadie esperaba: acepta que Peter Parker es el verdadero héroe y le devuelve su cuerpo. Peter regresa en <em>The Amazing Spider-Man</em> (2014), y su vuelta es más emotiva precisamente porque su ausencia había sido real.</p>
+
+<h2>Su legado</h2>
+<p>Superior Spider-Man no fue un experimento cerrado. Otto volvió como Superior Spider-Man en otras etapas, y desde entonces es un personaje mucho más rico, a medio camino entre villano y héroe. La saga está entre <a href="/blog/mejores-comics-spider-man-historia">los mejores cómics de Spider-Man</a> y es, para muchos, la mejor etapa del personaje en el siglo XXI.</p>
+
+<h2>Cómo leerla</h2>
+<ol>
+  <li><em>The Amazing Spider-Man</em> #698-700 (<em>Dying Wish</em>): el cambio de cuerpos.</li>
+  <li><em>Superior Spider-Man</em> #1-31: la etapa completa, con <em>Goblin Nation</em> como final.</li>
+  <li>Opcional: <em>Superior Spider-Man Team-Up</em>, con aventuras de Otto junto a otros héroes.</li>
+</ol>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Qué es Superior Spider-Man?</h3>
+<p>La etapa (2013-2014) en la que el Doctor Octopus vive en el cuerpo de Peter Parker y es Spider-Man.</p>
+<h3>¿Vuelve Peter Parker?</h3>
+<p>Sí, al final de la etapa, en 2014, cuando Otto le devuelve su cuerpo.</p>
+<h3>¿Hay que leer algo antes?</h3>
+<p>Basta con <em>The Amazing Spider-Man</em> #698-700, donde se produce el cambio de cuerpos.</p>
+`,
+};
+
+const POSTS = [MEJORES_JUEGOS, MEJORES_VILLANOS, SPIDERMAN_PS4, SPIDERMAN_2_PS5, NO_WAY_HOME, UN_NUEVO_UNIVERSO, CRUZANDO_EL_MULTIVERSO, SPIDER_MAN_2, MILES_MORALES_JUEGO, AMAZING_2012, ULTIMA_CACERIA, SUPERIOR];
 
 (async () => {
   for (const { slug, ...data } of POSTS) {
