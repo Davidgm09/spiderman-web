@@ -327,7 +327,88 @@ ${figure('adf/adf5f5ae4b83e65b23194cadf3a189c2', 'Miles Morales lanzando una des
 `,
 };
 
-const POSTS = [MEJORES_JUEGOS, MEJORES_VILLANOS, SPIDERMAN_PS4, SPIDERMAN_2_PS5];
+const tmdb = (id, size = 'w1280') => `https://image.tmdb.org/t/p/${size}/${id}.jpg`;
+const tmdbFigure = (id, alt, cap) => `<figure>
+  <img src="${tmdb(id)}" alt="${alt}" loading="lazy" />
+  <figcaption>${cap}</figcaption>
+</figure>`;
+const peli = (slug, title) => `<a href="/peliculas/${slug}"><em>${title}</em></a>`;
+
+const NO_WAY_HOME = {
+  slug: 'spider-man-no-way-home-analisis',
+  title: 'Spider-Man: No Way Home, análisis: el cierre perfecto de una era',
+  subtitle: 'El multiverso, el regreso de Tobey Maguire y Andrew Garfield, la tía May y un final que lo cambia todo (con spoilers)',
+  excerpt:
+    'Analizamos Spider-Man: No Way Home (2021): cómo junta a tres generaciones de Spider-Man, qué hace con sus villanos, por qué la muerte de la tía May es clave y qué significa su final para Brand New Day.',
+  readTime: '11 min',
+  seoTitle: 'Spider-Man: No Way Home, análisis y final explicado',
+  seoDescription:
+    'Análisis de Spider-Man: No Way Home (2021) con spoilers: los tres Spider-Man, los villanos del multiverso, la muerte de la tía May y el final que lleva a Brand New Day.',
+  keywords: ['No Way Home análisis', 'Spider-Man No Way Home', 'No Way Home final explicado', 'tres Spider-Man', 'Tobey Maguire Andrew Garfield No Way Home', 'tía May No Way Home'],
+  tags: ['análisis', 'películas', 'MCU', 'Tom Holland', 'multiverso', 'spoilers'],
+  content: `
+<blockquote><strong>Aviso: este análisis contiene spoilers de toda la película, incluido el final.</strong></blockquote>
+
+<p>Cuando ${peli('spider-man-no-way-home-2021', 'Spider-Man: No Way Home')} llegó a los cines en diciembre de 2021, provocó una locura que pocas películas de superhéroes habían conseguido. El multiverso abría la puerta a los villanos y, sobre todo, a los Spider-Man del pasado. La gran pregunta era si la película sabría sostener tanto peso sin hundirse bajo las expectativas. La respuesta, años después, sigue siendo que sí.</p>
+
+<h2>Ficha rápida</h2>
+<table>
+  <tbody>
+    <tr><td><strong>Estreno</strong></td><td>17 de diciembre de 2021</td></tr>
+    <tr><td><strong>Director</strong></td><td>Jon Watts</td></tr>
+    <tr><td><strong>Guion</strong></td><td>Chris McKenna y Erik Sommers</td></tr>
+    <tr><td><strong>Reparto</strong></td><td>Tom Holland, Zendaya, Benedict Cumberbatch, Jacob Batalon, Marisa Tomei</td></tr>
+    <tr><td><strong>Taquilla</strong></td><td>Más de 1.900 millones de dólares, la película más taquillera de 2021</td></tr>
+    <tr><td><strong>Premios</strong></td><td>Nominada al Óscar a los mejores efectos visuales</td></tr>
+  </tbody>
+</table>
+
+<h2>Un Peter Parker en su peor momento</h2>
+${tmdbFigure('aLQNKHhDLDdr81axLV1lF1X6Px6', 'Tom Holland como Peter Parker entre cristales rotos', 'Peter Parker, con su vida hecha añicos tras la revelación de su identidad.')}
+<p>La película empieza justo donde terminó ${peli('spider-man-lejos-de-casa-2019', 'Lejos de casa')}: Mysterio ha revelado al mundo que Spider-Man es Peter Parker, y J. Jonah Jameson se encarga de que nadie lo olvide. La vida de Peter, Ned y MJ se derrumba en pocos días, hasta el punto de que los tres son rechazados en el MIT por la polémica.</p>
+<p>Desesperado, Peter le pide al Doctor Strange un hechizo para que el mundo olvide quién es Spider-Man. Pero lo interrumpe una y otra vez con excepciones («que MJ sí se acuerde», «y Ned», «y la tía May»…) y el hechizo se descontrola. Ese error, nacido de un egoísmo adolescente muy comprensible, es el motor de toda la historia, y lo que hace de esta la película más madura de la trilogía de Holland.</p>
+
+<h2>Los villanos del multiverso</h2>
+<p>El hechizo atrae a quienes, en otros universos, saben que Spider-Man es Peter Parker: el Duende Verde (Willem Dafoe), el Doctor Octopus (Alfred Molina), Electro (Jamie Foxx), el Hombre de Arena (Thomas Haden Church) y el Lagarto (Rhys Ifans). Strange quiere devolverlos a sus universos, donde muchos de ellos iban a morir luchando contra su Spider-Man. Peter se niega: quiere curarlos primero.</p>
+<p>Esa decisión es la que da sentido a la película. Recupera a villanos de sagas muy distintas y les da algo que hacer, sobre todo a Dafoe, que vuelve a demostrar por qué su ${pj('green-goblin-norman-osborn', 'Duende Verde')} sigue siendo el mejor villano del cine de Spider-Man. Los tienes todos en <a href="/blog/villanos-spider-man-peliculas-ranking">nuestro ranking de villanos de las películas</a>.</p>
+
+<h2>La muerte de la tía May</h2>
+<p>El plan sale mal. El Duende Verde se impone a Norman Osborn, y en la pelea que sigue, la ${pj('aunt-may-parker', 'tía May')} muere en brazos de Peter. Antes, le deja la frase que en las otras sagas pronunció el tío Ben: «Un gran poder conlleva una gran responsabilidad».</p>
+<p>Es el momento clave de la trilogía. El Peter de Holland nunca había tenido su «muerte del tío Ben»: hasta aquí, su mentor era Tony Stark y su traje lo ponía la tecnología. La muerte de May convierte por fin a este Peter en el Spider-Man de los cómics: alguien que hace lo correcto porque sabe lo que cuesta no hacerlo.</p>
+
+<h2>Tres Spider-Man</h2>
+${tmdbFigure('nqUThBjou0TAWXu93Q4SNFpgqai', 'Los tres Spider-Man en posición de combate de noche', 'Tres generaciones de Spider-Man, juntas en la batalla final.')}
+<p>Entonces llegan Tobey Maguire y Andrew Garfield. Su regreso podía haber sido solo un guiño a los fans, pero el guion les da a ambos un arco propio. Maguire es el hermano mayor que ya ha pasado por todo y ayuda a Peter a no dejarse llevar por la venganza. Garfield es el que más tiene que curar: en la batalla final salva a MJ de una caída, como no pudo hacer con Gwen Stacy en ${peli('the-amazing-spider-man-2-el-poder-de-electro-2014', 'The Amazing Spider-Man 2')}, y en dos segundos de mirada cierra una herida de años.</p>
+<p>La química entre los tres, con sus bromas sobre quién es «Peter 1», «Peter 2» y «Peter 3», es lo mejor de la película. Si quieres saber quién de ellos es el mejor Spider-Man, lo debatimos en <a href="/blog/tobey-maguire-andrew-garfield-tom-holland-mejor-spider-man">Tobey Maguire vs. Andrew Garfield vs. Tom Holland</a>.</p>
+
+<h2>El final: nadie recuerda a Peter Parker</h2>
+${tmdbFigure('ocUp7DJBIc8VJgLEw1prcyK1dYv', 'Spider-Man y el Doctor Strange frente a un portal de fuego', 'El hechizo del Doctor Strange abre el multiverso… y solo puede cerrarse con un sacrificio.')}
+<p>Con el multiverso rompiéndose, Peter toma la decisión más dura: le pide a Strange que haga que todo el mundo olvide que Peter Parker existió. Funciona. Ni MJ ni Ned le recuerdan, y aunque Peter va a buscarlos con la intención de explicárselo todo, al ver a MJ feliz decide no hacerlo.</p>
+<p>La última escena es un Peter solo, en un piso pequeño, que se cose un traje nuevo y sale a balancearse por Nueva York como un Spider-Man de barrio. Es el punto de partida de <a href="/blog/spider-man-brand-new-day-final-explicado"><em>Spider-Man: Brand New Day</em></a> (2026), y de hecho el traje rojo y azul de ese final es la base del de la nueva película. Te lo contamos en <a href="/blog/trajes-spider-man-peliculas">todos los trajes de Spider-Man en las películas</a>.</p>
+
+<h2>Curiosidades</h2>
+<ul>
+  <li>Charlie Cox aparece como Matt Murdock, el abogado de Peter: fue el regreso del ${pj('daredevil-matt-murdock', 'Daredevil')} de Netflix al MCU.</li>
+  <li>La escena poscréditos muestra a Eddie Brock (Tom Hardy) en un bar, antes de que el hechizo le devuelva a su universo, dejando atrás un trocito del simbionte.</li>
+  <li>El Doctor Octopus reconoce a Peter Parker… pero no a este: «Tú no eres Peter Parker».</li>
+  <li>Antes del estreno, Andrew Garfield negó durante meses, entrevista tras entrevista, que fuera a aparecer en la película.</li>
+</ul>
+
+<h2>Veredicto</h2>
+<p>No Way Home no es perfecta: el segundo acto se alarga, y algunos villanos, como el Lagarto o el Hombre de Arena, apenas tienen nada que hacer. Pero consigue algo extraordinario: ser a la vez una fiesta de nostalgia y una historia de crecimiento de verdad. El Peter Parker que sale al final no es el mismo que entró, y eso es exactamente lo que debe hacer una buena historia de origen, aunque sea la tercera vez que la contamos.</p>
+<p><strong>Puntuación: 9/10.</strong> Si vas a verla, mejor después de las sagas de Maguire y Garfield: tienes el orden en <a href="/blog/orden-ver-peliculas-spider-man">en qué orden ver las películas de Spider-Man</a>.</p>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Qué Spider-Man aparecen en No Way Home?</h3>
+<p>Los tres de imagen real: Tom Holland, Tobey Maguire y Andrew Garfield.</p>
+<h3>¿Por qué nadie recuerda a Peter Parker al final?</h3>
+<p>Para cerrar el multiverso, Peter le pide al Doctor Strange que todo el mundo olvide que Peter Parker existe, incluidos MJ y Ned.</p>
+<h3>¿Hay que ver No Way Home antes de Brand New Day?</h3>
+<p>Sí: Brand New Day continúa justo la situación en la que termina No Way Home.</p>
+`,
+};
+
+const POSTS = [MEJORES_JUEGOS, MEJORES_VILLANOS, SPIDERMAN_PS4, SPIDERMAN_2_PS5, NO_WAY_HOME];
 
 (async () => {
   for (const { slug, ...data } of POSTS) {
