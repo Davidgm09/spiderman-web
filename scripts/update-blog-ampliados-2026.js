@@ -1409,7 +1409,24 @@ ${tmdbFigure('dcMhdAn3iXQMIE48AAo5WOFUXG7', 'Peter Parker en un laboratorio junt
 
 const POSTS = [MEJORES_JUEGOS, MEJORES_VILLANOS, SPIDERMAN_PS4, SPIDERMAN_2_PS5, NO_WAY_HOME, UN_NUEVO_UNIVERSO, CRUZANDO_EL_MULTIVERSO, SPIDER_MAN_2, MILES_MORALES_JUEGO, AMAZING_2012, ULTIMA_CACERIA, SUPERIOR, ULTIMATE_BENDIS, SIMBIONTE, PETER_VS_MILES, GUIA_COMICS, SERIE_1994, SPECTACULAR, JAMESON, GWEN_STACY_LEGADO, WEB_OF_SHADOWS, SERIE_MTV];
 
+// Portadas que no correspondían a su artículo (revisadas a mano en octubre de 2026)
+const HEADERS = {
+  // Jameson: era el póster de Spider-Man 2 con Mary Jane
+  'j-jonah-jameson-mejor-personaje-secundario-marvel': cv('scale_medium/3/33913/1162969-137_web_of_spider_man_9.jpg'),
+  // Ultimate de Bendis: era el Ultimate Spider-Man #1 de 2024, otra serie
+  'ultimate-spider-man-bendis-analisis-run-completa': cv('original/0/4/44573-7257-51619-1-ultimate-spider-man.jpg'),
+  // Guía de cómics: era el cómic infantil de la serie de televisión de 2012
+  'comics-spider-man-guia-nuevos-lectores': cv('original/0/4/44573-7257-51619-1-ultimate-spider-man.jpg'),
+  // Futuro del MCU: era el póster de The Amazing Spider-Man (Garfield)
+  'futuro-spider-man-mcu-despues-brand-new-day': tmdb('4tjxYg2AbOzzG9G1YuiT2NzYhlH'),
+  // Marvel's Spider-Man 3: era un montaje de fans; ahora, arte oficial de Marvel's Spider-Man 2
+  'marvels-spider-man-3-insomniac-todo-lo-que-sabemos': 'https://media.rawg.io/media/games/7ae/7ae5a14cdb4ab222a134c15f4629e430.jpg',
+};
+
 (async () => {
+  for (const [slug, image] of Object.entries(HEADERS)) {
+    await prisma.blogPost.update({ where: { slug }, data: { image } });
+  }
   for (const { slug, ...data } of POSTS) {
     const r = await prisma.blogPost.update({ where: { slug }, data });
     console.log('ok', r.slug, `(${data.content.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length} palabras)`);

@@ -20,7 +20,7 @@ const POST = {
   readTime: '7 min',
   publishDate: new Date('2026-10-16'),
   slug: 'marvels-spider-man-3-insomniac-todo-lo-que-sabemos',
-  image: '/images/spiderman3.webp',
+  image: 'https://media.rawg.io/media/games/7ae/7ae5a14cdb4ab222a134c15f4629e430.jpg', // arte oficial de Marvel's Spider-Man 2 (spiderman3.webp es un montaje de fans)
   seoTitle: "Marvel's Spider-Man 3: fecha, historia y todo lo que sabemos | Sentido Arácnido",
   seoDescription:
     "Todo lo que sabemos sobre Marvel's Spider-Man 3 a octubre de 2026: estado del desarrollo, Miles Morales como protagonista, plataformas y fecha de lanzamiento.",
