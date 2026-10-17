@@ -14,7 +14,7 @@ const CLUE_AFTER = 4
 const IMAGE_AFTER = 6
 const STORAGE_KEY = 'aranadle-v1'
 // En empates del buscador, primero los Spider-Man y después los villanos
-const CATEGORY_ORDER = ['Héroe arácnido', 'Villano', 'Héroe Marvel']
+const CATEGORY_ORDER = ['Héroe arácnido', 'Villano', 'Aliado', 'Héroe Marvel']
 // Y entre los más conocidos, por este orden
 const POPULAR = [
   'spider-man-peter-parker-alt', 'spider-man-miles-morales-alt', 'spider-gwen-gwen-stacy-alt', 'venom-eddie-brock-alt',

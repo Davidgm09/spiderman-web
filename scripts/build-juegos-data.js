@@ -17,6 +17,7 @@ const CATEGORY = {
   'spider-verse': 'Héroe arácnido',
   'spider-villains': 'Villano',
   'marvel-universe': 'Héroe Marvel',
+  'spider-allies': 'Aliado',
 };
 
 // Mismo grupo escrito de varias formas → un solo nombre
@@ -93,10 +94,40 @@ const EXTRA = {
   'venom-eddie-brock-alt': { g: 'M', terms: ['Eddie Brock'], year: 1988 },
   'vulture-adrian-toomes-alt': { g: 'M', terms: ['Buitre', 'Adrian Toomes'] },
   'wolverine-james-howlett-alt': { g: 'M', terms: ['Lobezno', 'Logan', 'James Howlett'] },
+  'black-cat-felicia-hardy-alt': { g: 'F', terms: ['Gata Negra', 'Felicia Hardy'], since: 3 },
+  'mary-jane-watson-alt': { g: 'F', terms: ['MJ', 'Mary Jane'], since: 3 },
+  'aunt-may-parker-alt': { g: 'F', terms: ['Tía May', 'May Parker'], since: 3 },
+  'j-jonah-jameson-alt': { g: 'M', terms: ['Jameson', 'JJJ'], since: 3 },
+  'kingpin-wilson-fisk-alt': { g: 'M', terms: ['Kingpin', 'Wilson Fisk'], since: 3 },
+  'shocker-herman-schultz-alt': { g: 'M', terms: ['Herman Schultz'], since: 3 },
+  'chameleon-dmitri-smerdyakov-alt': { g: 'M', terms: ['Camaleón', 'Dmitri Smerdyakov'], since: 3 },
+  'mister-negative-martin-li-alt': { g: 'M', terms: ['Mister Negativo', 'Martin Li'], since: 3 },
+  'morbius-michael-morbius-alt': { g: 'M', terms: ['Michael Morbius'], since: 3 },
+  'spider-woman-jessica-drew-alt': { g: 'F', terms: ['Mujer Araña', 'Jessica Drew'], since: 3 },
+  'spider-punk-hobie-brown-alt': { g: 'M', terms: ['Hobie Brown'], since: 3 },
+  'sp-dr-peni-parker-alt': { g: 'F', terms: ['Peni Parker'], since: 3 },
+  'spider-girl-anya-corazon-alt': { g: 'F', terms: ['Anya Corazón', 'Chica Araña'], since: 3 },
+  'punisher-frank-castle-alt': { g: 'M', terms: ['Castigador', 'Frank Castle'], since: 3 },
+  'prowler-aaron-davis-alt': { g: 'M', terms: ['Prowler', 'Aaron Davis'], since: 3 },
 };
 
 // Pista que se muestra tras varios fallos (sin el nombre del personaje)
 const CLUES = {
+  'black-cat-felicia-hardy-alt': 'Ladrona de guante blanco, hija de otro famoso ladrón, que se enamoró de Spider-Man.',
+  'mary-jane-watson-alt': 'Pelirroja, actriz y modelo: «te ha tocado el gordo, tigre».',
+  'aunt-may-parker-alt': 'Crió a Peter en Queens y trabajó en el albergue F.E.A.S.T.',
+  'j-jonah-jameson-alt': 'Director de periódico que lleva décadas acusando a Spider-Man de ser una amenaza.',
+  'kingpin-wilson-fisk-alt': 'El rey del crimen de Nueva York, enemigo también de Daredevil.',
+  'shocker-herman-schultz-alt': 'Ladrón de cajas fuertes con guanteletes que lanzan ondas de vibración.',
+  'chameleon-dmitri-smerdyakov-alt': 'Maestro del disfraz, hermanastro de un famoso cazador.',
+  'mister-negative-martin-li-alt': 'Filántropo de Chinatown con una segunda personalidad criminal.',
+  'morbius-michael-morbius-alt': 'Bioquímico que, intentando curar su enfermedad, acabó necesitando beber sangre.',
+  'spider-woman-jessica-drew-alt': 'Exagente de HYDRA que lanza descargas de veneno bioeléctricas.',
+  'spider-punk-hobie-brown-alt': 'Pelea con una guitarra contra el presidente Norman Osborn.',
+  'sp-dr-peni-parker-alt': 'Pilota un robot gigante unido a una araña radiactiva.',
+  'spider-girl-anya-corazon-alt': 'Recibió sus poderes en un ritual de una sociedad secreta de arañas.',
+  'punisher-frank-castle-alt': 'Exmarine en guerra contra el crimen tras perder a su familia.',
+  'prowler-aaron-davis-alt': 'Ladrón profesional y tío de un Spider-Man de Brooklyn.',
   'ant-man-scott-lang-alt': 'Exladrón que usa las partículas Pym para encoger.',
   'ben-reilly-scarlet-spider-alt': 'Clon de Peter Parker creado por el Chacal.',
   'black-panther-tchalla-alt': 'Rey de una nación africana rica en vibranium.',
@@ -172,6 +203,7 @@ function universe(u) {
       creators: c.creators,
       groups,
       clue: CLUES[c.slug],
+      ...(x.since ? { since: x.since } : {}),
     });
   }
   if (errors.length) {

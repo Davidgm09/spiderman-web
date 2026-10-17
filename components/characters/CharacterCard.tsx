@@ -29,6 +29,7 @@ interface DatabaseCharacter {
 const CATEGORY_STYLES: Record<string, { label: string; color: string; border: string; dot: string }> = {
   'spider-verse':   { label: 'Spider-Verse', color: 'text-red-400',    border: 'border-red-500/50',    dot: 'bg-red-400' },
   'spider-villains':{ label: 'Villano',      color: 'text-orange-400', border: 'border-orange-500/50', dot: 'bg-orange-400' },
+  'spider-allies':  { label: 'Aliado',       color: 'text-emerald-400', border: 'border-emerald-500/50', dot: 'bg-emerald-400' },
   'marvel-universe':{ label: 'Marvel',       color: 'text-blue-400',   border: 'border-blue-500/50',   dot: 'bg-blue-400' },
 }
 

@@ -26,6 +26,32 @@
   "clue": "Exladrón que usa las partículas Pym para encoger."
  },
  {
+  "slug": "spider-girl-anya-corazon-alt",
+  "name": "Araña (Anya Corazón)",
+  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/8710689-large-6288379.jpg",
+  "terms": [
+   "Araña",
+   "Spider-Girl",
+   "Anya Corazón",
+   "Chica Araña"
+  ],
+  "gender": "Femenino",
+  "category": "Héroe arácnido",
+  "universe": "Tierra-616",
+  "year": 2004,
+  "creators": [
+   "Fiona Avery",
+   "Mark Brooks"
+  ],
+  "groups": [
+   "Sociedad de la Araña",
+   "Spider-Army",
+   "Web-Warriors"
+  ],
+  "clue": "Recibió sus poderes en un ritual de una sociedad secreta de arañas.",
+  "since": 3
+ },
+ {
   "slug": "ben-reilly-scarlet-spider-alt",
   "name": "Ben Reilly (Scarlet Spider)",
   "image": "https://upload.wikimedia.org/wikipedia/en/7/7a/Scarlet_Spider_%28Ben_Reilly%29.png",
@@ -49,6 +75,28 @@
    "Nuevos Guerreros"
   ],
   "clue": "Clon de Peter Parker creado por el Chacal."
+ },
+ {
+  "slug": "black-cat-felicia-hardy-alt",
+  "name": "Black Cat (Felicia Hardy)",
+  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/9653166-large-5481312.jpg",
+  "terms": [
+   "Gata Negra",
+   "Felicia Hardy"
+  ],
+  "gender": "Femenino",
+  "category": "Aliado",
+  "universe": "Tierra-616",
+  "year": 1979,
+  "creators": [
+   "Marv Wolfman",
+   "Keith Pollard"
+  ],
+  "groups": [
+   "Gremio de Ladrones"
+  ],
+  "clue": "Ladrona de guante blanco, hija de otro famoso ladrón, que se enamoró de Spider-Man.",
+  "since": 3
  },
  {
   "slug": "black-panther-tchalla-alt",
@@ -152,6 +200,27 @@
    "Familia de Carnage"
   ],
   "clue": "Asesino en serie unido a un descendiente del simbionte de Venom."
+ },
+ {
+  "slug": "chameleon-dmitri-smerdyakov-alt",
+  "name": "Chameleon (Dmitri Smerdyakov)",
+  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/8002168-250072_1446175_1.jpg",
+  "terms": [
+   "Camaleón",
+   "Chameleon",
+   "Dmitri Smerdyakov"
+  ],
+  "gender": "Masculino",
+  "category": "Villano",
+  "universe": "Tierra-616",
+  "year": 1963,
+  "creators": [
+   "Stan Lee",
+   "Steve Ditko"
+  ],
+  "groups": [],
+  "clue": "Maestro del disfraz, hermanastro de un famoso cazador.",
+  "since": 3
  },
  {
   "slug": "daredevil-matt-murdock-alt",
@@ -460,6 +529,29 @@
   "clue": "Millonario inventor con una armadura de alta tecnología."
  },
  {
+  "slug": "j-jonah-jameson-alt",
+  "name": "J. Jonah Jameson",
+  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/3/33913/1162969-137_web_of_spider_man_9.jpg",
+  "terms": [
+   "JJJ",
+   "Jonah",
+   "Jameson"
+  ],
+  "gender": "Masculino",
+  "category": "Aliado",
+  "universe": "Tierra-616",
+  "year": 1963,
+  "creators": [
+   "Stan Lee",
+   "Steve Ditko"
+  ],
+  "groups": [
+   "Daily Bugle"
+  ],
+  "clue": "Director de periódico que lleva décadas acusando a Spider-Man de ser una amenaza.",
+  "since": 3
+ },
+ {
   "slug": "jackal-miles-warren-alt",
   "name": "Jackal (Miles Warren)",
   "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/11/110802/4019802-the%20jackal.jpg",
@@ -505,6 +597,27 @@
    "Nuevos Guerreros"
   ],
   "clue": "El primer clon de Peter Parker, imperfecto, que acabó protegiendo Houston."
+ },
+ {
+  "slug": "kingpin-wilson-fisk-alt",
+  "name": "Kingpin (Wilson Fisk)",
+  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/11156/111564182/9353485-wilsonfisksecretempire.jpg",
+  "terms": [
+   "Kingpin",
+   "Rey del Crimen",
+   "Wilson Fisk"
+  ],
+  "gender": "Masculino",
+  "category": "Villano",
+  "universe": "Tierra-616",
+  "year": 1967,
+  "creators": [
+   "Stan Lee",
+   "John Romita Sr."
+  ],
+  "groups": [],
+  "clue": "El rey del crimen de Nueva York, enemigo también de Daredevil.",
+  "since": 3
  },
  {
   "slug": "kraven-the-hunter-sergei-kravinoff-alt",
@@ -575,6 +688,94 @@
   "clue": "Vidente ciega conectada a una máquina con forma de telaraña."
  },
  {
+  "slug": "mary-jane-watson-alt",
+  "name": "Mary Jane Watson",
+  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/10106039-large-4008138.jpg",
+  "terms": [
+   "MJ",
+   "Mary Jane"
+  ],
+  "gender": "Femenino",
+  "category": "Aliado",
+  "universe": "Tierra-616",
+  "year": 1965,
+  "creators": [
+   "Stan Lee",
+   "John Romita Sr."
+  ],
+  "groups": [],
+  "clue": "Pelirroja, actriz y modelo: «te ha tocado el gordo, tigre».",
+  "since": 3
+ },
+ {
+  "slug": "prowler-aaron-davis-alt",
+  "name": "Merodeador (Aaron Davis)",
+  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/6/67344/7792391-aaron-davis-92616-normal.jpg",
+  "terms": [
+   "Merodeador",
+   "Prowler",
+   "Aaron Davis"
+  ],
+  "gender": "Masculino",
+  "category": "Villano",
+  "universe": "Tierra-1610",
+  "year": 2011,
+  "creators": [
+   "Brian Michael Bendis",
+   "Sara Pichelli"
+  ],
+  "groups": [],
+  "clue": "Ladrón profesional y tío de un Spider-Man de Brooklyn.",
+  "since": 3
+ },
+ {
+  "slug": "mister-negative-martin-li-alt",
+  "name": "Mister Negative (Martin Li)",
+  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/8/84077/1894030-mrnegative00.jpg",
+  "terms": [
+   "Mister Negativo",
+   "Mister Negative",
+   "Martin Li"
+  ],
+  "gender": "Masculino",
+  "category": "Villano",
+  "universe": "Tierra-616",
+  "year": 2007,
+  "creators": [
+   "Dan Slott",
+   "Phil Jimenez"
+  ],
+  "groups": [
+   "Demonios Interiores",
+   "F.E.A.S.T."
+  ],
+  "clue": "Filántropo de Chinatown con una segunda personalidad criminal.",
+  "since": 3
+ },
+ {
+  "slug": "morbius-michael-morbius-alt",
+  "name": "Morbius (Michael Morbius)",
+  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/7877822-6s8zbpfd92p61.jpg",
+  "terms": [
+   "Morbius",
+   "el vampiro viviente",
+   "Michael Morbius"
+  ],
+  "gender": "Masculino",
+  "category": "Villano",
+  "universe": "Tierra-616",
+  "year": 1971,
+  "creators": [
+   "Roy Thomas",
+   "Gil Kane"
+  ],
+  "groups": [
+   "Hijos de la Medianoche"
+  ],
+  "clue": "Bioquímico que, intentando curar su enfermedad, acabó necesitando beber sangre.",
+  "since": 3
+ },
+ {
   "slug": "morlun-alt",
   "name": "Morlun",
   "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/11122/111223989/4781959-morlun1.jpg",
@@ -616,6 +817,30 @@
    "Seis Siniestros"
   ],
   "clue": "Experto en efectos especiales que ataca con ilusiones."
+ },
+ {
+  "slug": "punisher-frank-castle-alt",
+  "name": "Punisher (Frank Castle)",
+  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/1/15776/9998597-punisher.jpg",
+  "terms": [
+   "Punisher",
+   "Castigador",
+   "Frank Castle"
+  ],
+  "gender": "Masculino",
+  "category": "Héroe Marvel",
+  "universe": "Tierra-616",
+  "year": 1974,
+  "creators": [
+   "Gerry Conway",
+   "John Romita Sr.",
+   "Ross Andru"
+  ],
+  "groups": [
+   "Marines de Estados Unidos (antes)"
+  ],
+  "clue": "Exmarine en guerra contra el crimen tras perder a su familia.",
+  "since": 3
  },
  {
   "slug": "rhino-aleksei-sytsevich-alt",
@@ -693,6 +918,28 @@
   "clue": "Detective privado transformado gracias al dinero de J. Jonah Jameson."
  },
  {
+  "slug": "shocker-herman-schultz-alt",
+  "name": "Shocker (Herman Schultz)",
+  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/9999817-asmvenomdsbodycount2026001_coello_connecting_complete.jpg",
+  "terms": [
+   "Shocker",
+   "Herman Schultz"
+  ],
+  "gender": "Masculino",
+  "category": "Villano",
+  "universe": "Tierra-616",
+  "year": 1967,
+  "creators": [
+   "Stan Lee",
+   "John Romita Sr."
+  ],
+  "groups": [
+   "Los Superiores Enemigos de Spider-Man"
+  ],
+  "clue": "Ladrón de cajas fuertes con guanteletes que lanzan ondas de vibración.",
+  "since": 3
+ },
+ {
   "slug": "silk-cindy-moon-alt",
   "name": "Silk (Cindy Moon)",
   "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/11116/111167641/8155465-silk_junggeun-yoon-art.jpg",
@@ -713,6 +960,29 @@
    "S.H.I.E.L.D."
   ],
   "clue": "Mordida por la misma araña que Peter Parker, pasó años encerrada en un búnker."
+ },
+ {
+  "slug": "sp-dr-peni-parker-alt",
+  "name": "SP//dr (Peni Parker)",
+  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/11116/111167641/6588383-peni-parker-sp__dr_spidergeddon.png",
+  "terms": [
+   "SP//dr",
+   "Peni Parker"
+  ],
+  "gender": "Femenino",
+  "category": "Héroe arácnido",
+  "universe": "Tierra-14512",
+  "year": 2014,
+  "creators": [
+   "Gerard Way",
+   "Jake Wyatt"
+  ],
+  "groups": [
+   "Spider-Army",
+   "Web-Warriors"
+  ],
+  "clue": "Pilota un robot gigante unido a una araña radiactiva.",
+  "since": 3
  },
  {
   "slug": "spider-girl-mayday-parker-alt",
@@ -907,6 +1177,29 @@
   "clue": "Lucha contra la mafia durante la Gran Depresión."
  },
  {
+  "slug": "spider-punk-hobie-brown-alt",
+  "name": "Spider-Punk (Hobie Brown)",
+  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/9317918-rco031_1709134803.jpg",
+  "terms": [
+   "Spider-Punk",
+   "Hobie Brown"
+  ],
+  "gender": "Masculino",
+  "category": "Héroe arácnido",
+  "universe": "Tierra-138",
+  "year": 2015,
+  "creators": [
+   "Dan Slott",
+   "Olivier Coipel"
+  ],
+  "groups": [
+   "Spider-Army",
+   "Web-Warriors"
+  ],
+  "clue": "Pelea con una guitarra contra el presidente Norman Osborn.",
+  "since": 3
+ },
+ {
   "slug": "spider-uk-billy-braddock-alt",
   "name": "Spider-UK (Billy Braddock)",
   "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/11125/111254576/5389032-william_braddock_%28earth-833%29_002.jpg",
@@ -928,6 +1221,32 @@
    "Cuerpo del Capitán Britania"
   ],
   "clue": "Miembro del Cuerpo del Capitán Britania que lideró a los Web-Warriors."
+ },
+ {
+  "slug": "spider-woman-jessica-drew-alt",
+  "name": "Spider-Woman (Jessica Drew)",
+  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/11156/111564182/10179461-spider-woman_vol_7_11_textless.jpg",
+  "terms": [
+   "Spider-Woman",
+   "Mujer Araña",
+   "Jessica Drew"
+  ],
+  "gender": "Femenino",
+  "category": "Héroe arácnido",
+  "universe": "Tierra-616",
+  "year": 1977,
+  "creators": [
+   "Archie Goodwin",
+   "Marie Severin"
+  ],
+  "groups": [
+   "Vengadores",
+   "S.H.I.E.L.D.",
+   "Spider-Army",
+   "HYDRA (antes)"
+  ],
+  "clue": "Exagente de HYDRA que lanza descargas de veneno bioeléctricas.",
+  "since": 3
  },
  {
   "slug": "spider-woman-julia-carpenter-alt",
@@ -1030,6 +1349,29 @@
    "God Squad"
   ],
   "clue": "Dios asgardiano del trueno con un martillo encantado."
+ },
+ {
+  "slug": "aunt-may-parker-alt",
+  "name": "Tía May (May Parker)",
+  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/11/117763/2733264-marvel_knights_spider_man__4___page_3.jpg",
+  "terms": [
+   "Tía May",
+   "May Reilly",
+   "May Parker"
+  ],
+  "gender": "Femenino",
+  "category": "Aliado",
+  "universe": "Tierra-616",
+  "year": 1962,
+  "creators": [
+   "Stan Lee",
+   "Steve Ditko"
+  ],
+  "groups": [
+   "F.E.A.S.T."
+  ],
+  "clue": "Crió a Peter en Queens y trabajó en el albergue F.E.A.S.T.",
+  "since": 3
  },
  {
   "slug": "venom-eddie-brock-alt",

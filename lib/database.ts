@@ -105,6 +105,21 @@ export const characterService = {
     });
   },
 
+  // Obtener aliados y reparto de Spider-Man (Mary Jane, la tía May, Jameson…)
+  async getSpiderAllies(limit: number = 12) {
+    return await prisma.character.findMany({
+      where: {
+        isActive: true,
+        category: 'spider-allies'
+      },
+      orderBy: [
+        { rating: 'desc' },
+        { views: 'desc' }
+      ],
+      take: limit
+    });
+  },
+
   // Obtener personajes del Universo Marvel
   async getMarvelUniverse(limit: number = 12) {
     return await prisma.character.findMany({

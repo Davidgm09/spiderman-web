@@ -12,6 +12,7 @@ export interface GameCharacter {
   creators: string[]
   groups: string[]
   clue: string
+  since?: number // reto a partir del cual entra en el juego (sin valor: desde el reto #1)
 }
 
 // Primer reto del juego diario: 16 de octubre de 2026 (reto #1)
@@ -59,13 +60,34 @@ export function shuffle<T>(items: T[], random: () => number): T[] {
   return out
 }
 
-// Personaje del reto n: cada vuelta de N días recorre todos los personajes en un orden distinto
-export function dailyCharacter<T extends { slug: string }>(characters: T[], day: number): T {
-  const sorted = [...characters].sort((a, b) => a.slug.localeCompare(b.slug))
-  const n = sorted.length
-  const index = (((day - 1) % n) + n) % n
-  const round = Math.floor((day - 1) / n)
-  return shuffle(sorted, seededRandom(20261017 + round))[index]
+// Personaje del reto n: cada vuelta de N días recorre todos los personajes en un orden distinto.
+// Cuando entran personajes nuevos (campo `since`) empieza una «época» nueva desde ese reto, así que
+// los retos anteriores no cambian. En la primera vuelta de cada época, los personajes que salieron
+// justo antes pasan al final para que no se repitan enseguida.
+export function dailyCharacter<T extends { slug: string; since?: number }>(characters: T[], day: number): T {
+  const cache = new Map<number, T>()
+  const pick = (d: number): T => {
+    const cached = cache.get(d)
+    if (cached) return cached
+    const starts = characters.map((c) => c.since ?? 1).filter((s) => s <= d)
+    const start = starts.length ? Math.max(...starts) : 1
+    const pool = characters.filter((c) => (c.since ?? 1) <= start).sort((a, b) => a.slug.localeCompare(b.slug))
+    const n = pool.length
+    const offset = d - start // días transcurridos dentro de la época
+    const index = ((offset % n) + n) % n
+    const round = Math.floor(offset / n)
+    // La época del reto #1 conserva su semilla original
+    let order = shuffle(pool, seededRandom(20261017 + (start === 1 ? 0 : start * 1000) + round))
+    if (start > 1 && round === 0) {
+      const recent = new Set<string>()
+      for (let prev = start - 1; prev >= 1 && recent.size < n - 1 && start - prev <= n; prev--) recent.add(pick(prev).slug)
+      order = [...order.filter((c) => !recent.has(c.slug)), ...order.filter((c) => recent.has(c.slug))]
+    }
+    const result = order[index]
+    cache.set(d, result)
+    return result
+  }
+  return pick(day)
 }
 
 // localStorage puede no existir o lanzar (modo privado, cookies bloqueadas): los juegos funcionan igual

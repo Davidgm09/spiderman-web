@@ -7,7 +7,7 @@ import { characterService } from '@/lib/database';
 import { CharacterGrid } from '@/components/characters/CharacterCard';
 import { CharacterFilter } from '@/components/characters/CharacterFilter';
 import { InContentAd } from '@/components/ads/GoogleAdsense';
-import { Zap, Skull, Shield, Star, ArrowRight } from 'lucide-react';
+import { Zap, Skull, Shield, Heart, Star, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Personajes de Spider-Man y Marvel | Sentido Arácnido',
@@ -31,26 +31,28 @@ export const metadata: Metadata = {
 
 async function getCharacterGroups() {
   try {
-    const [spiderVerse, spiderVillains, marvelUniverse, featured] = await Promise.all([
-      characterService.getSpiderVerse(20),
-      characterService.getSpiderVillains(20),
-      characterService.getMarvelUniverse(20),
+    const [spiderVerse, spiderVillains, spiderAllies, marvelUniverse, featured] = await Promise.all([
+      characterService.getSpiderVerse(50),
+      characterService.getSpiderVillains(50),
+      characterService.getSpiderAllies(50),
+      characterService.getMarvelUniverse(50),
       characterService.getBySlug('spider-man-peter-parker-alt').catch(() => null),
     ]);
     return {
       spiderVerse: spiderVerse || [],
       spiderVillains: spiderVillains || [],
+      spiderAllies: spiderAllies || [],
       marvelUniverse: marvelUniverse || [],
       featured: featured || null,
     };
   } catch {
-    return { spiderVerse: [], spiderVillains: [], marvelUniverse: [], featured: null };
+    return { spiderVerse: [], spiderVillains: [], spiderAllies: [], marvelUniverse: [], featured: null };
   }
 }
 
 export default async function PersonajesPage() {
-  const { spiderVerse, spiderVillains, marvelUniverse, featured } = await getCharacterGroups();
-  const total = spiderVerse.length + spiderVillains.length + marvelUniverse.length;
+  const { spiderVerse, spiderVillains, spiderAllies, marvelUniverse, featured } = await getCharacterGroups();
+  const total = spiderVerse.length + spiderVillains.length + spiderAllies.length + marvelUniverse.length;
 
   return (
     <div
@@ -78,7 +80,7 @@ export default async function PersonajesPage() {
           </h1>
           <p className="text-white/80 text-lg max-w-2xl mx-auto mb-10"
             style={{ textShadow: '0 2px 12px rgba(0,0,0,0.9)' }}>
-            Héroes, villanos y aliados del universo Spider-Man. Más de {total} personajes con información completa.
+            Héroes, villanos y aliados del universo Spider-Man: {total} personajes con su historia, poderes y primera aparición.
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">
@@ -91,6 +93,11 @@ export default async function PersonajesPage() {
               <Skull className="w-5 h-5 text-orange-400" />
               <span className="text-white font-semibold">{spiderVillains.length}</span>
               <span className="text-gray-300 text-sm">Villanos</span>
+            </div>
+            <div className="flex items-center gap-2 bg-black/50 backdrop-blur-sm border border-emerald-500/40 px-5 py-3 rounded-full">
+              <Heart className="w-5 h-5 text-emerald-400" />
+              <span className="text-white font-semibold">{spiderAllies.length}</span>
+              <span className="text-gray-300 text-sm">Aliados</span>
             </div>
             <div className="flex items-center gap-2 bg-black/50 backdrop-blur-sm border border-blue-500/40 px-5 py-3 rounded-full">
               <Shield className="w-5 h-5 text-blue-400" />
@@ -176,6 +183,7 @@ export default async function PersonajesPage() {
           <CharacterFilter
             spiderVerse={spiderVerse}
             spiderVillains={spiderVillains}
+            spiderAllies={spiderAllies}
             marvelUniverse={marvelUniverse}
           />
         </section>
@@ -189,7 +197,7 @@ export default async function PersonajesPage() {
               <h2 className="text-2xl font-bold text-white">Spider-Verse</h2>
               <span className="text-gray-600 text-sm ml-1">— {spiderVerse.length} personajes</span>
             </div>
-            <CharacterGrid characters={spiderVerse} maxItems={20} />
+            <CharacterGrid characters={spiderVerse} maxItems={50} />
           </section>
         )}
 
@@ -202,7 +210,20 @@ export default async function PersonajesPage() {
               <h2 className="text-2xl font-bold text-white">Villanos de Spider-Man</h2>
               <span className="text-gray-600 text-sm ml-1">— {spiderVillains.length} personajes</span>
             </div>
-            <CharacterGrid characters={spiderVillains} maxItems={20} />
+            <CharacterGrid characters={spiderVillains} maxItems={50} />
+          </section>
+        )}
+
+        {/* Aliados y reparto */}
+        {spiderAllies.length > 0 && (
+          <section>
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-1 h-7 rounded-full bg-gradient-to-b from-emerald-500 to-emerald-800" />
+              <Heart className="w-5 h-5 text-emerald-400" />
+              <h2 className="text-2xl font-bold text-white">Aliados de Spider-Man</h2>
+              <span className="text-gray-600 text-sm ml-1">— {spiderAllies.length} personajes</span>
+            </div>
+            <CharacterGrid characters={spiderAllies} maxItems={50} />
           </section>
         )}
 
@@ -215,7 +236,7 @@ export default async function PersonajesPage() {
               <h2 className="text-2xl font-bold text-white">Marvel Universe</h2>
               <span className="text-gray-600 text-sm ml-1">— {marvelUniverse.length} personajes</span>
             </div>
-            <CharacterGrid characters={marvelUniverse} maxItems={20} />
+            <CharacterGrid characters={marvelUniverse} maxItems={50} />
           </section>
         )}
 

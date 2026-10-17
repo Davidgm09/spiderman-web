@@ -50,12 +50,14 @@ export default async function CharacterDetailPage({ params }: Props) {
   const categoryAccent = {
     'spider-verse': { bar: 'from-red-500 to-red-800', text: 'text-red-400', bg: 'bg-red-500/10 border-red-500/20' },
     'spider-villains': { bar: 'from-orange-500 to-red-800', text: 'text-orange-400', bg: 'bg-orange-500/10 border-orange-500/20' },
+    'spider-allies': { bar: 'from-emerald-500 to-emerald-800', text: 'text-emerald-400', bg: 'bg-emerald-500/10 border-emerald-500/20' },
     'marvel-universe': { bar: 'from-blue-500 to-blue-800', text: 'text-blue-400', bg: 'bg-blue-500/10 border-blue-500/20' },
   }[character.category] ?? { bar: 'from-gray-500 to-gray-800', text: 'text-gray-400', bg: 'bg-gray-500/10 border-gray-500/20' };
 
   const categoryLabel = {
     'spider-verse': 'Spider-Verse',
     'spider-villains': 'Villano',
+    'spider-allies': 'Aliado',
     'marvel-universe': 'Marvel Universe',
   }[character.category] ?? character.category;
 

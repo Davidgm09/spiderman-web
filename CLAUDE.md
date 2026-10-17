@@ -34,6 +34,7 @@ All scripts read from `.env` (not `.env.local`). Run them with `node scripts/<na
 | `scripts/fix-tienda-productos-2026.js` | Static | Store fixes verified on Amazon.es (wrong ASINs, out-of-stock replacements); re-run after `populate-tienda-products.js --clean` |
 | `scripts/add-tienda-brand-new-day.js` | Static | 8 Brand New Day products verified on Amazon.es (shown in their own block on `/tienda`); re-run after `populate-tienda-products.js --clean`, then `fix-tienda-productos-2026.js` |
 | `scripts/build-juegos-data.js` | DB | Builds `data/juegos/personajes.json` for the daily game Arañadle (gender, origin universe, debut year, unified group names, Spanish search names, clues); re-run when characters change |
+| `scripts/add-personajes-2026.js` | Static | 15 characters added in Oct 2026 (Mary Jane, Black Cat, Kingpin, Punisher, Spider-Punk…), with SEO titles; creates the `spider-allies` category. Then run `build-juegos-data.js` |
 | `scripts/fix-personajes-seo-2026.js` | Static | Search titles/descriptions for the 45 characters (real name + Spanish hero name); re-run after `populate-all-45-characters.js` |
 
 After re-importing comics from Comic Vine, run `enrich-comics-from-comicvine.js`, then `--credits`, then `apply-comic-synopses.js`: the import leaves placeholder data (`characters: ['Spider-Man']`, writer "Marvel Comics") and machine-translated, truncated synopses.
@@ -119,7 +120,7 @@ import { renderStars } from '@/lib/content-helpers';
 
 | Model | Category field values |
 |-------|----------------------|
-| `Character` | `spider-verse` · `spider-villains` · `marvel-universe` |
+| `Character` | `spider-verse` · `spider-villains` · `spider-allies` (supporting cast) · `marvel-universe` |
 | `Movie` | organized by `universe` field on the page |
 | `Comic` | `importance` field: `Alta` · `Buena` · `Media` |
 | `Game`, `Series` | no sub-categories |
@@ -137,7 +138,7 @@ The site is in Spanish. URL segments map to:
 | `/videojuegos` | Games |
 | `/blog` | Blog posts |
 | `/tienda` | Store (Amazon affiliate) |
-| `/juegos` | Minigames: Arañadle (daily), test, personality quiz. Static JSON in `data/juegos/`, client components in `components/juegos/`, no DB at runtime |
+| `/juegos` | Minigames: Arañadle (daily), test, personality quiz. Static JSON in `data/juegos/`, client components in `components/juegos/`, no DB at runtime. New Arañadle characters need `since: <future day number>` in `build-juegos-data.js` so past daily answers don't change (see `dailyCharacter` in `lib/juegos.ts`) |
 | `/admin/upload` | Admin image upload tool |
 
 All dynamic routes follow `/app/[content-type]/[slug]/page.tsx`. **Important for Next.js 15:** `params` is a `Promise` and must be awaited:

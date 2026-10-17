@@ -8,24 +8,26 @@ import type { DatabaseCharacter } from './CharacterCard';
 interface Props {
   spiderVerse: DatabaseCharacter[];
   spiderVillains: DatabaseCharacter[];
+  spiderAllies: DatabaseCharacter[];
   marvelUniverse: DatabaseCharacter[];
 }
 
-type FilterKey = 'all' | 'spider-verse' | 'spider-villains' | 'marvel-universe';
+type FilterKey = 'all' | 'spider-verse' | 'spider-villains' | 'spider-allies' | 'marvel-universe';
 
-export function CharacterFilter({ spiderVerse, spiderVillains, marvelUniverse }: Props) {
+export function CharacterFilter({ spiderVerse, spiderVillains, spiderAllies, marvelUniverse }: Props) {
   const [query, setQuery] = useState('');
   const [active, setActive] = useState<FilterKey>('all');
 
   const all = useMemo(
-    () => [...spiderVerse, ...spiderVillains, ...marvelUniverse],
-    [spiderVerse, spiderVillains, marvelUniverse]
+    () => [...spiderVerse, ...spiderVillains, ...spiderAllies, ...marvelUniverse],
+    [spiderVerse, spiderVillains, spiderAllies, marvelUniverse]
   );
 
   const FILTERS = [
     { key: 'all' as FilterKey,             label: 'Todos',          count: all.length },
     { key: 'spider-verse' as FilterKey,    label: 'Spider-Verse',   count: spiderVerse.length },
     { key: 'spider-villains' as FilterKey, label: 'Villanos',       count: spiderVillains.length },
+    { key: 'spider-allies' as FilterKey,   label: 'Aliados',        count: spiderAllies.length },
     { key: 'marvel-universe' as FilterKey, label: 'Marvel Universe',count: marvelUniverse.length },
   ];
 
