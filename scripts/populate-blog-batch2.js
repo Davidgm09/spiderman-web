@@ -72,8 +72,8 @@ const NEW_POSTS = [
 <p>Lo que hace DeMatteis con esta premisa es extraordinario: la historia no es sobre Spider-Man siendo derrotado. Es sobre un hombre roto que busca paz en el único acto que cree que puede darle sentido a su vida.</p>
 
 <figure>
-  <img src="https://comicvine.gamespot.com/a/uploads/scale_medium/6/67663/6029655-01.jpg" alt="Portada Kraven's Last Hunt TPB" />
-  <figcaption>La portada del TPB de Kraven's Last Hunt: una de las más icónicas de la historia del cómic de superhéroes.</figcaption>
+  <img src="https://comicvine.gamespot.com/a/uploads/scale_medium/6/67663/3669085-01.jpg" alt="Portada de Kraven's Last Hunt con Spider-Man saliendo de su tumba" />
+  <figcaption>La portada del recopilatorio de Kraven's Last Hunt: Spider-Man, con el traje negro, sale de la tumba en la que lo enterró Kraven. Una de las imágenes más icónicas del cómic de superhéroes.</figcaption>
 </figure>
 
 <h2>Por qué es insuperable</h2>
@@ -144,8 +144,8 @@ const NEW_POSTS = [
 <p>El CGI de 2003 no ha envejecido bien — seamos honestos — pero la dirección artística sí. La serie optó por Nueva York nocturno, colores apagados y diseños de personajes más estilizados que cualquier otra adaptación animada. Era claramente una producción pensada para adolescentes y adultos jóvenes, no para niños de seis años.</p>
 
 <figure>
-  <img src="https://image.tmdb.org/t/p/w780/cQ6xp4mBPrTf6hfWbdFeEqeROpe.jpg" alt="Spider-Man New Animated Series 2003" />
-  <figcaption>El estilo visual de la serie de MTV apostaba por un Spider-Man más oscuro y adulto que sus predecesoras animadas.</figcaption>
+  <img src="https://image.tmdb.org/t/p/w1280/nVHovBi2yqZAYW17273ytA8SE7c.jpg" alt="Imagen promocional de Spider-Man: The New Animated Series" />
+  <figcaption>Imagen promocional de Spider-Man: The New Animated Series (2003). La serie, animada por ordenador, apostaba por un Spider-Man más oscuro y adulto que sus predecesoras.</figcaption>
 </figure>
 
 <h2>Guiones valientes</h2>
@@ -182,8 +182,8 @@ const NEW_POSTS = [
 <p>Esta dualidad —el chico normal con poderes extraordinarios— es la que hace que el personaje sea universalmente identificable. No necesitas ser huérfano multimillonario ni el último hijo de un planeta muerto. Necesitas haber sido el raro de la clase. Y eso sí que lo entiende casi todo el mundo.</p>
 
 <figure>
-  <img src="https://image.tmdb.org/t/p/w1280/ac0kRKTfiJ4GcoUfb0XIO5vgC8q.jpg" alt="Spider-Man Tom Holland MCU" />
-  <figcaption>Spider-Man en el MCU: cada generación tiene su versión del personaje porque la esencia del personaje trasciende cualquier actor o adaptación.</figcaption>
+  <img src="https://image.tmdb.org/t/p/w1280/ac0kRKTfiJ4GcoUfb0XIO5vgC8q.jpg" alt="Póster de The Amazing Spider-Man con la sombra de Spider-Man" />
+  <figcaption>La sombra de Spider-Man en el póster de The Amazing Spider-Man (2012): cada generación tiene su versión del personaje, porque su esencia trasciende a cualquier actor o adaptación.</figcaption>
 </figure>
 
 <h2>La responsabilidad como motor narrativo</h2>

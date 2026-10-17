@@ -40,8 +40,8 @@ const POST = {
 <p>Eso no significa que Peter desaparezca: lo más probable es que siga teniendo un papel importante, pero el peso de la historia recaerá en Miles.</p>
 
 <figure>
-  <img src="/images/spiderman3.webp" alt="Marvel's Spider-Man 3 — Insomniac Games" />
-  <figcaption>La trilogía de Insomniac ha redefinido lo que puede ser un videojuego de superhéroes.</figcaption>
+  <img src="/images/spiderman3.webp" alt="Montaje de fans de Marvel's Spider-Man 3 con Peter y Miles" />
+  <figcaption>Montaje hecho por fans de un posible Marvel's Spider-Man 3 con Peter y Miles: Insomniac todavía no ha mostrado ninguna imagen oficial del juego.</figcaption>
 </figure>
 
 <h2>¿Qué villano protagonizará Spider-Man 3?</h2>

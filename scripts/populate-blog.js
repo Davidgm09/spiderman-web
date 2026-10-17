@@ -339,8 +339,8 @@ const BLOG_POSTS = [
 <p>El resultado fue una serie con aspiraciones narrativas inusuales para la época: arcos de múltiples episodios, personajes con motivaciones complejas, y adaptaciones más o menos fieles de los mejores arcos del cómic, como el del traje alienígena y Venom o Secret Wars.</p>
 
 <figure>
-  <img src="https://image.tmdb.org/t/p/w1280/lN09YohDmsqyljNzykQxV0quvK.jpg" alt="Spider-Man: La serie animada (1994)" />
-  <figcaption>Spider-Man: La serie animada (1994). Su versión de Venom —con la voz de Hank Azaria— sigue siendo para muchos fans la adaptación sonora canónica del personaje.</figcaption>
+  <img src="https://image.tmdb.org/t/p/w1280/lN09YohDmsqyljNzykQxV0quvK.jpg" alt="Spider-Man balanceándose entre rascacielos en la serie animada de 1994" />
+  <figcaption>Spider-Man balanceándose entre rascacielos en Spider-Man: La serie animada (1994), la adaptación que muchos fans siguen considerando la definitiva.</figcaption>
 </figure>
 
 <h2>Las limitaciones que definieron el estilo</h2>
@@ -401,8 +401,8 @@ const BLOG_POSTS = [
 <p>La revelación de la identidad del Duende Verde al final de la primera temporada es el mejor plot twist de cualquier serie animada de Spider-Man. Weisman toma una decisión diferente a la del cómic original y la ejecuta con una elegancia que hace la revelación inevitable en retrospectiva.</p>
 
 <figure>
-  <img src="https://image.tmdb.org/t/p/w780/cQ6xp4mBPrTf6hfWbdFeEqeROpe.jpg" alt="The Spectacular Spider-Man — escena" />
-  <figcaption>El Duende Verde de Spectacular Spider-Man —cuya identidad real es uno de los mejores plot twists de la serie— está considerado por muchos fans la mejor versión animada del villano.</figcaption>
+  <img src="https://image.tmdb.org/t/p/w780/cQ6xp4mBPrTf6hfWbdFeEqeROpe.jpg" alt="Venom haciendo callar a Spider-Man en The Spectacular Spider-Man" />
+  <figcaption>Venom y Spider-Man en The Spectacular Spider-Man: la serie adaptó la llegada del simbionte en su primera temporada.</figcaption>
 </figure>
 
 <h2>El legado de la cancelación</h2>
@@ -632,8 +632,8 @@ const BLOG_POSTS = [
 <p>Alfred Molina da una actuación que ningún villano de Marvel ha igualado. No es terrorífico, no es risible. Es humano. Y eso lo hace infinitamente más amenazante que cualquier alien o dios nórdico.</p>
 
 <figure>
-  <img src="https://image.tmdb.org/t/p/w1280/6al048Lat3eLVQOuKtc9h6Tu94d.jpg" alt="Doctor Octopus en Spider-Man 2" />
-  <figcaption>Alfred Molina como Doctor Octopus: un villano construido desde la tragedia, no desde la maldad. La escena del hospital donde los tentáculos cobran vida es terror puro de Sam Raimi.</figcaption>
+  <img src="https://image.tmdb.org/t/p/w1280/6al048Lat3eLVQOuKtc9h6Tu94d.jpg" alt="Spider-Man y Mary Jane en el póster de Spider-Man 2" />
+  <figcaption>Spider-Man y Mary Jane en el póster de Spider-Man 2 (2004). Además de su historia de amor, la película tiene en el Doctor Octopus de Alfred Molina a un villano construido desde la tragedia.</figcaption>
 </figure>
 
 <h2>La escena del tren</h2>
@@ -680,8 +680,8 @@ const BLOG_POSTS = [
 <p>El villano es el problema central: Rhys Ifans es un actor extraordinario, pero el Lizard del CGI no tiene la presencia que merece. Es un antagonista funcional, no memorable.</p>
 
 <figure>
-  <img src="https://image.tmdb.org/t/p/w1280/sxskOU71CO8LaNX2LOtjYFUtKv7.jpg" alt="Gwen Stacy y Spider-Man en The Amazing Spider-Man" />
-  <figcaption>La relación entre Peter Parker y Gwen Stacy es el corazón emocional de la película — y lo que la distingue de cualquier otra adaptación de Spider-Man.</figcaption>
+  <img src="https://image.tmdb.org/t/p/w1280/sxskOU71CO8LaNX2LOtjYFUtKv7.jpg" alt="El rostro enmascarado de Spider-Man en el póster de The Amazing Spider-Man" />
+  <figcaption>El rostro de Spider-Man en el póster de The Amazing Spider-Man (2012). La relación entre Peter y Gwen Stacy es el corazón emocional de la película.</figcaption>
 </figure>
 
 <h2>No Way Home le hizo justicia</h2>
@@ -845,8 +845,8 @@ const BLOG_POSTS = [
 <p>Lo que distingue a Web of Shadows de cualquier otro juego del personaje es su sistema de decisiones. A lo largo de la historia, Spider-Man debe elegir constantemente entre la vía del héroe y la vía del simbionte. Salvar a un civil o perseguir al villano. Aliarse con héroes como Lobezno o Luke Cage, o con villanos como Electro o el Buitre. Cada decisión mueve un medidor moral y afecta no solo al final, sino a cómo te tratan los personajes secundarios.</p>
 
 <figure>
-  <img src="https://media.rawg.io/media/screenshots/0ef/0ef9b0308884797886a2734e5c982053.jpg" alt="Peter Parker en Spider-Man Web of Shadows" />
-  <figcaption>Web of Shadows integraba a Lobezno, Black Cat y Luke Cage como personajes secundarios activos que reaccionaban a tus decisiones — un nivel de dinamismo narrativo que pocos juegos del género han replicado.</figcaption>
+  <img src="https://media.rawg.io/media/screenshots/0ef/0ef9b0308884797886a2734e5c982053.jpg" alt="Combate aéreo sobre Nueva York en Spider-Man: Web of Shadows" />
+  <figcaption>Combate aéreo en Web of Shadows. El juego integraba a Lobezno, Black Cat y Luke Cage como personajes secundarios activos que reaccionaban a tus decisiones — un nivel de dinamismo narrativo que pocos juegos del género han replicado.</figcaption>
 </figure>
 
 <h2>Por qué merece ser recordado</h2>
@@ -962,8 +962,8 @@ const BLOG_POSTS = [
 <p>Stan Lee construyó a Jameson como la voz del ciudadano razonable que desconfía del poder no supervisado. Que Jameson esté equivocado sobre Spider-Man específicamente no invalida su argumento general. Eso es escritura sofisticada para un cómic de 1963.</p>
 
 <figure>
-  <img src="https://image.tmdb.org/t/p/w1280/8G6HCS82vNxgg5wp7oBDSk32XpF.jpg" alt="J. Jonah Jameson en la película de Spider-Man" />
-  <figcaption>J.K. Simmons como J. Jonah Jameson en las películas de Sam Raimi: una actuación tan definitoria del personaje que Marvel lo trajo de vuelta al MCU casi veinte años después, con el mismo actor.</figcaption>
+  <img src="https://comicvine.gamespot.com/a/uploads/scale_medium/3/33913/1162969-137_web_of_spider_man_9.jpg" alt="J. Jonah Jameson leyendo el Daily Bugle" />
+  <figcaption>J. Jonah Jameson con el Daily Bugle en las manos. J. K. Simmons lo interpretó en la trilogía de Sam Raimi y volvió al papel en el MCU casi veinte años después.</figcaption>
 </figure>
 
 <h2>J.K. Simmons y la actuación definitoria</h2>
@@ -972,8 +972,8 @@ const BLOG_POSTS = [
 <p>Que Marvel lo recuperara para el MCU en <em>Spider-Man: Far From Home</em> —y que la audiencia lo recibiera con ovación— dice todo sobre lo que Simmons construyó con el personaje.</p>
 
 <figure>
-  <img src="https://comicvine.gamespot.com/a/uploads/original/11112/111127724/3811491-5831741533-XGMPHOC-8LYwsBrVZ36DfljYnZ8_j3JOpeR43IAg5wYGzsjmRKmTCFEdN_lW6rutP2gTyvRDWe8oTf_gW2MzH9S8kx4lW4XC-gYuTEh_I0J1egrAzxo4i-gVQQ" alt="J. Jonah Jameson en los cómics de Spider-Man" />
-  <figcaption>En los cómics, Jameson ha sido alcalde de Nueva York, ha financiado a Scorpion para destruir a Spider-Man, y en algunos arcos ha llegado a admitir en privado que se equivocó. Su complejidad es la de un hombre que prefiere tener razón a reconocer el error.</figcaption>
+  <img src="https://comicvine.gamespot.com/a/uploads/original/11112/111127724/3811491-5831741533-XGMPHOC-8LYwsBrVZ36DfljYnZ8_j3JOpeR43IAg5wYGzsjmRKmTCFEdN_lW6rutP2gTyvRDWe8oTf_gW2MzH9S8kx4lW4XC-gYuTEh_I0J1egrAzxo4i-gVQQ" alt="J. Jonah Jameson en una viñeta de los cómics" />
+  <figcaption>Jameson en una viñeta de los cómics, donde ha sido alcalde de Nueva York, ha financiado a Scorpion para destruir a Spider-Man, y en algunos arcos ha llegado a admitir en privado que se equivocó. Su complejidad es la de un hombre que prefiere tener razón a reconocer el error.</figcaption>
 </figure>
 
 <h2>El espejo moral de Peter Parker</h2>
