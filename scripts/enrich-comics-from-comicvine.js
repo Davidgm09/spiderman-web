@@ -147,7 +147,7 @@ async function main() {
       }
       if (CREDITS) {
         const { person_credits: people = [] } = (await cvGet(`/issue/4000-${found.issue.id}`, { field_list: 'person_credits' })).results;
-        const NAME_FIX = { 'Jason LaTour': 'Jason Latour' }; // misma persona escrita de dos formas en Comic Vine
+        const NAME_FIX = { 'Jason LaTour': 'Jason Latour', 'John Romita': 'John Romita Sr.' }; // misma persona escrita de dos formas en Comic Vine
         const byRole = (re) => people.filter((p) => re.test(p.role || '')).map((p) => NAME_FIX[p.name] || p.name);
         const writer = byRole(/writer/i)[0] || '';
         const artist = byRole(/penciler|artist/i)[0] || '';
