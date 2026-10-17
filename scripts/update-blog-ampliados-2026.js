@@ -1183,7 +1183,128 @@ ${tmdbFigure('6rzoUOEkOVxB6EXHp0EgeNd4tke', 'Spider-Man con el traje negro colga
 `,
 };
 
-const POSTS = [MEJORES_JUEGOS, MEJORES_VILLANOS, SPIDERMAN_PS4, SPIDERMAN_2_PS5, NO_WAY_HOME, UN_NUEVO_UNIVERSO, CRUZANDO_EL_MULTIVERSO, SPIDER_MAN_2, MILES_MORALES_JUEGO, AMAZING_2012, ULTIMA_CACERIA, SUPERIOR, ULTIMATE_BENDIS, SIMBIONTE, PETER_VS_MILES, GUIA_COMICS, SERIE_1994, SPECTACULAR];
+const JAMESON = {
+  slug: 'j-jonah-jameson-mejor-personaje-secundario-marvel',
+  title: 'J. Jonah Jameson: por qué es el mejor personaje secundario de Marvel',
+  subtitle: 'El director del Daily Bugle, sus cruzadas contra Spider-Man, su lado más humano y la interpretación de J. K. Simmons',
+  excerpt:
+    'Lleva desde 1963 llamando amenaza a Spider-Man, y sin embargo es uno de los personajes más humanos de Marvel. Repasamos la historia de J. Jonah Jameson en los cómics, el cine y las series.',
+  readTime: '9 min',
+  seoTitle: 'J. Jonah Jameson: historia del director del Daily Bugle',
+  seoDescription:
+    'J. Jonah Jameson, el director del Daily Bugle: su historia en los cómics, sus cruzadas contra Spider-Man, su lado humano y J. K. Simmons en las películas y el MCU.',
+  keywords: ['J. Jonah Jameson', 'Daily Bugle', 'J. K. Simmons Jameson', 'Jameson Spider-Man', 'personajes secundarios Marvel', 'JJJ'],
+  tags: ['personajes', 'Jameson', 'Daily Bugle', 'cómics', 'J. K. Simmons', 'análisis'],
+  content: `
+<p>En más de sesenta años de historia de Spider-Man, ningún personaje secundario ha tenido tanta presencia como ${pj('j-jonah-jameson', 'J. Jonah Jameson')}. Y, sin embargo, rara vez aparece en las listas de los mejores personajes de Marvel. Detrás de los gritos, el puro y los titulares contra Spider-Man hay uno de los personajes más humanos y complejos de todo el universo arácnido.</p>
+
+<h2>Ficha rápida</h2>
+<table>
+  <tbody>
+    <tr><td><strong>Primera aparición</strong></td><td>The Amazing Spider-Man #1 (1963)</td></tr>
+    <tr><td><strong>Creadores</strong></td><td>Stan Lee y Steve Ditko</td></tr>
+    <tr><td><strong>Profesión</strong></td><td>Director del Daily Bugle; también fue alcalde de Nueva York</td></tr>
+    <tr><td><strong>Familia</strong></td><td>Su hijo John, astronauta; su mujer, Marla Madison</td></tr>
+    <tr><td><strong>En el cine</strong></td><td>J. K. Simmons</td></tr>
+  </tbody>
+</table>
+
+<h2>El hombre que odia a Spider-Man… y no siempre se equivoca</h2>
+${cvFigure('scale_medium/3/33913/1162969-137_web_of_spider_man_9.jpg', 'J. Jonah Jameson leyendo el Daily Bugle', 'J. Jonah Jameson con el Daily Bugle en las manos. J. K. Simmons lo interpretó en la trilogía de Sam Raimi y volvió al papel en el MCU casi veinte años después.')}
+<p>La gracia de Jameson es que sus argumentos no son del todo absurdos. Un enmascarado que actúa al margen de la ley y no rinde cuentas ante nadie despertaría desconfianza en cualquier periodista. Stan Lee lo construyó como la voz del ciudadano que recela del poder sin control. Que esté equivocado sobre Spider-Man no invalida del todo su argumento.</p>
+<p>La gran ironía de la serie es que el Bugle vive de las fotos de Spider-Man que le vende… Peter Parker, que se las hace a sí mismo. Jameson le paga una miseria, le grita y, a su manera, le aprecia.</p>
+
+<h2>Sus cruzadas contra Spider-Man</h2>
+<p>Su obsesión le ha llevado a cruzar líneas. En 1965 pagó el experimento que convirtió a Mac Gargan en el ${pj('scorpion-mac-gargan', 'Escorpión')}, y ese mismo año financió a Spencer Smythe y sus robots cazadores de arañas, los Spider-Slayers. Las dos ideas se volvieron contra él, y Jameson tuvo que vivir con las consecuencias.</p>
+
+<h2>El lado humano</h2>
+${cvFigure('original/11112/111127724/3811491-5831741533-XGMPHOC-8LYwsBrVZ36DfljYnZ8_j3JOpeR43IAg5wYGzsjmRKmTCFEdN_lW6rutP2gTyvRDWe8oTf_gW2MzH9S8kx4lW4XC-gYuTEh_I0J1egrAzxo4i-gVQQ', 'J. Jonah Jameson en una viñeta de los cómics', 'Jameson en una viñeta de los cómics, donde ha sido alcalde de Nueva York, ha financiado a Scorpion para destruir a Spider-Man, y en algunos arcos ha llegado a admitir en privado que se equivocó. Su complejidad es la de un hombre que prefiere tener razón a reconocer el error.')}
+<p>Detrás del gruñón hay un periodista íntegro que ha defendido los derechos civiles y la libertad de prensa, un padre orgulloso de su hijo John, el astronauta que acabó convertido en el Hombre Lobo, y un marido devoto: su mujer, Marla, murió en 2011 en un ataque del villano Alistair Smythe, una de las pérdidas más duras de su vida. En 2009 llegó a ser alcalde de Nueva York, y su padre, Jay, se casó con la ${pj('aunt-may-parker', 'tía May')}, así que Jameson y Peter acabaron siendo familia.</p>
+<p>En 2017, Peter Parker le reveló por fin que era Spider-Man. Fue uno de los momentos más inesperados de la historia del personaje.</p>
+
+<h2>J. K. Simmons: el actor perfecto</h2>
+<p>Hay personajes tan ligados a un actor que es imposible imaginarlos de otra forma. J. K. Simmons no interpreta a Jameson en la trilogía de Sam Raimi: lo encarna, con la velocidad de sus frases, el volumen de su voz y la convicción absoluta con la que dice cada barbaridad. Que Marvel lo recuperara para el MCU en <a href="/blog/spider-man-no-way-home-analisis"><em>Lejos de casa</em> y <em>No Way Home</em></a>, ahora como presentador de un canal de noticias sensacionalista, y que el público lo recibiera con una ovación, dice mucho de lo que construyó. En la serie animada de 1994 le puso voz Ed Asner.</p>
+
+<h2>El espejo de Peter Parker</h2>
+<p>La relación entre Jameson y Spider-Man es la de dos personas que comparten valores, la justicia y la protección de los inocentes, y llegan a conclusiones opuestas sobre cómo conseguirlos. Sin Jameson, Spider-Man sería un héroe sin fricción con su ciudad. Con él, es un héroe en un mundo que no está seguro de si lo quiere.</p>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Por qué J. Jonah Jameson odia a Spider-Man?</h3>
+<p>Le considera un justiciero peligroso que actúa al margen de la ley, y en parte le tiene envidia por ser admirado por todos.</p>
+<h3>¿Quién interpreta a J. Jonah Jameson?</h3>
+<p>J. K. Simmons, tanto en la trilogía de Sam Raimi como en el MCU.</p>
+<h3>¿Jameson sabe que Peter es Spider-Man?</h3>
+<p>En los cómics, Peter se lo reveló en 2017. En el MCU fue Jameson quien difundió la revelación de Mysterio.</p>
+`,
+};
+
+const GWEN_STACY_LEGADO = {
+  slug: 'legado-muerte-gwen-stacy-50-anos',
+  title: 'La noche en que murió Gwen Stacy: el cómic que cambió a los superhéroes',
+  subtitle: 'The Amazing Spider-Man #121-122 (1973): qué pasó, por qué se decidió, el famoso «snap» y cómo su legado llega hasta el cine',
+  excerpt:
+    'En 1973, Gwen Stacy murió en The Amazing Spider-Man #121. Te contamos qué pasó, por qué Marvel lo decidió, la polémica del «snap» y cómo esa muerte cambió los cómics y el cine de Spider-Man.',
+  readTime: '10 min',
+  seoTitle: 'La noche en que murió Gwen Stacy: historia y legado',
+  seoDescription:
+    'The Night Gwen Stacy Died (Amazing Spider-Man #121-122, 1973): qué pasó, por qué se decidió, la polémica del «snap» y su legado en los cómics y el cine de Spider-Man.',
+  keywords: ['muerte de Gwen Stacy', 'La noche en que murió Gwen Stacy', 'The Night Gwen Stacy Died', 'Amazing Spider-Man 121', 'Gwen Stacy', 'Duende Verde'],
+  tags: ['cómics', 'Gwen Stacy', 'Duende Verde', 'clásico', 'años 70', 'historia'],
+  content: `
+<p>En 1973, Gerry Conway y Gil Kane publicaron <em>The Amazing Spider-Man</em> #121. Nadie sabía entonces que ese número iba a cambiar lo que los cómics de superhéroes podían hacer con sus personajes. ${pj('spider-gwen-gwen-stacy', 'Gwen Stacy')}, la novia de Peter Parker, moría. Y no de forma heroica: caía desde un puente, y quedaba la duda de si había sido el propio Spider-Man quien la había matado al intentar salvarla.</p>
+
+<h2>Ficha rápida</h2>
+<table>
+  <tbody>
+    <tr><td><strong>Números</strong></td><td>The Amazing Spider-Man #121 y #122 (1973)</td></tr>
+    <tr><td><strong>Guion</strong></td><td>Gerry Conway</td></tr>
+    <tr><td><strong>Dibujo</strong></td><td>Gil Kane, con John Romita Sr.</td></tr>
+    <tr><td><strong>Villano</strong></td><td>El Duende Verde (Norman Osborn)</td></tr>
+    <tr><td><strong>Primera aparición de Gwen</strong></td><td>The Amazing Spider-Man #31 (1965)</td></tr>
+  </tbody>
+</table>
+
+<h2>Quién era Gwen Stacy</h2>
+<p>Gwen apareció en 1965 como una compañera de universidad de Peter, guapa, lista y algo distante. Con los años se convirtió en su gran amor, y su relación, con el padre de Gwen, el capitán George Stacy, de por medio, era el corazón de la serie a principios de los 70. Por eso su muerte fue un golpe tan duro.</p>
+
+<h2>El mundo antes de Gwen</h2>
+<p>Hasta entonces, los cómics de superhéroes seguían una regla no escrita: el héroe siempre llega a tiempo. Las novias, los amigos y los inocentes podían estar en peligro, pero se salvaban. Los lectores sabían que Lois Lane nunca moriría. Stan Lee y Steve Ditko ya habían dado a Spider-Man problemas reales, como la falta de dinero o la culpa, pero ni siquiera ellos habían roto esa regla.</p>
+
+<h2>Qué pasa en el cómic</h2>
+${cvFigure('scale_medium/11112/111123579/8588070-gwen.jpg', 'Gwen Stacy en una ilustración de los cómics', 'Gwen Stacy, el gran amor de Peter Parker a principios de los años 70.')}
+<p>Norman Osborn recupera la memoria, vuelve a ser el ${pj('green-goblin-norman-osborn', 'Duende Verde')}, secuestra a Gwen y la lleva a lo alto de un puente. En la pelea, la deja caer. Spider-Man la atrapa con una telaraña por la pierna, pero cuando la sube, Gwen está muerta. Junto a la viñeta aparece una onomatopeya, «snap», que sugiere que el tirón de la telaraña le rompió el cuello. ¿La mató el Duende al lanzarla, o Spider-Man al intentar salvarla? El cómic no lo aclara del todo, y esa duda es parte de su fuerza.</p>
+<p>En el número siguiente, el #122, Peter persigue al Duende, que muere atravesado por su propio planeador. Y la última página, en la que Mary Jane decide quedarse con Peter en vez de marcharse, cambió para siempre la relación entre los dos.</p>
+<p>Un detalle curioso: el texto dice que es el puente de Brooklyn, pero el dibujo muestra el puente George Washington.</p>
+
+<h2>Por qué se decidió</h2>
+<p>Según Gerry Conway, la idea surgió de John Romita Sr., que sentía que la relación entre Peter y Gwen se había estancado: casarlos habría cambiado demasiado al personaje, y separarlos parecía una solución pobre. La decisión desató una oleada de cartas de lectores indignados durante meses. Pero muchos otros, sobre todo los universitarios que leían Spider-Man, la recibieron como la prueba de que los cómics por fin se atrevían con algo real.</p>
+
+<h2>El legado</h2>
+<p>Muchos historiadores sitúan la muerte de Gwen Stacy como uno de los momentos que marcan el paso a la llamada Edad de Bronce de los cómics, con historias más oscuras y consecuencias permanentes. También es el ejemplo fundacional de un tropo muy criticado décadas después: matar a un personaje femenino para motivar al héroe, que la guionista Gail Simone bautizó como «mujeres en la nevera».</p>
+<p>Gwen no ha desaparecido del todo: el Chacal creó un clon suyo en 1975, y en 2014 una Gwen de otro universo, a la que picó la araña en lugar de a Peter, se convirtió en Spider-Gwen, debutando en ${comic('edge-of-spider-verse-2-2014', 'Edge of Spider-Verse #2')}.</p>
+
+<h2>En el cine</h2>
+<ul>
+  <li><strong>${peli('spider-man-3-2007', 'Spider-Man 3')} (2007):</strong> Bryce Dallas Howard interpreta a una Gwen secundaria.</li>
+  <li><strong>${peli('the-amazing-spider-man-2-el-poder-de-electro-2014', 'The Amazing Spider-Man 2')} (2014):</strong> Emma Stone protagoniza una adaptación directa de su muerte, en una torre del reloj, con un final muy parecido al del cómic.</li>
+  <li><strong>${peli('spider-man-no-way-home-2021', 'No Way Home')} (2021):</strong> el Spider-Man de Andrew Garfield salva a MJ de una caída, en una escena que cierra la herida de Gwen.</li>
+  <li><strong>Spider-Verso:</strong> Hailee Steinfeld pone voz a la Gwen de otro universo, Spider-Gwen.</li>
+</ul>
+
+<h2>Conclusión</h2>
+<p>Más de cincuenta años después, La noche en que murió Gwen Stacy sigue siendo el momento más importante de la historia de Spider-Man. No porque sea una muerte «bonita», sino porque demostró que el género podía crecer, arriesgarse y dejar cicatrices permanentes. Es lectura obligada, y está en nuestra <a href="/blog/comics-spider-man-guia-nuevos-lectores">guía de cómics para nuevos lectores</a>.</p>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿En qué cómic muere Gwen Stacy?</h3>
+<p>En The Amazing Spider-Man #121 (1973), de Gerry Conway y Gil Kane.</p>
+<h3>¿Quién mató a Gwen Stacy?</h3>
+<p>El Duende Verde la lanzó desde un puente. El cómic sugiere que el tirón de la telaraña de Spider-Man al frenarla le rompió el cuello, y esa ambigüedad sigue debatiéndose.</p>
+<h3>¿Spider-Gwen es la misma Gwen Stacy?</h3>
+<p>No: es una Gwen de otro universo, en el que fue ella, y no Peter, quien recibió la picadura de la araña.</p>
+`,
+};
+
+const POSTS = [MEJORES_JUEGOS, MEJORES_VILLANOS, SPIDERMAN_PS4, SPIDERMAN_2_PS5, NO_WAY_HOME, UN_NUEVO_UNIVERSO, CRUZANDO_EL_MULTIVERSO, SPIDER_MAN_2, MILES_MORALES_JUEGO, AMAZING_2012, ULTIMA_CACERIA, SUPERIOR, ULTIMATE_BENDIS, SIMBIONTE, PETER_VS_MILES, GUIA_COMICS, SERIE_1994, SPECTACULAR, JAMESON, GWEN_STACY_LEGADO];
 
 (async () => {
   for (const { slug, ...data } of POSTS) {
