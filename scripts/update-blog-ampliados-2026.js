@@ -597,7 +597,113 @@ ${tmdbFigure('6al048Lat3eLVQOuKtc9h6Tu94d', 'Spider-Man y Mary Jane en el póste
 `,
 };
 
-const POSTS = [MEJORES_JUEGOS, MEJORES_VILLANOS, SPIDERMAN_PS4, SPIDERMAN_2_PS5, NO_WAY_HOME, UN_NUEVO_UNIVERSO, CRUZANDO_EL_MULTIVERSO, SPIDER_MAN_2];
+const MILES_MORALES_JUEGO = {
+  slug: 'spider-man-miles-morales-ps5-analisis',
+  title: 'Marvel\'s Spider-Man: Miles Morales, análisis: el juego que convirtió a Miles en icono',
+  subtitle: 'Navidad en Harlem, poderes bioeléctricos, el Tinkerer y una historia familiar: por qué la aventura de Miles es breve pero redonda',
+  excerpt:
+    'Marvel\'s Spider-Man: Miles Morales llegó con la PS5 y demostró que Miles podía sostener su propio juego. Analizamos su historia, sus poderes, sus villanos y qué versión jugar.',
+  readTime: '9 min',
+  seoTitle: 'Marvel\'s Spider-Man: Miles Morales: análisis del juego',
+  seoDescription:
+    'Análisis de Marvel\'s Spider-Man: Miles Morales: la historia en Harlem, los poderes bioeléctricos y el camuflaje, el Tinkerer y Roxxon, la duración y qué versión jugar.',
+  keywords: ['Miles Morales juego análisis', 'Spider-Man Miles Morales PS5', 'Marvel\'s Spider-Man Miles Morales', 'Miles Morales PS4', 'Miles Morales PC', 'Insomniac Games'],
+  tags: ['análisis', 'videojuegos', 'Insomniac', 'PS5', 'PS4', 'Miles Morales'],
+  content: `
+<p>Cuando Sony anunció ${juego('marvel-s-spider-man-miles-morales-2020', 'Marvel\'s Spider-Man: Miles Morales')} como juego de lanzamiento de PS5, muchos pensaron que sería poco más que una expansión del juego de 2018. Insomniac respondió con una de las aventuras más emotivas de la generación: más corta que la de Peter, sí, pero redonda. En julio de 2021 ya superaba los 6,5 millones de copias vendidas.</p>
+
+<h2>Ficha rápida</h2>
+<table>
+  <tbody>
+    <tr><td><strong>Estudio</strong></td><td>Insomniac Games</td></tr>
+    <tr><td><strong>Lanzamiento</strong></td><td>Noviembre de 2020 (PS4 y PS5); noviembre de 2022 (PC)</td></tr>
+    <tr><td><strong>Duración</strong></td><td>Unas 8-10 horas la historia; unas 20 si lo completas</td></tr>
+    <tr><td><strong>Villanos</strong></td><td>El Tinkerer, Roxxon y el Merodeador</td></tr>
+    <tr><td><strong>Voz original de Miles</strong></td><td>Nadji Jeter</td></tr>
+  </tbody>
+</table>
+
+<h2>Una historia de Navidad en Harlem</h2>
+${figure('237/2372aa24a528d592d0bdb6d1fa0d1253', 'Miles Morales con su traje bajo la nieve, entre luces de neón', 'Miles en el Harlem nevado: el juego transcurre en Navidad, la época de la familia y de quienes ya no están.')}
+<p>El juego transcurre en Navidad, un año después de <a href="/blog/marvels-spider-man-ps4-2018-analisis-insomniac">Marvel's Spider-Man</a>. Miles se ha mudado a Harlem con su madre, Rio, tras la muerte de su padre, y Peter se marcha unas semanas de viaje, dejándole como único Spider-Man de Nueva York. La elección no es casual: la Navidad es tiempo de familia, de comunidad y de las personas que ya no están, y de eso va la historia.</p>
+<p>El conflicto enfrenta a la corporación Roxxon, que ha construido un reactor de energía en pleno barrio, con el Tinkerer y su banda, los Underground. Detrás de la máscara del Tinkerer está Phin Mason, la mejor amiga de la infancia de Miles, y eso convierte la pelea en algo muy personal. El tío Aaron, el ${pj('prowler-aaron-davis', 'Merodeador')}, completa un reparto que pone a Miles entre su ciudad, su barrio y su familia.</p>
+
+<h2>Los poderes de Miles</h2>
+${figure('e20/e2007d863194a66053c79d325401950f', 'Miles Morales golpeando a un enemigo con su descarga bioeléctrica', 'Las descargas bioeléctricas «venom» son el gran añadido de Miles al combate.')}
+<p>Jugar con Miles se siente distinto a jugar con Peter. Sus descargas bioeléctricas, los ataques «venom», aturden a los enemigos, rompen escudos y permiten combos espectaculares; los más potentes parecen sacados de una cinemática. El camuflaje, que le vuelve invisible unos segundos, añade una capa de sigilo que el juego original no tenía y cambia por completo la forma de afrontar las bases enemigas.</p>
+${figure('6bb/6bb1d64822a95680a815b7a2a47e4299', 'Miles Morales invisible, saltando entre carteles de neón', 'El camuflaje vuelve a Miles invisible durante unos segundos: perfecto para el sigilo.')}
+<p>El resto del juego conserva todo lo bueno del de 2018: el balanceo, una Nueva York ahora nevada y misiones secundarias que esta vez llegan a través de una aplicación de su amigo Ganke, en la que los vecinos piden ayuda a Spider-Man.</p>
+
+<h2>Nadji Jeter y un Miles creíble</h2>
+<p>En un juego tan centrado en su historia, la interpretación importa tanto como la jugabilidad. Nadji Jeter lleva a Miles de la inseguridad del primer acto a la determinación del final con una naturalidad enorme. Es el mismo personaje al que Shameik Moore pone voz en las películas del Spider-Verso, y las dos versiones están a la misma altura. Si te interesan las diferencias entre los dos Spider-Man, tienes <a href="/blog/peter-parker-vs-miles-morales-analisis">Peter Parker vs. Miles Morales</a>.</p>
+
+<h2>¿Qué versión jugar?</h2>
+<ul>
+  <li><strong>PS5:</strong> la mejor opción, con tiempos de carga casi instantáneos y vibración de los mandos DualSense.</li>
+  <li><strong>PS4:</strong> el juego funciona bien, aunque con menos detalle gráfico.</li>
+  <li><strong>PC:</strong> llegó en noviembre de 2022, con buen rendimiento.</li>
+</ul>
+
+<h2>Veredicto</h2>
+<p><strong>Lo mejor:</strong> la historia de Miles y su familia, sus poderes y el Harlem navideño.<br />
+<strong>Lo peor:</strong> es corto, y su estructura de mundo abierto repite la del juego anterior.</p>
+<p><strong>Puntuación: 9/10.</strong> Una aventura breve y redonda, y el puente perfecto hacia <a href="/blog/marvels-spider-man-2-ps5-analisis">Marvel's Spider-Man 2</a>. En nuestro <a href="/blog/mejores-juegos-spider-man-ranking">ranking de los mejores juegos de Spider-Man</a> ocupa el tercer puesto.</p>
+`,
+};
+
+const AMAZING_2012 = {
+  slug: 'the-amazing-spider-man-2012-revaloracion-andrew-garfield',
+  title: 'The Amazing Spider-Man (2012), análisis: el reinicio que merecía más oportunidades',
+  subtitle: 'Andrew Garfield, Emma Stone, el Lagarto y el misterio de los padres de Peter: revisamos la película que llegó con el viento en contra',
+  excerpt:
+    'The Amazing Spider-Man (2012) llegó solo cinco años después de la trilogía de Raimi y nunca tuvo el reconocimiento que merecía. La revisamos: lo que funcionó, lo que no y por qué No Way Home le hizo justicia.',
+  readTime: '9 min',
+  seoTitle: 'The Amazing Spider-Man (2012): análisis de la película',
+  seoDescription:
+    'Análisis de The Amazing Spider-Man (2012) con Andrew Garfield: Peter y Gwen, el Lagarto, el misterio de los padres de Peter, qué falló y por qué merece una segunda oportunidad.',
+  keywords: ['The Amazing Spider-Man análisis', 'The Amazing Spider-Man 2012', 'Andrew Garfield Spider-Man', 'Emma Stone Gwen Stacy', 'Lagarto The Amazing Spider-Man', 'Marc Webb'],
+  tags: ['análisis', 'películas', 'Andrew Garfield', 'Gwen Stacy', 'Marc Webb', 'Sony'],
+  content: `
+<p>En 2012, Sony reinició Spider-Man solo cinco años después del final de la trilogía de Sam Raimi. El público lo recibió con escepticismo: ¿otro origen?, ¿otra vez la picadura y el tío Ben? ${peli('the-amazing-spider-man-2012', 'The Amazing Spider-Man')} llegó con el viento en contra, y eso marcó su recepción para siempre. Con la perspectiva de los años, y del regreso de Andrew Garfield en <em>No Way Home</em>, es hora de juzgarla con más justicia.</p>
+
+<h2>Ficha rápida</h2>
+<table>
+  <tbody>
+    <tr><td><strong>Estreno</strong></td><td>Julio de 2012</td></tr>
+    <tr><td><strong>Director</strong></td><td>Marc Webb</td></tr>
+    <tr><td><strong>Reparto</strong></td><td>Andrew Garfield, Emma Stone, Rhys Ifans, Denis Leary, Martin Sheen, Sally Field</td></tr>
+    <tr><td><strong>Música</strong></td><td>James Horner</td></tr>
+    <tr><td><strong>Taquilla</strong></td><td>Unos 758 millones de dólares en todo el mundo</td></tr>
+  </tbody>
+</table>
+
+<h2>Un Peter Parker diferente</h2>
+${tmdbFigure('qMEGcVL4MnJeLpoRP54XYEq6QXa', 'Peter Parker colgado de una cadena en un almacén abandonado', 'Peter descubre sus poderes a base de prueba y error en un almacén abandonado.')}
+<p>El Peter de Garfield es más solitario, más rebelde y más listo: va en monopatín, se enfrenta a los abusones y, como en los cómics, fabrica sus propios lanzarredes. La película le da un misterio propio, el de sus padres, Richard y Mary Parker, que le abandonaron de niño y cuyo trabajo en Oscorp está detrás de todo. Pero donde de verdad brilla Garfield es con la máscara: su Spider-Man bromea, provoca y se mueve como una araña, muy en la línea de las viñetas.</p>
+
+<h2>Peter y Gwen</h2>
+${tmdbFigure('wybMT6AvBIgGlHLRh4tn9NjNqiN', 'Gwen Stacy cuidando de Peter Parker herido', 'Gwen cura las heridas de Peter: la química entre Emma Stone y Andrew Garfield es lo mejor de la película.')}
+<p>La química entre Garfield y Emma Stone, que eran pareja también fuera de la pantalla, es el gran acierto de la película. Su ${pj('spider-gwen-gwen-stacy', 'Gwen Stacy')} no es una damisela en apuros: es la mejor alumna de su clase, trabaja en Oscorp y ayuda activamente a Peter a vencer al villano. Su relación se siente natural, divertida y real, algo poco habitual en el cine de superhéroes.</p>
+
+<h2>El capitán Stacy</h2>
+${tmdbFigure('rZHSdi4YoqicFRll7QVxfrKUo1o', 'Denis Leary como el capitán George Stacy', 'Denis Leary como el capitán George Stacy, el padre de Gwen.')}
+<p>Denis Leary interpreta al padre de Gwen, el capitán George Stacy, un policía que persigue a Spider-Man por considerarle un justiciero peligroso. Su relación con Peter, que cena en su casa sin que él sepa quién es, da algunas de las mejores escenas de la película, y su promesa final marcará la secuela.</p>
+
+<h2>Lo que no funcionó: el Lagarto</h2>
+${tmdbFigure('o2eWnUL9cPARxgNXFrfnvnPwR84', 'El Lagarto agarrando a Spider-Man', 'El Lagarto contra Spider-Man: un villano funcional, pero no memorable.')}
+<p>El primer acto es muy bueno, pero el tercero flojea cuando el doctor Curt Connors se convierte en el ${pj('lizard-curtis-connors', 'Lagarto')} y la historia se convierte en una película de monstruos convencional. Rhys Ifans es un gran actor, pero el Lagarto digital no tiene la presencia que merecía, y su plan de convertir a todo Nueva York en reptiles es de lo más flojo de la película. Además, el misterio de los padres de Peter se queda a medias, a la espera de unas secuelas que no llegaron.</p>
+
+<h2>No Way Home le hizo justicia</h2>
+<p>Tras ${peli('the-amazing-spider-man-2-el-poder-de-electro-2014', 'The Amazing Spider-Man 2')} (2014), Sony canceló la tercera parte y llegó a un acuerdo con Marvel Studios para llevar a Spider-Man al MCU. Durante años, la etapa de Garfield quedó como un paréntesis. Pero su regreso en <a href="/blog/spider-man-no-way-home-analisis">No Way Home</a> provocó una ola de simpatía: millones de personas la volvieron a ver con otros ojos, y muchas llegaron a la misma conclusión. Merecía más. Si quieres comparar a los tres Spider-Man, lo hacemos en <a href="/blog/tobey-maguire-andrew-garfield-tom-holland-mejor-spider-man">Tobey Maguire vs. Andrew Garfield vs. Tom Holland</a>.</p>
+
+<h2>Veredicto</h2>
+<p><strong>Lo mejor:</strong> Andrew Garfield como Spider-Man, Peter y Gwen, y el capitán Stacy.<br />
+<strong>Lo peor:</strong> un villano olvidable, un tercer acto convencional y un misterio que se queda a medias.</p>
+<p><strong>Puntuación: 7/10.</strong> Injustamente castigada en su momento: con un villano mejor, podría haber sido extraordinaria.</p>
+`,
+};
+
+const POSTS = [MEJORES_JUEGOS, MEJORES_VILLANOS, SPIDERMAN_PS4, SPIDERMAN_2_PS5, NO_WAY_HOME, UN_NUEVO_UNIVERSO, CRUZANDO_EL_MULTIVERSO, SPIDER_MAN_2, MILES_MORALES_JUEGO, AMAZING_2012];
 
 (async () => {
   for (const { slug, ...data } of POSTS) {
