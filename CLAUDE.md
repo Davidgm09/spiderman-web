@@ -42,6 +42,10 @@ All scripts read from `.env` (not `.env.local`). Run them with `node scripts/<na
 
 After re-importing comics from Comic Vine, run `enrich-comics-from-comicvine.js`, then `--all-credits`, then `apply-comic-synopses.js`: the import leaves placeholder data (`characters: ['Spider-Man']`, writer "Marvel Comics") and machine-translated, truncated synopses.
 
+## Short videos (TikTok / Shorts / Reels)
+
+`node video/crear-video.js [slug] [--guion guion.json]` (or the desktop shortcut «Crear video Spider-Man», which runs `video/crear-video.cmd`) turns a blog post into a vertical 1080×1920 video: script from the Claude API (`ANTHROPIC_API_KEY` in `.env`, model in `CONFIG.modelo`; only facts from the article), free Microsoft Edge voices via `video/tts.py` (`pip install -U edge-tts` if it returns 403), the article's own images with slow zoom, word-by-word ASS subtitles and optional royalty-free music from `video/musica/*.mp3` (git-ignored). Output goes to `Desktop/Videos Sentido Aracnido/` with a `.txt` (description + hashtags + script). Requires ffmpeg. Images captioned as fan-made are never used.
+
 ## Database safety
 
 - `vercel.json` runs a daily cron to `/api/keepalive` (a tiny Prisma count) so the free Supabase project is never paused for inactivity. If `CRON_SECRET` is set in Vercel, the route only accepts Vercel's own call.

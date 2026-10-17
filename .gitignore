@@ -29,3 +29,6 @@ next-env.d.ts
 
 # Copias de seguridad de la base de datos (scripts/backup-db.js)
 /backups
+
+# Música de fondo de los vídeos (local)
+video/musica/*.mp3

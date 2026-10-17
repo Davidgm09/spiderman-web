@@ -1,0 +1,3 @@
+Pon aquí archivos .mp3 de música LIBRE DE DERECHOS (por ejemplo, de la Biblioteca de audio de YouTube).
+Si hay alguno, cada vídeo usará uno al azar como música de fondo, a volumen bajo.
+Si la carpeta está vacía, el vídeo se crea solo con la voz.
