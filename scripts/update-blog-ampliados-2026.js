@@ -408,7 +408,76 @@ ${tmdbFigure('ocUp7DJBIc8VJgLEw1prcyK1dYv', 'Spider-Man y el Doctor Strange fren
 `,
 };
 
-const POSTS = [MEJORES_JUEGOS, MEJORES_VILLANOS, SPIDERMAN_PS4, SPIDERMAN_2_PS5, NO_WAY_HOME];
+const UN_NUEVO_UNIVERSO = {
+  slug: 'spider-man-into-the-spider-verse-analisis-revolucion-animacion',
+  title: 'Spider-Man: Un nuevo universo, análisis: la película que revolucionó la animación',
+  subtitle: 'Miles Morales, el multiverso, un estilo visual nunca visto y un Óscar: por qué Into the Spider-Verse es una de las mejores películas de Spider-Man',
+  excerpt:
+    'Spider-Man: Un nuevo universo (2018) convirtió a Miles Morales en un icono y cambió el cine de animación. Analizamos su historia, sus Spider-Man, su técnica visual y su legado.',
+  readTime: '10 min',
+  seoTitle: 'Spider-Man: Un nuevo universo (Into the Spider-Verse), análisis',
+  seoDescription:
+    'Análisis de Spider-Man: Un nuevo universo (2018): Miles Morales, los Spider-Man del multiverso, su revolucionaria animación, el Óscar y su legado en el Spider-Verso.',
+  keywords: ['Un nuevo universo análisis', 'Into the Spider-Verse', 'Spider-Man Un nuevo universo', 'Miles Morales película', 'Spider-Verso', 'animación Spider-Verse'],
+  tags: ['análisis', 'películas', 'animación', 'Miles Morales', 'Spider-Verse', 'Óscar'],
+  content: `
+<p>${peli('spider-man-un-nuevo-universo-2018', 'Spider-Man: Un nuevo universo')} (<em>Into the Spider-Verse</em>, 2018) no debería haber funcionado. Era una película de animación protagonizada por un Spider-Man que el gran público apenas conocía, con un estilo visual experimental que nadie había probado a esa escala, y llegaba en un momento en el que ya había Spider-Man de sobra en los cines. Acabó ganando el Óscar a la mejor película de animación y cambió para siempre lo que esperamos de este tipo de cine.</p>
+
+<h2>Ficha rápida</h2>
+<table>
+  <tbody>
+    <tr><td><strong>Estreno</strong></td><td>Diciembre de 2018</td></tr>
+    <tr><td><strong>Dirección</strong></td><td>Bob Persichetti, Peter Ramsey y Rodney Rothman</td></tr>
+    <tr><td><strong>Guion</strong></td><td>Phil Lord y Rodney Rothman</td></tr>
+    <tr><td><strong>Voces originales</strong></td><td>Shameik Moore, Jake Johnson, Hailee Steinfeld, Mahershala Ali, Liev Schreiber</td></tr>
+    <tr><td><strong>Premios</strong></td><td>Óscar y Globo de Oro a la mejor película de animación</td></tr>
+  </tbody>
+</table>
+
+<h2>Miles Morales, por fin protagonista</h2>
+${tmdbFigure('jtek5Qo97Lmcqze6vREnJEvX9Xw', 'Miles Morales y Gwen Stacy en el instituto', 'Miles conoce a Gwen en el instituto, sin saber todavía quién es ella en realidad.')}
+<p>La gran apuesta de la película fue poner a ${pj('spider-man-miles-morales', 'Miles Morales')} en el centro. Miles es un adolescente de Brooklyn, hijo de un policía afroamericano y una enfermera puertorriqueña, que acaba de entrar en un internado de élite donde no termina de encajar y que prefiere pasar las tardes pintando grafitis con su tío Aaron. Su vida cambia cuando le pica una araña radiactiva… justo antes de ver morir al Spider-Man de su universo.</p>
+<p>El resultado es una historia de origen distinta. No va de aprender que «un gran poder conlleva una gran responsabilidad», sino de algo más sencillo y más universal: de atreverse a dar el salto aunque tengas miedo. «Cualquiera puede llevar la máscara» no es un eslogan vacío, sino la tesis de toda la película.</p>
+
+<h2>Un multiverso de Spider-Man</h2>
+${tmdbFigure('1efgC3hpUIZYXVDu8cPPGYzXzjw', 'Miles y Gwen frente a Kingpin y el Merodeador', 'Miles y Gwen frente a Kingpin y el Merodeador, los villanos de la película.')}
+<p>Kingpin ha construido un colisionador de partículas para traer de otros universos a su mujer y a su hijo, muertos en un accidente del que se culpa. El experimento abre el multiverso y trae al Brooklyn de Miles a otros héroes arácnidos: un Peter B. Parker de mediana edad, desastrado y deprimido; ${pj('spider-gwen-gwen-stacy', 'Gwen Stacy')}, la Spider-Woman de otro mundo; ${pj('spider-man-noir-peter-parker', 'Spider-Man Noir')}, en blanco y negro; ${pj('sp-dr-peni-parker', 'Peni Parker')} y su robot; y ${pj('spider-ham-peter-porker', 'Spider-Ham')}, un cerdo de dibujos animados.</p>
+<p>Cada uno tiene su propio estilo de animación, y aun así todos encajan en la misma escena. La relación entre Miles y Peter B. Parker, un mentor que no quiere serlo, es el corazón emocional de la película.</p>
+
+<h2>El salto de fe</h2>
+${tmdbFigure('e7CE5vx4KqUuz0peKdHRVZB0Pn8', 'Miles Morales cayendo entre rascacielos', 'El salto de fe: Miles se lanza al vacío entre los rascacielos de Nueva York y, por fin, se convierte en Spider-Man.')}
+<p>La escena más recordada llega cuando Miles, solo y sin que nadie le dé permiso, se pone su propio traje y salta desde lo alto de un rascacielos. La cámara gira, la ciudad queda boca abajo y suena «What's Up Danger». Es uno de los grandes momentos del cine de superhéroes, y resume la película entera en un minuto.</p>
+
+<h2>Una revolución técnica</h2>
+<p>El estilo visual de <em>Un nuevo universo</em> es inconfundible. Mezcla animación por ordenador con técnicas del cómic impreso: tramas de puntos, líneas de dibujo, onomatopeyas y cuadros de texto en pantalla, y un desenfoque que imita los colores desplazados de una mala impresión. Muchos personajes se animan «a dos», es decir, a 12 imágenes por segundo en vez de 24, lo que da a la película su ritmo de cómic en movimiento. Hay detalles muy cuidados: al principio Miles se anima con menos imágenes por segundo, como si no terminara de encajar, y su animación se vuelve más fluida a medida que domina sus poderes.</p>
+<p>El resultado fue tan influyente que, desde entonces, muchas películas de animación han buscado su propia identidad visual en lugar de imitar el estilo de Pixar.</p>
+
+<h2>Curiosidades</h2>
+<ul>
+  <li>Stan Lee tiene un cameo como el dependiente de una tienda de disfraces. La película se estrenó poco después de su muerte, en noviembre de 2018, y está dedicada a él y a Steve Ditko.</li>
+  <li>La Doctor Octopus de la película es una mujer, Olivia Octavius, con la voz original de Kathryn Hahn.</li>
+  <li>«Sunflower», de Post Malone y Swae Lee, se convirtió en un éxito mundial gracias a la película.</li>
+  <li>En los créditos hay una escena con Spider-Man 2099, que prepara la secuela.</li>
+</ul>
+
+<h2>El legado</h2>
+<p><em>Un nuevo universo</em> abrió el Spider-Verso: le siguió ${peli('spider-man-cruzando-el-multiverso-2023', 'Spider-Man: Cruzando el Multiverso')} (2023), tan brillante como la primera, y llegará <a href="/blog/beyond-spider-verse-actualizacion-2025">Beyond the Spider-Verse</a> para cerrar la trilogía. Además, convirtió a Miles Morales en un Spider-Man tan reconocible como Peter Parker para toda una generación. Si te interesa la comparación entre los dos, la tienes en <a href="/blog/peter-parker-vs-miles-morales-analisis">Peter Parker vs. Miles Morales</a>.</p>
+
+<h2>Veredicto</h2>
+<p>Si solo vas a ver una película de Spider-Man en tu vida, que sea esta. Es divertida, emocionante, visualmente única y entiende al personaje mejor que casi cualquier otra adaptación.</p>
+<p><strong>Puntuación: 10/10.</strong> Puedes verla en cualquier momento: no depende de ninguna otra saga, como te contamos en <a href="/blog/orden-ver-peliculas-spider-man">el orden de las películas de Spider-Man</a>.</p>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Into the Spider-Verse y Un nuevo universo son la misma película?</h3>
+<p>Sí: <em>Spider-Man: Un nuevo universo</em> es el título en España de <em>Spider-Man: Into the Spider-Verse</em> (2018).</p>
+<h3>¿Qué Spider-Man aparecen?</h3>
+<p>Miles Morales, Peter B. Parker, Gwen Stacy, Spider-Man Noir, Peni Parker y Spider-Ham, además del Peter Parker del universo de Miles.</p>
+<h3>¿Ganó el Óscar?</h3>
+<p>Sí, el Óscar a la mejor película de animación en 2019.</p>
+`,
+};
+
+const POSTS = [MEJORES_JUEGOS, MEJORES_VILLANOS, SPIDERMAN_PS4, SPIDERMAN_2_PS5, NO_WAY_HOME, UN_NUEVO_UNIVERSO];
 
 (async () => {
   for (const { slug, ...data } of POSTS) {
