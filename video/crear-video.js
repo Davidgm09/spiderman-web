@@ -28,13 +28,15 @@ const { PrismaClient } = require('@prisma/client');
 
 const CONFIG = {
   modelo: 'claude-sonnet-5-5',
-  voz: 'es-ES-AlvaroNeural', // también: es-ES-ElviraNeural, es-ES-XimenaNeural
+  voz: 'es-ES-ElviraNeural', // también: es-ES-AlvaroNeural (masculina), es-ES-XimenaNeural
   velocidad: '+8%',
+  palabras: '160 y 220', // longitud del guion: unos 60-80 segundos
+  escenas: '7 y 10',
   ancho: 1080,
   alto: 1920,
   fps: 30,
-  pausa: 0.3, // silencio entre escenas (segundos)
-  volumenMusica: 0.12,
+  pausa: 0.35, // silencio entre escenas (segundos)
+  volumenMusica: 0.32, // volumen base; baja sola cuando habla la voz
   web: 'https://www.sentidoaracnido.com',
 };
 const SALIDA = path.join(os.homedir(), 'Desktop', 'Videos Sentido Aracnido');
@@ -98,12 +100,13 @@ function imagenesDelArticulo(post) {
 
 // ---------- 2. guion ----------
 
-const SISTEMA = `Eres guionista de vídeos cortos (TikTok, YouTube Shorts, Reels) para «Sentido Arácnido», una web española sobre Spider-Man.
+const SISTEMA = () => `Eres guionista de vídeos cortos (TikTok, YouTube Shorts, Reels) para «Sentido Arácnido», una web española sobre Spider-Man.
 Escribes en español de España, con frases cortas, ritmo rápido y tono cercano y entusiasta, sin exagerar.
 Reglas estrictas:
 - Usa SOLO datos que aparezcan en el artículo. No inventes cifras, fechas, nombres ni opiniones que no estén en él.
-- Duración: entre 100 y 140 palabras en total (unos 35-55 segundos).
-- Entre 5 y 7 escenas. La primera es un gancho de 12 palabras como máximo que haga querer seguir viendo.
+- Duración: entre ${CONFIG.palabras} palabras en total.
+- Entre ${CONFIG.escenas} escenas. La primera es un gancho de 12 palabras como máximo que haga querer seguir viendo.
+- Cuenta la historia con detalles concretos y curiosos del artículo para que se vea hasta el final; nada de relleno.
 - La última escena termina con: «Lo tienes completo en Sentido Arácnido. Enlace en la bio.»
 - El texto de voz no lleva emojis, hashtags, comillas raras, paréntesis ni abreviaturas; escribe los números como se leen en voz alta cuando haga falta.
 - Cada escena elige una imagen de la lista por su número; varía las imágenes y que tengan relación con lo que se dice.
@@ -127,7 +130,7 @@ async function pedirGuion(post, imagenes) {
     method: 'POST',
     headers: { 'x-api-key': clave, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' },
     // El modelo razona antes de responder y ese razonamiento cuenta para max_tokens: hay que dejar margen
-    body: JSON.stringify({ model: CONFIG.modelo, max_tokens: 16000, system: SISTEMA, messages: [{ role: 'user', content: usuario }] }),
+    body: JSON.stringify({ model: CONFIG.modelo, max_tokens: 16000, system: SISTEMA(), messages: [{ role: 'user', content: usuario }] }),
   });
   const datos = await res.json();
   if (!res.ok) throw new Error(`La API de Claude respondió ${res.status}: ${datos.error?.message || JSON.stringify(datos).slice(0, 300)}`);
@@ -289,20 +292,39 @@ function montar(dir, guion, palabras) {
   const canciones = fs.existsSync(MUSICA) ? fs.readdirSync(MUSICA).filter((f) => /\.mp3$/i.test(f)) : [];
   const args = ['-i', 'imagen.mp4', '-i', 'voz.wav'];
   let filtro = '[0:v]subtitles=subtitulos.ass[v]';
-  let audio = '1:a';
+  // Volumen final normalizado al nivel habitual de TikTok/Shorts (-14 LUFS)
+  const NORMALIZAR = 'loudnorm=I=-14:TP=-1.5:LRA=11,aresample=44100';
+  let audio = '[a]';
+  let cancion = null;
   if (canciones.length) {
-    const cancion = path.join(MUSICA, canciones[Math.floor(Math.random() * canciones.length)]);
-    console.log(`   Música: ${path.basename(cancion)}`);
-    args.push('-stream_loop', '-1', '-i', cancion);
-    filtro += `;[2:a]volume=${CONFIG.volumenMusica},afade=t=out:st=${Math.max(0, total - 1.5).toFixed(2)}:d=1.5[m];[1:a][m]amix=inputs=2:duration=first:dropout_transition=0:normalize=0[a]`;
-    audio = '[a]';
+    cancion = canciones[Math.floor(Math.random() * canciones.length)];
+    console.log(`   Música: ${cancion}`);
+    args.push('-stream_loop', '-1', '-i', path.join(MUSICA, cancion));
+    // La música baja sola cuando habla la voz (sidechain) y entra y sale con fundido
+    filtro +=
+      `;[1:a]asplit=2[voz][guia]` +
+      `;[2:a]volume=${CONFIG.volumenMusica},afade=t=in:st=0:d=1,afade=t=out:st=${Math.max(0, total - 2).toFixed(2)}:d=2[mus]` +
+      `;[mus][guia]sidechaincompress=threshold=0.02:ratio=8:attack=20:release=400[musb]` +
+      `;[voz][musb]amix=inputs=2:duration=first:dropout_transition=0:normalize=0,${NORMALIZAR}[a]`;
+  } else {
+    filtro += `;[1:a]${NORMALIZAR}[a]`;
   }
   ffmpeg([
     ...args, '-filter_complex', filtro, '-map', '[v]', '-map', audio,
     '-c:v', 'libx264', '-preset', 'medium', '-crf', '20', '-pix_fmt', 'yuv420p',
     '-c:a', 'aac', '-b:a', '192k', '-t', total.toFixed(3), '-movflags', '+faststart', 'final.mp4',
   ], dir);
-  return total;
+  return { total, cancion };
+}
+
+// Crédito de la canción (las de Kevin MacLeod exigen citarlo): video/musica/creditos.json
+function creditoMusica(cancion) {
+  if (!cancion) return '';
+  try {
+    const creditos = JSON.parse(fs.readFileSync(path.join(MUSICA, 'creditos.json'), 'utf8'));
+    if (creditos[cancion]) return `Música: ${creditos[cancion]}. Licencia CC BY 4.0: https://creativecommons.org/licenses/by/4.0/`;
+  } catch {}
+  return `Música: ${cancion.replace(/\.mp3$/i, '')}`;
 }
 
 // ---------- principal ----------
@@ -344,7 +366,8 @@ function montar(dir, guion, palabras) {
     console.log('');
 
     paso(5, 'Montaje con subtítulos');
-    const total = montar(dir, guion, palabras);
+    const { total, cancion } = montar(dir, guion, palabras);
+    const credito = creditoMusica(cancion);
 
     paso(6, 'Guardando');
     fs.mkdirSync(SALIDA, { recursive: true });
@@ -354,7 +377,7 @@ function montar(dir, guion, palabras) {
     const enlace = `${CONFIG.web}/blog/${post.slug}`;
     fs.writeFileSync(
       path.join(SALIDA, `${base}.txt`),
-      `${guion.titulo || post.title}\n\n${guion.descripcion || ''}\n\n${enlace}\n\n${guion.hashtags.join(' ')}\n\n--- Guion ---\n` +
+      `${guion.titulo || post.title}\n\n${guion.descripcion || ''}\n\n${enlace}\n\n${guion.hashtags.join(' ')}\n\n${credito ? `${credito}\n\n` : ''}--- Guion ---\n` +
       guion.escenas.map((e, i) => `${i + 1}. ${e.voz}`).join('\n') + '\n',
       'utf8'
     );
