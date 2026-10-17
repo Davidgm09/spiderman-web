@@ -1,3 +1,4 @@
+import { cache } from 'react'
 import { PrismaClient } from '@prisma/client'
 
 // Singleton para Prisma Client
@@ -32,11 +33,12 @@ export const characterService = {
   },
 
   // Obtener personaje por slug
-  async getBySlug(slug: string) {
+  // cache(): generateMetadata y la página comparten una sola consulta por petición
+  getBySlug: cache(async (slug: string) => {
     return await prisma.character.findUnique({
       where: { slug }
     });
-  },
+  }),
 
   // Obtener personaje por Marvel ID
   async getByMarvelId(marvelId: number) {
@@ -236,11 +238,12 @@ export const movieService = {
   },
 
   // Obtener película por slug
-  async getBySlug(slug: string) {
+  // cache(): generateMetadata y la página comparten una sola consulta por petición
+  getBySlug: cache(async (slug: string) => {
     return await prisma.movie.findUnique({
       where: { slug }
     });
-  },
+  }),
 
   // Obtener películas destacadas
   async getFeatured(limit: number = 4, excludeSlug?: string) {
@@ -281,11 +284,12 @@ export const gameService = {
   },
 
   // Obtener videojuego por slug
-  async getBySlug(slug: string) {
+  // cache(): generateMetadata y la página comparten una sola consulta por petición
+  getBySlug: cache(async (slug: string) => {
     return await prisma.game.findUnique({
       where: { slug },
     });
-  },
+  }),
 
   // Obtener videojuegos destacados
   async getFeatured(limit: number = 4, excludeSlug?: string) {
@@ -323,11 +327,12 @@ export const comicService = {
   },
 
   // Obtener cómic por slug
-  async getBySlug(slug: string) {
+  // cache(): generateMetadata y la página comparten una sola consulta por petición
+  getBySlug: cache(async (slug: string) => {
     return await prisma.comic.findUnique({
       where: { slug },
     });
-  },
+  }),
 
   // Obtener cómics relacionados: mismo escritor o misma importancia
   async getRelated(comic: { slug: string; writer: string; importance: string }, limit: number = 4) {
@@ -410,11 +415,12 @@ export const seriesService = {
   },
 
   // Obtener serie por slug
-  async getBySlug(slug: string) {
+  // cache(): generateMetadata y la página comparten una sola consulta por petición
+  getBySlug: cache(async (slug: string) => {
     return await prisma.series.findUnique({
       where: { slug }
     });
-  },
+  }),
 
   // Obtener series destacadas
   async getFeatured(limit: number = 4, excludeSlug?: string) {
@@ -456,11 +462,12 @@ export const blogService = {
   },
 
   // Obtener post por slug
-  async getBySlug(slug: string) {
+  // cache(): generateMetadata y la página comparten una sola consulta por petición
+  getBySlug: cache(async (slug: string) => {
     return await prisma.blogPost.findUnique({
       where: { slug }
     });
-  },
+  }),
 
   // Obtener posts recientes
   async getRecent(limit: number = 5) {
@@ -503,11 +510,12 @@ export const productService = {
   },
 
   // Obtener producto por slug
-  async getBySlug(slug: string) {
+  // cache(): generateMetadata y la página comparten una sola consulta por petición
+  getBySlug: cache(async (slug: string) => {
     return await prisma.product.findUnique({
       where: { slug }
     });
-  },
+  }),
 
   // Obtener productos destacados
   async getFeatured(limit: number = 4) {

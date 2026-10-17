@@ -30,7 +30,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slug = decodeURIComponent((await params).slug)
-  const series = await seriesService.getBySlug(slug).catch(() => null)
+  const series = await seriesService.getBySlug(slug)
 
   // notFound() aquí (antes de empezar a enviar la página) devuelve un 404 real
   if (!series) notFound()
@@ -62,7 +62,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function SeriesDetailPage({ params }: Props) {
   const slug = decodeURIComponent((await params).slug)
-  const series = await seriesService.getBySlug(slug).catch(() => null)
+  const series = await seriesService.getBySlug(slug)
 
   if (!series) notFound()
 

@@ -31,7 +31,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slug = decodeURIComponent((await params).slug)
-  const movie = await movieService.getBySlug(slug).catch(() => null)
+  const movie = await movieService.getBySlug(slug)
   
   // notFound() aquí (antes de empezar a enviar la página) devuelve un 404 real
   if (!movie) notFound()
@@ -63,7 +63,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function MoviePage({ params }: Props) {
   const slug = decodeURIComponent((await params).slug)
-  const movie = await movieService.getBySlug(slug).catch(() => null)
+  const movie = await movieService.getBySlug(slug)
 
   if (!movie) {
     notFound()

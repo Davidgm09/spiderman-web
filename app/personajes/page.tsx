@@ -65,7 +65,7 @@ export default async function PersonajesPage() {
       {/* Hero */}
       <section className="relative min-h-[60vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
-          <Image src="/images/image1.png" alt="" fill sizes="100vw" className="object-cover object-[center_45%] opacity-70" />
+          <Image src="/images/image1.png" alt="" fill priority sizes="100vw" className="object-cover object-[center_45%] opacity-70" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-black/50" />
 

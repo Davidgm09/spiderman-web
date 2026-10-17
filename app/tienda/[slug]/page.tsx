@@ -19,7 +19,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slug = decodeURIComponent((await params).slug)
-  const product = await productService.getBySlug(slug).catch(() => null)
+  const product = await productService.getBySlug(slug)
   // notFound() aquí (antes de empezar a enviar la página) devuelve un 404 real
   if (!product) notFound()
 
@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductPage({ params }: Props) {
   const slug = decodeURIComponent((await params).slug)
-  const product = await productService.getBySlug(slug).catch(() => null)
+  const product = await productService.getBySlug(slug)
   if (!product) notFound()
 
   productService.incrementViews(slug).catch(() => {})

@@ -29,7 +29,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slug = decodeURIComponent((await params).slug)
-  const game = await gameService.getBySlug(slug).catch(() => null)
+  const game = await gameService.getBySlug(slug)
 
   // notFound() aquí (antes de empezar a enviar la página) devuelve un 404 real
   if (!game) notFound()
@@ -61,7 +61,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function GamePage({ params }: Props) {
   const slug = decodeURIComponent((await params).slug)
-  const game = await gameService.getBySlug(slug).catch(() => null)
+  const game = await gameService.getBySlug(slug)
 
   if (!game) notFound()
 

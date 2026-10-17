@@ -45,7 +45,7 @@ const getImportanceColor = (_importance: string) => {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slug = decodeURIComponent((await params).slug)
-  const comic = await comicService.getBySlug(slug).catch(() => null)
+  const comic = await comicService.getBySlug(slug)
 
   // notFound() aquí (antes de empezar a enviar la página) devuelve un 404 real
   if (!comic) notFound()
@@ -78,7 +78,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ComicPage({ params }: Props) {
   const slug = decodeURIComponent((await params).slug)
-  const comic = await comicService.getBySlug(slug).catch(() => null)
+  const comic = await comicService.getBySlug(slug)
 
   if (!comic) {
     notFound()
