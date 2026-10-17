@@ -931,7 +931,142 @@ ${cvFigure('scale_medium/11125/111253436/6733785-9.jpg', 'Venom agazapado sobre 
 `,
 };
 
-const POSTS = [MEJORES_JUEGOS, MEJORES_VILLANOS, SPIDERMAN_PS4, SPIDERMAN_2_PS5, NO_WAY_HOME, UN_NUEVO_UNIVERSO, CRUZANDO_EL_MULTIVERSO, SPIDER_MAN_2, MILES_MORALES_JUEGO, AMAZING_2012, ULTIMA_CACERIA, SUPERIOR, ULTIMATE_BENDIS, SIMBIONTE];
+const PETER_VS_MILES = {
+  slug: 'peter-parker-vs-miles-morales-analisis',
+  title: 'Peter Parker vs. Miles Morales: diferencias entre los dos Spider-Man',
+  subtitle: 'Origen, poderes, familia, villanos y versiones en el cine y los videojuegos: comparamos a los dos grandes Spider-Man de Marvel',
+  excerpt:
+    'Peter Parker y Miles Morales son los dos Spider-Man más conocidos. Comparamos su origen, sus poderes, sus familias, sus villanos y sus versiones en el cine y los videojuegos.',
+  readTime: '9 min',
+  seoTitle: 'Peter Parker vs. Miles Morales: diferencias entre los Spider-Man',
+  seoDescription:
+    'Diferencias entre Peter Parker y Miles Morales: origen, poderes (descarga venom e invisibilidad), familia, villanos, trajes y sus versiones en el cine y los videojuegos.',
+  keywords: ['Peter Parker vs Miles Morales', 'diferencias Peter Parker Miles Morales', 'poderes de Miles Morales', 'Miles Morales', 'Peter Parker', 'quién es mejor Spider-Man'],
+  tags: ['comparativa', 'Peter Parker', 'Miles Morales', 'personajes', 'Spider-Verse', 'cómics'],
+  content: `
+<p>«Un gran poder conlleva una gran responsabilidad». La frase define a Spider-Man desde 1962. Pero cuando Miles Morales se puso la máscara en 2011, quedó claro que esa misma idea puede vivirse de formas muy distintas según quién la lleve. Peter Parker y Miles Morales son hoy los dos grandes Spider-Man de Marvel, y comparten mucho más que el traje… y también se diferencian en mucho.</p>
+
+<h2>Los dos Spider-Man, de un vistazo</h2>
+<table>
+  <thead><tr><th></th><th>Peter Parker</th><th>Miles Morales</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Debut</strong></td><td>Amazing Fantasy #15 (1962)</td><td>Ultimate Fallout #4 (2011)</td></tr>
+    <tr><td><strong>Creadores</strong></td><td>Stan Lee y Steve Ditko</td><td>Brian Michael Bendis y Sara Pichelli</td></tr>
+    <tr><td><strong>Universo de origen</strong></td><td>Tierra-616</td><td>Tierra-1610 (Ultimate)</td></tr>
+    <tr><td><strong>Barrio</strong></td><td>Queens</td><td>Brooklyn</td></tr>
+    <tr><td><strong>Familia</strong></td><td>Huérfano, criado por sus tíos Ben y May</td><td>Sus padres, Jefferson Davis y Rio Morales</td></tr>
+    <tr><td><strong>Poderes propios</strong></td><td>—</td><td>Descarga «venom» e invisibilidad</td></tr>
+    <tr><td><strong>Mejor amigo</strong></td><td>Harry Osborn (y Ned Leeds en el MCU)</td><td>Ganke Lee</td></tr>
+  </tbody>
+</table>
+<p>Tienes la historia completa de cada uno en sus fichas: ${pj('spider-man-peter-parker', 'Peter Parker')} y ${pj('spider-man-miles-morales', 'Miles Morales')}.</p>
+
+<h2>Orígenes: culpa frente a vocación</h2>
+${cvFigure('scale_medium/12/124259/8126579-amazing_spider-man_vol_5_54_stormbreakers_variant_textless.jpg', 'Spider-Man con el traje clásico rojo y azul balanceándose', 'Peter Parker con el traje clásico rojo y azul: el héroe moldeado por la culpa, el sacrificio y la responsabilidad que lleva más de 60 años siendo el referente del personaje.')}
+<p>Peter Parker nace de un error. Podía haber detenido al ladrón que después mató a su tío Ben y no lo hizo. Su heroísmo es, en parte, una penitencia que nunca termina: sacrifica su vida amorosa, su trabajo y su tranquilidad porque siente que se lo debe al mundo.</p>
+<p>Miles parte de un lugar distinto. En los cómics Ultimate recibe sus poderes justo cuando muere el Spider-Man de su mundo, y se siente culpable por no haber podido ayudarle; en <a href="/blog/spider-man-into-the-spider-verse-analisis-revolucion-animacion">Un nuevo universo</a> ocurre algo parecido. Pero Miles no actúa tanto para expiar una culpa como porque cree que puede ayudar. Su historia es la de alguien que tiene que decidir si se atreve a ser héroe.</p>
+
+<h2>Poderes</h2>
+<p>Los dos tienen la fuerza, la agilidad, el sentido arácnido y la capacidad de trepar por las paredes de una araña. Pero Miles tiene dos poderes que Peter no tiene: una <strong>descarga bioeléctrica</strong>, la «venom», capaz de aturdir a sus enemigos, y la capacidad de volverse <strong>invisible</strong>, que combina con un cambio de color de su ropa. Peter, en cambio, compensa con su genio científico: inventó su propio fluido de telaraña y sus lanzarredes.</p>
+
+<h2>Familia y entorno</h2>
+<p>Peter es huérfano, y su soledad es estructural: durante décadas ha protegido su secreto incluso de la tía May. Miles tiene a sus padres vivos y presentes, a un mejor amigo incondicional, Ganke, y una comunidad en Brooklyn que forma parte de su identidad. Hijo de un padre afroamericano y una madre puertorriqueña, Miles representa una Nueva York más diversa, y sus historias hablan de identidad, de barrio y de pertenecer a varias culturas a la vez.</p>
+<p>Su relación con el fracaso también es distinta. Peter carga con cada error como prueba de que no es suficiente; Miles se equivoca, a veces de forma espectacular, pero tiene una red que le sostiene.</p>
+
+<h2>Villanos</h2>
+<p>La galería de Peter es la más famosa de Marvel: el ${pj('green-goblin-norman-osborn', 'Duende Verde')}, el ${pj('doctor-octopus-otto-octavius', 'Doctor Octopus')}, ${pj('venom-eddie-brock', 'Venom')}… La de Miles es más personal: su gran enemigo en los inicios fue su propio tío, Aaron Davis, el ${pj('prowler-aaron-davis', 'Merodeador')}, y en los videojuegos se enfrenta al Tinkerer, una antigua amiga de la infancia. Te contamos los villanos de Peter en <a href="/blog/mejores-villanos-spider-man-ranking-definitivo">los 10 mejores villanos de Spider-Man</a>.</p>
+
+<h2>En el cine y los videojuegos</h2>
+${figure('237/2372aa24a528d592d0bdb6d1fa0d1253', 'Miles Morales con su traje bajo la nieve, entre luces de neón', 'Miles Morales en su propio videojuego (2020): su traje negro y rojo ya es tan reconocible como el clásico de Peter.')}
+<ul>
+  <li><strong>Peter:</strong> tres actores en imagen real (Tobey Maguire, Andrew Garfield y Tom Holland), además del Peter B. Parker del Spider-Verso. Los comparamos en <a href="/blog/tobey-maguire-andrew-garfield-tom-holland-mejor-spider-man">Maguire vs. Garfield vs. Holland</a>.</li>
+  <li><strong>Miles:</strong> protagonista de la trilogía animada del Spider-Verso, con la voz de Shameik Moore, y de su propio juego, <a href="/blog/spider-man-miles-morales-ps5-analisis">Marvel's Spider-Man: Miles Morales</a>.</li>
+  <li><strong>Juntos:</strong> comparten protagonismo en <a href="/blog/marvels-spider-man-2-ps5-analisis">Marvel's Spider-Man 2</a>, donde el juego alterna entre los dos.</li>
+</ul>
+
+<h2>¿Por qué necesitamos a los dos?</h2>
+<p>Peter Parker nos habla de la responsabilidad como una carga. Miles Morales, de la responsabilidad como una elección. Juntos cubren todo el espectro de por qué alguien con poder decide usarlo para ayudar a los demás. Por eso el Spider-Verso funciona tan bien: no hay una forma correcta de ser Spider-Man, sino muchas. ¿Cuál eres tú? Descúbrelo en nuestro test <a href="/juegos/que-spider-man-eres">¿Qué Spider-Man eres?</a></p>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Qué poderes tiene Miles Morales que no tiene Peter Parker?</h3>
+<p>La descarga bioeléctrica «venom» y la capacidad de volverse invisible.</p>
+<h3>¿Miles Morales es de otro universo?</h3>
+<p>Nació en el universo Ultimate (Tierra-1610), pero desde 2015 vive en el universo principal de Marvel, junto a Peter.</p>
+<h3>¿Peter Parker y Miles Morales se conocen?</h3>
+<p>Sí: en los cómics, Peter fue su mentor, y en Marvel's Spider-Man también.</p>
+`,
+};
+
+const GUIA_COMICS = {
+  slug: 'comics-spider-man-guia-nuevos-lectores',
+  title: 'Cómics de Spider-Man para empezar: 5 imprescindibles para nuevos lectores',
+  subtitle: 'Por dónde empezar a leer Spider-Man: cinco historias accesibles, en qué orden leerlas y qué leer después',
+  excerpt:
+    'Spider-Man lleva más de 60 años en los cómics y es difícil saber por dónde empezar. Te recomendamos cinco historias accesibles, el orden para leerlas y qué leer después.',
+  readTime: '9 min',
+  seoTitle: 'Cómics de Spider-Man para empezar: guía para nuevos lectores',
+  seoDescription:
+    'Por dónde empezar a leer cómics de Spider-Man: 5 historias imprescindibles para nuevos lectores, en qué orden leerlas y qué leer después según lo que te guste.',
+  keywords: ['cómics de Spider-Man para empezar', 'por dónde empezar Spider-Man cómics', 'mejores cómics Spider-Man', 'Spider-Man cómics nuevos lectores', 'Ultimate Spider-Man', 'Spider-Man Azul'],
+  tags: ['guía', 'cómics', 'nuevos lectores', 'Ultimate', 'clásicos', 'recomendaciones'],
+  content: `
+<p>Spider-Man lleva protagonizando cómics desde 1962. Con miles de números, decenas de series y varios universos, decidir por dónde empezar puede ser abrumador. Esta selección prioriza historias que se entienden sin saber nada del personaje, que se pueden leer por separado y que muestran lo mejor de Spider-Man. Al final te decimos qué leer después según lo que más te haya gustado.</p>
+
+<h2>Antes de empezar: tres consejos</h2>
+<ul>
+  <li><strong>No hace falta leerlo todo en orden.</strong> Los cómics de Spider-Man no son una serie de televisión: puedes empezar por una buena historia y saltar a otra.</li>
+  <li><strong>Busca tomos recopilatorios.</strong> En lugar de números sueltos, las historias completas se publican en tomos, más fáciles de encontrar en español.</li>
+  <li><strong>Prueba distintas épocas.</strong> El Spider-Man de los 60 y el de los 2000 se leen de forma muy distinta; elige el que más te atraiga.</li>
+</ul>
+
+<h2>1. Ultimate Spider-Man (2000)</h2>
+${cvFigure('original/0/4/44573-7257-51619-1-ultimate-spider-man.jpg', 'Portada de Ultimate Spider-Man #1', 'Ultimate Spider-Man #1, de Bendis y Bagley (2000): el reinicio moderno que acercó a Peter Parker a una nueva generación.')}
+<p>Brian Michael Bendis y Mark Bagley contaron de nuevo el origen de Peter Parker para el siglo XXI, en un universo propio y sin décadas de continuidad. Es fresco, ágil y muy accesible: un Peter adolescente, torpe e inseguro, con los problemas de un chaval de instituto de hoy.</p>
+<p><strong>Por qué empezar aquí:</strong> es el mejor punto de entrada si nunca has leído cómics de superhéroes. Te lo contamos en <a href="/blog/ultimate-spider-man-bendis-analisis-run-completa">nuestro análisis de Ultimate Spider-Man</a>.</p>
+
+<h2>2. La noche en que murió Gwen Stacy (1973)</h2>
+<p>Los números #121-122 de <em>The Amazing Spider-Man</em>, de Gerry Conway y Gil Kane, son los más importantes de la historia del personaje. La muerte de Gwen Stacy a manos del Duende Verde cambió los cómics de superhéroes: antes, el héroe siempre llegaba a tiempo; después, ya nada era seguro.</p>
+<p><strong>Por qué leerlo:</strong> es breve, impactante y explica por qué Spider-Man carga con tanta culpa. Lo analizamos en <a href="/blog/legado-muerte-gwen-stacy-50-anos">el legado de La noche en que murió Gwen Stacy</a>.</p>
+
+<h2>3. La última cacería de Kraven (1987)</h2>
+<p>J. M. DeMatteis y Mike Zeck firman una historia oscura, casi literaria, en la que Kraven derrota a Spider-Man, lo entierra y ocupa su lugar. Es una de las mejores historias del personaje y se lee como una novela gráfica independiente.</p>
+<p><strong>Por qué leerlo:</strong> no necesitas conocer nada del pasado de Spider-Man. Te contamos por qué es tan buena en <a href="/blog/kravens-last-hunt-analisis-mejor-arco-spider-man">nuestro análisis</a>.</p>
+
+<h2>4. Spider-Man: Azul (2002)</h2>
+<p>Jeph Loeb y Tim Sale cuentan, desde el recuerdo de un Peter adulto, cómo se enamoró de Gwen Stacy. Con un dibujo elegante y una narración nostálgica, es uno de los cómics más emotivos del personaje.</p>
+<p><strong>Por qué leerlo:</strong> perfecto si te interesa más el drama humano que la acción.</p>
+
+<h2>5. Superior Spider-Man (2013)</h2>
+<p>¿Qué pasaría si el Doctor Octopus se apoderara del cuerpo de Peter Parker y decidiera ser un Spider-Man «superior»? Dan Slott exploró la idea durante más de treinta números con resultados sorprendentes.</p>
+<p><strong>Por qué leerlo:</strong> demuestra que Spider-Man puede reinventarse por completo sin perder su esencia. Mejor cuando ya conozcas un poco al personaje. Lo tienes en <a href="/blog/superior-spider-man-doctor-octopus-analisis">nuestro análisis de Superior Spider-Man</a>.</p>
+
+<h2>En qué orden leerlos</h2>
+<ol>
+  <li><strong>Ultimate Spider-Man</strong>, para conocer al personaje desde cero.</li>
+  <li><strong>Spider-Man: Azul</strong> y <strong>La noche en que murió Gwen Stacy</strong>, juntas: una es el recuerdo y la otra, la tragedia.</li>
+  <li><strong>La última cacería de Kraven</strong>, cuando quieras algo más adulto.</li>
+  <li><strong>Superior Spider-Man</strong>, para ver al personaje desde otro ángulo.</li>
+</ol>
+
+<h2>¿Y después?</h2>
+<ul>
+  <li><strong>Si te gustó el Spider-Verso:</strong> empieza por ${comic('edge-of-spider-verse-2-2014', 'Edge of Spider-Verse #2')}, el debut de Spider-Gwen, y sigue con la saga <em>Spider-Verse</em> (2014).</li>
+  <li><strong>Si te gustó Miles Morales:</strong> lee sus primeras historias en el universo Ultimate, de Bendis y Sara Pichelli.</li>
+  <li><strong>Si te gustan los clásicos:</strong> la etapa de Stan Lee y Steve Ditko, desde el principio, sigue siendo una delicia.</li>
+</ul>
+<p>Tienes la lista completa en <a href="/blog/mejores-comics-spider-man-historia">los 10 mejores cómics de Spider-Man de la historia</a>, con la edición en español de cada uno, y puedes explorar todos los números en nuestra sección de <a href="/comics">cómics</a>.</p>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Cuál es el mejor cómic de Spider-Man para empezar?</h3>
+<p>Ultimate Spider-Man (2000): cuenta el origen desde cero y no necesita conocimientos previos.</p>
+<h3>¿Hay que leer los cómics de Spider-Man en orden?</h3>
+<p>No: la mayoría de grandes historias se entienden por separado.</p>
+<h3>¿Dónde comprar cómics de Spider-Man en español?</h3>
+<p>Panini publica en España los cómics de Marvel, tanto novedades como recopilatorios de clásicos. Puedes encontrarlos en tiendas especializadas, librerías y en Amazon.</p>
+`,
+};
+
+const POSTS = [MEJORES_JUEGOS, MEJORES_VILLANOS, SPIDERMAN_PS4, SPIDERMAN_2_PS5, NO_WAY_HOME, UN_NUEVO_UNIVERSO, CRUZANDO_EL_MULTIVERSO, SPIDER_MAN_2, MILES_MORALES_JUEGO, AMAZING_2012, ULTIMA_CACERIA, SUPERIOR, ULTIMATE_BENDIS, SIMBIONTE, PETER_VS_MILES, GUIA_COMICS];
 
 (async () => {
   for (const { slug, ...data } of POSTS) {
