@@ -631,7 +631,81 @@ ${villano(1, 'Doctor Octopus', 'Alfred Molina', '<em>Spider-Man 2</em> (2004) y 
 `,
 };
 
-const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS, FINAL_BND, MEJORES_COMICS, JUEGOS_POST, TRAJES, VILLANOS_CINE];
+// Figuras comprobadas en Amazon.es el 17/10/2026 (stock, título, descripción del fabricante e imagen)
+const figura = (asin, name, imgId, text) => gift({ asin, name, img: `https://m.media-amazon.com/images/I/${imgId}._AC_SL500_.jpg`, text });
+
+const MARVEL_LEGENDS = {
+  slug: 'mejores-figuras-marvel-legends-spider-man',
+  title: 'Las mejores figuras Marvel Legends de Spider-Man (guía 2026)',
+  subtitle: 'Películas, Spider-Verso, cómics y videojuegos: las figuras de 15 cm que merecen un hueco en tu estantería, todas disponibles en Amazon',
+  excerpt:
+    'Marvel Legends es la línea de referencia para coleccionar a Spider-Man. Te ayudamos a elegir entre las figuras disponibles ahora mismo: de Brand New Day a los diseños retro de los cómics.',
+  category: 'Guías',
+  readTime: '8 min',
+  publishDate: new Date('2026-10-17'),
+  image: '/images/mejores-figuras-marvel-legends.jpg',
+  seoTitle: 'Las mejores figuras Marvel Legends de Spider-Man (2026)',
+  seoDescription:
+    'Guía de figuras Marvel Legends de Spider-Man: Brand New Day, No Way Home, Spider-Verso, Retro de los cómics y Gamerverse. Todas disponibles en Amazon.',
+  keywords: ['Marvel Legends Spider-Man', 'figuras Spider-Man', 'mejores figuras Marvel Legends', 'Marvel Legends Retro', 'figura Spider-Man coleccionista', 'Hasbro Spider-Man'],
+  tags: ['figuras', 'Marvel Legends', 'coleccionismo', 'guía', 'regalos', 'Hasbro'],
+  content: `
+<p><em>Como afiliados de Amazon, obtenemos ingresos por las compras adscritas que cumplen los requisitos aplicables. Los precios cambian a menudo, así que consúltalos en Amazon antes de comprar.</em></p>
+
+<p><strong>Marvel Legends</strong> es la línea de figuras de Hasbro para coleccionistas: personajes de unos <strong>15 cm</strong>, con muchos puntos de articulación y accesorios para recrear sus poses más famosas (manos intercambiables, efectos de telaraña, cabezas alternativas…). Y Spider-Man es, con diferencia, uno de los personajes con más figuras de toda la colección.</p>
+<p>Hay tantas que elegir no es fácil. Hemos repasado las que están disponibles ahora mismo en Amazon y las hemos ordenado por lo que más le gusta a cada fan: el cine, el Spider-Verso, los cómics o los videojuegos.</p>
+
+<h2>Antes de elegir: las tres «familias»</h2>
+<ul>
+  <li><strong>Marvel Legends Series:</strong> la línea principal, con personajes de las películas, de las series y de los cómics.</li>
+  <li><strong>Retro:</strong> figuras que vienen en un blíster de cartón ilustrado, como los juguetes de los años 90. Muchos coleccionistas las guardan sin abrir porque la caja luce casi tanto como la figura.</li>
+  <li><strong>Gamerverse:</strong> personajes y trajes de los videojuegos de Insomniac.</li>
+</ul>
+<p>Todas comparten la misma escala, así que puedes mezclarlas sin problema en la misma estantería.</p>
+
+<h2>Si solo vas a comprar una</h2>
+${figura('B0G1TXWSG4', 'Marvel Legends · Spider-Man (Brand New Day)', '610AmlzYxvL', 'El traje nuevo de Tom Holland, con manos intercambiables y dos efectos de telaraña. Es la figura más actual y la que mejor representa al Spider-Man de hoy. Si dudas, empieza por esta.')}
+
+<h2>Las del cine</h2>
+${figura('B0FHKY4D5M', 'Marvel Legends · The Amazing Spider-Man (No Way Home)', '613SU5JvFrL', 'El Spider-Man de Andrew Garfield tal como aparece en No Way Home, en una pose de acción muy dinámica. Para quien se emocionó con su regreso.')}
+${figura('B0G3T46ZPJ', 'Marvel Legends · Duende Verde Deluxe (No Way Home)', '61dD5O+tvuL', 'El Norman Osborn de Willem Dafoe con su armadura original, en formato deluxe: incluye el planeador, cabezas y efectos de explosión. Uno de los villanos mejor resueltos de la línea.')}
+${figura('B0G1TXHCM1', 'Marvel Legends · Hulk (Brand New Day)', '61h9wTwV00L', 'El Hulk de Brand New Day, con cabeza y manos intercambiables. Es más grande que el resto, así que impone en cualquier vitrina junto al Spider-Man de la película.')}
+
+<h2>Las del Spider-Verso</h2>
+<p>Las películas animadas tienen algunos de los diseños más llamativos de toda la colección. Si te gustó <a href="/blog/across-the-spider-verse-analisis">Cruzando el Multiverso</a>, aquí hay para elegir:</p>
+${figura('B09QXRBY7F', 'Marvel Legends · Miles Morales (Cruzando el Multiverso)', '71NHqnd84LL', 'El Miles de la película, con su traje negro y rojo. Imprescindible si solo quieres una figura del Spider-Verso.')}
+${figura('B0CSHFF23B', 'Marvel Legends · Spider-Gwen (Cruzando el Multiverso)', '61VhHf5q4PL', 'Gwen Stacy con su traje blanco y capucha, con cabeza sin máscara intercambiable.')}
+${figura('B0CSGVG9GT', 'Marvel Legends · Pavitr Prabhakar (Cruzando el Multiverso)', '61M-Lu8WR5L', 'El Spider-Man India de la película, con cabeza alternativa sin máscara. Uno de los personajes más queridos de la secuela.')}
+${figura('B0CSGZH1QJ', 'Marvel Legends · Miles G. Morales (Cruzando el Multiverso)', '71Uuz+sJQUL', 'El Miles alternativo de la Tierra-42, convertido en el Merodeador. El giro final de la película, ahora en tu estantería.')}
+
+<h2>Las de los cómics y la animación (Retro)</h2>
+${figura('B0FHKYK8B2', 'Marvel Legends Retro · Spider-Man 2099', '81SNLLMg45L', "Miguel O'Hara con su diseño clásico de los cómics de los 90, en blíster ilustrado. De las más bonitas para guardar sin abrir.")}
+${figura('B0FJRDMYHV', 'Marvel Legends Retro · Spider-Man Noir', '81JMtnfiiHL', 'El Spider-Man de los años 30 inspirado en los cómics, con una caja en blanco y negro que es una pequeña obra de arte.')}
+${figura('B0FHL22V6X', 'Marvel Legends Retro · Spider-Venom (traje negro)', '81WKyBKMLYL', 'Spider-Man con el traje negro alienígena de los cómics, el que acabaría convirtiéndose en Venom. Te contamos su historia en <a href="/blog/simbionte-historia-evolucion-venom">la historia del simbionte</a>.')}
+${figura('B09H14KKZM', 'Marvel Legends · Spider-Man estilo animación', '61hB0GhWkyL', 'Un Spider-Man clásico con acabado que imita los dibujos animados y seis accesorios. Un homenaje a las series animadas, en caja retro.')}
+${figura('B0CYTJWSNS', 'Marvel Legends Retro · El Merodeador (serie animada de 1994)', '712WvNcz7XL', 'El Prowler tal como aparecía en Spider-Man: La serie animada de los 90. Para los que crecieron con ella; te la recordamos en <a href="/blog/spider-man-animated-series-1994-analisis">nuestro análisis de la serie</a>.')}
+
+<h2>Las de los videojuegos (Gamerverse)</h2>
+${figura('B0FQJ2KN6Q', 'Marvel Legends Gamerverse · Peter Parker traje Velocity', '51U3U3gG3pL', "El Peter Parker del Marvel's Spider-Man de Insomniac con el traje Velocity, uno de los más populares del juego.")}
+${figura('B0D9ZTC95M', 'Marvel Legends Gamerverse · Miles Morales traje mejorado', '61AprYtHQCL', "Miles con el traje mejorado de Marvel's Spider-Man 2, con efectos de su descarga bioeléctrica y manos intercambiables.")}
+${figura('B0D9ZMGCSN', 'Marvel Legends Gamerverse · Miles Morales traje Boricua', '41hdpAXGiLL', 'El traje con los colores de la bandera de Puerto Rico que Miles puede llevar en Spider-Man 2, un guiño a sus raíces.')}
+
+<h2>Para empezar una colección de golpe</h2>
+${figura('B09VYJ6KKP', 'Marvel Legends · Pack de 5 figuras de Spider-Man (exclusivo Amazon)', '61IcCNfSTXL', 'Spider-Man con el traje negro y cuatro villanos clásicos de los cómics: Silvermane, la Mosca Humana, Molten Man y Razorback. Una forma rápida de llenar una estantería con personajes que rara vez tienen figura.')}
+
+<h2>Consejos antes de comprar</h2>
+<ul>
+  <li><strong>Mira quién lo vende.</strong> Si lo vende y lo envía Amazon, la compra y las devoluciones son más sencillas. Algunas figuras solo las ofrecen otros vendedores, a veces más caras.</li>
+  <li><strong>Los precios bailan mucho.</strong> Las Marvel Legends suelen bajar en momentos concretos del año, y el <strong>Black Friday</strong> (este año, el 27 de noviembre) es uno de ellos.</li>
+  <li><strong>Las Retro, mejor en caja.</strong> Si te gusta exponerlas sin abrir, busca las de blíster ilustrado; si las quieres para posar, cualquier figura de la línea te dará mucho juego.</li>
+  <li><strong>¿Es para un niño?</strong> Las Marvel Legends son figuras de coleccionista y tienen piezas pequeñas. Para jugar, mejor la línea Titan Hero o las figuras Bend and Flex; las tienes en nuestra <a href="/blog/regalos-spider-man-navidad-guia">guía de regalos</a>.</li>
+</ul>
+
+<p>Tienes estas y otras figuras en <a href="/tienda?categoria=Figuras">nuestra tienda</a>. Y si quieres saber de dónde salen todos estos trajes, te lo contamos en <a href="/blog/trajes-spider-man-peliculas">todos los trajes de Spider-Man en las películas</a>.</p>
+`,
+};
+
+const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS, FINAL_BND, MEJORES_COMICS, JUEGOS_POST, TRAJES, VILLANOS_CINE, MARVEL_LEGENDS];
 
 (async () => {
   for (const p of POSTS) {
