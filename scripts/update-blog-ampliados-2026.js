@@ -813,7 +813,125 @@ ${cvFigure('scale_medium/6/67663/6735989-01.jpg', 'Portada de Superior Spider-Ma
 `,
 };
 
-const POSTS = [MEJORES_JUEGOS, MEJORES_VILLANOS, SPIDERMAN_PS4, SPIDERMAN_2_PS5, NO_WAY_HOME, UN_NUEVO_UNIVERSO, CRUZANDO_EL_MULTIVERSO, SPIDER_MAN_2, MILES_MORALES_JUEGO, AMAZING_2012, ULTIMA_CACERIA, SUPERIOR];
+const comic = (slug, title) => `<a href="/comics/${slug}"><em>${title}</em></a>`;
+
+const ULTIMATE_BENDIS = {
+  slug: 'ultimate-spider-man-bendis-analisis-run-completa',
+  title: 'Ultimate Spider-Man de Bendis: análisis de la etapa que reinventó a Spider-Man',
+  subtitle: 'Un Peter Parker adolescente para el siglo XXI, Mark Bagley, la muerte de Peter y el nacimiento de Miles Morales: por qué es imprescindible',
+  excerpt:
+    'En 2000, Ultimate Spider-Man empezó de cero con un Peter Parker adolescente. Brian Michael Bendis lo escribió durante más de una década. Analizamos la etapa, sus mejores arcos y cómo leerla.',
+  readTime: '10 min',
+  seoTitle: 'Ultimate Spider-Man de Bendis: análisis y orden de lectura',
+  seoDescription:
+    'Análisis de Ultimate Spider-Man de Brian Michael Bendis y Mark Bagley: el Peter Parker adolescente, sus mejores arcos, la muerte de Peter, Miles Morales y cómo leerla.',
+  keywords: ['Ultimate Spider-Man Bendis', 'Ultimate Spider-Man cómic', 'Ultimate Spider-Man análisis', 'Mark Bagley', 'muerte de Spider-Man Ultimate', 'Miles Morales cómic'],
+  tags: ['análisis', 'cómics', 'Ultimate', 'Bendis', 'Mark Bagley', 'Miles Morales'],
+  content: `
+<p>En el año 2000, Marvel lanzó ${comic('ultimate-spider-man-1-2000', 'Ultimate Spider-Man #1')} con una idea sencilla: empezar de cero. Un universo nuevo, sin cuarenta años de continuidad, con un Peter Parker otra vez adolescente y en el instituto. Lo que Brian Michael Bendis hizo con esa premisa durante más de una década es una de las etapas más consistentes de la historia del cómic de superhéroes.</p>
+
+<h2>Ficha rápida</h2>
+<table>
+  <tbody>
+    <tr><td><strong>Guion</strong></td><td>Brian Michael Bendis</td></tr>
+    <tr><td><strong>Dibujo</strong></td><td>Mark Bagley (#1-111), después Stuart Immonen, David LaFuente y otros</td></tr>
+    <tr><td><strong>Publicación</strong></td><td>2000-2011</td></tr>
+    <tr><td><strong>Final de Peter</strong></td><td><em>La muerte de Spider-Man</em> (Ultimate Comics Spider-Man #160, 2011)</td></tr>
+    <tr><td><strong>Universo</strong></td><td>Tierra-1610 (Ultimate)</td></tr>
+  </tbody>
+</table>
+
+<h2>Un Peter Parker para el siglo XXI</h2>
+${cvFigure('original/0/4/44573-7257-51619-1-ultimate-spider-man.jpg', 'Portada de Ultimate Spider-Man #1 con Spider-Man balanceándose entre rascacielos', 'Ultimate Spider-Man #1 (2000): el inicio de un universo nuevo, sin décadas de continuidad.')}
+<p>El Peter de Bendis habla como un adolescente de su época: tiene ordenador, trabaja como informático en la web del Daily Bugle y sus problemas (el acoso escolar, las notas, el primer amor, el dinero) se cuentan con una naturalidad que el Peter de los años 60 no podía tener. Mary Jane descubre su secreto muy pronto, y su relación es uno de los grandes pilares de la serie.</p>
+<p>Bendis tardó siete números en contar el origen. En una época en la que los cómics resumían el origen en unas pocas páginas, era toda una declaración: <em>Ultimate Spider-Man</em> iba a ser una serie sobre personajes, no solo sobre peleas.</p>
+
+<h2>Mark Bagley y una racha histórica</h2>
+<p>Mark Bagley dibujó los primeros 111 números seguidos, una de las rachas más largas de un mismo equipo creativo en la historia de Marvel. Su Spider-Man, ágil y juvenil, definió el aspecto de la serie, y su relevo, Stuart Immonen, mantuvo el nivel con un estilo más dinámico. En ${comic('ultimate-spider-man-111-2007', 'el #111')} se ve ese cambio de dibujante.</p>
+
+<h2>Los grandes arcos</h2>
+${cvFigure('original/11/110017/2945162-www.jpg', 'Portada de Ultimate Spider-Man #100 con decenas de clones de Spider-Man', 'Ultimate Spider-Man #100, en plena saga del clon del universo Ultimate.')}
+<ul>
+  <li><strong>Poder y responsabilidad (#1-7):</strong> el origen, con Norman Osborn como gran villano.</li>
+  <li><strong>Venom (#33-39):</strong> el simbionte es un proyecto científico del padre de Peter, y Eddie Brock es un amigo de su infancia.</li>
+  <li><strong>Carnage (#60-65):</strong> uno de los momentos más duros de la serie, con consecuencias para Gwen Stacy.</li>
+  <li><strong>La saga del clon (#97-105):</strong> la versión Ultimate de la polémica historia de los 90, mucho más compacta.</li>
+  <li><strong>La muerte del Duende (#111-117):</strong> el cierre de la gran rivalidad con Norman Osborn.</li>
+</ul>
+${cvFigure('original/0/8692/193029-18223-110330-2-ultimate-spider-man.jpg', 'Portada de Ultimate Spider-Man Annual #1 con Spider-Man y Kitty Pryde', 'Ultimate Spider-Man Annual #1 (2005): Peter y Kitty Pryde, una de las parejas más inesperadas de la serie.')}
+<p>La serie también encontró tiempo para cruces con los X-Men y los Cuatro Fantásticos, y para un ${comic('ultimate-spider-man-annual-1-2005', 'Annual')} en el que Peter sale con Kitty Pryde. Lo extraordinario no es un arco concreto, sino que la calidad se mantiene durante más de cien números: Bendis podía dedicar un número entero a una conversación entre Peter y MJ y seguir siendo más emocionante que muchas sagas.</p>
+
+<h2>La muerte de Spider-Man y Miles Morales</h2>
+<p>En 2011, en <em>La muerte de Spider-Man</em>, el Peter Parker Ultimate murió protegiendo a su familia frente al Duende Verde. Bendis no cerró la serie: la reinventó por segunda vez con ${pj('spider-man-miles-morales', 'Miles Morales')}, creado junto a Sara Pichelli, un adolescente de Brooklyn que recogía el testigo. Miles es hoy uno de los personajes más queridos de Marvel, protagonista del Spider-Verso y de sus propios videojuegos. Sin Ultimate Spider-Man, Miles no existiría. Si te interesa comparar a los dos, tienes <a href="/blog/peter-parker-vs-miles-morales-analisis">Peter Parker vs. Miles Morales</a>.</p>
+
+<h2>Cómo leerla</h2>
+<p>Lo más sencillo es seguir los tomos recopilatorios en orden. La serie original va del #1 al #133, sigue con <em>Ultimate Comics Spider-Man</em> y termina con <em>La muerte de Spider-Man</em> (#156-160). Después llegan las series de Miles. Es una lectura ideal para quien quiera empezar con Spider-Man sin conocer nada, como explicamos en nuestra <a href="/blog/comics-spider-man-guia-nuevos-lectores">guía para nuevos lectores</a>.</p>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Qué es el universo Ultimate?</h3>
+<p>Una línea de Marvel lanzada en 2000 que reiniciaba a sus héroes desde cero, en un universo propio (la Tierra-1610), sin décadas de continuidad.</p>
+<h3>¿Muere Peter Parker en Ultimate Spider-Man?</h3>
+<p>Sí, en <em>La muerte de Spider-Man</em> (2011). Le sustituye Miles Morales.</p>
+<h3>¿Es buena para empezar con Spider-Man?</h3>
+<p>Sí: empieza desde el origen y no necesita conocimientos previos.</p>
+`,
+};
+
+const SIMBIONTE = {
+  slug: 'simbionte-historia-evolucion-venom',
+  title: 'El simbionte: historia y evolución del traje negro y de Venom',
+  subtitle: 'De la idea de un fan en Secret Wars a Venom, Carnage y Knull: cuarenta años del alienígena más famoso de Marvel, en los cómics, el cine y los videojuegos',
+  excerpt:
+    'Todo empezó con un traje negro en Secret Wars (1984). Repasamos la historia completa del simbionte: el traje de Spider-Man, Venom, Carnage, Knull y sus versiones en el cine y los videojuegos.',
+  readTime: '11 min',
+  seoTitle: 'El simbionte de Spider-Man: historia del traje negro y Venom',
+  seoDescription:
+    'Historia del simbionte: el traje negro de Spider-Man en Secret Wars, el nacimiento de Venom, Carnage, Knull y sus versiones en el cine (Spider-Man 3, Venom) y los videojuegos.',
+  keywords: ['simbionte Spider-Man', 'traje negro Spider-Man', 'historia de Venom', 'origen de Venom', 'Carnage', 'Knull'],
+  tags: ['historia', 'cómics', 'Venom', 'simbionte', 'Carnage', 'Secret Wars'],
+  content: `
+<p>Pocas criaturas de los cómics han tenido una vida tan intensa como el simbionte. Nació como un traje nuevo para Spider-Man, se convirtió en uno de sus mayores enemigos, tuvo hijos, protagonizó películas que han recaudado cientos de millones y acabó con una mitología propia que se remonta al principio del universo. Esta es su historia completa.</p>
+
+<h2>La idea de un fan</h2>
+<p>El traje negro nació de una idea enviada a Marvel por un lector, Randy Schueller, que a principios de los 80 propuso un traje negro para Spider-Man. Marvel le compró la idea por 220 dólares. Años después, la editorial la recuperó para <em>Secret Wars</em> (1984), el gran evento en el que los héroes eran llevados a un planeta lejano por el Todopoderoso.</p>
+
+<h2>El traje negro (1984-1985)</h2>
+${cvFigure('scale_medium/11125/111253436/6733785-9.jpg', 'Venom agazapado sobre una cornisa de Nueva York', 'Venom: el traje que Peter rechazó, unido a un hombre que le odiaba.')}
+<p>Con el traje roto tras una batalla, Peter encuentra en <em>Secret Wars</em> #8 una máquina que le da uno nuevo, negro, que responde a sus pensamientos y genera su propia telaraña. Llegó a las series regulares en <em>The Amazing Spider-Man</em> #252 (1984), y durante meses fue el traje habitual de Spider-Man. Hasta que Peter descubrió que estaba vivo.</p>
+<p>En <em>The Amazing Spider-Man</em> #258 (1984), Reed Richards confirma que el traje es un ser alienígena que intenta unirse para siempre a Peter, y que es vulnerable al sonido. Peter se libra de él, pero el simbionte vuelve a buscarle, y en <em>Web of Spider-Man</em> #1 (1985) Peter lo rechaza definitivamente bajo el estruendo de las campanas de una iglesia. Aun así, Peter siguió usando durante años un traje negro de tela, inspirado en el original.</p>
+
+<h2>El nacimiento de Venom (1988)</h2>
+<p>En ese campanario estaba Eddie Brock, un periodista cuya carrera se había hundido tras un error en una exclusiva que Spider-Man había desmontado. Su odio hacia el héroe y el rechazo que sentía el simbionte encajaron a la perfección. Así nació ${pj('venom-eddie-brock', 'Venom')}, que debutó del todo en <em>The Amazing Spider-Man</em> #300 (1988), de David Michelinie y Todd McFarlane.</p>
+<p>Venom era terrorífico: conocía la identidad secreta de Peter, su sentido arácnido no lo detectaba y era mucho más fuerte. El diseño de McFarlane, enorme, con colmillos y lengua, definió la estética de los 90, y el personaje fue tan popular que en 1993 pasó a ser un antihéroe con serie propia, <em>Venom: Lethal Protector</em>.</p>
+
+<h2>La familia simbionte</h2>
+<p>El éxito de Venom trajo más simbiontes. El primero y más famoso fue ${pj('carnage-cletus-kasady', 'Carnage')}, nacido de una cría del simbionte de Venom unida al asesino en serie Cletus Kasady, en 1992. Después llegaron muchos más: Scream, Toxin, Anti-Venom y otros. Y el simbionte de Venom ha tenido distintos portadores, como Mac Gargan, el antiguo ${pj('scorpion-mac-gargan', 'Escorpión')}, o Flash Thompson, que fue el Agente Venom.</p>
+<p>En 2018, Donny Cates y Ryan Stegman dieron a los simbiontes un origen cósmico con Knull, el dios oscuro que los creó, protagonista del evento <em>King in Black</em> (2020).</p>
+
+<h2>En el cine</h2>
+<ul>
+  <li><strong>${peli('spider-man-3-2007', 'Spider-Man 3')} (2007):</strong> el traje negro saca la peor versión de Peter (Tobey Maguire), y Topher Grace es Eddie Brock.</li>
+  <li><strong>${peli('venom-2018', 'Venom')} (2018), ${peli('venom-habra-matanza-2021', 'Habrá Matanza')} (2021) y ${peli('venom-el-ultimo-baile-2024', 'El último baile')} (2024):</strong> la trilogía de Tom Hardy, que convirtió a Venom en protagonista y presentó a Carnage (Woody Harrelson).</li>
+  <li><strong>${peli('spider-man-no-way-home-2021', 'No Way Home')} (2021):</strong> en la escena poscréditos, un pequeño trozo del simbionte se queda en el universo de Tom Holland.</li>
+</ul>
+
+<h2>En los videojuegos</h2>
+<p>El simbionte es el gran protagonista de <a href="/blog/spider-man-web-of-shadows-analisis-juego-olvidado">Web of Shadows</a> (2008), en el que se puede cambiar entre el traje rojo y el negro, y de <a href="/blog/marvels-spider-man-2-ps5-analisis">Marvel's Spider-Man 2</a> (2023), donde Insomniac le dio a Peter un traje negro con poderes brutales y una de las versiones más imponentes de Venom.</p>
+
+<h2>Conclusión</h2>
+<p>Cuarenta años después de aquel traje negro, el simbionte ha pasado de ser un cambio de vestuario a uno de los conceptos más fértiles del universo Marvel. Pocas ideas de un fan han llegado tan lejos.</p>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿De dónde viene el traje negro de Spider-Man?</h3>
+<p>De <em>Secret Wars</em> (1984): Peter lo consigue en un planeta alienígena sin saber que es un ser vivo.</p>
+<h3>¿Quién fue el primer Venom?</h3>
+<p>Eddie Brock, en 1988. Antes, el simbionte había estado unido a Peter Parker.</p>
+<h3>¿Cuál es la debilidad del simbionte?</h3>
+<p>El sonido intenso y el fuego.</p>
+`,
+};
+
+const POSTS = [MEJORES_JUEGOS, MEJORES_VILLANOS, SPIDERMAN_PS4, SPIDERMAN_2_PS5, NO_WAY_HOME, UN_NUEVO_UNIVERSO, CRUZANDO_EL_MULTIVERSO, SPIDER_MAN_2, MILES_MORALES_JUEGO, AMAZING_2012, ULTIMA_CACERIA, SUPERIOR, ULTIMATE_BENDIS, SIMBIONTE];
 
 (async () => {
   for (const { slug, ...data } of POSTS) {
