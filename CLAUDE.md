@@ -30,6 +30,8 @@ All scripts read from `.env` (not `.env.local`). Run them with `node scripts/<na
 | `scripts/apply-comic-synopses.js` | Static | Hand-reviewed Spanish synopses from `scripts/data/comic-synopses-es.json` (re-run after any comic re-import) |
 | `scripts/refresh-series-status.js` | TMDB | Refreshes series status, seasons, episodes and rating |
 | `scripts/update-blog-noticias-2026.js` | Static | Updated versions of news articles (re-run after `populate-blog.js --clean`) |
+| `scripts/update-blog-ampliados-2026.js` | Static | Expanded rewrites of short 2025 articles (same slugs); re-run after `populate-blog.js --clean` |
+| `scripts/fix-videojuegos-2026.js` | Static | Correct developers/publishers imported wrong from RAWG; re-run after `populate-games-from-rawg.js` |
 | `scripts/add-blog-guias-2026.js` | Static | "Guías" articles (gift guide with Amazon affiliate cards, `.gift` styles in `globals.css`); re-run after `populate-blog.js --clean` |
 | `scripts/fix-tienda-productos-2026.js` | Static | Store fixes verified on Amazon.es (wrong ASINs, out-of-stock replacements); re-run after `populate-tienda-products.js --clean` |
 | `scripts/add-tienda-brand-new-day.js` | Static | 8 Brand New Day products verified on Amazon.es (shown in their own block on `/tienda`); re-run after `populate-tienda-products.js --clean`, then `fix-tienda-productos-2026.js` |
