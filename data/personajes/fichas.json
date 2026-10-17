@@ -2201,5 +2201,737 @@
     "a": "Sí, interpretada por Celeste O'Connor."
    }
   ]
+ },
+ "mary-jane-watson-alt": {
+  "nombre": "Mary Jane",
+  "secciones": [
+   {
+    "titulo": "«Acéptalo, tigre… ¡te ha tocado el gordo!»",
+    "html": "<p>Durante meses, la tía May intentó que Peter conociera a la sobrina de su vecina Anna Watson, y Peter siempre encontraba una excusa. Los lectores la vieron por primera vez en <em>The Amazing Spider-Man</em> #25 (1965), con la cara tapada, y no se descubrió del todo hasta el #42 (1966), dibujado por John Romita Sr., con una de las frases más famosas del cómic: «Acéptalo, tigre… ¡te ha tocado el gordo!».</p>"
+   },
+   {
+    "titulo": "De chica fiestera a gran amor",
+    "html": "<p>Al principio, <strong>Mary Jane Watson</strong> era la chica alegre y despreocupada del grupo, mientras Peter salía con Gwen Stacy. Tras la muerte de Gwen, MJ demostró que detrás de esa fachada había alguien leal y fuerte, con una infancia difícil que había ocultado a todos. En 1987 se casó con Peter en <em>The Amazing Spider-Man Annual</em> #21, ya sabiendo que era Spider-Man; de hecho, ella lo había descubierto mucho antes de que él se lo contara.</p>"
+   },
+   {
+    "titulo": "Un día más y después",
+    "html": "<p>En <em>Un día más</em> (2007), Peter y MJ aceptaron un trato con Mefisto para salvar la vida de la tía May a cambio de su matrimonio, que desapareció de la historia. Fue una de las decisiones más polémicas de Marvel. Desde entonces, la pareja se ha separado y reencontrado varias veces, y en 2023 MJ llegó a tener su propia identidad heroica, <strong>Jackpot</strong>. Es actriz y modelo, y uno de los personajes secundarios más importantes de Marvel.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Spider-Man",
+    "anio": 2002,
+    "actor": "Kirsten Dunst",
+    "enlace": "/peliculas/spider-man-2002"
+   },
+   {
+    "titulo": "Spider-Man 2",
+    "anio": 2004,
+    "actor": "Kirsten Dunst",
+    "enlace": "/peliculas/spider-man-2-2004"
+   },
+   {
+    "titulo": "Spider-Man 3",
+    "anio": 2007,
+    "actor": "Kirsten Dunst",
+    "enlace": "/peliculas/spider-man-3-2007"
+   },
+   {
+    "titulo": "Spider-Man: Homecoming",
+    "anio": 2017,
+    "actor": "Zendaya (Michelle «MJ» Jones)",
+    "enlace": "/peliculas/spider-man-homecoming-2017"
+   },
+   {
+    "titulo": "Spider-Man: Un nuevo universo",
+    "anio": 2018,
+    "actor": "Voz original: Zoë Kravitz",
+    "enlace": "/peliculas/spider-man-un-nuevo-universo-2018"
+   },
+   {
+    "titulo": "Spider-Man: Lejos de casa",
+    "anio": 2019,
+    "actor": "Zendaya",
+    "enlace": "/peliculas/spider-man-lejos-de-casa-2019"
+   },
+   {
+    "titulo": "Spider-Man: No Way Home",
+    "anio": 2021,
+    "actor": "Zendaya",
+    "enlace": "/peliculas/spider-man-no-way-home-2021"
+   },
+   {
+    "titulo": "Spider-Man: Brand New Day",
+    "anio": 2026,
+    "actor": "Zendaya",
+    "enlace": "/peliculas/spider-man-brand-new-day-2026"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Cuándo apareció Mary Jane por primera vez?",
+    "a": "En <em>The Amazing Spider-Man</em> #25 (1965), con la cara tapada. Su cara no se vio hasta el #42 (1966)."
+   },
+   {
+    "q": "¿Mary Jane y Peter Parker están casados?",
+    "a": "Se casaron en 1987, pero el pacto con Mefisto de <em>Un día más</em> (2007) borró su matrimonio."
+   },
+   {
+    "q": "¿La MJ de Zendaya es Mary Jane Watson?",
+    "a": "No exactamente: en el MCU es Michelle Jones, que usa el apodo «MJ» como homenaje al personaje."
+   },
+   {
+    "q": "¿Qué es Jackpot?",
+    "a": "La identidad heroica que adoptó Mary Jane en los cómics en 2023."
+   }
+  ]
+ },
+ "black-cat-felicia-hardy-alt": {
+  "nombre": "La Gata Negra",
+  "secciones": [
+   {
+    "titulo": "Origen: la hija de un ladrón legendario",
+    "html": "<p>Felicia Hardy es hija de Walter Hardy, uno de los mejores ladrones de guante blanco del mundo. Se entrenó en acrobacia, artes marciales y robo para seguir sus pasos, y debutó como la <strong>Gata Negra</strong> en <em>The Amazing Spider-Man</em> #194 (1979), de Marv Wolfman y Keith Pollard, intentando sacar a su padre de la cárcel.</p>"
+   },
+   {
+    "titulo": "Amor y desencuentros con Spider-Man",
+    "html": "<p>Desde su primer encuentro, Felicia y Spider-Man vivieron un romance intermitente. Durante un tiempo fueron pareja y compañeros de patrulla, pero el problema siempre fue el mismo: a ella le fascinaba el héroe enmascarado y no le interesaba nada la vida corriente de Peter Parker. Su relación es la gran alternativa a la de Mary Jane en los cómics.</p>"
+   },
+   {
+    "titulo": "Mala suerte y Gremio de Ladrones",
+    "html": "<p>Para estar a la altura de Spider-Man, Felicia aceptó un trato con Kingpin que le dio el poder de provocar <strong>mala suerte</strong> a su alrededor; sin quererlo, también afectaba a Peter. Con los años perdió y recuperó esos poderes. En los cómics recientes ha protagonizado series propias y ha estado al frente del Gremio de Ladrones de Nueva York.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "The Amazing Spider-Man 2: El poder de Electro",
+    "anio": 2014,
+    "actor": "Felicity Jones (como Felicia, ayudante de Harry Osborn)",
+    "enlace": "/peliculas/the-amazing-spider-man-2-el-poder-de-electro-2014"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿La Gata Negra es buena o mala?",
+    "a": "Las dos cosas: es una ladrona, pero muchas veces ha ayudado a Spider-Man y a otros héroes."
+   },
+   {
+    "q": "¿Qué poderes tiene la Gata Negra?",
+    "a": "Es una acróbata y ladrona excepcional. En algunas etapas ha tenido el poder de provocar mala suerte a su alrededor."
+   },
+   {
+    "q": "¿La Gata Negra fue novia de Spider-Man?",
+    "a": "Sí, durante los años 80, aunque a ella le interesaba más el héroe que Peter Parker."
+   }
+  ]
+ },
+ "kingpin-wilson-fisk-alt": {
+  "nombre": "Kingpin",
+  "secciones": [
+   {
+    "titulo": "Origen: el rey del crimen",
+    "html": "<p>Wilson Fisk creció en la pobreza y se abrió paso en el hampa de Nueva York a base de fuerza, inteligencia y paciencia, hasta controlar todo el crimen organizado de la ciudad. Debutó en <em>The Amazing Spider-Man</em> #50 (1967), de Stan Lee y John Romita Sr., el famoso número en el que Peter tira su traje a la basura. En público se presenta como un respetable hombre de negocios.</p>"
+   },
+   {
+    "titulo": "Enemigo de Daredevil",
+    "html": "<p>Aunque nació como villano de Spider-Man, Frank Miller lo llevó en 1981 a las páginas de <em>Daredevil</em>, donde se convirtió en el gran enemigo de Matt Murdock. En <em>Born Again</em> (1986), de Miller y David Mazzucchelli, Fisk descubre la identidad de Daredevil y destruye su vida pieza a pieza: una de las mejores historias de Marvel. Su gran debilidad es su esposa, Vanessa.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>No tiene superpoderes, pero no le hacen falta: su corpulencia es casi todo músculo, domina la lucha (sumo incluido) y es capaz de plantar cara a Spider-Man cuerpo a cuerpo. Su verdadera arma es la mente: siempre va diez pasos por delante. En los cómics llegó incluso a ser alcalde de Nueva York.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Daredevil (película)",
+    "anio": 2003,
+    "actor": "Michael Clarke Duncan"
+   },
+   {
+    "titulo": "Daredevil (serie)",
+    "anio": 2015,
+    "actor": "Vincent D'Onofrio"
+   },
+   {
+    "titulo": "Spider-Man: Un nuevo universo",
+    "anio": 2018,
+    "actor": "Voz original: Liev Schreiber",
+    "enlace": "/peliculas/spider-man-un-nuevo-universo-2018"
+   },
+   {
+    "titulo": "Ojo de Halcón (serie)",
+    "anio": 2021,
+    "actor": "Vincent D'Onofrio"
+   },
+   {
+    "titulo": "Echo (serie)",
+    "anio": 2024,
+    "actor": "Vincent D'Onofrio"
+   },
+   {
+    "titulo": "Daredevil: Born Again (serie)",
+    "anio": 2025,
+    "actor": "Vincent D'Onofrio"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Kingpin es enemigo de Spider-Man o de Daredevil?",
+    "a": "De los dos: nació como villano de Spider-Man en 1967, pero desde 1981 es sobre todo el gran enemigo de Daredevil."
+   },
+   {
+    "q": "¿Kingpin tiene superpoderes?",
+    "a": "No. Es un luchador muy fuerte y un estratega brillante, pero sin poderes."
+   },
+   {
+    "q": "¿Quién interpreta a Kingpin?",
+    "a": "Vincent D'Onofrio en las series de Marvel. En la película de Daredevil (2003) fue Michael Clarke Duncan, y en <em>Un nuevo universo</em> le puso voz Liev Schreiber."
+   }
+  ]
+ },
+ "punisher-frank-castle-alt": {
+  "nombre": "El Punisher",
+  "secciones": [
+   {
+    "titulo": "Origen: una guerra sin final",
+    "html": "<p>Frank Castle era un marine condecorado. Durante un picnic en Central Park, su familia presenció una ejecución de la mafia y fue asesinada para no dejar testigos; solo él sobrevivió. Desde entonces, como el <strong>Punisher</strong>, libra una guerra contra el crimen sin reglas: no detiene a los criminales, los mata. La calavera de su pecho es su seña de identidad.</p>"
+   },
+   {
+    "titulo": "Debut contra Spider-Man",
+    "html": "<p>El Punisher apareció por primera vez en <em>The Amazing Spider-Man</em> #129 (1974), de Gerry Conway, John Romita Sr. y Ross Andru, como un justiciero engañado por el Chacal para que acabara con Spider-Man, en el mismo número en el que debutó el propio Chacal. Desde entonces, la relación entre los dos es tensa: luchan contra los mismos criminales, pero Spider-Man nunca ha aceptado sus métodos.</p>"
+   },
+   {
+    "titulo": "De secundario a icono",
+    "html": "<p>Su primera serie limitada en solitario llegó en 1986, de Steven Grant y Mike Zeck, y a partir de ahí se convirtió en uno de los antihéroes más populares de Marvel. Las etapas de Garth Ennis, desde 2000, son las más celebradas. No tiene superpoderes: su arma es su entrenamiento militar, su arsenal y una determinación que no conoce límites.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "The Punisher",
+    "anio": 1989,
+    "actor": "Dolph Lundgren"
+   },
+   {
+    "titulo": "The Punisher",
+    "anio": 2004,
+    "actor": "Thomas Jane"
+   },
+   {
+    "titulo": "Punisher: War Zone",
+    "anio": 2008,
+    "actor": "Ray Stevenson"
+   },
+   {
+    "titulo": "Daredevil (serie, 2.ª temporada)",
+    "anio": 2016,
+    "actor": "Jon Bernthal"
+   },
+   {
+    "titulo": "The Punisher (serie)",
+    "anio": 2017,
+    "actor": "Jon Bernthal"
+   },
+   {
+    "titulo": "Daredevil: Born Again (serie)",
+    "anio": 2025,
+    "actor": "Jon Bernthal"
+   },
+   {
+    "titulo": "Spider-Man: Brand New Day",
+    "anio": 2026,
+    "actor": "Jon Bernthal",
+    "enlace": "/peliculas/spider-man-brand-new-day-2026"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿El Punisher es un villano de Spider-Man?",
+    "a": "Debutó como enemigo de Spider-Man en 1974, engañado por el Chacal, pero es un antihéroe: lucha contra el crimen, aunque con métodos que Spider-Man rechaza."
+   },
+   {
+    "q": "¿Por qué se convirtió Frank Castle en el Punisher?",
+    "a": "Su familia fue asesinada por la mafia en Central Park tras presenciar una ejecución."
+   },
+   {
+    "q": "¿Sale el Punisher en Brand New Day?",
+    "a": "Sí, interpretado por Jon Bernthal, que lleva interpretándolo desde 2016."
+   }
+  ]
+ },
+ "aunt-may-parker-alt": {
+  "nombre": "La tía May",
+  "secciones": [
+   {
+    "titulo": "La mujer que crió a Spider-Man",
+    "html": "<p>May Parker y su marido, Ben, criaron a su sobrino Peter en Queens después de que sus padres murieran. Apareció en <em>Amazing Fantasy</em> #15 (1962), el mismo cómic del debut de Spider-Man, creada por Stan Lee y Steve Ditko. Tras el asesinato del tío Ben, May se convirtió en la única familia de Peter y en la voz de su conciencia.</p>"
+   },
+   {
+    "titulo": "El secreto de Peter",
+    "html": "<p>Durante décadas, la tía May fue una anciana frágil que no sabía nada de la doble vida de su sobrino, y que incluso desconfiaba de Spider-Man. Eso cambió en 2002, en <em>The Amazing Spider-Man</em> vol. 2 #38, cuando por fin tuvo una larga conversación con Peter sobre su secreto. Desde entonces es una aliada que conoce la verdad.</p>"
+   },
+   {
+    "titulo": "F.E.A.S.T. y una nueva vida",
+    "html": "<p>Con los años, May ha demostrado ser mucho más fuerte de lo que parecía: trabajó en el albergue F.E.A.S.T. ayudando a personas sin hogar, junto a Martin Li, y se casó con Jay Jameson, el padre de J. Jonah Jameson. Su vida en peligro fue el motivo del pacto de Peter y Mary Jane con Mefisto en <em>Un día más</em> (2007).</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Spider-Man",
+    "anio": 2002,
+    "actor": "Rosemary Harris",
+    "enlace": "/peliculas/spider-man-2002"
+   },
+   {
+    "titulo": "The Amazing Spider-Man",
+    "anio": 2012,
+    "actor": "Sally Field",
+    "enlace": "/peliculas/the-amazing-spider-man-2012"
+   },
+   {
+    "titulo": "Spider-Man: Homecoming",
+    "anio": 2017,
+    "actor": "Marisa Tomei",
+    "enlace": "/peliculas/spider-man-homecoming-2017"
+   },
+   {
+    "titulo": "Spider-Man: Un nuevo universo",
+    "anio": 2018,
+    "actor": "Voz original: Lily Tomlin",
+    "enlace": "/peliculas/spider-man-un-nuevo-universo-2018"
+   },
+   {
+    "titulo": "Spider-Man: No Way Home",
+    "anio": 2021,
+    "actor": "Marisa Tomei",
+    "enlace": "/peliculas/spider-man-no-way-home-2021"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿La tía May sabe que Peter es Spider-Man?",
+    "a": "En los cómics lo descubrió en 2002, en <em>The Amazing Spider-Man</em> vol. 2 #38."
+   },
+   {
+    "q": "¿Qué es F.E.A.S.T.?",
+    "a": "Un albergue para personas sin hogar donde trabaja la tía May, dirigido por Martin Li, que en secreto es Mister Negativo."
+   },
+   {
+    "q": "¿Qué actrices han interpretado a la tía May?",
+    "a": "Rosemary Harris, Sally Field y Marisa Tomei en imagen real, y Lily Tomlin puso su voz en <em>Un nuevo universo</em>."
+   }
+  ]
+ },
+ "j-jonah-jameson-alt": {
+  "nombre": "J. Jonah Jameson",
+  "secciones": [
+   {
+    "titulo": "El director del Daily Bugle",
+    "html": "<p>J. Jonah Jameson apareció en el primer número de <em>The Amazing Spider-Man</em> (1963), de Stan Lee y Steve Ditko, y desde entonces dirige el <strong>Daily Bugle</strong> con mal carácter y un objetivo fijo: demostrar que Spider-Man es una amenaza. La gran ironía es que le compra las fotos del héroe a Peter Parker, que se las hace a sí mismo.</p>"
+   },
+   {
+    "titulo": "Más allá del villano gruñón",
+    "html": "<p>Su obsesión le ha llevado a financiar a villanos para acabar con Spider-Man, como el Escorpión, creado en 1965 con un experimento pagado por Jameson. Pero también es un periodista íntegro que ha defendido los derechos civiles y la libertad de prensa. Es el padre de John Jameson, el astronauta que se convirtió en el Hombre Lobo, y llegó a ser alcalde de Nueva York.</p>"
+   },
+   {
+    "titulo": "J. K. Simmons",
+    "html": "<p>En el cine, J. K. Simmons lo clavó en la trilogía de Sam Raimi (2002-2007), y su versión gustó tanto que Marvel lo recuperó para el MCU en <em>Lejos de casa</em> (2019), ahora como presentador de un canal de noticias sensacionalista. Es uno de los casos más claros de actor y personaje convertidos en uno solo.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Spider-Man",
+    "anio": 2002,
+    "actor": "J. K. Simmons",
+    "enlace": "/peliculas/spider-man-2002"
+   },
+   {
+    "titulo": "Spider-Man 2",
+    "anio": 2004,
+    "actor": "J. K. Simmons",
+    "enlace": "/peliculas/spider-man-2-2004"
+   },
+   {
+    "titulo": "Spider-Man 3",
+    "anio": 2007,
+    "actor": "J. K. Simmons",
+    "enlace": "/peliculas/spider-man-3-2007"
+   },
+   {
+    "titulo": "Spider-Man: Lejos de casa",
+    "anio": 2019,
+    "actor": "J. K. Simmons",
+    "enlace": "/peliculas/spider-man-lejos-de-casa-2019"
+   },
+   {
+    "titulo": "Spider-Man: No Way Home",
+    "anio": 2021,
+    "actor": "J. K. Simmons",
+    "enlace": "/peliculas/spider-man-no-way-home-2021"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Por qué Jameson odia a Spider-Man?",
+    "a": "Le considera un justiciero peligroso que actúa al margen de la ley, y en parte le tiene envidia por ser admirado."
+   },
+   {
+    "q": "¿Quién interpreta a J. Jonah Jameson?",
+    "a": "J. K. Simmons, tanto en la trilogía de Sam Raimi como en el MCU."
+   },
+   {
+    "q": "¿Jameson sabe que Peter es Spider-Man?",
+    "a": "En los cómics lo ha descubierto en distintas etapas, y en el MCU fue él quien difundió la revelación de Mysterio."
+   }
+  ]
+ },
+ "shocker-herman-schultz-alt": {
+  "nombre": "Shocker",
+  "secciones": [
+   {
+    "titulo": "Origen: el ladrón de las vibraciones",
+    "html": "<p>Herman Schultz era un ladrón con un talento especial para abrir cajas fuertes. En la cárcel diseñó unos guanteletes que lanzan ráfagas de aire comprimido y vibraciones capaces de derribar paredes, y un traje acolchado que le protege de su propio poder. Debutó en <em>The Amazing Spider-Man</em> #46 (1967), de Stan Lee y John Romita Sr.</p>"
+   },
+   {
+    "titulo": "Los Superiores Enemigos de Spider-Man",
+    "html": "<p>Durante décadas fue un villano de segunda fila, más interesado en el dinero que en vencer a Spider-Man. En <em>The Superior Foes of Spider-Man</em> (2013), de Nick Spencer y Steve Lieber, se convirtió en uno de los favoritos de los fans: un criminal profesional, cauto y con un lado humano, dentro de una banda de villanos muy mal avenida.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>No tiene superpoderes: todo está en sus guanteletes, que le permiten golpear a distancia, romper muros y desviar ataques, y en su traje, que absorbe las vibraciones.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Spider-Man: Homecoming",
+    "anio": 2017,
+    "actor": "Logan Marshall-Green (Jackson Brice) y Bokeem Woodbine (Herman Schultz)",
+    "enlace": "/peliculas/spider-man-homecoming-2017"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Qué poderes tiene Shocker?",
+    "a": "Ninguno: sus guanteletes lanzan ráfagas de vibraciones y su traje acolchado le protege."
+   },
+   {
+    "q": "¿Cuántos Shocker hay en Homecoming?",
+    "a": "Dos: Jackson Brice, interpretado por Logan Marshall-Green, y después Herman Schultz, interpretado por Bokeem Woodbine."
+   },
+   {
+    "q": "¿Cuándo apareció Shocker?",
+    "a": "En <em>The Amazing Spider-Man</em> #46 (1967)."
+   }
+  ]
+ },
+ "chameleon-dmitri-smerdyakov-alt": {
+  "nombre": "El Camaleón",
+  "secciones": [
+   {
+    "titulo": "El primer supervillano de Spider-Man",
+    "html": "<p>Spider-Man se estrenó en <em>Amazing Fantasy</em> #15 contra un ladrón corriente, pero su primer supervillano llegó en <em>The Amazing Spider-Man</em> #1 (1963): el <strong>Camaleón</strong>, un espía capaz de hacerse pasar por cualquiera, que intentó incriminar a Spider-Man en un robo. Lo crearon Stan Lee y Steve Ditko.</p>"
+   },
+   {
+    "titulo": "El hermanastro de Kraven",
+    "html": "<p>Dmitri Smerdyakov es hermanastro de Kraven el Cazador, al que admira y obedece. Fue precisamente él quien llevó a Kraven a Nueva York para enfrentarse a Spider-Man, en 1964. Con los años, su obsesión por el trepamuros le ha llevado a suplantar a personas muy cercanas a Peter Parker, y en su versión más perturbadora ha perdido su propia identidad de tanto imitar a otros.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>No tiene poderes: es un maestro del disfraz y de la imitación de voces, que con el tiempo ha sumado máscaras de alta tecnología y, en algunas versiones, un suero que le permite cambiar su rostro.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Kraven el Cazador",
+    "anio": 2024,
+    "actor": "Fred Hechinger",
+    "enlace": "/peliculas/kraven-the-hunter-2024"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién fue el primer villano de Spider-Man?",
+    "a": "El primer supervillano fue el Camaleón, en <em>The Amazing Spider-Man</em> #1 (1963)."
+   },
+   {
+    "q": "¿El Camaleón es hermano de Kraven?",
+    "a": "Es su hermanastro."
+   },
+   {
+    "q": "¿Sale el Camaleón en las películas?",
+    "a": "Sí, en <em>Kraven el Cazador</em> (2024), interpretado por Fred Hechinger."
+   }
+  ]
+ },
+ "mister-negative-martin-li-alt": {
+  "nombre": "Mister Negativo",
+  "secciones": [
+   {
+    "titulo": "Dos hombres en uno",
+    "html": "<p>Martin Li es un filántropo respetado en el barrio chino de Nueva York, fundador del albergue F.E.A.S.T., donde trabaja la tía May. Pero un experimento ilegal le dejó dos personalidades: la otra es <strong>Mister Negativo</strong>, un jefe criminal que lidera la banda de los Demonios Interiores. Debutó en el cómic del Día del Cómic Gratis de 2007, de Dan Slott y Phil Jimenez, y fue uno de los villanos nuevos de la etapa <em>Brand New Day</em> de Spider-Man.</p>"
+   },
+   {
+    "titulo": "Su gran salto: Marvel's Spider-Man",
+    "html": "<p>Durante años fue un villano poco conocido fuera de los cómics, hasta que Insomniac lo convirtió en el gran antagonista de la primera parte de <a href=\"/videojuegos/marvel-s-spider-man-2018\"><em>Marvel's Spider-Man</em></a> (2018). Su historia, la de un hombre bueno atrapado por su lado oscuro y vinculado a Norman Osborn, lo dio a conocer a millones de jugadores.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>Como Mister Negativo, maneja una energía oscura, ve el mundo en negativo y su toque puede corromper a las personas, volviéndolas leales a él. Como Martin Li, puede usar un toque «luminoso» que sana.</p>"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién es Mister Negativo?",
+    "a": "Martin Li, un filántropo de Chinatown con una segunda personalidad criminal y poderes de energía oscura."
+   },
+   {
+    "q": "¿Dónde aparece Mister Negativo?",
+    "a": "En los cómics desde 2007, y como gran villano de Marvel's Spider-Man (2018). También aparece en Marvel's Spider-Man 2."
+   },
+   {
+    "q": "¿Qué relación tiene con la tía May?",
+    "a": "La tía May trabaja en F.E.A.S.T., el albergue que dirige Martin Li."
+   }
+  ]
+ },
+ "morbius-michael-morbius-alt": {
+  "nombre": "Morbius",
+  "secciones": [
+   {
+    "titulo": "Origen: el vampiro viviente",
+    "html": "<p>Michael Morbius era un brillante bioquímico con una rara enfermedad de la sangre que le estaba matando. Intentó curarse con un tratamiento experimental a partir de murciélagos vampiro y descargas eléctricas, y el remedio le convirtió en un <strong>vampiro viviente</strong>: no es un muerto, pero necesita beber sangre para sobrevivir.</p>"
+   },
+   {
+    "titulo": "Un debut muy especial",
+    "html": "<p>Debutó en <em>The Amazing Spider-Man</em> #101 (1971), de Roy Thomas y Gil Kane, en plena historia en la que a Peter le salían cuatro brazos extra. Morbius fue posible porque ese año el código de censura de los cómics relajó su prohibición de los vampiros. Con los años se convirtió en un antihéroe atormentado, con series propias y un lugar entre los Hijos de la Medianoche.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>Fuerza, velocidad y reflejos sobrehumanos, capacidad de planear, regeneración y sentidos agudizados. Su sed de sangre es su gran debilidad, y su gran tragedia.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Morbius",
+    "anio": 2022,
+    "actor": "Jared Leto",
+    "enlace": "/peliculas/morbius-2022"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Morbius es un vampiro?",
+    "a": "Es un «vampiro viviente»: un humano transformado por la ciencia, no un no muerto."
+   },
+   {
+    "q": "¿Morbius es un villano de Spider-Man?",
+    "a": "Debutó como enemigo de Spider-Man en 1971, pero se convirtió en un antihéroe."
+   },
+   {
+    "q": "¿Quién interpreta a Morbius?",
+    "a": "Jared Leto, en la película <em>Morbius</em> (2022)."
+   }
+  ]
+ },
+ "spider-woman-jessica-drew-alt": {
+  "nombre": "Jessica Drew",
+  "secciones": [
+   {
+    "titulo": "Origen: la primera Spider-Woman",
+    "html": "<p>De niña, Jessica Drew estaba muy enferma, y su padre, un científico, la salvó con un suero experimental basado en arañas. Creció lejos de su familia y fue manipulada por HYDRA, que la convirtió en una de sus agentes, hasta que rompió con la organización. Debutó en <em>Marvel Spotlight</em> #32 (1977), creada por Archie Goodwin y Marie Severin.</p>"
+   },
+   {
+    "titulo": "Un nombre para no perderlo",
+    "html": "<p>Spider-Woman nació en parte por una razón comercial: Marvel quería registrar el nombre antes de que otra editorial lo usara. Aun así, Jessica tuvo serie propia desde 1978 y se convirtió en una heroína muy querida, miembro de los Vengadores y agente de S.H.I.E.L.D. En <em>Invasión Secreta</em> (2008) se descubrió que la reina skrull Veranke había estado haciéndose pasar por ella.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>Lanza descargas de «veneno» bioeléctrico, tiene fuerza y resistencia sobrehumanas, trepa por las paredes, planea y puede emitir feromonas. Además es una espía y una investigadora excelente.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Spider-Man: Cruzando el Multiverso",
+    "anio": 2023,
+    "actor": "Voz original: Issa Rae (una Jessica Drew de otro universo)",
+    "enlace": "/peliculas/spider-man-cruzando-el-multiverso-2023"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Spider-Woman es la versión femenina de Spider-Man?",
+    "a": "No: Jessica Drew no tiene relación con Peter Parker. Su origen y sus poderes son distintos."
+   },
+   {
+    "q": "¿Cuántas Spider-Woman ha habido?",
+    "a": "Las tres principales son Jessica Drew, Julia Carpenter y Mattie Franklin."
+   },
+   {
+    "q": "¿Sale Spider-Woman en las películas?",
+    "a": "Una Jessica Drew de otro universo aparece en <em>Cruzando el Multiverso</em> (2023), con la voz de Issa Rae."
+   }
+  ]
+ },
+ "spider-punk-hobie-brown-alt": {
+  "nombre": "Spider-Punk",
+  "secciones": [
+   {
+    "titulo": "Origen: el Spider-Man de la Tierra-138",
+    "html": "<p>En la Tierra-138, Hobie Brown recibió sus poderes de una araña contaminada por residuos tóxicos y se convirtió en <strong>Spider-Punk</strong>, el líder de una rebelión contra el presidente Norman Osborn. Apareció durante la saga <em>Spider-Verse</em>, en <em>The Amazing Spider-Man</em> vol. 3 #10 (2015), creado por Dan Slott y Olivier Coipel.</p>"
+   },
+   {
+    "titulo": "Guitarra, chaqueta y anarquía",
+    "html": "<p>Spider-Punk pelea con su guitarra eléctrica, viste una chaqueta llena de pinchos y no soporta la autoridad. Tras <em>Spider-Verse</em> se convirtió en uno de los favoritos del multiverso arácnido, y en 2022 tuvo su propia serie limitada. Su gran salto llegó con <em>Cruzando el Multiverso</em> (2023), donde le puso voz Daniel Kaluuya.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>Fuerza, velocidad y agilidad arácnidas, sentido arácnido y adherencia a las paredes. Su guitarra es a la vez instrumento y arma.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Spider-Man: Cruzando el Multiverso",
+    "anio": 2023,
+    "actor": "Voz original: Daniel Kaluuya",
+    "enlace": "/peliculas/spider-man-cruzando-el-multiverso-2023"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién es Spider-Punk?",
+    "a": "Hobie Brown, el Spider-Man punk de la Tierra-138, que lucha contra el presidente Norman Osborn."
+   },
+   {
+    "q": "¿Spider-Punk y el Merodeador son la misma persona?",
+    "a": "En la Tierra-616, Hobie Brown es el Merodeador original; Spider-Punk es una versión de Hobie de otro universo."
+   },
+   {
+    "q": "¿Quién pone voz a Spider-Punk?",
+    "a": "Daniel Kaluuya, en la versión original de <em>Cruzando el Multiverso</em>."
+   }
+  ]
+ },
+ "sp-dr-peni-parker-alt": {
+  "nombre": "Peni Parker",
+  "secciones": [
+   {
+    "titulo": "Origen: la piloto del SP//dr",
+    "html": "<p>En la Tierra-14512, Peni Parker es la única persona que puede pilotar el <strong>SP//dr</strong>, un robot gigante diseñado por su padre que funciona gracias a un vínculo con una araña radiactiva. Tras la muerte de su padre, Peni heredó la responsabilidad de pilotarlo siendo apenas una niña. Debutó en <em>Edge of Spider-Verse</em> #5 (2014), creada por Gerard Way y Jake Wyatt.</p>"
+   },
+   {
+    "titulo": "Un homenaje al anime",
+    "html": "<p>Peni es un homenaje a los animes de robots gigantes, y su mezcla de ternura y acción la convirtió en una de las heroínas más originales del multiverso arácnido. Luchó junto a los demás Spider-Man en <em>Spider-Verse</em> (2014) y en <em>Spider-Geddon</em> (2018), y ese mismo año dio el salto al cine en <em>Spider-Man: Un nuevo universo</em>, con la voz de Kimiko Glenn.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>Peni no tiene superpoderes propios: su fuerza está en el SP//dr, con el que comparte un vínculo psíquico a través de la araña, y en su talento para la ingeniería.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Spider-Man: Un nuevo universo",
+    "anio": 2018,
+    "actor": "Voz original: Kimiko Glenn",
+    "enlace": "/peliculas/spider-man-un-nuevo-universo-2018"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién es Peni Parker?",
+    "a": "Una niña de la Tierra-14512 que pilota el SP//dr, un robot unido a una araña radiactiva."
+   },
+   {
+    "q": "¿Qué significa SP//dr?",
+    "a": "Es el nombre del robot que pilota Peni, una forma estilizada de escribir «spider» (araña)."
+   },
+   {
+    "q": "¿Sale Peni Parker en las películas?",
+    "a": "Sí, en <em>Spider-Man: Un nuevo universo</em> (2018), con la voz de Kimiko Glenn."
+   }
+  ]
+ },
+ "spider-girl-anya-corazon-alt": {
+  "nombre": "Anya Corazón",
+  "secciones": [
+   {
+    "titulo": "Origen: Araña",
+    "html": "<p>Anya Corazón es una chica de Brooklyn, de familia mexicana y puertorriqueña. Quedó malherida en medio de una guerra entre dos sociedades secretas, la de la Araña y la de la Avispa, y un chamán de la Sociedad de la Araña le salvó la vida con un ritual místico que le dio poderes. Debutó como <strong>Araña</strong> en <em>Amazing Fantasy</em> vol. 2 #1 (2004), creada por Fiona Avery y Mark Brooks.</p>"
+   },
+   {
+    "titulo": "De Araña a Spider-Girl",
+    "html": "<p>Al principio, sus poderes incluían un exoesqueleto místico que podía generar a voluntad. Con los años cambió de traje y de nombre, y en 2010 protagonizó su propia serie como <strong>Spider-Girl</strong>. Ha formado parte de los Web-Warriors y luchó en <em>Spider-Verse</em> junto a los demás héroes arácnidos.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>Fuerza y agilidad sobrehumanas, sentido arácnido y la capacidad de trepar por las paredes. Además, es una gran luchadora y una investigadora tenaz.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Madame Web",
+    "anio": 2024,
+    "actor": "Isabela Merced",
+    "enlace": "/peliculas/madame-web-2024"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién es Araña?",
+    "a": "Anya Corazón, una joven de Brooklyn que recibió sus poderes de la Sociedad de la Araña. Más tarde se llamó Spider-Girl."
+   },
+   {
+    "q": "¿Cuántas Spider-Girl hay?",
+    "a": "Las más conocidas son Mayday Parker, la hija de Peter en un universo alternativo, y Anya Corazón."
+   },
+   {
+    "q": "¿Sale Anya Corazón en el cine?",
+    "a": "Sí, en <em>Madame Web</em> (2024), interpretada por Isabela Merced."
+   }
+  ]
+ },
+ "prowler-aaron-davis-alt": {
+  "nombre": "Aaron Davis",
+  "secciones": [
+   {
+    "titulo": "Origen: el tío de Miles",
+    "html": "<p>Aaron Davis es el hermano del padre de Miles Morales y un ladrón profesional. En el universo Ultimate, la araña que picó a Miles llegó a Brooklyn escondida en la bolsa de Aaron, después de que este robara en un laboratorio de Oscorp. Debutó en <em>Ultimate Comics Spider-Man</em> #1 (2011), creado por Brian Michael Bendis y Sara Pichelli.</p>"
+   },
+   {
+    "titulo": "El Merodeador",
+    "html": "<p>Aaron descubrió que su sobrino era el nuevo Spider-Man e intentó utilizarlo para sus negocios criminales, con un equipo robado al Chapucero. Su enfrentamiento con Miles terminó en tragedia: murió por la explosión de su propio armamento. En <em>Spider-Man: Un nuevo universo</em> (2018), donde es el <strong>Merodeador</strong>, su historia con Miles es uno de los momentos más emocionantes de la película.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>No tiene poderes: es un ladrón muy hábil, buen luchador y, como el Merodeador, usa garras y otras armas tecnológicas.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Spider-Man: Homecoming",
+    "anio": 2017,
+    "actor": "Donald Glover",
+    "enlace": "/peliculas/spider-man-homecoming-2017"
+   },
+   {
+    "titulo": "Spider-Man: Un nuevo universo",
+    "anio": 2018,
+    "actor": "Voz original: Mahershala Ali",
+    "enlace": "/peliculas/spider-man-un-nuevo-universo-2018"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién es el Merodeador en Un nuevo universo?",
+    "a": "Aaron Davis, el tío de Miles Morales."
+   },
+   {
+    "q": "¿Aaron Davis sale en el MCU?",
+    "a": "Sí, en <em>Spider-Man: Homecoming</em> (2017), interpretado por Donald Glover, en una escena en la que menciona a su sobrino."
+   },
+   {
+    "q": "¿Qué relación tiene con la picadura de Miles?",
+    "a": "En los cómics Ultimate, la araña que picó a Miles llegó escondida en la bolsa de Aaron tras un robo en Oscorp."
+   }
+  ]
  }
 }
