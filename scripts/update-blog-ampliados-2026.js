@@ -1304,7 +1304,110 @@ ${cvFigure('scale_medium/11112/111123579/8588070-gwen.jpg', 'Gwen Stacy en una i
 `,
 };
 
-const POSTS = [MEJORES_JUEGOS, MEJORES_VILLANOS, SPIDERMAN_PS4, SPIDERMAN_2_PS5, NO_WAY_HOME, UN_NUEVO_UNIVERSO, CRUZANDO_EL_MULTIVERSO, SPIDER_MAN_2, MILES_MORALES_JUEGO, AMAZING_2012, ULTIMA_CACERIA, SUPERIOR, ULTIMATE_BENDIS, SIMBIONTE, PETER_VS_MILES, GUIA_COMICS, SERIE_1994, SPECTACULAR, JAMESON, GWEN_STACY_LEGADO];
+const WEB_OF_SHADOWS = {
+  slug: 'spider-man-web-of-shadows-analisis-juego-olvidado',
+  title: 'Spider-Man: Web of Shadows, análisis: el juego olvidado que merece otra oportunidad',
+  subtitle: 'Una invasión de simbiontes, el traje rojo contra el traje negro, decisiones morales y aliados como Lobezno: el Spider-Man más oscuro de su época',
+  excerpt:
+    'Spider-Man: Web of Shadows (2008) pasó desapercibido, pero hoy muchos fans lo consideran uno de los mejores juegos del personaje. Analizamos su historia, su combate, sus decisiones y por qué merece la pena.',
+  readTime: '8 min',
+  seoTitle: 'Spider-Man: Web of Shadows (2008): análisis del juego',
+  seoDescription:
+    'Análisis de Spider-Man: Web of Shadows (2008): la invasión de simbiontes, el cambio entre traje rojo y negro, las decisiones morales, los aliados y por qué es un juego de culto.',
+  keywords: ['Spider-Man Web of Shadows', 'Web of Shadows análisis', 'Spider-Man El Reino de las Sombras', 'juego simbionte Spider-Man', 'traje negro juego', 'Shaba Games'],
+  tags: ['análisis', 'videojuegos', 'simbionte', 'retro', 'Venom', 'Xbox 360'],
+  content: `
+<p>En 2008, entre el final de la trilogía de Sam Raimi y la llegada de los juegos de Beenox, Shaba Games lanzó ${juego('spider-man-web-of-shadows-2008', 'Spider-Man: Web of Shadows')}, publicado en España como <em>Spider-Man: El Reino de las Sombras</em>. Pasó bastante desapercibido: no era el juego de ninguna película, la crítica fue tibia y la promoción, escasa. Con el tiempo, sin embargo, se ha ganado una legión de fans que lo consideran uno de los mejores del personaje. Tienen razón.</p>
+
+<h2>Ficha rápida</h2>
+<table>
+  <tbody>
+    <tr><td><strong>Estudio</strong></td><td>Shaba Games (con versiones de otros estudios para PS2, PSP y DS)</td></tr>
+    <tr><td><strong>Lanzamiento</strong></td><td>2008</td></tr>
+    <tr><td><strong>Plataformas</strong></td><td>PS3, Xbox 360, PC y Wii, entre otras</td></tr>
+    <tr><td><strong>Villanos</strong></td><td>Venom y una invasión de simbiontes</td></tr>
+  </tbody>
+</table>
+
+<h2>Nueva York invadida por simbiontes</h2>
+${figure('e01/e01e3fb1c4a68c704cdaccd67e35c16e', 'Spider-Man con el traje negro entre tentáculos de simbionte', 'Con el traje negro, Spider-Man pelea con tentáculos de simbionte: más fuerza, pero también más tentación.')}
+<p>La premisa es de pesadilla: el simbionte de ${pj('venom-eddie-brock', 'Venom')} se ha reproducido y ha infectado a miles de neoyorquinos. La ciudad se llena de materia negra y criaturas, los héroes se ven desbordados y Spider-Man tiene que decidir cómo responder. El tono es mucho más oscuro que el de cualquier otro juego del personaje de la época.</p>
+
+<h2>Traje rojo contra traje negro</h2>
+${figure('61f/61f2407952808976856e18ca5959b1ba', 'Spider-Man con el traje negro lanzando tentáculos de simbionte', 'En Web of Shadows se puede cambiar en cualquier momento entre el traje rojo y el traje negro, mucho más agresivo.')}
+<p>La gran idea del juego es que se puede cambiar en cualquier momento entre el traje rojo, ágil y acrobático, y el traje negro, brutal y lleno de tentáculos. El combate, muy aéreo, permite encadenar golpes en el aire y saltar de un enemigo a otro, algo muy espectacular para su época. Y el balanceo por la ciudad es fluido y rápido.</p>
+
+<h2>Decisiones que importan</h2>
+${figure('0ef/0ef9b0308884797886a2734e5c982053', 'Combate aéreo sobre Nueva York en Spider-Man: Web of Shadows', 'Combate aéreo en Web of Shadows. El juego integraba a Lobezno, Black Cat y Luke Cage como personajes secundarios activos que reaccionaban a tus decisiones — un nivel de dinamismo narrativo que pocos juegos del género han replicado.')}
+<p>Lo que de verdad distingue al juego es su sistema moral. A lo largo de la historia, Spider-Man elige entre el camino del héroe y el del simbionte: salvar a un civil o perseguir a un villano, aliarse con héroes como Lobezno o Luke Cage, o con villanos como Electro o el Buitre. Cada decisión mueve un medidor que cambia cómo te tratan los demás personajes y qué final ves. Rejugarlo por el «lado oscuro» es casi otra experiencia.</p>
+
+<h2>Lo que ha envejecido peor</h2>
+<p>Las misiones secundarias se repiten mucho, la cámara se vuelve loca en los combates más caóticos y la historia tiene altibajos. Gráficamente se nota que es un juego de 2008. Pero su idea central sigue siendo única.</p>
+
+<h2>¿Por qué jugarlo hoy?</h2>
+<p>Porque es el Spider-Man más oscuro y moralmente complejo de su época, y porque se adelantó a muchas ideas que después hicieron grandes a otros juegos, como el traje simbionte de <a href="/blog/marvels-spider-man-2-ps5-analisis">Marvel's Spider-Man 2</a>. Ocupa el séptimo puesto en nuestro <a href="/blog/mejores-juegos-spider-man-ranking">ranking de los mejores juegos de Spider-Man</a>, y si te interesa el alienígena, tienes <a href="/blog/simbionte-historia-evolucion-venom">la historia del simbionte</a>.</p>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Quién desarrolló Web of Shadows?</h3>
+<p>Shaba Games, en el que fue su único juego de Spider-Man.</p>
+<h3>¿Web of Shadows tiene varios finales?</h3>
+<p>Sí: el final depende de las decisiones que tomes a lo largo del juego, entre el camino del héroe y el del simbionte.</p>
+<h3>¿Se puede jugar hoy?</h3>
+<p>No está a la venta en las tiendas digitales actuales, así que hace falta una copia física para PS3, Xbox 360, PC o Wii.</p>
+`,
+};
+
+const SERIE_MTV = {
+  slug: 'spider-man-new-animated-series-2003-mtv-analisis',
+  title: 'Spider-Man: The New Animated Series (2003): la serie de MTV que casi nadie recuerda',
+  subtitle: 'Animación por ordenador, Neil Patrick Harris como Peter Parker y una continuación de la película de Sam Raimi: la serie más diferente del trepamuros',
+  excerpt:
+    'En 2003, MTV estrenó una serie de Spider-Man por ordenador que continuaba la película de Sam Raimi. Duró solo 13 episodios. Te contamos qué la hacía especial y por qué no funcionó.',
+  readTime: '7 min',
+  image: tmdb('pDjUH96HaxLgjfHVxxtnnPpomzL'),
+  seoTitle: 'Spider-Man: The New Animated Series (2003): la serie de MTV',
+  seoDescription:
+    'Análisis de Spider-Man: The New Animated Series (MTV, 2003): la serie por ordenador que continuaba la película de Raimi, con Neil Patrick Harris, sus 13 episodios y por qué se canceló.',
+  keywords: ['Spider-Man The New Animated Series', 'serie Spider-Man MTV', 'Spider-Man 2003 serie', 'Neil Patrick Harris Spider-Man', 'Las increíbles aventuras de Spider-Man', 'serie animada Spider-Man CGI'],
+  tags: ['análisis', 'series', 'animación', 'MTV', 'CGI', 'Sam Raimi'],
+  content: `
+<p>En 2003, MTV estrenó ${serie('las-incre-bles-aventuras-de-spiderman', 'Spider-Man: The New Animated Series')}, una serie de Spider-Man animada por ordenador, con guiones pensados para un público más mayor y la voz de Neil Patrick Harris como Peter Parker. Duró una sola temporada de 13 episodios y casi nadie la recuerda. Es una pena, porque intentó algo que ninguna otra serie del personaje había hecho.</p>
+
+<h2>Ficha rápida</h2>
+<table>
+  <tbody>
+    <tr><td><strong>Emisión</strong></td><td>2003, en MTV</td></tr>
+    <tr><td><strong>Episodios</strong></td><td>13, en una temporada</td></tr>
+    <tr><td><strong>Animación</strong></td><td>Por ordenador, con estilo de dibujo (cel shading)</td></tr>
+    <tr><td><strong>Voces originales</strong></td><td>Neil Patrick Harris (Peter Parker), Lisa Loeb (Mary Jane), Ian Ziering (Harry Osborn), Michael Clarke Duncan (Kingpin)</td></tr>
+  </tbody>
+</table>
+
+<h2>La continuación de la película de Raimi</h2>
+${tmdbFigure('pDjUH96HaxLgjfHVxxtnnPpomzL', 'Spider-Man frente a un villano rodeado de electricidad', 'Spider-Man frente a un villano eléctrico en la serie de MTV, que apostaba por la acción nocturna y los colores intensos.')}
+<p>La serie se planteó como una continuación de ${peli('spider-man-2002', 'Spider-Man')} (2002): Peter está en la universidad, Harry sigue culpando a Spider-Man de la muerte de su padre y Mary Jane es parte de su vida, pero sin saber su secreto. La serie creó varios villanos nuevos y recuperó a algunos clásicos, con ${pj('kingpin-wilson-fisk', 'Kingpin')} como gran presencia, con la voz de Michael Clarke Duncan.</p>
+
+<h2>Una estética diferente</h2>
+${tmdbFigure('dcMhdAn3iXQMIE48AAo5WOFUXG7', 'Peter Parker en un laboratorio junto a un científico', 'Peter Parker en la universidad: la serie dedicaba tanto tiempo a su vida como a Spider-Man.')}
+<p>La animación por ordenador de 2003 no ha envejecido bien, seamos honestos, pero la dirección artística sí tiene personalidad: una Nueva York casi siempre nocturna, colores intensos y diseños estilizados. Era claramente una serie pensada para adolescentes y adultos jóvenes, no para niños, y se atrevía con relaciones sentimentales y situaciones más maduras que las de la serie de 1994.</p>
+
+<h2>Por qué no funcionó</h2>
+<p>MTV nunca terminó de saber qué hacer con ella. La emisión fue irregular, el público al que se dirigía no estaba claro y la animación por ordenador generó rechazo entre fans acostumbrados al dibujo tradicional. No hubo segunda temporada, y la serie quedó como una rareza.</p>
+
+<h2>¿Merece la pena?</h2>
+<p>Si te gustó la trilogía de Raimi y tienes curiosidad por una versión que intentó algo diferente, sí. No está al nivel de la <a href="/blog/spider-man-animated-series-1994-analisis">serie de 1994</a> ni de <a href="/blog/spectacular-spider-man-serie-analisis">The Spectacular Spider-Man</a>, pero tiene una personalidad propia y algunos episodios muy buenos. Puedes ver todas las series del personaje en nuestra sección de <a href="/series">series</a>.</p>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Cuántos episodios tiene la serie de Spider-Man de MTV?</h3>
+<p>13 episodios, en una sola temporada, emitidos en 2003.</p>
+<h3>¿Quién pone voz a Spider-Man en la serie de MTV?</h3>
+<p>Neil Patrick Harris, en la versión original.</p>
+<h3>¿La serie de MTV continúa la película de 2002?</h3>
+<p>Sí, se planteó como una continuación de la primera película de Sam Raimi.</p>
+`,
+};
+
+const POSTS = [MEJORES_JUEGOS, MEJORES_VILLANOS, SPIDERMAN_PS4, SPIDERMAN_2_PS5, NO_WAY_HOME, UN_NUEVO_UNIVERSO, CRUZANDO_EL_MULTIVERSO, SPIDER_MAN_2, MILES_MORALES_JUEGO, AMAZING_2012, ULTIMA_CACERIA, SUPERIOR, ULTIMATE_BENDIS, SIMBIONTE, PETER_VS_MILES, GUIA_COMICS, SERIE_1994, SPECTACULAR, JAMESON, GWEN_STACY_LEGADO, WEB_OF_SHADOWS, SERIE_MTV];
 
 (async () => {
   for (const { slug, ...data } of POSTS) {
