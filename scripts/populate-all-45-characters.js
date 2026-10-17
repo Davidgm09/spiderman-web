@@ -44,7 +44,7 @@ const allCharacters = [
     powers: ["Fuerza sobrehumana", "Velocidad sobrehumana", "Agilidad sobrehumana", "Sentido arácnido", "Adherencia a superficies", "Invisibilidad", "Descarga bioeléctrica"],
     abilities: ["Combatiente hábil", "Sigilo", "Bilingüe", "Artista"],
     affiliation: ["Vengadores", "Spider-Army", "Campeones"],
-    firstAppearance: "Ultimate Comics: Spider-Man #1 (2011)",
+    firstAppearance: "Ultimate Fallout #4 (2011)",
     creators: ["Brian Michael Bendis", "Sara Pichelli"],
     universe: "Marvel-616",
     category: "spider-verse",

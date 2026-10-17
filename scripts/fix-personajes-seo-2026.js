@@ -2,7 +2,7 @@
  * Títulos y descripciones para Google de los 45 personajes (seoTitle / seoDescription).
  * Empiezan por lo que la gente busca (nombre real y nombre de héroe, en español si lo tiene)
  * y la descripción dice quién es. Los que tienen ficha ampliada (data/personajes/fichas.json)
- * mencionan además sus películas.
+ * mencionan además sus películas. Al añadir una ficha nueva, actualizar aquí su título.
  * Volver a ejecutar tras `populate-all-45-characters.js`.
  *
  * Uso: node scripts/fix-personajes-seo-2026.js
@@ -22,9 +22,9 @@ const SEO = {
   'hulk-bruce-banner-alt': ['Bruce Banner (Hulk): historia, poderes y películas', 'Quién es Bruce Banner, Hulk: el científico expuesto a la radiación gamma, sus sagas, los actores que lo han interpretado y su papel en Brand New Day.'],
 
   // ── Spider-Man y familia arácnida ──────────────────────────────────────────
-  'spider-man-peter-parker-alt': ['Peter Parker (Spider-Man): historia, poderes y origen', 'Quién es Peter Parker, el Spider-Man original: su origen en Amazing Fantasy #15 (1962), sus poderes y sus creadores, Stan Lee y Steve Ditko.'],
-  'spider-man-miles-morales-alt': ['Miles Morales (Spider-Man): historia, poderes y origen', 'Quién es Miles Morales: el chico de Brooklyn que tomó el relevo de Spider-Man en 2011, sus poderes de invisibilidad y descarga, y su primera aparición.'],
-  'spider-gwen-gwen-stacy-alt': ['Spider-Gwen (Gwen Stacy): historia, poderes y origen', 'Quién es Spider-Gwen: la Gwen Stacy de la Tierra-65 a la que picó la araña en lugar de a Peter. Origen, poderes y su debut en Edge of Spider-Verse (2014).'],
+  'spider-man-peter-parker-alt': ['Peter Parker (Spider-Man): historia, poderes y películas', 'Quién es Peter Parker, Spider-Man: su origen en 1962, sus momentos clave en los cómics, sus poderes y los actores que lo han interpretado en el cine.'],
+  'spider-man-miles-morales-alt': ['Miles Morales (Spider-Man): historia, poderes y películas', 'Quién es Miles Morales: el Spider-Man de Brooklyn creado en 2011, sus poderes de invisibilidad y descarga, sus cómics y las películas del Spider-Verso.'],
+  'spider-gwen-gwen-stacy-alt': ['Spider-Gwen (Gwen Stacy): historia, poderes y películas', 'Quién es Spider-Gwen: la Gwen Stacy de la Tierra-65 a la que picó la araña, su origen en 2014, sus poderes y su papel en las películas del Spider-Verso.'],
   'spider-man-2099-miguel-ohara-alt': ["Miguel O'Hara (Spider-Man 2099): historia y poderes", "Quién es Miguel O'Hara, el Spider-Man 2099: el genetista de Alchemax del futuro, sus poderes únicos y su primera aparición en Spider-Man 2099 #1 (1992)."],
   'spider-man-noir-peter-parker-alt': ['Spider-Man Noir: historia, poderes y origen', 'Quién es Spider-Man Noir: el Peter Parker que lucha contra la mafia en la Gran Depresión. Origen, poderes y su debut en Spider-Man Noir #1 (2009).'],
   'spider-ham-peter-porker-alt': ['Spider-Ham (Peter Porker): historia y origen', 'Quién es Spider-Ham, Peter Porker: la araña mordida por una cerda irradiada en un universo de animales. Origen, poderes y primera aparición (1983).'],
@@ -39,8 +39,8 @@ const SEO = {
   'madame-web-cassandra-webb-alt': ['Madame Web (Cassandra Webb): historia y poderes', 'Quién es Madame Web, Cassandra Webb: la vidente ciega conectada a una máquina con forma de telaraña que guía a los héroes arácnidos. Debut en 1980.'],
 
   // ── Villanos ───────────────────────────────────────────────────────────────
-  'green-goblin-norman-osborn-alt': ['Norman Osborn (Duende Verde): historia y poderes', 'Quién es Norman Osborn, el Duende Verde: el gran enemigo de Spider-Man, sus poderes, sus crímenes más famosos y su primera aparición (1964).'],
-  'venom-eddie-brock-alt': ['Venom (Eddie Brock): historia, poderes y origen', 'Quién es Venom, Eddie Brock: el periodista que se unió al simbionte que Peter Parker rechazó. Origen, poderes y su debut completo en 1988.'],
+  'green-goblin-norman-osborn-alt': ['Norman Osborn (Duende Verde): historia, poderes y cine', 'Quién es Norman Osborn, el Duende Verde: el peor enemigo de Spider-Man, la muerte de Gwen Stacy, sus poderes y Willem Dafoe en el cine.'],
+  'venom-eddie-brock-alt': ['Venom (Eddie Brock): historia, poderes y películas', 'Quién es Venom: el simbionte que Peter Parker rechazó y Eddie Brock, su paso de villano a antihéroe, sus poderes y Tom Hardy en el cine.'],
   'carnage-cletus-kasady-alt': ['Carnage (Cletus Kasady): historia, poderes y origen', 'Quién es Carnage, Cletus Kasady: el asesino en serie unido a un descendiente del simbionte de Venom. Origen, poderes y primera aparición (1992).'],
   'vulture-adrian-toomes-alt': ['Adrian Toomes (el Buitre): historia y poderes', 'Quién es Adrian Toomes, el Buitre: el ingeniero con un arnés de vuelo, uno de los primeros villanos de Spider-Man. Origen, poderes y debut en 1963.'],
   'lizard-curtis-connors-alt': ['Curt Connors (el Lagarto): historia y poderes', 'Quién es Curt Connors, el Lagarto: el científico que perdió un brazo y experimentó con ADN de reptil. Origen, poderes y primera aparición (1963).'],
@@ -55,15 +55,15 @@ const SEO = {
   'morlun-alt': ['Morlun: historia y poderes del cazador de arañas', 'Quién es Morlun: el ser ancestral que se alimenta de los tótems arácnidos y caza a los Spider-Man del multiverso. Origen, poderes y debut (2001).'],
 
   // ── Universo Marvel ────────────────────────────────────────────────────────
-  'iron-man-tony-stark-alt': ['Tony Stark (Iron Man): historia y poderes', 'Quién es Tony Stark, Iron Man: el millonario inventor de la armadura y mentor de Peter Parker en el MCU. Origen, habilidades y primera aparición (1963).'],
-  'captain-america-steve-rogers-alt': ['Steve Rogers (Capitán América): historia y poderes', 'Quién es Steve Rogers, el Capitán América: el soldado de la Segunda Guerra Mundial que despertó en la era moderna. Origen, poderes y primer cómic (1941).'],
+  'iron-man-tony-stark-alt': ['Tony Stark (Iron Man): historia, poderes y películas', 'Quién es Tony Stark, Iron Man: el inventor de la armadura, su relación con Spider-Man en los cómics y en el cine, y Robert Downey Jr. en el MCU.'],
+  'captain-america-steve-rogers-alt': ['Steve Rogers (Capitán América): historia y películas', 'Quién es Steve Rogers, el Capitán América: el supersoldado de 1941, su relación con Spider-Man, sus poderes y Chris Evans en el cine.'],
   'thor-odinson-alt': ['Thor Odinson: historia y poderes del dios del trueno', 'Quién es Thor, el dios asgardiano del trueno y miembro fundador de los Vengadores. Origen, poderes, Mjolnir y su primera aparición en 1962.'],
   'black-panther-tchalla-alt': ["T'Challa (Pantera Negra): historia y poderes", "Quién es T'Challa, Pantera Negra: el rey de Wakanda, la nación africana rica en vibranium. Origen, poderes y su debut en Fantastic Four #52 (1966)."],
-  'doctor-strange-stephen-strange-alt': ['Stephen Strange (Doctor Strange): historia y poderes', 'Quién es Stephen Strange, el Doctor Strange: el exneurocirujano convertido en Hechicero Supremo. Origen, poderes y primera aparición (1963).'],
+  'doctor-strange-stephen-strange-alt': ['Stephen Strange (Doctor Strange): historia y películas', 'Quién es Stephen Strange, el Doctor Strange: el cirujano convertido en Hechicero Supremo, su hechizo en No Way Home y Benedict Cumberbatch en el cine.'],
   'daredevil-matt-murdock-alt': ['Matt Murdock (Daredevil): historia y poderes', "Quién es Matt Murdock, Daredevil: el abogado ciego de Hell's Kitchen con sentidos sobrehumanos. Origen, poderes y su debut en Daredevil #1 (1964)."],
-  'wolverine-james-howlett-alt': ['Logan (Lobezno): historia y poderes', 'Quién es Logan, Lobezno: el mutante con garras de adamantium y factor de curación. Origen, poderes y su debut en The Incredible Hulk #180 (1974).'],
+  'wolverine-james-howlett-alt': ['Logan (Lobezno): historia, poderes y películas', 'Quién es Logan, Lobezno: el mutante con garras de adamantium, su origen, sus poderes, su relación con Spider-Man y Hugh Jackman en el cine.'],
   'storm-ororo-munroe-alt': ['Ororo Munroe (Tormenta): historia y poderes', 'Quién es Ororo Munroe, Tormenta: la mutante que controla el clima, líder de la Patrulla-X. Origen, poderes y su debut en Giant-Size X-Men #1 (1975).'],
-  'deadpool-wade-wilson-alt': ['Wade Wilson (Deadpool): historia y poderes', 'Quién es Wade Wilson, Deadpool: el mercenario bocazas que rompe la cuarta pared. Origen, poderes y su debut en The New Mutants #98 (1991).'],
+  'deadpool-wade-wilson-alt': ['Wade Wilson (Deadpool): historia, poderes y películas', 'Quién es Wade Wilson, Deadpool: el mercenario que rompe la cuarta pared, su origen, su relación con Spider-Man y Ryan Reynolds en el cine.'],
   'human-torch-johnny-storm-alt': ['Johnny Storm (Antorcha Humana): historia y poderes', 'Quién es Johnny Storm, la Antorcha Humana: el más joven de los Cuatro Fantásticos y gran amigo de Spider-Man. Origen, poderes y primera aparición (1961).'],
   'fantastic-four-reed-richards-alt': ['Reed Richards (Mister Fantástico): historia y poderes', 'Quién es Reed Richards, Mister Fantástico: el líder de los Cuatro Fantásticos, capaz de estirar su cuerpo. Origen, poderes y primera aparición (1961).'],
 };

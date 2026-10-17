@@ -320,5 +320,608 @@
     "a": "Sí. Mark Ruffalo vuelve como Bruce Banner, ahora profesor universitario, y la película incluye una pelea entre Spider-Man y Hulk."
    }
   ]
+ },
+ "spider-man-peter-parker-alt": {
+  "nombre": "Spider-Man",
+  "secciones": [
+   {
+    "titulo": "Origen: un gran poder conlleva una gran responsabilidad",
+    "html": "<p>Peter Parker era un estudiante tímido de Queens, criado por sus tíos May y Ben, cuando le picó una <strong>araña radiactiva</strong> en una exhibición científica. Al principio usó sus nuevos poderes para ganar dinero, hasta que un ladrón al que no quiso detener mató a su tío Ben. Desde entonces vive con una idea: <strong>un gran poder conlleva una gran responsabilidad</strong>.</p><p>Debutó en <em>Amazing Fantasy</em> #15 (1962), creado por Stan Lee y Steve Ditko, y al año siguiente estrenó su propia serie, <em>The Amazing Spider-Man</em>.</p>"
+   },
+   {
+    "titulo": "Momentos clave en los cómics",
+    "html": "<ul><li><strong>La muerte de Gwen Stacy (1973):</strong> el Duende Verde mata a su novia y cambia los cómics de superhéroes para siempre. Lo contamos en <a href=\"/blog/legado-muerte-gwen-stacy-50-anos\">el legado de la muerte de Gwen Stacy</a>.</li><li><strong>El traje negro (1984):</strong> en las <em>Secret Wars</em> consigue un traje alienígena que acabará dando lugar a Venom.</li><li><strong>La boda con Mary Jane (1987):</strong> Peter y MJ se casan en el <em>Annual</em> #21 de <em>The Amazing Spider-Man</em>.</li><li><strong>La saga del clon (años 90):</strong> la llegada de Ben Reilly pone en duda quién es el Peter original.</li><li><strong>Superior Spider-Man (2013):</strong> el Doctor Octopus se queda con su cuerpo.</li></ul><p>Si quieres empezar a leerlo, tienes <a href=\"/blog/comics-spider-man-guia-nuevos-lectores\">nuestra guía para nuevos lectores</a>.</p>"
+   },
+   {
+    "titulo": "Poderes y habilidades",
+    "html": "<p>Fuerza, velocidad y agilidad sobrehumanas, la capacidad de trepar por cualquier superficie y el <strong>sentido arácnido</strong>, que le avisa del peligro. En los cómics clásicos, la telaraña no es un poder: es un invento de Peter, un genio de la ciencia, que la lanza con sus lanzarredes.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "The Amazing Spider-Man (serie)",
+    "anio": 1977,
+    "actor": "Nicholas Hammond"
+   },
+   {
+    "titulo": "Spider-Man",
+    "anio": 2002,
+    "actor": "Tobey Maguire",
+    "enlace": "/peliculas/spider-man-2002"
+   },
+   {
+    "titulo": "Spider-Man 2",
+    "anio": 2004,
+    "actor": "Tobey Maguire",
+    "enlace": "/peliculas/spider-man-2-2004"
+   },
+   {
+    "titulo": "Spider-Man 3",
+    "anio": 2007,
+    "actor": "Tobey Maguire",
+    "enlace": "/peliculas/spider-man-3-2007"
+   },
+   {
+    "titulo": "The Amazing Spider-Man",
+    "anio": 2012,
+    "actor": "Andrew Garfield",
+    "enlace": "/peliculas/the-amazing-spider-man-2012"
+   },
+   {
+    "titulo": "The Amazing Spider-Man 2: El poder de Electro",
+    "anio": 2014,
+    "actor": "Andrew Garfield",
+    "enlace": "/peliculas/the-amazing-spider-man-2-el-poder-de-electro-2014"
+   },
+   {
+    "titulo": "Capitán América: Civil War",
+    "anio": 2016,
+    "actor": "Tom Holland"
+   },
+   {
+    "titulo": "Spider-Man: Homecoming",
+    "anio": 2017,
+    "actor": "Tom Holland",
+    "enlace": "/peliculas/spider-man-homecoming-2017"
+   },
+   {
+    "titulo": "Spider-Man: Lejos de casa",
+    "anio": 2019,
+    "actor": "Tom Holland",
+    "enlace": "/peliculas/spider-man-lejos-de-casa-2019"
+   },
+   {
+    "titulo": "Spider-Man: No Way Home",
+    "anio": 2021,
+    "actor": "Tom Holland, Tobey Maguire y Andrew Garfield",
+    "enlace": "/peliculas/spider-man-no-way-home-2021"
+   },
+   {
+    "titulo": "Spider-Man: Brand New Day",
+    "anio": 2026,
+    "actor": "Tom Holland",
+    "enlace": "/peliculas/spider-man-brand-new-day-2026"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Cuándo apareció Spider-Man por primera vez?",
+    "a": "En <em>Amazing Fantasy</em> #15, en 1962, creado por Stan Lee y Steve Ditko."
+   },
+   {
+    "q": "¿Qué actores han interpretado a Spider-Man en el cine?",
+    "a": "Tobey Maguire (2002-2007), Andrew Garfield (2012-2014) y Tom Holland (desde 2016). Los tres coinciden en <em>No Way Home</em> (2021). Te contamos el orden de todas las películas en <a href=\"/blog/orden-ver-peliculas-spider-man\">esta guía</a>."
+   },
+   {
+    "q": "¿Spider-Man fabrica su telaraña?",
+    "a": "En los cómics clásicos y en las películas de Garfield y Holland, sí: usa lanzarredes inventados por él. En las de Tobey Maguire, la telaraña sale de su cuerpo."
+   }
+  ]
+ },
+ "spider-man-miles-morales-alt": {
+  "nombre": "Miles Morales",
+  "secciones": [
+   {
+    "titulo": "Origen: el nuevo Spider-Man de Brooklyn",
+    "html": "<p>Miles Morales es un adolescente de Brooklyn, hijo de padre afroamericano y madre puertorriqueña. En el universo Ultimate, le picó una araña modificada genéticamente que su tío Aaron —el ladrón conocido como el Merodeador— había robado de Oscorp. Cuando el Peter Parker de su mundo murió, Miles decidió tomar el relevo como Spider-Man.</p><p>Debutó en <em>Ultimate Fallout</em> #4 (2011), creado por Brian Michael Bendis y Sara Pichelli.</p>"
+   },
+   {
+    "titulo": "Del universo Ultimate al principal",
+    "html": "<p>Tras las <em>Secret Wars</em> de 2015, Miles pasó a vivir en el universo principal de Marvel, donde comparte ciudad con Peter Parker. Ha sido miembro de los Vengadores y de los Campeones, un grupo de jóvenes héroes. Su primer cómic es uno de <a href=\"/blog/mejores-comics-spider-man-historia\">los 10 mejores de Spider-Man</a>.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>Tiene los poderes clásicos de Spider-Man y dos propios: puede <strong>volverse invisible</strong> y lanzar una <strong>descarga bioeléctrica</strong> (la «descarga venenosa») que paraliza a sus enemigos.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Spider-Man: Un nuevo universo",
+    "anio": 2018,
+    "actor": "Voz original: Shameik Moore",
+    "enlace": "/peliculas/spider-man-un-nuevo-universo-2018"
+   },
+   {
+    "titulo": "Marvel's Spider-Man: Miles Morales (videojuego)",
+    "anio": 2020,
+    "actor": "Voz original: Nadji Jeter",
+    "enlace": "/videojuegos/marvel-s-spider-man-miles-morales-2020"
+   },
+   {
+    "titulo": "Spider-Man: Cruzando el Multiverso",
+    "anio": 2023,
+    "actor": "Voz original: Shameik Moore",
+    "enlace": "/peliculas/spider-man-cruzando-el-multiverso-2023"
+   },
+   {
+    "titulo": "Marvel's Spider-Man 2 (videojuego)",
+    "anio": 2023,
+    "actor": "Voz original: Nadji Jeter",
+    "enlace": "/videojuegos/marvel-s-spider-man-2-2023"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién creó a Miles Morales?",
+    "a": "Brian Michael Bendis y Sara Pichelli, en 2011."
+   },
+   {
+    "q": "¿Qué poderes tiene Miles que no tenga Peter?",
+    "a": "Puede volverse invisible y lanzar descargas bioeléctricas."
+   },
+   {
+    "q": "¿Saldrá Miles Morales en imagen real?",
+    "a": "Kevin Feige ha confirmado que llegará a la imagen real después de <em>Spider-Man: Beyond the Spider-Verse</em>. Te lo contamos en <a href=\"/blog/futuro-spider-man-mcu-despues-brand-new-day\">el futuro de Spider-Man en el MCU</a>."
+   }
+  ]
+ },
+ "venom-eddie-brock-alt": {
+  "nombre": "Venom",
+  "secciones": [
+   {
+    "titulo": "Origen: el traje que Peter rechazó",
+    "html": "<p>Durante las <em>Secret Wars</em> (1984), Spider-Man consiguió un traje negro que resultó ser un <strong>simbionte alienígena</strong>. Cuando Peter descubrió que intentaba unirse a él para siempre, se libró de él. El simbionte, resentido, encontró a otro hombre que odiaba a Spider-Man: <strong>Eddie Brock</strong>, un periodista cuya carrera se había hundido tras un reportaje falso que Spider-Man dejó en evidencia.</p><p>Juntos se convirtieron en Venom, que debutó del todo en <em>The Amazing Spider-Man</em> #300 (1988), de David Michelinie y Todd McFarlane.</p>"
+   },
+   {
+    "titulo": "De villano a antihéroe",
+    "html": "<ul><li><strong>Protector letal (1993):</strong> Venom estrenó serie propia como antihéroe que protege a los inocentes a su manera.</li><li><strong>Matanza Máxima (1993):</strong> se alió con Spider-Man contra Carnage.</li><li><strong>Anti-Venom (2008):</strong> Eddie llegó a tener su propio simbionte blanco, capaz de curar.</li><li><strong>Rey en Negro (2021):</strong> Eddie se convirtió en el rey de los simbiontes.</li></ul><p>Te contamos toda su historia en <a href=\"/blog/simbionte-historia-evolucion-venom\">la historia del simbionte</a>.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>El simbionte le da todos los poderes de Spider-Man y más: fuerza muy superior, cambio de forma, telaraña propia y, sobre todo, la capacidad de <strong>no activar el sentido arácnido</strong> de Peter, porque el simbionte lo conoce desde dentro.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Spider-Man 3",
+    "anio": 2007,
+    "actor": "Topher Grace",
+    "enlace": "/peliculas/spider-man-3-2007"
+   },
+   {
+    "titulo": "Venom",
+    "anio": 2018,
+    "actor": "Tom Hardy",
+    "enlace": "/peliculas/venom-2018"
+   },
+   {
+    "titulo": "Venom: Habrá Matanza",
+    "anio": 2021,
+    "actor": "Tom Hardy",
+    "enlace": "/peliculas/venom-habra-matanza-2021"
+   },
+   {
+    "titulo": "Venom: El último baile",
+    "anio": 2024,
+    "actor": "Tom Hardy",
+    "enlace": "/peliculas/venom-el-ultimo-baile-2024"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién interpreta a Venom?",
+    "a": "Tom Hardy, en sus tres películas (2018, 2021 y 2024). Antes, Topher Grace lo interpretó en <em>Spider-Man 3</em> (2007)."
+   },
+   {
+    "q": "¿Venom es bueno o malo?",
+    "a": "Empezó como villano, pero desde los años 90 suele ser un antihéroe: protege a los inocentes, aunque con métodos muy violentos."
+   },
+   {
+    "q": "¿Por qué el sentido arácnido no detecta a Venom?",
+    "a": "Porque el simbionte estuvo unido a Peter Parker y conoce sus poderes: puede pasar desapercibido para su sentido arácnido."
+   }
+  ]
+ },
+ "spider-gwen-gwen-stacy-alt": {
+  "nombre": "Spider-Gwen",
+  "secciones": [
+   {
+    "titulo": "Origen: el universo donde la picaron a ella",
+    "html": "<p>En la Tierra-65, la araña radiactiva no picó a Peter Parker, sino a <strong>Gwen Stacy</strong>. Como Spider-Woman, Gwen trata de proteger su ciudad mientras toca la batería en una banda, The Mary Janes. Su historia arranca con una tragedia: el Peter de su mundo se convirtió en el Lagarto y murió en sus brazos, y la policía —con su propio padre, el capitán George Stacy, al frente— culpa a Spider-Woman.</p><p>Debutó en <em>Edge of Spider-Verse</em> #2 (2014), de Jason Latour y Robbi Rodriguez, y su éxito fue tan grande que tuvo serie propia de inmediato. Más tarde adoptó el nombre de <strong>Ghost-Spider</strong>.</p>"
+   },
+   {
+    "titulo": "Por qué se convirtió en un fenómeno",
+    "html": "<p>Su diseño de traje blanco con capucha se hizo viral entre los aficionados al cosplay antes incluso de que saliera su serie. Las películas del Spider-Verso la convirtieron después en uno de los personajes favoritos de una nueva generación.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Spider-Man: Un nuevo universo",
+    "anio": 2018,
+    "actor": "Voz original: Hailee Steinfeld",
+    "enlace": "/peliculas/spider-man-un-nuevo-universo-2018"
+   },
+   {
+    "titulo": "Spider-Man: Cruzando el Multiverso",
+    "anio": 2023,
+    "actor": "Voz original: Hailee Steinfeld",
+    "enlace": "/peliculas/spider-man-cruzando-el-multiverso-2023"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Spider-Gwen es la novia de Peter Parker?",
+    "a": "No exactamente: es una versión de Gwen Stacy de otro universo, la Tierra-65, en la que ella es la heroína arácnida. La Gwen del universo principal es la novia de Peter que murió en 1973."
+   },
+   {
+    "q": "¿Quién pone voz a Spider-Gwen?",
+    "a": "Hailee Steinfeld, en <em>Un nuevo universo</em> (2018) y <em>Cruzando el Multiverso</em> (2023)."
+   },
+   {
+    "q": "¿Spider-Gwen y Ghost-Spider son la misma?",
+    "a": "Sí. Gwen empezó como Spider-Woman (los fans la llamaban Spider-Gwen) y más tarde adoptó el nombre de Ghost-Spider."
+   }
+  ]
+ },
+ "green-goblin-norman-osborn-alt": {
+  "nombre": "El Duende Verde",
+  "secciones": [
+   {
+    "titulo": "Origen: el empresario que perdió la cabeza",
+    "html": "<p>Norman Osborn, el dueño de Oscorp, sufrió un accidente con una fórmula experimental que le dio fuerza e inteligencia sobrehumanas, pero también lo volvió loco. Así nació el <strong>Duende Verde</strong>, con su planeador y sus bombas calabaza. Debutó en <em>The Amazing Spider-Man</em> #14 (1964), de Stan Lee y Steve Ditko, aunque durante dos años nadie supo quién se escondía tras la máscara: Norman lo reveló en el #39 (1966).</p>"
+   },
+   {
+    "titulo": "El peor enemigo de Spider-Man",
+    "html": "<ul><li><strong>La muerte de Gwen Stacy (1973):</strong> la arrojó desde lo alto de un puente, en el momento más famoso de la historia del personaje. Lo contamos en <a href=\"/blog/legado-muerte-gwen-stacy-50-anos\">el legado de la muerte de Gwen Stacy</a>.</li><li><strong>Su regreso en los 90:</strong> después de darlo por muerto durante décadas, volvió como el gran manipulador de la saga del clon.</li><li><strong>El Reinado Oscuro (2008-2009):</strong> llegó a dirigir la seguridad del país y a liderar sus propios Vengadores Oscuros como Iron Patriot.</li><li><strong>El Duende Rojo (2018):</strong> se unió al simbionte de Carnage para crear su versión más peligrosa.</li></ul>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>La fórmula del Duende le da fuerza, resistencia y reflejos sobrehumanos, además de una mente brillante. Su arsenal incluye el planeador, las bombas calabaza y los murciélagos cuchilla.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Spider-Man",
+    "anio": 2002,
+    "actor": "Willem Dafoe",
+    "enlace": "/peliculas/spider-man-2002"
+   },
+   {
+    "titulo": "The Amazing Spider-Man 2: El poder de Electro",
+    "anio": 2014,
+    "actor": "Chris Cooper (Norman) y Dane DeHaan (Harry, el Duende Verde)",
+    "enlace": "/peliculas/the-amazing-spider-man-2-el-poder-de-electro-2014"
+   },
+   {
+    "titulo": "Marvel's Spider-Man (videojuego)",
+    "anio": 2018,
+    "actor": "Norman Osborn, alcalde de Nueva York",
+    "enlace": "/videojuegos/marvel-s-spider-man-2018"
+   },
+   {
+    "titulo": "Spider-Man: No Way Home",
+    "anio": 2021,
+    "actor": "Willem Dafoe",
+    "enlace": "/peliculas/spider-man-no-way-home-2021"
+   },
+   {
+    "titulo": "Tu amigo y vecino Spider-Man (serie animada)",
+    "anio": 2025,
+    "actor": "Norman Osborn como mentor de Peter",
+    "enlace": "/series/tu-amigo-y-vecino-spider-man"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién interpreta al Duende Verde?",
+    "a": "Willem Dafoe, en <em>Spider-Man</em> (2002) y <em>No Way Home</em> (2021). En <em>The Amazing Spider-Man 2</em> (2014), el Duende es Harry Osborn, interpretado por Dane DeHaan."
+   },
+   {
+    "q": "¿Quién mató a Gwen Stacy?",
+    "a": "El Duende Verde, en <em>The Amazing Spider-Man</em> #121 (1973)."
+   },
+   {
+    "q": "¿Cuándo se supo que el Duende Verde era Norman Osborn?",
+    "a": "En <em>The Amazing Spider-Man</em> #39 (1966), dos años después de su primera aparición."
+   }
+  ]
+ },
+ "iron-man-tony-stark-alt": {
+  "nombre": "Iron Man",
+  "secciones": [
+   {
+    "titulo": "Origen: la primera armadura",
+    "html": "<p>Tony Stark, millonario y genio de la ingeniería, fue capturado y herido de gravedad. Para salvar la vida y escapar, construyó una <strong>armadura blindada</strong>, la primera de muchas. Debutó en <em>Tales of Suspense</em> #39 (1963), creado por Stan Lee, Larry Lieber, Don Heck y Jack Kirby, y fue uno de los miembros fundadores de los Vengadores.</p>"
+   },
+   {
+    "titulo": "Su relación con Spider-Man",
+    "html": "<p>En los cómics, durante <em>Civil War</em> (2006), Tony convenció a Peter para ponerse de su lado, le regaló la armadura <strong>Iron Spider</strong> y le animó a revelar su identidad ante todo el mundo. En el cine, es el gran <strong>mentor</strong> del Peter de Tom Holland: lo recluta en <em>Capitán América: Civil War</em>, le regala su traje en <em>Homecoming</em> y su muerte en <em>Endgame</em> marca a Peter en <em>Lejos de casa</em>.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>Tony no tiene superpoderes: su arma es su inteligencia. Sus armaduras le permiten volar, disparar rayos repulsores y resistir enormes impactos.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Iron Man",
+    "anio": 2008,
+    "actor": "Robert Downey Jr."
+   },
+   {
+    "titulo": "Los Vengadores",
+    "anio": 2012,
+    "actor": "Robert Downey Jr."
+   },
+   {
+    "titulo": "Capitán América: Civil War",
+    "anio": 2016,
+    "actor": "Robert Downey Jr."
+   },
+   {
+    "titulo": "Spider-Man: Homecoming",
+    "anio": 2017,
+    "actor": "Robert Downey Jr.",
+    "enlace": "/peliculas/spider-man-homecoming-2017"
+   },
+   {
+    "titulo": "Vengadores: Infinity War",
+    "anio": 2018,
+    "actor": "Robert Downey Jr."
+   },
+   {
+    "titulo": "Vengadores: Endgame",
+    "anio": 2019,
+    "actor": "Robert Downey Jr."
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién interpreta a Iron Man?",
+    "a": "Robert Downey Jr., desde <em>Iron Man</em> (2008) hasta <em>Vengadores: Endgame</em> (2019)."
+   },
+   {
+    "q": "¿Iron Man es el mentor de Spider-Man?",
+    "a": "En el cine, sí: Tony Stark guía al Peter Parker de Tom Holland en sus primeras películas. En los cómics su relación es más irregular."
+   },
+   {
+    "q": "¿Qué es el traje Iron Spider?",
+    "a": "Una armadura que Tony Stark diseñó para Spider-Man. En los cómics apareció durante <em>Civil War</em> (2006) y en el cine, en <em>Vengadores: Infinity War</em> (2018). Lo repasamos en <a href=\"/blog/trajes-spider-man-peliculas\">todos los trajes de Spider-Man</a>."
+   }
+  ]
+ },
+ "captain-america-steve-rogers-alt": {
+  "nombre": "El Capitán América",
+  "secciones": [
+   {
+    "titulo": "Origen: el supersoldado",
+    "html": "<p>Steve Rogers era un joven enclenque de Brooklyn que quería luchar en la Segunda Guerra Mundial. Se presentó voluntario a un experimento secreto, el <strong>suero del supersoldado</strong>, que lo convirtió en el máximo potencial humano. Debutó en <em>Captain America Comics</em> #1 (1941), de Joe Simon y Jack Kirby, con una portada en la que le daba un puñetazo a Hitler.</p><p>Al final de la guerra quedó congelado en el hielo, y en <em>The Avengers</em> #4 (1964) los Vengadores lo rescataron y se convirtió en su gran líder.</p>"
+   },
+   {
+    "titulo": "Su relación con Spider-Man",
+    "html": "<p>Para muchos héroes jóvenes, incluido Peter, Steve es un referente moral. En los cómics se enfrentaron en <em>Civil War</em> (2006), cuando Peter apoyó primero a Tony Stark. En el cine, el Capitán América y Spider-Man se ven las caras en la pelea del aeropuerto de <em>Capitán América: Civil War</em> (2016), y Steve aparece también, en tono de humor, en los vídeos educativos del instituto de Peter en <em>Homecoming</em>.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>Fuerza, velocidad y resistencia en el límite de lo humano, gracias al suero, además de ser un estratega excepcional. Su escudo de vibranium es casi indestructible.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Capitán América: El primer vengador",
+    "anio": 2011,
+    "actor": "Chris Evans"
+   },
+   {
+    "titulo": "Los Vengadores",
+    "anio": 2012,
+    "actor": "Chris Evans"
+   },
+   {
+    "titulo": "Capitán América: El Soldado de Invierno",
+    "anio": 2014,
+    "actor": "Chris Evans"
+   },
+   {
+    "titulo": "Capitán América: Civil War",
+    "anio": 2016,
+    "actor": "Chris Evans"
+   },
+   {
+    "titulo": "Spider-Man: Homecoming",
+    "anio": 2017,
+    "actor": "Chris Evans (vídeos del instituto)",
+    "enlace": "/peliculas/spider-man-homecoming-2017"
+   },
+   {
+    "titulo": "Vengadores: Endgame",
+    "anio": 2019,
+    "actor": "Chris Evans"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién interpreta al Capitán América?",
+    "a": "Chris Evans fue Steve Rogers desde <em>El primer vengador</em> (2011) hasta <em>Endgame</em> (2019). Después, el escudo pasó a Sam Wilson."
+   },
+   {
+    "q": "¿Cuándo apareció el Capitán América?",
+    "a": "En <em>Captain America Comics</em> #1, en 1941, en plena Segunda Guerra Mundial."
+   },
+   {
+    "q": "¿De qué está hecho su escudo?",
+    "a": "En las películas, de vibranium; en los cómics, de una aleación de vibranium y acero casi indestructible."
+   }
+  ]
+ },
+ "wolverine-james-howlett-alt": {
+  "nombre": "Lobezno",
+  "secciones": [
+   {
+    "titulo": "Origen: garras de adamantium",
+    "html": "<p>James Howlett, más conocido como <strong>Logan</strong>, es un mutante con un factor de curación que le permite recuperarse de casi cualquier herida y envejecer muy despacio. El programa secreto Arma X le recubrió el esqueleto de <strong>adamantium</strong>, un metal indestructible, incluidas sus garras retráctiles.</p><p>Debutó en <em>The Incredible Hulk</em> #180 (1974), en una breve aparición, y del todo en el #181, creado por Len Wein, John Romita Sr. y Herb Trimpe. En 1975 se unió a la Patrulla-X en <em>Giant-Size X-Men</em> #1.</p>"
+   },
+   {
+    "titulo": "Su relación con Spider-Man",
+    "html": "<p>Dos personajes muy distintos —uno bromista, el otro gruñón— que han hecho muy buena pareja: coincidieron en los Nuevos Vengadores a partir de 2005 y protagonizaron juntos miniseries de aventuras.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>Factor de curación, sentidos de animal, garras de adamantium y un esqueleto prácticamente irrompible. Además, tiene más de un siglo de experiencia en combate.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "X-Men",
+    "anio": 2000,
+    "actor": "Hugh Jackman"
+   },
+   {
+    "titulo": "X-Men Orígenes: Lobezno",
+    "anio": 2009,
+    "actor": "Hugh Jackman"
+   },
+   {
+    "titulo": "Logan",
+    "anio": 2017,
+    "actor": "Hugh Jackman"
+   },
+   {
+    "titulo": "Deadpool y Lobezno",
+    "anio": 2024,
+    "actor": "Hugh Jackman"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién interpreta a Lobezno?",
+    "a": "Hugh Jackman, desde <em>X-Men</em> (2000) hasta <em>Deadpool y Lobezno</em> (2024)."
+   },
+   {
+    "q": "¿Cuál es el nombre real de Lobezno?",
+    "a": "James Howlett, aunque casi todos lo conocen como Logan."
+   },
+   {
+    "q": "¿Sus garras son de adamantium de nacimiento?",
+    "a": "No. Sus garras son de hueso; el programa Arma X las recubrió de adamantium, igual que el resto de su esqueleto."
+   }
+  ]
+ },
+ "deadpool-wade-wilson-alt": {
+  "nombre": "Deadpool",
+  "secciones": [
+   {
+    "titulo": "Origen: el mercenario bocazas",
+    "html": "<p>Wade Wilson era un mercenario enfermo de cáncer que se sometió a un experimento del programa Arma X para salvarse. Obtuvo un factor de curación como el de Lobezno, pero quedó con la piel desfigurada y la mente bastante alterada. Debutó como villano en <em>The New Mutants</em> #98 (1991), creado por Fabian Nicieza y Rob Liefeld.</p><p>Su rasgo más famoso es que <strong>sabe que está en un cómic</strong> y habla con los lectores, rompiendo la cuarta pared.</p>"
+   },
+   {
+    "titulo": "Su relación con Spider-Man",
+    "html": "<p>Deadpool admira a Spider-Man (y le saca de quicio a partes iguales). Su relación dio para una serie propia, <em>Spider-Man/Deadpool</em> (2016), de Joe Kelly y Ed McGuinness, en la que un Peter muy serio tiene que aguantar a un Deadpool que quiere ser su mejor amigo.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>Factor de curación casi ilimitado, gran habilidad con espadas y armas de fuego, y una resistencia al dolor fuera de lo común.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "X-Men Orígenes: Lobezno",
+    "anio": 2009,
+    "actor": "Ryan Reynolds (una versión muy distinta del personaje)"
+   },
+   {
+    "titulo": "Deadpool",
+    "anio": 2016,
+    "actor": "Ryan Reynolds"
+   },
+   {
+    "titulo": "Deadpool 2",
+    "anio": 2018,
+    "actor": "Ryan Reynolds"
+   },
+   {
+    "titulo": "Deadpool y Lobezno",
+    "anio": 2024,
+    "actor": "Ryan Reynolds"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién interpreta a Deadpool?",
+    "a": "Ryan Reynolds, en <em>Deadpool</em> (2016), <em>Deadpool 2</em> (2018) y <em>Deadpool y Lobezno</em> (2024)."
+   },
+   {
+    "q": "¿Deadpool es un héroe o un villano?",
+    "a": "Empezó como villano y hoy es un antihéroe: hace el bien a su manera, con mucho humor y bastante violencia."
+   },
+   {
+    "q": "¿Por qué Deadpool habla con el público?",
+    "a": "Porque es consciente de que es un personaje de ficción. Es su seña de identidad, tanto en los cómics como en las películas."
+   }
+  ]
+ },
+ "doctor-strange-stephen-strange-alt": {
+  "nombre": "Doctor Strange",
+  "secciones": [
+   {
+    "titulo": "Origen: el cirujano que se hizo hechicero",
+    "html": "<p>Stephen Strange era un neurocirujano brillante y arrogante hasta que un accidente de coche le destrozó las manos. Desesperado por curarse, viajó al Himalaya en busca del Anciano, que lo formó en las artes místicas. Con el tiempo se convirtió en el <strong>Hechicero Supremo</strong>, protector de la Tierra frente a las amenazas mágicas.</p><p>Debutó en <em>Strange Tales</em> #110 (1963), creado por Stan Lee y Steve Ditko, el mismo dibujante que diseñó a Spider-Man.</p>"
+   },
+   {
+    "titulo": "Su relación con Spider-Man",
+    "html": "<p>Spider-Man ha recurrido a él cuando la amenaza escapa a la ciencia. En el cine, su papel es decisivo: en <em>Spider-Man: No Way Home</em> (2021) lanza el hechizo para que el mundo olvide quién es Peter Parker, y al torcerse abre el multiverso. Esa decisión es el punto de partida de <a href=\"/peliculas/spider-man-brand-new-day-2026\">Brand New Day</a>.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>Es el mayor experto en magia de la Tierra: abre portales, lanza hechizos, se desdobla en forma astral y maneja objetos místicos como la Capa de Levitación o el Ojo de Agamotto.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Doctor Strange",
+    "anio": 2016,
+    "actor": "Benedict Cumberbatch"
+   },
+   {
+    "titulo": "Vengadores: Infinity War",
+    "anio": 2018,
+    "actor": "Benedict Cumberbatch"
+   },
+   {
+    "titulo": "Spider-Man: No Way Home",
+    "anio": 2021,
+    "actor": "Benedict Cumberbatch",
+    "enlace": "/peliculas/spider-man-no-way-home-2021"
+   },
+   {
+    "titulo": "Doctor Strange en el multiverso de la locura",
+    "anio": 2022,
+    "actor": "Benedict Cumberbatch"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién interpreta al Doctor Strange?",
+    "a": "Benedict Cumberbatch, desde <em>Doctor Strange</em> (2016)."
+   },
+   {
+    "q": "¿Qué hechizo lanza en No Way Home?",
+    "a": "Uno para que el mundo olvide que Peter Parker es Spider-Man. Al alterarse, atrae a villanos y héroes de otros universos."
+   },
+   {
+    "q": "¿Quién creó al Doctor Strange?",
+    "a": "Stan Lee y Steve Ditko, en 1963, los mismos creadores de Spider-Man."
+   }
+  ]
  }
 }
