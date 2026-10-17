@@ -204,7 +204,130 @@ ${cvFigure('scale_large/1/12840/1704865-genetic_construct_gg.jpg', 'El Duende Ve
 `,
 };
 
-const POSTS = [MEJORES_JUEGOS, MEJORES_VILLANOS];
+const SPIDERMAN_PS4 = {
+  slug: 'marvels-spider-man-ps4-2018-analisis-insomniac',
+  title: 'Marvel\'s Spider-Man (PS4, 2018): análisis del juego que lo cambió todo',
+  subtitle: 'Balanceo, historia, combate, DLC y versiones: por qué el Spider-Man de Insomniac sigue siendo imprescindible',
+  excerpt:
+    'Marvel\'s Spider-Man (2018) convirtió al trepamuros en un icono de PlayStation. Analizamos su balanceo, su historia con Doctor Octopus, el combate, los DLC y qué versión jugar hoy.',
+  readTime: '10 min',
+  seoTitle: 'Marvel\'s Spider-Man (PS4): análisis completo del juego',
+  seoDescription:
+    'Análisis de Marvel\'s Spider-Man (2018) de Insomniac: balanceo, historia sin spoilers, combate, villanos, DLC The City That Never Sleeps y qué versión jugar hoy.',
+  keywords: ['Marvel\'s Spider-Man análisis', 'Spider-Man PS4', 'Spider-Man 2018', 'Spider-Man Remastered', 'Insomniac Games', 'Spider-Man PS4 DLC'],
+  tags: ['análisis', 'videojuegos', 'Insomniac', 'PS4', 'PS5', 'PC'],
+  content: `
+<p>Cuando <em>Marvel's Spider-Man</em> llegó a PS4 el 7 de septiembre de 2018, el listón de los juegos de superhéroes lo marcaba la saga <em>Batman: Arkham</em>. Insomniac Games, el estudio de <em>Ratchet &amp; Clank</em>, no solo lo igualó: creó el Spider-Man que muchos llevaban años esperando. Vendió 3,3 millones de copias en tres días, un récord para un juego de PlayStation en aquel momento, y dio pie a toda una saga. Este es nuestro análisis, sin spoilers.</p>
+
+<h2>Ficha rápida</h2>
+<table>
+  <tbody>
+    <tr><td><strong>Estudio</strong></td><td>Insomniac Games</td></tr>
+    <tr><td><strong>Lanzamiento</strong></td><td>7 de septiembre de 2018 (PS4)</td></tr>
+    <tr><td><strong>Otras versiones</strong></td><td>Remastered para PS5 (2020) y PC (2022)</td></tr>
+    <tr><td><strong>Duración</strong></td><td>Unas 20 horas la historia; bastantes más si lo completas</td></tr>
+    <tr><td><strong>Villanos</strong></td><td>Doctor Octopus, Mister Negativo, Kingpin y los Seis Siniestros</td></tr>
+    <tr><td><strong>Ficha</strong></td><td>${juego('marvel-s-spider-man-2018', 'Marvel\'s Spider-Man')}</td></tr>
+  </tbody>
+</table>
+
+<h2>El balanceo que lo cambia todo</h2>
+${figure('331/331ba5164c5c53a5d59aad3fe9771ac7', 'Spider-Man balanceándose bajo la lluvia', 'El balanceo de Insomniac: cada telaraña se engancha a un edificio y el movimiento tiene peso real.')}
+<p>El gran logro del juego es moverse por Manhattan. Cada telaraña se engancha a un edificio de verdad, el impulso se nota y el juego premia encadenar balanceos, saltos y carreras por las fachadas. Es fácil de aprender pero tiene mucha profundidad, y después de horas sigue siendo un placer cruzar la ciudad sin usar el viaje rápido. No es tan exigente como el de <a href="/videojuegos/spider-man-2-the-game-2004"><em>Spider-Man 2</em> (2004)</a>, pero sí más espectacular.</p>
+
+<h2>Un Peter Parker adulto</h2>
+<p>El Peter de Insomniac tiene 23 años y lleva ocho siendo Spider-Man. Ya no es el adolescente que descubre sus poderes: es un adulto que trabaja como ayudante del científico Otto Octavius, llega tarde a todo, no tiene dinero para el alquiler y acaba de romper con Mary Jane. Esta versión madura permite contar algo distinto a la historia de origen de siempre.</p>
+<p>La trama arranca con la detención de Kingpin, lo que deja un vacío de poder en Nueva York que aprovecha Mister Negativo y su banda, los Demonios Interiores. A partir de ahí, la historia va encadenando villanos clásicos hasta un tercer acto que se atreve con algo que pocas historias de superhéroes hacen: consecuencias permanentes, que duelen de verdad.</p>
+<p>Hay también fases en las que se controla a Mary Jane, ahora periodista, y a un joven Miles Morales, centradas en el sigilo. Son el punto más flojo del juego, pero ayudan a construir el mundo y preparan el terreno para <em>Miles Morales</em>.</p>
+
+<h2>Combate y gadgets</h2>
+${figure('a15/a15b42bd8a652a3733c6ad419ebb24bd', 'Spider-Man saltando sobre un camión frente a un atracador armado', 'El combate es rápido y acrobático: aquí, frenando un atraco a un furgón blindado.')}
+<p>El combate bebe de los <em>Arkham</em>, pero con mucha más verticalidad: Spider-Man se lanza al aire con los enemigos, usa el entorno para lanzarles objetos y combina golpes con gadgets como las telarañas eléctricas o las minas de telaraña. El sentido arácnido avisa de los ataques y permite esquivar con elegancia. A medida que avanza el juego aparecen enemigos con escudos, lanzacohetes y armaduras que obligan a variar.</p>
+<p>Fuera de la historia hay crímenes que frenar, bases enemigas que limpiar, retos de Taskmaster y las mochilas que Peter escondió por toda la ciudad, llenas de recuerdos de su pasado. Y un buen puñado de trajes, de los clásicos de los cómics a los de las películas, cada uno con una habilidad especial.</p>
+
+<h2>Los villanos</h2>
+${figure('80e/80e7335a1e0b17b56cf33d51dcd92511', 'Spider-Man esquivando la cola del Escorpión bajo la lluvia', 'Uno de los combates contra los villanos de la última parte del juego, bajo la lluvia.')}
+<p>El gran acierto es Otto Octavius. El juego se toma su tiempo para presentarlo como un científico brillante y bondadoso, mentor de Peter, y su caída es la parte más emotiva de la historia. ${pj('mister-negative-martin-li', 'Mister Negativo')} es un villano poco conocido fuera de los cómics, y el juego lo convierte en un antagonista muy sólido. Y cuando llegan los Seis Siniestros, el juego sube de ritmo hasta un final espectacular.</p>
+
+<h2>El DLC: The City That Never Sleeps</h2>
+<p>Tras el lanzamiento llegaron tres capítulos descargables, reunidos en ${juego('marvel-s-spider-man-the-city-that-never-sleeps-2018', 'The City That Never Sleeps')}: ${juego('marvel-s-spider-man-the-heist-2018', 'The Heist')}, con la Gata Negra; <em>Turf Wars</em>, con Cabeza de Martillo; y ${juego('marvel-s-spider-man-silver-lining-2018', 'Silver Lining')}, con Silver Sable. Son una buena excusa para volver a la ciudad, aunque el primero es el más interesante.</p>
+
+<h2>¿Qué versión jugar hoy?</h2>
+<ul>
+  <li><strong>PS5:</strong> ${juego('marvel-s-spider-man-remastered-2020', 'Marvel\'s Spider-Man Remastered')} (2020) mejora los gráficos, añade trazado de rayos y tiempos de carga casi instantáneos, e incluye todos los DLC. Ojo: cambió la cara de Peter Parker por la de otro actor.</li>
+  <li><strong>PC:</strong> la versión Remastered llegó en 2022, con muy buen rendimiento.</li>
+  <li><strong>PS4:</strong> el original sigue funcionando perfectamente si no tienes otra plataforma.</li>
+</ul>
+
+<h2>El legado</h2>
+<p>Junto con <a href="/blog/spider-man-miles-morales-ps5-analisis"><em>Miles Morales</em></a>, la saga superaba ya los 33 millones de copias en mayo de 2022, y continuó con <a href="/blog/marvels-spider-man-2-ps5-analisis"><em>Marvel's Spider-Man 2</em></a> en 2023. Pero su verdadero legado es haber demostrado que un juego de superhéroes puede tener la misma ambición narrativa que las mejores aventuras. En nuestro <a href="/blog/mejores-juegos-spider-man-ranking">ranking de los mejores juegos de Spider-Man</a> ocupa el segundo puesto.</p>
+
+<h2>Veredicto</h2>
+<p><strong>Lo mejor:</strong> el balanceo, Otto Octavius, la Nueva York de Insomniac y un tercer acto que no se olvida.<br />
+<strong>Lo peor:</strong> las fases de sigilo con Mary Jane y Miles, y unas actividades secundarias que se repiten.</p>
+<p><strong>Puntuación: 9/10.</strong> Imprescindible si te gusta Spider-Man, y el mejor punto de partida para la saga de Insomniac.</p>
+`,
+};
+
+const SPIDERMAN_2_PS5 = {
+  slug: 'marvels-spider-man-2-ps5-analisis',
+  title: 'Marvel\'s Spider-Man 2 (PS5): análisis completo',
+  subtitle: 'Peter y Miles, Kraven y Venom: Insomniac firma el juego de Spider-Man más ambicioso hasta la fecha',
+  excerpt:
+    'Marvel\'s Spider-Man 2 junta a Peter Parker y Miles Morales contra Kraven y Venom. Analizamos su mapa, el combate con el simbionte, la historia sin spoilers, sus fallos y la versión de PC.',
+  readTime: '11 min',
+  seoTitle: 'Marvel\'s Spider-Man 2 (PS5): análisis completo',
+  seoDescription:
+    'Análisis de Marvel\'s Spider-Man 2: Peter y Miles contra Kraven y Venom, el nuevo mapa con Queens y Brooklyn, las alas de telaraña, el traje simbionte y la versión de PC.',
+  keywords: ['Marvel\'s Spider-Man 2 análisis', 'Spider-Man 2 PS5', 'Spider-Man 2 PC', 'Venom Spider-Man 2', 'Kraven Spider-Man 2', 'Insomniac Games'],
+  tags: ['análisis', 'videojuegos', 'Insomniac', 'PS5', 'PC', 'Venom'],
+  content: `
+<p>Insomniac Games lanzó <em>Marvel's Spider-Man 2</em> el 20 de octubre de 2023 en PS5, con una promesa tan sencilla como ambiciosa: tomar todo lo que funcionaba en <a href="/blog/marvels-spider-man-ps4-2018-analisis-insomniac">Marvel's Spider-Man</a> y en <a href="/blog/spider-man-miles-morales-ps5-analisis">Miles Morales</a> y llevarlo un paso más allá. Vendió 2,5 millones de copias en 24 horas y 5 millones en 11 días, el mejor estreno de un juego de PlayStation Studios hasta entonces, y después superó los 10 millones. Este es nuestro análisis, sin spoilers importantes.</p>
+
+<h2>Ficha rápida</h2>
+<table>
+  <tbody>
+    <tr><td><strong>Estudio</strong></td><td>Insomniac Games</td></tr>
+    <tr><td><strong>Lanzamiento</strong></td><td>20 de octubre de 2023 (PS5); 30 de enero de 2025 (PC)</td></tr>
+    <tr><td><strong>Protagonistas</strong></td><td>Peter Parker y Miles Morales</td></tr>
+    <tr><td><strong>Villanos</strong></td><td>Kraven el Cazador y Venom, entre otros</td></tr>
+    <tr><td><strong>Duración</strong></td><td>Unas 20 horas la historia; unas 35 si lo completas</td></tr>
+    <tr><td><strong>Ficha</strong></td><td>${juego('marvel-s-spider-man-2-2023', 'Marvel\'s Spider-Man 2')}</td></tr>
+  </tbody>
+</table>
+
+<h2>Nueva York, ahora más grande</h2>
+${figure('f38/f382f7af6b972ef2adf129faad54625e', 'Miles Morales balanceándose sobre Queens, con un estadio de béisbol al fondo', 'El nuevo mapa suma Queens y Brooklyn a Manhattan: barrios más bajos, con más espacio para planear.')}
+<p>La ciudad de Spider-Man 2 es mucho más grande que la de los juegos anteriores: Queens y Brooklyn se suman a Manhattan, con barrios más bajos y abiertos que cambian la forma de moverse. Para cruzarlos, Insomniac añadió las <strong>alas de telaraña</strong>, que permiten planear y aprovechar las corrientes de aire. Junto con el balanceo, que es más fluido que nunca, recorrer la ciudad sigue siendo el gran placer del juego.</p>
+
+<h2>Dos Spider-Man, una historia</h2>
+${figure('89b/89b077deb2a3ce38e071fdb5caae69c0', 'Miles Morales y Peter Parker juntos con sus trajes', 'Peter y Miles comparten protagonismo: el juego alterna entre los dos a lo largo de la historia.')}
+<p>El juego alterna entre Peter y Miles. En la historia, cada misión tiene un protagonista; en el mundo abierto, se puede cambiar de uno a otro cuando quieras desde el mapa. Cada uno tiene su propio árbol de habilidades y su estilo: Miles sigue siendo el rey de las descargas bioeléctricas, y Peter, con sus brazos mecánicos de araña primero y con el simbionte después, gana un combate mucho más contundente.</p>
+
+<h2>El traje simbionte</h2>
+${figure('74e/74e29808dd23446aae1ab61bb5a429fc', 'Spider-Man con brazos mecánicos de araña atacando a un enemigo en una calle de neón', 'Antes del simbionte, Peter pelea con unos brazos mecánicos de araña que salen de su traje.')}
+<p>La historia de Peter con el traje negro es el corazón del juego. El simbionte le da poderes brutales, con tentáculos que golpean a varios enemigos a la vez, pero también saca lo peor de él. Insomniac no tiene miedo de enseñar a un Peter Parker inquietante, que trata mal a quienes le quieren, y funciona precisamente porque los juegos anteriores nos han hecho querer a este personaje. Si te interesa la historia de este alienígena en los cómics, tienes <a href="/blog/simbionte-historia-evolucion-venom">la historia del simbionte</a>.</p>
+
+<h2>Kraven y Venom</h2>
+${figure('c71/c718076de2326247d29ea5ed32e67c6c', 'El rostro de Venom en la oscuridad', 'Venom, con la voz original de Tony Todd: la versión más imponente del personaje en un videojuego.')}
+<p>${pj('kraven-the-hunter-sergei-kravinoff', 'Kraven el Cazador')} es el gran antagonista de la primera mitad, y una de las sorpresas del juego. Este Kraven llega a Nueva York buscando una presa digna que le dé una muerte honorable, y su cacería pone en peligro a toda la ciudad. Su código de honor retorcido lo convierte en uno de los villanos más interesantes de Insomniac.</p>
+<p>${pj('venom-eddie-brock', 'Venom')}, con la voz original de Tony Todd, toma el relevo en la segunda mitad. No desvelamos quién está bajo el simbionte, pero la versión de Insomniac es distinta a la de los cómics, y su diseño es el más espectacular que ha tenido el personaje fuera de las viñetas. También hay sitio para el Lagarto, el Hombre de Arena, Mister Negativo y misiones secundarias con otros villanos conocidos.</p>
+
+<h2>Lo que no termina de funcionar</h2>
+${figure('adf/adf5f5ae4b83e65b23194cadf3a189c2', 'Miles Morales lanzando una descarga azul contra una criatura en llamas', 'El tramo final es espectacular, pero también el más apresurado.')}
+<p>El tramo final de la historia va demasiado deprisa para todo lo que ha construido, y la historia de Miles se resuelve con menos cuidado que la de Peter. Las actividades secundarias siguen siendo muchas y algo repetitivas, y quien esperaba un mapa lleno de interiores se encontrará, otra vez, una ciudad que se disfruta sobre todo desde el aire. Aun así, son defectos menores frente a todo lo que hace bien.</p>
+
+<h2>¿PS5 o PC?</h2>
+<p>La versión de PS5 es la original, con modos de calidad y de rendimiento. La de PC llegó el 30 de enero de 2025; al principio tuvo problemas técnicos que se fueron corrigiendo con parches. Si tienes las dos plataformas, la de PS5 es la opción más segura.</p>
+
+<h2>Veredicto</h2>
+<p><strong>Lo mejor:</strong> las alas de telaraña y el nuevo mapa, el traje simbionte, Kraven y la química entre Peter y Miles.<br />
+<strong>Lo peor:</strong> un final apresurado y un arco de Miles menos trabajado.</p>
+<p><strong>Puntuación: 9,5/10.</strong> El juego de Spider-Man más ambicioso hasta la fecha, y el número 1 de nuestro <a href="/blog/mejores-juegos-spider-man-ranking">ranking de los mejores juegos de Spider-Man</a>. ¿Y ahora qué? Te contamos <a href="/blog/marvels-spider-man-3-insomniac-todo-lo-que-sabemos">todo lo que sabemos de Marvel's Spider-Man 3</a>.</p>
+`,
+};
+
+const POSTS = [MEJORES_JUEGOS, MEJORES_VILLANOS, SPIDERMAN_PS4, SPIDERMAN_2_PS5];
 
 (async () => {
   for (const { slug, ...data } of POSTS) {
