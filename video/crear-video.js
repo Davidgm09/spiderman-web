@@ -7,7 +7,7 @@
  *   4. Subtítulos grandes palabra a palabra, sincronizados con la voz.
  *   5. Música de fondo opcional: cualquier .mp3 de video/musica (usa música libre de derechos).
  *
- * Uso:
+ * Uso (también: --musica <estilo|ninguna> para forzar la música):
  *   node video/crear-video.js                      → menú con los últimos artículos
  *   node video/crear-video.js <slug>               → un artículo concreto
  *   node video/crear-video.js <slug> --guion g.json → usa un guion propio en vez de la API de Claude
@@ -41,6 +41,20 @@ const CONFIG = {
 };
 const SALIDA = path.join(os.homedir(), 'Desktop', 'Videos Sentido Aracnido');
 const MUSICA = path.join(__dirname, 'musica');
+
+// Biblioteca de música (video/musica/creditos.json): estilos y pistas disponibles en disco
+function biblioteca() {
+  try {
+    const datos = JSON.parse(fs.readFileSync(path.join(MUSICA, 'creditos.json'), 'utf8'));
+    const pistas = Object.fromEntries(Object.entries(datos.pistas || {}).filter(([f]) => fs.existsSync(path.join(MUSICA, f))));
+    const estilos = Object.fromEntries(
+      Object.entries(datos._estilos || {}).filter(([e]) => Object.values(pistas).some((p) => p.estilos.includes(e)))
+    );
+    return { estilos, pistas };
+  } catch {
+    return { estilos: {}, pistas: {} };
+  }
+}
 
 // ---------- utilidades ----------
 
@@ -111,8 +125,10 @@ Reglas estrictas:
 - El texto de voz no lleva emojis, hashtags, comillas raras, paréntesis ni abreviaturas; escribe los números como se leen en voz alta cuando haga falta.
 - Cada escena elige una imagen de la lista por su número; varía las imágenes y que tengan relación con lo que se dice.
 - «rotulo» es un texto corto en pantalla (máximo 5 palabras) que resume la escena; puede ir vacío.
+- «musica» es el estilo de música de fondo que mejor encaja con el tono del vídeo, elegido de esta lista:
+${Object.entries(biblioteca().estilos).map(([e, d]) => `  · ${e}: ${d}`).join('\n')}
 Responde SOLO con un objeto JSON válido, sin texto antes ni después, con esta forma:
-{"titulo": "...", "escenas": [{"voz": "...", "rotulo": "...", "imagen": 0}], "descripcion": "2-3 frases para el texto de la publicación, invitando a leer el artículo", "hashtags": ["#SpiderMan", "..."]}`;
+{"titulo": "...", "musica": "estilo", "escenas": [{"voz": "...", "rotulo": "...", "imagen": 0}], "descripcion": "2-3 frases para el texto de la publicación, invitando a leer el artículo", "hashtags": ["#SpiderMan", "..."]}`;
 
 async function pedirGuion(post, imagenes) {
   const clave = process.env.ANTHROPIC_API_KEY;
@@ -289,7 +305,11 @@ function montar(dir, guion, palabras) {
 
   fs.writeFileSync(path.join(dir, 'subtitulos.ass'), crearSubtitulos(guion, palabras, inicios, duraciones, total), 'utf8');
 
-  const canciones = fs.existsSync(MUSICA) ? fs.readdirSync(MUSICA).filter((f) => /\.mp3$/i.test(f)) : [];
+  // Pistas del estilo que ha elegido la IA (si no hay ninguna de ese estilo, cualquiera de la biblioteca)
+  const { pistas } = biblioteca();
+  const todas = Object.keys(pistas);
+  const delEstilo = todas.filter((f) => pistas[f].estilos.includes(guion.musica));
+  const canciones = guion.musica === 'ninguna' ? [] : delEstilo.length ? delEstilo : todas;
   const args = ['-i', 'imagen.mp4', '-i', 'voz.wav'];
   let filtro = '[0:v]subtitles=subtitulos.ass[v]';
   // Volumen final normalizado al nivel habitual de TikTok/Shorts (-14 LUFS)
@@ -298,7 +318,7 @@ function montar(dir, guion, palabras) {
   let cancion = null;
   if (canciones.length) {
     cancion = canciones[Math.floor(Math.random() * canciones.length)];
-    console.log(`   Música: ${cancion}`);
+    console.log(`   Música (${delEstilo.length ? guion.musica : 'al azar'}): ${pistas[cancion].titulo}`);
     args.push('-stream_loop', '-1', '-i', path.join(MUSICA, cancion));
     // La música baja sola cuando habla la voz (sidechain) y entra y sale con fundido
     filtro +=
@@ -320,11 +340,10 @@ function montar(dir, guion, palabras) {
 // Crédito de la canción (las de Kevin MacLeod exigen citarlo): video/musica/creditos.json
 function creditoMusica(cancion) {
   if (!cancion) return '';
-  try {
-    const creditos = JSON.parse(fs.readFileSync(path.join(MUSICA, 'creditos.json'), 'utf8'));
-    if (creditos[cancion]) return `Música: ${creditos[cancion]}. Licencia CC BY 4.0: https://creativecommons.org/licenses/by/4.0/`;
-  } catch {}
-  return `Música: ${cancion.replace(/\.mp3$/i, '')}`;
+  const pista = biblioteca().pistas[cancion];
+  return pista
+    ? `Música: "${pista.titulo}" Kevin MacLeod (incompetech.com). Licencia CC BY 4.0: https://creativecommons.org/licenses/by/4.0/`
+    : `Música: ${cancion.replace(/\.mp3$/i, '')}`;
 }
 
 // ---------- principal ----------
@@ -332,9 +351,13 @@ function creditoMusica(cancion) {
 (async () => {
   const prisma = new PrismaClient();
   const argumentos = process.argv.slice(2);
-  const iGuion = argumentos.indexOf('--guion');
-  const guionPropio = iGuion >= 0 ? argumentos[iGuion + 1] : null;
-  const slug = argumentos.find((a, i) => !a.startsWith('--') && (iGuion < 0 || i !== iGuion + 1));
+  const opcion = (nombre) => {
+    const i = argumentos.indexOf(nombre);
+    return i >= 0 ? argumentos[i + 1] : null;
+  };
+  const guionPropio = opcion('--guion');
+  const musicaForzada = opcion('--musica'); // un estilo de creditos.json, o «ninguna»
+  const slug = argumentos.find((a, i) => !a.startsWith('--') && !(i > 0 && argumentos[i - 1].startsWith('--')));
 
   console.log('=== Crear vídeo · Sentido Arácnido ===');
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'sentido-video-'));
@@ -350,7 +373,9 @@ function creditoMusica(cancion) {
       guionPropio ? JSON.parse(fs.readFileSync(path.resolve(guionPropio), 'utf8')) : await pedirGuion(post, imagenes),
       imagenes.length
     );
+    if (musicaForzada) guion.musica = musicaForzada;
     guion.escenas.forEach((e, i) => console.log(`   ${i + 1}. ${e.voz}`));
+    console.log(`   Estilo de música: ${guion.musica || 'sin indicar'}`);
 
     paso(3, 'Voz');
     const palabras = generarVoz(guion, dir);
