@@ -1407,7 +1407,150 @@ ${tmdbFigure('dcMhdAn3iXQMIE48AAo5WOFUXG7', 'Peter Parker en un laboratorio junt
 `,
 };
 
-const POSTS = [MEJORES_JUEGOS, MEJORES_VILLANOS, SPIDERMAN_PS4, SPIDERMAN_2_PS5, NO_WAY_HOME, UN_NUEVO_UNIVERSO, CRUZANDO_EL_MULTIVERSO, SPIDER_MAN_2, MILES_MORALES_JUEGO, AMAZING_2012, ULTIMA_CACERIA, SUPERIOR, ULTIMATE_BENDIS, SIMBIONTE, PETER_VS_MILES, GUIA_COMICS, SERIE_1994, SPECTACULAR, JAMESON, GWEN_STACY_LEGADO, WEB_OF_SHADOWS, SERIE_MTV];
+const ULTIMATE_2012 = {
+  slug: 'ultimate-spider-man-2012-serie-animada-analisis',
+  title: 'Ultimate Spider-Man (2012), análisis: la serie animada que dividió a los fans',
+  subtitle: 'S.H.I.E.L.D., un equipo de jóvenes héroes, humor de «cuarta pared» y todo el universo Marvel: así es la serie de Disney XD',
+  excerpt:
+    'Ultimate Spider-Man (2012) llegó tras la cancelación de Spectacular y dividió a los fans con su humor y su estilo. Analizamos su propuesta, su equipo, sus temporadas y su legado.',
+  readTime: '8 min',
+  seoTitle: 'Ultimate Spider-Man (2012): análisis de la serie animada',
+  seoDescription:
+    'Análisis de Ultimate Spider-Man (2012) de Disney XD: Peter en S.H.I.E.L.D. con Nick Fury, su equipo de jóvenes héroes, sus cuatro temporadas, Drake Bell y por qué dividió a los fans.',
+  keywords: ['Ultimate Spider-Man serie', 'Ultimate Spider-Man 2012', 'Ultimate Spider-Man Disney XD', 'Drake Bell Spider-Man', 'serie animada Spider-Man', 'Web Warriors serie'],
+  tags: ['análisis', 'series', 'animación', 'Disney XD', 'S.H.I.E.L.D.', 'Marvel'],
+  content: `
+<p>Cuando ${serie('ultimate-spider-man', 'Ultimate Spider-Man')} se estrenó en Disney XD en 2012, los fans se dividieron como pocas veces. Los que venían de <a href="/blog/spectacular-spider-man-serie-analisis">The Spectacular Spider-Man</a>, cancelada tres años antes, se encontraron un tono radicalmente distinto: bromas que rompían la cuarta pared, fantasías animadas en mitad de los combates y humor constante. Una nueva generación de niños, en cambio, la disfrutó sin comparaciones. Ambos tenían sus razones.</p>
+
+<h2>Ficha rápida</h2>
+<table>
+  <tbody>
+    <tr><td><strong>Emisión</strong></td><td>2012-2017, en Disney XD</td></tr>
+    <tr><td><strong>Temporadas</strong></td><td>4</td></tr>
+    <tr><td><strong>Creadores</strong></td><td>Man of Action, con Jeph Loeb como productor ejecutivo</td></tr>
+    <tr><td><strong>Voz original de Peter</strong></td><td>Drake Bell</td></tr>
+    <tr><td><strong>Mentor</strong></td><td>Nick Fury, director de S.H.I.E.L.D.</td></tr>
+  </tbody>
+</table>
+
+<h2>La propuesta: Spider-Man en S.H.I.E.L.D.</h2>
+${tmdbFigure('fjtttNJpwa6usPstiYuyKMBFQDN', 'Spider-Man con el logotipo de Ultimate Spider-Man y otros jóvenes héroes', 'Ultimate Spider-Man optó por un diseño visual más estilizado y cartoon que sus predecesoras — una decisión que encajaba con su tono desenfadado pero que muchos fans de las series anteriores rechazaron.')}
+<p>En esta versión, Peter Parker lleva un año como Spider-Man cuando Nick Fury le ofrece entrenar con S.H.I.E.L.D. junto a otros jóvenes héroes: Nova, Puño de Hierro, Power Man y Tigre Blanco. El equipo vive con Peter y la tía May, y la serie mezcla las misiones con los problemas de Peter en el instituto, donde S.H.I.E.L.D. ha colocado a sus compañeros.</p>
+<p>Los creadores, el colectivo de guionistas Man of Action, apostaron por una serie de humor pensada para niños: los pensamientos de Peter se convertían en escenas animadas, había chistes visuales constantes y Spider-Man hablaba directamente al espectador. No era una adaptación dramática del personaje, y nunca quiso serlo.</p>
+
+<h2>Todo el universo Marvel</h2>
+${tmdbFigure('btX6P0a5vqBSCzL2be8tFOpNhsr', 'Spider-Man en una escena de la serie Ultimate Spider-Man', 'Los cruces con otros héroes de Marvel fueron uno de los puntos fuertes de la serie.')}
+<p>Donde la serie brilló fue en aprovechar el universo Marvel. Por ella pasaron Iron Man, Thor, el Capitán América, Hulk, los X-Men y muchos más, justo cuando el MCU estaba despegando en el cine. Para muchos niños de la época fue su puerta de entrada a todo el universo Marvel. Y en sus últimas temporadas, con <em>Web-Warriors</em> y <em>contra los Seis Siniestros</em>, presentó a Miles Morales y viajó por el multiverso arácnido.</p>
+
+<h2>El reparto</h2>
+<p>Drake Bell, conocido entonces por <em>Drake y Josh</em>, aportó a Peter una energía juvenil que encajaba con el tono de la serie. J. K. Simmons volvió a ponerle voz a J. Jonah Jameson, y Stan Lee tuvo un pequeño papel recurrente como el conserje del instituto.</p>
+
+<h2>¿Tenían razón los fans o los críticos?</h2>
+<p>Ambos. Ultimate Spider-Man es muy distinta de lo que esperaban los fans veteranos, y su humor no es para todo el mundo. Pero duró cuatro temporadas, acercó el personaje a miles de niños y cumplió su función. No es Spectacular Spider-Man, ni lo pretendía. Si buscas algo más clásico, prueba la <a href="/blog/spider-man-animated-series-1994-analisis">serie de 1994</a>.</p>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Cuántas temporadas tiene Ultimate Spider-Man?</h3>
+<p>Cuatro, emitidas entre 2012 y 2017 en Disney XD.</p>
+<h3>¿Quién es el mentor de Spider-Man en la serie?</h3>
+<p>Nick Fury, que le invita a entrenar con S.H.I.E.L.D.</p>
+<h3>¿Quién pone la voz a Spider-Man?</h3>
+<p>Drake Bell, en la versión original.</p>
+`,
+};
+
+const AMAZING_FRIENDS = {
+  slug: 'spider-man-amazing-friends-1981-analisis-serie',
+  title: 'Spider-Man y sus sorprendentes amigos (1981): la serie que nos dio a Firestar',
+  subtitle: 'Spider-Man, el Hombre de Hielo y Estrella de Fuego compartiendo casa con la tía May: la serie de los 80 que inventó un personaje que acabó en los cómics',
+  excerpt:
+    'Antes de la serie de 1994 estuvo Spider-Man y sus sorprendentes amigos (1981), con el Hombre de Hielo y Estrella de Fuego. Repasamos su historia, sus personajes y su curioso legado.',
+  readTime: '7 min',
+  seoTitle: 'Spider-Man y sus sorprendentes amigos (1981): la serie',
+  seoDescription:
+    'Spider-Man y sus sorprendentes amigos (1981): la serie de NBC con el Hombre de Hielo y Estrella de Fuego, por qué se creó a Firestar, sus episodios y su legado en los cómics.',
+  keywords: ['Spider-Man y sus sorprendentes amigos', 'Spider-Man and His Amazing Friends', 'Firestar', 'Estrella de Fuego', 'serie Spider-Man años 80', 'Hombre de Hielo'],
+  tags: ['análisis', 'series', 'animación', 'años 80', 'Firestar', 'clásico'],
+  content: `
+<p>Antes de la serie de 1994, antes de Spectacular y antes de Ultimate, hubo ${serie('spider-man-y-sus-sorprendentes-amigos', 'Spider-Man y sus sorprendentes amigos')}. Tres temporadas en NBC entre 1981 y 1983, con Spider-Man formando equipo con el Hombre de Hielo y Estrella de Fuego. Para muchos niños de los 80 fue su primer contacto con el trepamuros, y dejó un legado curioso: un personaje inventado para la televisión que acabó en los cómics.</p>
+
+<h2>Ficha rápida</h2>
+<table>
+  <tbody>
+    <tr><td><strong>Emisión</strong></td><td>1981-1983, en NBC</td></tr>
+    <tr><td><strong>Temporadas</strong></td><td>3</td></tr>
+    <tr><td><strong>Narrador</strong></td><td>Stan Lee (desde la segunda temporada)</td></tr>
+    <tr><td><strong>Protagonistas</strong></td><td>Spider-Man, el Hombre de Hielo (Iceman) y Estrella de Fuego (Firestar)</td></tr>
+  </tbody>
+</table>
+
+<h2>Tres héroes bajo el mismo techo</h2>
+${tmdbFigure('cL8MPDoy00GtVnUvhhNJXBcreNU', 'Spider-Man, el Hombre de Hielo y Estrella de Fuego con el logotipo de la serie', 'Spider-Man con el Hombre de Hielo y Estrella de Fuego, los «sorprendentes amigos» de la serie.')}
+<p>En la serie, Peter Parker comparte casa con Bobby Drake, el Hombre de Hielo de los X-Men, y con Angelica Jones, Estrella de Fuego. Los tres estudian en la universidad, viven con la tía May (que no sabe nada) y su perra, Ms. Lion, y tienen un cuartel secreto escondido en la casa, lleno de tecnología. Cuando hay peligro, se ponen el traje y salen juntos: los «Spider-Friends».</p>
+
+<h2>El nacimiento de Firestar</h2>
+<p>La historia de Firestar es la parte más curiosa de la serie. Según se ha contado muchas veces, la idea original era que Spider-Man formara equipo con la Antorcha Humana de los Cuatro Fantásticos, pero sus derechos para televisión no estaban disponibles. Así que se creó desde cero a una heroína con poderes de microondas y llamas: Angelica Jones, Estrella de Fuego.</p>
+<p>Gustó tanto que Marvel la llevó a los cómics en <em>Uncanny X-Men</em> #193 (1985), y en 1986 protagonizó su propia miniserie, en la que Emma Frost intenta manipularla para convertirla en un arma. Desde entonces ha sido miembro de los Nuevos Guerreros y de los Vengadores. Todo, porque no podían usar a la Antorcha Humana.</p>
+
+<h2>Todo el universo Marvel</h2>
+${tmdbFigure('7We1GSpHZ2jqhQPcGCtiJFJbTeK', 'Spider-Man, el Hombre de Hielo y Estrella de Fuego en una imagen de la serie', 'La dinámica de equipo entre Spider-Man, el Hombre de Hielo y Estrella de Fuego, el corazón de la serie.')}
+<p>La serie aprovechó como pocas el universo Marvel: por ella pasaron los X-Men, el Capitán América, Iron Man, Thor y muchos villanos clásicos, como el Duende Verde o el Doctor Muerte. Para muchos niños de los 80 fue la primera vez que vieron a tantos héroes de Marvel juntos.</p>
+
+<h2>¿Ha envejecido bien?</h2>
+<p>La animación y algunos guiones se notan de su época, pero el tono desenfadado y la química entre los tres protagonistas siguen funcionando. Es una buena opción para los más pequeños, y una curiosidad para cualquier fan. Si te gustan las series clásicas, la siguiente parada es la <a href="/blog/spider-man-animated-series-1994-analisis">serie de 1994</a>.</p>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Quiénes son los sorprendentes amigos de Spider-Man?</h3>
+<p>El Hombre de Hielo (Bobby Drake) y Estrella de Fuego (Angelica Jones).</p>
+<h3>¿Estrella de Fuego existía en los cómics?</h3>
+<p>No: se creó para la serie y llegó a los cómics en 1985, en <em>Uncanny X-Men</em> #193.</p>
+<h3>¿Cuántas temporadas tiene la serie?</h3>
+<p>Tres, emitidas en NBC entre 1981 y 1983.</p>
+`,
+};
+
+const POR_QUE_EL_MEJOR = {
+  slug: 'por-que-spider-man-es-el-mejor-personaje-marvel',
+  title: 'Por qué Spider-Man es el mejor personaje de Marvel (y probablemente de los cómics)',
+  subtitle: 'Un chico normal, una gran responsabilidad, el mejor humor y los mejores villanos: las razones por las que Spider-Man lleva más de 60 años funcionando',
+  excerpt:
+    'Spider-Man lleva más de 60 años siendo el personaje más querido de Marvel. Analizamos por qué: su identidad, su responsabilidad, su humor, sus villanos y su capacidad para reinventarse.',
+  readTime: '8 min',
+  seoTitle: 'Por qué Spider-Man es el mejor personaje de Marvel',
+  seoDescription:
+    'Por qué Spider-Man es el personaje más querido de Marvel: un chico normal con poderes, la gran responsabilidad, su humor, sus villanos y su éxito en cómics, cine y videojuegos.',
+  keywords: ['por qué Spider-Man es el mejor', 'mejor personaje de Marvel', 'Spider-Man personaje', 'un gran poder conlleva una gran responsabilidad', 'popularidad Spider-Man', 'Peter Parker'],
+  tags: ['opinión', 'Spider-Man', 'Peter Parker', 'Marvel', 'cómics', 'cultura popular'],
+  content: `
+<p>Si tuvieras que elegir un solo personaje para representar todo lo que puede ser un superhéroe (la fantasía de tener poderes, la responsabilidad moral, el precio personal de ser un héroe y el humor como escudo), sería Spider-Man. Lleva más de sesenta años en los cómics, ha triunfado en el cine, la televisión y los videojuegos, y sigue siendo el personaje más querido de Marvel. Estas son las razones.</p>
+
+<h2>1. Es un chico normal</h2>
+${tmdbFigure('ac0kRKTfiJ4GcoUfb0XIO5vgC8q', 'Póster de The Amazing Spider-Man con la sombra de Spider-Man', 'La sombra de Spider-Man en el póster de The Amazing Spider-Man (2012): cada generación tiene su versión del personaje, porque su esencia trasciende a cualquier actor o adaptación.')}
+<p>Superman es un alienígena; Batman, un multimillonario. Peter Parker es un chaval de Queens que no tiene dinero, suspende, llega tarde y no consigue que le salga nada bien. Cuando nació, en 1962, los adolescentes de los cómics eran ayudantes del héroe; Peter era el protagonista. No hace falta ser huérfano millonario ni el último hijo de un planeta para identificarse con él: basta con haberse sentido alguna vez el raro de la clase.</p>
+
+<h2>2. La responsabilidad como motor</h2>
+<p>«Un gran poder conlleva una gran responsabilidad» es la frase más famosa de los cómics de superhéroes. Define a un personaje cuya motivación no es la venganza ni la gloria, sino la culpa: Peter pudo detener al ladrón que mató al tío Ben y no lo hizo. Desde entonces, no puede dejar de ayudar, aunque le cueste el trabajo, el amor o el descanso. Es un héroe que siempre paga un precio, y por eso sus victorias importan.</p>
+
+<h2>3. El humor</h2>
+<p>Spider-Man es el héroe que bromea mientras pelea. Sus chistes no son solo para hacer reír: son su forma de controlar el miedo y de quitar tensión a situaciones desesperadas. Ese tono, a medio camino entre la tragedia y la comedia, es uno de los secretos de su éxito, y lo que hace que funcione igual de bien en un drama que en una película familiar.</p>
+
+<h2>4. Los mejores villanos</h2>
+<p>Spider-Man tiene la mejor galería de villanos de los cómics porque casi todos son un reflejo distorsionado de Peter: el genio que eligió el camino equivocado (${pj('doctor-octopus-otto-octavius', 'el Doctor Octopus')}), el científico destruido por su propia ambición (${pj('lizard-curtis-connors', 'el Lagarto')}), el hombre corriente al que nadie hizo caso (${pj('electro-maxwell-dillon', 'Electro')}). Luchar contra ellos es mirarse en un espejo. Los tienes en <a href="/blog/mejores-villanos-spider-man-ranking-definitivo">los 10 mejores villanos de Spider-Man</a>.</p>
+
+<h2>5. Un héroe de barrio</h2>
+<p>Spider-Man puede salvar el universo con los Vengadores, pero su sitio está en las calles de Nueva York: frenando atracos, ayudando a los vecinos y llegando tarde a cenar con la tía May. Es el «amigo y vecino» Spider-Man, un héroe cercano que protege a la gente corriente. <em>Brand New Day</em> (2026) volvió precisamente a esa esencia.</p>
+
+<h2>6. Cualquiera puede llevar la máscara</h2>
+<p>Pocos personajes se han reinventado tanto sin perder su esencia: ${pj('spider-man-miles-morales', 'Miles Morales')}, ${pj('spider-gwen-gwen-stacy', 'Gwen Stacy')}, ${pj('spider-man-2099-miguel-ohara', 'Spider-Man 2099')}, ${pj('spider-man-noir-peter-parker', 'Spider-Man Noir')}… El Spider-Verso demostró que Spider-Man no es solo Peter Parker, sino una idea: la de alguien que decide hacer lo correcto aunque le cueste.</p>
+
+<h2>7. Funciona en todas partes</h2>
+<p>Sus números lo confirman. ${peli('spider-man-brand-new-day-2026', 'Spider-Man: Brand New Day')} (2026) superó los 2.500 millones de dólares en taquilla, la saga de Insomniac en PlayStation ha vendido decenas de millones de copias y <a href="/blog/spider-man-into-the-spider-verse-analisis-revolucion-animacion">Un nuevo universo</a> ganó el Óscar a la mejor película de animación. Cómics, cine, series y videojuegos: Spider-Man triunfa en todos.</p>
+
+<h2>Conclusión</h2>
+<p>Spider-Man lleva más de 60 años funcionando porque está construido sobre verdades que no caducan: la culpa, la responsabilidad, el sacrificio y el humor como escudo. Pueden cambiar el actor, el universo o el traje, y el personaje sigue funcionando. ¿Cuánto sabes de él? Ponte a prueba con nuestro <a href="/juegos/test-spider-man">test de Spider-Man</a>.</p>
+`,
+};
+
+const POSTS = [MEJORES_JUEGOS, MEJORES_VILLANOS, SPIDERMAN_PS4, SPIDERMAN_2_PS5, NO_WAY_HOME, UN_NUEVO_UNIVERSO, CRUZANDO_EL_MULTIVERSO, SPIDER_MAN_2, MILES_MORALES_JUEGO, AMAZING_2012, ULTIMA_CACERIA, SUPERIOR, ULTIMATE_BENDIS, SIMBIONTE, PETER_VS_MILES, GUIA_COMICS, SERIE_1994, SPECTACULAR, JAMESON, GWEN_STACY_LEGADO, WEB_OF_SHADOWS, SERIE_MTV, ULTIMATE_2012, AMAZING_FRIENDS, POR_QUE_EL_MEJOR];
 
 // Portadas que no correspondían a su artículo (revisadas a mano en octubre de 2026)
 const HEADERS = {
