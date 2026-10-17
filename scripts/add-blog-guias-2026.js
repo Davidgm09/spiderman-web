@@ -705,7 +705,73 @@ ${figura('B09VYJ6KKP', 'Marvel Legends · Pack de 5 figuras de Spider-Man (exclu
 `,
 };
 
-const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS, FINAL_BND, MEJORES_COMICS, JUEGOS_POST, TRAJES, VILLANOS_CINE, MARVEL_LEGENDS];
+// Sets comprobados en Amazon.es el 17/10/2026 (stock, título, edad y contenido según el fabricante, imagen)
+const MEJORES_LEGO = {
+  slug: 'mejores-sets-lego-spider-man',
+  title: 'Los mejores sets de LEGO de Spider-Man por edades (2026)',
+  subtitle: 'De los LEGO Duplo para los más pequeños al Daily Bugle para coleccionistas: qué set elegir según la edad y el fan',
+  excerpt:
+    'Hay sets de LEGO de Spider-Man para todas las edades, de los 2 años a los coleccionistas adultos. Los ordenamos por edad para que aciertes, con los nuevos sets de Brand New Day incluidos.',
+  category: 'Guías',
+  readTime: '8 min',
+  publishDate: new Date('2026-10-17'),
+  image: '/images/mejores-lego-spider-man.jpg',
+  seoTitle: 'Los mejores sets de LEGO de Spider-Man por edades (2026)',
+  seoDescription:
+    'Guía de sets de LEGO de Spider-Man por edades: Duplo y Spidey para peques, sets de Brand New Day y el Daily Bugle para coleccionistas. Todos en Amazon.',
+  keywords: ['LEGO Spider-Man', 'mejores sets LEGO Spider-Man', 'LEGO Spider-Man por edades', 'LEGO Daily Bugle', 'LEGO Spidey', 'LEGO Brand New Day'],
+  tags: ['LEGO', 'regalos', 'guía', 'niños', 'coleccionismo', 'Brand New Day'],
+  content: `
+<p><em>Como afiliados de Amazon, obtenemos ingresos por las compras adscritas que cumplen los requisitos aplicables. Los precios cambian a menudo, así que consúltalos en Amazon antes de comprar.</em></p>
+
+<p>LEGO tiene sets de Spider-Man para casi cualquier edad: bloques grandes para los que aún no saben leer, persecuciones y batallas para los que empiezan a montar solos, escenas de las películas y auténticas maquetas de exposición para adultos. Los hemos ordenado por la <strong>edad que recomienda LEGO</strong>, que es la mejor pista para acertar.</p>
+
+<h2>Para los más pequeños (de 2 a 5 años)</h2>
+<p>La línea <strong>Spidey</strong> está basada en la serie de animación <em>Spidey y su superequipo</em> de Disney Junior. Usa piezas grandes y fáciles de encajar, pensadas para que los peques monten casi solos.</p>
+${figura('B01N5B2OKI', 'LEGO Duplo 10464 · Aracnocuartel de Spidey y su Superequipo', '81Msc-HyBfL', 'Para los más pequeños, a partir de 2 años: piezas Duplo grandes, Miles en su moto, Rino y un cuartel lleno de accesorios para jugar a los superhéroes.')}
+${figura('B0FPXDYJYK', 'LEGO Spidey 11206 · Spidey en su moto vs. Rino', '81YWo7OvlJL', 'A partir de 4 años. Un set pequeño y rápido de montar, con las minifiguras de Spidey y Rino. Perfecto como primer LEGO.')}
+${figura('B0DHSB8HP8', 'LEGO Spidey 11198 · Spin y Electro: duelo de vehículos dinosaurio', '81YggWErRzL', 'A partir de 4 años. Miles («Spin») persigue a Electro en coches con forma de dinosaurio; cada vehículo viene en su propia bolsa para que monten paso a paso.')}
+${figura('B0FMK5H64X', 'LEGO Spidey 11208 · Barco pirata del Equipo Spidey', '81puGDduiRL', 'A partir de 4 años. Un barco pirata para recuperar el tesoro que ha robado el Duende Verde, con Spidey, Spider Fantasma, Spin y el Duende Verde.')}
+
+<h2>De 6 a 7 años: armaduras y persecuciones</h2>
+${figura('B0FPXGZQ1Y', 'LEGO Marvel 76337 · Armadura robótica de Miles Morales vs. Spider-Man 2099', '81ctpWlvKoL', 'A partir de 6 años. Una armadura articulada con cabina para Miles y la minifigura del Spider-Man 2099, inspirada en Cruzando el Multiverso.')}
+${figura('B0FPXFPLRZ', 'LEGO Marvel 76338 · Batalla de armaduras robóticas: Spider-Man vs. Doc Ock', '81fxKlQFTUL', 'A partir de 6 años. Dos armaduras articuladas, una para Spider-Man y otra para Doc Ock, con Spider Fantasma de refuerzo.')}
+${figura('B0DHSC1BF8', 'LEGO Marvel 76309 · Spider-Man vs. coche brutal de Venom', '811uRAsOuSL', 'A partir de 7 años. Venom huye con un botín de lingotes de oro en su coche venomizado, y Spider-Man y Spider-Woman (Julia Carpenter) salen tras él.')}
+${figura('B0CFW281JH', 'LEGO Marvel 76279 · Coche de carreras de Spider-Man y Duende Verde venomizado', '81G2yryswfL', 'A partir de 7 años. El coche de Spider-Man contra el planeador del Duende Verde, con Spider Fantasma en monopatín.')}
+
+<h2>Los sets de Brand New Day (8 años en adelante)</h2>
+<p>La nueva película de Tom Holland también ha llegado a LEGO, con algunos de sus personajes más inesperados:</p>
+${figura('B0FTFSDHK7', 'LEGO Marvel 76350 · Spider-Man vs. Hulk: choque épico', '81iW4XviFML', 'A partir de 8 años. Un edificio cuya fachada salta por los aires para que aparezca Hulk, con las minifiguras de Spider-Man, Tarántula, el Escorpión y Bumerán. El set más espectacular de la película.')}
+${figura('B0FRSMF77X', 'LEGO Marvel 76349 · Spider-Man: persecución del furgón penitenciario', '81LbwDXJ+tL', 'A partir de 8 años. Un furgón blindado de seis ruedas con prisión a bordo, Spider-Man, Lápida, Tarántula y un guardia del Departamento de Control de Daños.')}
+
+<h2>Escenas de las películas (9 años en adelante)</h2>
+${figura('B0DWF13RP3', 'LEGO Marvel 76321 · Spider-Man vs. Doc Ock: escena del tren', '81NL3dD1QML', 'A partir de 9 años. La pelea del tren de Spider-Man 2 (2004), con Spider-Man, Doc Ock, J. Jonah Jameson y la tía May. Un guiño a la que para muchos es la mejor escena del cine de Spider-Man.')}
+${figura('B0FPXDZ53R', 'LEGO Marvel 76334 · Batalla legendaria: Spider-Man vs. Sandman', '81+zV0MzraL', 'A partir de 9 años. Una pequeña escena de Spider-Man 3 con Spider-Man, Venom y el Hombre de Arena, pensada tanto para jugar como para exponer.')}
+${figura('B0FPXG5S99', 'LEGO Marvel 76342 · Spider-Man vs. Mysterio: el Daily Bugle', '91wzuHrIlvL', 'A partir de 10 años. Un Daily Bugle de cuatro plantas, más pequeño que el gran set de coleccionista y pensado también para jugar, con siete minifiguras: Spider-Man, Miles, Spider Fantasma, J. Jonah Jameson, Mysterio y más.')}
+
+<h2>Figuras para construir</h2>
+<p>Una alternativa a las minifiguras: Spider-Man grande, articulado y montado pieza a pieza.</p>
+${figura('B09QFWKFS1', 'LEGO Marvel 76226 · Figura articulada de Spider-Man', '91A1b-4we-L', 'A partir de 8 años. Un Spider-Man de unos 24 cm totalmente articulado, para montar, posar y llevar a cualquier parte.')}
+${figura('B09QFXWTVQ', 'LEGO Marvel 76225 · Figura articulada de Miles Morales', '91f4KT9lhqL', 'A partir de 8 años. El compañero perfecto del anterior: Miles Morales de unos 23 cm, también articulado.')}
+${figura('B0FR9QQ1B1', 'LEGO Marvel 76346 · Figura de héroe: Spider-Man (Brand New Day)', '81aWzJIdxTL', 'A partir de 12 años. El Spider-Man de Brand New Day a lo grande: unos 36 cm y 24 puntos de articulación, con una minifigura de regalo.')}
+
+<h2>Para adultos y coleccionistas</h2>
+${figura('B09FM3RWP2', 'LEGO Marvel 76178 · Daily Bugle', '81ZyiKnKhRL', 'El set definitivo de Spider-Man: 3.772 piezas y 25 minifiguras, de Doctor Octopus y Venom a Spider-Gwen, Black Cat, Daredevil o el Punisher. Para mayores de 18 años y con espacio en la estantería.')}
+${figura('B08GYFKMS7', 'LEGO Marvel 76187 · Venom', '81q8FIboqjS', 'Una maqueta de la cabeza de Venom con su mandíbula y su lengua, sobre una base con placa informativa. Para mayores de 18 años; queda muy bien junto a otros bustos LEGO.')}
+
+<h2>Consejos para acertar</h2>
+<ul>
+  <li><strong>Respeta la edad de la caja.</strong> No es solo por las piezas pequeñas: indica también lo difícil que es el montaje. Un set de 9 años puede frustrar a un niño de 6.</li>
+  <li><strong>Las minifiguras importan.</strong> Para muchos niños (y no tan niños), lo mejor del set son los personajes que trae. Fíjate en cuáles incluye cada uno.</li>
+  <li><strong>Black Friday.</strong> LEGO suele bajar de precio en esas fechas; este año es el <strong>27 de noviembre</strong>.</li>
+  <li><strong>Mira quién lo vende.</strong> Si lo vende y lo envía Amazon, la compra y las devoluciones son más sencillas.</li>
+</ul>
+
+<p>¿Buscas más ideas? Tienes nuestra <a href="/blog/regalos-spider-man-navidad-guia">guía de regalos de Spider-Man</a>, <a href="/blog/mejores-figuras-marvel-legends-spider-man">las mejores figuras Marvel Legends</a> y todos los productos en <a href="/tienda?categoria=Juguetes">nuestra tienda</a>.</p>
+`,
+};
+
+const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS, FINAL_BND, MEJORES_COMICS, JUEGOS_POST, TRAJES, VILLANOS_CINE, MARVEL_LEGENDS, MEJORES_LEGO];
 
 (async () => {
   for (const p of POSTS) {
