@@ -243,6 +243,17 @@ body {
   @apply p-3 border border-gray-600 text-sm;
 }
 
+/* En móvil, las tablas anchas se desplazan dentro de su caja en vez de ensanchar la página */
+@media (max-width: 640px) {
+  .blog-content table {
+    display: block;
+    overflow-x: auto;
+  }
+  .blog-content th, .blog-content td {
+    @apply p-2;
+  }
+}
+
 .blog-content th {
   @apply font-semibold text-white;
   background: linear-gradient(135deg, rgba(220, 38, 38, 0.2), rgba(37, 99, 235, 0.2));

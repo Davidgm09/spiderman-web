@@ -771,7 +771,97 @@ ${figura('B08GYFKMS7', 'LEGO Marvel 76187 · Venom', '81q8FIboqjS', 'Una maqueta
 `,
 };
 
-const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS, FINAL_BND, MEJORES_COMICS, JUEGOS_POST, TRAJES, VILLANOS_CINE, MARVEL_LEGENDS, MEJORES_LEGO];
+const pj = (slug, name) => `<a href="/personajes/${slug}">${name}</a>`;
+
+const TRES_SPIDERMAN = {
+  slug: 'tobey-maguire-andrew-garfield-tom-holland-mejor-spider-man',
+  title: 'Tobey Maguire vs. Andrew Garfield vs. Tom Holland: ¿quién es el mejor Spider-Man?',
+  subtitle: 'Peter Parker, Spider-Man, villanos, historias de amor y taquilla: comparamos a los tres trepamuros del cine, categoría a categoría',
+  excerpt:
+    'Es el gran debate de los fans: ¿Tobey Maguire, Andrew Garfield o Tom Holland? Comparamos a los tres Spider-Man del cine en siete categorías, con datos, para ver quién gana en qué.',
+  category: 'Películas',
+  readTime: '9 min',
+  publishDate: new Date('2026-10-17'),
+  image: tmdb('4tjxYg2AbOzzG9G1YuiT2NzYhlH'),
+  seoTitle: 'Maguire vs. Garfield vs. Holland: ¿quién es el mejor Spider-Man?',
+  seoDescription:
+    'Comparamos a Tobey Maguire, Andrew Garfield y Tom Holland como Spider-Man: Peter Parker, villanos, historias de amor, taquilla y mejores películas.',
+  keywords: ['mejor Spider-Man', 'Tobey Maguire vs Andrew Garfield vs Tom Holland', 'quién es el mejor Spider-Man', 'Spider-Man actores', 'Tom Holland Spider-Man', 'Andrew Garfield Spider-Man', 'Tobey Maguire Spider-Man'],
+  tags: ['películas', 'Tobey Maguire', 'Andrew Garfield', 'Tom Holland', 'comparativa', 'MCU'],
+  content: `
+<p>Desde 2002, tres actores se han puesto el traje de Spider-Man en imagen real: <strong>Tobey Maguire</strong>, <strong>Andrew Garfield</strong> y <strong>Tom Holland</strong>. Cada uno llegó en un momento distinto del cine de superhéroes y cada uno tiene su generación de fans, así que la pregunta de «¿quién es el mejor Spider-Man?» lleva años encendiendo discusiones. <em>No Way Home</em> los juntó en la misma película y lo dejó claro: los tres son Peter Parker, pero muy distintos.</p>
+
+<p>Aquí no vamos a dar un ganador a dedo. Los comparamos en siete categorías, con datos donde los hay, y al final te damos nuestro veredicto. Si quieres verlas todas antes, aquí tienes <a href="/blog/orden-ver-peliculas-spider-man">el orden para ver las películas de Spider-Man</a>.</p>
+
+<h2>Los tres Spider-Man, de un vistazo</h2>
+<table>
+  <thead><tr><th></th><th>Tobey Maguire</th><th>Andrew Garfield</th><th>Tom Holland</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Etapa</strong></td><td>2002-2007</td><td>2012-2014</td><td>Desde 2016</td></tr>
+    <tr><td><strong>Director</strong></td><td>Sam Raimi</td><td>Marc Webb</td><td>Jon Watts y Destin Daniel Cretton</td></tr>
+    <tr><td><strong>Películas propias</strong></td><td>3</td><td>2</td><td>4</td></tr>
+    <tr><td><strong>Edad en su estreno</strong></td><td>26 años</td><td>28 años</td><td>19 años</td></tr>
+    <tr><td><strong>Su gran amor</strong></td><td>Mary Jane (Kirsten Dunst)</td><td>Gwen Stacy (Emma Stone)</td><td>MJ (Zendaya)</td></tr>
+    <tr><td><strong>Lanzarredes</strong></td><td>Orgánicos</td><td>Mecánicos, inventados por él</td><td>Mecánicos, inventados por él (y traje de Stark)</td></tr>
+    <tr><td><strong>Taquilla mundial de sus películas</strong></td><td>Unos 2.500 millones $</td><td>Unos 1.470 millones $</td><td>Más de 6.400 millones $</td></tr>
+  </tbody>
+</table>
+<p><small>Las cifras de taquilla son aproximadas, en dólares y sin ajustar a la inflación (Box Office Mojo). En el caso de Holland solo cuentan sus cuatro películas en solitario, no las de los Vengadores.</small></p>
+
+<h2>Tobey Maguire: el Peter Parker clásico</h2>
+${figure('zQ8AxTPiCiS5nnwXpwTBPBHSaa5', 'Spider-Man trepando por la fachada de un rascacielos en la película de 2002', 'El Spider-Man de 2002 trepando por un rascacielos: la imagen que definió al personaje en el cine.')}
+<p>${peli('spider-man-2002', 'Spider-Man')} (2002) fue la película que demostró que un superhéroe podía arrasar en taquilla y emocionar a la vez. El Peter de Maguire es el de los cómics de Stan Lee y Steve Ditko: tímido, torpe, siempre sin dinero y aplastado por la responsabilidad. Su vida como Peter Parker es un desastre constante, y ese es el corazón de la trilogía.</p>
+<p>${peli('spider-man-2-2004', 'Spider-Man 2')} (2004), que ganó el Óscar a los mejores efectos visuales, es para muchos la mejor película de Spider-Man jamás hecha, con el Doctor Octopus de Alfred Molina y la mítica escena del tren. ${peli('spider-man-3-2007', 'Spider-Man 3')} (2007) quiso abarcar demasiado, con tres villanos, pero dejó momentos que hoy son memes de culto, como el baile de Peter con el traje negro.</p>
+
+<h2>Andrew Garfield: el Spider-Man más Spider-Man</h2>
+${figure('k0hlAzTryCYX1O1LyC6P8tAa8s0', 'Spider-Man de espaldas frente a Rino, el Duende Verde y Electro en Times Square', 'The Amazing Spider-Man 2 (2014): Spider-Man frente a Rino, el Duende Verde y Electro.')}
+<p>El Peter de Garfield es más listo, más rebelde y más solitario: un chico que va en monopatín, que fabrica sus propios lanzarredes y que busca la verdad sobre sus padres. Pero donde de verdad brilla es con la máscara puesta. Su Spider-Man <strong>bromea sin parar</strong> mientras pelea, se mueve como una araña y tiene una agilidad muy de cómic.</p>
+<p>${peli('the-amazing-spider-man-2012', 'The Amazing Spider-Man')} (2012) y ${peli('the-amazing-spider-man-2-el-poder-de-electro-2014', 'The Amazing Spider-Man 2')} (2014) no tuvieron la acogida que esperaba Sony, y la tercera se canceló. Aun así, su química con Emma Stone sigue siendo de lo más recordado del cine arácnido. Lo contamos en <a href="/blog/the-amazing-spider-man-2012-revaloracion-andrew-garfield">nuestra revisión de su etapa</a>.</p>
+
+<h2>Tom Holland: el Spider-Man adolescente del MCU</h2>
+${figure('tPpYGm2mVecue7Bk3gNVoSPA5qn', 'Spider-Man tumbado en un muro junto al río, con sudadera amarilla y auriculares', 'Spider-Man: Homecoming (2017): un Peter adolescente, con sudadera y auriculares, al que le queda mucho por aprender.')}
+<p>Holland debutó en <em>Capitán América: Civil War</em> (2016) con 19 años, y es el Peter Parker más joven del cine: un chaval de instituto, entusiasta y algo atolondrado, que quiere impresionar a Tony Stark. Su evolución es la más larga de los tres: pasa de ${peli('spider-man-homecoming-2017', 'Homecoming')} (2017) y ${peli('spider-man-lejos-de-casa-2019', 'Lejos de casa')} (2019) a perderlo todo en ${peli('spider-man-no-way-home-2021', 'No Way Home')} (2021).</p>
+<p>La crítica más habitual a su etapa era que dependía demasiado de Iron Man y de la tecnología. ${peli('spider-man-brand-new-day-2026', 'Brand New Day')} (2026) responde a eso con un Peter solo, en la calle y con un traje hecho a mano. Ha sido además la película más taquillera de la historia del personaje, con unos 2.500 millones de dólares en todo el mundo.</p>
+
+<h2>Categoría a categoría</h2>
+
+<h3>1. Mejor Peter Parker: Tobey Maguire</h3>
+<p>Maguire clava la parte más difícil del personaje: el chico normal al que la vida no le da un respiro. Pierde trabajos, suspende, llega tarde a todo y aun así elige hacer lo correcto. Garfield está más cerca de un Peter «guay» y Holland de un Peter niño, pero el Parker de los cómics clásicos es el de Maguire.</p>
+
+<h3>2. Mejor Spider-Man con la máscara: Andrew Garfield</h3>
+<p>La forma de moverse, las bromas en mitad de la pelea, la manera de proteger a la gente normal… El Spider-Man de Garfield es el que más se parece al de las viñetas. Holland también tiene mucho humor, pero en sus primeras películas el traje de Stark hace buena parte del trabajo.</p>
+
+<h3>3. Mejor arco de personaje: Tom Holland</h3>
+<p>Ninguno ha recorrido tanto camino. Holland empieza como un chaval que quiere ser Vengador y acaba, en <em>No Way Home</em>, renunciando a que nadie le recuerde para salvar el mundo. Es la versión más completa del «un gran poder conlleva una gran responsabilidad», y sin tío Ben: esa lección se la da la tía May.</p>
+
+<h3>4. Mejores villanos: Tobey Maguire</h3>
+${figure('faV0HuR6WnQoLrVq3r6mhjaABL9', 'Spider-Man y el Doctor Octopus luchando sobre el techo de un tren', 'La pelea en el tren de Spider-Man 2 (2004), con el Doctor Octopus de Alfred Molina.')}
+<p>El Duende Verde de Willem Dafoe y el Doctor Octopus de Alfred Molina siguen en lo más alto de cualquier ranking, y por algo volvieron en <em>No Way Home</em>. Holland tiene al Buitre de Michael Keaton y al Mysterio de Jake Gyllenhaal, muy buenos también, y Garfield, al Lagarto y a Electro. Lo tienes todo en <a href="/blog/villanos-spider-man-peliculas-ranking">nuestro ranking de villanos del cine</a>.</p>
+
+<h3>5. Mejor historia de amor: Andrew Garfield</h3>
+<p>Garfield y Emma Stone eran pareja también fuera de la pantalla, y se nota. La historia de Peter y Gwen es natural, divertida y, por su final, la más dolorosa. El beso de Maguire y Kirsten Dunst bajo la lluvia es más icónico, y la relación de Holland y Zendaya tiene un final precioso, pero la química de Garfield y Stone no tiene rival.</p>
+
+<h3>6. Mejor película: empate entre Maguire y Holland</h3>
+<p>Según la nota media de los usuarios de TMDB, la mejor valorada de las tres sagas es <em>No Way Home</em> (7,9), por delante de <em>Lejos de casa</em> (7,4) y de <em>Spider-Man 2</em> (7,3). Pero muchos críticos siguen señalando <em>Spider-Man 2</em> como la mejor película del personaje. Las dos son imprescindibles; las de Garfield se quedan en 6,7 y 6,5.</p>
+
+<h3>7. Taquilla: Tom Holland, de largo</h3>
+<p>Con el MCU detrás, no hay comparación posible: las cuatro películas de Holland superan los 6.400 millones de dólares, y <em>No Way Home</em> y <em>Brand New Day</em> pasaron, cada una, de los 1.900 millones. Eso sí, la trilogía de Maguire fue un fenómeno enorme para su época, sin universo compartido ni multiverso.</p>
+
+<h2>No Way Home: los tres juntos</h2>
+${figure('Bwh7Lol5k3hSqYOtqXWxbbJVMx', 'Spider-Man con el traje Iron Spider junto al Doctor Strange frente a un portal', 'No Way Home (2021): el hechizo del Doctor Strange abre el multiverso y trae de vuelta a los Spider-Man anteriores.')}
+<p>La mejor respuesta al debate quizá la dio la propia película. En <em>No Way Home</em>, Maguire hace de hermano mayor sabio, Garfield encuentra su redención al salvar a MJ (lo que no pudo hacer con Gwen) y Holland aprende de los dos. Entre ellos se llaman «Peter 1», «Peter 2» y «Peter 3». Si quieres ver cómo cambió el traje de cada uno, lo tienes en <a href="/blog/trajes-spider-man-peliculas">todos los trajes de Spider-Man en las películas</a>.</p>
+
+<h2>Nuestro veredicto</h2>
+<ul>
+  <li><strong>Tobey Maguire</strong> es el mejor <strong>Peter Parker</strong> y tiene la película que muchos consideran la mejor de todas.</li>
+  <li><strong>Andrew Garfield</strong> es el mejor <strong>Spider-Man</strong> con la máscara y el que tuvo menos suerte con sus películas.</li>
+  <li><strong>Tom Holland</strong> tiene la <strong>historia más completa</strong> y la etapa más exitosa, y con <em>Brand New Day</em> por fin es el Spider-Man de barrio que pedían los fans.</li>
+</ul>
+<p>Si tuviéramos que elegir uno solo… depende de con cuál creciste. Y ese es justo el mejor resumen del personaje: cada generación tiene su Spider-Man. ¿Cuánto sabes de los tres? Ponte a prueba con nuestro <a href="/juegos/test-spider-man">test de Spider-Man</a> o descubre <a href="/juegos/que-spider-man-eres">qué Spider-Man eres</a>. Y si quieres saber más del personaje, empieza por la ficha de ${pj('spider-man-peter-parker-alt', 'Peter Parker')}.</p>
+`,
+};
+
+const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS, FINAL_BND, MEJORES_COMICS, JUEGOS_POST, TRAJES, VILLANOS_CINE, MARVEL_LEGENDS, MEJORES_LEGO, TRES_SPIDERMAN];
 
 (async () => {
   for (const p of POSTS) {
