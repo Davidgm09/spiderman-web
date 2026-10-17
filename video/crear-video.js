@@ -126,13 +126,18 @@ async function pedirGuion(post, imagenes) {
   const res = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: { 'x-api-key': clave, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' },
-    body: JSON.stringify({ model: CONFIG.modelo, max_tokens: 2000, system: SISTEMA, messages: [{ role: 'user', content: usuario }] }),
+    // El modelo razona antes de responder y ese razonamiento cuenta para max_tokens: hay que dejar margen
+    body: JSON.stringify({ model: CONFIG.modelo, max_tokens: 16000, system: SISTEMA, messages: [{ role: 'user', content: usuario }] }),
   });
   const datos = await res.json();
   if (!res.ok) throw new Error(`La API de Claude respondió ${res.status}: ${datos.error?.message || JSON.stringify(datos).slice(0, 300)}`);
-  const texto = datos.content.map((c) => c.text || '').join('');
-  const json = texto.slice(texto.indexOf('{'), texto.lastIndexOf('}') + 1);
-  return JSON.parse(json);
+  const texto = datos.content.filter((c) => c.type === 'text').map((c) => c.text).join('');
+  const ini = texto.indexOf('{');
+  const fin = texto.lastIndexOf('}');
+  if (ini < 0 || fin < ini) {
+    throw new Error(`La IA no devolvió un guion válido (motivo: ${datos.stop_reason}). Vuelve a intentarlo.\n${texto.slice(0, 300)}`);
+  }
+  return JSON.parse(texto.slice(ini, fin + 1));
 }
 
 function validarGuion(guion, numImagenes) {
@@ -307,7 +312,7 @@ function montar(dir, guion, palabras) {
   const argumentos = process.argv.slice(2);
   const iGuion = argumentos.indexOf('--guion');
   const guionPropio = iGuion >= 0 ? argumentos[iGuion + 1] : null;
-  const slug = argumentos.find((a, i) => !a.startsWith('--') && i !== iGuion + 1);
+  const slug = argumentos.find((a, i) => !a.startsWith('--') && (iGuion < 0 || i !== iGuion + 1));
 
   console.log('=== Crear vídeo · Sentido Arácnido ===');
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'sentido-video-'));
