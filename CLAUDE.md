@@ -34,6 +34,7 @@ All scripts read from `.env` (not `.env.local`). Run them with `node scripts/<na
 | `scripts/fix-tienda-productos-2026.js` | Static | Store fixes verified on Amazon.es (wrong ASINs, out-of-stock replacements); re-run after `populate-tienda-products.js --clean` |
 | `scripts/add-tienda-brand-new-day.js` | Static | 8 Brand New Day products verified on Amazon.es (shown in their own block on `/tienda`); re-run after `populate-tienda-products.js --clean`, then `fix-tienda-productos-2026.js` |
 | `scripts/build-juegos-data.js` | DB | Builds `data/juegos/personajes.json` for the daily game Arañadle (gender, origin universe, debut year, unified group names, Spanish search names, clues); re-run when characters change |
+| `scripts/fix-personajes-seo-2026.js` | Static | Search titles/descriptions for the 45 characters (real name + Spanish hero name); re-run after `populate-all-45-characters.js` |
 
 After re-importing comics from Comic Vine, run `enrich-comics-from-comicvine.js`, then `--credits`, then `apply-comic-synopses.js`: the import leaves placeholder data (`characters: ['Spider-Man']`, writer "Marvel Comics") and machine-translated, truncated synopses.
 
@@ -81,6 +82,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
 - `lib/config.ts` — Site-wide constants: `SITE_URL`, `AMAZON_TAG`, `ADSENSE_CLIENT_ID`
 - `lib/rawg-api.ts` — RAWG API client for games
 - `lib/supabase.ts` — Supabase Storage client for image uploads (used by `app/admin/upload/`)
+- `data/personajes/fichas.json` + `components/characters/CharacterGuide.tsx` — hand-written expanded character pages (sections, film/TV table with actors, FAQ + FAQPage JSON-LD). Characters without an entry show only `longDescription`. Fact-check every entry before adding it.
 - `types/content.ts` — TypeScript interfaces for all content types (`MovieContent`, `GameContent`, etc.)
 - `prisma/schema.prisma` — Single source of truth for all models. Also contains cache/analytics tables: `MarvelCache`, `ExternalApiCache`, `ContentAnalytics`, `AffiliateProduct`, `UserFavorite`, `SearchQuery`
 

@@ -8,6 +8,7 @@ import { ArrowLeft, Star, Zap, Shield, BookOpen, Users, ShoppingCart } from 'luc
 import { Breadcrumb } from '@/components/breadcrumb';
 import { InContentAd, SidebarAd } from '@/components/ads/GoogleAdsense';
 import { generateAmazonUrl } from '@/lib/content-helpers';
+import { CharacterGuide, getFicha, fichaFaqJsonLd } from '@/components/characters/CharacterGuide';
 
 export const revalidate = 3600
 
@@ -42,6 +43,8 @@ export default async function CharacterDetailPage({ params }: Props) {
   await characterService.incrementViews(slug).catch(() => {});
 
   const relatedCharacters = await characterService.getByCategory(character.category, 6).catch(() => []);
+  const ficha = getFicha(character.slug);
+  const faqJsonLd = ficha ? fichaFaqJsonLd(ficha) : null;
   const related = relatedCharacters.filter(c => c.id !== character.id).slice(0, 5);
 
   const categoryAccent = {
@@ -85,6 +88,7 @@ export default async function CharacterDetailPage({ params }: Props) {
       }}
     >
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      {faqJsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />}
 
       {/* Hero */}
       <section className="relative min-h-[85vh] flex items-center overflow-hidden">
@@ -194,8 +198,7 @@ export default async function CharacterDetailPage({ params }: Props) {
                 {[
                   { label: 'Universo', value: character.universe },
                   character.firstAppearance ? { label: 'Primera aparición', value: character.firstAppearance } : null,
-                  character.comicsCount ? { label: 'Cómics', value: character.comicsCount.toString() } : null,
-                  character.seriesCount ? { label: 'Series', value: character.seriesCount.toString() } : null,
+                  // comicsCount / seriesCount no se muestran: venían de la importación inicial y no están verificados
                 ].filter(Boolean).map((item, i, arr) => (
                   <div key={item!.label} className="flex items-center gap-6">
                     <div>
@@ -207,8 +210,10 @@ export default async function CharacterDetailPage({ params }: Props) {
                 ))}
               </div>
 
-              {/* Descripción larga */}
-              {character.longDescription && (
+              {/* Ficha ampliada (si existe) o descripción larga */}
+              {ficha && <CharacterGuide ficha={ficha} name={character.name.replace(/\s*\(.*\)$/, '')} bar={categoryAccent.bar} />}
+
+              {!ficha && character.longDescription && (
                 <div>
                   <div className="flex items-center gap-3 mb-5">
                     <div className={`w-1 h-7 rounded-full bg-gradient-to-b ${categoryAccent.bar}`} />

@@ -78,12 +78,6 @@ export function CharacterCard({ character }: { character: DatabaseCharacter }) {
                   <span className="text-xs">{character.powers.length}</span>
                 </div>
               )}
-              {character.comicsCount > 0 && (
-                <div className="flex items-center gap-1 text-gray-500">
-                  <BookOpen className="w-3 h-3" />
-                  <span className="text-xs">{character.comicsCount}</span>
-                </div>
-              )}
               {character.firstAppearance && (
                 <span className="text-gray-600 text-xs ml-auto">{character.firstAppearance.match(/\d{4}/)?.[0]}</span>
               )}
