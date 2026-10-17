@@ -322,7 +322,7 @@ export const comicService = {
   async getAllSlugs() {
     return await prisma.comic.findMany({
       where: { isActive: true },
-      select: { slug: true, updatedAt: true },
+      select: { slug: true, updatedAt: true, title: true, description: true },
     });
   },
 

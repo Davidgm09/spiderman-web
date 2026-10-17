@@ -7,7 +7,7 @@ import { BookOpen, ShoppingCart, Calendar, User, ArrowLeft, Users, History, Eye,
 import { InContentAd, SidebarAd } from "@/components/ads/GoogleAdsense"
 import { comicService } from "@/lib/database"
 import { SITE_URL, pageTitle, metaDescription } from "@/lib/config"
-import { generateAmazonUrl, parseJson } from "@/lib/content-helpers"
+import { generateAmazonUrl, parseJson, isThinComic } from "@/lib/content-helpers"
 import { AmazonProductCard } from "@/components/affiliate/AmazonProductCard"
 import { TiendaProductCards } from "@/components/affiliate/TiendaProductCards"
 import { Breadcrumb } from "@/components/breadcrumb"
@@ -60,6 +60,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description,
     keywords: comic.keywords?.length ? comic.keywords : ['Spider-Man', 'Marvel Comics', 'cómic', comic.title, comic.year, 'análisis'],
     alternates: { canonical: url },
+    ...(isThinComic(comic) ? { robots: { index: false, follow: true } } : {}),
     openGraph: {
       title,
       description,
@@ -91,7 +92,8 @@ export default async function ComicPage({ params }: Props) {
     '@context': 'https://schema.org',
     '@type': 'Book',
     name: comic.title,
-    description: comic.seoDescription || comic.description,
+    // description es la sinopsis revisada a mano; seoDescription es la traducción automática de Comic Vine
+    description: comic.description,
     image: comic.image ? { '@type': 'ImageObject', url: comic.image, width: 300, height: 450 } : undefined,
     url,
     datePublished: comic.year,

@@ -9,6 +9,7 @@ import {
   gameService,
   blogService,
 } from '@/lib/database'
+import { isThinComic } from '@/lib/content-helpers'
 
 import { SITE_URL } from '@/lib/config'
 
@@ -63,7 +64,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }))
 
-  const comicRoutes: MetadataRoute.Sitemap = comics.map((c) => ({
+  const comicRoutes: MetadataRoute.Sitemap = comics.filter((c) => !isThinComic(c)).map((c) => ({
     url: `${BASE_URL}/comics/${c.slug}`,
     lastModified: c.updatedAt,
     changeFrequency: 'monthly',
