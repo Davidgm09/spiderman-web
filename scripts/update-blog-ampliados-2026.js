@@ -107,7 +107,104 @@ ${figure('89b/89b077deb2a3ce38e071fdb5caae69c0', 'Miles Morales y Peter Parker j
 `,
 };
 
-const POSTS = [MEJORES_JUEGOS];
+const cv = (path) => `https://comicvine.gamespot.com/a/uploads/${path}`;
+const cvFigure = (path, alt, cap) => `<figure>
+  <img src="${cv(path)}" alt="${alt}" loading="lazy" />
+  <figcaption>${cap}</figcaption>
+</figure>`;
+const pj = (slug, name) => `<a href="/personajes/${slug}-alt">${name}</a>`;
+
+const MEJORES_VILLANOS = {
+  slug: 'mejores-villanos-spider-man-ranking-definitivo',
+  title: 'Los 10 mejores villanos de Spider-Man: ranking definitivo',
+  subtitle: 'Del Duende Verde a Electro: la galería de villanos más rica de los cómics, con su origen, su mejor historia y por qué funcionan',
+  excerpt:
+    'Spider-Man tiene la mejor galería de villanos de Marvel. Repasamos los 10 más importantes de los cómics, con su primera aparición, su mejor historia y lo que les hace únicos.',
+  readTime: '12 min',
+  seoTitle: 'Los 10 mejores villanos de Spider-Man: ranking definitivo',
+  seoDescription:
+    'Los mejores villanos de Spider-Man en los cómics: Duende Verde, Doctor Octopus, Venom, Kraven, Kingpin, Carnage y más, con su origen y su mejor historia.',
+  keywords: ['villanos de Spider-Man', 'mejores villanos de Spider-Man', 'enemigos de Spider-Man', 'Duende Verde', 'Doctor Octopus', 'Venom', 'Kraven'],
+  tags: ['ranking', 'villanos', 'cómics', 'Duende Verde', 'Venom', 'Doctor Octopus'],
+  content: `
+<p>Spider-Man tiene algo que pocos superhéroes pueden presumir: una galería de villanos en la que casi cualquiera podría protagonizar su propia saga. Muchos nacieron en los primeros años de la serie, de la mano de Stan Lee y Steve Ditko, y siguen siendo igual de importantes más de sesenta años después.</p>
+
+<p>Lo que los hace especiales es que casi todos son un reflejo de Peter Parker: científicos que usaron mal su talento, gente corriente a la que la vida trató peor que a él o personas que tuvieron poder y eligieron la irresponsabilidad. En este ranking nos centramos en los cómics; si te interesa el cine, tenemos <a href="/blog/villanos-spider-man-peliculas-ranking">el ranking de villanos de las películas</a>.</p>
+
+<h2>El ranking, de un vistazo</h2>
+<table>
+  <thead><tr><th>#</th><th>Villano</th><th>Debut</th><th>Su mejor historia</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>${pj('green-goblin-norman-osborn', 'Duende Verde')}</td><td>1964</td><td>La noche en que murió Gwen Stacy</td></tr>
+    <tr><td>2</td><td>${pj('doctor-octopus-otto-octavius', 'Doctor Octopus')}</td><td>1963</td><td>Superior Spider-Man</td></tr>
+    <tr><td>3</td><td>${pj('venom-eddie-brock', 'Venom')}</td><td>1988</td><td>The Amazing Spider-Man #300</td></tr>
+    <tr><td>4</td><td>${pj('kraven-the-hunter-sergei-kravinoff', 'Kraven el Cazador')}</td><td>1964</td><td>La última cacería de Kraven</td></tr>
+    <tr><td>5</td><td>${pj('kingpin-wilson-fisk', 'Kingpin')}</td><td>1967</td><td>Spider-Man No More!</td></tr>
+    <tr><td>6</td><td>${pj('carnage-cletus-kasady', 'Carnage')}</td><td>1992</td><td>Maximum Carnage</td></tr>
+    <tr><td>7</td><td>${pj('mysterio-quentin-beck', 'Mysterio')}</td><td>1964</td><td>Sus ilusiones de los años 60</td></tr>
+    <tr><td>8</td><td>${pj('vulture-adrian-toomes', 'El Buitre')}</td><td>1963</td><td>The Amazing Spider-Man #2</td></tr>
+    <tr><td>9</td><td>${pj('lizard-curtis-connors', 'El Lagarto')}</td><td>1963</td><td>The Amazing Spider-Man #6</td></tr>
+    <tr><td>10</td><td>${pj('electro-maxwell-dillon', 'Electro')}</td><td>1964</td><td>The Amazing Spider-Man #9</td></tr>
+  </tbody>
+</table>
+
+<h2>10. Electro (Max Dillon)</h2>
+<p>Max Dillon era un electricista que trabajaba en un tendido eléctrico cuando le alcanzó un rayo. Sobrevivió convertido en un generador viviente y decidió usar su poder para robar. Debutó en <em>The Amazing Spider-Man</em> #9 (1964) y, aunque en los cómics suele ser un villano de segunda fila, su resentimiento de «hombre corriente al que nadie hace caso» le ha dado mucho juego, sobre todo en el cine con Jamie Foxx.</p>
+
+<h2>9. El Lagarto (Curt Connors)</h2>
+${cvFigure('scale_medium/11144/111442876/8791115-dfgeges.jpg', 'El Lagarto con su bata de laboratorio', 'El Lagarto conserva la bata de laboratorio del doctor Connors: el monstruo nunca borra del todo al científico.')}
+<p>Curt Connors perdió un brazo en la guerra, donde servía como cirujano, y quiso regenerarlo con ADN de reptil. Funcionó… demasiado bien. Debutó en <em>The Amazing Spider-Man</em> #6 (1963) y es uno de los villanos más trágicos de la serie: Connors es un buen hombre, amigo y mentor de Peter, con una mujer y un hijo, al que su propio experimento convierte en un monstruo.</p>
+
+<h2>8. El Buitre (Adrian Toomes)</h2>
+<p>El segundo villano de la serie, en <em>The Amazing Spider-Man</em> #2 (1963). Adrian Toomes era un ingeniero brillante al que su socio estafó, y usó su arnés de vuelo para vengarse y robar. Es un villano poco habitual: un anciano que demuestra que la edad no le quita ni un ápice de peligro. Michael Keaton le dio en <em>Homecoming</em> su mejor versión fuera de los cómics.</p>
+
+<h2>7. Mysterio (Quentin Beck)</h2>
+${cvFigure('scale_medium/3/33913/997983-113_web_of_spider_man_4.jpg', 'Mysterio con su casco de cristal lleno de humo', 'El casco de cristal de Mysterio, una de las siluetas más reconocibles de la galería de villanos de Spider-Man.')}
+<p>Quentin Beck era un experto en efectos especiales de Hollywood que decidió que se haría famoso derrotando a Spider-Man. Debutó en <em>The Amazing Spider-Man</em> #13 (1964) y su arma son las ilusiones: hologramas, gases alucinógenos y trucos de escenario. Con los años ha protagonizado algunas de las historias más perturbadoras de la serie, y en <em>Lejos de casa</em> (2019) dio pie a uno de los mejores villanos del MCU.</p>
+
+<h2>6. Carnage (Cletus Kasady)</h2>
+${cvFigure('scale_medium/12/124259/8056391-extreme_carnage_alpha_vol_1_1_lee_retailer_shared_exclusive_virgin_variant.jpg', 'Carnage con sus tentáculos rojos bajo la luna', 'Carnage: el simbionte rojo, hijo del de Venom, unido a un asesino en serie.')}
+<p>Cletus Kasady era el compañero de celda de Eddie Brock. Cuando el simbionte de Venom fue a rescatar a Eddie, dejó atrás una «cría» que se unió a Kasady, y así nació Carnage en 1992. Si Venom tiene un código moral retorcido, Carnage no tiene ninguno: es caos puro. Su gran saga, <em>Maximum Carnage</em> (1993), obligó a Spider-Man a aliarse con Venom, y hasta tuvo su propio videojuego.</p>
+
+<h2>5. Kingpin (Wilson Fisk)</h2>
+<p>El rey del crimen de Nueva York debutó en <em>The Amazing Spider-Man</em> #50 (1967), el número de la famosa portada de Peter tirando su traje a la basura. Fisk no tiene superpoderes, pero no le hacen falta: es un luchador formidable y, sobre todo, un estratega que siempre va diez pasos por delante. Es tan buen villano que acabó siendo el gran enemigo de Daredevil.</p>
+
+<h2>4. Kraven el Cazador (Sergei Kravinoff)</h2>
+${cvFigure('scale_medium/11125/111253436/6733787-b.jpg', 'Kraven el Cazador con su chaleco de piel de león y una lanza', 'Kraven, con su chaleco de piel de león: un cazador que considera a Spider-Man la presa definitiva.')}
+<p>Kraven debutó en <em>The Amazing Spider-Man</em> #15 (1964) como un cazador de fieras que quería probarse cazando a la presa más peligrosa de todas. Durante años fue un villano más, hasta que <em>La última cacería de Kraven</em> (1987), de J. M. DeMatteis y Mike Zeck, lo convirtió en leyenda: Kraven derrota a Spider-Man, lo entierra vivo y ocupa su lugar para demostrar que es mejor que él. Es una de las mejores historias de la historia del personaje; la tienes en <a href="/blog/kravens-last-hunt-analisis-mejor-arco-spider-man">nuestro análisis</a>.</p>
+
+<h2>3. Venom (Eddie Brock)</h2>
+${cvFigure('scale_medium/11125/111253436/6733785-9.jpg', 'Venom agazapado sobre una cornisa de Nueva York', 'Venom: el traje que Peter rechazó, unido a un hombre que le odiaba.')}
+<p>Peter consiguió un traje negro alienígena en <em>Secret Wars</em> (1984), descubrió que era un ser vivo y se libró de él en el campanario de una iglesia. Allí mismo estaba Eddie Brock, un periodista que culpaba a Spider-Man de haber arruinado su carrera, y el simbionte encontró en él a su pareja perfecta. Venom debutó del todo en <em>The Amazing Spider-Man</em> #300 (1988) y fue un fenómeno: conoce todos los secretos de Peter, su sentido arácnido no lo detecta y es mucho más fuerte. Con los años pasó de villano a antihéroe con serie propia. Te lo contamos en <a href="/blog/simbionte-historia-evolucion-venom">la historia del simbionte</a>.</p>
+
+<h2>2. Doctor Octopus (Otto Octavius)</h2>
+${cvFigure('scale_medium/12/124259/7925693-rco025_1619001753.jpg', 'El Doctor Octopus con sus cuatro brazos mecánicos', 'Otto Octavius y sus brazos mecánicos, unidos a su cuerpo tras un accidente en el laboratorio.')}
+<p>Un científico brillante, arrogante y acomplejado al que un accidente de laboratorio dejó unido a sus cuatro brazos mecánicos. Debutó en <em>The Amazing Spider-Man</em> #3 (1963), fue el líder de los Seis Siniestros y llegó incluso a estar a punto de casarse con la tía May. Pero su gran momento llegó en 2013, cuando se apoderó del cuerpo de Peter Parker y se convirtió en el <a href="/blog/superior-spider-man-doctor-octopus-analisis">Superior Spider-Man</a>, un intento de ser un héroe «mejor» que Peter que acabó demostrando lo que de verdad significa serlo.</p>
+
+<h2>1. El Duende Verde (Norman Osborn)</h2>
+${cvFigure('scale_large/1/12840/1704865-genetic_construct_gg.jpg', 'El Duende Verde volando en su planeador en una viñeta clásica', 'El Duende Verde en su planeador, en una viñeta de cómic clásica.')}
+<p>No hay debate. El Duende Verde debutó en <em>The Amazing Spider-Man</em> #14 (1964) como un misterio con máscara, y en 1966 se reveló que era Norman Osborn, el padre de Harry, el mejor amigo de Peter. Conoce la identidad secreta de Spider-Man, ataca siempre lo que más le duele y protagonizó el momento más importante de la historia del personaje: la muerte de Gwen Stacy en <em>The Amazing Spider-Man</em> #121 (1973). Lo contamos en <a href="/blog/legado-muerte-gwen-stacy-50-anos">el legado de La noche en que murió Gwen Stacy</a>.</p>
+<p>Murió en el número siguiente, empalado por su propio planeador, pero regresó en los años 90 y ha seguido siendo una amenaza: llegó a dirigir los Vengadores Oscuros. Ningún otro villano ha hecho tanto daño a Peter Parker.</p>
+
+<h2>Menciones de honor</h2>
+<ul>
+  <li>${pj('hobgoblin-roderick-kingsley', 'Hobgoblin')}: el heredero del Duende y el gran misterio de los años 80.</li>
+  <li>${pj('sandman-william-baker', 'El Hombre de Arena')}: un criminal con más corazón de lo que parece, que llegó a ser aliado de Spider-Man.</li>
+  <li>${pj('rhino-aleksei-sytsevich', 'Rino')}, ${pj('scorpion-mac-gargan', 'el Escorpión')} y ${pj('shocker-herman-schultz', 'Shocker')}: la fuerza bruta clásica de la galería.</li>
+  <li>${pj('mister-negative-martin-li', 'Mister Negativo')}, ${pj('morlun', 'Morlun')} y ${pj('jackal-miles-warren', 'el Chacal')}: villanos más recientes, o más raros, que protagonizaron grandes sagas.</li>
+</ul>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Cuál es el peor enemigo de Spider-Man?</h3>
+<p>El Duende Verde, Norman Osborn: conoce su identidad secreta y mató a Gwen Stacy.</p>
+<h3>¿Quién fue el primer villano de Spider-Man?</h3>
+<p>En <em>Amazing Fantasy</em> #15 (1962) Peter se enfrenta al ladrón que mata al tío Ben. El primer supervillano llegó en <em>The Amazing Spider-Man</em> #1 (1963): el Camaleón.</p>
+<h3>¿Quiénes son los Seis Siniestros?</h3>
+<p>El grupo de villanos que formó el Doctor Octopus en 1964: Buitre, Electro, Kraven, Mysterio y el Hombre de Arena, además del propio Octopus.</p>
+`,
+};
+
+const POSTS = [MEJORES_JUEGOS, MEJORES_VILLANOS];
 
 (async () => {
   for (const { slug, ...data } of POSTS) {
