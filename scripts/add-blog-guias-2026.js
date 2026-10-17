@@ -861,7 +861,66 @@ ${figure('Bwh7Lol5k3hSqYOtqXWxbbJVMx', 'Spider-Man con el traje Iron Spider junt
 `,
 };
 
-const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS, FINAL_BND, MEJORES_COMICS, JUEGOS_POST, TRAJES, VILLANOS_CINE, MARVEL_LEGENDS, MEJORES_LEGO, TRES_SPIDERMAN];
+// Datos verificados el 17/10/2026: digital confirmado (Vandal, AVPasión); suscripción y formato físico sin fecha oficial
+const BND_STREAMING = {
+  slug: 'spider-man-brand-new-day-streaming-donde-ver',
+  title: 'Dónde ver Spider-Man: Brand New Day: digital, streaming y Blu-ray',
+  subtitle: 'Ya se puede alquilar y comprar en digital. Te contamos dónde, cuándo podría llegar a Netflix, Movistar Plus+ o Disney+ y qué se sabe del Blu-ray',
+  excerpt:
+    'Spider-Man: Brand New Day ya está disponible en alquiler y compra digital en España desde el 6 de octubre. Te contamos en qué tiendas, cuándo podría llegar a las plataformas de suscripción y qué se sabe del formato físico.',
+  category: 'Noticias',
+  readTime: '5 min',
+  publishDate: new Date('2026-10-17'),
+  image: tmdb('r08LxMJCbf1SiJIWeyH9aJmdqwC'),
+  seoTitle: 'Dónde ver Spider-Man: Brand New Day en streaming (2026)',
+  seoDescription:
+    'Spider-Man: Brand New Day ya está en alquiler y compra digital desde el 6 de octubre. Dónde verla, cuándo podría llegar a Netflix, Movistar Plus+ o Disney+ y el Blu-ray.',
+  keywords: ['Brand New Day streaming', 'dónde ver Spider-Man Brand New Day', 'Brand New Day Disney+', 'Brand New Day Netflix', 'Brand New Day digital', 'Brand New Day Blu-ray'],
+  tags: ['Brand New Day', 'streaming', 'noticias', 'Tom Holland', 'MCU', 'dónde ver'],
+  content: `
+<p><em>Última actualización: 17 de octubre de 2026.</em></p>
+
+<p>Después de arrasar en los cines, con más de 2.500 millones de dólares de taquilla, ${peli('spider-man-brand-new-day-2026', 'Spider-Man: Brand New Day')} ya se puede ver en casa. Estas son todas las opciones que hay ahora mismo en España y lo que se sabe (y lo que no) de su llegada a las plataformas de suscripción.</p>
+
+<h2>Resumen rápido</h2>
+<table>
+  <thead><tr><th>Formato</th><th>Estado en España</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Alquiler y compra digital</strong></td><td>Disponible desde el 6 de octubre de 2026</td></tr>
+    <tr><td><strong>Plataformas de suscripción</strong></td><td>Sin fecha oficial</td></tr>
+    <tr><td><strong>4K, Blu-ray y DVD</strong></td><td>Sin fecha oficial en España</td></tr>
+  </tbody>
+</table>
+
+<h2>Dónde verla ya: alquiler y compra digital</h2>
+${figure('r08LxMJCbf1SiJIWeyH9aJmdqwC', 'Peter Parker y su reflejo como Spider-Man en Brand New Day', 'Brand New Day arranca con un Peter Parker solo, al que nadie recuerda tras No Way Home.')}
+<p>Desde el <strong>6 de octubre de 2026</strong>, la película está disponible para alquilar o comprar en las principales tiendas digitales: <strong>Apple TV</strong>, <strong>Prime Video</strong> y <strong>Rakuten TV</strong>, en calidad 4K y con audio en castellano. Al alquilarla tienes un tiempo limitado para verla; al comprarla, se queda en tu biblioteca. El precio puede variar entre tiendas y con las ofertas, así que conviene comprobarlo en cada una.</p>
+
+<h2>¿Cuándo llega a Netflix, Movistar Plus+ o Disney+?</h2>
+<p>Aquí no hay nada oficial: Sony no ha anunciado todavía en qué plataforma de suscripción se estrenará en España ni cuándo. Lo que sí sabemos es cómo suelen funcionar las películas de Sony:</p>
+<ul>
+  <li><strong>Primero, la «ventana de pago».</strong> Varios medios españoles apuntan a que, como otras películas recientes de Sony, llegaría primero a Movistar Plus+, unos siete meses después de su estreno en cines; eso la situaría hacia finales de febrero o marzo de 2027. Es una estimación, no un anuncio.</li>
+  <li><strong>Después, Netflix o Disney+.</strong> En Estados Unidos, las películas de Sony pasan primero por Netflix y más tarde por Disney+. En España, su llegada a estas plataformas podría tardar bastante más, y tampoco hay fecha.</li>
+</ul>
+<p>En cuanto haya una fecha oficial, actualizaremos este artículo.</p>
+
+<h2>¿Y en Blu-ray o 4K?</h2>
+<p>En España no hay fecha confirmada para la edición física. En Estados Unidos, la edición en 4K y Blu-ray tiene fecha anunciada para mediados de diciembre de 2026, así que es probable que llegue a las tiendas españolas en una fecha parecida, aunque no está confirmado. Si te gusta coleccionar, en nuestra <a href="/tienda">tienda</a> tienes una selección de productos de <em>Brand New Day</em> revisados uno a uno.</p>
+
+<h2>Antes de verla</h2>
+<p><em>Brand New Day</em> continúa justo donde terminó ${peli('spider-man-no-way-home-2021', 'No Way Home')}, así que conviene haberla visto; tienes el contexto en <a href="/blog/spider-man-no-way-home-analisis">nuestro análisis de No Way Home</a>. Si quieres repasar toda la saga, aquí tienes <a href="/blog/orden-ver-peliculas-spider-man">el orden para ver las películas de Spider-Man</a>. Y cuando la veas, te esperan <a href="/blog/spider-man-brand-new-day-final-explicado">el final explicado</a> y <a href="/blog/trajes-spider-man-peliculas">todos los trajes de Spider-Man en el cine</a>.</p>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Dónde puedo ver Spider-Man: Brand New Day?</h3>
+<p>En alquiler o compra digital en Apple TV, Prime Video y Rakuten TV, desde el 6 de octubre de 2026.</p>
+<h3>¿Está Brand New Day en Disney+ o en Netflix?</h3>
+<p>Todavía no, y no hay fecha oficial para ninguna plataforma de suscripción en España.</p>
+<h3>¿Está incluida en Prime Video sin pagar más?</h3>
+<p>No: en Prime Video se puede alquilar o comprar, pero no está incluida en la suscripción.</p>
+`,
+};
+
+const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS, FINAL_BND, MEJORES_COMICS, JUEGOS_POST, TRAJES, VILLANOS_CINE, MARVEL_LEGENDS, MEJORES_LEGO, TRES_SPIDERMAN, BND_STREAMING];
 
 (async () => {
   for (const p of POSTS) {
