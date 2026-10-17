@@ -1385,5 +1385,489 @@
     "a": "No. La Madame Web original es Cassandra Webb; Julia Carpenter heredó sus poderes y el nombre en 2010."
    }
   ]
+ },
+ "thor-odinson-alt": {
+  "nombre": "Thor",
+  "secciones": [
+   {
+    "titulo": "Origen: el dios del trueno",
+    "html": "<p>Thor, hijo de Odín y príncipe de Asgard, es el dios nórdico del trueno. Su padre lo desterró a la Tierra para que aprendiera humildad, y desde entonces se ha convertido en uno de sus grandes protectores. Debutó en <em>Journey into Mystery</em> #83 (1962), creado por Stan Lee, Larry Lieber y Jack Kirby, y fue uno de los <strong>miembros fundadores de los Vengadores</strong>.</p>"
+   },
+   {
+    "titulo": "Etapas clave en los cómics",
+    "html": "<ul><li><strong>La etapa de Walt Simonson (años 80):</strong> considerada la mejor del personaje, con la llegada de Bill Rayos Beta, un guerrero alienígena digno de levantar el martillo de Thor.</li><li><strong>La Diosa del Trueno (2014):</strong> Jane Foster llegó a empuñar el martillo y a convertirse en Thor.</li></ul>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>Fuerza divina, una resistencia casi ilimitada, una vida larguísima y el control del trueno y las tormentas. Su martillo, <strong>Mjolnir</strong>, solo puede levantarlo quien sea digno.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Thor",
+    "anio": 2011,
+    "actor": "Chris Hemsworth"
+   },
+   {
+    "titulo": "Los Vengadores",
+    "anio": 2012,
+    "actor": "Chris Hemsworth"
+   },
+   {
+    "titulo": "Thor: Ragnarok",
+    "anio": 2017,
+    "actor": "Chris Hemsworth"
+   },
+   {
+    "titulo": "Vengadores: Infinity War",
+    "anio": 2018,
+    "actor": "Chris Hemsworth"
+   },
+   {
+    "titulo": "Vengadores: Endgame",
+    "anio": 2019,
+    "actor": "Chris Hemsworth"
+   },
+   {
+    "titulo": "Thor: Love and Thunder",
+    "anio": 2022,
+    "actor": "Chris Hemsworth"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién interpreta a Thor?",
+    "a": "Chris Hemsworth, desde <em>Thor</em> (2011)."
+   },
+   {
+    "q": "¿Quién puede levantar el martillo de Thor?",
+    "a": "Solo quien sea digno. Además de Thor, lo han levantado personajes como el Capitán América, Jane Foster o Bill Rayos Beta."
+   },
+   {
+    "q": "¿Cuándo apareció Thor en los cómics?",
+    "a": "En <em>Journey into Mystery</em> #83, en 1962."
+   }
+  ]
+ },
+ "black-panther-tchalla-alt": {
+  "nombre": "Pantera Negra",
+  "secciones": [
+   {
+    "titulo": "Origen: el rey de Wakanda",
+    "html": "<p>T'Challa es el rey de <strong>Wakanda</strong>, una nación africana oculta y la más avanzada del mundo gracias a sus reservas de vibranium. Como Pantera Negra, protege a su pueblo con la fuerza que le da una hierba sagrada y con la tecnología wakandiana. Debutó en <em>Fantastic Four</em> #52 (1966), de Stan Lee y Jack Kirby, y fue el primer superhéroe negro de los grandes cómics estadounidenses.</p>"
+   },
+   {
+    "titulo": "Etapas clave en los cómics",
+    "html": "<ul><li><strong>Vengador:</strong> se unió a los Vengadores a finales de los 60.</li><li><strong>La etapa de Christopher Priest (1998):</strong> redefinió al personaje como un estratega y un rey político de primer nivel.</li><li><strong>Boda con Tormenta (2006):</strong> se casó con Ororo Munroe, de la Patrulla-X.</li></ul>"
+   },
+   {
+    "titulo": "Su relación con Spider-Man",
+    "html": "<p>Han coincidido muchas veces como Vengadores. En el cine, se cruzaron en la pelea del aeropuerto de <em>Capitán América: Civil War</em> (2016), donde Pantera Negra hizo su debut en el MCU.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Capitán América: Civil War",
+    "anio": 2016,
+    "actor": "Chadwick Boseman"
+   },
+   {
+    "titulo": "Black Panther",
+    "anio": 2018,
+    "actor": "Chadwick Boseman"
+   },
+   {
+    "titulo": "Vengadores: Infinity War",
+    "anio": 2018,
+    "actor": "Chadwick Boseman"
+   },
+   {
+    "titulo": "Vengadores: Endgame",
+    "anio": 2019,
+    "actor": "Chadwick Boseman"
+   },
+   {
+    "titulo": "Black Panther: Wakanda Forever",
+    "anio": 2022,
+    "actor": "Letitia Wright (Shuri, nueva Pantera Negra)"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién interpreta a Pantera Negra?",
+    "a": "Chadwick Boseman fue T'Challa en el MCU hasta su fallecimiento en 2020. En <em>Wakanda Forever</em> (2022), su hermana Shuri (Letitia Wright) toma el relevo."
+   },
+   {
+    "q": "¿Qué es el vibranium?",
+    "a": "Un metal casi indestructible que solo existe en Wakanda. Con él está hecho, por ejemplo, el escudo del Capitán América en las películas."
+   },
+   {
+    "q": "¿Cuándo apareció Pantera Negra?",
+    "a": "En <em>Fantastic Four</em> #52, en 1966."
+   }
+  ]
+ },
+ "storm-ororo-munroe-alt": {
+  "nombre": "Tormenta",
+  "secciones": [
+   {
+    "titulo": "Origen: la diosa del clima",
+    "html": "<p>Ororo Munroe nació en Nueva York y creció en El Cairo y en Kenia, donde llegó a ser adorada como una diosa por su capacidad mutante de <strong>controlar el clima</strong>. El Profesor X la reclutó para una nueva Patrulla-X en <em>Giant-Size X-Men</em> #1 (1975), creada por Len Wein y Dave Cockrum.</p>"
+   },
+   {
+    "titulo": "Una líder nata",
+    "html": "<p>Ha sido una de las grandes líderes de la Patrulla-X, y en 2006 se casó con T'Challa, Pantera Negra, convirtiéndose en reina de Wakanda. Es uno de los personajes más queridos y poderosos del universo mutante.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>Controla el clima a voluntad: lluvia, viento, rayos, nieve o niebla. Puede volar sobre corrientes de aire y lanzar descargas eléctricas.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "X-Men",
+    "anio": 2000,
+    "actor": "Halle Berry"
+   },
+   {
+    "titulo": "X-Men: Días del futuro pasado",
+    "anio": 2014,
+    "actor": "Halle Berry"
+   },
+   {
+    "titulo": "X-Men: Apocalipsis",
+    "anio": 2016,
+    "actor": "Alexandra Shipp"
+   },
+   {
+    "titulo": "X-Men '97 (serie animada)",
+    "anio": 2024,
+    "actor": "Tormenta, uno de los personajes principales"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién interpreta a Tormenta?",
+    "a": "Halle Berry en las primeras películas de X-Men (desde 2000) y Alexandra Shipp en <em>X-Men: Apocalipsis</em> (2016)."
+   },
+   {
+    "q": "¿Tormenta fue reina de Wakanda?",
+    "a": "Sí, al casarse con T'Challa, Pantera Negra, en 2006."
+   },
+   {
+    "q": "¿Dónde nació Tormenta?",
+    "a": "En Nueva York, aunque se crio en El Cairo y en Kenia."
+   }
+  ]
+ },
+ "daredevil-matt-murdock-alt": {
+  "nombre": "Daredevil",
+  "secciones": [
+   {
+    "titulo": "Origen: el abogado ciego",
+    "html": "<p>De niño, Matt Murdock se lanzó a salvar a un anciano de un camión y unos productos radiactivos le cayeron en los ojos. Se quedó ciego, pero el resto de sus sentidos se agudizaron hasta niveles sobrehumanos. Hoy es abogado de día y, de noche, <strong>Daredevil</strong>, el protector de Hell's Kitchen. Debutó en <em>Daredevil</em> #1 (1964), de Stan Lee y Bill Everett.</p>"
+   },
+   {
+    "titulo": "Etapas clave en los cómics",
+    "html": "<ul><li><strong>La etapa de Frank Miller (1979-1983):</strong> convirtió la serie en un cómic negro y presentó a Elektra.</li><li><strong>Born Again (1986):</strong> Kingpin descubre su identidad y destruye su vida; una de las mejores historias de Marvel.</li></ul>"
+   },
+   {
+    "titulo": "Su relación con Spider-Man",
+    "html": "<p>Son vecinos de Nueva York y viejos aliados. Se conocieron en <em>The Amazing Spider-Man</em> #16 (1964): el Maestro de Ceremonias hipnotizaba al público de su circo, y la ceguera de Daredevil lo hizo inmune al truco y le permitió salvar a Spider-Man. En el cine, Matt Murdock aparece como abogado de Peter en <em>Spider-Man: No Way Home</em> (2021).</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Daredevil",
+    "anio": 2003,
+    "actor": "Ben Affleck"
+   },
+   {
+    "titulo": "Daredevil (serie)",
+    "anio": 2015,
+    "actor": "Charlie Cox"
+   },
+   {
+    "titulo": "Spider-Man: No Way Home",
+    "anio": 2021,
+    "actor": "Charlie Cox",
+    "enlace": "/peliculas/spider-man-no-way-home-2021"
+   },
+   {
+    "titulo": "Daredevil: Born Again (serie)",
+    "anio": 2025,
+    "actor": "Charlie Cox"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién interpreta a Daredevil?",
+    "a": "Charlie Cox, en la serie <em>Daredevil</em> (2015), en <em>No Way Home</em> (2021) y en <em>Daredevil: Born Again</em> (2025). Antes, Ben Affleck lo interpretó en la película de 2003."
+   },
+   {
+    "q": "¿Sale Daredevil en No Way Home?",
+    "a": "Sí: Matt Murdock aparece como el abogado de Peter Parker."
+   },
+   {
+    "q": "¿Cómo ve Daredevil si es ciego?",
+    "a": "Sus otros sentidos son sobrehumanos y tiene un «sentido radar» que le permite percibir lo que le rodea."
+   }
+  ]
+ },
+ "human-torch-johnny-storm-alt": {
+  "nombre": "La Antorcha Humana",
+  "secciones": [
+   {
+    "titulo": "Origen: el más joven de los Cuatro Fantásticos",
+    "html": "<p>Johnny Storm viajó al espacio con su hermana Sue, Reed Richards y Ben Grimm en un cohete experimental. Los rayos cósmicos les dieron superpoderes, y Johnny se convirtió en la <strong>Antorcha Humana</strong>, capaz de envolverse en llamas y volar. Debutó en <em>The Fantastic Four</em> #1 (1961), de Stan Lee y Jack Kirby.</p>"
+   },
+   {
+    "titulo": "El mejor amigo (y rival) de Spider-Man",
+    "html": "<p>Johnny y Peter tienen casi la misma edad y una relación de amistad con piques constantes desde los primeros números de los 60. Cuando Johnny pareció morir en 2011, dejó escrito que quería que Peter ocupara su lugar en el equipo, que pasó a llamarse <strong>Fundación Futuro</strong>.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>Se envuelve en llamas, vuela, lanza bolas de fuego y controla el calor. Al máximo de su poder puede generar una explosión de tipo «supernova».</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Los 4 Fantásticos",
+    "anio": 2005,
+    "actor": "Chris Evans"
+   },
+   {
+    "titulo": "Cuatro Fantásticos",
+    "anio": 2015,
+    "actor": "Michael B. Jordan"
+   },
+   {
+    "titulo": "Los 4 Fantásticos: Primeros pasos",
+    "anio": 2025,
+    "actor": "Joseph Quinn"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién interpreta a la Antorcha Humana?",
+    "a": "Chris Evans (2005 y 2007), Michael B. Jordan (2015) y Joseph Quinn en <em>Los 4 Fantásticos: Primeros pasos</em> (2025)."
+   },
+   {
+    "q": "¿La Antorcha Humana y Spider-Man son amigos?",
+    "a": "Sí, aunque siempre se están picando. Son amigos desde los primeros cómics de los 60."
+   },
+   {
+    "q": "¿Quién es la hermana de la Antorcha Humana?",
+    "a": "Sue Storm, la Mujer Invisible, también de los Cuatro Fantásticos."
+   }
+  ]
+ },
+ "fantastic-four-reed-richards-alt": {
+  "nombre": "Mister Fantástico",
+  "secciones": [
+   {
+    "titulo": "Origen: el líder de los Cuatro Fantásticos",
+    "html": "<p>Reed Richards es uno de los científicos más brillantes del universo Marvel. Construyó un cohete para viajar al espacio con Sue Storm, Johnny Storm y Ben Grimm, pero los rayos cósmicos les dieron superpoderes. Reed se convirtió en <strong>Mister Fantástico</strong>, capaz de estirar su cuerpo como si fuera de goma. Debutó en <em>The Fantastic Four</em> #1 (1961), de Stan Lee y Jack Kirby.</p>"
+   },
+   {
+    "titulo": "Su relación con Spider-Man",
+    "html": "<p>Reed respeta a Peter como científico, y Spider-Man se cruzó con los Cuatro Fantásticos desde <em>The Amazing Spider-Man</em> #1, cuando intentó unirse al equipo. En 2011, Peter llegó a formar parte de la <strong>Fundación Futuro</strong> que dirigía Reed.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>Puede estirar, aplanar y deformar su cuerpo casi sin límite. Pero su verdadera arma es su inteligencia.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Los 4 Fantásticos",
+    "anio": 2005,
+    "actor": "Ioan Gruffudd"
+   },
+   {
+    "titulo": "Cuatro Fantásticos",
+    "anio": 2015,
+    "actor": "Miles Teller"
+   },
+   {
+    "titulo": "Los 4 Fantásticos: Primeros pasos",
+    "anio": 2025,
+    "actor": "Pedro Pascal"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién interpreta a Mister Fantástico?",
+    "a": "Ioan Gruffudd (2005 y 2007), Miles Teller (2015) y Pedro Pascal en <em>Los 4 Fantásticos: Primeros pasos</em> (2025)."
+   },
+   {
+    "q": "¿Spider-Man intentó unirse a los Cuatro Fantásticos?",
+    "a": "Sí, en <em>The Amazing Spider-Man</em> #1 (1963), pensando que le pagarían. Al enterarse de que no, se marchó."
+   },
+   {
+    "q": "¿Qué poder tiene Reed Richards?",
+    "a": "Puede estirar su cuerpo como si fuera de goma."
+   }
+  ]
+ },
+ "spider-man-2099-miguel-ohara-alt": {
+  "nombre": "Spider-Man 2099",
+  "secciones": [
+   {
+    "titulo": "Origen: el Spider-Man del futuro",
+    "html": "<p>En el año 2099, Miguel O'Hara es un genetista de la todopoderosa corporación Alchemax. Cuando quiso dejar la empresa, su jefe le dio una droga adictiva; al intentar librarse de ella con una máquina de alteración genética, un sabotaje mezcló su ADN con el de una araña. Debutó en <em>Spider-Man 2099</em> #1 (1992), creado por Peter David y Rick Leonardi.</p>"
+   },
+   {
+    "titulo": "Un Spider-Man distinto",
+    "html": "<p>Miguel es más serio y más duro que Peter Parker, y sus poderes son diferentes. En las películas del Spider-Verso es el líder de la <strong>Sociedad Araña</strong> y el gran antagonista de Miles en <em>Cruzando el Multiverso</em>.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>Fuerza y agilidad sobrehumanas, garras en los dedos para trepar, colmillos con veneno paralizante y una visión mejorada. A diferencia de Peter, no tiene sentido arácnido.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Spider-Man: Un nuevo universo (escena poscréditos)",
+    "anio": 2018,
+    "actor": "Voz original: Oscar Isaac",
+    "enlace": "/peliculas/spider-man-un-nuevo-universo-2018"
+   },
+   {
+    "titulo": "Spider-Man: Cruzando el Multiverso",
+    "anio": 2023,
+    "actor": "Voz original: Oscar Isaac",
+    "enlace": "/peliculas/spider-man-cruzando-el-multiverso-2023"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién pone voz a Spider-Man 2099?",
+    "a": "Oscar Isaac, en el original de <em>Un nuevo universo</em> y <em>Cruzando el Multiverso</em>."
+   },
+   {
+    "q": "¿Spider-Man 2099 tiene sentido arácnido?",
+    "a": "No. A cambio tiene garras, colmillos venenosos y una vista mejorada."
+   },
+   {
+    "q": "¿Es un villano en Cruzando el Multiverso?",
+    "a": "Es el antagonista de Miles: lidera la Sociedad Araña y quiere impedir que cambie un «evento canónico»."
+   }
+  ]
+ },
+ "spider-man-noir-peter-parker-alt": {
+  "nombre": "Spider-Man Noir",
+  "secciones": [
+   {
+    "titulo": "Origen: un Spider-Man de los años 30",
+    "html": "<p>En una versión de la Nueva York de la <strong>Gran Depresión</strong>, Peter Parker recibió la picadura de una araña salida de un ídolo misterioso. Convertido en Spider-Man, combate a la mafia en un mundo oscuro y violento, con métodos mucho más duros que los del Spider-Man clásico. Debutó en <em>Spider-Man Noir</em> #1 (2009), de David Hine, Fabrice Sapolsky y Carmine Di Giandomenico.</p>"
+   },
+   {
+    "titulo": "De los cómics a la pantalla",
+    "html": "<p>Su estética en blanco y negro, de cine negro clásico, lo convirtió en uno de los favoritos de <em>Un nuevo universo</em>, y en 2026 dio el salto a la imagen real con la serie <a href=\"/series/spider-noir\">Spider-Noir</a>.</p>"
+   },
+   {
+    "titulo": "Poderes",
+    "html": "<p>Los poderes arácnidos clásicos: fuerza, agilidad, trepar por las paredes y sentido arácnido. A diferencia de otros Spider-Man, usa también armas de fuego.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Spider-Man: Un nuevo universo",
+    "anio": 2018,
+    "actor": "Voz original: Nicolas Cage",
+    "enlace": "/peliculas/spider-man-un-nuevo-universo-2018"
+   },
+   {
+    "titulo": "Spider-Noir (serie)",
+    "anio": 2026,
+    "actor": "Nicolas Cage (como Ben Reilly)",
+    "enlace": "/series/spider-noir"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién es Spider-Man Noir?",
+    "a": "Una versión de Peter Parker de otro universo, ambientada en la Nueva York de los años 30."
+   },
+   {
+    "q": "¿Quién le pone voz?",
+    "a": "Nicolas Cage, en <em>Spider-Man: Un nuevo universo</em> (2018). En 2026 lo interpretó en imagen real en la serie <em>Spider-Noir</em>, en este caso como Ben Reilly."
+   },
+   {
+    "q": "¿Spider-Man Noir usa pistolas?",
+    "a": "Sí: a diferencia de otros Spider-Man, recurre a las armas de fuego."
+   }
+  ]
+ },
+ "spider-ham-peter-porker-alt": {
+  "nombre": "Spider-Ham",
+  "secciones": [
+   {
+    "titulo": "Origen: una araña mordida por una cerda",
+    "html": "<p>En un universo de animales antropomórficos, Peter Porker era una <strong>araña</strong> a la que mordió May Porker, una cerda científica irradiada. El resultado: un cerdo con poderes arácnidos. Debutó en <em>Marvel Tails Starring Peter Porker</em> #1 (1983), de Tom DeFalco y Mark Armstrong.</p>"
+   },
+   {
+    "titulo": "El lado más divertido del Spider-Verso",
+    "html": "<p>Spider-Ham es la parodia de Spider-Man dentro del propio universo Marvel: todo son juegos de palabras, chistes y humor de dibujos animados. Aun así, ha participado en grandes sagas como <em>Spider-Verse</em> (2014) junto al resto de Spider-Man del multiverso.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Spider-Man: Un nuevo universo",
+    "anio": 2018,
+    "actor": "Voz original: John Mulaney",
+    "enlace": "/peliculas/spider-man-un-nuevo-universo-2018"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Spider-Ham es un cerdo o una araña?",
+    "a": "Era una araña a la que mordió una cerda irradiada, así que se convirtió en un cerdo con poderes de araña."
+   },
+   {
+    "q": "¿Quién pone voz a Spider-Ham?",
+    "a": "John Mulaney, en el original de <em>Spider-Man: Un nuevo universo</em> (2018)."
+   },
+   {
+    "q": "¿Cuándo apareció Spider-Ham?",
+    "a": "En 1983, en <em>Marvel Tails Starring Peter Porker</em> #1."
+   }
+  ]
+ },
+ "spider-man-india-pavitr-prabhakar-alt": {
+  "nombre": "Spider-Man India",
+  "secciones": [
+   {
+    "titulo": "Origen: el Spider-Man de Bombay",
+    "html": "<p>Pavitr Prabhakar es un chico de Bombay que recibió sus poderes de un místico, en una versión de Spider-Man adaptada a la India. Sus enemigos y sus aventuras mezclan los elementos clásicos de Spider-Man con la mitología y la cultura indias. Debutó en <em>Spider-Man: India</em> #1 (2004), creado por Jeevan J. Kang, Suresh Seetharaman y Sharad Devarajan.</p>"
+   },
+   {
+    "titulo": "Su gran momento en el cine",
+    "html": "<p>Su aparición en <em>Spider-Man: Cruzando el Multiverso</em> (2023), en la vibrante ciudad de Mumbattan, lo convirtió en uno de los personajes favoritos del público.</p>"
+   }
+  ],
+  "pantalla": [
+   {
+    "titulo": "Spider-Man: Cruzando el Multiverso",
+    "anio": 2023,
+    "actor": "Voz original: Karan Soni",
+    "enlace": "/peliculas/spider-man-cruzando-el-multiverso-2023"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "¿Quién es Spider-Man India?",
+    "a": "Pavitr Prabhakar, el Spider-Man de una versión de Bombay en otro universo."
+   },
+   {
+    "q": "¿Quién le pone voz en Cruzando el Multiverso?",
+    "a": "Karan Soni, en la versión original."
+   },
+   {
+    "q": "¿Cuándo apareció?",
+    "a": "En <em>Spider-Man: India</em> #1, en 2004."
+   }
+  ]
  }
 }
