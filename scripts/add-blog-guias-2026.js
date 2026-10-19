@@ -1300,7 +1300,194 @@ ${cvFig('11156/111564182/9646599-widow2.jpg', 'La Viuda Negra con su traje negro
 `,
 };
 
-const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS, FINAL_BND, MEJORES_COMICS, JUEGOS_POST, TRAJES, VILLANOS_CINE, MARVEL_LEGENDS, MEJORES_LEGO, TRES_SPIDERMAN, BND_STREAMING, SCARLET_SPIDER, VENGADORES, SPIDER_NOIR, DOC_OCK_VERSIONES, VIUDA_NEGRA_MCU];
+const OJO_DE_HALCON_MCU = {
+  slug: 'clint-barton-ojo-de-halcon-mcu-historia-peliculas',
+  title: 'Clint Barton en el MCU: la historia de Ojo de Halcón, película a película',
+  subtitle: 'De su cameo en Thor a la serie con Kate Bishop: el recorrido completo de Jeremy Renner como el arquero de los Vengadores',
+  excerpt:
+    'Jeremy Renner ha sido Clint Barton, Ojo de Halcón, desde 2011. Repasamos su historia en el MCU película a película: Loki, su familia secreta, Ronin, Vormir y la serie con Kate Bishop.',
+  category: 'Películas',
+  readTime: '7 min',
+  publishDate: new Date('2026-10-19'),
+  image: tmdb('1R68vl3d5s86JsS2NPjl8UoMqIS'),
+  seoTitle: 'Clint Barton en el MCU: Ojo de Halcón película a película',
+  seoDescription:
+    'La historia de Clint Barton, Ojo de Halcón, en el MCU: Jeremy Renner de Thor a Endgame, su etapa como Ronin, su familia y la serie Ojo de Halcón con Kate Bishop.',
+  keywords: ['Clint Barton', 'Ojo de Halcón MCU', 'Jeremy Renner Ojo de Halcón', 'Clint Barton películas', 'Ronin Endgame', 'Kate Bishop'],
+  tags: ['Ojo de Halcón', 'MCU', 'Jeremy Renner', 'Vengadores', 'películas', 'personajes'],
+  content: `
+<p>${pjLink('hawkeye-clint-barton-alt', 'Clint Barton')}, Ojo de Halcón, es el Vengador más «humano»: no tiene superpoderes, solo un arco, una puntería casi imposible y una familia a la que proteger. Jeremy Renner le ha dado vida en el MCU desde 2011. Esta es su historia, película a película.</p>
+
+<h2>Sus apariciones, de un vistazo</h2>
+<table>
+  <thead><tr><th>Año</th><th>Título</th><th>Su papel</th></tr></thead>
+  <tbody>
+    <tr><td>2011</td><td><em>Thor</em></td><td>Breve aparición como agente de S.H.I.E.L.D.</td></tr>
+    <tr><td>2012</td><td><em>Los Vengadores</em></td><td>Controlado por Loki; después, Vengador fundador</td></tr>
+    <tr><td>2015</td><td><em>Vengadores: La era de Ultrón</em></td><td>Se descubre su familia secreta</td></tr>
+    <tr><td>2016</td><td><em>Capitán América: Civil War</em></td><td>En el bando del Capitán América</td></tr>
+    <tr><td>2019</td><td><em>Vengadores: Endgame</em></td><td>Ronin y el viaje a Vormir</td></tr>
+    <tr><td>2021</td><td><em>Ojo de Halcón</em> (serie)</td><td>Junto a Kate Bishop, su sucesora</td></tr>
+  </tbody>
+</table>
+
+<h2>De Thor a Los Vengadores</h2>
+<p>Clint aparece por primera vez en <em>Thor</em> (2011), vigilando con su arco el martillo del dios del trueno como agente de S.H.I.E.L.D. En <em>Los Vengadores</em> (2012), Loki le controla la mente y le pone en contra de sus compañeros; tras liberarse, se convierte en uno de los seis Vengadores fundadores. Su amistad con la Viuda Negra, con aquella misión de Budapest que nunca se cuenta del todo, es una de las relaciones más importantes de la saga.</p>
+
+<h2>La era de Ultrón (2015): la familia secreta</h2>
+<p>La gran sorpresa de <em>La era de Ultrón</em> es que Clint tiene una vida que nadie conocía: una mujer, Laura, e hijos en una granja, lejos del mundo de los superhéroes. La película lo convierte en el corazón del equipo: el tipo normal que pelea junto a dioses y monstruos para volver a casa.</p>
+
+<h2>Civil War (2016) y el paréntesis de Infinity War</h2>
+<p>En <em>Civil War</em> se pone del lado del Capitán América y lucha en la pelea del aeropuerto, frente al Spider-Man de Tom Holland. Lo contamos en <a href="/blog/spider-man-vengadores-relacion-con-cada-uno">Spider-Man y los Vengadores</a>. Acaba detenido y, tras llegar a un acuerdo, se retira con su familia, así que no aparece en <em>Infinity War</em>.</p>
+
+<h2>Endgame (2019): Ronin y Vormir</h2>
+<p>El chasquido de Thanos le arrebata a su familia, y Clint se convierte en <strong>Ronin</strong>, un justiciero que pasa cinco años eliminando criminales por todo el mundo. Natasha le recupera para el plan de los Vengadores, y juntos viajan a Vormir a por la Gema del Alma, que exige un sacrificio. Los dos intentan dar su vida por el otro, y es Natasha la que cae. Te lo contamos en <a href="/blog/natasha-romanoff-viuda-negra-mcu-historia-peliculas">Natasha Romanoff en el MCU</a>.</p>
+
+<h2>La serie Ojo de Halcón (2021)</h2>
+${figure('9QNv2Al3GfCND8BwuLmu2GwVht7', 'Clint Barton y Kate Bishop caminando con sus arcos por una calle nevada de Nueva York', 'Clint y Kate Bishop, en la Nueva York navideña de la serie Ojo de Halcón (2021).')}
+<p>La serie de Disney+ transcurre en Navidad, en Nueva York. Clint solo quiere pasar las fiestas con sus hijos, pero conoce a <strong>Kate Bishop</strong> (Hailee Steinfeld), una joven arquera que le admira, y su pasado como Ronin vuelve a perseguirle. Por la serie pasan Yelena Belova, que busca venganza por Natasha, Maya Lopez (Echo) y el mismísimo ${pjLink('kingpin-wilson-fisk-alt', 'Kingpin')}, con Vincent D'Onofrio. La serie también muestra que Clint ha perdido parte de su audición tras años de combates.</p>
+
+<h2>¿Y en los cómics?</h2>
+${cvFig('11156/111564182/9384867-thunderbolts_vol_4_1_trading_card_variant_textless.jpg', 'Ojo de Halcón con su arco entre rascacielos', 'Ojo de Halcón en los cómics, con su clásico traje morado.')}
+<p>En los cómics, Clint creció en un circo, debutó en 1964 como villano enfrentado a Iron Man y se unió a los Vengadores al año siguiente. Tienes su historia completa, de Goliath a la serie de Matt Fraction y David Aja que inspiró la de Disney+, en su ${pjLink('hawkeye-clint-barton-alt', 'ficha de personaje')}.</p>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Quién interpreta a Clint Barton?</h3>
+<p>Jeremy Renner, desde <em>Thor</em> (2011) hasta la serie <em>Ojo de Halcón</em> (2021).</p>
+<h3>¿Por qué Ojo de Halcón no sale en Infinity War?</h3>
+<p>Tras <em>Civil War</em> llegó a un acuerdo con las autoridades y se retiró con su familia.</p>
+<h3>¿Quién es Ronin?</h3>
+<p>La identidad que adopta Clint en <em>Endgame</em> tras perder a su familia con el chasquido de Thanos.</p>
+<h3>¿Quién es la nueva Ojo de Halcón?</h3>
+<p>Kate Bishop, interpretada por Hailee Steinfeld en la serie de 2021.</p>
+`,
+};
+
+const ANT_MAN_MCU = {
+  slug: 'scott-lang-ant-man-mcu-historia-peliculas',
+  title: 'Scott Lang en el MCU: la historia de Ant-Man, película a película',
+  subtitle: 'Del ladrón que robó el traje de Hank Pym al Vengador que salvó el universo con el reino cuántico: el recorrido de Paul Rudd',
+  excerpt:
+    'Paul Rudd lleva desde 2015 siendo Scott Lang, Ant-Man. Repasamos su historia en el MCU película a película: el traje de Hank Pym, Civil War, el reino cuántico, Endgame y Quantumanía.',
+  category: 'Películas',
+  readTime: '7 min',
+  publishDate: new Date('2026-10-19'),
+  image: tmdb('1K3JmSNUN8OpjYsCjc0Hy0SYxAb'),
+  seoTitle: 'Scott Lang en el MCU: Ant-Man película a película',
+  seoDescription:
+    'La historia de Scott Lang, Ant-Man, en el MCU: Paul Rudd de Ant-Man (2015) a Quantumanía, Civil War, el reino cuántico y su papel clave en Vengadores: Endgame.',
+  keywords: ['Scott Lang', 'Ant-Man MCU', 'Paul Rudd Ant-Man', 'Scott Lang películas', 'Ant-Man Endgame', 'reino cuántico'],
+  tags: ['Ant-Man', 'MCU', 'Paul Rudd', 'Vengadores', 'películas', 'personajes'],
+  content: `
+<p>${pjLink('ant-man-scott-lang-alt', 'Scott Lang')} es el héroe más inesperado del MCU: un exladrón con buen corazón que solo quería ser un buen padre para su hija Cassie y acabó salvando el universo. Paul Rudd le da vida desde 2015. Esta es su historia, película a película.</p>
+
+<h2>Sus películas, de un vistazo</h2>
+<table>
+  <thead><tr><th>Año</th><th>Película</th><th>Su papel</th></tr></thead>
+  <tbody>
+    <tr><td>2015</td><td><em>Ant-Man</em></td><td>Hereda el traje de Hank Pym</td></tr>
+    <tr><td>2016</td><td><em>Capitán América: Civil War</em></td><td>Se convierte en gigante en el aeropuerto</td></tr>
+    <tr><td>2018</td><td><em>Ant-Man y la Avispa</em></td><td>Rescatan a Janet del reino cuántico</td></tr>
+    <tr><td>2019</td><td><em>Vengadores: Endgame</em></td><td>Su idea hace posible el viaje en el tiempo</td></tr>
+    <tr><td>2023</td><td><em>Ant-Man y la Avispa: Quantumanía</em></td><td>Contra Kang en el reino cuántico</td></tr>
+  </tbody>
+</table>
+
+<h2>Ant-Man (2015): el ladrón y el traje</h2>
+${figure('1K3JmSNUN8OpjYsCjc0Hy0SYxAb', 'Ant-Man con su casco junto a Hank Pym, Hope van Dyne y Scott Lang', 'Scott Lang con su traje de Ant-Man, junto a Hank Pym y Hope van Dyne.')}
+<p>Scott sale de la cárcel decidido a ser un buen padre, pero sin trabajo ni dinero vuelve a robar… y lo que se lleva es el traje del científico Hank Pym (Michael Douglas), el Ant-Man original. Pym le había elegido a propósito: necesitaba a alguien capaz de usar el traje para impedir que su antiguo pupilo, Darren Cross, vendiera la tecnología. Con la ayuda de Hope van Dyne (Evangeline Lilly), la hija de Pym, Scott aprende a encoger y a dar órdenes a las hormigas.</p>
+
+<h2>Civil War (2016): el gigante del aeropuerto</h2>
+<p>Scott se une al Capitán América en <em>Civil War</em> y protagoniza el momento más espectacular de la pelea del aeropuerto: se convierte en un gigante. El Spider-Man de Tom Holland lo derriba enredándole las piernas con su telaraña, en un guiño a <em>El imperio contraataca</em>. Lo contamos en <a href="/blog/spider-man-vengadores-relacion-con-cada-uno">Spider-Man y los Vengadores</a>.</p>
+
+<h2>Ant-Man y la Avispa (2018): el reino cuántico</h2>
+${figure('lnRBzJMLt5gF6ayHQyuZoEreYuZ', 'Ant-Man diminuto entre la hierba y la tierra', 'Ant-Man, encogido entre la hierba: su poder es cambiar de tamaño.')}
+<p>Tras <em>Civil War</em>, Scott cumple arresto domiciliario, pero vuelve a ponerse el traje para ayudar a Hope, ya convertida en la Avispa, y a Hank a rescatar a Janet van Dyne (Michelle Pfeiffer), la madre de Hope, perdida durante décadas en el reino cuántico. La escena poscréditos lo deja atrapado allí justo cuando se produce el chasquido de Thanos.</p>
+
+<h2>Endgame (2019): el héroe que lo hizo posible</h2>
+<p>Cinco años después, Scott sale del reino cuántico por casualidad. Para él solo han pasado cinco horas, y esa diferencia le da una idea: usar el reino cuántico para viajar en el tiempo. Es su plan el que hace posible el «atraco en el tiempo» de los Vengadores para recuperar las Gemas del Infinito.</p>
+
+<h2>Quantumanía (2023)</h2>
+<p>En su tercera película, Scott, Hope, Hank, Janet y Cassie (ahora interpretada por Kathryn Newton) acaban atrapados en el reino cuántico, donde se enfrentan a Kang el Conquistador, un villano capaz de amenazar el multiverso, y a M.O.D.O.K.</p>
+
+<h2>¿Y en los cómics?</h2>
+${cvFig('14/149570/4153676-ant-man-samnee-variant-a2299.jpg', 'Ant-Man sobre una hormiga voladora', 'Ant-Man en los cómics, a lomos de una hormiga voladora.')}
+<p>En los cómics, Scott debutó en 1979 y su origen es muy parecido: robó el traje para salvar a su hija Cassie, y Hank Pym le dejó quedarse con la identidad. Coincidió con Peter Parker en los Vengadores y en la Fundación Futuro. Tienes su historia completa en su ${pjLink('ant-man-scott-lang-alt', 'ficha de personaje')}.</p>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Quién interpreta a Scott Lang?</h3>
+<p>Paul Rudd, desde <em>Ant-Man</em> (2015).</p>
+<h3>¿Scott Lang es el primer Ant-Man?</h3>
+<p>No: el primero es Hank Pym, interpretado por Michael Douglas en el MCU.</p>
+<h3>¿Qué hace Ant-Man en Endgame?</h3>
+<p>Escapa del reino cuántico y propone usarlo para viajar en el tiempo, la idea que permite a los Vengadores deshacer el chasquido de Thanos.</p>
+`,
+};
+
+const HULK_MCU = {
+  slug: 'bruce-banner-hulk-mcu-historia-peliculas',
+  title: 'Bruce Banner en el MCU: la historia de Hulk, película a película',
+  subtitle: 'De Edward Norton a Mark Ruffalo, del Hulk furioso al Hulk inteligente de Endgame y su papel en Spider-Man: Brand New Day',
+  excerpt:
+    'Bruce Banner ha tenido dos actores en el MCU y muchas versiones de Hulk. Repasamos su historia película a película, de El increíble Hulk a Endgame y Spider-Man: Brand New Day.',
+  category: 'Películas',
+  readTime: '8 min',
+  publishDate: new Date('2026-10-19'),
+  image: tmdb('5wNUJs23rT5rTBacNyf5h83AynM'),
+  seoTitle: 'Bruce Banner en el MCU: Hulk película a película',
+  seoDescription:
+    'La historia de Bruce Banner, Hulk, en el MCU: Edward Norton y Mark Ruffalo, de El increíble Hulk a Endgame, Thor: Ragnarok y su papel en Spider-Man: Brand New Day.',
+  keywords: ['Bruce Banner', 'Hulk MCU', 'Mark Ruffalo Hulk', 'Bruce Banner películas', 'Hulk Brand New Day', 'Smart Hulk Endgame'],
+  tags: ['Hulk', 'MCU', 'Mark Ruffalo', 'Vengadores', 'películas', 'Brand New Day'],
+  content: `
+<p>${pjLink('hulk-bruce-banner-alt', 'Bruce Banner')} es uno de los Vengadores con un recorrido más irregular en el MCU: dos actores, ninguna película en solitario desde 2008 y un Hulk que ha cambiado mucho, del monstruo furioso al gladiador y al científico en paz consigo mismo. Esta es su historia, película a película, hasta su papel en ${peli('spider-man-brand-new-day-2026', 'Spider-Man: Brand New Day')}.</p>
+
+<h2>Sus películas, de un vistazo</h2>
+<table>
+  <thead><tr><th>Año</th><th>Título</th><th>Actor</th></tr></thead>
+  <tbody>
+    <tr><td>2008</td><td><em>El increíble Hulk</em></td><td>Edward Norton</td></tr>
+    <tr><td>2012</td><td><em>Los Vengadores</em></td><td>Mark Ruffalo</td></tr>
+    <tr><td>2015</td><td><em>Vengadores: La era de Ultrón</em></td><td>Mark Ruffalo</td></tr>
+    <tr><td>2017</td><td><em>Thor: Ragnarok</em></td><td>Mark Ruffalo</td></tr>
+    <tr><td>2018</td><td><em>Vengadores: Infinity War</em></td><td>Mark Ruffalo</td></tr>
+    <tr><td>2019</td><td><em>Vengadores: Endgame</em></td><td>Mark Ruffalo</td></tr>
+    <tr><td>2026</td><td>${peli('spider-man-brand-new-day-2026', 'Spider-Man: Brand New Day')}</td><td>Mark Ruffalo</td></tr>
+  </tbody>
+</table>
+
+<h2>El increíble Hulk (2008): Edward Norton</h2>
+<p>La segunda película del MCU muestra a un Bruce Banner fugitivo, que intenta encontrar una cura mientras el ejército le persigue. Edward Norton fue el único Banner que protagonizó una película en solitario del MCU, y el villano fue Abominación (Tim Roth).</p>
+
+<h2>Los Vengadores (2012) y La era de Ultrón (2015)</h2>
+<p>Mark Ruffalo toma el relevo en <em>Los Vengadores</em>, con una de las frases más famosas de la saga: «Ese es mi secreto: siempre estoy enfadado». Banner controla por fin cuándo se transforma y Hulk se convierte en el gran golpe del equipo. En <em>La era de Ultrón</em> ayuda a Tony Stark a crear a Ultrón, vive un romance con Natasha Romanoff y, tras destrozar una ciudad bajo el control de la Bruja Escarlata, desaparece en un avión.</p>
+
+<h2>Thor: Ragnarok (2017): el gladiador</h2>
+${figure('vLmHH8jAy8Jq8uBsLucd3592WGh', 'Cartel de Thor: Ragnarok con Hulk con su casco de gladiador', 'Hulk, convertido en gladiador en Sakaar, en Thor: Ragnarok (2017).')}
+<p>Hulk reaparece en el planeta Sakaar, donde lleva dos años convertido en el gladiador estrella del Gran Maestro y sin dejar salir a Banner. Por primera vez habla, tiene carácter propio y protagoniza un combate contra Thor que es de lo más divertido de la saga.</p>
+
+<h2>Infinity War (2018) y Endgame (2019): el Hulk inteligente</h2>
+<p>En <em>Infinity War</em>, Thanos derrota a Hulk en los primeros minutos y, desde entonces, Hulk se niega a salir, obligando a Banner a luchar con una armadura. Tras el chasquido, Bruce encuentra por fin el equilibrio: en <em>Endgame</em> aparece como un <strong>Hulk inteligente</strong>, con la mente de Banner y el cuerpo de Hulk. Es él quien usa el guantelete para traer de vuelta a todos los desaparecidos, y el esfuerzo le deja el brazo destrozado.</p>
+
+<h2>Spider-Man: Brand New Day (2026)</h2>
+${figure('5wNUJs23rT5rTBacNyf5h83AynM', 'Cartel de Thor: Ragnarok con Hulk, Thor, Loki y Valquiria', 'Hulk junto a Thor, Loki y Valquiria en el cartel de Thor: Ragnarok.')}
+<p>Mark Ruffalo vuelve en la cuarta película de Tom Holland, en la que Bruce Banner trabaja como profesor universitario, y la película incluye un enfrentamiento entre Spider-Man y Hulk. Te contamos más de la película en <a href="/blog/spider-man-brand-new-day-final-explicado">su final explicado</a> y en <a href="/blog/spider-man-vengadores-relacion-con-cada-uno">Spider-Man y los Vengadores</a>.</p>
+
+<h2>¿Y en los cómics?</h2>
+${cvFig('1/15776/9971293-hulk.jpg', 'Hulk rugiendo', 'Hulk en los cómics, uno de los personajes más fuertes de Marvel.')}
+<p>En los cómics, Banner recibió la radiación gamma al salvar a un joven durante una prueba de su bomba, debutó en 1962 y, curiosamente, en su primer número Hulk era gris. Spider-Man se cruzó con él por primera vez en 1964. Tienes su historia completa, de <em>Planeta Hulk</em> a <em>El Inmortal Hulk</em>, en su ${pjLink('hulk-bruce-banner-alt', 'ficha de personaje')}.</p>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Quién interpreta a Hulk?</h3>
+<p>Mark Ruffalo, desde <em>Los Vengadores</em> (2012). En <em>El increíble Hulk</em> (2008) fue Edward Norton.</p>
+<h3>¿Por qué cambió el actor de Hulk?</h3>
+<p>Edward Norton no continuó tras <em>El increíble Hulk</em>, y Marvel eligió a Mark Ruffalo para <em>Los Vengadores</em>.</p>
+<h3>¿Sale Hulk en Spider-Man: Brand New Day?</h3>
+<p>Sí: Mark Ruffalo vuelve como Bruce Banner, ahora profesor universitario, y hay un enfrentamiento entre Spider-Man y Hulk.</p>
+`,
+};
+
+const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS, FINAL_BND, MEJORES_COMICS, JUEGOS_POST, TRAJES, VILLANOS_CINE, MARVEL_LEGENDS, MEJORES_LEGO, TRES_SPIDERMAN, BND_STREAMING, SCARLET_SPIDER, VENGADORES, SPIDER_NOIR, DOC_OCK_VERSIONES, VIUDA_NEGRA_MCU, OJO_DE_HALCON_MCU, ANT_MAN_MCU, HULK_MCU];
 
 (async () => {
   for (const p of POSTS) {
