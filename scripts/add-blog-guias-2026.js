@@ -1229,7 +1229,78 @@ ${cvFig('6/67663/3548171-01.jpg', 'Portada de Superior Spider-Man #1 con un Spid
 `,
 };
 
-const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS, FINAL_BND, MEJORES_COMICS, JUEGOS_POST, TRAJES, VILLANOS_CINE, MARVEL_LEGENDS, MEJORES_LEGO, TRES_SPIDERMAN, BND_STREAMING, SCARLET_SPIDER, VENGADORES, SPIDER_NOIR, DOC_OCK_VERSIONES];
+const VIUDA_NEGRA_MCU = {
+  slug: 'natasha-romanoff-viuda-negra-mcu-historia-peliculas',
+  title: 'Natasha Romanoff en el MCU: la historia de la Viuda Negra, película a película',
+  subtitle: 'De Iron Man 2 a Endgame y su película en solitario: el recorrido completo de Scarlett Johansson como la Viuda Negra, y quién lleva hoy su nombre',
+  excerpt:
+    'Scarlett Johansson fue Natasha Romanoff durante más de diez años en el MCU. Repasamos su historia película a película, de su debut en Iron Man 2 a su sacrificio en Endgame, y quién es hoy la Viuda Negra.',
+  category: 'Películas',
+  readTime: '9 min',
+  publishDate: new Date('2026-10-19'),
+  image: tmdb('keIxh0wPr2Ymj0Btjh4gW7JJ89e'),
+  seoTitle: 'Natasha Romanoff en el MCU: la Viuda Negra película a película',
+  seoDescription:
+    'La historia de Natasha Romanoff, la Viuda Negra, en el MCU: Scarlett Johansson de Iron Man 2 a Endgame, su película en solitario y Yelena, la nueva Viuda Negra.',
+  keywords: ['Natasha Romanoff', 'Viuda Negra MCU', 'Scarlett Johansson Viuda Negra', 'Natasha Romanoff películas', 'muerte Viuda Negra Endgame', 'Yelena Belova'],
+  tags: ['Viuda Negra', 'MCU', 'Scarlett Johansson', 'Vengadores', 'películas', 'personajes'],
+  content: `
+<p>Durante más de una década, Scarlett Johansson fue ${pjLink('black-widow-natasha-romanoff-alt', 'Natasha Romanoff')}, la Viuda Negra, una de las piezas clave de los Vengadores del MCU. Su historia empezó como una espía misteriosa en <em>Iron Man 2</em> y terminó con uno de los sacrificios más recordados de la saga. Esta es su historia completa, película a película.</p>
+
+<h2>Sus películas, de un vistazo</h2>
+<table>
+  <thead><tr><th>Año</th><th>Película</th><th>Su papel</th></tr></thead>
+  <tbody>
+    <tr><td>2010</td><td><em>Iron Man 2</em></td><td>Debut, infiltrada en Stark Industries</td></tr>
+    <tr><td>2012</td><td><em>Los Vengadores</em></td><td>Miembro fundadora del equipo</td></tr>
+    <tr><td>2014</td><td><em>Capitán América: El Soldado de Invierno</em></td><td>Compañera de Steve Rogers contra HYDRA</td></tr>
+    <tr><td>2015</td><td><em>Vengadores: La era de Ultrón</em></td><td>Su pasado en la Habitación Roja</td></tr>
+    <tr><td>2016</td><td><em>Capitán América: Civil War</em></td><td>En el bando de Tony Stark… hasta cierto punto</td></tr>
+    <tr><td>2018</td><td><em>Vengadores: Infinity War</em></td><td>Fugitiva, lucha en Wakanda</td></tr>
+    <tr><td>2019</td><td><em>Vengadores: Endgame</em></td><td>Su sacrificio en Vormir</td></tr>
+    <tr><td>2021</td><td><em>Viuda Negra</em></td><td>Su película en solitario</td></tr>
+  </tbody>
+</table>
+
+<h2>Iron Man 2 (2010): la espía infiltrada</h2>
+${figure('dq18nCTTLpy9PmtzZI6Y2yAgdw5', 'Cartel de Viuda Negra con Natasha Romanoff en traje blanco y su familia detrás', 'Scarlett Johansson como Natasha Romanoff, con su «familia» detrás, en un cartel de Viuda Negra (2021).')}
+<p>Natasha debuta haciéndose pasar por Natalie Rushman, una nueva asistente de Tony Stark. En realidad es una agente de S.H.I.E.L.D. enviada por Nick Fury para vigilarle. Es una presentación breve, pero deja claro que es una espía letal.</p>
+
+<h2>Los Vengadores (2012) y El Soldado de Invierno (2014)</h2>
+<p>En <em>Los Vengadores</em> se convierte en una de las fundadoras del equipo, y su interrogatorio a Loki, en el que le engaña para sacarle su plan, es una de las mejores escenas de la película. Su pasado aparece en pequeñas pistas, como la misteriosa misión de Budapest que comparte con Ojo de Halcón. En <em>El Soldado de Invierno</em> se une al Capitán América para destapar a HYDRA dentro de S.H.I.E.L.D., y acaba revelando al mundo todos los secretos de la agencia, incluidos los suyos.</p>
+
+<h2>La era de Ultrón (2015) y Civil War (2016)</h2>
+${figure('oUCoxUFSxZ3MyhyFJcTC24FlWzd', 'Retrato de Natasha Romanoff con el traje blanco ante un fondo blanco y rojo', 'Natasha Romanoff, una espía formada desde niña en la Habitación Roja.')}
+<p><em>La era de Ultrón</em> profundiza en su origen: entrenada desde niña en la Habitación Roja, el programa soviético que la convirtió en asesina. También vive un romance con Bruce Banner. En <em>Civil War</em> firma los Acuerdos de Sokovia y se pone del lado de Tony Stark, en la misma pelea del aeropuerto en la que se estrena el Spider-Man de Tom Holland, pero acaba dejando escapar al Capitán América. Te lo contamos en <a href="/blog/spider-man-vengadores-relacion-con-cada-uno">Spider-Man y los Vengadores</a>.</p>
+
+<h2>Infinity War (2018) y Endgame (2019): el sacrificio</h2>
+${figure('6azpBJGcLx9SKif8h9VMnflBfa', 'Natasha Romanoff con su traje negro ante un fondo rojo', 'La Viuda Negra con su traje negro, el que la acompañó en las grandes batallas de los Vengadores.')}
+<p>Tras <em>Civil War</em>, Natasha vive como fugitiva junto al Capitán América, y en <em>Infinity War</em> lucha contra el ejército de Thanos en Wakanda. Después del chasquido, es ella quien mantiene unido lo que queda de los Vengadores durante cinco años. En <em>Endgame</em>, viaja con Ojo de Halcón al planeta Vormir para conseguir la Gema del Alma, que exige sacrificar a un ser querido. Los dos intentan sacrificarse por el otro, y Natasha se deja caer para que Clint pueda volver con su familia.</p>
+
+<h2>Viuda Negra (2021): su película en solitario</h2>
+${figure('8N0OhgolMmt8lML70slyPZpE9qY', 'Natasha Romanoff y Yelena Belova juntas ante un fondo rojo', 'Natasha y Yelena Belova, su «hermana», en Viuda Negra (2021).')}
+<p>Su película, dirigida por Cate Shortland, transcurre entre <em>Civil War</em> e <em>Infinity War</em>. Natasha se reencuentra con la «familia» falsa con la que creció como espía infiltrada en Estados Unidos: su «hermana» Yelena Belova (Florence Pugh), Alexei, el Guardián Rojo (David Harbour), y Melina (Rachel Weisz). Juntos se enfrentan a Dreykov, el responsable de la Habitación Roja, y a su arma, Taskmaster.</p>
+
+<h2>¿Quién es hoy la Viuda Negra?</h2>
+<p>Tras la muerte de Natasha, el título de Viuda Negra ha pasado a <strong>Yelena Belova</strong>, interpretada por Florence Pugh, que ha seguido apareciendo en el MCU y también en ${peli('spider-man-brand-new-day-2026', 'Spider-Man: Brand New Day')} (2026).</p>
+
+<h2>¿Y en los cómics?</h2>
+${cvFig('11156/111564182/9646599-widow2.jpg', 'La Viuda Negra con su traje negro en una portada de cómic', 'La Viuda Negra estrenó su famoso traje negro en un cómic de Spider-Man.')}
+<p>En los cómics, Natasha debutó en <em>Tales of Suspense</em> #52 (1964) como una espía soviética enemiga de Iron Man, y le debe su aspecto más famoso a Spider-Man: estrenó su traje negro en <em>The Amazing Spider-Man</em> #86 (1970), dibujado por John Romita. Tienes su historia completa, sus poderes y todas sus apariciones en su ${pjLink('black-widow-natasha-romanoff-alt', 'ficha de personaje')}.</p>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Quién interpreta a Natasha Romanoff?</h3>
+<p>Scarlett Johansson, desde <em>Iron Man 2</em> (2010) hasta <em>Viuda Negra</em> (2021).</p>
+<h3>¿Cómo muere la Viuda Negra en Endgame?</h3>
+<p>Se sacrifica en el planeta Vormir para que Ojo de Halcón consiga la Gema del Alma.</p>
+<h3>¿En qué orden ver las películas de la Viuda Negra?</h3>
+<p>En orden cronológico: Iron Man 2, Los Vengadores, El Soldado de Invierno, La era de Ultrón, Civil War, Viuda Negra (que transcurre justo después de Civil War, aunque se estrenó en 2021), Infinity War y Endgame.</p>
+<h3>¿Quién es la nueva Viuda Negra?</h3>
+<p>Yelena Belova, interpretada por Florence Pugh.</p>
+`,
+};
+
+const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS, FINAL_BND, MEJORES_COMICS, JUEGOS_POST, TRAJES, VILLANOS_CINE, MARVEL_LEGENDS, MEJORES_LEGO, TRES_SPIDERMAN, BND_STREAMING, SCARLET_SPIDER, VENGADORES, SPIDER_NOIR, DOC_OCK_VERSIONES, VIUDA_NEGRA_MCU];
 
 (async () => {
   for (const p of POSTS) {
