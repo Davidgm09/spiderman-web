@@ -1164,7 +1164,72 @@ ${figure('6t2FvBr9DS8MOq0m5FAwPBCdAW5', 'Spider-Noir agachado sobre una cornisa,
 `,
 };
 
-const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS, FINAL_BND, MEJORES_COMICS, JUEGOS_POST, TRAJES, VILLANOS_CINE, MARVEL_LEGENDS, MEJORES_LEGO, TRES_SPIDERMAN, BND_STREAMING, SCARLET_SPIDER, VENGADORES, SPIDER_NOIR];
+const juego = (slug, title) => `<a href="/videojuegos/${slug}"><em>${title}</em></a>`;
+
+const DOC_OCK_VERSIONES = {
+  slug: 'doctor-octopus-cine-series-videojuegos-versiones',
+  title: 'Doctor Octopus: todas sus versiones en el cine, las series y los videojuegos',
+  subtitle: 'De Alfred Molina a la Doc Ock del Spider-Verso: cómo ha cambiado el villano de los cuatro brazos fuera de los cómics',
+  excerpt:
+    'Alfred Molina lo convirtió en uno de los mejores villanos del cine, pero el Doctor Octopus ha tenido muchas más versiones. Las repasamos todas: películas, series animadas y videojuegos.',
+  category: 'Películas',
+  readTime: '8 min',
+  publishDate: new Date('2026-10-19'),
+  image: tmdb('faV0HuR6WnQoLrVq3r6mhjaABL9'),
+  seoTitle: 'Doctor Octopus: todas sus versiones en cine, series y juegos',
+  seoDescription:
+    'Doctor Octopus fuera de los cómics: Alfred Molina en Spider-Man 2 y No Way Home, la Doc Ock del Spider-Verso, sus voces en las series animadas y los videojuegos.',
+  keywords: ['Doctor Octopus', 'Doc Ock', 'Alfred Molina Doctor Octopus', 'Doctor Octopus películas', 'Otto Octavius', 'Doctor Octopus No Way Home'],
+  tags: ['villanos', 'Doctor Octopus', 'Alfred Molina', 'películas', 'series', 'videojuegos'],
+  content: `
+<p>El ${pjLink('doctor-octopus-otto-octavius-alt', 'Doctor Octopus')} es uno de los villanos más reconocibles de Spider-Man: un científico brillante y arrogante unido a cuatro brazos mecánicos que controla con la mente. Debutó en <em>The Amazing Spider-Man</em> #3 (1963), de Stan Lee y Steve Ditko, y desde entonces ha dado el salto al cine, a casi todas las series animadas del personaje y a los videojuegos. Estas son todas sus versiones.</p>
+
+<h2>Todas sus versiones, de un vistazo</h2>
+<table>
+  <thead><tr><th>Año</th><th>Dónde</th><th>Quién le da vida</th></tr></thead>
+  <tbody>
+    <tr><td>1994</td><td>Serie animada de Spider-Man</td><td>Voz original: Efrem Zimbalist Jr.</td></tr>
+    <tr><td>2004</td><td>${peli('spider-man-2-2004', 'Spider-Man 2')}</td><td>Alfred Molina</td></tr>
+    <tr><td>2008</td><td><em>The Spectacular Spider-Man</em></td><td>Voz original: Peter MacNicol</td></tr>
+    <tr><td>2012</td><td><em>Ultimate Spider-Man</em></td><td>Voz original: Tom Kenny</td></tr>
+    <tr><td>2018</td><td>${juego('marvel-s-spider-man-2018', "Marvel's Spider-Man")} (videojuego)</td><td>Voz original: William Salyers</td></tr>
+    <tr><td>2018</td><td>${peli('spider-man-un-nuevo-universo-2018', 'Spider-Man: Un nuevo universo')}</td><td>Olivia Octavius, voz original de Kathryn Hahn</td></tr>
+    <tr><td>2021</td><td>${peli('spider-man-no-way-home-2021', 'Spider-Man: No Way Home')}</td><td>Alfred Molina</td></tr>
+  </tbody>
+</table>
+
+<h2>Alfred Molina en Spider-Man 2 (2004): el gran Doc Ock</h2>
+${figure('faV0HuR6WnQoLrVq3r6mhjaABL9', 'Spider-Man y el Doctor Octopus luchando sobre el techo de un tren', 'La pelea en el tren de Spider-Man 2 (2004), con el Doctor Octopus de Alfred Molina.')}
+<p>Para muchos, la versión definitiva. El Otto Octavius de Sam Raimi es un científico bondadoso que admira a Peter y que pierde a su mujer y el control de sí mismo cuando su experimento de fusión falla y los brazos, que debían obedecerle gracias a un chip, acaban dominándole. Alfred Molina hace un villano trágico, humano y temible a la vez, y la pelea en el tren es una de las mejores escenas de acción del cine de superhéroes. Te lo contamos en <a href="/blog/spider-man-2-2004-analisis-mejor-pelicula-superheroes">nuestro análisis de Spider-Man 2</a>.</p>
+
+<h2>Su regreso en No Way Home (2021)</h2>
+<p>Diecisiete años después, Molina volvió al papel en <em>No Way Home</em>, cuando el hechizo de Doctor Strange trae a los villanos de otros universos. Su Otto llega justo desde el momento de su muerte en <em>Spider-Man 2</em>, reconoce a Peter Parker… y descubre que no es «su» Peter. El Spider-Man de Tom Holland consigue curarle y devolverle el control de sus brazos, y Otto acaba ayudando a los tres Spider-Man en la batalla final. Lo analizamos en <a href="/blog/spider-man-no-way-home-analisis">nuestro análisis de No Way Home</a>.</p>
+
+<h2>Olivia Octavius, la Doc Ock del Spider-Verso</h2>
+<p>En ${peli('spider-man-un-nuevo-universo-2018', 'Un nuevo universo')} (2018), el Doctor Octopus es una mujer: Olivia «Liv» Octavius, una científica de Alchemax que trabaja para Kingpin en el colisionador que abre el multiverso. Con la voz original de Kathryn Hahn, es una de las versiones más originales del personaje y uno de los villanos más divertidos de la película.</p>
+
+<h2>En las series animadas</h2>
+${cvFig('12/124259/7925693-rco025_1619001753.jpg', 'El Doctor Octopus con sus cuatro brazos mecánicos', 'El Doctor Octopus de los cómics, con su clásico traje verde y sus cuatro brazos mecánicos.')}
+<p>Doc Ock ha aparecido en casi todas las series de Spider-Man, desde la primera, de 1967. En la <a href="/blog/spider-man-animated-series-1994-analisis">serie de 1994</a> fue uno de los villanos clásicos, con la voz de Efrem Zimbalist Jr. En <a href="/blog/spectacular-spider-man-serie-analisis">The Spectacular Spider-Man</a> (2008) es al principio un científico tímido y maltratado por sus jefes, una versión muy humana del personaje. Y en <a href="/blog/ultimate-spider-man-2012-serie-animada-analisis">Ultimate Spider-Man</a> (2012) es uno de los enemigos recurrentes de Peter y de S.H.I.E.L.D.</p>
+
+<h2>En los videojuegos</h2>
+<p>En el ${juego('spider-man-2000-2000', 'Spider-Man')} de Neversoft (2000) es el gran villano final, y en el juego de ${juego('spider-man-2-the-game-2004', 'Spider-Man 2')} (2004) vuelve a ser el enemigo principal, con la voz del propio Alfred Molina. Pero su mejor versión en un videojuego es la de ${juego('marvel-s-spider-man-2018', "Marvel's Spider-Man")} (2018): un Otto mentor de Peter, al que el juego dedica horas antes de mostrar su caída, con un final muy emotivo. Lo tienes en <a href="/blog/marvels-spider-man-ps4-2018-analisis-insomniac">nuestro análisis del juego</a>.</p>
+
+<h2>Y en los cómics…</h2>
+${cvFig('6/67663/3548171-01.jpg', 'Portada de Superior Spider-Man #1 con un Spider-Man de traje oscurecido', 'Superior Spider-Man (2013): Otto Octavius en el cuerpo de Peter Parker.')}
+<p>Fuera de la pantalla, el Doctor Octopus fundó los Seis Siniestros, estuvo a punto de casarse con la tía May y llegó a quedarse con el cuerpo de Peter Parker para convertirse en el <a href="/blog/superior-spider-man-doctor-octopus-analisis">Superior Spider-Man</a>. Ocupa el segundo puesto en nuestro <a href="/blog/mejores-villanos-spider-man-ranking-definitivo">ranking de los mejores villanos de Spider-Man</a>.</p>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Quién interpreta al Doctor Octopus en las películas?</h3>
+<p>Alfred Molina, en Spider-Man 2 (2004) y en Spider-Man: No Way Home (2021).</p>
+<h3>¿Por qué el Doctor Octopus es una mujer en Un nuevo universo?</h3>
+<p>Porque es una versión de otro universo: Olivia Octavius, una científica de Alchemax que trabaja para Kingpin.</p>
+<h3>¿Cuál es el nombre real del Doctor Octopus?</h3>
+<p>Otto Octavius.</p>
+`,
+};
+
+const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS, FINAL_BND, MEJORES_COMICS, JUEGOS_POST, TRAJES, VILLANOS_CINE, MARVEL_LEGENDS, MEJORES_LEGO, TRES_SPIDERMAN, BND_STREAMING, SCARLET_SPIDER, VENGADORES, SPIDER_NOIR, DOC_OCK_VERSIONES];
 
 (async () => {
   for (const p of POSTS) {
