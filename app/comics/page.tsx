@@ -105,12 +105,12 @@ const ESSENTIAL_READS = [
 
 function isSpecialIssue(title: string) {
   const t = title.toLowerCase()
-  if (t.includes('annual'))                        return { label: 'Anual',         color: 'bg-blue-600' }
+  if (t.includes('annual'))                        return { label: 'Anual',         color: 'bg-blue-700' }
   if (t.includes('#1') && !t.includes('#10') && !t.includes('#11') && !t.includes('#12') && !t.includes('#13') && !t.includes('#14') && !t.includes('#15') && !t.includes('#16') && !t.includes('#17') && !t.includes('#18') && !t.includes('#19'))
-                                                   return { label: 'Nº 1',          color: 'bg-green-600' }
-  if (t.includes('amazing fantasy'))               return { label: 'Origen',        color: 'bg-yellow-600' }
+                                                   return { label: 'Nº 1',          color: 'bg-green-700' }
+  if (t.includes('amazing fantasy'))               return { label: 'Origen',        color: 'bg-yellow-700' }
   if (t.includes('omnibus') || t.includes('epic') || t.includes('masterwork') || t.includes('hardcover'))
-                                                   return { label: 'Colección',     color: 'bg-purple-600' }
+                                                   return { label: 'Colección',     color: 'bg-purple-700' }
   return null
 }
 

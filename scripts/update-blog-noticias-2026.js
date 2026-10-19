@@ -21,7 +21,7 @@ const POSTS = [
     readTime: '5 min',
     publishDate: new Date('2026-10-16'),
     image: 'https://image.tmdb.org/t/p/w1280/vjMvFSmGUxEtqVdaZgvFee9XkZl.jpg',
-    seoTitle: 'Spider-Man 4: es Brand New Day — estreno, reparto y Spider-Man 5',
+    seoTitle: 'Spider-Man 4 es Brand New Day: reparto y Spider-Man 5',
     seoDescription:
       'Spider-Man 4 se llama Brand New Day y ya se ha estrenado: director, reparto, taquilla récord y todo lo que se sabe de una posible quinta película de Tom Holland.',
     keywords: ['Spider-Man 4', 'Brand New Day', 'Tom Holland', 'Spider-Man 5', 'MCU', 'Destin Daniel Cretton'],
@@ -130,7 +130,7 @@ ${UPDATED}
     readTime: '5 min',
     publishDate: new Date('2026-10-16'),
     image: 'https://image.tmdb.org/t/p/w1280/7tT2w75p69nll5PvALpWFCYx5dU.jpg',
-    seoTitle: 'Beyond the Spider-Verse: fecha de estreno, tráiler y novedades',
+    seoTitle: 'Beyond the Spider-Verse: estreno, tráiler y novedades',
     seoDescription:
       'Spider-Man: Beyond the Spider-Verse se estrena el 18 de junio de 2027 en EE. UU. Directores, retrasos, el estado del tráiler y todo lo que sabemos del final de la trilogía.',
     keywords: ['Beyond the Spider-Verse', 'fecha de estreno', 'Miles Morales', 'Spider-Verse 3', 'tráiler', 'Sony Pictures Animation'],

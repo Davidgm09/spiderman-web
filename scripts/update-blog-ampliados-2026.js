@@ -415,7 +415,7 @@ const UN_NUEVO_UNIVERSO = {
   excerpt:
     'Spider-Man: Un nuevo universo (2018) convirtió a Miles Morales en un icono y cambió el cine de animación. Analizamos su historia, sus Spider-Man, su técnica visual y su legado.',
   readTime: '10 min',
-  seoTitle: 'Spider-Man: Un nuevo universo (Into the Spider-Verse), análisis',
+  seoTitle: 'Un nuevo universo (Into the Spider-Verse): análisis',
   seoDescription:
     'Análisis de Spider-Man: Un nuevo universo (2018): Miles Morales, los Spider-Man del multiverso, su revolucionaria animación, el Óscar y su legado en el Spider-Verso.',
   keywords: ['Un nuevo universo análisis', 'Into the Spider-Verse', 'Spider-Man Un nuevo universo', 'Miles Morales película', 'Spider-Verso', 'animación Spider-Verse'],
@@ -762,7 +762,7 @@ const SUPERIOR = {
   excerpt:
     'En 2012, el Doctor Octopus se apoderó del cuerpo de Peter Parker y se convirtió en el Superior Spider-Man. Analizamos la etapa de Dan Slott: su premisa, la evolución de Otto, su final y cómo leerla.',
   readTime: '10 min',
-  seoTitle: 'Superior Spider-Man: análisis (Doctor Octopus como Spider-Man)',
+  seoTitle: 'Superior Spider-Man: análisis (Doc Ock como Spider-Man)',
   seoDescription:
     'Análisis de Superior Spider-Man, de Dan Slott: el Doctor Octopus en el cuerpo de Peter Parker, qué pasa, cómo termina, sus dibujantes y en qué orden leerlo.',
   keywords: ['Superior Spider-Man', 'Superior Spider-Man análisis', 'Doctor Octopus Spider-Man', 'Dan Slott', 'Amazing Spider-Man 700', 'Otto Octavius'],
@@ -938,7 +938,7 @@ const PETER_VS_MILES = {
   excerpt:
     'Peter Parker y Miles Morales son los dos Spider-Man más conocidos. Comparamos su origen, sus poderes, sus familias, sus villanos y sus versiones en el cine y los videojuegos.',
   readTime: '9 min',
-  seoTitle: 'Peter Parker vs. Miles Morales: diferencias entre los Spider-Man',
+  seoTitle: 'Peter Parker vs. Miles Morales: todas sus diferencias',
   seoDescription:
     'Diferencias entre Peter Parker y Miles Morales: origen, poderes (descarga venom e invisibilidad), familia, villanos, trajes y sus versiones en el cine y los videojuegos.',
   keywords: ['Peter Parker vs Miles Morales', 'diferencias Peter Parker Miles Morales', 'poderes de Miles Morales', 'Miles Morales', 'Peter Parker', 'quién es mejor Spider-Man'],

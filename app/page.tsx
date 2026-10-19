@@ -281,7 +281,7 @@ export default async function HomePage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                 <div className="absolute bottom-0 p-6">
-                  <Badge className="mb-3 bg-yellow-600">
+                  <Badge className="mb-3 bg-yellow-600 text-gray-950 hover:bg-yellow-500">
                     <Star className="w-3 h-3 mr-1" />
                     {featuredContent.movies[0].rating}
                   </Badge>
@@ -313,7 +313,7 @@ export default async function HomePage() {
                     />
                   </div>
                   <div className="flex flex-col justify-center flex-1 min-w-0">
-                    <Badge className="bg-yellow-600 w-fit mb-2 text-xs">
+                    <Badge className="bg-yellow-600 text-gray-950 hover:bg-yellow-500 w-fit mb-2 text-xs">
                       <Star className="w-3 h-3 mr-1" />
                       {movie.rating}
                     </Badge>
@@ -416,7 +416,7 @@ export default async function HomePage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
                 <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                  <Badge className="bg-yellow-600 w-fit mb-2 text-xs">
+                  <Badge className="bg-yellow-600 text-gray-950 hover:bg-yellow-500 w-fit mb-2 text-xs">
                     <Star className="w-3 h-3 mr-1" />
                     {game.rating}
                   </Badge>

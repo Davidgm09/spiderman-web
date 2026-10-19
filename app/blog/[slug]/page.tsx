@@ -217,7 +217,7 @@ export default async function BlogPostPage({ params }: Props) {
             {/* Nav inferior */}
             <div className="mt-6">
               <Link href="/blog">
-                <Button variant="outline" className="border-gray-700 text-gray-300 hover:bg-gray-800">
+                <Button variant="outline" className="bg-transparent border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white">
                   <ArrowLeft className="w-4 h-4 mr-2" />
                   Volver al blog
                 </Button>

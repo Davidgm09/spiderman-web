@@ -37,6 +37,7 @@ All scripts read from `.env` (not `.env.local`). Run them with `node scripts/<na
 | `scripts/fix-tienda-productos-2026.js` | Static | Store fixes verified on Amazon.es (wrong ASINs, out-of-stock replacements); re-run after `populate-tienda-products.js --clean` |
 | `scripts/add-tienda-brand-new-day.js` | Static | 8 Brand New Day products verified on Amazon.es (shown in their own block on `/tienda`); re-run after `populate-tienda-products.js --clean`, then `fix-tienda-productos-2026.js` |
 | `scripts/build-juegos-data.js` | DB | Builds `data/juegos/personajes.json` for the daily game Arañadle (gender, origin universe, debut year, unified group names, Spanish search names, clues); re-run when characters change |
+| `scripts/descargar-imagenes-juegos.js` | Remote | Downloads and resizes character images to `public/juegos/personajes/<slug>.jpg` so /juegos serves them locally (no third-party cookies); run before `build-juegos-data.js` when characters change |
 | `scripts/add-personajes-2026.js` | Static | 15 characters added in Oct 2026 (Mary Jane, Black Cat, Kingpin, Punisher, Spider-Punk…), with SEO titles; creates the `spider-allies` category. Then run `build-juegos-data.js` |
 | `scripts/fix-personajes-seo-2026.js` | Static | Search titles/descriptions for the 45 characters (real name + Spanish hero name); re-run after `populate-all-45-characters.js` |
 

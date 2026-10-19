@@ -20,7 +20,7 @@ const POST = {
   publishDate: new Date('2026-10-16'),
   slug: 'spider-man-brand-new-day-taquilla-criticas-sin-spoilers',
   image: 'https://image.tmdb.org/t/p/w1280/vjMvFSmGUxEtqVdaZgvFee9XkZl.jpg',
-  seoTitle: 'Spider-Man: Brand New Day: taquilla, críticas y guía sin spoilers | Sentido Arácnido',
+  seoTitle: 'Brand New Day: taquilla, críticas y guía sin spoilers',
   seoDescription:
     'Todo sobre Spider-Man: Brand New Day sin spoilers: argumento, reparto, récords de taquilla, nota de la crítica y cuándo verla en casa.',
   keywords: [

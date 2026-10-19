@@ -85,7 +85,7 @@ export function CharacterFilter({ spiderVerse, spiderVillains, spiderAllies, mar
             >
               {f.label}
               <span className={`text-xs px-1.5 py-0.5 rounded-full ${
-                active === f.key ? 'bg-white/20' : 'bg-white/5'
+                active === f.key ? 'bg-black/30' : 'bg-white/5'
               }`}>
                 {f.count}
               </span>

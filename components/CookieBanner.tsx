@@ -76,7 +76,7 @@ export function CookieBanner() {
           </button>
           <Link
             href="/privacidad"
-            className="flex-1 sm:flex-none text-center text-gray-500 hover:text-gray-300 text-sm py-2.5 transition-colors"
+            className="flex-1 sm:flex-none text-center text-gray-400 hover:text-gray-200 text-sm py-2.5 transition-colors"
           >
             Política de privacidad
           </Link>

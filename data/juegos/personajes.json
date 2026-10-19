@@ -2,7 +2,7 @@
  {
   "slug": "ant-man-scott-lang-alt",
   "name": "Ant-Man (Scott Lang)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/14/149570/4153676-ant-man-samnee-variant-a2299.jpg",
+  "image": "/juegos/personajes/ant-man-scott-lang-alt.jpg",
   "terms": [
    "Ant-Man",
    "Giant-Man",
@@ -28,7 +28,7 @@
  {
   "slug": "spider-girl-anya-corazon-alt",
   "name": "Araña (Anya Corazón)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/8710689-large-6288379.jpg",
+  "image": "/juegos/personajes/spider-girl-anya-corazon-alt.jpg",
   "terms": [
    "Araña",
    "Spider-Girl",
@@ -54,7 +54,7 @@
  {
   "slug": "ben-reilly-scarlet-spider-alt",
   "name": "Ben Reilly (Scarlet Spider)",
-  "image": "https://upload.wikimedia.org/wikipedia/en/7/7a/Scarlet_Spider_%28Ben_Reilly%29.png",
+  "image": "/juegos/personajes/ben-reilly-scarlet-spider-alt.jpg",
   "terms": [
    "Scarlet Spider",
    "Spider-Man",
@@ -79,7 +79,7 @@
  {
   "slug": "black-cat-felicia-hardy-alt",
   "name": "Black Cat (Felicia Hardy)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/9653166-large-5481312.jpg",
+  "image": "/juegos/personajes/black-cat-felicia-hardy-alt.jpg",
   "terms": [
    "Gata Negra",
    "Felicia Hardy"
@@ -101,7 +101,7 @@
  {
   "slug": "black-panther-tchalla-alt",
   "name": "Black Panther (T'Challa)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/8251800-black_panther_vol_8_1_devil_dog_comics_and_jolzar_collectibles_exclusive_virgin_variant.jpg",
+  "image": "/juegos/personajes/black-panther-tchalla-alt.jpg",
   "terms": [
    "Black Panther",
    "Rey de Wakanda",
@@ -127,7 +127,7 @@
  {
   "slug": "black-widow-natasha-romanoff-alt",
   "name": "Black Widow (Natasha Romanoff)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/11156/111564182/9646599-widow2.jpg",
+  "image": "/juegos/personajes/black-widow-natasha-romanoff-alt.jpg",
   "terms": [
    "Black Widow",
    "Natasha Romanoff",
@@ -153,7 +153,7 @@
  {
   "slug": "captain-america-steve-rogers-alt",
   "name": "Captain America (Steve Rogers)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/8459983-rco031_1650495781.jpg",
+  "image": "/juegos/personajes/captain-america-steve-rogers-alt.jpg",
   "terms": [
    "Captain America",
    "Cap",
@@ -181,7 +181,7 @@
  {
   "slug": "carnage-cletus-kasady-alt",
   "name": "Carnage (Cletus Kasady)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/8056391-extreme_carnage_alpha_vol_1_1_lee_retailer_shared_exclusive_virgin_variant.jpg",
+  "image": "/juegos/personajes/carnage-cletus-kasady-alt.jpg",
   "terms": [
    "Carnage",
    "Matanza",
@@ -204,7 +204,7 @@
  {
   "slug": "chameleon-dmitri-smerdyakov-alt",
   "name": "Chameleon (Dmitri Smerdyakov)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/8002168-250072_1446175_1.jpg",
+  "image": "/juegos/personajes/chameleon-dmitri-smerdyakov-alt.jpg",
   "terms": [
    "Camaleón",
    "Chameleon",
@@ -225,7 +225,7 @@
  {
   "slug": "daredevil-matt-murdock-alt",
   "name": "Daredevil (Matt Murdock)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/11118/111187046/7397359-0398898002-EQH1ysWWsAA7QLf",
+  "image": "/juegos/personajes/daredevil-matt-murdock-alt.jpg",
   "terms": [
    "Daredevil",
    "DD",
@@ -251,7 +251,7 @@
  {
   "slug": "deadpool-wade-wilson-alt",
   "name": "Deadpool (Wade Wilson)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/8926324-large-2680196.jpg",
+  "image": "/juegos/personajes/deadpool-wade-wilson-alt.jpg",
   "terms": [
    "Deadpool",
    "Merc with a Mouth",
@@ -277,7 +277,7 @@
  {
   "slug": "doctor-octopus-otto-octavius-alt",
   "name": "Doctor Octopus (Otto Octavius)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/7925693-rco025_1619001753.jpg",
+  "image": "/juegos/personajes/doctor-octopus-otto-octavius-alt.jpg",
   "terms": [
    "Doctor Octopus",
    "Doc Ock",
@@ -302,7 +302,7 @@
  {
   "slug": "doctor-strange-stephen-strange-alt",
   "name": "Doctor Strange (Stephen Strange)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/8753901-ezgif-3-69b95d2d1b.jpg",
+  "image": "/juegos/personajes/doctor-strange-stephen-strange-alt.jpg",
   "terms": [
    "Doctor Strange",
    "Sorcerer Supreme",
@@ -328,7 +328,7 @@
  {
   "slug": "electro-maxwell-dillon-alt",
   "name": "Electro (Maxwell Dillon)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/11144/111442876/8791114-fbege.jpg",
+  "image": "/juegos/personajes/electro-maxwell-dillon-alt.jpg",
   "terms": [
    "Electro",
    "Max Dillon"
@@ -351,7 +351,7 @@
  {
   "slug": "fantastic-four-reed-richards-alt",
   "name": "Fantastic Four (Reed Richards)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/11112/111123579/7316596-fantastic_four_vol_6_1_mr._fantastic_variant_textless.jpg",
+  "image": "/juegos/personajes/fantastic-four-reed-richards-alt.jpg",
   "terms": [
    "Mr. Fantastic",
    "Stretch",
@@ -377,7 +377,7 @@
  {
   "slug": "green-goblin-norman-osborn-alt",
   "name": "Green Goblin (Norman Osborn)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_large/1/12840/1704865-genetic_construct_gg.jpg",
+  "image": "/juegos/personajes/green-goblin-norman-osborn-alt.jpg",
   "terms": [
    "Green Goblin",
    "Goblin",
@@ -405,7 +405,7 @@
  {
   "slug": "hawkeye-clint-barton-alt",
   "name": "Hawkeye (Clint Barton)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/11156/111564182/9384867-thunderbolts_vol_4_1_trading_card_variant_textless.jpg",
+  "image": "/juegos/personajes/hawkeye-clint-barton-alt.jpg",
   "terms": [
    "Hawkeye",
    "Ronin",
@@ -432,7 +432,7 @@
  {
   "slug": "hobgoblin-roderick-kingsley-alt",
   "name": "Hobgoblin (Roderick Kingsley)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/8154772-spider-man_vol_1_237_textless.jpg",
+  "image": "/juegos/personajes/hobgoblin-roderick-kingsley-alt.jpg",
   "terms": [
    "Hobgoblin",
    "Duende Macabro",
@@ -452,7 +452,7 @@
  {
   "slug": "hulk-bruce-banner-alt",
   "name": "Hulk (Bruce Banner)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/1/15776/9971293-hulk.jpg",
+  "image": "/juegos/personajes/hulk-bruce-banner-alt.jpg",
   "terms": [
    "Hulk",
    "The Incredible Hulk",
@@ -478,7 +478,7 @@
  {
   "slug": "human-torch-johnny-storm-alt",
   "name": "Human Torch (Johnny Storm)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/8338234-b5866c56-93ff-4db0-aeca-9844ff09eac3_rw_1200.jpg",
+  "image": "/juegos/personajes/human-torch-johnny-storm-alt.jpg",
   "terms": [
    "Human Torch",
    "Antorcha Humana",
@@ -502,7 +502,7 @@
  {
   "slug": "iron-man-tony-stark-alt",
   "name": "Iron Man (Tony Stark)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/11174/111743204/9372918-invincibleironman%231vol5kaelngu.jpg",
+  "image": "/juegos/personajes/iron-man-tony-stark-alt.jpg",
   "terms": [
    "Iron Man",
    "Shellhead",
@@ -531,7 +531,7 @@
  {
   "slug": "j-jonah-jameson-alt",
   "name": "J. Jonah Jameson",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/3/33913/1162969-137_web_of_spider_man_9.jpg",
+  "image": "/juegos/personajes/j-jonah-jameson-alt.jpg",
   "terms": [
    "JJJ",
    "Jonah",
@@ -554,7 +554,7 @@
  {
   "slug": "jackal-miles-warren-alt",
   "name": "Jackal (Miles Warren)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/11/110802/4019802-the%20jackal.jpg",
+  "image": "/juegos/personajes/jackal-miles-warren-alt.jpg",
   "terms": [
    "Jackal",
    "The Professor",
@@ -577,7 +577,7 @@
  {
   "slug": "kaine-parker-scarlet-spider-alt",
   "name": "Kaine Parker (Scarlet Spider)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/10/101073/2114145-1323112183.jpg",
+  "image": "/juegos/personajes/kaine-parker-scarlet-spider-alt.jpg",
   "terms": [
    "Kaine",
    "Scarlet Spider",
@@ -601,7 +601,7 @@
  {
   "slug": "kingpin-wilson-fisk-alt",
   "name": "Kingpin (Wilson Fisk)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/11156/111564182/9353485-wilsonfisksecretempire.jpg",
+  "image": "/juegos/personajes/kingpin-wilson-fisk-alt.jpg",
   "terms": [
    "Kingpin",
    "Rey del Crimen",
@@ -622,7 +622,7 @@
  {
   "slug": "kraven-the-hunter-sergei-kravinoff-alt",
   "name": "Kraven the Hunter (Sergei Kravinoff)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/11125/111253436/6733787-b.jpg",
+  "image": "/juegos/personajes/kraven-the-hunter-sergei-kravinoff-alt.jpg",
   "terms": [
    "Kraven the Hunter",
    "Kraven",
@@ -646,7 +646,7 @@
  {
   "slug": "lizard-curtis-connors-alt",
   "name": "Lizard (Curtis Connors)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/11144/111442876/8791115-dfgeges.jpg",
+  "image": "/juegos/personajes/lizard-curtis-connors-alt.jpg",
   "terms": [
    "Lizard",
    "Curt Connors",
@@ -668,7 +668,7 @@
  {
   "slug": "madame-web-cassandra-webb-alt",
   "name": "Madame Web (Cassandra Webb)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/6/68065/2024314-spider_girl02.jpg",
+  "image": "/juegos/personajes/madame-web-cassandra-webb-alt.jpg",
   "terms": [
    "Madame Web",
    "Cassandra Webb"
@@ -690,7 +690,7 @@
  {
   "slug": "mary-jane-watson-alt",
   "name": "Mary Jane Watson",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/10106039-large-4008138.jpg",
+  "image": "/juegos/personajes/mary-jane-watson-alt.jpg",
   "terms": [
    "MJ",
    "Mary Jane"
@@ -710,7 +710,7 @@
  {
   "slug": "prowler-aaron-davis-alt",
   "name": "Merodeador (Aaron Davis)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/6/67344/7792391-aaron-davis-92616-normal.jpg",
+  "image": "/juegos/personajes/prowler-aaron-davis-alt.jpg",
   "terms": [
    "Merodeador",
    "Prowler",
@@ -731,7 +731,7 @@
  {
   "slug": "mister-negative-martin-li-alt",
   "name": "Mister Negative (Martin Li)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/8/84077/1894030-mrnegative00.jpg",
+  "image": "/juegos/personajes/mister-negative-martin-li-alt.jpg",
   "terms": [
    "Mister Negativo",
    "Mister Negative",
@@ -755,7 +755,7 @@
  {
   "slug": "morbius-michael-morbius-alt",
   "name": "Morbius (Michael Morbius)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/7877822-6s8zbpfd92p61.jpg",
+  "image": "/juegos/personajes/morbius-michael-morbius-alt.jpg",
   "terms": [
    "Morbius",
    "el vampiro viviente",
@@ -778,7 +778,7 @@
  {
   "slug": "morlun-alt",
   "name": "Morlun",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/11122/111223989/4781959-morlun1.jpg",
+  "image": "/juegos/personajes/morlun-alt.jpg",
   "terms": [
    "Morlun the Hunter",
    "The Inheritor"
@@ -799,7 +799,7 @@
  {
   "slug": "mysterio-quentin-beck-alt",
   "name": "Mysterio (Quentin Beck)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/3/33913/997983-113_web_of_spider_man_4.jpg",
+  "image": "/juegos/personajes/mysterio-quentin-beck-alt.jpg",
   "terms": [
    "Mysterio",
    "Dr. Ludwig Rinehart",
@@ -821,7 +821,7 @@
  {
   "slug": "punisher-frank-castle-alt",
   "name": "Punisher (Frank Castle)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/1/15776/9998597-punisher.jpg",
+  "image": "/juegos/personajes/punisher-frank-castle-alt.jpg",
   "terms": [
    "Punisher",
    "Castigador",
@@ -845,7 +845,7 @@
  {
   "slug": "rhino-aleksei-sytsevich-alt",
   "name": "Rhino (Aleksei Sytsevich)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/8059019-amazing_spider-man_vol_5_14_textless.jpg",
+  "image": "/juegos/personajes/rhino-aleksei-sytsevich-alt.jpg",
   "terms": [
    "Rhino",
    "Rino",
@@ -869,7 +869,7 @@
  {
   "slug": "sandman-william-baker-alt",
   "name": "Sandman (William Baker)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/11144/111442876/8791112-cerec.jpg",
+  "image": "/juegos/personajes/sandman-william-baker-alt.jpg",
   "terms": [
    "Sandman",
    "Flint Marko",
@@ -894,7 +894,7 @@
  {
   "slug": "scorpion-mac-gargan-alt",
   "name": "Scorpion (Mac Gargan)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/11144/111442876/8759844-fgcte.jpg",
+  "image": "/juegos/personajes/scorpion-mac-gargan-alt.jpg",
   "terms": [
    "Scorpion",
    "Venom",
@@ -920,7 +920,7 @@
  {
   "slug": "shocker-herman-schultz-alt",
   "name": "Shocker (Herman Schultz)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/9999817-asmvenomdsbodycount2026001_coello_connecting_complete.jpg",
+  "image": "/juegos/personajes/shocker-herman-schultz-alt.jpg",
   "terms": [
    "Shocker",
    "Herman Schultz"
@@ -942,7 +942,7 @@
  {
   "slug": "silk-cindy-moon-alt",
   "name": "Silk (Cindy Moon)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/11116/111167641/8155465-silk_junggeun-yoon-art.jpg",
+  "image": "/juegos/personajes/silk-cindy-moon-alt.jpg",
   "terms": [
    "Silk",
    "Cindy Moon"
@@ -964,7 +964,7 @@
  {
   "slug": "sp-dr-peni-parker-alt",
   "name": "SP//dr (Peni Parker)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/11116/111167641/6588383-peni-parker-sp__dr_spidergeddon.png",
+  "image": "/juegos/personajes/sp-dr-peni-parker-alt.jpg",
   "terms": [
    "SP//dr",
    "Peni Parker"
@@ -987,7 +987,7 @@
  {
   "slug": "spider-girl-mayday-parker-alt",
   "name": "Spider-Girl (Mayday Parker)",
-  "image": "https://upload.wikimedia.org/wikipedia/en/9/90/Spider-Girl_%28Mayday_Parker%29.png",
+  "image": "/juegos/personajes/spider-girl-mayday-parker-alt.jpg",
   "terms": [
    "Spider-Girl",
    "Chica Araña",
@@ -1035,7 +1035,7 @@
  {
   "slug": "spider-ham-peter-porker-alt",
   "name": "Spider-Ham (Peter Porker)",
-  "image": "https://upload.wikimedia.org/wikipedia/en/c/ce/Spider-Ham.png",
+  "image": "/juegos/personajes/spider-ham-peter-porker-alt.jpg",
   "terms": [
    "Spider-Ham",
    "Peter Porker",
@@ -1058,7 +1058,7 @@
  {
   "slug": "spider-man-miles-morales-alt",
   "name": "Spider-Man (Miles Morales)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/8667575-35.jpg",
+  "image": "/juegos/personajes/spider-man-miles-morales-alt.jpg",
   "terms": [
    "Spider-Man",
    "Kid Arachnid",
@@ -1083,7 +1083,7 @@
  {
   "slug": "spider-man-peter-parker-alt",
   "name": "Spider-Man (Peter Parker)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/8126579-amazing_spider-man_vol_5_54_stormbreakers_variant_textless.jpg",
+  "image": "/juegos/personajes/spider-man-peter-parker-alt.jpg",
   "terms": [
    "Spider-Man",
    "Spidey",
@@ -1111,7 +1111,7 @@
  {
   "slug": "spider-man-2099-miguel-ohara-alt",
   "name": "Spider-Man 2099 (Miguel O'Hara)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/9476911-large-3730198.jpg",
+  "image": "/juegos/personajes/spider-man-2099-miguel-ohara-alt.jpg",
   "terms": [
    "Spider-Man 2099",
    "Spidey 2099",
@@ -1134,7 +1134,7 @@
  {
   "slug": "spider-man-india-pavitr-prabhakar-alt",
   "name": "Spider-Man India (Pavitr Prabhakar)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/0/3765/112209-1502-spider-man.jpg",
+  "image": "/juegos/personajes/spider-man-india-pavitr-prabhakar-alt.jpg",
   "terms": [
    "Spider-Man India",
    "Pavitr Prabhakar"
@@ -1156,7 +1156,7 @@
  {
   "slug": "spider-man-noir-peter-parker-alt",
   "name": "Spider-Man Noir (Peter Parker)",
-  "image": "https://upload.wikimedia.org/wikipedia/en/3/32/Spider-Man_Noir.png",
+  "image": "/juegos/personajes/spider-man-noir-peter-parker-alt.jpg",
   "terms": [
    "Spider-Man Noir",
    "The Spider",
@@ -1179,7 +1179,7 @@
  {
   "slug": "spider-punk-hobie-brown-alt",
   "name": "Spider-Punk (Hobie Brown)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/9317918-rco031_1709134803.jpg",
+  "image": "/juegos/personajes/spider-punk-hobie-brown-alt.jpg",
   "terms": [
    "Spider-Punk",
    "Hobie Brown"
@@ -1202,7 +1202,7 @@
  {
   "slug": "spider-uk-billy-braddock-alt",
   "name": "Spider-UK (Billy Braddock)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/11125/111254576/5389032-william_braddock_%28earth-833%29_002.jpg",
+  "image": "/juegos/personajes/spider-uk-billy-braddock-alt.jpg",
   "terms": [
    "Spider-UK",
    "Billy Braddock"
@@ -1225,7 +1225,7 @@
  {
   "slug": "spider-woman-jessica-drew-alt",
   "name": "Spider-Woman (Jessica Drew)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/11156/111564182/10179461-spider-woman_vol_7_11_textless.jpg",
+  "image": "/juegos/personajes/spider-woman-jessica-drew-alt.jpg",
   "terms": [
    "Spider-Woman",
    "Mujer Araña",
@@ -1251,7 +1251,7 @@
  {
   "slug": "spider-woman-julia-carpenter-alt",
   "name": "Spider-Woman (Julia Carpenter)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/9443794-rco020_1723626074.jpg",
+  "image": "/juegos/personajes/spider-woman-julia-carpenter-alt.jpg",
   "terms": [
    "Spider-Woman",
    "Arachne",
@@ -1277,7 +1277,7 @@
  {
   "slug": "spider-woman-mattie-franklin-alt",
   "name": "Spider-Woman (Mattie Franklin)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/0/77/90426-186104-mattie-franklin.jpg",
+  "image": "/juegos/personajes/spider-woman-mattie-franklin-alt.jpg",
   "terms": [
    "Spider-Woman",
    "Mujer Araña",
@@ -1300,7 +1300,7 @@
  {
   "slug": "storm-ororo-munroe-alt",
   "name": "Storm (Ororo Munroe)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/12/124259/9856505-large-1751490.jpg",
+  "image": "/juegos/personajes/storm-ororo-munroe-alt.jpg",
   "terms": [
    "Storm",
    "Weather Goddess",
@@ -1327,7 +1327,7 @@
  {
   "slug": "thor-odinson-alt",
   "name": "Thor",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/11184/111843102/9520871-thor.jpg",
+  "image": "/juegos/personajes/thor-odinson-alt.jpg",
   "terms": [
    "God of Thunder",
    "Odinson",
@@ -1353,7 +1353,7 @@
  {
   "slug": "aunt-may-parker-alt",
   "name": "Tía May (May Parker)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/11/117763/2733264-marvel_knights_spider_man__4___page_3.jpg",
+  "image": "/juegos/personajes/aunt-may-parker-alt.jpg",
   "terms": [
    "Tía May",
    "May Reilly",
@@ -1376,7 +1376,7 @@
  {
   "slug": "venom-eddie-brock-alt",
   "name": "Venom (Eddie Brock)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/11125/111253436/6733785-9.jpg",
+  "image": "/juegos/personajes/venom-eddie-brock-alt.jpg",
   "terms": [
    "Venom",
    "Anti-Venom",
@@ -1399,7 +1399,7 @@
  {
   "slug": "vulture-adrian-toomes-alt",
   "name": "Vulture (Adrian Toomes)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/11144/111442876/8791113-gettgegs.jpg",
+  "image": "/juegos/personajes/vulture-adrian-toomes-alt.jpg",
   "terms": [
    "Vulture",
    "Buitre",
@@ -1422,7 +1422,7 @@
  {
   "slug": "wolverine-james-howlett-alt",
   "name": "Wolverine (James Howlett)",
-  "image": "https://comicvine.gamespot.com/a/uploads/scale_medium/5/57023/9905332-1000001866.jpg",
+  "image": "/juegos/personajes/wolverine-james-howlett-alt.jpg",
   "terms": [
    "Wolverine",
    "Logan",

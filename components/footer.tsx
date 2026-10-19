@@ -126,14 +126,14 @@ export function Footer() {
 
         {/* Disclaimer */}
         <div className="border-t border-red-600/20 pt-8 mb-4">
-          <p className="text-gray-500 text-xs leading-relaxed text-center">
+          <p className="text-gray-400 text-xs leading-relaxed text-center">
             <strong className="text-gray-400">Aviso legal:</strong> Spider-Man y todos los personajes, nombres e imágenes relacionados son marcas registradas y propiedad de Marvel Entertainment, LLC y/o sus filiales. Sony Pictures Entertainment posee los derechos cinematográficos de Spider-Man. Este sitio es un proyecto independiente de fans sin ninguna afiliación, patrocinio ni respaldo oficial de Marvel, Disney o Sony. Las imágenes de películas y series se utilizan con fines informativos y de crítica bajo el derecho de cita. Este sitio contiene enlaces de afiliado de Amazon: si realizas una compra a través de ellos, podríamos recibir una pequeña comisión sin coste adicional para ti. En calidad de Afiliado de Amazon, obtengo ingresos por las compras adscritas que cumplen los requisitos aplicables.
           </p>
         </div>
 
         {/* Copyright */}
         <div className="text-center">
-          <p className="text-gray-500 text-xs">
+          <p className="text-gray-400 text-xs">
             © 2026 Sentido Arácnido — Sitio de fans independiente. Todos los derechos de los personajes pertenecen a sus respectivos propietarios.
           </p>
         </div>

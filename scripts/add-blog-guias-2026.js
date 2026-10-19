@@ -99,7 +99,7 @@ const GUIA_REGALOS = {
   readTime: '7 min',
   publishDate: new Date('2026-10-16'),
   image: 'https://image.tmdb.org/t/p/w1280/8mnXR9rey5uQ08rZAvzojKWbDQS.jpg',
-  seoTitle: 'Regalos de Spider-Man para Navidad 2026: guía por tipo de fan',
+  seoTitle: 'Regalos de Spider-Man para Navidad 2026: guía por fan',
   seoDescription:
     'Los mejores regalos de Spider-Man para Navidad: LEGO, figuras Marvel Legends, Funko Pop, cómics y ropa. Ideas para niños, coleccionistas y lectores.',
   keywords: ['regalos Spider-Man', 'regalos Navidad Spider-Man', 'LEGO Spider-Man', 'Marvel Legends', 'Funko Pop Spider-Man', 'cómics Spider-Man'],
@@ -365,7 +365,7 @@ const MEJORES_COMICS = {
   readTime: '10 min',
   publishDate: new Date('2026-10-16'),
   image: '/images/mejores-comics-spider-man.jpg',
-  seoTitle: 'Los 10 mejores cómics de Spider-Man y dónde leerlos en español',
+  seoTitle: 'Los 10 mejores cómics de Spider-Man y dónde leerlos',
   seoDescription:
     'Los mejores cómics de Spider-Man de la historia: la muerte de Gwen Stacy, La última cacería de Kraven, Azul, Ultimate y más, con su edición en español.',
   keywords: ['mejores cómics Spider-Man', 'cómics Spider-Man imprescindibles', 'mejores historias Spider-Man', 'Spider-Man Panini', 'qué cómic de Spider-Man leer'],
@@ -783,7 +783,7 @@ const TRES_SPIDERMAN = {
   readTime: '9 min',
   publishDate: new Date('2026-10-17'),
   image: tmdb('4tjxYg2AbOzzG9G1YuiT2NzYhlH'),
-  seoTitle: 'Maguire vs. Garfield vs. Holland: ¿quién es el mejor Spider-Man?',
+  seoTitle: 'Maguire, Garfield o Holland: ¿quién es el mejor Spider-Man?',
   seoDescription:
     'Comparamos a Tobey Maguire, Andrew Garfield y Tom Holland como Spider-Man: Peter Parker, villanos, historias de amor, taquilla y mejores películas.',
   keywords: ['mejor Spider-Man', 'Tobey Maguire vs Andrew Garfield vs Tom Holland', 'quién es el mejor Spider-Man', 'Spider-Man actores', 'Tom Holland Spider-Man', 'Andrew Garfield Spider-Man', 'Tobey Maguire Spider-Man'],
@@ -1239,7 +1239,7 @@ const VIUDA_NEGRA_MCU = {
   readTime: '9 min',
   publishDate: new Date('2026-10-19'),
   image: tmdb('keIxh0wPr2Ymj0Btjh4gW7JJ89e'),
-  seoTitle: 'Natasha Romanoff en el MCU: la Viuda Negra película a película',
+  seoTitle: 'Natasha Romanoff en el MCU: todas sus películas',
   seoDescription:
     'La historia de Natasha Romanoff, la Viuda Negra, en el MCU: Scarlett Johansson de Iron Man 2 a Endgame, su película en solitario y Yelena, la nueva Viuda Negra.',
   keywords: ['Natasha Romanoff', 'Viuda Negra MCU', 'Scarlett Johansson Viuda Negra', 'Natasha Romanoff películas', 'muerte Viuda Negra Endgame', 'Yelena Belova'],

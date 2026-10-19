@@ -521,7 +521,7 @@ export default async function ComicPage({ params }: Props) {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     {relatedComic.importance && (
                       <div className="absolute top-2 left-2">
-                        <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${relatedComic.importance === 'Alta' ? 'bg-red-600/90 text-white' : relatedComic.importance === 'Buena' ? 'bg-yellow-600/90 text-white' : 'bg-gray-700/90 text-gray-300'}`}>
+                        <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${relatedComic.importance === 'Alta' ? 'bg-red-600/90 text-white' : relatedComic.importance === 'Buena' ? 'bg-yellow-500 text-gray-950' : 'bg-gray-700/90 text-gray-300'}`}>
                           {relatedComic.importance}
                         </span>
                       </div>

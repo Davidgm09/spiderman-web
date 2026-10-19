@@ -194,7 +194,10 @@ function universe(u) {
     out.push({
       slug: c.slug,
       name: c.name,
-      image: c.image,
+      // Copia local si existe (scripts/descargar-imagenes-juegos.js): sin cookies de Comic Vine ni Wikipedia
+      image: fs.existsSync(path.join(__dirname, '..', 'public', 'juegos', 'personajes', `${c.slug}.jpg`))
+        ? `/juegos/personajes/${c.slug}.jpg`
+        : c.image,
       terms: [...new Set([...(c.alias || []), ...x.terms])].filter((t) => t && t !== c.name),
       gender: x.g === 'F' ? 'Femenino' : 'Masculino',
       category: CATEGORY[c.category] || c.category,
