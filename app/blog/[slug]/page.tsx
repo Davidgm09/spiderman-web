@@ -13,6 +13,7 @@ import { generateAmazonUrl } from "@/lib/content-helpers"
 import { BlogPost } from "@prisma/client"
 import { ViewTracker } from "@/components/blog/ViewTracker"
 import { ShareButtons } from "@/components/blog/ShareButtons"
+import { reviewJsonLd } from "@/lib/reviews"
 
 export const revalidate = 3600
 
@@ -112,12 +113,18 @@ export default async function BlogPostPage({ params }: Props) {
     wordCount,
   }
 
+  // Si el artículo es la reseña de una película o un juego, con nota, también se marca como Review
+  const reviewLd = reviewJsonLd(post, postUrl, BASE_URL)
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-red-950">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      {reviewLd && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewLd) }} />
+      )}
       <ViewTracker slug={post.slug} />
 
       {/* Hero */}
