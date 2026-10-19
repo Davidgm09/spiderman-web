@@ -920,7 +920,98 @@ ${figure('r08LxMJCbf1SiJIWeyH9aJmdqwC', 'Peter Parker y su reflejo como Spider-M
 `,
 };
 
-const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS, FINAL_BND, MEJORES_COMICS, JUEGOS_POST, TRAJES, VILLANOS_CINE, MARVEL_LEGENDS, MEJORES_LEGO, TRES_SPIDERMAN, BND_STREAMING];
+const cvImg = (path) => `https://comicvine.gamespot.com/a/uploads/scale_medium/${path}`;
+const cvFig = (path, alt, cap) => `<figure>
+  <img src="${cvImg(path)}" alt="${alt}" loading="lazy" />
+  <figcaption>${cap}</figcaption>
+</figure>`;
+const pjLink = (slug, name) => `<a href="/personajes/${slug}">${name}</a>`;
+
+const SCARLET_SPIDER = {
+  slug: 'scarlet-spider-ben-reilly-kaine-diferencias',
+  title: 'Scarlet Spider: quién es Ben Reilly, quién es Kaine y en qué se diferencian',
+  subtitle: 'Los dos clones de Peter Parker que han llevado el nombre de Scarlet Spider: origen, poderes, trajes, cómics imprescindibles y apariciones en el cine',
+  excerpt:
+    'Ben Reilly y Kaine son clones de Peter Parker y los dos han sido Scarlet Spider, pero son personajes muy distintos. Te explicamos quién es cada uno, en qué se diferencian y qué cómics leer.',
+  category: 'Cómics',
+  readTime: '9 min',
+  publishDate: new Date('2026-10-19'),
+  image: cvImg('6/67663/5819599-01.jpg'),
+  seoTitle: 'Scarlet Spider: Ben Reilly y Kaine, diferencias y origen',
+  seoDescription:
+    'Quién es Scarlet Spider: Ben Reilly y Kaine Parker, los dos clones de Peter Parker. Origen, poderes, trajes, diferencias, cómics para leer y su papel en el cine.',
+  keywords: ['Scarlet Spider', 'Ben Reilly', 'Kaine Parker', 'Kaine Scarlet Spider', 'clones de Peter Parker', 'saga del clon'],
+  tags: ['cómics', 'Scarlet Spider', 'Ben Reilly', 'Kaine', 'saga del clon', 'personajes'],
+  content: `
+<p>Si has buscado «Scarlet Spider» y te has encontrado con dos nombres, no estás solo: <strong>Ben Reilly y Kaine Parker han llevado los dos el nombre de Scarlet Spider</strong>, los dos son clones de Peter Parker y los dos nacieron en el laboratorio del mismo villano. Pero son personajes muy distintos. Aquí te lo aclaramos todo.</p>
+
+<h2>Las diferencias, de un vistazo</h2>
+<table>
+  <thead><tr><th></th><th>Ben Reilly</th><th>Kaine Parker</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Qué es</strong></td><td>Un clon casi perfecto de Peter</td><td>El primer clon de Peter, imperfecto</td></tr>
+    <tr><td><strong>Primera aparición</strong></td><td>The Amazing Spider-Man #149 (1975)</td><td>Web of Spider-Man #119 (1994)</td></tr>
+    <tr><td><strong>Scarlet Spider</strong></td><td>Desde 1994, en plena saga del clon</td><td>Desde 2012, en Houston</td></tr>
+    <tr><td><strong>Personalidad</strong></td><td>Un héroe como Peter, con su misma moral</td><td>Un antihéroe duro y violento que busca redimirse</td></tr>
+    <tr><td><strong>Traje</strong></td><td>Malla roja con sudadera azul sin mangas</td><td>Traje rojo y negro de una sola pieza</td></tr>
+    <tr><td><strong>¿Fue Spider-Man?</strong></td><td>Sí, en varias etapas</td><td>No</td></tr>
+  </tbody>
+</table>
+
+<h2>El origen: los clones del Chacal</h2>
+<p>Los dos nacieron del mismo hombre: ${pjLink('jackal-miles-warren-alt', 'Miles Warren, el Chacal')}, el profesor de Peter obsesionado con Gwen Stacy y con la clonación. En los años 70 creó copias de Peter Parker para enfrentarlas a él, y durante décadas nadie supo cuántas había ni cuál era el original. De ahí salió la famosa <strong>saga del clon</strong> de los años 90, una de las historias más largas y polémicas de Spider-Man.</p>
+
+<h2>Ben Reilly, el Scarlet Spider original</h2>
+<figure>
+  <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Scarlet_Spider_%28Ben_Reilly%29.png" alt="Ben Reilly con el traje de Scarlet Spider: malla roja y sudadera azul sin mangas" loading="lazy" />
+  <figcaption>El traje de Scarlet Spider de Ben Reilly: malla roja con una sudadera azul sin mangas, uno de los diseños más recordados de los años 90.</figcaption>
+</figure>
+<p>${pjLink('ben-reilly-scarlet-spider-alt', 'Ben Reilly')} apareció en <em>The Amazing Spider-Man</em> #149 (1975) como un clon de Peter que se dio por muerto. En 1994 volvió: había pasado años vagando por el país con el nombre de Ben Reilly (el apellido de soltera de la tía May) y, al regresar a Nueva York, adoptó la identidad de <strong>Scarlet Spider</strong>, con su sudadera azul hecha a mano.</p>
+${cvFig('11/117763/2451938-webss1.jpg', 'Portada de Web of Scarlet Spider #1 con Scarlet Spider saltando', 'Web of Scarlet Spider #1 (1995): durante unos meses, las series de Spider-Man pasaron a llamarse Scarlet Spider.')}
+<p>Durante la saga del clon se llegó a contar que Ben era el Peter original, y en 1995 las series de Spider-Man pasaron a llamarse Scarlet Spider durante unos meses. Después, Ben se convirtió en el nuevo <strong>Spider-Man</strong>, con traje propio, mientras Peter se retiraba. Su etapa terminó en 1996, cuando murió en una pelea con el Duende Verde, y su cuerpo se deshizo en polvo: la prueba definitiva de que el clon era él.</p>
+${cvFig('6/67663/5819599-01.jpg', 'Portada de Ben Reilly: The Scarlet Spider #1 con Scarlet Spider colgado de una telaraña', 'Ben Reilly: The Scarlet Spider #1 (2017): el regreso de Ben como Scarlet Spider, ahora en Las Vegas.')}
+<p>Pero los clones nunca mueren del todo. Ben volvió en <em>La conspiración del clon</em> (2016), recuperó su identidad de Scarlet Spider en una serie propia ambientada en Las Vegas (2017) y, años después, llegó a ser Spider-Man otra vez.</p>
+
+<h2>Kaine, el clon imperfecto</h2>
+${cvFig('6/67663/3501562-01a.jpg', 'Portada de Scarlet Spider #1 de 2012 con Kaine envuelto en telarañas', 'Scarlet Spider #1 (2012): Kaine estrena su etapa como héroe en Houston, con su traje rojo y negro.')}
+<p>${pjLink('kaine-parker-scarlet-spider-alt', 'Kaine')} fue el <strong>primer clon</strong> que creó el Chacal, y le salió mal: su cuerpo se degeneraba poco a poco y sus poderes eran distintos de los de Peter. Apareció en <em>Web of Spider-Man</em> #119 (1994), como un asesino que perseguía a Ben Reilly y que dejaba quemada en la cara de sus víctimas la «marca de Kaine». Durante la saga del clon llegó a matar al Doctor Octopus.</p>
+<p>Su redención llegó mucho después. Tras morir y regresar durante <em>La isla arácnida</em> (2011), Kaine quedó curado de su degeneración y se marchó a Houston, donde, en 2012, se convirtió en el nuevo <strong>Scarlet Spider</strong>, con un traje rojo y negro. Su serie, escrita por Christopher Yost, muestra a un antihéroe brusco que intenta hacer el bien aunque no le salga natural.</p>
+
+<h2>Poderes</h2>
+<ul>
+  <li><strong>Ben Reilly:</strong> los mismos que Peter (fuerza, agilidad, sentido arácnido y trepar paredes), con lanzarredes mecánicos y unos «aguijones» de impacto en las muñecas.</li>
+  <li><strong>Kaine:</strong> los poderes de Spider-Man, con más fuerza, aguijones que salen de sus muñecas, un sentido arácnido que llega a mostrarle visiones del futuro y la capacidad de quemar su huella en la piel de sus enemigos.</li>
+</ul>
+
+<h2>Scarlet Spider en el cine, las series y los videojuegos</h2>
+<ul>
+  <li><strong>${peli('spider-man-cruzando-el-multiverso-2023', 'Spider-Man: Cruzando el Multiverso')} (2023):</strong> Ben Reilly aparece como un Scarlet Spider muy intenso, con la voz original de Andy Samberg.</li>
+  <li><strong><a href="/series/spider-noir"><em>Spider-Noir</em></a>:</strong> Nicolas Cage interpreta a una versión de los años 30 de Ben Reilly.</li>
+  <li><strong><a href="/blog/spider-man-animated-series-1994-analisis">Serie animada de 1994</a>:</strong> Scarlet Spider aparece en las Guerras Arácnidas, el final de la serie.</li>
+  <li><strong><a href="/blog/marvels-spider-man-ps4-2018-analisis-insomniac">Marvel's Spider-Man</a> (2018):</strong> Peter puede ponerse los trajes de Scarlet Spider de Ben y de Kaine.</li>
+</ul>
+
+<h2>Qué cómics leer</h2>
+<ol>
+  <li><strong>La saga del clon (1994-1996):</strong> el regreso de Ben Reilly y la llegada de Kaine. Larga e irregular, pero imprescindible para entender a los dos.</li>
+  <li><strong>Scarlet Spider (2012-2014):</strong> la etapa de Kaine en Houston, la mejor para conocerle.</li>
+  <li><strong>Ben Reilly: The Scarlet Spider (2017):</strong> el regreso de Ben, más oscuro y en solitario.</li>
+</ol>
+<p>Si te interesan las grandes sagas del personaje, tienes <a href="/blog/mejores-comics-spider-man-historia">los 10 mejores cómics de Spider-Man</a> y nuestra <a href="/blog/comics-spider-man-guia-nuevos-lectores">guía para nuevos lectores</a>.</p>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Quién es Scarlet Spider?</h3>
+<p>Es el nombre heroico que han usado dos clones de Peter Parker: Ben Reilly, desde 1994, y Kaine, desde 2012.</p>
+<h3>¿Ben Reilly y Kaine son la misma persona?</h3>
+<p>No. Los dos son clones de Peter creados por el Chacal, pero Kaine fue el primero e imperfecto, y Ben un clon casi perfecto.</p>
+<h3>¿Quién es el Scarlet Spider de Cruzando el Multiverso?</h3>
+<p>Ben Reilly, con la voz original de Andy Samberg.</p>
+<h3>¿Ben Reilly fue Spider-Man?</h3>
+<p>Sí: tras la saga del clon fue Spider-Man entre 1995 y 1996, y volvió a serlo años después.</p>
+`,
+};
+
+const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS, FINAL_BND, MEJORES_COMICS, JUEGOS_POST, TRAJES, VILLANOS_CINE, MARVEL_LEGENDS, MEJORES_LEGO, TRES_SPIDERMAN, BND_STREAMING, SCARLET_SPIDER];
 
 (async () => {
   for (const p of POSTS) {
