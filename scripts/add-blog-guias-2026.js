@@ -1088,7 +1088,83 @@ ${cvFig('1/15776/9971293-hulk.jpg', 'Hulk rugiendo', 'Hulk, protagonista de la p
 `,
 };
 
-const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS, FINAL_BND, MEJORES_COMICS, JUEGOS_POST, TRAJES, VILLANOS_CINE, MARVEL_LEGENDS, MEJORES_LEGO, TRES_SPIDERMAN, BND_STREAMING, SCARLET_SPIDER, VENGADORES];
+// Verificado el 19/10/2026: estreno 25/05/2026 en MGM+ y 27/05 en Prime Video (THR en español, SensaCine);
+// cancelada tras una temporada en septiembre de 2026 (The Hollywood Reporter, Deadline); TMDB: 8 episodios, creada por Oren Uziel
+const serie = (slug, title) => `<a href="/series/${slug}"><em>${title}</em></a>`;
+
+const SPIDER_NOIR = {
+  slug: 'spider-noir-serie-nicolas-cage-donde-ver-temporada-2',
+  title: 'Spider-Noir: dónde ver la serie de Nicolas Cage, reparto y si habrá temporada 2',
+  subtitle: 'Ocho episodios en la Nueva York de los años 30, en blanco y negro o en color: todo sobre la serie de Spider-Man Noir',
+  excerpt:
+    'Spider-Noir, la serie de imagen real con Nicolas Cage, se puede ver en Prime Video. Te contamos de qué va, quién sale, cómo verla en blanco y negro o en color y qué pasa con la temporada 2.',
+  category: 'Series',
+  readTime: '6 min',
+  publishDate: new Date('2026-10-19'),
+  image: tmdb('qfbVc3kuVqBEgxpon1nBRF1t9KT'),
+  seoTitle: 'Spider-Noir: dónde ver la serie, reparto y temporada 2',
+  seoDescription:
+    'Spider-Noir, la serie de Nicolas Cage: dónde verla (Prime Video), de qué va, reparto, episodios, versión en blanco y negro o color y si habrá temporada 2.',
+  keywords: ['Spider-Noir', 'Spider-Noir serie', 'Spider-Noir Nicolas Cage', 'Spider-Noir temporada 2', 'dónde ver Spider-Noir', 'Spider-Man Noir serie'],
+  tags: ['series', 'Spider-Noir', 'Nicolas Cage', 'Prime Video', 'Ben Reilly', 'dónde ver'],
+  content: `
+<p><em>Última actualización: 19 de octubre de 2026.</em></p>
+
+<p>${serie('spider-noir', 'Spider-Noir')} es la primera serie de imagen real de Spider-Man, y la protagoniza Nicolas Cage, que ya había puesto voz a ${pjLink('spider-man-noir-peter-parker-alt', 'Spider-Man Noir')} en ${peli('spider-man-un-nuevo-universo-2018', 'Un nuevo universo')}. Aquí tienes todo lo que necesitas saber: dónde verla, de qué va, quién sale y qué ha pasado con la segunda temporada.</p>
+
+<h2>Ficha rápida</h2>
+<table>
+  <tbody>
+    <tr><td><strong>Dónde verla</strong></td><td>Prime Video (en Estados Unidos, también en MGM+)</td></tr>
+    <tr><td><strong>Estreno</strong></td><td>25 de mayo de 2026 en MGM+; 27 de mayo en Prime Video en todo el mundo</td></tr>
+    <tr><td><strong>Episodios</strong></td><td>8, de unos 40 minutos, todos disponibles a la vez</td></tr>
+    <tr><td><strong>Creador</strong></td><td>Oren Uziel</td></tr>
+    <tr><td><strong>Protagonista</strong></td><td>Nicolas Cage</td></tr>
+    <tr><td><strong>Temporada 2</strong></td><td>No: la serie se canceló en septiembre de 2026</td></tr>
+  </tbody>
+</table>
+
+<h2>¿De qué va?</h2>
+${figure('mkwVoyP9bFSmfVqU8FJyem52hVR', 'Un hombre con sombrero y gabardina camina por una calle mojada de noche', 'La Nueva York de los años 30 de Spider-Noir: calles mojadas, sombras y cine negro.')}
+<p>La serie está ambientada en la Nueva York de los años 30. Nicolas Cage interpreta a <strong>Ben Reilly</strong>, un investigador privado veterano y venido a menos, al que una tragedia personal obliga a enfrentarse a su pasado como el único superhéroe de la ciudad. No es el Peter Parker Noir del Spider-Verso, sino una nueva versión del personaje, inspirada en el cine negro clásico: detectives, gánsteres, humo y gabardinas. Si te lías con el nombre, te contamos quién es el ${pjLink('ben-reilly-scarlet-spider-alt', 'Ben Reilly')} de los cómics en <a href="/blog/scarlet-spider-ben-reilly-kaine-diferencias">Scarlet Spider: Ben Reilly y Kaine</a>.</p>
+
+<h2>Reparto</h2>
+<ul>
+  <li><strong>Nicolas Cage</strong> como Ben Reilly, Spider-Noir.</li>
+  <li><strong>Lamorne Morris</strong> como Robbie Robertson.</li>
+  <li><strong>Li Jun Li</strong> como Cat Hardy.</li>
+  <li><strong>Jack Huston</strong> como Flint Marko.</li>
+  <li><strong>Brendan Gleeson</strong> como Silvermane.</li>
+</ul>
+<p>Muchos nombres sonarán a los lectores de cómics: Robbie Robertson es el editor del Daily Bugle, Flint Marko es el ${pjLink('sandman-william-baker-alt', 'Hombre de Arena')} y Cat Hardy recuerda a Felicia Hardy, la ${pjLink('black-cat-felicia-hardy-alt', 'Gata Negra')}.</p>
+
+<h2>¿En blanco y negro o en color?</h2>
+${figure('reAZlLG6YMkBuxPT1XKuCH97TM1', 'Primer plano en blanco y negro de Spider-Noir con máscara, sombrero y ojos brillantes', 'Spider-Noir en blanco y negro, la versión que mejor encaja con el cine negro de los años 30.')}
+<p>La serie se hizo en dos versiones: una en <strong>blanco y negro</strong>, como las películas de cine negro de la época, y otra en <strong>color</strong>. Si buscas la experiencia más fiel al personaje, la versión en blanco y negro es la más recomendable; la de color es más accesible si no te convence el formato.</p>
+${figure('6t2FvBr9DS8MOq0m5FAwPBCdAW5', 'Spider-Noir agachado sobre una cornisa, en color, con la ciudad de fondo', 'La versión en color de Spider-Noir.')}
+
+<h2>¿Forma parte del MCU?</h2>
+<p>No. La produce Sony Pictures Television y es una historia independiente: no está conectada con las películas de Tom Holland ni con el Spider-Verso animado, aunque comparta actor con Spider-Man Noir. Se puede ver sin conocer nada más.</p>
+
+<h2>¿Habrá temporada 2?</h2>
+<p><strong>No.</strong> Prime Video canceló la serie tras su primera temporada en septiembre de 2026, sin dar un motivo concreto. Durante unos meses se habló de una segunda temporada, pero esa posibilidad quedó descartada con la cancelación. La primera temporada, eso sí, se puede ver completa: son solo ocho episodios.</p>
+
+<h2>¿Merece la pena?</h2>
+<p>Si te gustan el cine negro y las versiones distintas de Spider-Man, sí: es corta, tiene una estética muy cuidada y un Nicolas Cage en su salsa. Y si te quedas con ganas de más, en nuestra sección de <a href="/series">series</a> tienes todas las de Spider-Man, de la <a href="/blog/spider-man-animated-series-1994-analisis">serie animada de 1994</a> a <a href="/blog/spectacular-spider-man-serie-analisis">The Spectacular Spider-Man</a>.</p>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Dónde puedo ver Spider-Noir?</h3>
+<p>En Prime Video, donde están disponibles los ocho episodios.</p>
+<h3>¿Cuántos episodios tiene Spider-Noir?</h3>
+<p>Ocho, de unos 40 minutos cada uno.</p>
+<h3>¿Habrá segunda temporada de Spider-Noir?</h3>
+<p>No: Prime Video la canceló tras la primera temporada, en septiembre de 2026.</p>
+<h3>¿Quién es el protagonista de Spider-Noir?</h3>
+<p>Nicolas Cage, que interpreta a Ben Reilly, un detective privado de la Nueva York de los años 30.</p>
+`,
+};
+
+const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS, FINAL_BND, MEJORES_COMICS, JUEGOS_POST, TRAJES, VILLANOS_CINE, MARVEL_LEGENDS, MEJORES_LEGO, TRES_SPIDERMAN, BND_STREAMING, SCARLET_SPIDER, VENGADORES, SPIDER_NOIR];
 
 (async () => {
   for (const p of POSTS) {
