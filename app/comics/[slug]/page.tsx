@@ -17,6 +17,7 @@ import { ComicEditorialAnalysis } from "@/components/comics/ComicEditorialAnalys
 import { ComicSameCollection } from "@/components/comics/ComicSameCollection"
 import { ComicCharacters } from "@/components/comics/ComicCharacters"
 import { characterService } from "@/lib/database"
+import { ViewTracker } from "@/components/analytics/ViewTracker"
 
 export const revalidate = 3600
 
@@ -85,7 +86,6 @@ export default async function ComicPage({ params }: Props) {
     notFound()
   }
 
-  comicService.incrementViews(slug).catch(() => {})
 
   const url = `${SITE_URL}/comics/${comic.slug}`
   const jsonLd = {
@@ -117,6 +117,7 @@ export default async function ComicPage({ params }: Props) {
   return (
     <div className="pt-16">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <ViewTracker tipo="comic" slug={slug} />
       {/* Hero */}
       <section className="relative min-h-[75vh] flex items-center overflow-hidden">
         {/* Fondo: portada muy difuminada */}

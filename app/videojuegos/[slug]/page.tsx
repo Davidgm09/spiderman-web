@@ -15,6 +15,7 @@ import { AmazonProductCard } from "@/components/affiliate/AmazonProductCard"
 import { TiendaProductCards } from "@/components/affiliate/TiendaProductCards"
 import { StickyAffiliateSidebar } from "@/components/affiliate/StickyAffiliateSidebar"
 import { YouTubeLite } from "@/components/ui/YouTubeLite"
+import { ViewTracker } from "@/components/analytics/ViewTracker"
 
 export const revalidate = 3600
 
@@ -65,7 +66,6 @@ export default async function GamePage({ params }: Props) {
 
   if (!game) notFound()
 
-  gameService.incrementViews(slug).catch(() => {})
 
   const relatedGames = await gameService.getFeatured(4, slug).catch(() => [])
 
@@ -96,6 +96,7 @@ export default async function GamePage({ params }: Props) {
   return (
     <div className="pt-16 bg-gradient-to-b from-black via-gray-950 to-black" style={{ backgroundImage: 'radial-gradient(ellipse 80% 50% at 10% 50%, rgba(0,80,220,0.12) 0%, transparent 70%), radial-gradient(ellipse 70% 40% at 90% 70%, rgba(0,80,220,0.18) 0%, transparent 70%)' }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <ViewTracker tipo="videojuego" slug={slug} />
 
       {/* Hero */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">

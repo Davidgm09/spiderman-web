@@ -11,7 +11,7 @@ import { blogService } from "@/lib/database"
 import { SITE_URL, pageTitle } from "@/lib/config"
 import { generateAmazonUrl } from "@/lib/content-helpers"
 import { BlogPost } from "@prisma/client"
-import { ViewTracker } from "@/components/blog/ViewTracker"
+import { ViewTracker } from "@/components/analytics/ViewTracker"
 import { ShareButtons } from "@/components/blog/ShareButtons"
 import { reviewJsonLd } from "@/lib/reviews"
 
@@ -125,7 +125,7 @@ export default async function BlogPostPage({ params }: Props) {
       {reviewLd && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewLd) }} />
       )}
-      <ViewTracker slug={post.slug} />
+      <ViewTracker tipo="blog" slug={post.slug} />
 
       {/* Hero */}
       <section className="relative min-h-[55vh] pt-24 flex items-end overflow-hidden">

@@ -17,6 +17,7 @@ import { TiendaProductCards } from "@/components/affiliate/TiendaProductCards"
 import { StickyAffiliateSidebar } from "@/components/affiliate/StickyAffiliateSidebar"
 import { Breadcrumb } from "@/components/breadcrumb"
 import { YouTubeLite } from "@/components/ui/YouTubeLite"
+import { ViewTracker } from "@/components/analytics/ViewTracker"
 
 export const revalidate = 3600
 
@@ -69,7 +70,6 @@ export default async function MoviePage({ params }: Props) {
     notFound()
   }
 
-  movieService.incrementViews(slug).catch(() => {})
 
   // Obtener películas relacionadas
   const relatedMovies = await movieService.getFeatured(4, slug).catch(() => []);
@@ -104,6 +104,7 @@ export default async function MoviePage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <ViewTracker tipo="pelicula" slug={slug} />
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
         {/* Fondo: póster desenfocado */}

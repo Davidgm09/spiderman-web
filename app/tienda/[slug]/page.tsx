@@ -9,6 +9,7 @@ import { ProductCard } from "@/components/tienda/ProductGrid"
 import { Breadcrumb } from "@/components/breadcrumb"
 import { productService } from "@/lib/database"
 import { AMAZON_TAG, SITE_URL, pageTitle } from "@/lib/config"
+import { ViewTracker } from "@/components/analytics/ViewTracker"
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -50,7 +51,6 @@ export default async function ProductPage({ params }: Props) {
   const product = await productService.getBySlug(slug)
   if (!product) notFound()
 
-  productService.incrementViews(slug).catch(() => {})
 
   const relatedFiltered = await productService.getByCategory(product.category, slug).catch(() => [])
 
@@ -61,6 +61,7 @@ export default async function ProductPage({ params }: Props) {
 
   return (
     <div className="pt-16 min-h-screen bg-gradient-to-b from-black via-gray-950 to-black">
+      <ViewTracker tipo="producto" slug={slug} />
       {/* Hero */}
       <section className="max-w-6xl mx-auto px-4 py-16">
         <Breadcrumb items={[{ label: "Tienda", href: "/tienda" }, { label: product.title }]} />

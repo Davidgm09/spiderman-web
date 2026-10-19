@@ -9,6 +9,7 @@ import { Breadcrumb } from '@/components/breadcrumb';
 import { InContentAd, SidebarAd } from '@/components/ads/GoogleAdsense';
 import { generateAmazonUrl } from '@/lib/content-helpers';
 import { CharacterGuide, getFicha, fichaFaqJsonLd } from '@/components/characters/CharacterGuide';
+import { ViewTracker } from "@/components/analytics/ViewTracker"
 
 export const revalidate = 3600
 
@@ -40,7 +41,6 @@ export default async function CharacterDetailPage({ params }: Props) {
   const character = await characterService.getBySlug(slug);
   if (!character) notFound();
 
-  await characterService.incrementViews(slug).catch(() => {});
 
   const relatedCharacters = await characterService.getByCategory(character.category, 6).catch(() => []);
   const ficha = getFicha(character.slug);
@@ -90,6 +90,7 @@ export default async function CharacterDetailPage({ params }: Props) {
       }}
     >
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <ViewTracker tipo="personaje" slug={slug} />
       {faqJsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />}
 
       {/* Hero */}
