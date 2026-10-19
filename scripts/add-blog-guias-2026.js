@@ -1011,7 +1011,84 @@ ${cvFig('6/67663/3501562-01a.jpg', 'Portada de Scarlet Spider #1 de 2012 con Kai
 `,
 };
 
-const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS, FINAL_BND, MEJORES_COMICS, JUEGOS_POST, TRAJES, VILLANOS_CINE, MARVEL_LEGENDS, MEJORES_LEGO, TRES_SPIDERMAN, BND_STREAMING, SCARLET_SPIDER];
+const VENGADORES = {
+  slug: 'spider-man-vengadores-relacion-con-cada-uno',
+  title: 'Spider-Man y los Vengadores: su relación con cada uno, en los cómics y en el cine',
+  subtitle: 'Iron Man, el Capitán América, la Viuda Negra, Ojo de Halcón, Ant-Man, Hulk, Pantera Negra, Doctor Strange y más: cómo se lleva Spider-Man con cada Vengador',
+  excerpt:
+    'Spider-Man tardó décadas en ser Vengador, pero hoy es inseparable de ellos. Repasamos su relación con cada uno, de Tony Stark a Hulk, en los cómics y en el MCU.',
+  category: 'Cómics',
+  readTime: '10 min',
+  publishDate: new Date('2026-10-19'),
+  image: tmdb('Bwh7Lol5k3hSqYOtqXWxbbJVMx'),
+  seoTitle: 'Spider-Man y los Vengadores: su relación con cada uno',
+  seoDescription:
+    'La relación de Spider-Man con cada Vengador: Iron Man, Capitán América, Viuda Negra, Ojo de Halcón, Ant-Man, Hulk y más, en los cómics y en las películas del MCU.',
+  keywords: ['Spider-Man Vengadores', 'Spider-Man y Iron Man', 'Spider-Man Avengers', 'Spider-Man MCU', 'Spider-Man Civil War', 'Nuevos Vengadores Spider-Man'],
+  tags: ['Vengadores', 'MCU', 'cómics', 'Iron Man', 'Capitán América', 'personajes'],
+  content: `
+<p>Spider-Man siempre ha sido un héroe de barrio, más preocupado por pagar el alquiler que por salvar el universo. Por eso tardó décadas en ser Vengador de verdad. Hoy, sin embargo, es inseparable de ellos: en los cómics forma parte del equipo desde 2005 y, en el cine, su historia en el MCU no se entiende sin Iron Man. Repasamos su relación con cada Vengador.</p>
+
+<h2>Un Vengador que tardó en llegar</h2>
+<p>En <em>The Amazing Spider-Man Annual</em> #3 (1966), los Vengadores le ofrecieron una prueba de acceso: capturar a Hulk. Peter acabó dejándole marchar y se quedó fuera del equipo. Durante años fue miembro de reserva y colaborador ocasional, hasta que en 2005 se unió a los <strong>Nuevos Vengadores</strong> de Brian Michael Bendis, junto a Lobezno, el Capitán América, Iron Man y Luke Cage, entre otros. En el cine, Tony Stark le nombró Vengador en <em>Vengadores: Infinity War</em> (2018).</p>
+
+<h2>Iron Man (Tony Stark): el mentor</h2>
+${cvFig('11174/111743204/9372918-invincibleironman%231vol5kaelngu.jpg', 'Iron Man con su armadura disparando energía con las manos', 'Iron Man, el gran mentor del Spider-Man del MCU.')}
+<p>Es la relación más importante del Spider-Man de Tom Holland. ${pjLink('iron-man-tony-stark-alt', 'Tony Stark')} lo recluta en <em>Capitán América: Civil War</em> (2016), le regala su traje en ${peli('spider-man-homecoming-2017', 'Homecoming')} y su muerte en <em>Endgame</em> marca a Peter en ${peli('spider-man-lejos-de-casa-2019', 'Lejos de casa')}. En los cómics, durante <em>Civil War</em> (2006), Tony convenció a Peter para ponerse de su lado, le regaló la armadura Iron Spider y le animó a revelar su identidad ante todo el mundo, una decisión que le salió muy cara.</p>
+
+<h2>Capitán América (Steve Rogers): el referente moral</h2>
+${cvFig('12/124259/8459983-rco031_1650495781.jpg', 'El Capitán América lanzando su escudo', 'El Capitán América, un referente moral para los héroes jóvenes como Peter.')}
+<p>Para muchos héroes jóvenes, ${pjLink('captain-america-steve-rogers-alt', 'Steve Rogers')} es un ejemplo a seguir. En los cómics se enfrentaron en <em>Civil War</em> (2006), cuando Peter apoyó primero a Tony; acabó cambiando de bando. En el cine se ven las caras en la famosa pelea del aeropuerto de <em>Civil War</em>, y Steve aparece en tono de humor en los vídeos educativos del instituto de Peter en <em>Homecoming</em>.</p>
+
+<h2>La Viuda Negra (Natasha Romanoff): un traje de Spider-Man</h2>
+${cvFig('11156/111564182/9646599-widow2.jpg', 'La Viuda Negra con su traje negro', 'La Viuda Negra estrenó su famoso traje negro en un cómic de Spider-Man.')}
+<p>${pjLink('black-widow-natasha-romanoff-alt', 'Natasha Romanoff')} le debe a Spider-Man su aspecto más famoso: fue en <em>The Amazing Spider-Man</em> #86 (1970), dibujado por John Romita, donde estrenó el traje negro con el que la reconocemos desde entonces. En el cine coincidieron en <em>Civil War</em> y en las dos últimas películas de los Vengadores.</p>
+
+<h2>Ojo de Halcón (Clint Barton): rivales en el aeropuerto</h2>
+${cvFig('11156/111564182/9384867-thunderbolts_vol_4_1_trading_card_variant_textless.jpg', 'Ojo de Halcón con su arco entre rascacielos', 'Ojo de Halcón, el arquero sin superpoderes.')}
+<p>${pjLink('hawkeye-clint-barton-alt', 'Clint Barton')} y Spider-Man han coincidido muchas veces como Vengadores, pero su cruce más recordado es en el cine: en la pelea del aeropuerto de <em>Civil War</em>, Ojo de Halcón lucha en el bando del Capitán América, frente a un Spider-Man recién reclutado por Tony Stark.</p>
+
+<h2>Ant-Man (Scott Lang): el gigante derribado</h2>
+${cvFig('14/149570/4153676-ant-man-samnee-variant-a2299.jpg', 'Ant-Man sobre una hormiga voladora', 'Ant-Man, compañero de Peter en los Vengadores y en la Fundación Futuro.')}
+<p>En los cómics, ${pjLink('ant-man-scott-lang-alt', 'Scott Lang')} y Peter coincidieron en los Vengadores y en la Fundación Futuro, el grupo de jóvenes genios de los Cuatro Fantásticos. En el cine protagonizaron uno de los momentos más divertidos de <em>Civil War</em>: en el aeropuerto, Scott se convierte en un gigante y Spider-Man lo derriba enredándole las piernas con su telaraña.</p>
+
+<h2>Hulk (Bruce Banner): la prueba de acceso</h2>
+${cvFig('1/15776/9971293-hulk.jpg', 'Hulk rugiendo', 'Hulk, protagonista de la prueba de acceso de Spider-Man a los Vengadores.')}
+<p>Se conocen desde muy pronto: Spider-Man se cruzó con ${pjLink('hulk-bruce-banner-alt', 'Hulk')} por primera vez en <em>The Amazing Spider-Man</em> #14 (1964), el mismo número en el que debutó el Duende Verde, y su prueba para entrar en los Vengadores fue capturarle. En el cine, Bruce Banner aparece en ${peli('spider-man-brand-new-day-2026', 'Spider-Man: Brand New Day')} (2026) como profesor universitario.</p>
+
+<h2>Y el resto del equipo</h2>
+<ul>
+  <li><strong>${pjLink('doctor-strange-stephen-strange-alt', 'Doctor Strange')}:</strong> Spider-Man recurre a él cuando la amenaza escapa a la ciencia. En ${peli('spider-man-no-way-home-2021', 'No Way Home')} lanza el hechizo que hace que el mundo olvide a Peter Parker y abre el multiverso.</li>
+  <li><strong>${pjLink('black-panther-tchalla-alt', 'Pantera Negra')}:</strong> han coincidido muchas veces como Vengadores, y en el cine luchó en el mismo bando que Spider-Man en el aeropuerto de <em>Civil War</em>.</li>
+  <li><strong>${pjLink('thor-odinson-alt', 'Thor')}:</strong> compañeros en los Vengadores; en el cine, los dos luchan en la batalla final de <em>Endgame</em>.</li>
+  <li><strong>${pjLink('wolverine-james-howlett-alt', 'Lobezno')}:</strong> el bromista y el gruñón coincidieron en los Nuevos Vengadores desde 2005 y protagonizaron juntos miniseries de aventuras.</li>
+  <li><strong>${pjLink('human-torch-johnny-storm-alt', 'La Antorcha Humana')}:</strong> no es Vengador, sino de los Cuatro Fantásticos, pero es el mejor amigo y rival de Peter desde los años 60.</li>
+</ul>
+
+<h2>Spider-Man en las películas de los Vengadores</h2>
+<table>
+  <thead><tr><th>Año</th><th>Película</th><th>Qué pasa</th></tr></thead>
+  <tbody>
+    <tr><td>2016</td><td><em>Capitán América: Civil War</em></td><td>Tony Stark le recluta; pelea del aeropuerto</td></tr>
+    <tr><td>2017</td><td>${peli('spider-man-homecoming-2017', 'Spider-Man: Homecoming')}</td><td>Tony le hace de mentor y le regala su traje</td></tr>
+    <tr><td>2018</td><td><em>Vengadores: Infinity War</em></td><td>Tony le nombra Vengador; desaparece con el chasquido de Thanos</td></tr>
+    <tr><td>2019</td><td><em>Vengadores: Endgame</em></td><td>Vuelve para la batalla final</td></tr>
+    <tr><td>2021</td><td>${peli('spider-man-no-way-home-2021', 'Spider-Man: No Way Home')}</td><td>El hechizo de Doctor Strange abre el multiverso</td></tr>
+  </tbody>
+</table>
+<p>Tienes el orden completo en <a href="/blog/orden-ver-peliculas-spider-man">en qué orden ver las películas de Spider-Man</a>, y todos los personajes en nuestra sección de <a href="/personajes">personajes</a>.</p>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Spider-Man es un Vengador?</h3>
+<p>Sí. En los cómics se unió a los Nuevos Vengadores en 2005, y en el cine Tony Stark le nombró Vengador en <em>Infinity War</em> (2018).</p>
+<h3>¿Quién es el mentor de Spider-Man en el MCU?</h3>
+<p>Tony Stark, Iron Man.</p>
+<h3>¿En qué película se enfrentan Spider-Man y el Capitán América?</h3>
+<p>En <em>Capitán América: Civil War</em> (2016), en la pelea del aeropuerto.</p>
+`,
+};
+
+const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS, FINAL_BND, MEJORES_COMICS, JUEGOS_POST, TRAJES, VILLANOS_CINE, MARVEL_LEGENDS, MEJORES_LEGO, TRES_SPIDERMAN, BND_STREAMING, SCARLET_SPIDER, VENGADORES];
 
 (async () => {
   for (const p of POSTS) {
