@@ -1487,7 +1487,270 @@ ${cvFig('1/15776/9971293-hulk.jpg', 'Hulk rugiendo', 'Hulk en los cómics, uno d
 `,
 };
 
-const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS, FINAL_BND, MEJORES_COMICS, JUEGOS_POST, TRAJES, VILLANOS_CINE, MARVEL_LEGENDS, MEJORES_LEGO, TRES_SPIDERMAN, BND_STREAMING, SCARLET_SPIDER, VENGADORES, SPIDER_NOIR, DOC_OCK_VERSIONES, VIUDA_NEGRA_MCU, OJO_DE_HALCON_MCU, ANT_MAN_MCU, HULK_MCU];
+const MARY_JANE_VERSIONES = {
+  slug: 'mary-jane-watson-actrices-versiones-cine-series-juegos',
+  title: 'Mary Jane Watson: todas sus actrices y versiones en el cine, las series y los videojuegos',
+  subtitle: 'De Kirsten Dunst a la MJ de Zendaya, pasando por las escenas eliminadas de Shailene Woodley, el Spider-Verso y los juegos de Insomniac',
+  excerpt:
+    'Kirsten Dunst, Zendaya, Shailene Woodley, Zoë Kravitz, Laura Bailey… Repasamos todas las versiones de Mary Jane Watson fuera de los cómics: películas, series animadas y videojuegos.',
+  category: 'Películas',
+  readTime: '8 min',
+  publishDate: new Date('2026-10-22'),
+  image: tmdb('2PDTWfuBWQKVC7aPAqJK5UCpz08'),
+  seoTitle: 'Mary Jane Watson: todas sus actrices y versiones',
+  seoDescription:
+    'Todas las Mary Jane del cine, las series y los videojuegos: Kirsten Dunst, la MJ de Zendaya, Shailene Woodley, Zoë Kravitz en el Spider-Verso y Laura Bailey en Marvel\'s Spider-Man.',
+  keywords: ['Mary Jane Watson', 'Mary Jane actrices', 'Kirsten Dunst Mary Jane', 'Zendaya MJ', 'Shailene Woodley Mary Jane', 'Mary Jane Spider-Man'],
+  tags: ['Mary Jane', 'personajes', 'películas', 'series', 'videojuegos', 'Zendaya'],
+  content: `
+<p>${pjLink('mary-jane-watson-alt', 'Mary Jane Watson')} es el gran amor de Peter Parker en los cómics y uno de los personajes secundarios más famosos de Marvel. En los cómics se descubrió con una frase legendaria, «Acéptalo, tigre… ¡te ha tocado el gordo!», en <em>The Amazing Spider-Man</em> #42 (1966). Desde entonces ha tenido muchas caras fuera de las viñetas. Estas son todas.</p>
+
+<h2>Todas sus versiones, de un vistazo</h2>
+<table>
+  <thead><tr><th>Año</th><th>Dónde</th><th>Quién le da vida</th></tr></thead>
+  <tbody>
+    <tr><td>1994</td><td><a href="/blog/spider-man-animated-series-1994-analisis">Serie animada de Spider-Man</a></td><td>Voz original: Sara Ballantine</td></tr>
+    <tr><td>2002–2007</td><td>Trilogía de Sam Raimi</td><td>Kirsten Dunst</td></tr>
+    <tr><td>2003</td><td><a href="/blog/spider-man-new-animated-series-2003-mtv-analisis">Spider-Man: la nueva serie animada</a> (MTV)</td><td>Voz original: Lisa Loeb</td></tr>
+    <tr><td>2008</td><td><a href="/blog/spectacular-spider-man-serie-analisis">The Spectacular Spider-Man</a></td><td>Voz original: Vanessa Marshall</td></tr>
+    <tr><td>2012</td><td><a href="/blog/ultimate-spider-man-2012-serie-animada-analisis">Ultimate Spider-Man</a></td><td>Voz original: Tara Strong</td></tr>
+    <tr><td>2014</td><td>${peli('the-amazing-spider-man-2-el-poder-de-electro-2014', 'The Amazing Spider-Man 2')}</td><td>Shailene Woodley (escenas eliminadas)</td></tr>
+    <tr><td>2017–2026</td><td>Películas de Tom Holland</td><td>Zendaya, como Michelle «MJ» Jones</td></tr>
+    <tr><td>2018</td><td>${peli('spider-man-un-nuevo-universo-2018', 'Spider-Man: Un nuevo universo')}</td><td>Voz original: Zoë Kravitz</td></tr>
+    <tr><td>2018 y 2023</td><td>${juego('marvel-s-spider-man-2018', "Marvel's Spider-Man")} y ${juego('marvel-s-spider-man-2-2023', "Marvel's Spider-Man 2")}</td><td>Voz original: Laura Bailey</td></tr>
+  </tbody>
+</table>
+
+<h2>Kirsten Dunst: la Mary Jane de Sam Raimi (2002–2007)</h2>
+${figure('2PDTWfuBWQKVC7aPAqJK5UCpz08', 'Mary Jane besa a Spider-Man, colgado boca abajo, bajo la lluvia', 'El beso bajo la lluvia de Spider-Man (2002): Mary Jane besa a un Spider-Man colgado boca abajo.')}
+<p>Para toda una generación, Mary Jane es Kirsten Dunst. En la trilogía de Raimi, MJ es la vecina de la casa de al lado de la que Peter lleva enamorado desde niño, una chica que sueña con ser actriz y que vive con un padre que la desprecia. En ${peli('spider-man-2002', 'Spider-Man')} (2002) protagoniza con Tobey Maguire el beso más famoso del cine de superhéroes: bajo la lluvia, con Spider-Man colgado boca abajo y sin saber quién está debajo de la máscara.</p>
+${figure('o15Y3ZmhePf0ZNmILsSaRP1gkDL', 'Harry Osborn, Mary Jane y Spider-Man en una azotea de Nueva York de noche', 'Harry Osborn, Mary Jane y Spider-Man en una imagen promocional de Spider-Man 2 (2004).')}
+<p>En ${peli('spider-man-2-2004', 'Spider-Man 2')} (2004), cansada de esperar a un Peter que siempre desaparece, MJ se compromete con John Jameson, el hijo de J. Jonah Jameson… y le deja plantado en el altar para correr hacia Peter, que por fin le ha confesado su secreto. En ${peli('spider-man-3-2007', 'Spider-Man 3')} (2007) la relación se tambalea por el simbionte, y el Hombre de Arena y Venom la toman como rehén en la batalla final. Comparamos las tres parejas de Spider-Man en <a href="/blog/tobey-maguire-andrew-garfield-tom-holland-mejor-spider-man">Tobey, Andrew o Tom</a>.</p>
+
+<h2>Shailene Woodley: la Mary Jane que nunca vimos (2014)</h2>
+<p>La saga de Andrew Garfield se centró en Gwen Stacy, pero Mary Jane estuvo a punto de aparecer. Shailene Woodley rodó varias escenas como MJ para <em>The Amazing Spider-Man 2</em>, y todas acabaron eliminadas. El director, Marc Webb, explicó que prefirió centrar la historia en Peter y Gwen; la idea era recuperarla en una tercera película que nunca se hizo. Te lo contamos en <a href="/blog/legado-muerte-gwen-stacy-50-anos">el legado de la muerte de Gwen Stacy</a>.</p>
+
+<h2>Zendaya: la MJ del MCU (2017–2026)</h2>
+${figure('6V3KHX1ajN7KLS20oqys3z2itPm', 'MJ, interpretada por Zendaya, agarrada a Spider-Man en una calle de Nueva York', 'MJ (Zendaya) agarrada a Spider-Man en una calle de Nueva York, en Lejos de casa (2019).')}
+<p>La MJ de Zendaya no es exactamente Mary Jane Watson: se llama <strong>Michelle Jones</strong> y usa el apodo «MJ» como homenaje al personaje. Es sarcástica, observadora y muy distinta de la MJ clásica. En ${peli('spider-man-homecoming-2017', 'Homecoming')} (2017) es una compañera de clase de Peter, en ${peli('spider-man-lejos-de-casa-2019', 'Lejos de casa')} (2019) descubre que es Spider-Man y empiezan a salir, y en ${peli('spider-man-no-way-home-2021', 'No Way Home')} (2021) el hechizo de Doctor Strange la hace olvidar quién es Peter. En ${peli('spider-man-brand-new-day-2026', 'Brand New Day')} (2026) Peter le cuenta la verdad, pero ella no recupera sus recuerdos. Lo explicamos en <a href="/blog/spider-man-brand-new-day-final-explicado">el final de Brand New Day explicado</a>.</p>
+
+<h2>La Mary Jane del Spider-Verso</h2>
+<p>En ${peli('spider-man-un-nuevo-universo-2018', 'Un nuevo universo')} (2018), Zoë Kravitz pone voz a Mary Jane. Peter B. Parker, el Spider-Man cansado que hace de mentor de Miles, se ha separado de ella, y la película termina con él decidido a recuperarla. En ${peli('spider-man-cruzando-el-multiverso-2023', 'Cruzando el Multiverso')} (2023) ya han vuelto y tienen una hija, Mayday. Lo tienes en <a href="/blog/spider-man-into-the-spider-verse-analisis-revolucion-animacion">nuestro análisis de Un nuevo universo</a>.</p>
+
+<h2>En las series animadas</h2>
+<p>En la <a href="/blog/spider-man-animated-series-1994-analisis">serie de 1994</a>, Mary Jane es uno de los personajes principales y su historia con Peter acaba en boda, como en los cómics. La <a href="/blog/spider-man-new-animated-series-2003-mtv-analisis">serie de MTV</a> de 2003, que continuaba la primera película de Raimi, le dio la voz de la cantante Lisa Loeb. En <a href="/blog/spectacular-spider-man-serie-analisis">The Spectacular Spider-Man</a> (2008) es una amiga de Peter que va ganando peso poco a poco, y en <a href="/blog/ultimate-spider-man-2012-serie-animada-analisis">Ultimate Spider-Man</a> (2012) es una aspirante a periodista.</p>
+
+<h2>En los videojuegos</h2>
+<p>La gran Mary Jane de los videojuegos es la de Insomniac. En ${juego('marvel-s-spider-man-2018', "Marvel's Spider-Man")} (2018), con la voz original de Laura Bailey, es una periodista del Daily Bugle y ex de Peter, y tiene sus propias misiones jugables de sigilo. En ${juego('marvel-s-spider-man-2-2023', "Marvel's Spider-Man 2")} (2023) vuelve con más protagonismo y con misiones en las que ya puede defenderse sola. Lo contamos en <a href="/blog/marvels-spider-man-2-ps5-analisis">nuestro análisis de Spider-Man 2</a>.</p>
+
+<h2>Y en los cómics…</h2>
+${cvFig('11/117763/2459139-amazingspider_manannual21.jpg', 'Portada de la boda de Spider-Man y Mary Jane, con ella vestida de novia', 'The Amazing Spider-Man Annual #21 (1987): la boda de Peter Parker y Mary Jane, rodeados de héroes y villanos.')}
+<p>En los cómics, Peter y MJ se casaron en <em>The Amazing Spider-Man Annual</em> #21 (1987), y el pacto con Mefisto de <em>Un día más</em> (2007) borró su matrimonio, una de las decisiones más polémicas de Marvel. Tienes su historia completa, de sus primeras apariciones a su identidad heroica como Jackpot, en su ${pjLink('mary-jane-watson-alt', 'ficha de personaje')}.</p>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Quién interpreta a Mary Jane en Spider-Man?</h3>
+<p>Kirsten Dunst en la trilogía de Sam Raimi (2002–2007). En las películas de Tom Holland, Zendaya interpreta a MJ, que en realidad se llama Michelle Jones.</p>
+<h3>¿La MJ de Zendaya es Mary Jane Watson?</h3>
+<p>No: es Michelle Jones, un personaje nuevo que usa el apodo «MJ» como homenaje.</p>
+<h3>¿Por qué no sale Mary Jane en The Amazing Spider-Man 2?</h3>
+<p>Shailene Woodley rodó sus escenas, pero se eliminaron en el montaje para centrar la película en Peter y Gwen.</p>
+<h3>¿Quién pone voz a Mary Jane en Marvel's Spider-Man?</h3>
+<p>Laura Bailey, en la versión original de los juegos de 2018 y 2023.</p>
+`,
+};
+
+const BUITRE_VERSIONES = {
+  slug: 'buitre-adrian-toomes-michael-keaton-versiones',
+  title: 'El Buitre (Adrian Toomes): de Michael Keaton en Homecoming a sus versiones en series y videojuegos',
+  subtitle: 'Uno de los primeros villanos de Spider-Man, convertido por Michael Keaton en uno de los mejores del MCU',
+  excerpt:
+    'Adrian Toomes, el Buitre, fue el segundo supervillano de Spider-Man en los cómics. Repasamos todas sus versiones: Michael Keaton en Homecoming y Morbius, las series animadas y los videojuegos.',
+  category: 'Películas',
+  readTime: '7 min',
+  publishDate: new Date('2026-10-22'),
+  image: tmdb('vc8bCGjdVp0UbMNLzHnHSLRbBWQ'),
+  seoTitle: 'Adrian Toomes, el Buitre: Michael Keaton y sus versiones',
+  seoDescription:
+    'El Buitre, Adrian Toomes, fuera de los cómics: Michael Keaton en Spider-Man: Homecoming y Morbius, el Spider-Man 4 que nunca existió, las series animadas y los videojuegos.',
+  keywords: ['Adrian Toomes', 'Buitre Spider-Man', 'Michael Keaton Buitre', 'Vulture Marvel', 'Buitre Homecoming', 'Adrian Toomes Marvel'],
+  tags: ['villanos', 'Buitre', 'Michael Keaton', 'películas', 'series', 'videojuegos'],
+  content: `
+<p>${pjLink('vulture-adrian-toomes-alt', 'Adrian Toomes, el Buitre')}, es uno de los villanos más veteranos de Spider-Man: debutó en <em>The Amazing Spider-Man</em> #2 (1963), de Stan Lee y Steve Ditko, como un ingeniero estafado por su socio que se lanza al crimen con un arnés de vuelo inventado por él. Durante décadas fue un villano de segunda fila… hasta que Michael Keaton lo convirtió en uno de los mejores del cine de Spider-Man. Estas son todas sus versiones.</p>
+
+<h2>Todas sus versiones, de un vistazo</h2>
+<table>
+  <thead><tr><th>Año</th><th>Dónde</th><th>Quién le da vida</th></tr></thead>
+  <tbody>
+    <tr><td>1995–1997</td><td><a href="/blog/spider-man-animated-series-1994-analisis">Serie animada de Spider-Man</a></td><td>Voz original: Eddie Albert</td></tr>
+    <tr><td>2002</td><td>Videojuego de <em>Spider-Man</em> (la película)</td><td>Voz original: Dwight Schultz</td></tr>
+    <tr><td>2008</td><td><a href="/blog/spectacular-spider-man-serie-analisis">The Spectacular Spider-Man</a></td><td>Voz original: Robert Englund</td></tr>
+    <tr><td>2017</td><td>${peli('spider-man-homecoming-2017', 'Spider-Man: Homecoming')}</td><td>Michael Keaton</td></tr>
+    <tr><td>2018</td><td>${juego('marvel-s-spider-man-2018', "Marvel's Spider-Man")}</td><td>Voz original: Dwight Schultz</td></tr>
+    <tr><td>2022</td><td>${peli('morbius-2022', 'Morbius')}</td><td>Michael Keaton (escenas poscréditos)</td></tr>
+  </tbody>
+</table>
+
+<h2>El Buitre que no llegó: Spider-Man 4 y The Amazing Spider-Man 2</h2>
+<p>Antes de Keaton, el Buitre estuvo cerca de llegar al cine dos veces. Iba a ser uno de los villanos del <em>Spider-Man 4</em> de Sam Raimi, con John Malkovich, pero la película se canceló en 2010 y Sony reinició la saga. Después, en ${peli('the-amazing-spider-man-2-el-poder-de-electro-2014', 'The Amazing Spider-Man 2')} (2014), unas alas mecánicas aparecen en los laboratorios secretos de Oscorp, junto a los brazos del Doctor Octopus, como guiño a unos Seis Siniestros que nunca llegaron a rodarse.</p>
+
+<h2>Michael Keaton en Spider-Man: Homecoming (2017)</h2>
+${figure('vc8bCGjdVp0UbMNLzHnHSLRbBWQ', 'El Buitre, con su traje alado y un arma, frente a Spider-Man sobre Nueva York', 'El Buitre de Michael Keaton y el Spider-Man de Tom Holland en una imagen de Homecoming (2017).')}
+<p>El Adrian Toomes de Keaton es un villano de clase trabajadora. Su empresa de recuperación estaba limpiando los escombros de la batalla de Nueva York de <em>Los Vengadores</em> cuando el gobierno y Tony Stark se quedaron con el trabajo y le dejaron en la ruina. Toomes se guarda la tecnología chitauri que había recogido y monta un negocio de armas. Sus motivos se entienden, y eso le hace mucho más inquietante.</p>
+<p>La película guarda su mejor golpe para el final: Toomes es el padre de Liz, la chica con la que Peter va al baile del instituto. La escena del coche, en la que Toomes ata cabos y se da cuenta de que el chico que lleva al baile es Spider-Man, es una de las más tensas del MCU. En la pelea final, Peter le salva la vida, y en la escena poscréditos, ya en la cárcel, Toomes le dice a otro preso, Mac Gargan, que no sabe quién es Spider-Man. Lo ponemos entre los mejores en <a href="/blog/villanos-spider-man-peliculas-ranking">nuestro ranking de villanos del cine</a>.</p>
+<p>Hay además un guiño curioso en el reparto: Keaton había sido Batman en 1989 y protagonizó <em>Birdman</em> en 2014, la historia de un actor marcado por haber hecho de superhéroe alado.</p>
+
+<h2>Su regreso en Morbius (2022)</h2>
+<p>Keaton volvió en las escenas poscréditos de ${peli('morbius-2022', 'Morbius')}, que lo traen al universo de Sony como consecuencia del hechizo de <em>No Way Home</em>. Allí se encuentra con Michael Morbius y le propone unir fuerzas. Es todo lo que se ha visto de esa idea: la película no tuvo continuación.</p>
+
+<h2>En las series animadas</h2>
+${cvFig('11144/111442876/8791113-gettgegs.jpg', 'Retrato del Buitre, un anciano calvo con un cuello de plumas verdes', 'El Buitre de los cómics: un anciano calvo con su característico cuello de plumas.')}
+<p>En la <a href="/blog/spider-man-animated-series-1994-analisis">serie de 1994</a>, Eddie Albert le puso voz al viejo Adrian Toomes. Su mejor versión animada, sin embargo, es la de <a href="/blog/spectacular-spider-man-serie-analisis">The Spectacular Spider-Man</a> (2008): es el primer gran villano al que se enfrenta Peter en el episodio piloto, con la voz de Robert Englund, el Freddy Krueger de <em>Pesadilla en Elm Street</em>, y es un científico al que Norman Osborn ha robado su invento.</p>
+
+<h2>En los videojuegos</h2>
+<p>El Buitre fue uno de los jefes del videojuego de la primera película de Raimi (2002), aunque no aparecía en la película, con la voz de Dwight Schultz. El mismo actor volvió al papel en ${juego('marvel-s-spider-man-2018', "Marvel's Spider-Man")} (2018), donde Toomes escapa de la prisión de la Balsa y se une a los Seis Siniestros del Doctor Octopus. Lo tienes en <a href="/blog/marvels-spider-man-ps4-2018-analisis-insomniac">nuestro análisis del juego</a>.</p>
+
+<h2>Y en los cómics…</h2>
+${cvFig('0/4/6261-2189-6837-1-amazing-spider-man-a.jpg', 'Portada de The Amazing Spider-Man Annual #1 con Spider-Man rodeado por los Seis Siniestros', 'The Amazing Spider-Man Annual #1 (1964): los Seis Siniestros, con el Buitre volando arriba.')}
+<p>En los cómics, el Buitre fue el segundo supervillano de Spider-Man, solo por detrás del Camaleón, y miembro fundador de los Seis Siniestros en <em>The Amazing Spider-Man Annual</em> #1 (1964). Su edad es parte del personaje: un anciano que se niega a aceptar que el mundo le haya dejado atrás. Tienes su historia completa en su ${pjLink('vulture-adrian-toomes-alt', 'ficha de personaje')} y en <a href="/blog/mejores-villanos-spider-man-ranking-definitivo">nuestro ranking de villanos</a>.</p>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Quién interpreta al Buitre?</h3>
+<p>Michael Keaton, en <em>Spider-Man: Homecoming</em> (2017) y en las escenas poscréditos de <em>Morbius</em> (2022).</p>
+<h3>¿Quién es Adrian Toomes?</h3>
+<p>El nombre real del Buitre: un ingeniero que se convierte en villano con un arnés de vuelo inventado por él.</p>
+<h3>¿El Buitre es el padre de Liz en Homecoming?</h3>
+<p>Sí. Peter lo descubre cuando va a recoger a Liz para el baile del instituto.</p>
+<h3>¿Por qué aparece el Buitre en Morbius?</h3>
+<p>Porque el hechizo de Doctor Strange en <em>No Way Home</em> lo traslada al universo de Sony.</p>
+`,
+};
+
+const ANTORCHA_VERSIONES = {
+  slug: 'johnny-storm-antorcha-humana-actores-spider-man',
+  title: 'Johnny Storm, la Antorcha Humana: todos sus actores y su amistad con Spider-Man',
+  subtitle: 'Chris Evans, Michael B. Jordan y Joseph Quinn, el día que no pudo salir en una serie de Spider-Man y por qué es el mejor amigo de Peter Parker en los cómics',
+  excerpt:
+    'Johnny Storm, la Antorcha Humana, ha tenido tres actores en el cine y es el mejor amigo de Spider-Man en los cómics. Repasamos todas sus versiones y su relación con Peter Parker.',
+  category: 'Películas',
+  readTime: '7 min',
+  publishDate: new Date('2026-10-22'),
+  image: tmdb('ieJZ23Mbq0s4cfIPRbF7egJherc'),
+  seoTitle: 'Johnny Storm, la Antorcha Humana: actores y Spider-Man',
+  seoDescription:
+    'La Antorcha Humana en el cine: Chris Evans, Michael B. Jordan y Joseph Quinn en Primeros pasos y Vengadores: Doomsday. Y su amistad con Spider-Man en los cómics.',
+  keywords: ['Johnny Storm', 'Antorcha Humana', 'Human Torch', 'Joseph Quinn Antorcha Humana', 'Chris Evans Antorcha Humana', 'Antorcha Humana Spider-Man'],
+  tags: ['Antorcha Humana', 'Cuatro Fantásticos', 'Marvel', 'películas', 'personajes'],
+  content: `
+<p>${pjLink('human-torch-johnny-storm-alt', 'Johnny Storm, la Antorcha Humana')}, es el miembro más joven y más impulsivo de los Cuatro Fantásticos: el hermano pequeño de Sue Storm, capaz de envolverse en llamas y volar al grito de «¡Llamas a mí!». Debutó en <em>The Fantastic Four</em> #1 (1961), de Stan Lee y Jack Kirby, y en los cómics es el mejor amigo (y rival) de Spider-Man. Estos son todos sus actores y su historia con Peter Parker.</p>
+
+<h2>Sus actores, de un vistazo</h2>
+<table>
+  <thead><tr><th>Año</th><th>Película</th><th>Actor</th></tr></thead>
+  <tbody>
+    <tr><td>1994</td><td><em>The Fantastic Four</em> (nunca estrenada)</td><td>Jay Underwood</td></tr>
+    <tr><td>2005</td><td><em>Los 4 Fantásticos</em></td><td>Chris Evans</td></tr>
+    <tr><td>2007</td><td><em>Los 4 Fantásticos y Silver Surfer</em></td><td>Chris Evans</td></tr>
+    <tr><td>2015</td><td><em>Cuatro Fantásticos</em></td><td>Michael B. Jordan</td></tr>
+    <tr><td>2024</td><td><em>Deadpool y Lobezno</em> (cameo)</td><td>Chris Evans</td></tr>
+    <tr><td>2025</td><td><em>Los 4 Fantásticos: Primeros pasos</em></td><td>Joseph Quinn</td></tr>
+    <tr><td>2026</td><td><em>Vengadores: Doomsday</em></td><td>Joseph Quinn</td></tr>
+  </tbody>
+</table>
+
+<h2>Chris Evans (2005 y 2007): antes de ser el Capitán América</h2>
+${figure('qq9ELjoyllBUMkGisZvcj0fCd43', 'La Antorcha Humana en llamas detrás de la Cosa, la Mujer Invisible y Mr. Fantástico sobre Nueva York', 'Los 4 Fantásticos (2005): la Antorcha Humana, en llamas, junto a la Cosa, la Mujer Invisible y Mr. Fantástico.')}
+<p>Años antes de ser el Capitán América, Chris Evans fue un Johnny Storm chulo, mujeriego y encantado de ser famoso en <em>Los 4 Fantásticos</em> (2005) y <em>Los 4 Fantásticos y Silver Surfer</em> (2007). Las películas no convencieron a la crítica, pero su Antorcha Humana fue de lo más celebrado. Hubo antes una adaptación de 1994, producida por Roger Corman, con Jay Underwood como Johnny, que nunca llegó a estrenarse.</p>
+<p>Evans tuvo una sorpresa guardada: en <em>Deadpool y Lobezno</em> (2024) reapareció como Johnny Storm en un cameo. El público esperaba ver al Capitán América… y apareció la Antorcha Humana.</p>
+
+<h2>Michael B. Jordan (2015)</h2>
+${figure('uZOM484vU9uvSoCT0NJF1xzwtlE', 'Johnny Storm con las manos en llamas junto a Reed Richards, la Cosa y Sue Storm entre edificios en ruinas', 'Michael B. Jordan como Johnny Storm (a la izquierda, con las manos en llamas) en Cuatro Fantásticos (2015).')}
+<p>En el reinicio de 2015, dirigido por Josh Trank, Michael B. Jordan fue un Johnny aficionado a las carreras de coches que gana sus poderes en un viaje a otra dimensión. La película fue un fracaso de crítica y de taquilla, y Marvel recuperó después los derechos de los Cuatro Fantásticos con la compra de Fox por Disney.</p>
+
+<h2>Joseph Quinn: Primeros pasos (2025) y Doomsday (2026)</h2>
+${figure('ieJZ23Mbq0s4cfIPRbF7egJherc', 'La Antorcha Humana envuelta en llamas lanzando fuego', 'Johnny Storm, envuelto en llamas, en Los 4 Fantásticos: Primeros pasos (2025).')}
+<p>La llegada de los Cuatro Fantásticos al MCU fue <em>Los 4 Fantásticos: Primeros pasos</em> (2025), ambientada en un universo propio con estética retrofuturista de los años 60. Joseph Quinn, el Eddie Munson de <em>Stranger Things</em>, es el nuevo Johnny Storm, junto a Pedro Pascal (Reed Richards), Vanessa Kirby (Sue Storm) y Ebon Moss-Bachrach (la Cosa). Marvel ha confirmado que los cuatro vuelven en <strong>Vengadores: Doomsday</strong>, prevista para el 18 de diciembre de 2026.</p>
+
+<h2>El día que la Antorcha no pudo salir con Spider-Man</h2>
+<p>La Antorcha Humana tiene una curiosa historia en las series de animación. En la serie de los Cuatro Fantásticos de 1978, sus derechos para televisión no estaban disponibles y lo sustituyeron por un robot, H.E.R.B.I.E. Y cuando se creó <a href="/blog/spider-man-amazing-friends-1981-analisis-serie">Spider-Man y sus sorprendentes amigos</a> (1981), la idea era que Spider-Man formara equipo con la Antorcha, pero el problema de derechos seguía ahí. La solución fue inventar a un personaje nuevo con poderes de fuego: <strong>Estrella de Fuego</strong>.</p>
+
+<h2>Su amistad con Spider-Man en los cómics</h2>
+${cvFig('11/117763/2676366-amazingspiderman001.jpg', 'Portada de The Amazing Spider-Man #1 con Spider-Man ante los Cuatro Fantásticos y la Antorcha Humana volando', 'The Amazing Spider-Man #1 (1963): Spider-Man se encuentra con los Cuatro Fantásticos, con la Antorcha Humana a la izquierda.')}
+<p>Johnny y Peter tienen casi la misma edad, y su relación empezó a la vez que la serie de Spider-Man: en <em>The Amazing Spider-Man</em> #1 (1963), Peter intenta unirse a los Cuatro Fantásticos para cobrar un sueldo. Desde entonces se pican, se ayudan y han protagonizado decenas de aventuras juntos. Cuando Johnny pareció morir en 2011, dejó grabado un mensaje: quería que Peter ocupara su lugar en el equipo, que pasó a llamarse <strong>Fundación Futuro</strong>. Johnny volvió poco después, y los dos siguen siendo inseparables. Tienes más en su ${pjLink('human-torch-johnny-storm-alt', 'ficha de personaje')} y en <a href="/blog/spider-man-vengadores-relacion-con-cada-uno">Spider-Man y los Vengadores</a>.</p>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Quién interpreta a la Antorcha Humana?</h3>
+<p>Joseph Quinn en <em>Los 4 Fantásticos: Primeros pasos</em> (2025). Antes lo hicieron Chris Evans (2005 y 2007) y Michael B. Jordan (2015).</p>
+<h3>¿Chris Evans fue la Antorcha Humana?</h3>
+<p>Sí, antes de ser el Capitán América, en las películas de 2005 y 2007, y volvió al papel en un cameo en <em>Deadpool y Lobezno</em> (2024).</p>
+<h3>¿La Antorcha Humana y Spider-Man son amigos?</h3>
+<p>Sí: en los cómics son grandes amigos desde los años 60, aunque siempre se están picando.</p>
+<h3>¿Qué grita la Antorcha Humana al encenderse?</h3>
+<p>«¡Llamas a mí!» («Flame on!» en inglés).</p>
+`,
+};
+
+const TORMENTA_VERSIONES = {
+  slug: 'tormenta-ororo-munroe-x-men-actrices-historia',
+  title: 'Tormenta (Ororo Munroe): la mutante que controla el clima, en el cine, las series y los cómics',
+  subtitle: 'Halle Berry, Alexandra Shipp, X-Men \'97 y su historia en los cómics, de diosa en Kenia a reina de Wakanda',
+  excerpt:
+    'Ororo Munroe, Tormenta, es la mutante de la Patrulla-X que controla el clima. Repasamos todas sus versiones: Halle Berry, Alexandra Shipp, X-Men \'97, los videojuegos y su historia en los cómics.',
+  category: 'Películas',
+  readTime: '7 min',
+  publishDate: new Date('2026-10-22'),
+  image: tmdb('iDnTAeR2WNA62XQG0ivtteDSjd5'),
+  seoTitle: 'Tormenta (Ororo Munroe): actrices e historia en X-Men',
+  seoDescription:
+    'Ororo Munroe, Tormenta, la mutante que controla el clima: Halle Berry y Alexandra Shipp en las películas de X-Men, X-Men \'97, su boda con T\'Challa y su historia en los cómics.',
+  keywords: ['Ororo Munroe', 'Tormenta X-Men', 'Storm Marvel', 'Halle Berry Tormenta', 'mutante que controla el clima', 'Tormenta reina de Wakanda'],
+  tags: ['Tormenta', 'X-Men', 'Patrulla-X', 'Halle Berry', 'películas', 'personajes'],
+  content: `
+<p>${pjLink('storm-ororo-munroe-alt', 'Ororo Munroe, Tormenta')}, es la mutante de la Patrulla-X que <strong>controla el clima</strong>: puede invocar lluvia, viento, nieve o rayos y volar sobre las corrientes de aire. Creada por Len Wein y Dave Cockrum, debutó en <em>Giant-Size X-Men</em> #1 (1975) y se convirtió en una de las grandes líderes del equipo. Estas son todas sus versiones.</p>
+
+<h2>Todas sus versiones, de un vistazo</h2>
+<table>
+  <thead><tr><th>Año</th><th>Dónde</th><th>Quién le da vida</th></tr></thead>
+  <tbody>
+    <tr><td>1992–1997</td><td><em>X-Men: la serie animada</em></td><td>Voz original: Iona Morris y después Alison Sealy-Smith</td></tr>
+    <tr><td>2000–2006</td><td><em>X-Men</em>, <em>X-Men 2</em> y <em>X-Men: La decisión final</em></td><td>Halle Berry</td></tr>
+    <tr><td>2014</td><td><em>X-Men: Días del futuro pasado</em></td><td>Halle Berry</td></tr>
+    <tr><td>2016 y 2019</td><td><em>X-Men: Apocalipsis</em> y <em>X-Men: Fénix Oscura</em></td><td>Alexandra Shipp</td></tr>
+    <tr><td>2024</td><td><em>X-Men '97</em></td><td>Voz original: Alison Sealy-Smith</td></tr>
+  </tbody>
+</table>
+
+<h2>Halle Berry (2000–2014)</h2>
+${figure('3QUVzbcNyfGe3ocWkYAT8emK8Co', 'Lobezno, Tormenta con su pelo blanco, Magneto y el Profesor X en el cartel de X-Men', 'Cartel de X-Men (2000): Lobezno, Tormenta, Magneto y el Profesor X.')}
+<p>Halle Berry fue Tormenta en cuatro películas de la saga de Fox. En <em>X-Men</em> (2000) es una de las profesoras de la escuela de Xavier, y su frase ante Sapo («¿Sabes lo que le pasa a un sapo cuando le cae un rayo?») se convirtió en una de las más comentadas de la película. En <em>X-Men 2</em> (2003) hace equipo con Rondador Nocturno, en <em>La decisión final</em> (2006) se convierte en la líder del equipo y en <em>Días del futuro pasado</em> (2014) es una de las mutantes que resisten a los Centinelas en el futuro. Berry ganó el Óscar a la mejor actriz en 2002, entre la primera y la segunda película.</p>
+
+<h2>Alexandra Shipp (2016 y 2019)</h2>
+<p>En <em>X-Men: Apocalipsis</em> (2016), una joven Ororo que roba para sobrevivir en El Cairo se convierte en uno de los cuatro jinetes del villano Apocalipsis, hasta que se vuelve contra él en la batalla final. Alexandra Shipp repitió en <em>X-Men: Fénix Oscura</em> (2019), la última película de los mutantes de Fox.</p>
+
+<h2>X-Men: la serie animada y X-Men '97</h2>
+${figure('iDnTAeR2WNA62XQG0ivtteDSjd5', 'La Patrulla-X de X-Men 97 posando juntos, con Tormenta de blanco y con capa a la derecha', "La Patrulla-X de X-Men '97 (2024), con Tormenta a la derecha.")}
+<p>Para muchos, la Tormenta definitiva es la de la serie animada de 1992, con su forma de hablar solemne y teatral. Iona Morris le puso voz en la primera temporada y Alison Sealy-Smith tomó el relevo hasta el final. Sealy-Smith volvió en <em>X-Men '97</em> (2024), la continuación de Disney+, que adapta una de sus historias más famosas de los cómics: la etapa en la que pierde sus poderes. Tormenta también se cruzó con Spider-Man en la <a href="/blog/spider-man-animated-series-1994-analisis">serie de 1994</a>, en los episodios en los que Peter acude a la mansión de Xavier.</p>
+
+<h2>En los videojuegos</h2>
+<p>Tormenta es un fijo de los juegos de Marvel: de las recreativas de los 90 a la saga <em>Marvel vs. Capcom</em>, la serie <em>X-Men Legends</em> y <em>Marvel Rivals</em> (2024), donde es uno de los personajes jugables.</p>
+
+<h2>Y en los cómics…</h2>
+${cvFig('12/124259/9856505-large-1751490.jpg', 'Tormenta volando entre rayos, con su traje negro y amarillo', 'Tormenta en los cómics, rodeada de rayos.')}
+<p>La historia de Ororo en los cómics es de las más ricas de Marvel. Hija de una princesa keniana y de un fotógrafo estadounidense, perdió a sus padres de niña cuando un avión se estrelló contra su casa en El Cairo; quedó enterrada bajo los escombros, y de ahí le viene su claustrofobia. Sobrevivió como ladrona callejera (llegó a intentar robarle la cartera a Charles Xavier) y después fue adorada como una diosa de la lluvia en Kenia, hasta que Xavier la reclutó para la Patrulla-X.</p>
+<p>Fue una de las grandes líderes del equipo: en 1986 llegó a derrotar a Cíclope por el liderazgo sin usar sus poderes, que había perdido. En 2006 se casó con ${pjLink('black-panther-tchalla-alt', "T'Challa, Pantera Negra")}, y fue reina de Wakanda, aunque el matrimonio se rompió años después. Tienes su historia completa en su ${pjLink('storm-ororo-munroe-alt', 'ficha de personaje')}.</p>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Qué personaje de X-Men controla el clima?</h3>
+<p>Tormenta, cuyo nombre real es Ororo Munroe.</p>
+<h3>¿Quién interpreta a Tormenta?</h3>
+<p>Halle Berry en <em>X-Men</em> (2000), <em>X-Men 2</em>, <em>La decisión final</em> y <em>Días del futuro pasado</em>, y Alexandra Shipp en <em>Apocalipsis</em> (2016) y <em>Fénix Oscura</em> (2019).</p>
+<h3>¿Tormenta fue reina de Wakanda?</h3>
+<p>Sí, al casarse con T'Challa, Pantera Negra, en los cómics de 2006.</p>
+<h3>¿Tormenta y Spider-Man se conocen?</h3>
+<p>Sí: se han cruzado en los cómics y en la serie animada de 1994, cuando Peter visita la mansión de Xavier.</p>
+`,
+};
+
+const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS, FINAL_BND, MEJORES_COMICS, JUEGOS_POST, TRAJES, VILLANOS_CINE, MARVEL_LEGENDS, MEJORES_LEGO, TRES_SPIDERMAN, BND_STREAMING, SCARLET_SPIDER, VENGADORES, SPIDER_NOIR, DOC_OCK_VERSIONES, VIUDA_NEGRA_MCU, OJO_DE_HALCON_MCU, ANT_MAN_MCU, HULK_MCU, MARY_JANE_VERSIONES, BUITRE_VERSIONES, ANTORCHA_VERSIONES, TORMENTA_VERSIONES];
 
 (async () => {
   for (const p of POSTS) {
