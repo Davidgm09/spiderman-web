@@ -186,7 +186,7 @@ export function Aranadle({ characters }: { characters: GameCharacter[] }) {
   const currentStreak = stats.lastWinDay >= day - 1 ? stats.streak : 0
 
   const shareText = [
-    `Arañadle #${day} 🕷️ ${status === 'won' ? guesses.length : 'X'}/${MAX_GUESSES}`,
+    `Arañadle #${day} 🕷️ ${status === 'won' ? guesses.length : 'X'}/${MAX_GUESSES}${currentStreak >= 2 ? ` · 🔥 Racha ${currentStreak}` : ''}`,
     ...guesses.map((g) => {
       const c = bySlug.get(g)!
       const r = compare(c, target)
