@@ -20,11 +20,12 @@ const POST = {
   publishDate: new Date('2026-10-16'),
   slug: 'spider-man-brand-new-day-taquilla-criticas-sin-spoilers',
   image: 'https://image.tmdb.org/t/p/w1280/vjMvFSmGUxEtqVdaZgvFee9XkZl.jpg',
-  seoTitle: 'Brand New Day: taquilla, críticas y guía sin spoilers',
+  seoTitle: 'Brand New Day (Un nuevo día): críticas y guía sin spoilers',
   seoDescription:
-    'Todo sobre Spider-Man: Brand New Day sin spoilers: argumento, reparto, récords de taquilla, nota de la crítica y cuándo verla en casa.',
+    'Todo sobre Spider-Man: Brand New Day (Un nuevo día en Latinoamérica) sin spoilers: argumento, reparto, récords de taquilla, crítica y cuándo verla en casa.',
   keywords: [
     'Spider-Man Brand New Day',
+    'Spider-Man Un nuevo día',
     'Brand New Day taquilla',
     'Brand New Day críticas',
     'Brand New Day sin spoilers',
@@ -34,7 +35,7 @@ const POST = {
   ],
   tags: ['Brand New Day', 'Tom Holland', 'MCU', 'taquilla', 'críticas', '2026'],
   content: `
-<p>Durante meses fue la película más esperada del año, y los números han dejado claro que la expectación estaba justificada. <em>Spider-Man: Brand New Day</em>, la cuarta aventura de Tom Holland como Peter Parker, llegó a los cines a finales de julio de 2026 y se ha convertido en <strong>la película de Spider-Man más taquillera de la historia</strong>. Si todavía no la has visto o quieres ponerte al día antes de hacerlo, aquí tienes todo lo importante… sin un solo spoiler.</p>
+<p>Durante meses fue la película más esperada del año, y los números han dejado claro que la expectación estaba justificada. <em>Spider-Man: Brand New Day</em> (en Latinoamérica, <em>Spider-Man: Un nuevo día</em>), la cuarta aventura de Tom Holland como Peter Parker, llegó a los cines a finales de julio de 2026 y se ha convertido en <strong>la película de Spider-Man más taquillera de la historia</strong>. Si todavía no la has visto o quieres ponerte al día antes de hacerlo, aquí tienes todo lo importante… sin un solo spoiler.</p>
 
 <h2>¿De qué va? (sin spoilers)</h2>
 <p>La historia arranca <strong>cuatro años después de <em>No Way Home</em></strong>. El hechizo del Doctor Strange hizo que el mundo entero olvidara quién es Peter Parker, y eso tiene consecuencias: Peter es ahora un adulto que vive completamente solo, alejado de las personas que quiere y que ya no le recuerdan.</p>
@@ -104,15 +105,9 @@ const POST = {
 };
 
 async function main() {
-  const existing = await prisma.blogPost.findUnique({ where: { slug: POST.slug } });
-  if (existing) {
-    console.log(`⏭️  Ya existe: ${POST.slug}`);
-    await prisma.$disconnect();
-    return;
-  }
-
-  await prisma.blogPost.create({ data: POST });
-  console.log(`✅ Creado: ${POST.title}`);
+  // Crea el artículo o, si ya existe, lo actualiza con esta versión
+  await prisma.blogPost.upsert({ where: { slug: POST.slug }, update: POST, create: POST });
+  console.log(`✅ Guardado: ${POST.title}`);
   await prisma.$disconnect();
 }
 

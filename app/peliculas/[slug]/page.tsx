@@ -17,6 +17,7 @@ import { TiendaProductCards } from "@/components/affiliate/TiendaProductCards"
 import { StickyAffiliateSidebar } from "@/components/affiliate/StickyAffiliateSidebar"
 import { Breadcrumb } from "@/components/breadcrumb"
 import { YouTubeLite } from "@/components/ui/YouTubeLite"
+import { tituloConAnio, tituloLatam } from "@/lib/latam-titles"
 import { ViewTracker } from "@/components/analytics/ViewTracker"
 
 export const revalidate = 3600
@@ -37,17 +38,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // notFound() aquí (antes de empezar a enviar la página) devuelve un 404 real
   if (!movie) notFound()
 
-  const description = metaDescription(`${movie.title} (${movie.year})`, movie.description, `Película de Spider-Man con análisis completo, reparto y dónde verla.`)
+  const nombre = tituloConAnio(movie.slug, movie.title, movie.year)
+  const description = metaDescription(nombre, movie.description, `Película de Spider-Man con análisis completo, reparto y dónde verla.`)
 
   const url = `${SITE_URL}/peliculas/${movie.slug}`;
 
   return {
-    title: pageTitle(`${movie.title} (${movie.year})`),
+    title: pageTitle(nombre),
     description,
     keywords: movie.keywords?.length ? movie.keywords : ['Spider-Man', 'película', movie.title, movie.year.toString(), 'análisis', 'reparto'],
     alternates: { canonical: url },
     openGraph: {
-      title: pageTitle(`${movie.title} (${movie.year})`),
+      title: pageTitle(nombre),
       description,
       images: [movie.image],
       type: "article",
@@ -55,7 +57,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: pageTitle(`${movie.title} (${movie.year})`),
+      title: pageTitle(nombre),
       description,
       images: [movie.image],
     },
@@ -75,10 +77,12 @@ export default async function MoviePage({ params }: Props) {
   const relatedMovies = await movieService.getFeatured(4, slug).catch(() => []);
 
   const BASE_URL = SITE_URL
+  const latam = tituloLatam(movie.slug)
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Movie',
     name: movie.title,
+    alternateName: latam?.titulo,
     description: movie.seoDescription || movie.description,
     image: movie.image ? {
       '@type': 'ImageObject',
@@ -143,6 +147,12 @@ export default async function MoviePage({ params }: Props) {
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 leading-tight">
                 {movie.title}
               </h1>
+
+              {latam && (
+                <p className="text-gray-300 mb-4">
+                  En Latinoamérica: <strong className="text-white">{latam.titulo}</strong>
+                </p>
+              )}
 
               {movie.subtitle && (
                 <p className="text-lg text-gray-400 italic mb-4">"{movie.subtitle}"</p>

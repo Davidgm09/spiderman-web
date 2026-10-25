@@ -92,6 +92,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
 - `lib/rawg-api.ts` — RAWG API client for games
 - `lib/supabase.ts` — Supabase Storage client for image uploads (used by `app/admin/upload/`)
 - `data/personajes/fichas.json` + `components/characters/CharacterGuide.tsx` — hand-written expanded character pages (sections, film/TV table with actors, FAQ + FAQPage JSON-LD). Characters without an entry show only `longDescription`. Fact-check every entry before adding it.
+- `lib/latam-titles.ts` — Latin American release titles of the movies when they differ from Spain's (e.g. No Way Home → «Sin camino a casa», Brand New Day → «Un nuevo día»). Used in the movie page `<title>`, description, H1 area and JSON-LD `alternateName`; most search traffic comes from Latin America. Add new movies here
 - `types/content.ts` — TypeScript interfaces for all content types (`MovieContent`, `GameContent`, etc.)
 - `prisma/schema.prisma` — Single source of truth for all models. Also contains cache/analytics tables: `MarvelCache`, `ExternalApiCache`, `ContentAnalytics`, `AffiliateProduct`, `UserFavorite`, `SearchQuery`
 
