@@ -3,7 +3,7 @@ export const revalidate = 3600
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
-import { Gamepad2, Star } from "lucide-react"
+import { Gamepad2, Star, ChevronRight, ChevronDown } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
 import { InContentAd } from "@/components/ads/GoogleAdsense"
@@ -13,8 +13,8 @@ import { Game } from "@prisma/client"
 export const metadata: Metadata = {
   title: "Todos los videojuegos de Spider-Man | Sentido Arácnido",
   description:
-    "Todos los videojuegos de Spider-Man: desde clásicos arcade hasta PS5. Reseñas completas, gameplay, plataformas y enlaces de compra.",
-  keywords: ["Spider-Man videojuegos", "Marvel's Spider-Man", "Spider-Man PS4", "Spider-Man PS5", "Insomniac Games", "videojuegos Marvel"],
+    "Todos los videojuegos de Spider-Man en orden, de los clásicos a PS5 y PC: cuál es el mejor, por cuál empezar y en qué orden jugar los de Insomniac.",
+  keywords: ["juegos de Spider-Man", "videojuegos de Spiderman", "Spider-Man videojuegos", "Marvel's Spider-Man", "Spider-Man PS4", "Spider-Man PS5", "Insomniac Games", "videojuegos Marvel"],
   alternates: { canonical: '/videojuegos' },
   openGraph: {
     title: "Todos los videojuegos de Spider-Man | Sentido Arácnido",
@@ -72,6 +72,50 @@ export default async function VideojuegosPage() {
 
   const totalGames = allGames.length
   const totalEras = Object.values(eras).filter(e => e.games.length > 0).length
+
+  // Guía en texto del final: todos en orden, por cuál empezar y preguntas frecuentes
+  const BADGE: Record<string, string> = {
+    clasica: 'text-blue-300 border-blue-500/40 bg-blue-500/10',
+    moderna: 'text-red-300 border-red-500/40 bg-red-500/10',
+    dorada: 'text-yellow-300 border-yellow-500/40 bg-yellow-500/10',
+    insomniac: 'text-green-300 border-green-500/40 bg-green-500/10',
+  }
+  const eraDe = new Map<string, { title: string; badge: string }>()
+  Object.entries(eras).forEach(([key, era]) => era.games.forEach(g => eraDe.set(g.slug, { title: era.title, badge: BADGE[key] })))
+  const enOrden = [...allGames].sort((a, b) => a.year - b.year)
+  const bySlug = new Map(allGames.map(g => [g.slug, g]))
+  const plataformas = (g: Game) => (Array.isArray(g.platform) ? g.platform : []).slice(0, 3).join(', ')
+
+  const recomendaciones = [
+    { slug: 'marvel-s-spider-man-remastered-2020', etiqueta: 'Para empezar', titulo: "Marvel's Spider-Man", texto: 'El juego que redefinió a Spider-Man en los videojuegos. En PS4 y, remasterizado, en PS5 y PC.', enlace: '/blog/marvels-spider-man-ps4-2018-analisis-insomniac', enlaceTexto: 'Leer el análisis' },
+    { slug: 'marvel-s-spider-man-miles-morales-2020', etiqueta: 'Corto e intenso', titulo: "Marvel's Spider-Man: Miles Morales", texto: 'Una aventura más breve, perfecta entre el primero y el segundo.', enlace: '/blog/spider-man-miles-morales-ps5-analisis', enlaceTexto: 'Leer el análisis' },
+    { slug: 'marvel-s-spider-man-2-2023', etiqueta: 'El más reciente', titulo: "Marvel's Spider-Man 2", texto: 'Peter y Miles juntos contra Kraven y Venom. En PS5 y PC.', enlace: '/blog/marvels-spider-man-2-ps5-analisis', enlaceTexto: 'Leer el análisis' },
+    { slug: 'spider-man-web-of-shadows-2008', etiqueta: 'Un clásico olvidado', titulo: 'Spider-Man: Web of Shadows', texto: 'Mundo abierto, el simbionte y decisiones morales, mucho antes de Insomniac.', enlace: '/blog/spider-man-web-of-shadows-analisis-juego-olvidado', enlaceTexto: 'Leer el análisis' },
+  ].map(r => ({ ...r, juego: bySlug.get(r.slug) }))
+
+  const faqs = [
+    {
+      q: '¿Cuál es el mejor juego de Spider-Man?',
+      a: "Para la mayoría, Marvel's Spider-Man (2018) de Insomniac y su secuela, Marvel's Spider-Man 2 (2023). Entre los clásicos, Spider-Man 2 (2004) cambió para siempre la forma de balancearse por la ciudad. Los ordenamos todos en nuestro ranking de los mejores juegos de Spider-Man.",
+    },
+    {
+      q: '¿En qué orden jugar los juegos de Spider-Man de Insomniac?',
+      a: "Primero Marvel's Spider-Man (2018) o su versión Remastered, después Marvel's Spider-Man: Miles Morales (2020) y por último Marvel's Spider-Man 2 (2023).",
+    },
+    {
+      q: '¿Qué juegos de Spider-Man hay para PC?',
+      a: "Los tres de Insomniac: Marvel's Spider-Man Remastered, Miles Morales y Marvel's Spider-Man 2, que llegó a PC en enero de 2025. También salieron en PC clásicos como Spider-Man (2000), Spider-Man 2 (2004) o Web of Shadows, aunque hoy son difíciles de conseguir.",
+    },
+    {
+      q: "¿Habrá un Marvel's Spider-Man 3?",
+      a: 'Todo apunta a que es el siguiente proyecto de Insomniac después de Marvel\'s Wolverine. Te contamos todo lo que se sabe en nuestro artículo sobre Marvel\'s Spider-Man 3.',
+    },
+  ]
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-950 via-gray-900 to-blue-950">
@@ -244,6 +288,104 @@ export default async function VideojuegosPage() {
           )
         })}
       </div>
+
+      {/* Guía en texto: todos los juegos en orden, por cuál empezar y preguntas frecuentes */}
+      <section className="max-w-5xl mx-auto px-4 pb-24 text-gray-300">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+
+        <div className="flex items-center gap-4 mb-3">
+          <div className="w-1 h-10 rounded-full bg-gradient-to-b from-blue-500 to-red-500" />
+          <h2 className="text-2xl md:text-4xl font-bold text-white">Todos los juegos de Spider-Man en orden</h2>
+        </div>
+        <p className="mb-8 text-gray-400 md:ml-5">
+          Por orden de lanzamiento, con su estudio y sus plataformas. Si buscas los mejores, tienes{' '}
+          <Link href="/blog/mejores-juegos-spider-man-ranking" className="text-red-400 hover:text-red-300 underline">nuestro ranking de los 10 mejores juegos de Spider-Man</Link>.
+        </p>
+
+        <ol className="grid md:grid-cols-2 gap-3 mb-16">
+          {enOrden.map((game, i) => {
+            const era = eraDe.get(game.slug)
+            return (
+              <li key={game.id}>
+                <Link
+                  href={`/videojuegos/${game.slug}`}
+                  className="group flex items-center gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:border-red-500/50 hover:bg-white/10 transition-colors"
+                >
+                  <span className="w-7 text-center font-black text-xl text-gray-500 group-hover:text-red-400 transition-colors">{i + 1}</span>
+                  <div className="relative w-20 h-[52px] shrink-0 rounded-md overflow-hidden bg-gray-800">
+                    <Image src={game.image} alt="" fill sizes="80px" className="object-cover" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="font-semibold text-white leading-snug group-hover:text-red-300 transition-colors">{game.title}</p>
+                    <p className="text-xs text-gray-400 mt-1">
+                      {game.year}{game.developer ? ` · ${game.developer}` : ''}
+                    </p>
+                    {plataformas(game) && <p className="text-xs text-gray-400 mt-0.5 line-clamp-1">{plataformas(game)}</p>}
+                    {era && (
+                      <span className={`inline-block mt-2 text-[11px] font-semibold px-2 py-0.5 rounded-full border ${era.badge}`}>{era.title}</span>
+                    )}
+                  </div>
+                  <ChevronRight className="w-5 h-5 text-gray-500 group-hover:text-red-400 shrink-0 transition-colors" />
+                </Link>
+              </li>
+            )
+          })}
+        </ol>
+
+        <div className="flex items-center gap-4 mb-8">
+          <div className="w-1 h-10 rounded-full bg-gradient-to-b from-blue-500 to-red-500" />
+          <h2 className="text-2xl md:text-4xl font-bold text-white">¿Por cuál empezar?</h2>
+        </div>
+        <div className="grid sm:grid-cols-2 gap-4 mb-6">
+          {recomendaciones.map(r => (
+            <Link
+              key={r.slug}
+              href={r.enlace}
+              className="group flex gap-4 p-4 rounded-2xl bg-gradient-to-br from-white/10 to-white/[0.02] border border-white/10 hover:border-red-500/50 transition-colors"
+            >
+              <div className="relative w-28 h-[84px] shrink-0 rounded-lg overflow-hidden bg-gray-800 shadow-lg">
+                {r.juego && <Image src={r.juego.image} alt={r.juego.title} fill sizes="112px" className="object-cover group-hover:scale-105 transition-transform duration-500" />}
+              </div>
+              <div className="flex flex-col min-w-0">
+                <span className="text-xs font-semibold uppercase tracking-wider text-red-400">{r.etiqueta}</span>
+                <span className="text-lg font-bold text-white mt-1 leading-snug">{r.titulo}</span>
+                <span className="text-sm text-gray-400 mt-1">{r.texto}</span>
+                <span className="mt-auto pt-2 text-sm font-semibold text-red-400 group-hover:text-red-300 inline-flex items-center gap-1">
+                  {r.enlaceTexto} <ChevronRight className="w-4 h-4" />
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
+        <div className="flex flex-wrap items-center gap-2 mb-16 text-sm">
+          <span className="text-gray-400 mr-1">Más:</span>
+          {[
+            ['/blog/mejores-juegos-spider-man-ranking', 'Los 10 mejores juegos de Spider-Man'],
+            ['/blog/marvels-spider-man-3-insomniac-todo-lo-que-sabemos', "Todo sobre Marvel's Spider-Man 3"],
+            ['/juegos', 'Nuestros minijuegos: Arañadle y más'],
+          ].map(([href, label]) => (
+            <Link key={href} href={href} className="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-gray-200 hover:border-red-500/50 hover:text-white transition-colors">
+              {label}
+            </Link>
+          ))}
+        </div>
+
+        <div className="flex items-center gap-4 mb-8">
+          <div className="w-1 h-10 rounded-full bg-gradient-to-b from-blue-500 to-red-500" />
+          <h2 className="text-2xl md:text-4xl font-bold text-white">Preguntas frecuentes</h2>
+        </div>
+        <div className="space-y-3">
+          {faqs.map((f, i) => (
+            <details key={f.q} open={i === 0} className="group rounded-xl bg-white/5 border border-white/10 open:border-red-500/40">
+              <summary className="flex items-center justify-between gap-4 cursor-pointer list-none p-5 [&::-webkit-details-marker]:hidden">
+                <h3 className="text-base md:text-lg font-semibold text-white">{f.q}</h3>
+                <ChevronDown className="w-5 h-5 text-gray-400 shrink-0 transition-transform group-open:rotate-180" />
+              </summary>
+              <p className="px-5 pb-5 -mt-1 text-gray-300">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
 
     </div>
   )

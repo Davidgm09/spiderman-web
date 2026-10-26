@@ -3,16 +3,16 @@ export const revalidate = 3600
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { characterService } from '@/lib/database';
+import { blogService, characterService } from '@/lib/database';
 import { CharacterGrid } from '@/components/characters/CharacterCard';
 import { CharacterFilter } from '@/components/characters/CharacterFilter';
 import { InContentAd } from '@/components/ads/GoogleAdsense';
-import { Zap, Skull, Shield, Heart, Star, ArrowRight } from 'lucide-react';
+import { Zap, Skull, Shield, Heart, Star, ArrowRight, ChevronDown } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Personajes de Spider-Man y Marvel | Sentido Arácnido',
-  description: 'Descubre todos los personajes de Spider-Man y Marvel con información completa, imágenes oficiales y más. Spider-Verse, villanos, héroes y más.',
-  keywords: ['Spider-Man personajes', 'Marvel characters', 'Spider-Verse', 'Spider-Gwen', 'Miles Morales', 'personajes Marvel'],
+  title: 'Personajes de Spider-Man: héroes, villanos y aliados',
+  description: 'Todos los personajes de Spider-Man: el Spider-Verso, sus villanos, sus aliados y los héroes de Marvel con los que se cruza, con su historia, poderes y actores.',
+  keywords: ['personajes de Spider-Man', 'personajes de Spiderman', 'villanos de Spider-Man', 'Spider-Man personajes', 'Marvel characters', 'Spider-Verse', 'Spider-Gwen', 'Miles Morales', 'personajes Marvel'],
   alternates: { canonical: '/personajes' },
   openGraph: {
     title: 'Personajes de Spider-Man y Marvel | Sentido Arácnido',
@@ -53,6 +53,44 @@ async function getCharacterGroups() {
 export default async function PersonajesPage() {
   const { spiderVerse, spiderVillains, spiderAllies, marvelUniverse, featured } = await getCharacterGroups();
   const total = spiderVerse.length + spiderVillains.length + spiderAllies.length + marvelUniverse.length;
+
+  // Guía en texto del final: artículos sobre personajes y preguntas frecuentes
+  const GUIAS = [
+    { slug: 'mejores-villanos-spider-man-ranking-definitivo', etiqueta: 'Ranking' },
+    { slug: 'doctor-octopus-cine-series-videojuegos-versiones', etiqueta: 'Villanos' },
+    { slug: 'simbionte-historia-evolucion-venom', etiqueta: 'Villanos' },
+    { slug: 'mary-jane-watson-actrices-versiones-cine-series-juegos', etiqueta: 'Aliados' },
+    { slug: 'merodeador-aaron-davis-tio-miles-morales', etiqueta: 'Spider-Verso' },
+    { slug: 'scarlet-spider-ben-reilly-kaine-diferencias', etiqueta: 'Spider-Verso' },
+  ];
+  const guias = (await Promise.all(GUIAS.map(async (g) => {
+    const post = await blogService.getBySlug(g.slug).catch(() => null);
+    return post ? { ...g, title: post.title, image: post.image } : null;
+  }))).filter((g): g is NonNullable<typeof g> => g !== null);
+
+  const faqs = [
+    {
+      q: '¿Cuántos personajes de Spider-Man hay?',
+      a: `Spider-Man tiene cientos de personajes en más de sesenta años de cómics. Aquí tienes ${total} fichas: los Spider-Man del Spider-Verso, sus villanos, sus aliados y los héroes de Marvel con los que más se cruza, con su historia, sus poderes y sus actores.`,
+    },
+    {
+      q: '¿Quién es el mayor enemigo de Spider-Man?',
+      a: 'Para nosotros, el Duende Verde (Norman Osborn), que mató a Gwen Stacy y conoce el secreto de Peter Parker. Le siguen el Doctor Octopus y Venom en nuestro ranking de los mejores villanos de Spider-Man.',
+    },
+    {
+      q: '¿Quiénes son los Seis Siniestros?',
+      a: 'El grupo de villanos que reunió el Doctor Octopus en The Amazing Spider-Man Annual #1 (1964): el propio Doctor Octopus, el Buitre, Electro, Kraven, Mysterio y el Hombre de Arena.',
+    },
+    {
+      q: '¿Qué es el Spider-Verso?',
+      a: 'El multiverso de Spider-Man: todas las versiones del personaje en otros universos, como Miles Morales, Spider-Gwen, Spider-Man 2099 o Spider-Ham. Lo popularizaron el cómic Spider-Verse (2014) y las películas de animación de Miles Morales.',
+    },
+  ];
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  };
 
   return (
     <div
@@ -239,6 +277,53 @@ export default async function PersonajesPage() {
             <CharacterGrid characters={marvelUniverse} maxItems={50} />
           </section>
         )}
+
+        {/* Guía en texto: artículos sobre personajes y preguntas frecuentes */}
+        <section className="max-w-5xl mx-auto text-gray-300">
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+
+          {guias.length > 0 && (
+            <>
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-1 h-10 rounded-full bg-gradient-to-b from-red-500 to-blue-500" />
+                <h2 className="text-2xl md:text-4xl font-bold text-white">Sus historias, a fondo</h2>
+              </div>
+              <div className="grid sm:grid-cols-2 gap-4 mb-16">
+                {guias.map((g) => (
+                  <Link
+                    key={g.slug}
+                    href={`/blog/${g.slug}`}
+                    className="group flex gap-4 p-4 rounded-2xl bg-gradient-to-br from-white/10 to-white/[0.02] border border-white/10 hover:border-red-500/50 transition-colors"
+                  >
+                    <div className="relative w-28 h-20 shrink-0 rounded-lg overflow-hidden bg-gray-800 shadow-lg">
+                      {g.image && <Image src={g.image} alt="" fill sizes="112px" className="object-cover group-hover:scale-105 transition-transform duration-500" />}
+                    </div>
+                    <div className="flex flex-col min-w-0">
+                      <span className="text-xs font-semibold uppercase tracking-wider text-red-400">{g.etiqueta}</span>
+                      <span className="font-bold text-white mt-1 leading-snug line-clamp-3">{g.title}</span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </>
+          )}
+
+          <div className="flex items-center gap-4 mb-8">
+            <div className="w-1 h-10 rounded-full bg-gradient-to-b from-red-500 to-blue-500" />
+            <h2 className="text-2xl md:text-4xl font-bold text-white">Preguntas frecuentes</h2>
+          </div>
+          <div className="space-y-3">
+            {faqs.map((f, i) => (
+              <details key={f.q} open={i === 0} className="group rounded-xl bg-white/5 border border-white/10 open:border-red-500/40">
+                <summary className="flex items-center justify-between gap-4 cursor-pointer list-none p-5 [&::-webkit-details-marker]:hidden">
+                  <h3 className="text-base md:text-lg font-semibold text-white">{f.q}</h3>
+                  <ChevronDown className="w-5 h-5 text-gray-400 shrink-0 transition-transform group-open:rotate-180" />
+                </summary>
+                <p className="px-5 pb-5 -mt-1 text-gray-300">{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
 
       </div>
     </div>

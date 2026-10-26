@@ -2,35 +2,36 @@ export const revalidate = 3600
 
 import Image from "next/image"
 import Link from "next/link"
-import { Play, Star, Clock, Award } from "lucide-react"
+import { Play, Star, Clock, Award, ChevronRight, ChevronDown } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { InContentAd } from "@/components/ads/GoogleAdsense"
 import { CountdownTimer } from "@/components/movies/CountdownTimer"
-import { movieService } from "@/lib/database"
+import { blogService, movieService } from "@/lib/database"
+import { tituloLatam } from "@/lib/latam-titles"
 import { ADS_ENABLED } from "@/lib/config"
 import { Movie } from "@prisma/client"
 
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Películas de Spider-Man - Todas las Sagas | Sentido Arácnido",
+  title: "Todas las películas de Spider-Man por sagas | Sentido Arácnido",
   description:
-    "Todas las películas de Spider-Man: Trilogía de Raimi, Amazing Spider-Man, MCU y Spider-Verse. Análisis completos, ratings y dónde verlas.",
-  keywords: ["Spider-Man películas", "Tobey Maguire", "Andrew Garfield", "Tom Holland", "Spider-Verse", "Marvel", "Sony"],
+    "Todas las películas de Spider-Man en orden: Tobey Maguire, Andrew Garfield, Tom Holland, el Spider-Verso y el universo de Sony, con su título en Latinoamérica.",
+  keywords: ["películas de Spider-Man", "películas de Spiderman", "todas las películas de Spider-Man", "películas de El Hombre Araña", "Tobey Maguire", "Andrew Garfield", "Tom Holland", "Spider-Verse"],
   alternates: { canonical: '/peliculas' },
   openGraph: {
-    title: "Películas de Spider-Man - Todas las Sagas | Sentido Arácnido",
-    description: "Todas las películas de Spider-Man: Trilogía de Raimi, Amazing Spider-Man, MCU y Spider-Verse.",
+    title: "Todas las películas de Spider-Man por sagas | Sentido Arácnido",
+    description: "Todas las películas de Spider-Man en orden: Tobey Maguire, Andrew Garfield, Tom Holland, el Spider-Verso y el universo de Sony.",
     type: 'website',
     url: '/peliculas',
     images: ['https://image.tmdb.org/t/p/w500/xRMZikjAHNFebD1FLRqgDZeGV4a.jpg'],
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Películas de Spider-Man - Todas las Sagas | Sentido Arácnido",
-    description: "Todas las películas de Spider-Man: Trilogía de Raimi, Amazing Spider-Man, MCU y Spider-Verse.",
+    title: "Todas las películas de Spider-Man por sagas | Sentido Arácnido",
+    description: "Todas las películas de Spider-Man en orden: Tobey Maguire, Andrew Garfield, Tom Holland, el Spider-Verso y el universo de Sony.",
     images: ['https://image.tmdb.org/t/p/w500/xRMZikjAHNFebD1FLRqgDZeGV4a.jpg'],
   },
 }
@@ -71,6 +72,65 @@ function organizeMoviesByUniverse(movies: Movie[]) {
 export default async function PeliculasPage() {
   const movies = await movieService.getAll()
   const universes = organizeMoviesByUniverse(movies)
+
+  // Guía en texto del final: todas en orden, guías relacionadas y preguntas frecuentes
+  const BADGE: Record<string, string> = {
+    raimi: 'text-red-300 border-red-500/40 bg-red-500/10',
+    amazing: 'text-blue-300 border-blue-500/40 bg-blue-500/10',
+    mcu: 'text-purple-300 border-purple-500/40 bg-purple-500/10',
+    miles: 'text-green-300 border-green-500/40 bg-green-500/10',
+    related: 'text-orange-300 border-orange-500/40 bg-orange-500/10',
+  }
+  const PROTAGONISTA: Record<string, string> = {
+    raimi: 'Tobey Maguire',
+    amazing: 'Andrew Garfield',
+    mcu: 'Tom Holland',
+    miles: 'Animación · Miles Morales',
+    related: 'Universo Sony · sin Spider-Man',
+  }
+  const sagaDe = new Map<string, string>()
+  Object.entries(universes).forEach(([key, u]) => u.movies.forEach(m => sagaDe.set(m.slug, key)))
+  const enOrden = [...movies].sort((a, b) => a.year - b.year || (a.releaseDate ?? '').localeCompare(b.releaseDate ?? ''))
+  const deSpiderMan = enOrden.filter(m => sagaDe.get(m.slug) !== 'related').length
+  const deSony = enOrden.length - deSpiderMan
+
+  const GUIAS = [
+    { slug: 'orden-ver-peliculas-spider-man', etiqueta: 'Guía', texto: 'Por estreno, por sagas y en cronología del MCU.' },
+    { slug: 'tobey-maguire-andrew-garfield-tom-holland-mejor-spider-man', etiqueta: 'Comparativa', texto: 'Tobey, Andrew o Tom: quién es el mejor Spider-Man.' },
+    { slug: 'spider-man-brand-new-day-streaming-donde-ver', etiqueta: 'Dónde ver', texto: 'Dónde ver Brand New Day (Un nuevo día) en España y Latinoamérica.' },
+    { slug: 'villanos-spider-man-peliculas-ranking', etiqueta: 'Ranking', texto: 'Los villanos del cine de Spider-Man, del peor al mejor.' },
+  ]
+  const guias = (await Promise.all(GUIAS.map(async g => {
+    const post = await blogService.getBySlug(g.slug).catch(() => null)
+    return post ? { ...g, title: post.title, image: post.image } : null
+  }))).filter((g): g is NonNullable<typeof g> => g !== null)
+
+  const ultima = enOrden.filter(m => sagaDe.get(m.slug) !== 'related').at(-1)
+  const faqs = [
+    {
+      q: '¿Cuántas películas de Spider-Man hay?',
+      a: `${deSpiderMan} películas protagonizadas por Spider-Man: tres de Tobey Maguire, dos de Andrew Garfield, las de Tom Holland y las del Spider-Verso animado. Además, el universo de Sony tiene ${deSony} películas de personajes de su mundo, como Venom, pero sin Spider-Man.`,
+    },
+    {
+      q: '¿Cuál es la última película de Spider-Man?',
+      a: ultima
+        ? `${ultima.title} (${ultima.year})${tituloLatam(ultima.slug) ? `, que en Latinoamérica se titula «${tituloLatam(ultima.slug)!.titulo}»` : ''}. La próxima es Spider-Man: Beyond the Spider-Verse, que cerrará la trilogía animada de Miles Morales en junio de 2027.`
+        : 'La próxima es Spider-Man: Beyond the Spider-Verse, en junio de 2027.',
+    },
+    {
+      q: '¿En qué orden ver las películas de Spider-Man?',
+      a: 'Lo más cómodo es verlas saga a saga: primero la trilogía de Sam Raimi, después las dos de Andrew Garfield y luego las de Tom Holland, que conviene ver antes de No Way Home. El Spider-Verso se puede ver en cualquier momento. Lo explicamos paso a paso en nuestra guía del orden de las películas.',
+    },
+    {
+      q: '¿Cuál es la mejor película de Spider-Man?',
+      a: 'Para nosotros, Spider-Man 2 (2004), con Alfred Molina como Doctor Octopus, y Spider-Man: Un nuevo universo (2018), que ganó el Óscar a la mejor película de animación.',
+    },
+  ]
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-950 via-gray-900 to-blue-950">
@@ -278,6 +338,91 @@ export default async function PeliculasPage() {
           )
         })}
       </div>
+
+      {/* Guía en texto: todas las películas en orden, guías relacionadas y preguntas frecuentes */}
+      <section className="max-w-5xl mx-auto px-4 pb-24 text-gray-300">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+
+        <div className="flex items-center gap-4 mb-3">
+          <div className="w-1 h-10 rounded-full bg-gradient-to-b from-red-500 to-blue-500" />
+          <h2 className="text-2xl md:text-4xl font-bold text-white">Todas las películas de Spider-Man en orden</h2>
+        </div>
+        <p className="mb-8 text-gray-400 md:ml-5">
+          Por orden de estreno, con la saga a la que pertenece cada una y su título en Latinoamérica cuando es distinto.
+          ¿No sabes por dónde empezar? Tienes{' '}
+          <Link href="/blog/orden-ver-peliculas-spider-man" className="text-red-400 hover:text-red-300 underline">nuestra guía del orden para verlas</Link>.
+        </p>
+
+        <ol className="grid md:grid-cols-2 gap-3 mb-16">
+          {enOrden.map((movie, i) => {
+            const saga = sagaDe.get(movie.slug) ?? 'mcu'
+            const latam = tituloLatam(movie.slug)
+            return (
+              <li key={movie.id}>
+                <Link
+                  href={`/peliculas/${movie.slug}`}
+                  className="group flex items-center gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:border-red-500/50 hover:bg-white/10 transition-colors"
+                >
+                  <span className="w-7 text-center font-black text-xl text-gray-500 group-hover:text-red-400 transition-colors">{i + 1}</span>
+                  <div className="relative w-12 h-[72px] shrink-0 rounded-md overflow-hidden bg-gray-800">
+                    <Image src={movie.image} alt="" fill sizes="48px" className="object-cover" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="font-semibold text-white leading-snug group-hover:text-red-300 transition-colors">{movie.title}</p>
+                    {latam && <p className="text-xs text-gray-400 mt-0.5">En Latinoamérica: {latam.titulo}</p>}
+                    <p className="text-xs text-gray-400 mt-1">{movie.year}</p>
+                    <span className={`inline-block mt-2 text-[11px] font-semibold px-2 py-0.5 rounded-full border ${BADGE[saga]}`}>{PROTAGONISTA[saga]}</span>
+                  </div>
+                  <ChevronRight className="w-5 h-5 text-gray-500 group-hover:text-red-400 shrink-0 transition-colors" />
+                </Link>
+              </li>
+            )
+          })}
+        </ol>
+
+        {guias.length > 0 && (
+          <>
+            <div className="flex items-center gap-4 mb-8">
+              <div className="w-1 h-10 rounded-full bg-gradient-to-b from-red-500 to-blue-500" />
+              <h2 className="text-2xl md:text-4xl font-bold text-white">Guías y análisis</h2>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-4 mb-16">
+              {guias.map(g => (
+                <Link
+                  key={g.slug}
+                  href={`/blog/${g.slug}`}
+                  className="group flex gap-4 p-4 rounded-2xl bg-gradient-to-br from-white/10 to-white/[0.02] border border-white/10 hover:border-red-500/50 transition-colors"
+                >
+                  <div className="relative w-28 h-20 shrink-0 rounded-lg overflow-hidden bg-gray-800 shadow-lg">
+                    {g.image && <Image src={g.image} alt="" fill sizes="112px" className="object-cover group-hover:scale-105 transition-transform duration-500" />}
+                  </div>
+                  <div className="flex flex-col min-w-0">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-red-400">{g.etiqueta}</span>
+                    <span className="font-bold text-white mt-1 leading-snug line-clamp-2">{g.title}</span>
+                    <span className="text-sm text-gray-400 mt-1">{g.texto}</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </>
+        )}
+
+        <div className="flex items-center gap-4 mb-8">
+          <div className="w-1 h-10 rounded-full bg-gradient-to-b from-red-500 to-blue-500" />
+          <h2 className="text-2xl md:text-4xl font-bold text-white">Preguntas frecuentes</h2>
+        </div>
+        <div className="space-y-3">
+          {faqs.map((f, i) => (
+            <details key={f.q} open={i === 0} className="group rounded-xl bg-white/5 border border-white/10 open:border-red-500/40">
+              <summary className="flex items-center justify-between gap-4 cursor-pointer list-none p-5 [&::-webkit-details-marker]:hidden">
+                <h3 className="text-base md:text-lg font-semibold text-white">{f.q}</h3>
+                <ChevronDown className="w-5 h-5 text-gray-400 shrink-0 transition-transform group-open:rotate-180" />
+              </summary>
+              <p className="px-5 pb-5 -mt-1 text-gray-300">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
 
     </div>
   )
