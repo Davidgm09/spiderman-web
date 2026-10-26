@@ -14,12 +14,12 @@ import { Series } from "@prisma/client"
 export const metadata: Metadata = {
   title: "Todas las series de Spider-Man | Sentido Arácnido",
   description:
-    "Todas las series de Spider-Man desde 1967 hasta hoy. Series animadas clásicas, live-action y dónde verlas. Guía completa con fechas de estreno y análisis.",
-  keywords: ["Spider-Man series", "series animadas Spider-Man", "The Spectacular Spider-Man", "Spider-Man 1994", "series Marvel"],
+    "Todas las series de Spider-Man en orden, de 1967 a hoy: series animadas y de imagen real, por cuál empezar y cuál es la mejor, con fichas y análisis.",
+  keywords: ["series de Spider-Man", "series de Spiderman en orden", "Spider-Man series", "series animadas Spider-Man", "The Spectacular Spider-Man", "Spider-Man 1994", "series Marvel"],
   alternates: { canonical: '/series' },
   openGraph: {
     title: "Todas las series de Spider-Man | Sentido Arácnido",
-    description: "Todas las series de Spider-Man desde 1967 hasta hoy. Series animadas clásicas, live-action y dónde verlas.",
+    description: "Todas las series de Spider-Man en orden, de 1967 a hoy: animadas y de imagen real, por cuál empezar y cuál es la mejor.",
     type: 'website',
     url: '/series',
     images: ['https://image.tmdb.org/t/p/w500/957mnVq6w3xIZwhO1isb4RWPatr.jpg'],
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: "Todas las series de Spider-Man | Sentido Arácnido",
-    description: "Todas las series de Spider-Man desde 1967 hasta hoy. Series animadas clásicas, live-action y dónde verlas.",
+    description: "Todas las series de Spider-Man en orden, de 1967 a hoy: animadas y de imagen real, por cuál empezar y cuál es la mejor.",
     images: ['https://image.tmdb.org/t/p/w500/957mnVq6w3xIZwhO1isb4RWPatr.jpg'],
   },
 }
@@ -69,7 +69,7 @@ function organizeSeriesByEra(series: Series[]) {
 export default async function SeriesPage() {
   const allSeries = await seriesService.getAll()
   const eras = organizeSeriesByEra(allSeries)
-  const featuredSerie = allSeries.find(s => s.slug === 'the-spectacular-spider-man-2008')
+  const featuredSerie = allSeries.find(s => s.slug === 'el-espectacular-spiderman')
     ?? allSeries.find(s => s.rating >= 8)
     ?? allSeries[0]
   const featuredNew = allSeries.find(s => s.slug === 'tu-amigo-y-vecino-spider-man')
@@ -77,6 +77,29 @@ export default async function SeriesPage() {
   const totalSeries = allSeries.length
   const totalEras = Object.values(eras).filter(e => e.series.length > 0).length
   const totalEpisodes = allSeries.reduce((t, s) => t + (s.episodes ?? 0), 0)
+  const enOrden = [...allSeries].sort((a, b) => (parseInt(a.year, 10) || 0) - (parseInt(b.year, 10) || 0))
+  const masReciente = enOrden[enOrden.length - 1]
+
+  // Preguntas frecuentes (también como FAQPage para Google): responden a búsquedas como «series de spiderman»
+  const faqs = [
+    {
+      q: '¿Cuántas series de Spider-Man hay?',
+      a: `Aquí repasamos ${totalSeries} series de Spider-Man, desde la primera, de 1967, hasta ${masReciente ? `${masReciente.title} (${masReciente.year})` : 'las más recientes'}. La mayoría son de animación, pero también hay series con actores reales.`,
+    },
+    {
+      q: '¿Cuál es la mejor serie de Spider-Man?',
+      a: 'Para nosotros, la serie animada de 1994 y The Spectacular Spider-Man (2008) son las dos mejores: la primera adaptó las grandes historias de los cómics y la segunda es la que mejor entiende a Peter Parker.',
+    },
+    {
+      q: '¿Por qué serie de Spider-Man empiezo?',
+      a: 'Si es tu primera vez, empieza por The Spectacular Spider-Man (2008), que es corta y muy completa. Si te gustan los clásicos, la serie de 1994. Para los más pequeños, Spidey y su superequipo.',
+    },
+  ]
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-950 via-gray-900 to-blue-950">
@@ -278,6 +301,80 @@ export default async function SeriesPage() {
           )
         })}
       </div>
+
+      {/* Guía en texto: el orden de todas las series y por cuál empezar */}
+      <section className="max-w-4xl mx-auto px-4 pb-20 text-gray-300">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+        <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Todas las series de Spider-Man en orden</h2>
+        <p className="mb-6">
+          Estas son todas las series de Spider-Man por orden de estreno. Pulsa en cualquiera para ver su ficha, con reparto,
+          temporadas y curiosidades.
+        </p>
+        <div className="overflow-x-auto rounded-xl border border-gray-800 mb-10">
+          <table className="w-full text-sm">
+            <thead className="bg-black/40 text-left text-white">
+              <tr>
+                <th className="px-4 py-3">Año</th>
+                <th className="px-4 py-3">Serie</th>
+                <th className="px-4 py-3">Temporadas</th>
+              </tr>
+            </thead>
+            <tbody>
+              {enOrden.map(serie => (
+                <tr key={serie.id} className="border-t border-gray-800">
+                  <td className="px-4 py-3 text-gray-400">{serie.year}</td>
+                  <td className="px-4 py-3">
+                    <Link href={`/series/${serie.slug}`} className="text-white hover:text-red-400 underline-offset-2 hover:underline">
+                      {serie.title}
+                    </Link>
+                  </td>
+                  <td className="px-4 py-3 text-gray-400">
+                    {serie.seasons ? `${serie.seasons} temp.${serie.episodes ? ` · ${serie.episodes} ep.` : ''}` : '—'}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">¿Por cuál empezar?</h2>
+        <ul className="list-disc pl-5 space-y-2 mb-10">
+          <li>
+            <strong className="text-white">Para descubrir al personaje:</strong>{' '}
+            <Link href="/blog/spectacular-spider-man-serie-analisis" className="text-red-400 hover:text-red-300 underline">The Spectacular Spider-Man</Link>{' '}
+            (2008), corta, muy completa y con el mejor Peter Parker de la animación.
+          </li>
+          <li>
+            <strong className="text-white">Para los nostálgicos:</strong>{' '}
+            <Link href="/blog/spider-man-animated-series-1994-analisis" className="text-red-400 hover:text-red-300 underline">la serie animada de 1994</Link>,
+            que adaptó muchas de las grandes historias de los cómics.
+          </li>
+          <li>
+            <strong className="text-white">Para los más pequeños:</strong> Spidey y su superequipo, pensada para preescolares.
+          </li>
+          <li>
+            <strong className="text-white">Lo más reciente:</strong> Tu amigo y vecino Spider-Man (2025) y la serie de imagen real{' '}
+            <Link href="/blog/spider-noir-serie-nicolas-cage-donde-ver-temporada-2" className="text-red-400 hover:text-red-300 underline">Spider-Noir</Link>,
+            con Nicolas Cage.
+          </li>
+        </ul>
+        <p className="mb-10">
+          También tenemos análisis de{' '}
+          <Link href="/blog/spider-man-amazing-friends-1981-analisis-serie" className="text-red-400 hover:text-red-300 underline">Spider-Man y sus sorprendentes amigos</Link>,{' '}
+          <Link href="/blog/spider-man-new-animated-series-2003-mtv-analisis" className="text-red-400 hover:text-red-300 underline">la serie de MTV de 2003</Link> y{' '}
+          <Link href="/blog/ultimate-spider-man-2012-serie-animada-analisis" className="text-red-400 hover:text-red-300 underline">Ultimate Spider-Man</Link>.
+        </p>
+
+        <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Preguntas frecuentes</h2>
+        <div className="space-y-5">
+          {faqs.map(f => (
+            <div key={f.q}>
+              <h3 className="text-lg font-semibold text-white mb-1">{f.q}</h3>
+              <p>{f.a}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
     </div>
   )

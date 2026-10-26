@@ -167,8 +167,8 @@ const ORDEN_PELICULAS = {
   image: tmdb('tPpYGm2mVecue7Bk3gNVoSPA5qn'),
   seoTitle: 'Orden de las películas de Spider-Man: guía completa (2026)',
   seoDescription:
-    'En qué orden ver las películas de Spider-Man: por estreno, por sagas y en cronología del MCU, del Spider-Man de Raimi a Brand New Day y el Spider-Verso.',
-  keywords: ['orden películas Spider-Man', 'películas Spider-Man en orden', 'orden cronológico Spider-Man', 'Spider-Man MCU orden', 'Brand New Day', 'Spider-Verse'],
+    'En qué orden ver las películas de Spider-Man: por estreno, por sagas y en cronología del MCU, de El Hombre Araña de Raimi a Brand New Day (Un nuevo día) y el Spider-Verso.',
+  keywords: ['orden películas Spider-Man', 'películas Spider-Man en orden', 'orden de las películas de Spiderman', 'orden cronológico Spider-Man', 'películas de El Hombre Araña en orden', 'Spider-Man MCU orden', 'Brand New Day', 'Spider-Verse'],
   tags: ['guía', 'películas', 'MCU', 'Spider-Verse', 'Brand New Day', 'Tom Holland'],
   content: `
 <p>Desde 2002, Spider-Man ha tenido <strong>tres actores en imagen real</strong> —Tobey Maguire, Andrew Garfield y Tom Holland—, una trilogía animada que ha cambiado el cine de animación y un universo paralelo de Sony centrado en Venom y otros personajes de su mundo. Son muchas películas, y no todas se conectan entre sí, así que es normal no saber por dónde empezar.</p>
@@ -176,30 +176,30 @@ const ORDEN_PELICULAS = {
 <p>En esta guía te damos el orden de estreno completo, el orden por sagas (el que recomendamos para una primera vez) y la cronología interna del MCU. Al final te contamos qué necesitas haber visto antes de <em>Brand New Day</em>.</p>
 
 <h2>Todas las películas por orden de estreno</h2>
-<p>Si quieres verlas todas tal y como llegaron a los cines, este es el orden:</p>
+<p>Si quieres verlas todas tal y como llegaron a los cines, este es el orden. Muchas se estrenaron en Latinoamérica con otro título, como <em>El Hombre Araña</em> o <em>Sin camino a casa</em>, así que te lo indicamos (un guion significa que el título es el mismo):</p>
 <table>
-  <thead><tr><th>Año</th><th>Película</th><th>Saga</th></tr></thead>
+  <thead><tr><th>Año</th><th>Película</th><th>En Latinoamérica</th><th>Saga</th></tr></thead>
   <tbody>
-    <tr><td>2002</td><td>${peli('spider-man-2002', 'Spider-Man')}</td><td>Sam Raimi</td></tr>
-    <tr><td>2004</td><td>${peli('spider-man-2-2004', 'Spider-Man 2')}</td><td>Sam Raimi</td></tr>
-    <tr><td>2007</td><td>${peli('spider-man-3-2007', 'Spider-Man 3')}</td><td>Sam Raimi</td></tr>
-    <tr><td>2012</td><td>${peli('the-amazing-spider-man-2012', 'The Amazing Spider-Man')}</td><td>Marc Webb</td></tr>
-    <tr><td>2014</td><td>${peli('the-amazing-spider-man-2-el-poder-de-electro-2014', 'The Amazing Spider-Man 2: El poder de Electro')}</td><td>Marc Webb</td></tr>
-    <tr><td>2016</td><td><em>Capitán América: Civil War</em></td><td>MCU (debut de Holland)</td></tr>
-    <tr><td>2017</td><td>${peli('spider-man-homecoming-2017', 'Spider-Man: Homecoming')}</td><td>MCU</td></tr>
-    <tr><td>2018</td><td><em>Vengadores: Infinity War</em></td><td>MCU</td></tr>
-    <tr><td>2018</td><td>${peli('venom-2018', 'Venom')}</td><td>Universo Sony</td></tr>
-    <tr><td>2018</td><td>${peli('spider-man-un-nuevo-universo-2018', 'Spider-Man: Un nuevo universo')}</td><td>Spider-Verso</td></tr>
-    <tr><td>2019</td><td><em>Vengadores: Endgame</em></td><td>MCU</td></tr>
-    <tr><td>2019</td><td>${peli('spider-man-lejos-de-casa-2019', 'Spider-Man: Lejos de casa')}</td><td>MCU</td></tr>
-    <tr><td>2021</td><td>${peli('venom-habra-matanza-2021', 'Venom: Habrá Matanza')}</td><td>Universo Sony</td></tr>
-    <tr><td>2021</td><td>${peli('spider-man-no-way-home-2021', 'Spider-Man: No Way Home')}</td><td>MCU</td></tr>
-    <tr><td>2022</td><td>${peli('morbius-2022', 'Morbius')}</td><td>Universo Sony</td></tr>
-    <tr><td>2023</td><td>${peli('spider-man-cruzando-el-multiverso-2023', 'Spider-Man: Cruzando el Multiverso')}</td><td>Spider-Verso</td></tr>
-    <tr><td>2024</td><td>${peli('madame-web-2024', 'Madame Web')}</td><td>Universo Sony</td></tr>
-    <tr><td>2024</td><td>${peli('venom-el-ultimo-baile-2024', 'Venom: El último baile')}</td><td>Universo Sony</td></tr>
-    <tr><td>2024</td><td>${peli('kraven-the-hunter-2024', 'Kraven el cazador')}</td><td>Universo Sony</td></tr>
-    <tr><td>2026</td><td>${peli('spider-man-brand-new-day-2026', 'Spider-Man: Brand New Day')}</td><td>MCU</td></tr>
+    <tr><td>2002</td><td>${peli('spider-man-2002', 'Spider-Man')}</td><td>El Hombre Araña</td><td>Sam Raimi</td></tr>
+    <tr><td>2004</td><td>${peli('spider-man-2-2004', 'Spider-Man 2')}</td><td>El Hombre Araña 2</td><td>Sam Raimi</td></tr>
+    <tr><td>2007</td><td>${peli('spider-man-3-2007', 'Spider-Man 3')}</td><td>El Hombre Araña 3</td><td>Sam Raimi</td></tr>
+    <tr><td>2012</td><td>${peli('the-amazing-spider-man-2012', 'The Amazing Spider-Man')}</td><td>El sorprendente Hombre Araña</td><td>Marc Webb</td></tr>
+    <tr><td>2014</td><td>${peli('the-amazing-spider-man-2-el-poder-de-electro-2014', 'The Amazing Spider-Man 2: El poder de Electro')}</td><td>El sorprendente Hombre Araña 2: La amenaza de Electro</td><td>Marc Webb</td></tr>
+    <tr><td>2016</td><td><em>Capitán América: Civil War</em></td><td>—</td><td>MCU (debut de Holland)</td></tr>
+    <tr><td>2017</td><td>${peli('spider-man-homecoming-2017', 'Spider-Man: Homecoming')}</td><td>Spider-Man: De regreso a casa</td><td>MCU</td></tr>
+    <tr><td>2018</td><td><em>Vengadores: Infinity War</em></td><td>Avengers: Infinity War</td><td>MCU</td></tr>
+    <tr><td>2018</td><td>${peli('venom-2018', 'Venom')}</td><td>—</td><td>Universo Sony</td></tr>
+    <tr><td>2018</td><td>${peli('spider-man-un-nuevo-universo-2018', 'Spider-Man: Un nuevo universo')}</td><td>—</td><td>Spider-Verso</td></tr>
+    <tr><td>2019</td><td><em>Vengadores: Endgame</em></td><td>Avengers: Endgame</td><td>MCU</td></tr>
+    <tr><td>2019</td><td>${peli('spider-man-lejos-de-casa-2019', 'Spider-Man: Lejos de casa')}</td><td>—</td><td>MCU</td></tr>
+    <tr><td>2021</td><td>${peli('venom-habra-matanza-2021', 'Venom: Habrá Matanza')}</td><td>Venom: Carnage liberado</td><td>Universo Sony</td></tr>
+    <tr><td>2021</td><td>${peli('spider-man-no-way-home-2021', 'Spider-Man: No Way Home')}</td><td>Spider-Man: Sin camino a casa</td><td>MCU</td></tr>
+    <tr><td>2022</td><td>${peli('morbius-2022', 'Morbius')}</td><td>—</td><td>Universo Sony</td></tr>
+    <tr><td>2023</td><td>${peli('spider-man-cruzando-el-multiverso-2023', 'Spider-Man: Cruzando el Multiverso')}</td><td>Spider-Man: A través del Spider-Verso</td><td>Spider-Verso</td></tr>
+    <tr><td>2024</td><td>${peli('madame-web-2024', 'Madame Web')}</td><td>—</td><td>Universo Sony</td></tr>
+    <tr><td>2024</td><td>${peli('venom-el-ultimo-baile-2024', 'Venom: El último baile')}</td><td>—</td><td>Universo Sony</td></tr>
+    <tr><td>2024</td><td>${peli('kraven-the-hunter-2024', 'Kraven the Hunter')}</td><td>Kraven el cazador</td><td>Universo Sony</td></tr>
+    <tr><td>2026</td><td>${peli('spider-man-brand-new-day-2026', 'Spider-Man: Brand New Day')}</td><td>Spider-Man: Un nuevo día</td><td>MCU</td></tr>
   </tbody>
 </table>
 <p>Las tres películas de los Vengadores no son de Spider-Man, pero sí son importantes para entender al Peter Parker de Tom Holland. Hablamos de ellas más abajo.</p>
@@ -230,8 +230,8 @@ ${figure('Bwh7Lol5k3hSqYOtqXWxbbJVMx', 'Spider-Man y el Doctor Strange en Spider
   <li>${peli('spider-man-homecoming-2017', 'Spider-Man: Homecoming')} (2017): con el Buitre de Michael Keaton.</li>
   <li><em>Vengadores: Infinity War</em> (2018) y <em>Vengadores: Endgame</em> (2019): no son películas de Spider-Man, pero lo que le pasa a Peter en ellas explica todo lo que viene después.</li>
   <li>${peli('spider-man-lejos-de-casa-2019', 'Spider-Man: Lejos de casa')} (2019): Mysterio y el final que revela al mundo quién es Spider-Man.</li>
-  <li>${peli('spider-man-no-way-home-2021', 'Spider-Man: No Way Home')} (2021): el multiverso se abre y vuelven Maguire, Garfield y sus villanos.</li>
-  <li>${peli('spider-man-brand-new-day-2026', 'Spider-Man: Brand New Day')} (2026): Peter empieza de cero, solo y sin que nadie recuerde quién es.</li>
+  <li>${peli('spider-man-no-way-home-2021', 'Spider-Man: No Way Home')} (2021; en Latinoamérica, <em>Sin camino a casa</em>): el multiverso se abre y vuelven Maguire, Garfield y sus villanos.</li>
+  <li>${peli('spider-man-brand-new-day-2026', 'Spider-Man: Brand New Day')} (2026; en Latinoamérica, <em>Un nuevo día</em>): Peter empieza de cero, solo y sin que nadie recuerde quién es.</li>
 </ol>
 
 <h3>4. El Spider-Verso animado (Miles Morales)</h3>
@@ -1769,7 +1769,72 @@ ${cvFig('12/124259/9856505-large-1751490.jpg', 'Tormenta volando entre rayos, co
 `,
 };
 
-const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS, FINAL_BND, MEJORES_COMICS, JUEGOS_POST, TRAJES, VILLANOS_CINE, MARVEL_LEGENDS, MEJORES_LEGO, TRES_SPIDERMAN, BND_STREAMING, SCARLET_SPIDER, VENGADORES, SPIDER_NOIR, DOC_OCK_VERSIONES, VIUDA_NEGRA_MCU, OJO_DE_HALCON_MCU, ANT_MAN_MCU, HULK_MCU, MARY_JANE_VERSIONES, BUITRE_VERSIONES, ANTORCHA_VERSIONES, TORMENTA_VERSIONES];
+const MERODEADOR = {
+  slug: 'merodeador-aaron-davis-tio-miles-morales',
+  title: 'El Merodeador (Aaron Davis): quién es el tío de Miles Morales, en el cine, los videojuegos y los cómics',
+  subtitle: 'De Donald Glover en Homecoming al Merodeador de Un nuevo universo y el Miles de la Tierra-42: la historia del tío de Miles',
+  excerpt:
+    'Aaron Davis, el Merodeador, es el tío de Miles Morales y uno de los personajes más trágicos del Spider-Verso. Repasamos quién es y todas sus versiones: Homecoming, Un nuevo universo, Cruzando el Multiverso, los juegos y los cómics.',
+  category: 'Películas',
+  readTime: '7 min',
+  publishDate: new Date('2026-10-26'),
+  image: tmdb('sAP6kdiGyDnxYOTqfgkM07trPRx'),
+  seoTitle: 'El Merodeador (Aaron Davis), el tío de Miles Morales',
+  seoDescription:
+    'Quién es Aaron Davis, el Merodeador y tío de Miles Morales: Donald Glover en Homecoming, Mahershala Ali en Un nuevo universo, la Tierra-42, los videojuegos y los cómics.',
+  keywords: ['Aaron Davis', 'el Merodeador', 'Prowler Marvel', 'tío de Miles Morales', 'Merodeador Un nuevo universo', 'Donald Glover Aaron Davis'],
+  tags: ['Merodeador', 'Miles Morales', 'Spider-Verse', 'villanos', 'películas', 'personajes'],
+  content: `
+<p>${pjLink('prowler-aaron-davis-alt', 'Aaron Davis')} es el tío de ${pjLink('spider-man-miles-morales-alt', 'Miles Morales')}, el hermano de su padre y un ladrón profesional que, bajo la máscara del <strong>Merodeador</strong>, vive en el lado contrario de la ley. Su relación con Miles es una de las más trágicas del universo de Spider-Man: el tío enrollado que le anima a ser él mismo es, a la vez, uno de sus enemigos. Estas son todas sus versiones.</p>
+
+<h2>Todas sus versiones, de un vistazo</h2>
+<table>
+  <thead><tr><th>Año</th><th>Dónde</th><th>Quién le da vida</th></tr></thead>
+  <tbody>
+    <tr><td>2011</td><td>Cómics: <em>Ultimate Comics Spider-Man</em></td><td>Brian Michael Bendis y Sara Pichelli</td></tr>
+    <tr><td>2017</td><td>${peli('spider-man-homecoming-2017', 'Spider-Man: Homecoming')}</td><td>Donald Glover</td></tr>
+    <tr><td>2018</td><td>${peli('spider-man-un-nuevo-universo-2018', 'Spider-Man: Un nuevo universo')}</td><td>Voz original: Mahershala Ali</td></tr>
+    <tr><td>2020</td><td>${juego('marvel-s-spider-man-miles-morales-2020', "Marvel's Spider-Man: Miles Morales")}</td><td>Personaje clave del juego</td></tr>
+    <tr><td>2023</td><td>${peli('spider-man-cruzando-el-multiverso-2023', 'Spider-Man: Cruzando el Multiverso')}</td><td>Donald Glover (cameo) y el Merodeador de la Tierra-42</td></tr>
+  </tbody>
+</table>
+
+<h2>¿Quién es Aaron Davis?</h2>
+<p>En los cómics, Aaron es el hermano de Jefferson Davis, el padre de Miles. Mientras Jefferson eligió ser policía, Aaron se dedicó al robo. Y su historia está unida a Miles desde el principio: en el universo Ultimate, la araña que picó a Miles llegó a Brooklyn escondida en la bolsa de Aaron, después de que este robara en un laboratorio de Oscorp. Su creador fue Brian Michael Bendis, junto a la dibujante Sara Pichelli, en <em>Ultimate Comics Spider-Man</em> #1 (2011).</p>
+
+<h2>Donald Glover en Homecoming (2017)</h2>
+<p>La primera aparición de Aaron en el cine es un pequeño guiño. En ${peli('spider-man-homecoming-2017', 'Spider-Man: Homecoming')}, Donald Glover interpreta a Aaron Davis, un delincuente que intenta comprar armas a la banda del Buitre. Spider-Man le atrapa y le interroga, y Aaron le cuenta que tiene un sobrino que vive por la zona. La película no dice más, pero los fans lo entendieron enseguida: ese sobrino es Miles Morales. El guiño tiene más gracia porque, años antes, muchos fans habían pedido a Glover para interpretar a Spider-Man, y Bendis ha contado que verle con un pijama de Spider-Man en la serie <em>Community</em> le ayudó a imaginar a Miles.</p>
+
+<h2>El Merodeador de Un nuevo universo (2018)</h2>
+${figure('sAP6kdiGyDnxYOTqfgkM07trPRx', 'Primer plano de Miles Morales con cara de sorpresa ante una pared roja con grafitis', 'Miles Morales en Spider-Man: Un nuevo universo (2018), la película en la que descubre quién es el Merodeador.')}
+<p>La versión más conocida es la de ${peli('spider-man-un-nuevo-universo-2018', 'Un nuevo universo')}, con la voz original de Mahershala Ali. El tío Aaron es la persona con la que Miles se siente libre: le lleva a pintar grafitis a un túnel abandonado y le anima a ser él mismo, justo lo contrario que su padre, el estricto agente Jefferson Davis. Pero Aaron tiene un secreto: es el Merodeador, el sicario de Kingpin.</p>
+<p>Cuando por fin se encuentra cara a cara con Spider-Man, Aaron descubre que el chico de la máscara es su sobrino y se niega a disparar. Kingpin le mata por ello, y Aaron muere en brazos de Miles. Es una de las escenas más emocionantes de la película. Te lo contamos en <a href="/blog/spider-man-into-the-spider-verse-analisis-revolucion-animacion">nuestro análisis de Un nuevo universo</a>.</p>
+
+<h2>Cruzando el Multiverso (2023): dos Merodeadores</h2>
+${figure('dlebyCnmdwXtJfHNicBYhudz5EJ', 'Miles Morales y Gwen Stacy sentados en una habitación', 'Miles y Gwen en Spider-Man: Cruzando el Multiverso (2023).')}
+<p>${peli('spider-man-cruzando-el-multiverso-2023', 'Cruzando el Multiverso')} tiene dos sorpresas relacionadas con el Merodeador. La primera es un cameo de Donald Glover, en imagen real, como un Aaron Davis de otro universo vestido de Merodeador y encerrado en la sede de la Sociedad Araña, como si fuera la continuación de su personaje de <em>Homecoming</em>.</p>
+<p>La segunda es mucho más importante. Al final de la película, Miles viaja por error a la <strong>Tierra-42</strong>, el universo del que venía la araña que le picó. Allí nunca hubo un Spider-Man, su padre ha muerto, su tío Aaron sigue vivo… y el Merodeador es <strong>otro Miles Morales</strong>, que ha seguido los pasos de su tío. Es el gran gancho para <em>Beyond the Spider-Verse</em>, que cerrará la trilogía en 2027. Te contamos <a href="/blog/beyond-spider-verse-actualizacion-2025">todo lo que se sabe</a> y lo analizamos en <a href="/blog/across-the-spider-verse-analisis">nuestro análisis de Cruzando el Multiverso</a>.</p>
+
+<h2>En los videojuegos</h2>
+<p>En ${juego('marvel-s-spider-man-miles-morales-2020', "Marvel's Spider-Man: Miles Morales")} (2020), Aaron es uno de los personajes clave: un tío cercano a Miles que esconde su identidad de Merodeador y se ve atrapado entre su sobrino y sus propios negocios. Vuelve a aparecer en ${juego('marvel-s-spider-man-2-2023', "Marvel's Spider-Man 2")} (2023). Tienes más en <a href="/blog/spider-man-miles-morales-ps5-analisis">nuestro análisis de Miles Morales</a>.</p>
+
+<h2>Y en los cómics…</h2>
+${cvFig('6/67344/7792391-aaron-davis-92616-normal.jpg', 'El Merodeador con capa, máscara morada, traje verde y un arma', 'El Merodeador de los cómics, con su capa, su máscara morada y sus garras.')}
+<p>En el universo Ultimate, Aaron descubrió que su sobrino era el nuevo Spider-Man e intentó utilizarlo para sus negocios, con un equipo robado al Chapucero. El enfrentamiento entre los dos acabó en tragedia: Aaron murió por la explosión de su propio armamento. Tras <em>Secret Wars</em> (2015), cuando Miles pasó al universo principal de Marvel, Aaron volvió a estar vivo. No hay que confundirle con el Merodeador clásico, <strong>Hobie Brown</strong>, que debutó en 1969 como un joven inventor y acabó siendo aliado de Spider-Man. Tienes su historia en su ${pjLink('prowler-aaron-davis-alt', 'ficha de personaje')}, y la de su sobrino en <a href="/blog/peter-parker-vs-miles-morales-analisis">Peter Parker contra Miles Morales</a>.</p>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Quién es el Merodeador en Un nuevo universo?</h3>
+<p>Aaron Davis, el tío de Miles Morales, que trabaja como sicario para Kingpin.</p>
+<h3>¿Quién mata al tío de Miles Morales?</h3>
+<p>En <em>Un nuevo universo</em>, Kingpin, después de que Aaron se niegue a disparar a Miles al descubrir que es Spider-Man.</p>
+<h3>¿Aaron Davis sale en el MCU?</h3>
+<p>Sí, en <em>Spider-Man: Homecoming</em> (2017), interpretado por Donald Glover, que vuelve al papel en un cameo en <em>Cruzando el Multiverso</em> (2023).</p>
+<h3>¿Quién es el Merodeador de la Tierra-42?</h3>
+<p>Otro Miles Morales: el de un universo en el que nunca hubo Spider-Man y que siguió los pasos de su tío Aaron.</p>
+`,
+};
+
+const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS, FINAL_BND, MEJORES_COMICS, JUEGOS_POST, TRAJES, VILLANOS_CINE, MARVEL_LEGENDS, MEJORES_LEGO, TRES_SPIDERMAN, BND_STREAMING, SCARLET_SPIDER, VENGADORES, SPIDER_NOIR, DOC_OCK_VERSIONES, VIUDA_NEGRA_MCU, OJO_DE_HALCON_MCU, ANT_MAN_MCU, HULK_MCU, MARY_JANE_VERSIONES, BUITRE_VERSIONES, ANTORCHA_VERSIONES, TORMENTA_VERSIONES, MERODEADOR];
 
 (async () => {
   for (const p of POSTS) {
