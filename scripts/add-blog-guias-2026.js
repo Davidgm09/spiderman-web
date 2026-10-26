@@ -1834,7 +1834,84 @@ ${cvFig('6/67344/7792391-aaron-davis-92616-normal.jpg', 'El Merodeador con capa,
 `,
 };
 
-const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS, FINAL_BND, MEJORES_COMICS, JUEGOS_POST, TRAJES, VILLANOS_CINE, MARVEL_LEGENDS, MEJORES_LEGO, TRES_SPIDERMAN, BND_STREAMING, SCARLET_SPIDER, VENGADORES, SPIDER_NOIR, DOC_OCK_VERSIONES, VIUDA_NEGRA_MCU, OJO_DE_HALCON_MCU, ANT_MAN_MCU, HULK_MCU, MARY_JANE_VERSIONES, BUITRE_VERSIONES, ANTORCHA_VERSIONES, TORMENTA_VERSIONES, MERODEADOR];
+const EDDIE_BROCK = {
+  slug: 'eddie-brock-venom-tom-hardy-topher-grace-versiones',
+  title: 'Eddie Brock: quién es el Venom original, de Topher Grace a Tom Hardy',
+  subtitle: 'El periodista que odiaba a Spider-Man y se convirtió en Venom: sus versiones en el cine, las series, los videojuegos y los cómics',
+  excerpt:
+    'Eddie Brock es el hombre detrás del Venom original. Repasamos quién es y todas sus versiones: Topher Grace en Spider-Man 3, la trilogía de Tom Hardy, las series animadas, los videojuegos y los cómics.',
+  category: 'Películas',
+  readTime: '8 min',
+  publishDate: new Date('2026-10-27'),
+  image: tmdb('mUBsvochQCt4r0ezwEC1j2JIafp'),
+  seoTitle: 'Eddie Brock (Venom): Tom Hardy, Topher Grace y más',
+  seoDescription:
+    'Quién es Eddie Brock, el Venom original: Topher Grace en Spider-Man 3, Tom Hardy en la trilogía de Venom, sus versiones animadas, los videojuegos y los cómics.',
+  keywords: ['Eddie Brock', 'Eddie Brock Venom', 'Tom Hardy Venom', 'Topher Grace Venom', 'quién es Eddie Brock', 'Venom películas'],
+  tags: ['Venom', 'Eddie Brock', 'villanos', 'Tom Hardy', 'películas', 'personajes'],
+  content: `
+<p>${pjLink('venom-eddie-brock-alt', 'Eddie Brock')} es el hombre que convirtió al simbionte en <strong>Venom</strong>: un periodista que culpaba a Spider-Man de haber arruinado su carrera y que encontró en el traje alienígena que Peter había rechazado a un aliado con el mismo odio. Con los años pasó de villano a antihéroe, y fuera de los cómics ha tenido dos actores muy distintos. Estas son todas sus versiones.</p>
+
+<h2>Todas sus versiones, de un vistazo</h2>
+<table>
+  <thead><tr><th>Año</th><th>Dónde</th><th>Quién le da vida</th></tr></thead>
+  <tbody>
+    <tr><td>1988</td><td>Cómics: <em>The Amazing Spider-Man</em> #300</td><td>David Michelinie y Todd McFarlane</td></tr>
+    <tr><td>1994</td><td>${juego('spider-man-and-venom-maximum-carnage-1994', 'Maximum Carnage')} (videojuego)</td><td>Venom jugable junto a Spider-Man</td></tr>
+    <tr><td>1995</td><td><a href="/blog/spider-man-animated-series-1994-analisis">Serie animada de Spider-Man</a></td><td>Voz original: Hank Azaria</td></tr>
+    <tr><td>2005</td><td>${juego('ultimate-spider-man-2005', 'Ultimate Spider-Man')} (videojuego)</td><td>Venom jugable</td></tr>
+    <tr><td>2007</td><td>${peli('spider-man-3-2007', 'Spider-Man 3')}</td><td>Topher Grace</td></tr>
+    <tr><td>2008</td><td><a href="/blog/spectacular-spider-man-serie-analisis">The Spectacular Spider-Man</a></td><td>Voz original: Ben Diskin</td></tr>
+    <tr><td>2018</td><td>${peli('venom-2018', 'Venom')}</td><td>Tom Hardy</td></tr>
+    <tr><td>2021</td><td>${peli('venom-habra-matanza-2021', 'Venom: Habrá Matanza')}</td><td>Tom Hardy</td></tr>
+    <tr><td>2024</td><td>${peli('venom-el-ultimo-baile-2024', 'Venom: El último baile')}</td><td>Tom Hardy</td></tr>
+  </tbody>
+</table>
+
+<h2>¿Quién es Eddie Brock?</h2>
+<p>En los cómics, Eddie era un periodista del <em>Daily Globe</em> que creyó haber encontrado la exclusiva de su vida: la identidad de Sin-Eater, un asesino en serie que tenía aterrorizada a Nueva York. Pero el hombre al que entrevistó era un mentiroso, y Spider-Man atrapó al verdadero culpable. Eddie quedó en ridículo, perdió su trabajo y culpó de todo a Spider-Man. Cuando el simbionte, rechazado por Peter Parker, lo encontró en una iglesia, sus odios encajaron a la perfección. Así nació Venom, que debutó del todo en <em>The Amazing Spider-Man</em> #300 (1988).</p>
+
+<h2>Topher Grace en Spider-Man 3 (2007)</h2>
+${figure('7RuIBRl1nCsYMyh84NmU7HJ3EKb', 'Peter Parker con el traje negro del simbionte, con el brazo extendido', 'Peter Parker con el traje negro en Spider-Man 3 (2007), antes de que el simbionte pase a Eddie Brock.')}
+<p>La primera versión en imagen real fue la de ${peli('spider-man-3-2007', 'Spider-Man 3')}. El Eddie de Topher Grace es un fotógrafo que compite con Peter por un puesto en el Daily Bugle y que intenta conquistar a Gwen Stacy. Cuando Peter descubre que ha trucado una foto para presentar a Spider-Man como un criminal, Eddie pierde su trabajo… y se convierte en Venom al recibir el simbionte del que Peter se libra en el campanario de una iglesia, igual que en los cómics. En la batalla final, Eddie se lanza a por el simbionte justo cuando la bomba de calabaza de Peter lo alcanza, y muere con él.</p>
+<p>Fue una versión polémica: Sam Raimi ha contado que el estudio le pidió incluir a Venom, y el personaje tuvo poco tiempo en una película con muchos villanos. Te lo contamos en <a href="/blog/villanos-spider-man-peliculas-ranking">nuestro ranking de villanos del cine</a>.</p>
+
+<h2>Tom Hardy y la trilogía de Venom (2018–2024)</h2>
+${figure('mUBsvochQCt4r0ezwEC1j2JIafp', 'Rostro de Eddie Brock cubierto a medias por Venom, con el Golden Gate al fondo', 'Tom Hardy como Eddie Brock y Venom, con el Golden Gate de San Francisco al fondo.')}
+<p>Sony convirtió a Venom en protagonista de su propia saga, con Tom Hardy como un Eddie Brock muy diferente: un periodista de investigación de San Francisco, desaliñado y con mala suerte, que pierde su trabajo y a su prometida, Anne Weying (Michelle Williams), por investigar a la Fundación Vida del millonario Carlton Drake. Allí se une al simbionte, y la película se convierte en una extraña comedia de pareja entre Eddie y la voz de Venom en su cabeza.</p>
+<ul>
+  <li>${peli('venom-2018', 'Venom')} (2018): el origen, contra Riot y Carlton Drake.</li>
+  <li>${peli('venom-habra-matanza-2021', 'Venom: Habrá Matanza')} (2021): contra Cletus Kasady (Woody Harrelson) y Carnage. Su escena poscréditos lleva a Eddie al universo del MCU.</li>
+  <li>${peli('venom-el-ultimo-baile-2024', 'Venom: El último baile')} (2024): el cierre, con Knull, el creador de los simbiontes, persiguiéndoles.</li>
+</ul>
+${figure('mU6XhSkc6MFtYtKm20FBekbCubl', 'Eddie Brock con un tentáculo negro del simbionte enroscado al cuello, en el campo', 'Eddie Brock y el simbionte en Venom: El último baile (2024).')}
+<p>Al final de la trilogía, el simbionte se sacrifica para salvar a Eddie y acabar con la amenaza de Knull. Eddie sobrevive. Por el camino, Eddie y Venom pasaron fugazmente por el MCU: en la escena poscréditos de ${peli('spider-man-no-way-home-2021', 'No Way Home')} vuelven a su universo, dejando atrás un pequeño trozo del simbionte. Tienes el orden de todas estas películas en <a href="/blog/orden-ver-peliculas-spider-man">nuestra guía del orden de las películas de Spider-Man</a>.</p>
+
+<h2>En las series animadas</h2>
+<p>En la <a href="/blog/spider-man-animated-series-1994-analisis">serie de 1994</a>, Eddie es un reportero rival de Peter, con la voz original de Hank Azaria, y su arco con el simbionte es una de las historias más recordadas de la primera temporada. En <a href="/blog/spectacular-spider-man-serie-analisis">The Spectacular Spider-Man</a> (2008), con la voz de Ben Diskin, es un amigo de la infancia de Peter que acaba odiándole, una versión inspirada en la de los cómics Ultimate.</p>
+
+<h2>En los videojuegos</h2>
+<p>Venom fue jugable junto a Spider-Man en ${juego('spider-man-and-venom-maximum-carnage-1994', 'Maximum Carnage')} (1994) y protagonizó parte de ${juego('ultimate-spider-man-2005', 'Ultimate Spider-Man')} (2005), donde se puede jugar con él. Ojo: el Venom de ${juego('marvel-s-spider-man-2-2023', "Marvel's Spider-Man 2")} (2023) <strong>no es Eddie Brock</strong>, sino Harry Osborn, el amigo de Peter. Lo contamos en <a href="/blog/marvels-spider-man-2-ps5-analisis">nuestro análisis del juego</a>.</p>
+
+<h2>Y en los cómics…</h2>
+${cvFig('11125/111253436/6733785-9.jpg', 'Venom agazapado en una cornisa de noche, con la lengua fuera', 'Venom en los cómics, con la araña blanca en el pecho y su larga lengua.')}
+<p>Tras su etapa como villano, Eddie se convirtió en el «protector letal» de los inocentes en los 90, se separó y se reunió varias veces con el simbionte, tuvo su propio traje blanco, Anti-Venom, y llegó a ser el rey de los simbiontes en <em>Rey en Negro</em> (2021). Tienes la historia completa del traje en <a href="/blog/simbionte-historia-evolucion-venom">la historia del simbionte</a> y su ficha en ${pjLink('venom-eddie-brock-alt', 'Venom (Eddie Brock)')}.</p>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Quién es Eddie Brock?</h3>
+<p>El periodista que se unió al simbionte rechazado por Peter Parker y se convirtió en el Venom original.</p>
+<h3>¿Quién interpreta a Eddie Brock?</h3>
+<p>Tom Hardy en la trilogía de Venom (2018, 2021 y 2024) y Topher Grace en <em>Spider-Man 3</em> (2007).</p>
+<h3>¿Por qué Eddie Brock odia a Spider-Man?</h3>
+<p>Porque culpa a Spider-Man de haber arruinado su carrera de periodista al dejar en evidencia una exclusiva falsa.</p>
+<h3>¿El Venom de Marvel's Spider-Man 2 es Eddie Brock?</h3>
+<p>No: en el juego de Insomniac, Venom es Harry Osborn.</p>
+<h3>¿Muere Eddie Brock en El último baile?</h3>
+<p>No: el que se sacrifica es el simbionte. Eddie sobrevive al final de la película.</p>
+`,
+};
+
+const POSTS = [GUIA_REGALOS, ORDEN_PELICULAS, FINAL_BND, MEJORES_COMICS, JUEGOS_POST, TRAJES, VILLANOS_CINE, MARVEL_LEGENDS, MEJORES_LEGO, TRES_SPIDERMAN, BND_STREAMING, SCARLET_SPIDER, VENGADORES, SPIDER_NOIR, DOC_OCK_VERSIONES, VIUDA_NEGRA_MCU, OJO_DE_HALCON_MCU, ANT_MAN_MCU, HULK_MCU, MARY_JANE_VERSIONES, BUITRE_VERSIONES, ANTORCHA_VERSIONES, TORMENTA_VERSIONES, MERODEADOR, EDDIE_BROCK];
 
 (async () => {
   for (const p of POSTS) {

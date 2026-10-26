@@ -177,6 +177,10 @@ const nextConfig = {
       },
       
       // Redirects para videojuegos
+      // Capítulos sueltos del DLC y el port de PC, agrupados en su juego (scripts/fix-videojuegos-2026.js)
+      { source: '/videojuegos/marvel-s-spider-man-the-heist-2018', destination: '/videojuegos/marvel-s-spider-man-the-city-that-never-sleeps-2018', permanent: true },
+      { source: '/videojuegos/marvel-s-spider-man-silver-lining-2018', destination: '/videojuegos/marvel-s-spider-man-the-city-that-never-sleeps-2018', permanent: true },
+      { source: '/videojuegos/marvel-s-spider-man-2-pc-port-2025', destination: '/videojuegos/marvel-s-spider-man-2-2023', permanent: true },
       {
         source: '/marvels-spider-man-2018',
         destination: '/videojuegos/marvels-spider-man-2018',

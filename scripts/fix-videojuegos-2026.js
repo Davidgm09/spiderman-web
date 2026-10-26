@@ -50,12 +50,24 @@ const SINOPSIS = {
   'marvel-s-spider-man-miles-morales-2020':
     'Un año después de Marvel\'s Spider-Man, Miles Morales se queda como único Spider-Man de Nueva York en plena Navidad. En su nuevo barrio, Harlem, tiene que enfrentarse a la corporación Roxxon y a la banda del misterioso Tinkerer, mientras descubre sus propios poderes: las descargas bioeléctricas y el camuflaje. Más corto que el juego de Peter, pero redondo y muy emotivo.',
   'marvel-s-spider-man-2-2023':
-    'Peter Parker y Miles Morales comparten protagonismo en la secuela de Insomniac para PS5. Kraven el Cazador convierte Nueva York en su coto de caza, y el simbionte de Venom amenaza a los dos Spider-Man. El mapa añade Queens y Brooklyn, las alas de telaraña permiten planear por la ciudad y el traje negro da a Peter unos poderes mucho más brutales.',
+    'Peter Parker y Miles Morales comparten protagonismo en la secuela de Insomniac para PS5. Kraven el Cazador convierte Nueva York en su coto de caza, y el simbionte de Venom amenaza a los dos Spider-Man. El mapa añade Queens y Brooklyn, las alas de telaraña permiten planear por la ciudad y el traje negro da a Peter unos poderes mucho más brutales. Desde el 30 de enero de 2025 también está disponible en PC.',
   'marvel-s-spider-man-2-pc-port-2025':
     'Versión para PC de Marvel\'s Spider-Man 2, publicada el 30 de enero de 2025. Peter Parker y Miles Morales se enfrentan a Kraven el Cazador y a Venom en una Nueva York más grande que nunca, con Queens y Brooklyn, y con las mejoras gráficas propias de PC. Llegó con algunos problemas técnicos que se fueron corrigiendo con parches.',
 };
 
+// Entradas de RAWG que no son juegos independientes: se ocultan para que /videojuegos no las cuente
+// como juegos aparte, y next.config.mjs redirige sus URL a la página que las incluye
+const OCULTOS = [
+  'marvel-s-spider-man-the-heist-2018', // capítulo de The City That Never Sleeps
+  'marvel-s-spider-man-silver-lining-2018', // capítulo de The City That Never Sleeps
+  'marvel-s-spider-man-2-pc-port-2025', // versión de PC de Marvel's Spider-Man 2
+];
+
 (async () => {
+  for (const slug of OCULTOS) {
+    await prisma.game.updateMany({ where: { slug }, data: { isActive: false } });
+    console.log('oculto', slug);
+  }
   for (const [slug, data] of Object.entries(FIXES)) {
     await prisma.game.update({ where: { slug }, data });
     console.log('ok créditos', slug, '→', data.developer);

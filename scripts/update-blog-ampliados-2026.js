@@ -250,7 +250,7 @@ ${figure('80e/80e7335a1e0b17b56cf33d51dcd92511', 'Spider-Man esquivando la cola 
 <p>El gran acierto es Otto Octavius. El juego se toma su tiempo para presentarlo como un científico brillante y bondadoso, mentor de Peter, y su caída es la parte más emotiva de la historia. ${pj('mister-negative-martin-li', 'Mister Negativo')} es un villano poco conocido fuera de los cómics, y el juego lo convierte en un antagonista muy sólido. Y cuando llegan los Seis Siniestros, el juego sube de ritmo hasta un final espectacular.</p>
 
 <h2>El DLC: The City That Never Sleeps</h2>
-<p>Tras el lanzamiento llegaron tres capítulos descargables, reunidos en ${juego('marvel-s-spider-man-the-city-that-never-sleeps-2018', 'The City That Never Sleeps')}: ${juego('marvel-s-spider-man-the-heist-2018', 'The Heist')}, con la Gata Negra; <em>Turf Wars</em>, con Cabeza de Martillo; y ${juego('marvel-s-spider-man-silver-lining-2018', 'Silver Lining')}, con Silver Sable. Son una buena excusa para volver a la ciudad, aunque el primero es el más interesante.</p>
+<p>Tras el lanzamiento llegaron tres capítulos descargables, reunidos en ${juego('marvel-s-spider-man-the-city-that-never-sleeps-2018', 'The City That Never Sleeps')}: <em>The Heist</em>, con la Gata Negra; <em>Turf Wars</em>, con Cabeza de Martillo; y <em>Silver Lining</em>, con Silver Sable. Son una buena excusa para volver a la ciudad, aunque el primero es el más interesante.</p>
 
 <h2>¿Qué versión jugar hoy?</h2>
 <ul>
@@ -1190,10 +1190,10 @@ const JAMESON = {
   excerpt:
     'Lleva desde 1963 llamando amenaza a Spider-Man, y sin embargo es uno de los personajes más humanos de Marvel. Repasamos la historia de J. Jonah Jameson en los cómics, el cine y las series.',
   readTime: '9 min',
-  seoTitle: 'J. Jonah Jameson: historia del director del Daily Bugle',
+  seoTitle: 'J. Jonah Jameson: historia, J. K. Simmons y sus versiones',
   seoDescription:
     'J. Jonah Jameson, el director del Daily Bugle: su historia en los cómics, sus cruzadas contra Spider-Man, su lado humano y J. K. Simmons en las películas y el MCU.',
-  keywords: ['J. Jonah Jameson', 'Daily Bugle', 'J. K. Simmons Jameson', 'Jameson Spider-Man', 'personajes secundarios Marvel', 'JJJ'],
+  keywords: ['J. Jonah Jameson', 'Jonah Jameson', 'Daily Bugle', 'J. K. Simmons Jameson', 'Jameson actor', 'J. K. Simmons Jameson', 'Jameson Spider-Man', 'personajes secundarios Marvel', 'JJJ'],
   tags: ['personajes', 'Jameson', 'Daily Bugle', 'cómics', 'J. K. Simmons', 'análisis'],
   content: `
 <p>En más de sesenta años de historia de Spider-Man, ningún personaje secundario ha tenido tanta presencia como ${pj('j-jonah-jameson', 'J. Jonah Jameson')}. Y, sin embargo, rara vez aparece en las listas de los mejores personajes de Marvel. Detrás de los gritos, el puro y los titulares contra Spider-Man hay uno de los personajes más humanos y complejos de todo el universo arácnido.</p>
@@ -1209,6 +1209,22 @@ const JAMESON = {
   </tbody>
 </table>
 
+<h2>Todas sus versiones, de un vistazo</h2>
+<table>
+  <thead><tr><th>Año</th><th>Dónde</th><th>Quién le da vida</th></tr></thead>
+  <tbody>
+    <tr><td>1963</td><td>Cómics: <em>The Amazing Spider-Man</em> #1</td><td>Stan Lee y Steve Ditko</td></tr>
+    <tr><td>1994</td><td><a href="/blog/spider-man-animated-series-1994-analisis">Serie animada de Spider-Man</a></td><td>Voz original: Ed Asner</td></tr>
+    <tr><td>2002–2007</td><td>${peli('spider-man-2002', 'Spider-Man')}, ${peli('spider-man-2-2004', 'Spider-Man 2')} y ${peli('spider-man-3-2007', 'Spider-Man 3')}</td><td>J. K. Simmons</td></tr>
+    <tr><td>2008</td><td><a href="/blog/spectacular-spider-man-serie-analisis">The Spectacular Spider-Man</a></td><td>Voz original: Daran Norris</td></tr>
+    <tr><td>2012</td><td><a href="/blog/ultimate-spider-man-2012-serie-animada-analisis">Ultimate Spider-Man</a></td><td>Voz original: J. K. Simmons</td></tr>
+    <tr><td>2018</td><td>${juego('marvel-s-spider-man-2018', "Marvel's Spider-Man")}</td><td>Presentador de un pódcast contra Spider-Man</td></tr>
+    <tr><td>2019</td><td>${peli('spider-man-lejos-de-casa-2019', 'Spider-Man: Lejos de casa')} (escena poscréditos)</td><td>J. K. Simmons</td></tr>
+    <tr><td>2021</td><td>${peli('spider-man-no-way-home-2021', 'Spider-Man: No Way Home')}</td><td>J. K. Simmons</td></tr>
+  </tbody>
+</table>
+<p>J. K. Simmons es, con diferencia, el actor más ligado al personaje: le ha dado vida en dos universos de cine distintos y también le ha puesto voz en animación.</p>
+
 <h2>El hombre que odia a Spider-Man… y no siempre se equivoca</h2>
 ${cvFigure('scale_medium/3/33913/1162969-137_web_of_spider_man_9.jpg', 'J. Jonah Jameson leyendo el Daily Bugle', 'J. Jonah Jameson con el Daily Bugle en las manos. J. K. Simmons lo interpretó en la trilogía de Sam Raimi y volvió al papel en el MCU casi veinte años después.')}
 <p>La gracia de Jameson es que sus argumentos no son del todo absurdos. Un enmascarado que actúa al margen de la ley y no rinde cuentas ante nadie despertaría desconfianza en cualquier periodista. Stan Lee lo construyó como la voz del ciudadano que recela del poder sin control. Que esté equivocado sobre Spider-Man no invalida del todo su argumento.</p>
@@ -1223,7 +1239,7 @@ ${cvFigure('original/11112/111127724/3811491-5831741533-XGMPHOC-8LYwsBrVZ36DfljY
 <p>En 2017, Peter Parker le reveló por fin que era Spider-Man. Fue uno de los momentos más inesperados de la historia del personaje.</p>
 
 <h2>J. K. Simmons: el actor perfecto</h2>
-<p>Hay personajes tan ligados a un actor que es imposible imaginarlos de otra forma. J. K. Simmons no interpreta a Jameson en la trilogía de Sam Raimi: lo encarna, con la velocidad de sus frases, el volumen de su voz y la convicción absoluta con la que dice cada barbaridad. Que Marvel lo recuperara para el MCU en <a href="/blog/spider-man-no-way-home-analisis"><em>Lejos de casa</em> y <em>No Way Home</em></a>, ahora como presentador de un canal de noticias sensacionalista, y que el público lo recibiera con una ovación, dice mucho de lo que construyó. En la serie animada de 1994 le puso voz Ed Asner.</p>
+<p>Hay personajes tan ligados a un actor que es imposible imaginarlos de otra forma. J. K. Simmons no interpreta a Jameson en la trilogía de Sam Raimi: lo encarna, con la velocidad de sus frases, el volumen de su voz y la convicción absoluta con la que dice cada barbaridad. Que Marvel lo recuperara para el MCU en <a href="/blog/spider-man-no-way-home-analisis"><em>Lejos de casa</em> y <em>No Way Home</em></a>, ahora como presentador de un canal de noticias sensacionalista, y que el público lo recibiera con una ovación, dice mucho de lo que construyó. En el MCU, su Jameson es el que revela al mundo, en la escena poscréditos de <em>Lejos de casa</em>, el vídeo manipulado de Mysterio que acusa a Spider-Man y desvela que es Peter Parker. En animación, Ed Asner le puso voz en la serie de 1994, y en los juegos de Insomniac es el presentador de un pódcast que critica a Spider-Man sin descanso.</p>
 
 <h2>El espejo de Peter Parker</h2>
 <p>La relación entre Jameson y Spider-Man es la de dos personas que comparten valores, la justicia y la protección de los inocentes, y llegan a conclusiones opuestas sobre cómo conseguirlos. Sin Jameson, Spider-Man sería un héroe sin fricción con su ciudad. Con él, es un héroe en un mundo que no está seguro de si lo quiere.</p>
