@@ -2,7 +2,7 @@ export const revalidate = 3600
 
 import Image from "next/image"
 import Link from "next/link"
-import { Play, Tv, Star } from "lucide-react"
+import { Play, Tv, Star, ChevronRight, ChevronDown } from "lucide-react"
 import type { Metadata } from "next"
 
 import { Badge } from "@/components/ui/badge"
@@ -77,6 +77,24 @@ export default async function SeriesPage() {
   const totalSeries = allSeries.length
   const totalEras = Object.values(eras).filter(e => e.series.length > 0).length
   const totalEpisodes = allSeries.reduce((t, s) => t + (s.episodes ?? 0), 0)
+  // Etiqueta de época de cada serie, con los mismos colores que los bloques de arriba
+  const BADGE: Record<string, string> = {
+    clasica: 'text-blue-300 border-blue-500/40 bg-blue-500/10',
+    moderna: 'text-red-300 border-red-500/40 bg-red-500/10',
+    actual: 'text-purple-300 border-purple-500/40 bg-purple-500/10',
+    liveaction: 'text-green-300 border-green-500/40 bg-green-500/10',
+  }
+  const eraDe = new Map<string, { title: string; badge: string }>()
+  Object.entries(eras).forEach(([key, era]) => era.series.forEach(s => eraDe.set(s.slug, { title: era.title, badge: BADGE[key] })))
+
+  const bySlug = new Map(allSeries.map(s => [s.slug, s]))
+  const recomendaciones = [
+    { slug: 'el-espectacular-spiderman', etiqueta: 'Para descubrir al personaje', titulo: 'The Spectacular Spider-Man (2008)', texto: 'Corta, muy completa y con el mejor Peter Parker de la animación.', enlace: '/blog/spectacular-spider-man-serie-analisis', enlaceTexto: 'Leer el análisis' },
+    { slug: 'spiderman', etiqueta: 'Para los nostálgicos', titulo: 'La serie animada de 1994', texto: 'Adaptó muchas de las grandes historias de los cómics.', enlace: '/blog/spider-man-animated-series-1994-analisis', enlaceTexto: 'Leer el análisis' },
+    { slug: 'spidey-y-su-superequipo', etiqueta: 'Para los más pequeños', titulo: 'Spidey y su superequipo', texto: 'Pensada para preescolares, con aventuras cortas y mucho humor.', enlace: '/series/spidey-y-su-superequipo', enlaceTexto: 'Ver la ficha' },
+    { slug: 'spider-noir', etiqueta: 'Lo más reciente', titulo: 'Spider-Noir (2026)', texto: 'Nicolas Cage en una serie de imagen real. También es reciente Tu amigo y vecino Spider-Man (2025).', enlace: '/blog/spider-noir-serie-nicolas-cage-donde-ver-temporada-2', enlaceTexto: 'Leer el artículo' },
+  ].map(r => ({ ...r, serie: bySlug.get(r.slug) }))
+
   const enOrden = [...allSeries].sort((a, b) => (parseInt(a.year, 10) || 0) - (parseInt(b.year, 10) || 0))
   const masReciente = enOrden[enOrden.length - 1]
 
@@ -303,75 +321,99 @@ export default async function SeriesPage() {
       </div>
 
       {/* Guía en texto: el orden de todas las series y por cuál empezar */}
-      <section className="max-w-4xl mx-auto px-4 pb-20 text-gray-300">
+      <section className="max-w-5xl mx-auto px-4 pb-24 text-gray-300">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
-        <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Todas las series de Spider-Man en orden</h2>
-        <p className="mb-6">
-          Estas son todas las series de Spider-Man por orden de estreno. Pulsa en cualquiera para ver su ficha, con reparto,
-          temporadas y curiosidades.
+
+        <div className="flex items-center gap-4 mb-3">
+          <div className="w-1 h-10 rounded-full bg-gradient-to-b from-red-500 to-blue-500" />
+          <h2 className="text-2xl md:text-4xl font-bold text-white">Todas las series de Spider-Man en orden</h2>
+        </div>
+        <p className="mb-8 text-gray-400 md:ml-5">
+          Por orden de estreno, de 1967 a hoy. Pulsa en cualquiera para ver su ficha, con reparto, temporadas y curiosidades.
         </p>
-        <div className="overflow-x-auto rounded-xl border border-gray-800 mb-10">
-          <table className="w-full text-sm">
-            <thead className="bg-black/40 text-left text-white">
-              <tr>
-                <th className="px-4 py-3">Año</th>
-                <th className="px-4 py-3">Serie</th>
-                <th className="px-4 py-3">Temporadas</th>
-              </tr>
-            </thead>
-            <tbody>
-              {enOrden.map(serie => (
-                <tr key={serie.id} className="border-t border-gray-800">
-                  <td className="px-4 py-3 text-gray-400">{serie.year}</td>
-                  <td className="px-4 py-3">
-                    <Link href={`/series/${serie.slug}`} className="text-white hover:text-red-400 underline-offset-2 hover:underline">
-                      {serie.title}
-                    </Link>
-                  </td>
-                  <td className="px-4 py-3 text-gray-400">
-                    {serie.seasons ? `${serie.seasons} temp.${serie.episodes ? ` · ${serie.episodes} ep.` : ''}` : '—'}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+
+        <ol className="grid md:grid-cols-2 gap-3 mb-16">
+          {enOrden.map((serie, i) => {
+            const era = eraDe.get(serie.slug)
+            return (
+              <li key={serie.id}>
+                <Link
+                  href={`/series/${serie.slug}`}
+                  className="group flex items-center gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:border-red-500/50 hover:bg-white/10 transition-colors"
+                >
+                  <span className="w-7 text-center font-black text-xl text-gray-500 group-hover:text-red-400 transition-colors">{i + 1}</span>
+                  <div className="relative w-12 h-[72px] shrink-0 rounded-md overflow-hidden bg-gray-800">
+                    <Image src={serie.image} alt="" fill sizes="48px" className="object-cover" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="font-semibold text-white leading-snug group-hover:text-red-300 transition-colors">{serie.title}</p>
+                    <p className="text-xs text-gray-400 mt-1">
+                      {serie.year}
+                      {serie.seasons ? ` · ${serie.seasons} temp.` : ''}
+                      {serie.episodes ? ` · ${serie.episodes} ep.` : ''}
+                    </p>
+                    {era && (
+                      <span className={`inline-block mt-2 text-[11px] font-semibold px-2 py-0.5 rounded-full border ${era.badge}`}>{era.title}</span>
+                    )}
+                  </div>
+                  <ChevronRight className="w-5 h-5 text-gray-500 group-hover:text-red-400 shrink-0 transition-colors" />
+                </Link>
+              </li>
+            )
+          })}
+        </ol>
+
+        <div className="flex items-center gap-4 mb-8">
+          <div className="w-1 h-10 rounded-full bg-gradient-to-b from-red-500 to-blue-500" />
+          <h2 className="text-2xl md:text-4xl font-bold text-white">¿Por cuál empezar?</h2>
+        </div>
+        <div className="grid sm:grid-cols-2 gap-4 mb-6">
+          {recomendaciones.map(r => (
+            <Link
+              key={r.slug}
+              href={r.enlace}
+              className="group flex gap-4 p-4 rounded-2xl bg-gradient-to-br from-white/10 to-white/[0.02] border border-white/10 hover:border-red-500/50 transition-colors"
+            >
+              <div className="relative w-20 h-[120px] shrink-0 rounded-lg overflow-hidden bg-gray-800 shadow-lg">
+                {r.serie && <Image src={r.serie.image} alt={r.serie.title} fill sizes="80px" className="object-cover group-hover:scale-105 transition-transform duration-500" />}
+              </div>
+              <div className="flex flex-col">
+                <span className="text-xs font-semibold uppercase tracking-wider text-red-400">{r.etiqueta}</span>
+                <span className="text-lg font-bold text-white mt-1 leading-snug">{r.titulo}</span>
+                <span className="text-sm text-gray-400 mt-1">{r.texto}</span>
+                <span className="mt-auto pt-2 text-sm font-semibold text-red-400 group-hover:text-red-300 inline-flex items-center gap-1">
+                  {r.enlaceTexto} <ChevronRight className="w-4 h-4" />
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
+        <div className="flex flex-wrap items-center gap-2 mb-16 text-sm">
+          <span className="text-gray-400 mr-1">Más análisis:</span>
+          {[
+            ['/blog/spider-man-amazing-friends-1981-analisis-serie', 'Spider-Man y sus sorprendentes amigos'],
+            ['/blog/spider-man-new-animated-series-2003-mtv-analisis', 'La serie de MTV de 2003'],
+            ['/blog/ultimate-spider-man-2012-serie-animada-analisis', 'Ultimate Spider-Man'],
+          ].map(([href, label]) => (
+            <Link key={href} href={href} className="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-gray-200 hover:border-red-500/50 hover:text-white transition-colors">
+              {label}
+            </Link>
+          ))}
         </div>
 
-        <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">¿Por cuál empezar?</h2>
-        <ul className="list-disc pl-5 space-y-2 mb-10">
-          <li>
-            <strong className="text-white">Para descubrir al personaje:</strong>{' '}
-            <Link href="/blog/spectacular-spider-man-serie-analisis" className="text-red-400 hover:text-red-300 underline">The Spectacular Spider-Man</Link>{' '}
-            (2008), corta, muy completa y con el mejor Peter Parker de la animación.
-          </li>
-          <li>
-            <strong className="text-white">Para los nostálgicos:</strong>{' '}
-            <Link href="/blog/spider-man-animated-series-1994-analisis" className="text-red-400 hover:text-red-300 underline">la serie animada de 1994</Link>,
-            que adaptó muchas de las grandes historias de los cómics.
-          </li>
-          <li>
-            <strong className="text-white">Para los más pequeños:</strong> Spidey y su superequipo, pensada para preescolares.
-          </li>
-          <li>
-            <strong className="text-white">Lo más reciente:</strong> Tu amigo y vecino Spider-Man (2025) y la serie de imagen real{' '}
-            <Link href="/blog/spider-noir-serie-nicolas-cage-donde-ver-temporada-2" className="text-red-400 hover:text-red-300 underline">Spider-Noir</Link>,
-            con Nicolas Cage.
-          </li>
-        </ul>
-        <p className="mb-10">
-          También tenemos análisis de{' '}
-          <Link href="/blog/spider-man-amazing-friends-1981-analisis-serie" className="text-red-400 hover:text-red-300 underline">Spider-Man y sus sorprendentes amigos</Link>,{' '}
-          <Link href="/blog/spider-man-new-animated-series-2003-mtv-analisis" className="text-red-400 hover:text-red-300 underline">la serie de MTV de 2003</Link> y{' '}
-          <Link href="/blog/ultimate-spider-man-2012-serie-animada-analisis" className="text-red-400 hover:text-red-300 underline">Ultimate Spider-Man</Link>.
-        </p>
-
-        <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Preguntas frecuentes</h2>
-        <div className="space-y-5">
-          {faqs.map(f => (
-            <div key={f.q}>
-              <h3 className="text-lg font-semibold text-white mb-1">{f.q}</h3>
-              <p>{f.a}</p>
-            </div>
+        <div className="flex items-center gap-4 mb-8">
+          <div className="w-1 h-10 rounded-full bg-gradient-to-b from-red-500 to-blue-500" />
+          <h2 className="text-2xl md:text-4xl font-bold text-white">Preguntas frecuentes</h2>
+        </div>
+        <div className="space-y-3">
+          {faqs.map((f, i) => (
+            <details key={f.q} open={i === 0} className="group rounded-xl bg-white/5 border border-white/10 open:border-red-500/40">
+              <summary className="flex items-center justify-between gap-4 cursor-pointer list-none p-5 [&::-webkit-details-marker]:hidden">
+                <h3 className="text-base md:text-lg font-semibold text-white">{f.q}</h3>
+                <ChevronDown className="w-5 h-5 text-gray-400 shrink-0 transition-transform group-open:rotate-180" />
+              </summary>
+              <p className="px-5 pb-5 -mt-1 text-gray-300">{f.a}</p>
+            </details>
           ))}
         </div>
       </section>
