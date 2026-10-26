@@ -290,7 +290,7 @@ export default async function VideojuegosPage() {
       </div>
 
       {/* Guía en texto: todos los juegos en orden, por cuál empezar y preguntas frecuentes */}
-      <section className="max-w-5xl mx-auto px-4 pb-24 text-gray-300">
+      <section className="max-w-7xl mx-auto px-4 pb-24 text-gray-300">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
         <div className="flex items-center gap-4 mb-3">
@@ -302,7 +302,7 @@ export default async function VideojuegosPage() {
           <Link href="/blog/mejores-juegos-spider-man-ranking" className="text-red-400 hover:text-red-300 underline">nuestro ranking de los 10 mejores juegos de Spider-Man</Link>.
         </p>
 
-        <ol className="grid md:grid-cols-2 gap-3 mb-16">
+        <ol className="grid md:grid-cols-2 xl:grid-cols-3 gap-3 mb-16">
           {enOrden.map((game, i) => {
             const era = eraDe.get(game.slug)
             return (

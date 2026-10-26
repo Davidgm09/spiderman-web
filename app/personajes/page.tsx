@@ -279,7 +279,7 @@ export default async function PersonajesPage() {
         )}
 
         {/* Guía en texto: artículos sobre personajes y preguntas frecuentes */}
-        <section className="max-w-5xl mx-auto text-gray-300">
+        <section className="text-gray-300">
           <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
           {guias.length > 0 && (
@@ -288,7 +288,7 @@ export default async function PersonajesPage() {
                 <div className="w-1 h-10 rounded-full bg-gradient-to-b from-red-500 to-blue-500" />
                 <h2 className="text-2xl md:text-4xl font-bold text-white">Sus historias, a fondo</h2>
               </div>
-              <div className="grid sm:grid-cols-2 gap-4 mb-16">
+              <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-4 mb-16">
                 {guias.map((g) => (
                   <Link
                     key={g.slug}

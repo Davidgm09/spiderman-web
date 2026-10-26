@@ -340,7 +340,7 @@ export default async function PeliculasPage() {
       </div>
 
       {/* Guía en texto: todas las películas en orden, guías relacionadas y preguntas frecuentes */}
-      <section className="max-w-5xl mx-auto px-4 pb-24 text-gray-300">
+      <section className="max-w-7xl mx-auto px-4 pb-24 text-gray-300">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
         <div className="flex items-center gap-4 mb-3">
@@ -353,7 +353,7 @@ export default async function PeliculasPage() {
           <Link href="/blog/orden-ver-peliculas-spider-man" className="text-red-400 hover:text-red-300 underline">nuestra guía del orden para verlas</Link>.
         </p>
 
-        <ol className="grid md:grid-cols-2 gap-3 mb-16">
+        <ol className="grid md:grid-cols-2 xl:grid-cols-3 gap-3 mb-16">
           {enOrden.map((movie, i) => {
             const saga = sagaDe.get(movie.slug) ?? 'mcu'
             const latam = tituloLatam(movie.slug)

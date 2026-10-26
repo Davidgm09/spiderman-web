@@ -321,7 +321,7 @@ export default async function SeriesPage() {
       </div>
 
       {/* Guía en texto: el orden de todas las series y por cuál empezar */}
-      <section className="max-w-5xl mx-auto px-4 pb-24 text-gray-300">
+      <section className="max-w-7xl mx-auto px-4 pb-24 text-gray-300">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
         <div className="flex items-center gap-4 mb-3">
@@ -332,7 +332,7 @@ export default async function SeriesPage() {
           Por orden de estreno, de 1967 a hoy. Pulsa en cualquiera para ver su ficha, con reparto, temporadas y curiosidades.
         </p>
 
-        <ol className="grid md:grid-cols-2 gap-3 mb-16">
+        <ol className="grid md:grid-cols-2 xl:grid-cols-3 gap-3 mb-16">
           {enOrden.map((serie, i) => {
             const era = eraDe.get(serie.slug)
             return (
