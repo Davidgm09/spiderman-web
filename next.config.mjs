@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
+    // Sin el optimizador de Vercel (cupo mensual del plan gratuito): ver lib/image-loader.ts
+    loader: 'custom',
+    loaderFile: './lib/image-loader.ts',
     remotePatterns: [
       { protocol: 'https', hostname: 'image.tmdb.org' },
       { protocol: 'https', hostname: 'i.annihil.us' },

@@ -160,7 +160,7 @@ export default async function Page({ params }: PageProps) {
 
 ### Image Sources
 
-All external image domains are whitelisted in `next.config.mjs`. Working sources:
+All external image domains are whitelisted in `next.config.mjs`. `next/image` does **not** use Vercel's optimizer (the Hobby plan's monthly quota ran out in Oct 2026 and every new image returned 402): `lib/image-loader.ts` asks TMDB, RAWG and Comic Vine directly for a suitable size and serves everything else as-is. Working sources:
 - `comicvine.gamespot.com` — character portraits and comic covers
 - `image.tmdb.org` — movie/series posters and backdrops
 - `media.rawg.io` — game screenshots
