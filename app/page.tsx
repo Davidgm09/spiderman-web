@@ -9,6 +9,7 @@ import { InContentAd } from "@/components/ads/GoogleAdsense"
 import { AmazonProduct } from "@/components/affiliate/AmazonProduct"
 import { movieService, comicService, gameService, seriesService, blogService, productService, prisma } from "@/lib/database"
 import { PeterParkerIntro } from "@/components/home/PeterParkerIntro"
+import { BannerNavidad } from "@/components/home/BannerNavidad"
 import { SITE_URL, ADS_ENABLED } from "@/lib/config"
 import { Movie, Comic, Game, Series, BlogPost, Product } from "@prisma/client"
 
@@ -253,6 +254,9 @@ export default async function HomePage() {
           <span className="shrink-0 px-5 py-2.5 rounded-lg bg-red-600 group-hover:bg-red-700 text-white font-semibold transition-colors">Jugar</span>
         </Link>
       </section>
+
+      {/* Navidad (solo del 1/11 al 6/1) */}
+      <BannerNavidad />
 
       {/* Featured Movies */}
       <section id="peliculas" className="py-16 px-4 max-w-7xl mx-auto relative">
