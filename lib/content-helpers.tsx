@@ -93,9 +93,16 @@ export function gameGenre(genre: string | null | undefined): string | null {
   return GAME_GENRE_ES[genre] ?? genre
 }
 
-// Cómics sin contenido propio (tomos recopilatorios, índices de referencia, reediciones):
-// la página existe, pero no se indexa ni va al sitemap para no llenar Google de páginas finas
-export function isThinComic(comic: { title: string; description?: string | null }): boolean {
-  return /Hardcover|Official Marvel Index|100 Project/i.test(comic.title) ||
-    /^Este (Annual|número) reedita/.test((comic.description || '').trim())
+// Texto mínimo (sin etiquetas HTML) para que una ficha de cómic vaya a Google
+export const MIN_COMIC_TEXT = 1000
+
+// Cómics sin contenido propio suficiente (tomos recopilatorios, índices, reediciones y fichas
+// con poco texto): la página existe, pero no se indexa ni va al sitemap. En noviembre de 2026
+// Google hundió todo el dominio y más de la mitad de las páginas eran fichas de cómic cortas.
+// Para que un cómic vuelva a Google, basta con ampliar su longDescription.
+export function isThinComic(comic: { title: string; description?: string | null; longDescription?: string | null }): boolean {
+  if (/Hardcover|Official Marvel Index|100 Project/i.test(comic.title) ||
+    /^Este (Annual|número) reedita/.test((comic.description || '').trim())) return true
+  const texto = (comic.longDescription || comic.description || '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim()
+  return texto.length < MIN_COMIC_TEXT
 }
