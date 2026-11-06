@@ -43,6 +43,8 @@ All scripts read from `.env` (not `.env.local`). Run them with `node scripts/<na
 
 After re-importing comics from Comic Vine, run `enrich-comics-from-comicvine.js`, then `--all-credits`, then `apply-comic-synopses.js`: the import leaves placeholder data (`characters: ['Spider-Man']`, writer "Marvel Comics") and machine-translated, truncated synopses.
 
+Comic pages with under 1,000 characters of text in `longDescription` are `noindex` and left out of the sitemap (`isThinComic()` / `MIN_COMIC_TEXT` in `lib/content-helpers.tsx`, added Nov 2026 after Google demoted the whole domain). To get a comic back into Google, expand its text.
+
 ## Short videos (TikTok / Shorts / Reels)
 
 `node video/crear-video.js [slug] [--guion guion.json]` (or the desktop shortcut «Crear video Spider-Man», which runs `video/crear-video.cmd`) turns a blog post into a vertical 1080×1920 video: script from the Claude API (`ANTHROPIC_API_KEY` in `.env`, model in `CONFIG.modelo`; only facts from the article), free Microsoft Edge voices via `video/tts.py` (`pip install -U edge-tts` if it returns 403), the article's own images with slow zoom, word-by-word ASS subtitles and royalty-free music from `video/musica/*.mp3` (git-ignored; Kevin MacLeod CC BY tracks, credits in `video/musica/creditos.json` are added to the post text), ducked under the voice and normalised to -14 LUFS. Output goes to `Desktop/Videos Sentido Aracnido/` with a `.txt` (description + hashtags + script). Requires ffmpeg. Images captioned as fan-made are never used.
